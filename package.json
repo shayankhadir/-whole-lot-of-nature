@@ -1,0 +1,21 @@
+{
+  "name": "whole-lot-of-nature",
+  "version": "1.0.0",
+  "description": "E-commerce website for Whole Lot of Nature - Plants, Succulents & Gardening Products",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "e-commerce",
+    "plants",
+    "succulents",
+    "gardening"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
