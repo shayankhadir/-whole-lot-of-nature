@@ -1,0 +1,25 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.25"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g1)"/>
+  <g filter="url(#blur)">
+    <g fill="url(#leaf)" stroke="#047857" stroke-opacity="0.15" stroke-width="2">
+      <path d="M120 120 C 200 140, 220 220, 180 300 C 140 380, 80 420, 60 460 C 40 420, 60 380, 80 300 C 100 220, 80 160, 120 120 Z"/>
+      <path d="M380 90 C 450 110, 510 170, 520 240 C 530 310, 480 360, 430 410 C 380 360, 330 310, 340 240 C 350 170, 310 110, 380 90 Z"/>
+      <path d="M980 160 C 1040 190, 1080 260, 1070 320 C 1060 380, 1010 420, 960 450 C 920 410, 900 360, 900 300 C 900 240, 920 190, 980 160 Z"/>
+      <path d="M760 560 C 820 580, 860 640, 850 690 C 840 740, 780 770, 730 780 C 700 750, 680 710, 690 660 C 700 610, 700 540, 760 560 Z"/>
+      <path d="M220 580 C 280 600, 320 660, 310 710 C 300 760, 250 790, 200 780 C 170 750, 160 710, 170 660 C 180 610, 160 560, 220 580 Z"/>
+    </g>
+  </g>
+</svg>

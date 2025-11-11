@@ -1,0 +1,70 @@
+# ============================================
+# WordPress .htaccess Configuration
+# ============================================
+# Location: Add this to your WordPress root directory's .htaccess file
+# Path: /public_html/.htaccess (or wherever your WordPress is installed)
+# 
+# IMPORTANT: Back up your existing .htaccess before making changes!
+# ============================================
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Pass HTTP Authorization header to WordPress
+# This is crucial for WooCommerce REST API authentication
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Set the base directory for rewrites
+RewriteBase /
+
+# Allow direct access to index.php
+RewriteRule ^index\.php$ - [L]
+
+# Don't rewrite requests for existing files
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Don't rewrite requests for existing directories
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect all other requests to index.php
+RewriteRule . /index.php [L]
+</IfModule>
+
+# ============================================
+# Additional Security & Performance Headers
+# ============================================
+
+# Enable CORS for API requests (if needed)
+# Uncomment the lines below if you're getting CORS errors
+# <IfModule mod_headers.c>
+#   Header set Access-Control-Allow-Origin "*"
+#   Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+#   Header set Access-Control-Allow-Headers "Authorization, Content-Type"
+# </IfModule>
+
+# ============================================
+# INSTRUCTIONS:
+# ============================================
+# 
+# 1. Log in to your hosting control panel (cPanel, Hostinger, etc.)
+# 2. Navigate to File Manager
+# 3. Go to your WordPress installation directory (usually public_html)
+# 4. Find the .htaccess file
+# 5. Right-click and select "Edit" or "Code Edit"
+# 6. BACKUP the current content first!
+# 7. Replace the <IfModule mod_rewrite.c> section with the code above
+# 8. Save the file
+# 9. Test your WooCommerce API endpoints
+# 
+# TESTING:
+# After updating, test your API by visiting:
+# https://wholelotofnature.com/wp-json/wc/v2/products
+# 
+# You should see product data in JSON format.
+# 
+# TROUBLESHOOTING:
+# - If you get 500 errors, revert to your backup
+# - Make sure mod_rewrite is enabled on your server
+# - Check file permissions (should be 644 for .htaccess)
+# - Contact your hosting provider if issues persist
+# ============================================

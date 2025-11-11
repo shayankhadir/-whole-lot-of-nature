@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "regions": ["bom1"],
+  "env": {
+    "WORDPRESS_API_URL": "https://wholelotofnature.com/wp-json",
+    "WORDPRESS_URL": "https://wholelotofnature.com",
+    "NEXT_PUBLIC_API_URL": "https://wholelotofnature.com/wp-json",
+    "NEXT_PUBLIC_WORDPRESS_URL": "https://wholelotofnature.com"
+  }
+}

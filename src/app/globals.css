@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Headings color handled per-component to allow hero to remain white */
+
+/* Make all Lucide icons green site-wide */
+.lucide {
+  color: #16a34a; /* approx Tailwind green-600 to match primary-600 tone */
+}
+
+/* Make all Heroicons (outline/solid with data-slot="icon") green site-wide */
+svg[data-slot="icon"] {
+  color: #16a34a;
+}
