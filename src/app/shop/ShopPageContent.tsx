@@ -13,7 +13,7 @@ import CategoryHeader from '@/components/shop/CategoryHeader';
 import MobileFilterDrawer from '@/components/shop/MobileFilterDrawer';
 import ProductGridSkeleton from '@/components/skeletons/ProductGridSkeleton';
 import FilterSkeleton from '@/components/skeletons/FilterSkeleton';
-import { useLoading } from '@/context/LoadingContext';
+import { useLoading } from '@/contexts/LoadingContext';
 
 export default function ShopPageContent() {
   const [search, setSearch] = useState('');

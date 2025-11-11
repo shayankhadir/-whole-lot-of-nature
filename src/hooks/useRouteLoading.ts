@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLoading } from '@/context/LoadingContext';
+import { useLoading } from '@/contexts/LoadingContext';
 
 /**
  * Hook to automatically show loading screen on route transitions

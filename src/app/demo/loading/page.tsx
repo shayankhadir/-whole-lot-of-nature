@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useLoading } from '@/context/LoadingContext';
+import { useLoading } from '@/contexts/LoadingContext';
 import { useRouteLoading } from '@/hooks/useRouteLoading';
 import Button from '@/components/ui/Button';
 
