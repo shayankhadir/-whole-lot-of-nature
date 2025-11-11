@@ -8,6 +8,7 @@ import Script from "next/script";
 import { LoadingProvider } from "@/contexts/LoadingContext";
 import PageLoadingScreen from "@/components/loading/PageLoadingScreen";
 import { RouteTransitionProvider } from "@/components/loading/RouteTransitionProvider";
+import { Suspense } from "react";
 
 // Load brand typography: Inter (body) and Playfair Display (headings)
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -204,12 +205,14 @@ export default function RootLayout({
         <NextAuthProvider>
           <QueryProvider>
             <LoadingProvider>
-              <RouteTransitionProvider>
-                <PageLoadingScreen />
-                <Layout>
-                  {children}
-                </Layout>
-              </RouteTransitionProvider>
+              <Suspense fallback={null}>
+                <RouteTransitionProvider>
+                  <PageLoadingScreen />
+                  <Layout>
+                    {children}
+                  </Layout>
+                </RouteTransitionProvider>
+              </Suspense>
             </LoadingProvider>
           </QueryProvider>
         </NextAuthProvider>

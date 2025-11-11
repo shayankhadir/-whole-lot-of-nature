@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { woocommerceClient as woocommerce } from '@/lib/services/woocommerceService';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 type WCCategory = {
   id: number;
   name: string;
