@@ -205,9 +205,9 @@ export default function RootLayout({
         <NextAuthProvider>
           <QueryProvider>
             <LoadingProvider>
+              <PageLoadingScreen />
               <Suspense fallback={null}>
                 <RouteTransitionProvider>
-                  <PageLoadingScreen />
                   <Layout>
                     {children}
                   </Layout>
