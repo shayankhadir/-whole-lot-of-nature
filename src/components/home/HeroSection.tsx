@@ -93,7 +93,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="font-montserrat text-[14vw] sm:text-[12vw] md:text-[140px] lg:text-[178px] font-bold uppercase text-white leading-[0.9] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)]"
+          className="font-montserrat text-[clamp(4rem,14vw,11.125rem)] font-bold uppercase text-white leading-[0.9] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)]"
           style={{ letterSpacing: '0.1em' }}
         >
           BRING THE
@@ -103,12 +103,12 @@ export default function HeroSection() {
           HOME
         </motion.h1>
 
-        {/* Subheadline - Golden Ratio H5 (42px) */}
+        {/* Subheadline - Golden Ratio H5 (42px clamped) */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-8 md:mt-10 font-inter text-[20px] md:text-[26px] lg:text-[32px] text-white/90 max-w-3xl leading-relaxed tracking-wide"
+          className="mt-8 md:mt-10 font-inter text-[clamp(1.125rem,2.5vw,2rem)] text-white/90 max-w-3xl leading-relaxed tracking-wide"
         >
           Handpicked nature, organic plants, and sustainable growth — delivered to your door.
         </motion.p>

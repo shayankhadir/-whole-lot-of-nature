@@ -10,11 +10,16 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const search = searchParams.get('search');
+    const slug = searchParams.get('slug');
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined;
 
     let products;
 
-    if (search) {
+    if (slug) {
+      // Fetch product by slug
+      const allProducts = await WooCommerceService.getProducts(100);
+      products = allProducts.filter(p => p.slug === slug);
+    } else if (search) {
       products = await WooCommerceService.searchProducts(search, limit);
     } else if (category) {
       products = await WooCommerceService.getProductsByCategory(category, limit);

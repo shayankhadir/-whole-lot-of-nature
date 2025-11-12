@@ -142,10 +142,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Product Content - Generous Padding with Golden Ratio */}
         <div className="p-6 flex-1 flex flex-col">
-          {/* Product Name - Montserrat 26px (H6 Golden Ratio) */}
+          {/* Product Name - Golden Ratio H6 (26px clamped for mobile) */}
           <Link 
             href={`/shop/${product.slug}`}
-            className="font-montserrat font-semibold text-[26px] leading-tight text-white hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 mb-3"
+            className="font-montserrat font-semibold text-[clamp(1.125rem,2.5vw,1.625rem)] leading-tight text-white hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 mb-3"
           >
             {product.name}
           </Link>
@@ -157,14 +157,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             </p>
           )}
 
-          {/* Price - Emerald 42px (H5 Golden Ratio) */}
+          {/* Price - Emerald H6 (26px clamped) */}
           <div className="mb-4">
             <div className="flex items-baseline gap-3">
-              <span className="font-montserrat text-[42px] text-[#2E7D32] font-bold leading-none">
+              <span className="font-montserrat text-[clamp(1.5rem,3vw,1.625rem)] text-[#2E7D32] font-bold leading-none">
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="font-inter text-base text-white/40 line-through">
+                <span className="font-inter text-sm text-white/40 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}

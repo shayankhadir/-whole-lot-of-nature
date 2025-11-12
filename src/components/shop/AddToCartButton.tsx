@@ -1,0 +1,63 @@
+'use client';
+
+import { useState } from 'react';
+import { ShoppingCart } from 'lucide-react';
+import { Product } from '@/types/product';
+
+interface AddToCartButtonProps {
+  product: Product;
+}
+
+export default function AddToCartButton({ product }: AddToCartButtonProps) {
+  const [quantity, setQuantity] = useState(1);
+  const [adding, setAdding] = useState(false);
+
+  const handleAddToCart = async () => {
+    setAdding(true);
+    // Add to cart logic here (integrate with your cart store/context)
+    await new Promise(resolve => setTimeout(resolve, 500));
+    setAdding(false);
+  };
+
+  if (!product.in_stock) {
+    return (
+      <button
+        disabled
+        className="w-full px-8 py-4 bg-gray-600 text-white rounded-lg font-semibold cursor-not-allowed opacity-50"
+      >
+        Out of Stock
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex gap-4 items-start">
+      <div className="flex items-center border border-[#2E7D32]/30 rounded-lg overflow-hidden">
+        <button
+          onClick={() => setQuantity(Math.max(1, quantity - 1))}
+          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors"
+        >
+          −
+        </button>
+        <span className="px-6 py-3 bg-[#1A1A1A] text-white font-semibold min-w-[60px] text-center">
+          {quantity}
+        </span>
+        <button
+          onClick={() => setQuantity(Math.min(product.stock_quantity || 99, quantity + 1))}
+          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors"
+        >
+          +
+        </button>
+      </div>
+
+      <button
+        onClick={handleAddToCart}
+        disabled={adding}
+        className="flex-1 px-8 py-4 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#66BB6A] transition-all shadow-lg shadow-[#2E7D32]/50 hover:shadow-[#66BB6A]/50 disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2"
+      >
+        <ShoppingCart className="w-5 h-5" />
+        {adding ? 'Adding...' : 'Add to Cart'}
+      </button>
+    </div>
+  );
+}
