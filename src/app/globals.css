@@ -1,34 +1,221 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Forest Theme - Dark Mode Focus */
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Color Palette - Emerald/Turquoise/Charcoal */
+  --emerald: #2E7D32;
+  --turquoise: #66BB6A;
+  --sage: #8BC34A;
+  --charcoal: #1A1A1A;
+  --dark-gray: #2C2C2C;
+  --medium-gray: #757575;
+  --light-gray: #E0E0E0;
+  --off-white: #F8F9FA;
+  --muted-gold: #C4B17C;
+  --deep-forest: #0D3B1F;
+  
+  /* Typography - Golden Ratio Scale */
+  --font-header: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Golden Ratio Typography Scale (Base: 16px) */
+  --text-h1: 288px;     /* 178 × 1.618 - Hero only */
+  --text-h2: 178px;     /* 110 × 1.618 - Major sections */
+  --text-h3: 110px;     /* 68 × 1.618 - Sub-sections */
+  --text-h4: 68px;      /* 42 × 1.618 - Card titles */
+  --text-h5: 42px;      /* 26 × 1.618 - Small headers */
+  --text-h6: 26px;      /* 16 × 1.618 - Smallest header */
+  --text-body: 16px;    /* Base */
+  --text-small: 10px;   /* 16 ÷ 1.618 - Labels */
+  --text-fine: 6px;     /* 10 ÷ 1.618 - Legal */
+  
+  /* Golden Ratio Spacing (Base: 24px) */
+  --space-base: 24px;
+  --space-large: 39px;  /* 24 × 1.618 */
+  --space-xlarge: 63px; /* 39 × 1.618 */
+  --space-small: 15px;  /* 24 ÷ 1.618 */
+  --space-xsmall: 9px;  /* 15 ÷ 1.618 */
 }
 
 body {
-  background: var(--background);
+  background: var(--charcoal);
   color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.4;
 }
 
-/* Headings color handled per-component to allow hero to remain white */
+/* Typography System - Golden Ratio Scale */
+h1, .h1 {
+  font-family: var(--font-header);
+  font-size: clamp(72px, 12vw, var(--text-h1));
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
 
-/* Make all Lucide icons green site-wide */
+h2, .h2 {
+  font-family: var(--font-header);
+  font-size: clamp(48px, 8vw, var(--text-h2));
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+h3, .h3 {
+  font-family: var(--font-header);
+  font-size: clamp(36px, 5vw, var(--text-h3));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h4, .h4 {
+  font-family: var(--font-header);
+  font-size: clamp(28px, 3vw, var(--text-h4));
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h5, .h5 {
+  font-family: var(--font-header);
+  font-size: clamp(20px, 2vw, var(--text-h5));
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h6, .h6 {
+  font-family: var(--font-header);
+  font-size: var(--text-h6);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Make all Lucide icons emerald green site-wide */
 .lucide {
-  color: #16a34a; /* approx Tailwind green-600 to match primary-600 tone */
+  color: var(--emerald);
 }
 
-/* Make all Heroicons (outline/solid with data-slot="icon") green site-wide */
+/* Make all Heroicons emerald green site-wide */
 svg[data-slot="icon"] {
-  color: #16a34a;
+  color: var(--emerald);
+}
+
+/* Glass Morphism Effect */
+.glass {
+  background: rgba(46, 125, 50, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Sharp Edges - 6-8px Border Radius Only */
+.forest-card {
+  border-radius: 6px;
+}
+
+.forest-card-lg {
+  border-radius: 8px;
+}
+
+/* Emerald Glow Effect */
+.emerald-glow {
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.4);
+}
+
+.emerald-glow-lg {
+  box-shadow: 0 12px 24px rgba(46, 125, 50, 0.2);
+}
+
+/* Emerald Shimmer Animation for Skeleton Loaders */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(44, 44, 44, 1) 0%,
+    rgba(46, 125, 50, 0.1) 50%,
+    rgba(44, 44, 44, 1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar Styling - Dark Forest Theme */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--emerald);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--turquoise);
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--emerald);
+  color: white;
+}
+
+/* Focus Visible - Accessibility */
+:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 4px;
+}
+
+/* Utility Classes for Forest Theme */
+.text-emerald { color: var(--emerald); }
+.text-turquoise { color: var(--turquoise); }
+.text-sage { color: var(--sage); }
+.text-gold { color: var(--muted-gold); }
+
+.bg-charcoal { background-color: var(--charcoal); }
+.bg-dark-gray { background-color: var(--dark-gray); }
+.bg-deep-forest { background-color: var(--deep-forest); }
+.bg-emerald { background-color: var(--emerald); }
+.bg-turquoise { background-color: var(--turquoise); }
+
+.border-emerald { border-color: var(--emerald); }
+.border-emerald-subtle { border-color: rgba(46, 125, 50, 0.3); }
+
+/* Parallax Effect */
+.parallax {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

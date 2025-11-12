@@ -1,146 +1,96 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useProducts } from '@/lib/hooks/useProducts';
-import ProductGrid from '@/components/shop/ProductGrid';
-import Button from '@/components/ui/Button';
-import AnimatedText from '@/components/ui/AnimatedText';
-import BlurText from '@/components/ui/BlurText';
-import { CheckCircle } from 'lucide-react';
-import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
-import Features from '@/components/sections/Features';
-import Newsletter from '@/components/sections/Newsletter';
-import FAQ from '@/components/sections/FAQ';
-import FeaturedTiltCategories from '@/components/sections/FeaturedTiltCategories';
-// Removed QuickActions per request
-import InstagramEmbed from '@/components/sections/InstagramEmbed';
-import YouTubeEmbed from '@/components/sections/YouTubeEmbed';
-// Removed LeafBackground to avoid layering/visibility issues on some devices
-// import LeafBackground from '@/components/ui/LeafBackground';
-import Hero from '@/components/sections/Hero';
-import LatestArticles from '@/components/sections/LatestArticles';
-import BrandStorySection from '@/components/sections/BrandStorySection';
-import WhyChooseUs from '@/components/sections/WhyChooseUs';
-import ShopByNeed from '@/components/sections/ShopByNeed';
-import FinalCTA from '@/components/sections/FinalCTA';
-
 export default function Home() {
-  const { data: products, isLoading, error } = useProducts();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
-    <div className="min-h-screen relative z-10 bg-white">
-      {/* New interactive soil hero */}
-      <Hero />
-
-      {/* Brand Story + About Preview (below hero) */}
-      <BrandStorySection />
-
-  {/* Featured Products Section */}
-  <div className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <BlurText
-              text="Featured Products"
-              delay={50}
-              animateBy="words"
-              direction="top"
-              className="text-3xl font-bold tracking-tight text-black sm:text-4xl justify-center"
-            />
-            <p className="mt-4 text-lg text-black">
-              Discover our most popular natural products
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            {isLoading ? (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-                <p className="mt-4 text-black">Loading products...</p>
-              </div>
-            ) : error ? (
-              <div className="text-center py-12">
-                <p className="text-primary-700">Error loading products. Please try again later.</p>
-              </div>
-            ) : products && Array.isArray(products) && products.length > 0 ? (
-              <ProductGrid products={products.slice(0, 8)} />
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-black">No products available at the moment.</p>
-              </div>
-            )}
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <Link href="/shop">
-              <Button size="lg" variant="outline">
-                View All Products
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
+    <div className="min-h-screen bg-[#1A1A1A] relative overflow-hidden">
+      {/* Forest Leaf Decorations */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Top Left Leaves */}
+        <div 
+          className="absolute -top-32 -left-32 w-96 h-96 opacity-10"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf2.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(-15deg)',
+          }}
+        />
+        
+        {/* Top Right Leaves */}
+        <div 
+          className="absolute -top-24 -right-24 w-80 h-80 opacity-8"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf3.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(25deg)',
+          }}
+        />
+        
+        {/* Bottom Left Leaves */}
+        <div 
+          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] opacity-12"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(45deg)',
+          }}
+        />
+        
+        {/* Bottom Right Leaves */}
+        <div 
+          className="absolute -bottom-32 -right-32 w-96 h-96 opacity-10"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf2.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(-35deg)',
+          }}
+        />
+        
+        {/* Center Accent Leaves */}
+        <div 
+          className="absolute top-1/3 right-10 w-64 h-64 opacity-6"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf3.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(60deg)',
+          }}
+        />
+        
+        <div 
+          className="absolute bottom-1/4 left-16 w-72 h-72 opacity-8"
+          style={{
+            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'rotate(-20deg)',
+          }}
+        />
       </div>
 
-  
-
-  {/* Featured Categories Tilt Grid */}
-  <FeaturedTiltCategories />
-
-  {/* Why Choose Us */}
-  <WhyChooseUs />
-
-  {/* Shop by Need */}
-  <ShopByNeed />
-
-  {/* Best Sellers (removed: placeholder content). Consider replacing with dynamic Featured from WooCommerce. */}
-
-  {/* Features Section (tighter spacing via internal adjustments later) */}
-  <Features />
-
-      {/* YouTube Video */}
-      <YouTubeEmbed />
-
-  {/* Customer Testimonials Slider */}
-  <CustomerTestimonialsSlider />
-
-  {/* Latest Articles */}
-  <LatestArticles />
-
-      {/* Newsletter Signup */}
-      <Newsletter />
-
-  {/* Quick Actions removed */}
-
-  {/* FAQ Section */}
-  <FAQ />
-
-  {/* Final CTA */}
-  <FinalCTA />
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-6">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-6xl md:text-8xl font-bold text-[#2E7D32] mb-6 font-header">
+            BRING THE FOREST HOME
+          </h1>
+          <p className="text-2xl text-[#66BB6A] mb-8 font-body">
+            Premium Plants & Sustainable Gardening
+          </p>
+          <p className="text-lg text-white/70 mb-12 font-body">
+            Discover organic soil mixes, rare plants, and eco-friendly essentials
+          </p>
+          
+          {/* CTA Button */}
+          <a
+            href="/products"
+            className="inline-block bg-[#2E7D32] text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-[#66BB6A] transition-all duration-300 shadow-lg hover:shadow-[#2E7D32]/50"
+          >
+            Explore Collection
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

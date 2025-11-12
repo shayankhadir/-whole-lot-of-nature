@@ -1,0 +1,689 @@
+{
+  "Soil Mixes": [
+    {
+      "id": 1,
+      "name": "Organic Potting Mix for Indoor Plants",
+      "meta_title": "Organic Potting Mix for Indoor Plants — Whole Lot of Nature",
+      "meta_description": "Premium organic potting mix for indoor plants. Improves drainage, retains moisture, and supports healthy root growth. Perfect for pots & balcony gardens.",
+      "primary_keyword": "organic potting mix for indoor plants",
+      "secondary_keywords": [
+        "potting soil for houseplants",
+        "indoor plant mix",
+        "organic potting soil India"
+      ],
+      "slug": "organic-potting-mix-indoor-plants",
+      "image_alt": "Organic potting mix for indoor plants — Whole Lot of Nature",
+      "tags": [
+        "soil",
+        "potting mix",
+        "organic",
+        "indoor",
+        "drainage"
+      ],
+      "product_type": "growing_medium",
+      "seo_category": "soil-mixes"
+    },
+    {
+      "id": 2,
+      "name": "Succulent Potting Mix",
+      "meta_title": "Succulent Potting Mix — Fast-Draining Soil for Cacti & Succulents",
+      "meta_description": "Specially blended succulent potting mix for excellent drainage and root health. Prevents root rot — ideal for cacti, haworthia, jade & aloe.",
+      "primary_keyword": "succulent potting mix",
+      "secondary_keywords": [
+        "cactus soil mix",
+        "fast draining potting mix",
+        "best soil for succulents"
+      ],
+      "slug": "succulent-potting-mix",
+      "image_alt": "Succulent potting mix for cacti and succulents",
+      "tags": [
+        "soil",
+        "potting mix",
+        "succulent",
+        "cactus",
+        "drainage",
+        "fast-draining"
+      ],
+      "product_type": "growing_medium",
+      "seo_category": "soil-mixes"
+    },
+    {
+      "id": 3,
+      "name": "Cinder (Lava Rocks)",
+      "meta_title": "Cinder Lava Rocks (2–4mm) — Soil Aeration Aggregate",
+      "meta_description": "Lightweight cinder (lava rocks) for improved aeration and drainage. Use as top layer or mix into potting soil to prevent waterlogging.",
+      "primary_keyword": "cinder lava rocks",
+      "secondary_keywords": [
+        "lava rock for plants",
+        "soil aeration aggregate",
+        "volcanic rocks for gardening"
+      ],
+      "slug": "cinder-lava-rocks-2-4mm",
+      "image_alt": "Cinder lava rocks 2–4mm for soil drainage",
+      "tags": [
+        "soil",
+        "aeration",
+        "drainage",
+        "aggregate",
+        "cinder",
+        "lava rocks"
+      ],
+      "product_type": "soil_amendment",
+      "seo_category": "soil-mixes"
+    },
+    {
+      "id": 4,
+      "name": "Organic Cocopeat (Uncompressed)",
+      "meta_title": "Organic Cocopeat (Loose) — Water-Retaining Growing Medium",
+      "meta_description": "Washed organic cocopeat (loose) for seed starting, potting mixes, and moisture retention. Eco-friendly alternative to peat moss.",
+      "primary_keyword": "organic cocopeat loose",
+      "secondary_keywords": [
+        "cocopeat for plants",
+        "coconut coir for gardening",
+        "soil conditioner cocopeat"
+      ],
+      "slug": "organic-cocopeat-loose",
+      "image_alt": "Organic cocopeat loose for potting mixes",
+      "tags": [
+        "soil",
+        "cocopeat",
+        "organic",
+        "moisture-retaining",
+        "eco-friendly",
+        "coir"
+      ],
+      "product_type": "growing_medium",
+      "seo_category": "soil-mixes"
+    },
+    {
+      "id": 5,
+      "name": "Organic Leaf Compost",
+      "meta_title": "Organic Leaf Compost — Natural Soil Enricher & Fertility Boost",
+      "meta_description": "Rich leaf compost made from decomposed leaves. Improves soil structure, microbial life and moisture retention — 100% natural.",
+      "primary_keyword": "organic leaf compost",
+      "secondary_keywords": [
+        "leaf mould compost",
+        "natural compost for plants",
+        "organic soil amendment"
+      ],
+      "slug": "organic-leaf-compost",
+      "image_alt": "Organic leaf compost for garden and potted plants",
+      "tags": [
+        "soil",
+        "compost",
+        "organic",
+        "soil amendment",
+        "fertility",
+        "natural"
+      ],
+      "product_type": "soil_amendment",
+      "seo_category": "soil-mixes"
+    }
+  ],
+  "Aquatic Plants": [
+    {
+      "id": 6,
+      "name": "Guppy Grass (Najas guadalupensis)",
+      "meta_title": "Guppy Grass (Najas) — Fast-Growing Aquarium Plant",
+      "meta_description": "Guppy Grass for aquariums — fast-growing cover plant that provides shelter, oxygenation, and natural filtration for community tanks.",
+      "primary_keyword": "guppy grass aquarium plant",
+      "secondary_keywords": [
+        "Najas guadalupensis",
+        "aquarium cover plants",
+        "live aquarium plants India"
+      ],
+      "slug": "guppy-grass-najas",
+      "image_alt": "Guppy Grass (Najas) aquarium plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "fast-growing",
+        "cover plant",
+        "oxygenation"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 7,
+      "name": "Asian Marshweed (Hygrophila polysperma)",
+      "meta_title": "Asian Marshweed (Hygrophila) — Hardy Aquatic Plant for Tanks",
+      "meta_description": "Hygrophila (Asian Marshweed) — hardy, fast-growing aquarium plant. Ideal for beginners and planted tanks, provides oxygen and shelter.",
+      "primary_keyword": "asian marshweed aquatic plant",
+      "secondary_keywords": [
+        "hygrophila polysperma",
+        "beginner aquarium plants",
+        "aquarium greenery"
+      ],
+      "slug": "asian-marshweed-hygrophila",
+      "image_alt": "Asian Marshweed (Hygrophila polysperma) aquatic plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "beginner-friendly",
+        "hardy",
+        "oxygenation"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 8,
+      "name": "Indian Brahmi (Bacopa monnieri)",
+      "meta_title": "Indian Brahmi (Bacopa monnieri) — Aquatic Medicinal Herb & Aquarium Cover",
+      "meta_description": "Indian Brahmi (Bacopa) — hardy aquatic herb used in aquariums and Ayurvedic home gardens. Great for oxygenating water and creating lush cover.",
+      "primary_keyword": "indian brahmi bacopa monnieri",
+      "secondary_keywords": [
+        "bacopa aquatic plant",
+        "brahmi aquarium plant",
+        "ayurvedic aquatic herb"
+      ],
+      "slug": "indian-brahmi-bacopa",
+      "image_alt": "Indian Brahmi (Bacopa monnieri) aquatic plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "medicinal",
+        "ayurvedic",
+        "hardy"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 9,
+      "name": "Mexican Sword Plant (Echinodorus spp.)",
+      "meta_title": "Mexican Sword Plant — Aquarium Centerpiece Plant (Echinodorus)",
+      "meta_description": "Mexican Sword Plant (Echinodorus) — bold aquarium centerpiece with long green leaves. Perfect for background planting and aquascapes.",
+      "primary_keyword": "mexican sword plant echinodorus",
+      "secondary_keywords": [
+        "echinodorus amazonicus",
+        "aquarium centerpiece plant",
+        "aquascaping plants"
+      ],
+      "slug": "mexican-sword-plant-echinodorus",
+      "image_alt": "Mexican Sword Plant (Echinodorus) aquarium centerpiece",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "centerpiece",
+        "aquascaping",
+        "background plant"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 10,
+      "name": "Mexican Pennywort (Hydrocotyle leucocephala)",
+      "meta_title": "Mexican Pennywort — Trailing Aquarium & Ponds Plant",
+      "meta_description": "Mexican Pennywort (Hydrocotyle) — decorative round-leaf aquatic plant for aquariums and ponds. Fast-growing and versatile in aquascapes.",
+      "primary_keyword": "mexican pennywort hydrocotyle",
+      "secondary_keywords": [
+        "hydrocotyle leucocephala",
+        "aquarium foreground plant",
+        "aquatic trailing plant"
+      ],
+      "slug": "mexican-pennywort-hydrocotyle",
+      "image_alt": "Mexican Pennywort (Hydrocotyle leucocephala) aquatic plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "trailing",
+        "foreground",
+        "fast-growing"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 11,
+      "name": "Brahmi (Bacopa)",
+      "meta_title": "Brahmi (Bacopa) — Aquatic Herb for Aquariums & Ponds",
+      "meta_description": "Brahmi (Bacopa) — hardy aquarium herb that oxygenates water and provides natural cover. Great for planted tanks and aquatic gardens.",
+      "primary_keyword": "brahmi bacopa aquarium plant",
+      "secondary_keywords": [
+        "bacopa aquarium",
+        "aquatic medicinal herb",
+        "live bacopa plants"
+      ],
+      "slug": "brahmi-bacopa-aquatic",
+      "image_alt": "Brahmi (Bacopa) aquatic herb plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "medicinal herb",
+        "oxygenation"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    },
+    {
+      "id": 12,
+      "name": "Dwarf Sagittaria (Sagittaria subulata)",
+      "meta_title": "Dwarf Sagittaria (Sagittaria subulata) — Aquarium Carpet Plant",
+      "meta_description": "Dwarf Sagittaria — compact aquarium carpet plant for vivid green foregrounds. Ideal for aquascapes and low-tech tanks.",
+      "primary_keyword": "dwarf sagittaria sagittaria subulata",
+      "secondary_keywords": [
+        "aquarium carpet plant",
+        "foreground aquarium plant",
+        "live sagittaria plants"
+      ],
+      "slug": "dwarf-sagittaria-sagittaria-subulata",
+      "image_alt": "Dwarf Sagittaria (Sagittaria subulata) aquarium carpet plant",
+      "tags": [
+        "aquatic",
+        "aquarium plants",
+        "carpet plant",
+        "foreground",
+        "low-tech"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "aquatic-plants"
+    }
+  ],
+  "Floating Plants": [
+    {
+      "id": 13,
+      "name": "Duckweed (Lemna minor)",
+      "meta_title": "Duckweed (Lemna minor) — Tiny Floating Pond & Aquarium Plant",
+      "meta_description": "Duckweed — tiny floating plant that reduces nutrients and controls algae. Great for ponds, shrimp tanks, and natural filtration.",
+      "primary_keyword": "duckweed lemna minor",
+      "secondary_keywords": [
+        "floating pond plants",
+        "aquarium duckweed",
+        "natural algae control"
+      ],
+      "slug": "duckweed-lemna-minor",
+      "image_alt": "Duckweed (Lemna minor) floating plant",
+      "tags": [
+        "aquatic",
+        "floating plants",
+        "algae control",
+        "pond plants",
+        "natural filtration"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "floating-plants"
+    },
+    {
+      "id": 14,
+      "name": "Greater Duckweed (Spirodela polyrhiza)",
+      "meta_title": "Greater Duckweed — Fast-Growing Floating Pond Plant",
+      "meta_description": "Greater Duckweed — larger floating plant for ponds and large tanks. Excellent for shade, nutrient uptake, and natural filtration.",
+      "primary_keyword": "greater duckweed spirodela",
+      "secondary_keywords": [
+        "spirodela polyrhiza",
+        "floating pond plants",
+        "pond algae control"
+      ],
+      "slug": "greater-duckweed-spirodela",
+      "image_alt": "Greater Duckweed (Spirodela polyrhiza) floating plant",
+      "tags": [
+        "aquatic",
+        "floating plants",
+        "algae control",
+        "pond plants",
+        "shade"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "floating-plants"
+    },
+    {
+      "id": 15,
+      "name": "Water Lettuce (Pistia stratiotes)",
+      "meta_title": "Water Lettuce (Pistia) — Decorative Floating Pond Plant",
+      "meta_description": "Water Lettuce — rosette-shaped floating plant for natural shade and water purification in ponds and large aquaria.",
+      "primary_keyword": "water lettuce pistia",
+      "secondary_keywords": [
+        "pistia stratiotes",
+        "floating pond plant",
+        "decorative pond plants"
+      ],
+      "slug": "water-lettuce-pistia",
+      "image_alt": "Water Lettuce (Pistia stratiotes) floating plant",
+      "tags": [
+        "aquatic",
+        "floating plants",
+        "pond plants",
+        "water purification",
+        "decorative"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "floating-plants"
+    },
+    {
+      "id": 16,
+      "name": "Salvinia (Salvinia natans)",
+      "meta_title": "Salvinia Floating Fern — Pond & Aquarium Cover Plant",
+      "meta_description": "Salvinia — lightweight floating fern that reduces algae and adds texture to ponds and tanks. Easy to maintain and effective.",
+      "primary_keyword": "salvinia natans floating plant",
+      "secondary_keywords": [
+        "salvinia fern",
+        "floating aquarium plants",
+        "pond cover plants"
+      ],
+      "slug": "salvinia-natans",
+      "image_alt": "Salvinia (Salvinia natans) floating fern",
+      "tags": [
+        "aquatic",
+        "floating plants",
+        "fern",
+        "algae control",
+        "low-maintenance"
+      ],
+      "product_type": "aquatic_plant",
+      "seo_category": "floating-plants"
+    }
+  ],
+  "Succulents": [
+    {
+      "id": 17,
+      "name": "Jade Plant (Crassula ovata)",
+      "meta_title": "Jade Plant (Crassula ovata) — Hardy Indoor Succulent",
+      "meta_description": "Jade Plant — low-maintenance succulent with glossy leaves. Perfect for indoor decor, offices, and beginner plant parents.",
+      "primary_keyword": "jade plant crassula ovata",
+      "secondary_keywords": [
+        "indoor succulents",
+        "low maintenance plants",
+        "jade succulent care"
+      ],
+      "slug": "jade-plant-crassula-ovata",
+      "image_alt": "Jade Plant (Crassula ovata) succulent",
+      "tags": [
+        "succulent",
+        "indoor plant",
+        "low-maintenance",
+        "beginner-friendly",
+        "decor"
+      ],
+      "product_type": "indoor_plant",
+      "seo_category": "succulents"
+    },
+    {
+      "id": 18,
+      "name": "Euphorbia lactea",
+      "meta_title": "Euphorbia lactea — Sculptural Cacti-Like Succulent",
+      "meta_description": "Euphorbia lactea — striking, sculptural succulent ideal for modern décor. Low-care and visually dramatic for indoor spaces.",
+      "primary_keyword": "euphorbia lactea succulent",
+      "secondary_keywords": [
+        "sculptural succulent",
+        "indoor cactus lookalike",
+        "low-care succulent"
+      ],
+      "slug": "euphorbia-lactea",
+      "image_alt": "Euphorbia lactea sculptural succulent",
+      "tags": [
+        "succulent",
+        "indoor plant",
+        "sculptural",
+        "modern decor",
+        "low-care"
+      ],
+      "product_type": "indoor_plant",
+      "seo_category": "succulents"
+    },
+    {
+      "id": 19,
+      "name": "Haworthia",
+      "meta_title": "Haworthia — Compact Low-Light Succulent for Desks",
+      "meta_description": "Haworthia — compact succulent that thrives in low light. Ideal for desks, small pots, and beginner-friendly indoor gardens.",
+      "primary_keyword": "haworthia succulent",
+      "secondary_keywords": [
+        "low light succulents",
+        "desk plants",
+        "haworthia care"
+      ],
+      "slug": "haworthia-succulent",
+      "image_alt": "Haworthia succulent for low light",
+      "tags": [
+        "succulent",
+        "indoor plant",
+        "low-light",
+        "desk plant",
+        "compact",
+        "beginner-friendly"
+      ],
+      "product_type": "indoor_plant",
+      "seo_category": "succulents"
+    },
+    {
+      "id": 20,
+      "name": "Aloe Vera",
+      "meta_title": "Aloe Vera Plant — Medicinal Succulent for Home & Skin Care",
+      "meta_description": "Aloe Vera — versatile succulent known for soothing gel. Easy to grow indoors and perfect for first-aid plant care and décor.",
+      "primary_keyword": "aloe vera plant",
+      "secondary_keywords": [
+        "aloe vera for skin",
+        "medicinal plant aloe",
+        "indoor aloe care"
+      ],
+      "slug": "aloe-vera-plant",
+      "image_alt": "Aloe Vera plant for home and skin care",
+      "tags": [
+        "succulent",
+        "indoor plant",
+        "medicinal",
+        "low-maintenance",
+        "multipurpose"
+      ],
+      "product_type": "indoor_plant",
+      "seo_category": "succulents"
+    }
+  ],
+  "Aquatic Snails": [
+    {
+      "id": 21,
+      "name": "Ramshorn Snails",
+      "meta_title": "Ramshorn Snails — Natural Aquarium Cleaners",
+      "meta_description": "Ramshorn snails help clean glass, plants, and substrate. Gentle and effective algae-eaters for community aquariums.",
+      "primary_keyword": "ramshorn snails aquarium",
+      "secondary_keywords": [
+        "aquarium cleaner snails",
+        "live snails for tanks",
+        "ramshorn snail care"
+      ],
+      "slug": "ramshorn-snails",
+      "image_alt": "Ramshorn snails for aquarium cleaning",
+      "tags": [
+        "aquatic",
+        "snails",
+        "aquarium accessories",
+        "algae control",
+        "cleanup crew"
+      ],
+      "product_type": "aquatic_accessory",
+      "seo_category": "aquatic-snails"
+    },
+    {
+      "id": 22,
+      "name": "Malaysian Trumpet Snail",
+      "meta_title": "Malaysian Trumpet Snail (MTS) — Substrate Aerator for Aquariums",
+      "meta_description": "Malaysian Trumpet Snail — burrowing snail that aerates substrate and helps break down detritus. Great for planted tanks.",
+      "primary_keyword": "malaysian trumpet snail",
+      "secondary_keywords": [
+        "MTS aquarium",
+        "substrate aeration snails",
+        "burrowing aquarium snails"
+      ],
+      "slug": "malaysian-trumpet-snail",
+      "image_alt": "Malaysian Trumpet Snail (MTS) in aquarium substrate",
+      "tags": [
+        "aquatic",
+        "snails",
+        "aquarium accessories",
+        "substrate aeration",
+        "detritus control"
+      ],
+      "product_type": "aquatic_accessory",
+      "seo_category": "aquatic-snails"
+    }
+  ],
+  "Herbal Products": [
+    {
+      "id": 23,
+      "name": "Ayurvedic Hair Oil (200ml)",
+      "meta_title": "Ayurvedic Herbal Hair Oil 200ml — Natural Hair Nourish Blend",
+      "meta_description": "Ayurvedic hair oil infused with traditional herbs to nourish scalp and hair. 100% natural, chemical-free blend for regular hair care.",
+      "primary_keyword": "ayurvedic hair oil 200ml",
+      "secondary_keywords": [
+        "herbal hair oil",
+        "natural hair oil India",
+        "bhringraj hair oil"
+      ],
+      "slug": "ayurvedic-hair-oil-200ml",
+      "image_alt": "Ayurvedic herbal hair oil 200ml bottle",
+      "tags": [
+        "herbal",
+        "hair care",
+        "ayurvedic",
+        "natural",
+        "wellness"
+      ],
+      "product_type": "herbal_product",
+      "seo_category": "herbal-products"
+    },
+    {
+      "id": 24,
+      "name": "Face Pack Herbal Mix",
+      "meta_title": "Herbal Face Pack Mix — Natural Skin Care Blend",
+      "meta_description": "Herbal face pack mix with natural powders and botanicals to cleanse, brighten and refresh skin. Suitable for regular skin care routines.",
+      "primary_keyword": "herbal face pack mix",
+      "secondary_keywords": [
+        "natural face pack",
+        "ayurvedic face pack",
+        "herbal skincare mix"
+      ],
+      "slug": "herbal-face-pack-mix",
+      "image_alt": "Herbal face pack mix natural skincare",
+      "tags": [
+        "herbal",
+        "skincare",
+        "ayurvedic",
+        "natural",
+        "wellness"
+      ],
+      "product_type": "herbal_product",
+      "seo_category": "herbal-products"
+    },
+    {
+      "id": 25,
+      "name": "Moringa Powder Tablets",
+      "meta_title": "Moringa Powder Tablets — Organic Moringa Supplements",
+      "meta_description": "Organic moringa tablets made from pure moringa leaf powder. Natural source of vitamins & minerals for daily wellness.",
+      "primary_keyword": "moringa powder tablets",
+      "secondary_keywords": [
+        "moringa tablets India",
+        "moringa supplements organic",
+        "nutrient tablets moringa"
+      ],
+      "slug": "moringa-powder-tablets",
+      "image_alt": "Organic moringa powder tablets",
+      "tags": [
+        "herbal",
+        "supplements",
+        "organic",
+        "wellness",
+        "natural"
+      ],
+      "product_type": "herbal_product",
+      "seo_category": "herbal-products"
+    },
+    {
+      "id": 26,
+      "name": "Ashwagandha, Triphala & Moringa Tablets Combo",
+      "meta_title": "Ashwagandha + Triphala + Moringa Tablets — Herbal Wellness Combo",
+      "meta_description": "Ayurvedic tablet combo of ashwagandha, triphala and moringa — a natural support pack for daily wellness and vitality.",
+      "primary_keyword": "ashwagandha triphala moringa tablets",
+      "secondary_keywords": [
+        "ayurvedic tablet combo",
+        "herbal wellness tablets",
+        "organic herbal supplements"
+      ],
+      "slug": "ashwagandha-triphala-moringa-tablets",
+      "image_alt": "Ashwagandha Triphala Moringa herbal tablets combo",
+      "tags": [
+        "herbal",
+        "supplements",
+        "ayurvedic",
+        "wellness",
+        "combo"
+      ],
+      "product_type": "herbal_product",
+      "seo_category": "herbal-products"
+    }
+  ],
+  "Plant Decor": [
+    {
+      "id": 27,
+      "name": "Mini Cactus Sets",
+      "meta_title": "Mini Cactus Sets — Handcrafted Desk & Gift Succulents",
+      "meta_description": "Charming mini cactus sets perfect for desks and gifts. Handmade, low-maintenance and ideal for beginners and décor lovers.",
+      "primary_keyword": "mini cactus sets",
+      "secondary_keywords": [
+        "small cactus gift set",
+        "desk succulents",
+        "handmade cactus decor"
+      ],
+      "slug": "mini-cactus-sets",
+      "image_alt": "Mini cactus sets for desk decor",
+      "tags": [
+        "succulent",
+        "decor",
+        "gift",
+        "handmade",
+        "mini"
+      ],
+      "product_type": "decor_plant",
+      "seo_category": "plant-decor"
+    }
+  ],
+  "Digital Products": [
+    {
+      "id": 28,
+      "name": "eBooks (Plant Care & Gardening Guides)",
+      "meta_title": "Plant Care eBooks — Gardening Guides & How-To Manuals",
+      "meta_description": "Downloadable eBooks covering plant care, propagation, aquascaping, and sustainable gardening — perfect for beginners and enthusiasts.",
+      "primary_keyword": "plant care ebooks",
+      "secondary_keywords": [
+        "gardening ebooks",
+        "download plant guide",
+        "indoor gardening PDF"
+      ],
+      "slug": "plant-care-ebooks",
+      "image_alt": "Plant care ebooks and gardening guides PDF",
+      "tags": [
+        "digital",
+        "guides",
+        "educational",
+        "beginner-friendly",
+        "downloadable"
+      ],
+      "product_type": "digital_product",
+      "seo_category": "digital-products"
+    },
+    {
+      "id": 29,
+      "name": "Plant Guides (Individual Guides)",
+      "meta_title": "Plant Guides — Step-by-Step Care & Propagation Manuals",
+      "meta_description": "Practical plant guides with step-by-step instructions for propagation, watering, light, and soil — ideal for new plant parents.",
+      "primary_keyword": "plant guides care propagation",
+      "secondary_keywords": [
+        "plant care guide PDF",
+        "how to propagate plants",
+        "plant care manual"
+      ],
+      "slug": "plant-guides-care",
+      "image_alt": "Step-by-step plant care and propagation guide",
+      "tags": [
+        "digital",
+        "guides",
+        "educational",
+        "beginner-friendly",
+        "downloadable"
+      ],
+      "product_type": "digital_product",
+      "seo_category": "digital-products"
+    }
+  ]
+}

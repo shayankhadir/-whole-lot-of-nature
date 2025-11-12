@@ -55,6 +55,8 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-playfair-display)', 'serif'],
+        montserrat: ['Montserrat', 'var(--font-inter)', 'sans-serif'],
+        inter: ['Inter', 'var(--font-inter)', 'sans-serif'],
       },
       backdropBlur: {
         xs: '2px',
