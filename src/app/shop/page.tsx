@@ -2,18 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from '@/components/shop/ProductCard';
-
-interface Product {
-  id: number;
-  name: string;
-  slug: string;
-  price: string;
-  regular_price: string;
-  sale_price: string;
-  images: Array<{ src: string; alt: string }>;
-  categories: Array<{ id: number; name: string; slug: string }>;
-  on_sale: boolean;
-}
+import { Product } from '@/types/product';
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -67,7 +56,11 @@ export default function ShopPage() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={\px-6 py-3 rounded-lg font-semibold transition-all \\}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-[#2E7D32] text-white shadow-lg shadow-[#2E7D32]/50'
+                  : 'bg-[#2C2C2C] text-white/70 hover:bg-[#2E7D32]/20 border border-[#2E7D32]/30'
+              }`}
             >
               {cat.name}
             </button>
