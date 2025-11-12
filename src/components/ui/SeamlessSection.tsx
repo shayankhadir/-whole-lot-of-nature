@@ -10,8 +10,8 @@ interface SeamlessSectionProps {
   gradientFrom?: string;
   gradientTo?: string;
   paddingY?: 'sm' | 'md' | 'lg' | 'xl';
-  leftDecoration?: 'monstera' | 'fern' | 'none';
-  rightDecoration?: 'monstera' | 'fern' | 'none';
+  leftDecoration?: 'monstera' | 'single' | 'palm' | 'fern' | 'none';
+  rightDecoration?: 'monstera' | 'single' | 'palm' | 'fern' | 'none';
   className?: string;
 }
 
@@ -46,7 +46,13 @@ export default function SeamlessSection({
 
       {/* Left Decoration */}
       {leftDecoration === 'monstera' && (
-        <LeafDecoration position="middle-left" size="xl" opacity={0.08} />
+        <LeafDecoration position="middle-left" size="xl" opacity={0.08} variant="monstera" />
+      )}
+      {leftDecoration === 'single' && (
+        <LeafDecoration position="middle-left" size="lg" opacity={0.12} variant="single" />
+      )}
+      {leftDecoration === 'palm' && (
+        <LeafDecoration position="middle-left" size="xl" opacity={0.10} variant="palm" />
       )}
       {leftDecoration === 'fern' && (
         <FernDecoration position="middle-left" size="lg" opacity={0.12} />
@@ -54,7 +60,13 @@ export default function SeamlessSection({
 
       {/* Right Decoration */}
       {rightDecoration === 'monstera' && (
-        <LeafDecoration position="middle-right" size="xl" opacity={0.08} />
+        <LeafDecoration position="middle-right" size="xl" opacity={0.08} variant="monstera" />
+      )}
+      {rightDecoration === 'single' && (
+        <LeafDecoration position="middle-right" size="lg" opacity={0.12} variant="single" />
+      )}
+      {rightDecoration === 'palm' && (
+        <LeafDecoration position="middle-right" size="xl" opacity={0.10} variant="palm" />
       )}
       {rightDecoration === 'fern' && (
         <FernDecoration position="middle-right" size="lg" opacity={0.12} />

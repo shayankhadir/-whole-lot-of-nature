@@ -7,20 +7,22 @@ interface LeafDecorationProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   opacity?: number;
   className?: string;
+  variant?: 'monstera' | 'single' | 'palm';
 }
 
 export default function LeafDecoration({ 
   position = 'top-right', 
   size = 'lg',
-  opacity = 0.1,
-  className = ''
+  opacity = 0.15,
+  className = '',
+  variant = 'monstera'
 }: LeafDecorationProps) {
   
   const sizeClasses = {
-    sm: 'w-32 h-32',
-    md: 'w-48 h-48',
-    lg: 'w-64 h-64',
-    xl: 'w-96 h-96'
+    sm: 'w-32 h-24',
+    md: 'w-48 h-36',
+    lg: 'w-64 h-48',
+    xl: 'w-96 h-72'
   };
 
   const positionClasses = {
@@ -41,69 +43,72 @@ export default function LeafDecoration({
     'middle-right': 15
   };
 
+  const getSVG = () => {
+    switch (variant) {
+      case 'monstera':
+        return (
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#2E7D32" strokeWidth="2" className="w-full h-full">
+            <path d="M20 130 Q50 60 70 110 Q85 140 110 60 Q130 20 170 40 Q150 80 180 120" opacity={opacity} />
+            <line x1="55" y1="110" x2="80" y2="40" opacity={opacity} />
+            <line x1="95" y1="125" x2="110" y2="75" opacity={opacity} />
+            <line x1="125" y1="130" x2="150" y2="70" opacity={opacity} />
+          </svg>
+        );
+      case 'single':
+        return (
+          <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#2E7D32" strokeWidth="2" className="w-full h-full">
+            <ellipse cx="50" cy="65" rx="40" ry="60" opacity={opacity} />
+            <line x1="50" y1="5" x2="50" y2="125" opacity={opacity} />
+            <line x1="50" y1="65" x2="20" y2="30" opacity={opacity} />
+            <line x1="50" y1="65" x2="80" y2="30" opacity={opacity} />
+            <line x1="50" y1="90" x2="35" y2="120" opacity={opacity} />
+            <line x1="50" y1="90" x2="65" y2="120" opacity={opacity} />
+          </svg>
+        );
+      case 'palm':
+        return (
+          <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#2E7D32" strokeWidth="1.8" className="w-full h-full">
+            <path d="M10 100 L40 20 L70 80 L100 25 L130 85 L160 20" opacity={opacity} />
+            <line x1="40" y1="20" x2="40" y2="100" opacity={opacity} />
+            <line x1="70" y1="30" x2="70" y2="100" opacity={opacity} />
+            <line x1="100" y1="25" x2="100" y2="100" opacity={opacity} />
+            <line x1="130" y1="45" x2="130" y2="100" opacity={opacity} />
+            <line x1="160" y1="20" x2="160" y2="100" opacity={opacity} />
+          </svg>
+        );
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1, ease: 'easeOut' }}
-      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none overflow-hidden ${className}`}
+      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none ${className}`}
       style={{ 
         transform: `rotate(${rotations[position]}deg)`,
         zIndex: 0
       }}
     >
-      {/* Monstera Leaf SVG */}
-      <svg
-        viewBox="0 0 200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full text-[#2E7D32]"
-      >
-        <g opacity={opacity}>
-          {/* Main leaf shape */}
-          <path
-            d="M100 10 C120 10, 140 20, 155 40 C170 60, 180 85, 180 110 C180 135, 170 160, 155 175 C140 190, 120 195, 100 195 C80 195, 60 190, 45 175 C30 160, 20 135, 20 110 C20 85, 30 60, 45 40 C60 20, 80 10, 100 10 Z"
-            fill="currentColor"
-            fillOpacity="0.15"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeOpacity="0.25"
-          />
-          
-          {/* Leaf veins */}
-          <line x1="100" y1="10" x2="100" y2="195" stroke="currentColor" strokeWidth="2" strokeOpacity="0.2" />
-          <line x1="100" y1="50" x2="70" y2="80" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          <line x1="100" y1="50" x2="130" y2="80" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          <line x1="100" y1="100" x2="60" y2="120" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          <line x1="100" y1="100" x2="140" y2="120" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          <line x1="100" y1="150" x2="70" y2="165" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          <line x1="100" y1="150" x2="130" y2="165" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.15" />
-          
-          {/* Monstera holes */}
-          <ellipse cx="70" cy="100" rx="8" ry="15" fill="#0A0A0A" opacity="0.3" />
-          <ellipse cx="130" cy="100" rx="8" ry="15" fill="#0A0A0A" opacity="0.3" />
-          <ellipse cx="80" cy="140" rx="6" ry="12" fill="#0A0A0A" opacity="0.3" />
-          <ellipse cx="120" cy="140" rx="6" ry="12" fill="#0A0A0A" opacity="0.3" />
-        </g>
-      </svg>
+      {getSVG()}
     </motion.div>
   );
 }
 
-// Fern variation
+// Fern variation - Detailed multi-branched
 export function FernDecoration({ 
   position = 'top-left', 
   size = 'lg',
-  opacity = 0.1,
+  opacity = 0.12,
   className = ''
 }: LeafDecorationProps) {
   
   const sizeClasses = {
-    sm: 'w-24 h-48',
-    md: 'w-32 h-64',
-    lg: 'w-40 h-80',
-    xl: 'w-48 h-96'
+    sm: 'w-28 h-40',
+    md: 'w-36 h-52',
+    lg: 'w-44 h-64',
+    xl: 'w-52 h-80'
   };
 
   const positionClasses = {
@@ -127,47 +132,21 @@ export function FernDecoration({
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1.2, ease: 'easeOut' }}
-      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none overflow-hidden ${className}`}
+      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none ${className}`}
       style={{ 
         transform: `rotate(${rotations[position]}deg)`,
         zIndex: 0
       }}
     >
-      {/* Fern Frond SVG */}
-      <svg
-        viewBox="0 0 100 300"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full text-[#66BB6A]"
-      >
-        <g opacity={opacity}>
-          {/* Central stem */}
-          <line x1="50" y1="0" x2="50" y2="300" stroke="currentColor" strokeWidth="3" strokeOpacity="0.3" />
-          
-          {/* Fern leaflets - alternating sides */}
-          {[...Array(12)].map((_, i) => {
-            const y = 20 + i * 24;
-            const side = i % 2 === 0 ? 1 : -1;
-            const width = 30 - (i * 1.5);
-            return (
-              <ellipse
-                key={i}
-                cx={50 + (side * width)}
-                cy={y}
-                rx={width}
-                ry="10"
-                fill="currentColor"
-                fillOpacity="0.2"
-                stroke="currentColor"
-                strokeWidth="0.5"
-                strokeOpacity="0.25"
-              />
-            );
-          })}
-        </g>
+      <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#66BB6A" strokeWidth="1.5" className="w-full h-full">
+        <path d="M70 190 L70 10" opacity={opacity} />
+        <path d="M70 180 L40 150 M70 180 L100 150" opacity={opacity} />
+        <path d="M70 160 L30 120 M70 160 L110 120" opacity={opacity} />
+        <path d="M70 140 L35 95 M70 140 L105 95" opacity={opacity} />
+        <path d="M70 120 L50 70 M70 120 L90 70" opacity={opacity} />
       </svg>
     </motion.div>
   );
