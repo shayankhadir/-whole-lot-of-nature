@@ -15,9 +15,15 @@ export default function ShopPage() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/api/products?per_page=50');
-      const data = await response.json();
-      setProducts(data);
+      const response = await fetch('/api/products?limit=50');
+      const result = await response.json();
+      
+      // API returns { success: true, data: [...] }
+      if (result.success && result.data) {
+        setProducts(result.data);
+      } else {
+        console.error('Failed to fetch products:', result.error);
+      }
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
