@@ -43,13 +43,15 @@ export default function Home() {
       <HeroSection />
 
       {/* 2. Shop by Category Grid - NEW */}
-      <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
-        paddingY="lg"
-        leftDecoration="monstera"
-      >
-        <CategoryGrid />
-      </SeamlessSection>
+      <div id="categories">
+        <SeamlessSection 
+          bgColor="bg-[#0D1B0F]" 
+          paddingY="lg"
+          leftDecoration="monstera"
+        >
+          <CategoryGrid />
+        </SeamlessSection>
+      </div>
 
       <LeafDivider />
 
