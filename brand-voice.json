@@ -1,0 +1,228 @@
+{
+  "brand": {
+    "name": "Whole Lot of Nature",
+    "tagline": "Stay Loyal to the Soil",
+    "website": "https://wholelotofnature.com"
+  },
+  "essence": {
+    "story": "Whole Lot of Nature was born from a genuine connection to the Earth — a love that started small, with just a few plants, and grew into a purpose. We believe that nature isn't just something to admire — it's something to live with, care for, and learn from. Every leaf, every handful of soil, every product we create carries a piece of this philosophy: that when you nurture nature, it nurtures you back.",
+    "purpose": "Rebuilding the lost bridge between humans and the Earth — through plants, herbs, soil, and sustainability.",
+    "values": [
+      "Eco-conscious living",
+      "Native greenery",
+      "Herbal healing",
+      "Mindful gardening",
+      "Sustainable products"
+    ]
+  },
+  "mission": "To make nature accessible, beautiful, and sustainable — inspiring people to live in harmony with the planet by creating greener homes, using eco-friendly products, and reconnecting with Earth's natural rhythm.",
+  "vision": "To see the Earth greener than ever before — one plant, one garden, one home at a time. We want to spark a movement where people proudly 'Stay Loyal to the Soil.'",
+  "voice": {
+    "characteristics": [
+      "Warm and grounded: Feels like a conversation with a fellow nature lover",
+      "Inspiring yet humble: Encourages people to reconnect with the Earth without guilt",
+      "Educational but poetic: Combines facts about nature, plants, and sustainability with storytelling",
+      "Authentic and rooted: Avoids overly corporate or polished tones — it should feel handcrafted and real"
+    ],
+    "example": "Every plant you nurture is a promise to the planet. At Whole Lot of Nature, we're here to make that promise easier — and more beautiful — every day.",
+    "tone_guidelines": {
+      "do": [
+        "Use poetic, friendly, and grounded language",
+        "Blend inspiration with education",
+        "Include reminders of connection to the Earth",
+        "Tell stories and share experiences",
+        "Use natural, organic metaphors",
+        "Speak directly to the reader with warmth"
+      ],
+      "avoid": [
+        "Corporate jargon or overly polished language",
+        "Guilt-tripping or aggressive eco-messaging",
+        "Technical terms without explanation",
+        "Cold, transactional language",
+        "Greenwashing or exaggerated claims"
+      ]
+    }
+  },
+  "core_beliefs": [
+    "Nature provides everything — it's our duty to give back",
+    "Sustainability isn't a trend; it's a way of living",
+    "Healthy soil is the foundation of all life",
+    "Plants heal — the body, the mind, and the planet",
+    "Local and native plants are the soul of true environmental care"
+  ],
+  "products": {
+    "categories": [
+      "Living Plants (Indoor, aquatic, and native species)",
+      "Organic Soil Mixes (Crafted for plant health and sustainability)",
+      "Eco-friendly Fertilizers (Safe for plants, soil, and the planet)",
+      "Herbal & Natural Products (Hair oils, plant-based blends)",
+      "Educational & Inspirational Content (Plant care, herbal uses, sustainability tips)"
+    ],
+    "promise": "We're not just a store — we're a growing ecosystem of nature-inspired products and ideas"
+  },
+  "audience": {
+    "primary": [
+      "Urban dwellers craving a touch of green",
+      "Gardeners and hobbyists who love plants deeply",
+      "Eco-conscious individuals looking for sustainable, authentic products",
+      "Herbal enthusiasts interested in natural healing and remedies",
+      "People who want to reconnect with Earth — emotionally and physically"
+    ],
+    "pain_points": [
+      "Feeling disconnected from nature in urban environments",
+      "Wanting sustainable products but unsure where to start",
+      "Looking for authentic, non-corporate eco-brands",
+      "Seeking natural alternatives to chemical products",
+      "Desiring knowledge about plant care and herbal benefits"
+    ],
+    "desires": [
+      "A greener, more peaceful home environment",
+      "Connection to Earth and natural rhythms",
+      "Knowledge about sustainable living",
+      "Products that align with their values",
+      "A community of like-minded nature lovers"
+    ]
+  },
+  "content_pillars": [
+    {
+      "name": "Nature & Lifestyle",
+      "focus": "Emotional connection, stories, inspiration",
+      "topics": [
+        "Personal nature stories",
+        "Mindful living tips",
+        "Creating green spaces at home",
+        "Reconnecting with Earth's rhythms",
+        "Mental health benefits of plants"
+      ]
+    },
+    {
+      "name": "Plant Education",
+      "focus": "Care guides, soil info, eco practices",
+      "topics": [
+        "Plant care tutorials",
+        "Soil health and composition",
+        "Native vs. non-native species",
+        "Seasonal gardening tips",
+        "Common plant problems and solutions"
+      ]
+    },
+    {
+      "name": "Herbal Benefits",
+      "focus": "Explain herbs and their uses",
+      "topics": [
+        "Medicinal herb properties",
+        "DIY herbal remedies",
+        "Ayurvedic plant wisdom",
+        "Herbal hair and skin care",
+        "Edible plants and herbs"
+      ]
+    },
+    {
+      "name": "Sustainability & Awareness",
+      "focus": "Tips on eco-living and native species",
+      "topics": [
+        "Sustainable gardening practices",
+        "Reducing environmental impact",
+        "Supporting local ecosystems",
+        "Water conservation",
+        "Composting and waste reduction"
+      ]
+    },
+    {
+      "name": "Brand Storytelling",
+      "focus": "Behind the scenes, product creation, mission",
+      "topics": [
+        "How products are made",
+        "Meet the team",
+        "Customer success stories",
+        "Our sustainability journey",
+        "Community projects and initiatives"
+      ]
+    }
+  ],
+  "seo_keywords": {
+    "primary": [
+      "plants",
+      "gardening",
+      "native plants",
+      "sustainable lifestyle",
+      "soil health",
+      "herbal benefits",
+      "organic fertilizers",
+      "eco-friendly products",
+      "indoor plants",
+      "aquatic plants"
+    ],
+    "secondary": [
+      "houseplants",
+      "plant care tips",
+      "nature connection",
+      "green living",
+      "home gardening",
+      "herbs",
+      "natural remedies",
+      "sustainable products",
+      "handmade herbal oil",
+      "plant based wellness"
+    ],
+    "long_tail": [
+      "best indoor plants for air purification",
+      "how to make organic compost at home",
+      "native plants for Bangalore gardens",
+      "natural hair oil benefits",
+      "sustainable gardening tips for beginners",
+      "herbal remedies for common ailments",
+      "eco-friendly fertilizers vs chemical fertilizers",
+      "aquatic plants for home ponds",
+      "how to improve soil health naturally",
+      "mindful gardening practices"
+    ]
+  },
+  "social_media": {
+    "hashtags": {
+      "main": [
+        "#WholeLotOfNature",
+        "#StayLoyalToTheSoil",
+        "#PlantLovers",
+        "#EcoFriendlyLiving",
+        "#NatureInspired",
+        "#SustainableLiving",
+        "#GreenHome",
+        "#MindfulGardening"
+      ],
+      "supporting": [
+        "#PlantHappiness",
+        "#GrowYourGreens",
+        "#NatureCare",
+        "#BotanicalLife",
+        "#CleanGreenLiving",
+        "#EnvironmentalLove",
+        "#EarthCare",
+        "#NaturalHome"
+      ]
+    },
+    "calls_to_action": [
+      "Grow something today.",
+      "Stay loyal to the soil.",
+      "Tag a friend who loves plants as much as you do.",
+      "Share your green space with us!",
+      "What plant are you nurturing this week?",
+      "Join the movement — one plant at a time."
+    ],
+    "themes": [
+      "Nature documentaries in miniature (plant life cycles, soil prep, pond setups)",
+      "Tutorials on herbal remedies, native plant care, and DIY natural gardening",
+      "Slow, aesthetic visuals — plants moving in sunlight, water rippling over roots",
+      "Educational reels with a warm, curious narration style",
+      "Green stories — real people sharing how nature changed their lives"
+    ]
+  },
+  "brand_promise": "By supporting Whole Lot of Nature, you're not just buying products — you're helping the planet breathe again. Every purchase supports greener Earth projects, native plant promotion, and eco-awareness. We don't just sell products. We cultivate a way of life. Because when you stay loyal to the soil — the soil stays loyal to you.",
+  "writing_templates": {
+    "blog_intro": "Start with a poetic observation about nature or a relatable moment. Connect emotionally before diving into educational content.",
+    "product_description": "Lead with the benefit to Earth, then the benefit to the customer. Include soil/nature connection. End with a subtle call to action.",
+    "social_caption": "Open with a question or inspiring statement. Share a fact or tip. Close with a call to action that feels natural and warm.",
+    "meta_description": "Include sustainability angle + practical benefit + emotional connection. Use keywords naturally.",
+    "email_subject": "Use curiosity, nature metaphors, or gentle urgency. Examples: 'Your soil is calling 🌱', 'The secret to happier plants (it's simpler than you think)'"
+  }
+}

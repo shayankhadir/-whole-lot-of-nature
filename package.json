@@ -22,7 +22,12 @@
     "woo:sync": "tsx scripts/woo-agent.ts sync",
     "woo:validate": "tsx scripts/woo-agent.ts validate",
     "woo:monitor": "tsx scripts/woo-agent.ts monitor",
-    "woo:backup": "tsx scripts/woo-agent.ts backup"
+    "woo:backup": "tsx scripts/woo-agent.ts backup",
+    "content:blog": "tsx scripts/content-agent.ts blog",
+    "content:product": "tsx scripts/content-agent.ts product",
+    "content:social": "tsx scripts/content-agent.ts social",
+    "content:meta": "tsx scripts/content-agent.ts meta",
+    "content:email": "tsx scripts/content-agent.ts email"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
