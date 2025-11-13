@@ -106,13 +106,15 @@ class TrendScraper {
             }
           );
 
+          const keywords = this.extractKeywords(term);
           trends.push({
             title: `${term} - Trending on Google`,
             source: 'google-trends',
             engagement: Math.random() * 1000, // Placeholder
             timestamp: new Date(),
             category: this.categorizeContent(term),
-            keywords: [term, ...term.split(' ')],
+            keywords: keywords.length > 0 ? keywords : [term],
+            description: `Google Trends for ${term}`,
           });
         } catch (e) {
           // Continue to next term
@@ -137,14 +139,16 @@ class TrendScraper {
 
       for (const term of searchTerms) {
         // This would require YouTube Data API v3
-        // For now, we'll create mock data structure
+        // For now, we'll create mock data structure with proper keywords
+        const keywords = this.extractKeywords(term);
         trends.push({
           title: `YouTube: Popular videos about "${term}"`,
           source: 'youtube',
           engagement: Math.floor(Math.random() * 100000),
           timestamp: new Date(),
           category: this.categorizeContent(term),
-          keywords: this.extractKeywords(term),
+          keywords: keywords.length > 0 ? keywords : [term],
+          description: `Popular gardening videos about ${term}`,
         });
       }
     } catch (error) {
@@ -231,6 +235,7 @@ class TrendScraper {
           questions.each((i, elem) => {
             const title = $(elem).text().trim();
             if (title && title.length > 10) {
+              const keywords = this.extractKeywords(title);
               trends.push({
                 title: `Q: ${title}`,
                 source: 'quora',
@@ -238,7 +243,8 @@ class TrendScraper {
                 engagement: Math.floor(Math.random() * 1000),
                 timestamp: new Date(),
                 category: this.categorizeContent(title),
-                keywords: this.extractKeywords(title),
+                keywords: keywords.length > 0 ? keywords : [title.split(' ')[0]],
+                description: title,
               });
             }
           });

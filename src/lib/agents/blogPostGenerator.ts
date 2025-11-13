@@ -35,8 +35,9 @@ class BlogPostGenerator {
   async generateFromTrend(trend: TrendData): Promise<GeneratedBlogPost> {
     const { title: trendTitle, keywords: trendKeywords, description } = trend;
 
-    // Extract main keyword from trend
-    const mainKeyword = trendKeywords[0] || trendTitle;
+    // Extract main keyword from trend - handle undefined keywords
+    const keywords = trendKeywords && trendKeywords.length > 0 ? trendKeywords : this.extractDefaultKeywords(trendTitle);
+    const mainKeyword = keywords[0] || trendTitle;
 
     // Generate SEO data
     const seoData = this.seoOptimizer.generateBlogPostSEO(
@@ -49,8 +50,8 @@ class BlogPostGenerator {
     // Generate content
     const content = await this.generateContent(
       seoData.h1,
-      seoData.h2,
-      seoData.h3,
+      seoData.headings.h2,
+      seoData.headings.h3,
       mainKeyword,
       trendTitle,
       description
@@ -353,7 +354,8 @@ Remember that gardening is a continuous learning experience. Start with the basi
    * Synchronous version for scheduling (simplified)
    */
   private generateFromTrendSync(trend: TrendData): GeneratedBlogPost {
-    const mainKeyword = trend.keywords[0] || trend.title;
+    const keywords = trend.keywords && trend.keywords.length > 0 ? trend.keywords : this.extractDefaultKeywords(trend.title);
+    const mainKeyword = keywords[0] || trend.title;
     const seoData = this.seoOptimizer.generateBlogPostSEO(
       trend.title,
       mainKeyword,
@@ -375,6 +377,23 @@ Remember that gardening is a continuous learning experience. Start with the basi
       wordCount: this.countWords(content),
       estimatedReadTime: 3,
     };
+  }
+
+  /**
+   * Extract default keywords from title if not provided
+   */
+  private extractDefaultKeywords(title: string): string[] {
+    const commonWords = new Set([
+      'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'is', 'are',
+    ]);
+
+    const words = title
+      .toLowerCase()
+      .split(/[\s,;.!?'"()-]+/)
+      .filter((word) => word.length > 3 && !commonWords.has(word))
+      .slice(0, 5);
+
+    return [...new Set(words)];
   }
 }
 
