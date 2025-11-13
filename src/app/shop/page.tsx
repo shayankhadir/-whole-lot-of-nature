@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import ProductCard from '@/components/shop/ProductCard';
@@ -50,7 +50,7 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#0F1E11] py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-bold text-[#2E7D32] mb-4 font-header antialiased">
+          <h1 className="text-[clamp(2.5rem,7vw,2.5rem)] font-bold text-[#2E7D32] mb-4 font-header antialiased">
             Our Collection
           </h1>
           <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-[#66BB6A] font-body antialiased">

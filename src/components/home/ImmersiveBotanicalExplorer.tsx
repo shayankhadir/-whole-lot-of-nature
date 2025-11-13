@@ -97,7 +97,7 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
             </span>
           )}
 
-          <h2 className="font-montserrat text-[clamp(2.5rem,5vw,3.5rem)] font-extrabold text-white leading-tight mb-6">
+          <h2 className="font-montserrat text-[clamp(2.5rem,5vw,2.5rem)] font-extrabold text-white leading-tight mb-6">
             {selectedPlant.name}
           </h2>
           

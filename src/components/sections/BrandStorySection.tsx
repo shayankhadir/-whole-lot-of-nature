@@ -87,7 +87,7 @@ export default function BrandStorySection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] text-[#66BB6A] leading-tight antialiased">
+            <h2 className="font-display text-[clamp(2rem,5vw,2.5rem)] text-[#66BB6A] leading-tight antialiased">
               Stay Loyal to the Soil
             </h2>
 

@@ -56,7 +56,7 @@ export default function CategoryGrid() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,3rem)] font-bold text-[#66BB6A] mb-4 antialiased">
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
             Shop by Category
           </h2>
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/70 max-w-2xl mx-auto antialiased">

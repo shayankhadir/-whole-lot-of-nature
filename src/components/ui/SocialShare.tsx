@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 

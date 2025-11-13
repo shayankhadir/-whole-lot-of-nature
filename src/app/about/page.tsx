@@ -16,7 +16,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-montserrat text-[clamp(2.5rem,8vw,5rem)] font-bold text-white mb-6 tracking-tight antialiased">
+            <h1 className="font-montserrat text-[clamp(2.5rem,8vw,2.5rem)] font-bold text-white mb-6 tracking-tight antialiased">
               Stay Loyal to the <span className="text-[#66BB6A]">Soil</span>
             </h1>
             <p className="font-inter text-[clamp(1rem,3vw,1.5rem)] text-white/80 leading-relaxed max-w-3xl mx-auto antialiased">
@@ -38,7 +38,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] text-[#66BB6A] leading-tight antialiased mb-6">
+              <h2 className="font-display text-[clamp(2rem,5vw,2.5rem)] text-[#66BB6A] leading-tight antialiased mb-6">
                 Our Story
               </h2>
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-[clamp(2rem,5vw,3.5rem)] text-[#66BB6A] leading-tight antialiased mb-4"
+            className="font-display text-[clamp(2rem,5vw,2.5rem)] text-[#66BB6A] leading-tight antialiased mb-4"
           >
             Our Values
           </motion.h2>
@@ -159,7 +159,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-[clamp(2rem,5vw,3.5rem)] text-[#66BB6A] leading-tight antialiased mb-6"
+            className="font-display text-[clamp(2rem,5vw,2.5rem)] text-[#66BB6A] leading-tight antialiased mb-6"
           >
             What We Offer
           </motion.h2>

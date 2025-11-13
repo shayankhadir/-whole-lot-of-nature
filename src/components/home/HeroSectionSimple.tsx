@@ -23,7 +23,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 text-center">
-        <h1 className="text-[clamp(4rem,12vw,11rem)] font-header font-bold text-white leading-none mb-8 antialiased">
+        <h1 className="text-[clamp(1.5rem,12vw,2.5rem)] font-header font-bold text-white leading-none mb-8 antialiased">
           BRING THE<br />
           FOREST HOME
         </h1>

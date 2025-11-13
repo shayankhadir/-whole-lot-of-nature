@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
           <span className="inline-flex items-center rounded-full border border-[#2E7D32]/30 bg-[#2E7D32]/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#66BB6A] backdrop-blur-md">
             Why Choose Us
           </span>
-          <h2 className="mt-6 text-[clamp(2.5rem,5vw,4.25rem)] font-montserrat font-bold tracking-tight text-white antialiased">
+          <h2 className="mt-6 text-[clamp(2.5rem,5vw,2.5rem)] font-montserrat font-bold tracking-tight text-white antialiased">
             Trusted by Plant Lovers
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-white/70 antialiased">

@@ -91,7 +91,7 @@ export default function FeaturedPlantsCarousel() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-montserrat text-[clamp(3rem,8vw,6.875rem)] font-bold text-white uppercase tracking-wide antialiased">
+          <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-white uppercase tracking-wide antialiased">
             Featured <span className="text-[#66BB6A]">Plants</span>
           </h2>
           <p className="font-inter text-lg text-white/70 mt-4 max-w-2xl antialiased">

@@ -33,14 +33,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/70 text-[clamp(0.875rem,2vw,1rem)] font-light tracking-[0.3em] uppercase font-inter mb-4"
+          className="text-white/70 text-[clamp(0.75rem,1.5vw,0.875rem)] font-light tracking-[0.3em] uppercase font-inter mb-4"
         >
           Welcome to
         </motion.p>
 
         {/* Main Brand Heading */}
         <h1 
-          className="font-montserrat text-white text-[clamp(2rem,8vw,4rem)] font-bold leading-tight tracking-wider drop-shadow-[0_10px_40px_rgba(0,0,0,0.9)] mb-6"
+          className="font-montserrat text-white text-[clamp(1.5rem,5vw,2.5rem)] font-bold leading-tight tracking-wider drop-shadow-[0_10px_40px_rgba(0,0,0,0.9)] mb-6"
         >
           WHOLE LOT OF <span className="text-[#66BB6A]">NATURE</span>
         </h1>
@@ -50,7 +50,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-white/80 text-[clamp(0.875rem,2vw,1.125rem)] font-light leading-relaxed max-w-2xl mx-auto font-inter"
+          className="text-white/80 text-[clamp(0.875rem,1.5vw,1rem)] font-light leading-relaxed max-w-2xl mx-auto font-inter"
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>
