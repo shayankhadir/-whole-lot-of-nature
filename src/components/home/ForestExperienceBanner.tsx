@@ -58,7 +58,7 @@ export default function ForestExperienceBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-montserrat text-[48px] sm:text-[68px] font-bold text-white uppercase tracking-wide mb-4"
+          className="font-montserrat text-[48px] sm:text-[68px] font-bold text-white uppercase tracking-wide mb-4 antialiased"
         >
           Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
         </motion.h2>
@@ -68,7 +68,7 @@ export default function ForestExperienceBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-inter text-lg text-white/80 max-w-2xl mb-8"
+          className="font-inter text-lg text-white/80 max-w-2xl mb-8 antialiased"
         >
           Discover our interactive plant catalog and learn about sustainable organic gardening
         </motion.p>
@@ -84,7 +84,7 @@ export default function ForestExperienceBanner() {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(46,125,50,0.6)' }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-lg uppercase tracking-widest forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300"
+              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-lg uppercase tracking-widest forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300 antialiased"
             >
               Start Exploring
             </motion.button>

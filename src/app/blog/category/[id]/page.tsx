@@ -71,15 +71,15 @@ export default function BlogCategoryPage() {
         <div className="max-w-6xl mx-auto">
           {loading ? (
             <div className="text-center py-20">
-              <p className="text-2xl font-bold text-black">📚 Loading Articles...</p>
+              <p className="text-2xl font-bold text-black antialiased">📚 Loading Articles...</p>
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-2xl font-bold text-black mb-4">No articles found</p>
+              <p className="text-2xl font-bold text-black mb-4 antialiased">No articles found</p>
               <p className="text-gray-700 mb-6">Check back soon for new content</p>
               <Link
                 href="/blog"
-                className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700"
+                className="inline-block px-6 py-3 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#2E7D32]"
               >
                 View All Categories
               </Link>
@@ -113,12 +113,12 @@ export default function BlogCategoryPage() {
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-grow">
                       {/* Category Badge */}
-                      <span className="inline-block w-fit mb-3 px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">
+                      <span className="inline-block w-fit mb-3 px-3 py-1 bg-[#2E7D32] text-[#2E7D32] rounded-full text-xs font-bold antialiased">
                         {getCategoryName()}
                       </span>
 
                       {/* Title */}
-                      <h3 className="font-bold text-lg text-black mb-3 line-clamp-2 group-hover:text-green-600 transition">
+                      <h3 className="font-bold text-lg text-black mb-3 line-clamp-2 group-hover:text-[#2E7D32] transition antialiased">
                         {post.title}
                       </h3>
 
@@ -156,7 +156,7 @@ export default function BlogCategoryPage() {
                       {/* Read More Link */}
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="mt-auto inline-block text-green-600 font-semibold hover:text-green-700 transition"
+                        className="mt-auto inline-block text-[#2E7D32] font-semibold hover:text-[#2E7D32] transition"
                       >
                         Read Article →
                       </Link>
@@ -182,8 +182,8 @@ export default function BlogCategoryPage() {
                       onClick={() => setCurrentPage(i + 1)}
                       className={`px-3 py-2 rounded font-semibold transition ${
                         currentPage === i + 1
-                          ? 'bg-green-600 text-white'
-                          : 'border-2 border-black hover:bg-green-100'
+                          ? 'bg-[#2E7D32] text-white'
+                          : 'border-2 border-black hover:bg-[#2E7D32]'
                       }`}
                     >
                       {i + 1}
@@ -227,8 +227,8 @@ export default function BlogCategoryPage() {
                   href={`/blog/category/${cat.id}`}
                   className="bg-white border-2 border-black rounded-lg p-6 text-center hover:shadow-lg transition"
                 >
-                  <p className="text-4xl mb-3">{cat.icon}</p>
-                  <h3 className="font-bold text-black mb-2">{cat.name}</h3>
+                  <p className="text-4xl mb-3 antialiased">{cat.icon}</p>
+                  <h3 className="font-bold text-black mb-2 antialiased">{cat.name}</h3>
                   <p className="text-sm text-gray-700">Explore →</p>
                 </Link>
               ))}

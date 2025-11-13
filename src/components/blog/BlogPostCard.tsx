@@ -57,9 +57,9 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             />
           )}
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-black line-clamp-2 mb-1">{post.title}</h3>
+            <h3 className="font-bold text-black line-clamp-2 mb-1 antialiased">{post.title}</h3>
             <p className="text-xs text-gray-600">{formatDate(post.date)}</p>
-            {post.readTime && <p className="text-xs text-green-600 font-bold">📖 {post.readTime} min read</p>}
+            {post.readTime && <p className="text-xs text-[#2E7D32] font-bold antialiased">📖 {post.readTime} min read</p>}
           </div>
         </div>
       </motion.div>
@@ -90,7 +90,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           {post.categories && post.categories.length > 0 && (
             <div className="flex gap-2 mb-3">
               {post.categories.slice(0, 2).map(cat => (
-                <span key={cat} className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">
+                <span key={cat} className="text-xs bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full font-bold antialiased">
                   {cat}
                 </span>
               ))}
@@ -98,7 +98,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           )}
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-black mb-3">{post.title}</h2>
+          <h2 className="text-2xl font-bold text-black mb-3 antialiased">{post.title}</h2>
 
           {/* Excerpt */}
           <p className="text-gray-700 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
@@ -127,7 +127,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             whileTap={{ scale: 0.95 }}
             onClick={() => onLike?.(post.id)}
             className={`flex items-center gap-2 px-4 py-2 rounded border-2 font-bold transition-all ${
-              liked ? 'border-green-600 bg-green-50 text-green-600' : 'border-black text-black hover:border-green-600'
+              liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
             }`}
           >
             <span>❤️</span>
@@ -143,7 +143,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ borderColor: '#16a34a' }}
+      whileHover={{ borderColor: '#2E7D32' }}
       className="bg-white border-2 border-black rounded-lg overflow-hidden hover:shadow-lg transition-all cursor-pointer group"
     >
       {/* Image */}
@@ -162,14 +162,14 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
         {/* Categories */}
         {post.categories && post.categories.length > 0 && (
           <div className="mb-2">
-            <span className="inline-block text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold">
+            <span className="inline-block text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded-full font-bold antialiased">
               {post.categories[0]}
             </span>
           </div>
         )}
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-black mb-2 line-clamp-2 group-hover:text-green-600 transition-colors">
+        <h3 className="text-lg font-bold text-black mb-2 line-clamp-2 group-hover:text-[#2E7D32] transition-colors antialiased">
           {post.title}
         </h3>
 
@@ -191,7 +191,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             onLike?.(post.id);
           }}
           className={`flex items-center gap-2 px-3 py-2 rounded border-2 text-sm font-bold transition-all ${
-            liked ? 'border-green-600 bg-green-50 text-green-600' : 'border-black text-black hover:border-green-600'
+            liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
           }`}
         >
           <span>❤️</span>

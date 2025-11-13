@@ -38,7 +38,7 @@ export default function ProductCarousel() {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-semibold mb-6">Best Sellers</h2>
+        <h2 className="text-2xl font-semibold mb-6 antialiased">Best Sellers</h2>
         <div ref={containerRef} className="flex gap-4 overflow-x-auto no-scrollbar py-2">
           {sampleProducts.map((p) => (
             <motion.div key={p.id} whileHover={{ scale: 1.03 }} className="min-w-[220px] bg-white rounded-lg shadow-md p-4">

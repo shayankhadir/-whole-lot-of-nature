@@ -91,10 +91,10 @@ export default function FeaturedPlantsCarousel() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-montserrat text-[68px] md:text-[110px] font-bold text-white uppercase tracking-wide">
+          <h2 className="font-montserrat text-[68px] md:text-[110px] font-bold text-white uppercase tracking-wide antialiased">
             Featured <span className="text-[#66BB6A]">Plants</span>
           </h2>
-          <p className="font-inter text-lg text-white/70 mt-4 max-w-2xl">
+          <p className="font-inter text-lg text-white/70 mt-4 max-w-2xl antialiased">
             Handpicked organic plants, carefully curated for your home and garden.
           </p>
         </motion.div>
@@ -167,7 +167,7 @@ export default function FeaturedPlantsCarousel() {
 
                       {/* Price - H5 (42px) */}
                       <div className="flex items-baseline justify-between">
-                        <span className="font-montserrat text-[42px] text-[#2E7D32] font-bold leading-none">
+                        <span className="font-montserrat text-[42px] text-[#2E7D32] font-bold leading-none antialiased">
                           ₹{product.price}
                         </span>
                         <span className="text-sm font-inter text-white/50 group-hover:text-white/70 transition-colors">
@@ -203,7 +203,7 @@ export default function FeaturedPlantsCarousel() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-base uppercase tracking-wider forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300"
+              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-base uppercase tracking-wider forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300 antialiased"
             >
               View All Products
             </motion.button>

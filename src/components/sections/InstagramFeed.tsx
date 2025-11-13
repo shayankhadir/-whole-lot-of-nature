@@ -80,11 +80,11 @@ export default function InstagramFeed() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Instagram className="w-8 h-8 text-pink-600" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 antialiased">
               Follow Us on Instagram
             </h2>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
             Join our community and see the latest from Whole Lot of Nature
           </p>
           <a
@@ -140,10 +140,10 @@ export default function InstagramFeed() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-md">
                   <div className="text-center text-white">
                     <Heart className="w-8 h-8 mx-auto mb-2 fill-white" />
-                    <p className="text-lg font-semibold">{post.like_count}</p>
+                    <p className="text-lg font-semibold antialiased">{post.like_count}</p>
                   </div>
                 </div>
               </div>

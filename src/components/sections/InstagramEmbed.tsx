@@ -12,10 +12,10 @@ export default function InstagramEmbed() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
             Follow Us on Instagram
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
             Join our community for daily plant inspiration and care tips
           </p>
         </motion.div>

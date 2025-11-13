@@ -39,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map(star => (
-          <span key={star} className={star <= rating ? 'text-green-600 text-lg' : 'text-gray-300 text-lg'}>
+          <span key={star} className={star <= rating ? 'text-[#2E7D32] text-lg' : 'text-gray-300 text-lg'}>
             ★
           </span>
         ))}
@@ -66,10 +66,10 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       >
         <div className="flex items-start justify-between mb-3">
           <div>
-            <p className="font-bold text-black">{testimonial.authorName}</p>
+            <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
             {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
-          {testimonial.verifiedPurchase && <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-bold">✓ Verified</span>}
+          {testimonial.verifiedPurchase && <span className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded font-bold antialiased">✓ Verified</span>}
         </div>
         <p className="text-black text-sm mb-3 line-clamp-2">{testimonial.content}</p>
         <div className="flex items-center justify-between">
@@ -88,23 +88,23 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="bg-gradient-to-br from-green-50 to-white border-2 border-black rounded-lg p-6 md:p-8"
       >
         {/* Quote icon */}
-        <div className="text-4xl text-green-600 mb-4 opacity-50">❝</div>
+        <div className="text-4xl text-[#2E7D32] mb-4 opacity-50 antialiased">❝</div>
 
         {/* Stars */}
         <div className="mb-4">{renderStars(testimonial.rating)}</div>
 
         {/* Content */}
-        <p className="text-black text-lg font-medium mb-6 leading-relaxed">{testimonial.content}</p>
+        <p className="text-black text-lg font-medium mb-6 leading-relaxed antialiased">{testimonial.content}</p>
 
         {/* Author info */}
         <div className="flex items-center justify-between border-t-2 border-black pt-4">
           <div>
-            <p className="font-bold text-black">{testimonial.authorName}</p>
+            <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
             {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
           <div className="text-right">
             {testimonial.verifiedPurchase && (
-              <p className="text-xs text-green-600 font-bold mb-1">✓ Verified Purchase</p>
+              <p className="text-xs text-[#2E7D32] font-bold mb-1 antialiased">✓ Verified Purchase</p>
             )}
             <p className="text-xs text-gray-500">{formatDate(testimonial.createdAt)}</p>
           </div>
@@ -118,7 +118,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ borderColor: '#16a34a' }}
+      whileHover={{ borderColor: '#2E7D32' }}
       className="bg-white border-2 border-black rounded-lg p-5 transition-all hover:shadow-lg"
     >
       {/* Header with stars and verified badge */}
@@ -127,7 +127,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div className="flex items-center gap-2 mb-2">
             {renderStars(testimonial.rating)}
             {testimonial.verifiedPurchase && (
-              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold">✓ Verified</span>
+              <span className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-0.5 rounded font-bold antialiased">✓ Verified</span>
             )}
           </div>
         </div>
@@ -138,7 +138,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
       {/* Author */}
       <div className="border-t-2 border-black pt-4 mb-4">
-        <p className="font-bold text-black">{testimonial.authorName}</p>
+        <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
         {testimonial.productName && <p className="text-xs text-gray-600">{testimonial.productName}</p>}
         {testimonial.createdAt && <p className="text-xs text-gray-500 mt-1">{formatDate(testimonial.createdAt)}</p>}
       </div>
@@ -149,7 +149,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         whileTap={{ scale: 0.95 }}
         onClick={() => onLike?.(testimonial.id)}
         className={`flex items-center gap-2 px-3 py-2 rounded border-2 font-bold transition-all ${
-          liked ? 'border-green-600 bg-green-50 text-green-600' : 'border-black text-black hover:border-green-600'
+          liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
         }`}
       >
         <span>👍</span>

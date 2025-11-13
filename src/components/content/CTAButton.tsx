@@ -38,10 +38,10 @@ const CTAButton: React.FC<CTAButtonProps> = ({
     'font-bold rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer';
 
   const variantClasses = {
-    primary: 'bg-green-600 text-white border-2 border-green-600 hover:bg-white hover:text-green-600',
+    primary: 'bg-[#2E7D32] text-white border-2 border-[#2E7D32] hover:bg-white hover:text-[#2E7D32]',
     secondary: 'bg-black text-white border-2 border-black hover:bg-white hover:text-black',
     outline: 'bg-transparent text-black border-2 border-black hover:bg-black hover:text-white',
-    ghost: 'bg-transparent text-black hover:bg-green-100',
+    ghost: 'bg-transparent text-black hover:bg-[#2E7D32]',
   };
 
   const sizeClasses = {
@@ -119,7 +119,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   backgroundVariant = 'green',
 }) => {
   const bgClasses = {
-    green: 'bg-gradient-to-r from-green-50 to-green-100 border-4 border-green-600',
+    green: 'bg-gradient-to-r from-green-50 to-green-100 border-4 border-[#2E7D32]',
     black: 'bg-gradient-to-r from-black to-gray-900 border-4 border-black text-white',
     white: 'bg-white border-2 border-black',
   };

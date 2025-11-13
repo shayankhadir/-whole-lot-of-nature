@@ -88,8 +88,8 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
   };
 
   const getTransactionColor = (type: string, points: number) => {
-    if (type === 'tier-upgrade') return 'text-green-600';
-    if (points > 0) return 'text-green-600';
+    if (type === 'tier-upgrade') return 'text-[#2E7D32]';
+    if (points > 0) return 'text-[#2E7D32]';
     if (points < 0) return 'text-red-600';
     return 'text-black';
   };
@@ -124,7 +124,7 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
     >
       {!compact && (
         <div className="bg-gradient-to-r from-green-50 to-white border-b-2 border-black px-6 py-4">
-          <h3 className="text-xl font-bold text-black">Transaction History</h3>
+          <h3 className="text-xl font-bold text-black antialiased">Transaction History</h3>
         </div>
       )}
 
@@ -139,9 +139,9 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
               className="flex items-center justify-between p-4 border-2 border-black rounded-lg hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-center gap-4 flex-1">
-                <span className="text-2xl">{getTransactionIcon(transaction.type)}</span>
+                <span className="text-2xl antialiased">{getTransactionIcon(transaction.type)}</span>
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-black truncate">{transaction.reason}</p>
+                  <p className="font-bold text-black truncate antialiased">{transaction.reason}</p>
                   <p className="text-sm text-gray-600">{formatDate(transaction.createdAt)}</p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
           ))
         ) : (
           <div className="text-center py-8">
-            <p className="text-black text-lg font-medium mb-2">No transactions yet</p>
+            <p className="text-black text-lg font-medium mb-2 antialiased">No transactions yet</p>
             <p className="text-gray-700 text-sm">Make your first purchase to start earning points!</p>
           </div>
         )}
@@ -161,7 +161,7 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
 
       {compact && visibleTransactions.length > 0 && (
         <div className="text-center pt-4">
-          <button className="text-green-600 font-bold hover:text-green-700 transition-colors">
+          <button className="text-[#2E7D32] font-bold hover:text-[#2E7D32] transition-colors antialiased">
             View All →
           </button>
         </div>

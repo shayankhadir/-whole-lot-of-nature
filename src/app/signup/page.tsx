@@ -153,10 +153,10 @@ export default function CustomSignupPage() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="mb-10">
-            <h1 className="text-5xl font-bold text-white mb-3">
+            <h1 className="text-5xl font-bold text-white mb-3 antialiased">
               Let's Get Started
             </h1>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-400 text-lg antialiased">
               Create your account to explore premium organic seeds and plants
             </p>
           </motion.div>
@@ -166,7 +166,7 @@ export default function CustomSignupPage() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-6 p-4 bg-green-600/20 border border-green-600 rounded-lg text-green-400"
+              className="mb-6 p-4 bg-[#2E7D32]/20 border border-[#2E7D32] rounded-lg text-[#2E7D32] backdrop-blur-md"
             >
               {successMessage}
             </motion.div>
@@ -191,14 +191,14 @@ export default function CustomSignupPage() {
                 Your Name
               </label>
               <div className="relative">
-                <User className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <User className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
               </div>
               {errors.name && (
@@ -212,14 +212,14 @@ export default function CustomSignupPage() {
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <Mail className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
               </div>
               {errors.email && (
@@ -233,19 +233,19 @@ export default function CustomSignupPage() {
                 Create Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-600 transition-colors"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#2E7D32] transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -261,19 +261,19 @@ export default function CustomSignupPage() {
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-600 transition-colors"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#2E7D32] transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -295,11 +295,11 @@ export default function CustomSignupPage() {
               />
               <label htmlFor="terms" className="text-sm text-gray-400 cursor-pointer leading-relaxed">
                 I agree to the{' '}
-                <Link href="/terms" className="text-green-600 hover:text-green-500 transition-colors">
+                <Link href="/terms" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/privacy" className="text-green-600 hover:text-green-500 transition-colors">
+                <Link href="/privacy" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                   Privacy Policy
                 </Link>
               </label>
@@ -315,7 +315,7 @@ export default function CustomSignupPage() {
               whileTap={{ scale: 0.98 }}
               disabled={isLoading}
               type="submit"
-              className="w-full h-14 bg-green-600 hover:bg-green-700 disabled:bg-green-800 text-white font-bold rounded-full transition-all duration-300 mt-8 text-lg shadow-lg hover:shadow-xl"
+              className="w-full h-14 bg-[#2E7D32] hover:bg-[#2E7D32] disabled:bg-[#2E7D32] text-white font-bold rounded-full transition-all duration-300 mt-8 text-lg shadow-lg hover:shadow-xl antialiased"
             >
               {isLoading ? 'Creating account...' : 'Create Account'}
             </motion.button>
@@ -337,7 +337,7 @@ export default function CustomSignupPage() {
           {/* Login Link */}
           <motion.p variants={itemVariants} className="text-center text-gray-400 mt-8">
             Already have an account?{' '}
-            <Link href="/login" className="text-green-600 hover:text-green-500 transition-colors font-semibold">
+            <Link href="/login" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign in here
             </Link>
           </motion.p>
@@ -368,12 +368,12 @@ export default function CustomSignupPage() {
         <motion.div
           animate={{ float: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
-          className="absolute top-20 right-10 w-40 h-40 bg-green-600/10 rounded-full blur-3xl"
+          className="absolute top-20 right-10 w-40 h-40 bg-[#2E7D32]/10 rounded-full blur-3xl backdrop-blur-md"
         />
         <motion.div
           animate={{ float: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-          className="absolute bottom-40 left-10 w-60 h-60 bg-green-600/5 rounded-full blur-3xl"
+          className="absolute bottom-40 left-10 w-60 h-60 bg-[#2E7D32]/5 rounded-full blur-3xl backdrop-blur-md"
         />
 
         {/* Content */}
@@ -383,10 +383,10 @@ export default function CustomSignupPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-5xl font-bold text-white mb-6 leading-tight antialiased">
               Join Our Garden Community
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed antialiased">
               Get exclusive access to premium organic seeds, expert gardening tips, and a thriving community of plant lovers
             </p>
 
@@ -399,9 +399,9 @@ export default function CustomSignupPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-lg text-gray-200"
+                    className="flex items-center gap-3 text-lg text-gray-200 antialiased"
                   >
-                    <span className="text-2xl">{feature.split(' ')[0]}</span>
+                    <span className="text-2xl antialiased">{feature.split(' ')[0]}</span>
                     {feature.substring(2)}
                   </motion.div>
                 )
@@ -431,9 +431,9 @@ const SocialSignupButton = ({ provider }: SocialSignupButtonProps) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       type="button"
-      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 hover:border-green-600 rounded-full flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300"
+      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 hover:border-[#2E7D32] rounded-full flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300 backdrop-blur-md"
     >
-      <span className="text-lg">{icon}</span>
+      <span className="text-lg antialiased">{icon}</span>
       {label}
     </motion.button>
   );

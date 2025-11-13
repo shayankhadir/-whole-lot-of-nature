@@ -70,7 +70,7 @@ export const StatisticsBlock = ({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl font-bold text-black mb-4"
+              className="text-4xl font-bold text-black mb-4 antialiased"
             >
               {title}
             </motion.h2>
@@ -80,7 +80,7 @@ export const StatisticsBlock = ({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-xl text-gray-600 max-w-2xl mx-auto antialiased"
             >
               {description}
             </motion.p>
@@ -175,7 +175,7 @@ const StatisticItemComponent = ({
           initial={{ scale: 0, rotate: -180 }}
           animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
           transition={{ delay: index * 0.1 + 0.2, duration: 0.6 }}
-          className="mb-4 text-4xl text-green-600 group-hover:text-green-700 transition-colors duration-300"
+          className="mb-4 text-4xl text-[#2E7D32] group-hover:text-[#2E7D32] transition-colors duration-300 antialiased"
         >
           {item.icon}
         </motion.div>
@@ -186,10 +186,10 @@ const StatisticItemComponent = ({
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: index * 0.1 + 0.1, duration: 0.5 }}
-        className="text-4xl md:text-5xl font-bold text-green-600 mb-2 group-hover:text-green-700 transition-colors duration-300"
+        className="text-4xl md:text-5xl font-bold text-[#2E7D32] mb-2 group-hover:text-[#2E7D32] transition-colors duration-300 antialiased"
       >
         {displayValue.toLocaleString()}
-        {item.suffix && <span className="text-3xl">{item.suffix}</span>}
+        {item.suffix && <span className="text-3xl antialiased">{item.suffix}</span>}
       </motion.div>
 
       {/* Label */}

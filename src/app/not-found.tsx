@@ -50,8 +50,8 @@ export default function NotFound() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-600 rounded-full mix-blend-multiply filter blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#2E7D32] rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2E7D32] rounded-full mix-blend-multiply filter blur-3xl" />
       </div>
 
       {/* Nature Background Image (Optional) */}
@@ -79,7 +79,7 @@ export default function NotFound() {
           className="mb-8 sm:mb-12 perspective"
         >
           <h1
-            className="text-9xl sm:text-10xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 select-none drop-shadow-2xl"
+            className="text-9xl sm:text-10xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 select-none drop-shadow-2xl antialiased"
             style={{
               textShadow: '0 10px 40px rgba(34, 197, 94, 0.3)',
               letterSpacing: '-0.02em',
@@ -92,7 +92,7 @@ export default function NotFound() {
         {/* Heading */}
         <motion.h2
           variants={itemVariants}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight antialiased"
         >
           Page Not Found
         </motion.h2>
@@ -100,7 +100,7 @@ export default function NotFound() {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed"
+          className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed antialiased"
         >
           Something went wrong, or the page you're looking for doesn't exist.
           Let's get you back on track!
@@ -109,7 +109,7 @@ export default function NotFound() {
         {/* Additional Info */}
         <motion.p
           variants={itemVariants}
-          className="text-lg text-gray-400 mb-10 italic"
+          className="text-lg text-gray-400 mb-10 italic antialiased"
         >
           It seems our digital garden has a gap. Let's plant you back to the right place! 🌱
         </motion.p>
@@ -124,7 +124,7 @@ export default function NotFound() {
             <motion.button
               whileHover={{ scale: 1.05, backgroundColor: '#15803d' }}
               whileTap={{ scale: 0.95 }}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg shadow-lg hover:shadow-xl"
+              className="bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg shadow-lg hover:shadow-xl antialiased"
             >
               Back to Homepage
             </motion.button>
@@ -133,9 +133,9 @@ export default function NotFound() {
           {/* Shop Button */}
           <Link href="/shop">
             <motion.button
-              whileHover={{ scale: 1.05, borderColor: '#22c55e' }}
+              whileHover={{ scale: 1.05, borderColor: '#66BB6A' }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-gray-400 hover:border-green-500 text-gray-300 hover:text-green-400 font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg"
+              className="border-2 border-gray-400 hover:border-[#2E7D32] text-gray-300 hover:text-[#2E7D32] font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg antialiased"
             >
               Continue Shopping
             </motion.button>
@@ -153,19 +153,19 @@ export default function NotFound() {
           <div className="flex justify-center gap-6">
             <Link
               href="/contact"
-              className="text-green-500 hover:text-green-400 transition-colors duration-300 underline"
+              className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors duration-300 underline"
             >
               Contact Us
             </Link>
             <Link
               href="/help"
-              className="text-green-500 hover:text-green-400 transition-colors duration-300 underline"
+              className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors duration-300 underline"
             >
               Help Center
             </Link>
             <Link
               href="/faq"
-              className="text-green-500 hover:text-green-400 transition-colors duration-300 underline"
+              className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors duration-300 underline"
             >
               FAQ
             </Link>
@@ -178,7 +178,7 @@ export default function NotFound() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="w-full h-full border-2 border-green-500 rounded-full"
+          className="w-full h-full border-2 border-[#2E7D32] rounded-full"
         />
       </div>
 
@@ -186,7 +186,7 @@ export default function NotFound() {
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="w-full h-full border-2 border-green-400 rounded-lg"
+          className="w-full h-full border-2 border-[#2E7D32] rounded-lg"
         />
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function CartIcon({ className = "h-6 w-6", buttonClassName, showB
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="absolute -top-1 -right-1 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold shadow-lg min-w-[20px] h-5 flex items-center justify-center"
+          className="absolute -top-1 -right-1 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold shadow-lg min-w-[20px] h-5 flex items-center justify-center antialiased"
         >
           {totalItems > 99 ? '99+' : totalItems}
         </motion.span>

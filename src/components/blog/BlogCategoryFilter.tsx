@@ -63,12 +63,12 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
           onClick={() => onCategoryChange(null)}
           className={`p-4 rounded-lg border-2 font-bold transition-all text-center ${
             !selectedCategory
-              ? 'border-green-600 bg-green-50 text-green-900'
-              : 'border-black bg-white text-black hover:border-green-600'
+              ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]'
+              : 'border-black bg-white text-black hover:border-[#2E7D32]'
           }`}
         >
-          <p className="text-2xl mb-2">📚</p>
-          <p className="font-bold">All Posts</p>
+          <p className="text-2xl mb-2 antialiased">📚</p>
+          <p className="font-bold antialiased">All Posts</p>
           <p className="text-xs mt-1 opacity-75">
             {categoryStats.reduce((sum, cat) => sum + (cat.postCount || 0), 0)} posts
           </p>
@@ -86,12 +86,12 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
             onClick={() => onCategoryChange(category.slug)}
             className={`p-4 rounded-lg border-2 font-bold transition-all text-center ${
               selectedCategory === category.slug
-                ? 'border-green-600 bg-green-50 text-green-900'
-                : 'border-black bg-white text-black hover:border-green-600'
+                ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]'
+                : 'border-black bg-white text-black hover:border-[#2E7D32]'
             }`}
           >
-            <p className="text-2xl mb-2">{category.icon || '📝'}</p>
-            <p className="font-bold text-sm">{category.name}</p>
+            <p className="text-2xl mb-2 antialiased">{category.icon || '📝'}</p>
+            <p className="font-bold text-sm antialiased">{category.name}</p>
             <p className="text-xs mt-1 opacity-75">{category.postCount} posts</p>
           </motion.button>
         ))}
@@ -103,7 +103,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
     return (
       <div className="bg-white border-2 border-black rounded-lg overflow-hidden">
         <div className="bg-gradient-to-r from-green-50 to-white border-b-2 border-black px-4 py-3">
-          <h3 className="font-bold text-black">Categories</h3>
+          <h3 className="font-bold text-black antialiased">Categories</h3>
         </div>
 
         <div className="divide-y-2 divide-black">
@@ -113,7 +113,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
             onClick={() => onCategoryChange(null)}
             className={`w-full p-4 text-left font-bold transition-colors ${
               !selectedCategory
-                ? 'bg-green-50 text-green-900 border-l-4 border-green-600'
+                ? 'bg-[#2E7D32] text-[#2E7D32] border-l-4 border-[#2E7D32]'
                 : 'bg-white text-black hover:bg-gray-50'
             }`}
           >
@@ -133,7 +133,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
               onClick={() => onCategoryChange(category.slug)}
               className={`w-full p-4 text-left font-bold transition-colors ${
                 selectedCategory === category.slug
-                  ? 'bg-green-50 text-green-900 border-l-4 border-green-600'
+                  ? 'bg-[#2E7D32] text-[#2E7D32] border-l-4 border-[#2E7D32]'
                   : 'bg-white text-black hover:bg-gray-50'
               }`}
             >
@@ -167,8 +167,8 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
         onClick={() => onCategoryChange(null)}
         className={`px-4 py-2 rounded-full border-2 font-bold transition-all ${
           !selectedCategory
-            ? 'border-green-600 bg-green-600 text-white'
-            : 'border-black bg-white text-black hover:border-green-600'
+            ? 'border-[#2E7D32] bg-[#2E7D32] text-white'
+            : 'border-black bg-white text-black hover:border-[#2E7D32]'
         }`}
       >
         All
@@ -186,8 +186,8 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
           onClick={() => onCategoryChange(category.slug)}
           className={`px-4 py-2 rounded-full border-2 font-bold transition-all text-sm ${
             selectedCategory === category.slug
-              ? 'border-green-600 bg-green-600 text-white'
-              : 'border-black bg-white text-black hover:border-green-600'
+              ? 'border-[#2E7D32] bg-[#2E7D32] text-white'
+              : 'border-black bg-white text-black hover:border-[#2E7D32]'
           }`}
         >
           {category.name} ({category.postCount})

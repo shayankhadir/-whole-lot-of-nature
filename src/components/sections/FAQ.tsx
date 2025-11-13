@@ -57,10 +57,10 @@ export default function FAQ() {
   <section className="py-12 bg-primary-50/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 antialiased">
             Frequently Asked Questions
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto antialiased">
             Find answers to common questions about our plants, shipping, care instructions, and more.
           </p>
         </div>
@@ -76,13 +76,13 @@ export default function FAQ() {
                 className="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                  <h3 className="text-lg font-semibold text-gray-900 pr-4 antialiased">
                     {faq.question}
                   </h3>
                   {openIndex === index ? (
-                    <ChevronUp className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-[#2E7D32] flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-[#2E7D32] flex-shrink-0" />
                   )}
                 </div>
               </button>
@@ -100,12 +100,12 @@ export default function FAQ() {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-primary-900 mb-4 font-semibold text-lg">
+          <p className="text-primary-900 mb-4 font-semibold text-lg antialiased">
             Can't find what you're looking for?
           </p>
           <a
             href="mailto:support@wholelotofnature.com"
-            className="inline-flex items-center px-7 py-3 bg-white text-primary-700 font-bold rounded-xl border border-primary-200 hover:bg-primary-50 transition-colors text-lg"
+            className="inline-flex items-center px-7 py-3 bg-white text-primary-700 font-bold rounded-xl border border-primary-200 hover:bg-primary-50 transition-colors text-lg antialiased"
           >
             Contact Support
           </a>

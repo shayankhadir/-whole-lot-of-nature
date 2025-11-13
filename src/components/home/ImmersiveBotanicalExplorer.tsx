@@ -102,13 +102,13 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
           </h2>
           
           <div 
-            className="font-inter text-lg text-gray-100 mb-6 max-w-xl line-clamp-3"
+            className="font-inter text-lg text-gray-100 mb-6 max-w-xl line-clamp-3 antialiased"
             dangerouslySetInnerHTML={{ 
               __html: selectedPlant.short_description || selectedPlant.description 
             }}
           />
           
-          <span className="font-montserrat text-[clamp(2rem,4vw,2.625rem)] font-bold text-white mb-8">
+          <span className="font-montserrat text-[clamp(2rem,4vw,2.625rem)] font-bold text-white mb-8 antialiased">
             ${selectedPlant.price}
           </span>
           
@@ -119,7 +119,7 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
             </button>
             <a 
               href={`/shop/${selectedPlant.slug}`}
-              className="inline-flex items-center gap-3 px-10 py-4 bg-transparent text-white rounded-lg font-semibold border-2 border-white/30 hover:border-[#66BB6A] hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-transparent text-white rounded-lg font-semibold border-2 border-white/30 hover:border-[#66BB6A] hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
             >
               View Details
             </a>

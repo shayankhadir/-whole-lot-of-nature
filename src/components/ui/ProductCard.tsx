@@ -119,7 +119,7 @@ export const ProductCard = ({
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full"
+            className="absolute top-3 left-3 bg-[#2E7D32] text-white text-xs font-bold px-3 py-1 rounded-full antialiased"
           >
             {badge}
           </motion.div>
@@ -131,7 +131,7 @@ export const ProductCard = ({
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="absolute bottom-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full"
+            className="absolute bottom-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full antialiased"
           >
             -{discountPercentage}%
           </motion.div>
@@ -158,7 +158,7 @@ export const ProductCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5">
         {/* Name */}
-        <h3 className="font-bold text-base sm:text-lg mb-1.5 text-black line-clamp-2 group-hover:text-green-600 transition-colors duration-300">
+        <h3 className="font-bold text-base sm:text-lg mb-1.5 text-black line-clamp-2 group-hover:text-[#2E7D32] transition-colors duration-300 antialiased">
           {name}
         </h3>
 
@@ -172,11 +172,11 @@ export const ProductCard = ({
         {/* Price Section */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-green-600">
+            <span className="text-xl sm:text-2xl font-bold text-[#2E7D32] antialiased">
               ${price.toFixed(2)}
             </span>
             {originalPrice && originalPrice > price && (
-              <span className="text-sm sm:text-base text-gray-400 line-through">
+              <span className="text-sm sm:text-base text-gray-400 line-through antialiased">
                 ${originalPrice.toFixed(2)}
               </span>
             )}
@@ -188,7 +188,7 @@ export const ProductCard = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onAddToCart}
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+          className="w-full bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
         >
           <ShoppingCart size={18} />
           <span>Add to Cart</span>

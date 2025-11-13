@@ -40,7 +40,7 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-2xl font-bold text-black">📖 Loading Article...</p>
+        <p className="text-2xl font-bold text-black antialiased">📖 Loading Article...</p>
       </div>
     );
   }
@@ -49,8 +49,8 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-2xl font-bold text-black mb-4">Article Not Found</p>
-          <Link href="/blog" className="px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700">
+          <p className="text-2xl font-bold text-black mb-4 antialiased">Article Not Found</p>
+          <Link href="/blog" className="px-6 py-3 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#2E7D32]">
             Back to Blog
           </Link>
         </div>
@@ -69,13 +69,13 @@ export default function BlogPostPage() {
           >
             {/* Category Badge */}
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-bold">
+              <span className="inline-block px-3 py-1 bg-[#2E7D32] text-[#2E7D32] rounded-full text-sm font-bold antialiased">
                 Gardening Tips
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 antialiased">{post.title}</h1>
 
             {/* Meta Information */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-8 border-b-2 border-gray-200">
@@ -142,17 +142,17 @@ export default function BlogPostPage() {
               prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
               prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3
               prose-p:text-gray-700 prose-p:mb-4 prose-p:leading-relaxed
-              prose-a:text-green-600 prose-a:hover:text-green-700 prose-a:underline
+              prose-a:text-[#2E7D32] prose-a:hover:text-[#2E7D32] prose-a:underline
               prose-strong:font-bold prose-strong:text-black
               prose-em:italic prose-em:text-gray-700
-              prose-blockquote:border-l-4 prose-blockquote:border-green-600 prose-blockquote:pl-4 prose-blockquote:italic
+              prose-blockquote:border-l-4 prose-blockquote:border-[#2E7D32] prose-blockquote:pl-4 prose-blockquote:italic
               prose-ul:list-disc prose-ul:ml-6 prose-ul:text-gray-700
               prose-ol:list-decimal prose-ol:ml-6 prose-ol:text-gray-700
               prose-li:mb-2
               prose-img:rounded-lg prose-img:border-2 prose-img:border-black prose-img:my-6
               prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
               prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto
-            "
+             antialiased"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
@@ -196,7 +196,7 @@ export default function BlogPostPage() {
             </a>
             <button
               onClick={() => navigator.clipboard.writeText(window.location.href)}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+              className="px-4 py-2 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#2E7D32] transition"
             >
               📋 Copy Link
             </button>
@@ -230,14 +230,14 @@ export default function BlogPostPage() {
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="font-bold text-black mb-2 line-clamp-2">{relPost.title}</h3>
+                    <h3 className="font-bold text-black mb-2 line-clamp-2 antialiased">{relPost.title}</h3>
                     <p className="text-sm text-gray-600 mb-4">
                       {new Date(relPost.date).toLocaleDateString()}
                       {relPost.reading_time && ` • ${relPost.reading_time} min`}
                     </p>
                     <Link
                       href={`/blog/${relPost.slug}`}
-                      className="text-green-600 font-semibold hover:text-green-700 transition"
+                      className="text-[#2E7D32] font-semibold hover:text-[#2E7D32] transition"
                     >
                       Read More →
                     </Link>
@@ -250,7 +250,7 @@ export default function BlogPostPage() {
       )}
 
       {/* Newsletter CTA */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8 bg-green-50">
+      <div className="py-12 px-4 sm:px-6 lg:px-8 bg-[#2E7D32]">
         <CTASection
           title="Get More Gardening Tips"
           description="Subscribe to our newsletter for weekly gardening advice and exclusive seed collections"
@@ -271,10 +271,10 @@ export default function BlogPostPage() {
       <div className="py-8 px-4 sm:px-6 lg:px-8 border-t-2 border-gray-200">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between gap-4">
-            <Link href="/blog" className="text-green-600 font-semibold hover:text-green-700 flex items-center gap-2">
+            <Link href="/blog" className="text-[#2E7D32] font-semibold hover:text-[#2E7D32] flex items-center gap-2">
               ← Back to Blog
             </Link>
-            <Link href="/shop" className="text-green-600 font-semibold hover:text-green-700 flex items-center gap-2">
+            <Link href="/shop" className="text-[#2E7D32] font-semibold hover:text-[#2E7D32] flex items-center gap-2">
               Shop Seeds →
             </Link>
           </div>

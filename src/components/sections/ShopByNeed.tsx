@@ -28,13 +28,13 @@ export default function ShopByNeed() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-primary-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black">
+          <span className="inline-flex items-center rounded-full border border-primary-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black backdrop-blur-md">
             Shop by Need
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black">
+          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black antialiased">
             Find Plants That Fit Your Life
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black antialiased">
             Quick filters to jump straight to what you need.
           </p>
         </motion.div>

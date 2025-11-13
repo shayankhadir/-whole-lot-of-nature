@@ -66,7 +66,7 @@ export default function CartSidebar() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-blur-md" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -86,7 +86,7 @@ export default function CartSidebar() {
                     {/* Header */}
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                        <Dialog.Title className="text-lg font-medium text-gray-900 antialiased">
                           Shopping Cart ({totalItems})
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
@@ -148,7 +148,7 @@ export default function CartSidebar() {
 
                                     <div className="ml-4 flex flex-1 flex-col">
                                       <div>
-                                        <div className="flex justify-between text-base font-medium text-gray-900">
+                                        <div className="flex justify-between text-base font-medium text-gray-900 antialiased">
                                           <h3>
                                             <span className="line-clamp-2">{item.name}</span>
                                           </h3>
@@ -240,7 +240,7 @@ export default function CartSidebar() {
                             <span className="font-medium">{formatPrice(subtotal)}</span>
                           </div>
                           {discount > 0 && (
-                            <div className="flex justify-between text-green-600">
+                            <div className="flex justify-between text-[#2E7D32]">
                               <span>Discount</span>
                               <span>-{formatPrice(discount)}</span>
                             </div>
@@ -255,7 +255,7 @@ export default function CartSidebar() {
                             <span className="text-gray-600">Tax (GST 18%)</span>
                             <span className="font-medium">{formatPrice(tax)}</span>
                           </div>
-                          <div className="border-t pt-2 flex justify-between text-base font-medium">
+                          <div className="border-t pt-2 flex justify-between text-base font-medium antialiased">
                             <span>Total</span>
                             <span>{formatPrice(totalPrice)}</span>
                           </div>
@@ -266,7 +266,7 @@ export default function CartSidebar() {
                           <Link
                             href="/checkout"
                             onClick={closeCart}
-                            className="w-full flex justify-center items-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 transition-colors"
+                            className="w-full flex justify-center items-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 transition-colors antialiased"
                           >
                             Checkout
                           </Link>

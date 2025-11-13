@@ -28,9 +28,9 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="bg-gradient-to-r from-green-50 to-green-100 border-4 border-green-600 rounded-lg p-8 md:p-12"
+        className="bg-gradient-to-r from-green-50 to-green-100 border-4 border-[#2E7D32] rounded-lg p-8 md:p-12"
       >
-        <h2 className="text-3xl font-bold text-black mb-8 text-center">Why Trust Whole Lot of Nature</h2>
+        <h2 className="text-3xl font-bold text-black mb-8 text-center antialiased">Why Trust Whole Lot of Nature</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {signals.map((signal, idx) => (
             <motion.div
@@ -41,9 +41,9 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
               transition={{ delay: idx * 0.1 }}
               className="flex gap-4"
             >
-              <div className="text-4xl flex-shrink-0">{signal.icon}</div>
+              <div className="text-4xl flex-shrink-0 antialiased">{signal.icon}</div>
               <div>
-                <h3 className="text-lg font-bold text-black mb-2">{signal.title}</h3>
+                <h3 className="text-lg font-bold text-black mb-2 antialiased">{signal.title}</h3>
                 <p className="text-gray-700 mb-2">{signal.description}</p>
                 {signal.details && (
                   <ul className="space-y-1">
@@ -79,8 +79,8 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
             transition={{ delay: idx * 0.05 }}
             className="text-center"
           >
-            <div className="text-5xl mb-2">{signal.icon}</div>
-            <p className="font-bold text-black">{signal.title}</p>
+            <div className="text-5xl mb-2 antialiased">{signal.icon}</div>
+            <p className="font-bold text-black antialiased">{signal.title}</p>
             <p className="text-sm text-gray-600">{signal.description}</p>
           </motion.div>
         ))}
@@ -101,7 +101,7 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
           className="bg-white border-2 border-black rounded-lg p-4 text-center hover:shadow-lg transition-all"
         >
           <p className={`${compact ? 'text-3xl' : 'text-5xl'} mb-3`}>{signal.icon}</p>
-          <h3 className="font-bold text-black mb-2 text-sm md:text-base">{signal.title}</h3>
+          <h3 className="font-bold text-black mb-2 text-sm md:text-base antialiased">{signal.title}</h3>
           <p className="text-gray-700 text-xs md:text-sm">{signal.description}</p>
         </motion.div>
       ))}

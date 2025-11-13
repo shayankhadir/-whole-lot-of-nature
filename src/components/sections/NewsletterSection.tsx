@@ -13,10 +13,10 @@ export default function NewsletterSection() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center text-white"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif antialiased">
             Stay Connected with Nature
           </h2>
-          <p className="text-lg text-green-100 mb-8">
+          <p className="text-lg text-[#2E7D32] mb-8 antialiased">
             Join our community of plant lovers! Subscribe to receive gardening tips,
             exclusive offers, and sustainable living inspiration.
           </p>
@@ -31,12 +31,12 @@ export default function NewsletterSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="px-8 py-3 bg-green-500 text-white rounded-full font-semibold hover:bg-green-400 transition-colors duration-300"
+              className="px-8 py-3 bg-[#2E7D32] text-white rounded-full font-semibold hover:bg-[#2E7D32] transition-colors duration-300"
             >
               Subscribe
             </motion.button>
           </form>
-          <p className="mt-4 text-sm text-green-200 opacity-80">
+          <p className="mt-4 text-sm text-[#2E7D32] opacity-80">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </motion.div>

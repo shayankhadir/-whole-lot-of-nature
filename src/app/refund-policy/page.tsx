@@ -13,11 +13,11 @@ export default function RefundPolicyPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-3 rounded-full bg-white/80 px-4 py-2 border border-primary-100 text-primary-700">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/80 px-4 py-2 border border-primary-100 text-primary-700 backdrop-blur-md">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M12 3a9 9 0 1 1-6.364 2.636A9 9 0 0 1 12 3Zm.75 4.5a.75.75 0 0 0-1.5 0V12a.75.75 0 0 0 .375.649l3 1.714a.75.75 0 1 0 .75-1.298l-2.625-1.5V7.5Z"/></svg>
             <span className="text-sm font-semibold">Fair & Friendly Returns</span>
           </div>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900">Refund & Return Policy</h1>
+          <h1 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900 antialiased">Refund & Return Policy</h1>
           <p className="mt-4 text-gray-700 max-w-3xl mx-auto">Clear, customer-first policies for live plants and gardening supplies.</p>
         </div>
       </section>
@@ -35,8 +35,8 @@ export default function RefundPolicyPage() {
           </div>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Return Eligibility</h2>
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">For Live Plants:</h3>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">1. Return Eligibility</h2>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3 antialiased">For Live Plants:</h3>
             <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
               <li>Returns must be reported within 24 hours of delivery</li>
               <li>Plants must show clear signs of damage or disease upon delivery</li>
@@ -45,7 +45,7 @@ export default function RefundPolicyPage() {
               <li>Returns due to customer negligence or improper care will not be accepted</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">For Gardening Supplies & Accessories:</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3 antialiased">For Gardening Supplies & Accessories:</h3>
             <ul className="list-disc pl-6 text-gray-700 space-y-2">
               <li>Returns accepted within 7 days of delivery</li>
               <li>Items must be unused and in original packaging</li>
@@ -55,7 +55,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Non-Returnable Items</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">2. Non-Returnable Items</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               The following items cannot be returned:
             </p>
@@ -70,7 +70,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. How to Initiate a Return</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">3. How to Initiate a Return</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               To request a return:
             </p>
@@ -98,7 +98,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Refund Process</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">4. Refund Process</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               Once your return is received and inspected:
             </p>
@@ -112,7 +112,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Exchanges</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">5. Exchanges</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               We offer exchanges for:
             </p>
@@ -127,7 +127,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Damaged or Defective Items</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">6. Damaged or Defective Items</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               If you receive a damaged or defective item:
             </p>
@@ -140,7 +140,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Plant Health Guarantee</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">7. Plant Health Guarantee</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               We offer a 7-day health guarantee on all live plants:
             </p>
@@ -153,7 +153,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Return Shipping Costs</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">8. Return Shipping Costs</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               Shipping costs for returns:
             </p>
@@ -166,7 +166,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Cancellations</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">9. Cancellations</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               Order cancellations:
             </p>
@@ -179,7 +179,7 @@ export default function RefundPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Contact Us</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">10. Contact Us</h2>
             <p className="text-gray-700 leading-relaxed">
               If you have questions about our refund policy or need to initiate a return, please{' '}
               <Link href="/contact" className="text-primary-600 hover:text-primary-700 underline">
@@ -189,8 +189,8 @@ export default function RefundPolicyPage() {
             </p>
           </section>
 
-          <div className="mt-12 p-6 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Commitment</h3>
+          <div className="mt-12 p-6 bg-[#2E7D32] rounded-lg border border-[#2E7D32]">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3 antialiased">Our Commitment</h3>
             <p className="text-sm text-gray-700">
               We stand behind the quality of our products and want you to be 100% satisfied. If there's ever an issue with your order, we'll work with you to make it right. Your satisfaction is our priority!
             </p>

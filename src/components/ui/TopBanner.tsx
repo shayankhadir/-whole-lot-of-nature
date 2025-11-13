@@ -57,7 +57,7 @@ export default function TopBanner() {
 
       <button
         onClick={() => setIsVisible(false)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 hover:bg-white/10 rounded p-1 transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 hover:bg-white/10 rounded p-1 transition-colors backdrop-blur-md"
         aria-label="Close banner"
       >
         <X className="w-4 h-4" />

@@ -106,7 +106,7 @@ export default function EnhancedCategoryShowcase() {
   };
 
   const difficultyColors = {
-    Easy: 'bg-green-100 text-green-800',
+    Easy: 'bg-[#2E7D32] text-[#2E7D32]',
     Medium: 'bg-amber-100 text-amber-800',
     Hard: 'bg-red-100 text-red-800',
   };
@@ -115,8 +115,8 @@ export default function EnhancedCategoryShowcase() {
     <section className="relative py-20 bg-gradient-to-b from-white via-green-50/30 to-white overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-20" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-20" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#2E7D32] rounded-full blur-3xl opacity-20" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2E7D32] rounded-full blur-3xl opacity-20" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -128,10 +128,10 @@ export default function EnhancedCategoryShowcase() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4 antialiased">
             Explore Our Collections
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto antialiased">
             Discover plants tailored to your lifestyle, space, and expertise level.
             From beginner-friendly to expert selections.
           </p>
@@ -171,7 +171,7 @@ export default function EnhancedCategoryShowcase() {
                         {category.icon}
                       </motion.div>
 
-                      <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-green-700 transition-colors">
+                      <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-[#2E7D32] transition-colors antialiased">
                         {category.name}
                       </h3>
 
@@ -184,7 +184,7 @@ export default function EnhancedCategoryShowcase() {
                     <div className="space-y-4 pt-4 border-t border-gray-100">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Leaf className="w-4 h-4 text-green-600" />
+                          <Leaf className="w-4 h-4 text-[#2E7D32]" />
                           <span className="text-sm font-medium text-gray-700">
                             {category.plantCount} plants
                           </span>
@@ -200,7 +200,7 @@ export default function EnhancedCategoryShowcase() {
 
                       {/* CTA Arrow - animates on hover */}
                       <motion.div
-                        className="flex items-center gap-2 text-green-700 font-semibold text-sm group-hover:text-green-600 transition-colors"
+                        className="flex items-center gap-2 text-[#2E7D32] font-semibold text-sm group-hover:text-[#2E7D32] transition-colors"
                         initial={{ x: 0 }}
                         whileHover={{ x: 4 }}
                       >

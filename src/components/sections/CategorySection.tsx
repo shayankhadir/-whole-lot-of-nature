@@ -23,7 +23,7 @@ export default function CategorySection({
   title,
   description,
   products,
-  backgroundColor = 'bg-green-50',
+  backgroundColor = 'bg-[#2E7D32]',
   illustration,
 }: CategorySectionProps) {
   return (
@@ -37,10 +37,10 @@ export default function CategorySection({
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl antialiased">
             {title}
           </h2>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto antialiased">
             {description}
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ export default function CategorySection({
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">
+                <h3 className="mt-4 text-lg font-medium text-gray-900 antialiased">
                   {product.name}
                 </h3>
                 <p className="mt-1 text-sm font-medium text-gray-900">
@@ -88,7 +88,7 @@ export default function CategorySection({
         >
           <Link
             href={`/shop?category=${title.toLowerCase()}`}
-            className="inline-block rounded-md border border-transparent bg-green-600 px-8 py-3 text-center font-medium text-white hover:bg-green-700 transition-colors duration-300"
+            className="inline-block rounded-md border border-transparent bg-[#2E7D32] px-8 py-3 text-center font-medium text-white hover:bg-[#2E7D32] transition-colors duration-300"
           >
             View All {title}
           </Link>

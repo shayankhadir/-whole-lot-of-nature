@@ -84,20 +84,20 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 via-white to-green-50 border-b-4 border-green-600 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-green-50 via-white to-green-50 border-b-4 border-[#2E7D32] py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 antialiased">
               Meet Our Team 👥
             </h1>
-            <p className="text-xl md:text-2xl text-green-700 font-semibold mb-2">
+            <p className="text-xl md:text-2xl text-[#2E7D32] font-semibold mb-2 antialiased">
               Experts Dedicated to Organic Gardening
             </p>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto antialiased">
               Our passionate team of horticulturists, sustainability experts, and gardening enthusiasts
               work tirelessly to bring you the best organic seeds and gardening solutions.
             </p>
@@ -125,13 +125,13 @@ export default function TeamPage() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-green-50 border-y-4 border-green-600 py-16 md:py-24">
+      <section className="bg-[#2E7D32] border-y-4 border-[#2E7D32] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center antialiased"
           >
             What We Stand For
           </motion.h2>
@@ -171,8 +171,8 @@ export default function TeamPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="bg-white border-2 border-black rounded-lg p-6"
               >
-                <p className="text-4xl mb-3">{value.icon}</p>
-                <h3 className="text-xl font-bold text-black mb-2">{value.title}</h3>
+                <p className="text-4xl mb-3 antialiased">{value.icon}</p>
+                <h3 className="text-xl font-bold text-black mb-2 antialiased">{value.title}</h3>
                 <p className="text-gray-700">{value.description}</p>
               </motion.div>
             ))}
@@ -181,23 +181,23 @@ export default function TeamPage() {
       </section>
 
       {/* Careers CTA */}
-      <section className="bg-gradient-to-r from-green-600 to-green-700 border-t-4 border-green-900 py-16 md:py-20">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 border-t-4 border-[#2E7D32] py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 antialiased">
               Want to Join Our Mission?
             </h2>
-            <p className="text-xl text-green-100 mb-8">
+            <p className="text-xl text-[#2E7D32] mb-8 antialiased">
               We're always looking for passionate individuals who share our commitment to organic gardening
               and sustainability.
             </p>
             <a
               href="mailto:careers@wholelotofnature.com"
-              className="inline-block bg-white text-green-700 px-8 py-4 rounded font-bold text-lg hover:bg-green-50 transition-colors"
+              className="inline-block bg-white text-[#2E7D32] px-8 py-4 rounded font-bold text-lg hover:bg-[#2E7D32] transition-colors antialiased"
             >
               Explore Career Opportunities →
             </a>

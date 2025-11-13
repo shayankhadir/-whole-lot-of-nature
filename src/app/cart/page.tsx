@@ -61,8 +61,8 @@ export default function CartPage() {
               className="bg-white rounded-2xl shadow-lg p-12"
             >
               <ShoppingBagIcon className="mx-auto h-24 w-24 text-primary-600 mb-6" />
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">Your Cart is Empty</h1>
-              <p className="text-lg text-gray-600 mb-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-4 antialiased">Your Cart is Empty</h1>
+              <p className="text-lg text-gray-600 mb-8 antialiased">
                 Looks like you haven't added any plants to your cart yet. 
                 Start shopping to build your perfect plant collection!
               </p>
@@ -100,7 +100,7 @@ export default function CartPage() {
             <ArrowLeftIcon className="h-4 w-4" />
             <span>Continue Shopping</span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-gray-900 antialiased">
             Shopping Cart ({totalItems} item{totalItems !== 1 ? 's' : ''})
           </h1>
         </div>
@@ -110,7 +110,7 @@ export default function CartPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="p-6 border-b border-gray-200">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-gray-900">Cart Items</h2>
+                  <h2 className="text-xl font-semibold text-gray-900 antialiased">Cart Items</h2>
                   <button
                     onClick={clearCart}
                     className="text-primary-600 hover:text-primary-700 text-sm font-medium"
@@ -143,7 +143,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-medium text-gray-900 mb-1">
+                        <h3 className="text-lg font-medium text-gray-900 mb-1 antialiased">
                           {item.name}
                         </h3>
                         <p className="text-sm text-gray-500 mb-2 capitalize">
@@ -151,7 +151,7 @@ export default function CartPage() {
                         </p>
                         
                         <div className="flex items-center space-x-2 mb-4">
-                          <span className="text-lg font-bold text-gray-900">
+                          <span className="text-lg font-bold text-gray-900 antialiased">
                             {formatPrice(item.price)}
                           </span>
                           {item.originalPrice && item.originalPrice > item.price && (
@@ -205,7 +205,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex-shrink-0 text-right">
-                        <p className="text-lg font-bold text-gray-900">
+                        <p className="text-lg font-bold text-gray-900 antialiased">
                           {formatPrice(item.price * item.quantity)}
                         </p>
                       </div>
@@ -218,7 +218,7 @@ export default function CartPage() {
 
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Order Summary</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6 antialiased">Order Summary</h2>
 
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -250,7 +250,7 @@ export default function CartPage() {
                 </div>
                 
                 {discount > 0 && (
-                  <div className="flex justify-between text-green-600">
+                  <div className="flex justify-between text-[#2E7D32]">
                     <span>Discount</span>
                     <span>-{formatPrice(discount)}</span>
                   </div>
@@ -260,7 +260,7 @@ export default function CartPage() {
                   <span className="text-gray-600">Shipping</span>
                   <span className="font-medium">
                     {shipping > 0 ? formatPrice(shipping) : (
-                      <span className="text-green-600">Free</span>
+                      <span className="text-[#2E7D32]">Free</span>
                     )}
                   </span>
                 </div>
@@ -270,7 +270,7 @@ export default function CartPage() {
                   <span className="font-medium">{formatPrice(tax)}</span>
                 </div>
                 
-                <div className="border-t border-gray-200 pt-3 flex justify-between text-lg font-bold">
+                <div className="border-t border-gray-200 pt-3 flex justify-between text-lg font-bold antialiased">
                   <span>Total</span>
                   <span>{formatPrice(totalPrice)}</span>
                 </div>

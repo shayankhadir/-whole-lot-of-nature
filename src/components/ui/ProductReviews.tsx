@@ -56,7 +56,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
 
   return (
     <div>
-      <h3 className="text-lg font-medium text-gray-900">Customer Reviews</h3>
+      <h3 className="text-lg font-medium text-gray-900 antialiased">Customer Reviews</h3>
 
       {/* Review List */}
       <div className="mt-6 space-y-6">
@@ -77,7 +77,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
 
       {/* Review Form */}
       <div className="mt-10 border-t border-gray-200 pt-10">
-        <h3 className="text-lg font-medium text-gray-900">Write a review</h3>
+        <h3 className="text-lg font-medium text-gray-900 antialiased">Write a review</h3>
         <form onSubmit={handleSubmit} className="mt-6 space-y-6">
           <Input
             label="Name"
@@ -100,7 +100,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
             <select
               value={formData.rating}
               onChange={(e) => setFormData({ ...formData, rating: Number(e.target.value) })}
-              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm antialiased"
             >
               <option value="5">5 stars</option>
               <option value="4">4 stars</option>

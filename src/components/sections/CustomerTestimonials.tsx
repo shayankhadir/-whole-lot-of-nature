@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function CustomerTestimonials() {
   return (
-    <section className="py-12 bg-green-50">
+    <section className="py-12 bg-[#2E7D32]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,10 +45,10 @@ export default function CustomerTestimonials() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 antialiased">
             What Our Customers Say
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto antialiased">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
         </motion.div>
@@ -63,7 +63,7 @@ export default function CustomerTestimonials() {
               viewport={{ once: true }}
               className="bg-white rounded-lg shadow-sm p-5 relative border border-gray-100"
             >
-              <Quote className="absolute top-4 right-4 w-6 h-6 text-green-200" />
+              <Quote className="absolute top-4 right-4 w-6 h-6 text-[#2E7D32]" />
               
               {/* Rating */}
               <div className="flex items-center mb-4">
@@ -82,7 +82,7 @@ export default function CustomerTestimonials() {
 
               {/* Customer info */}
               <div className="flex items-center">
-                <div className="text-2xl mr-3">
+                <div className="text-2xl mr-3 antialiased">
                   {testimonial.image}
                 </div>
                 <div>

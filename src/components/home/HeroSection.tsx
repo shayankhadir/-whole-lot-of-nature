@@ -93,7 +93,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="font-montserrat text-[clamp(4rem,14vw,11.125rem)] font-bold uppercase text-white leading-[0.9] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)]"
+          className="font-montserrat text-[clamp(4rem,14vw,11.125rem)] font-bold uppercase text-white leading-[0.9] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)] antialiased"
           style={{ letterSpacing: '0.1em' }}
         >
           BRING THE
@@ -126,7 +126,7 @@ export default function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(46,125,50,0.6)' }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 px-10 py-5 bg-[#2E7D32] text-white font-montserrat font-bold text-lg uppercase tracking-widest forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300"
+                className="flex items-center justify-center gap-3 px-10 py-5 bg-[#2E7D32] text-white font-montserrat font-bold text-lg uppercase tracking-widest forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300 antialiased"
               >
                 Explore Shop
                 <ArrowRight className="w-6 h-6" />
@@ -137,7 +137,7 @@ export default function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 px-10 py-5 bg-white/10 text-white font-montserrat font-semibold text-lg uppercase tracking-widest forest-card-lg border-2 border-white/30 hover:bg-white/20 hover:border-[#66BB6A] transition-all duration-300"
+                className="flex items-center justify-center gap-3 px-10 py-5 bg-white/10 text-white font-montserrat font-semibold text-lg uppercase tracking-widest forest-card-lg border-2 border-white/30 hover:bg-white/20 hover:border-[#66BB6A] transition-all duration-300 antialiased backdrop-blur-md"
               >
                 Our Story
               </motion.button>

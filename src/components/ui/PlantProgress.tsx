@@ -73,7 +73,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
           <g opacity={leafOpacity}>
             <motion.path
               d={`M 50 ${240 - plantHeight * 0.3} Q 35 ${240 - plantHeight * 0.35} 30 ${240 - plantHeight * 0.25}`}
-              stroke="#22c55e"
+              stroke="#66BB6A"
               strokeWidth="2.5"
               fill="none"
               strokeLinecap="round"
@@ -86,7 +86,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
               cy={240 - plantHeight * 0.25}
               rx="5"
               ry="8"
-              fill="#22c55e"
+              fill="#66BB6A"
               initial={{ opacity: 0 }}
               animate={{ opacity: displayProgress > 25 ? leafOpacity : 0 }}
               transition={{ duration: 0.3 }}
@@ -97,7 +97,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
           <g opacity={leafOpacity}>
             <motion.path
               d={`M 50 ${240 - plantHeight * 0.5} Q 65 ${240 - plantHeight * 0.55} 70 ${240 - plantHeight * 0.45}`}
-              stroke="#22c55e"
+              stroke="#66BB6A"
               strokeWidth="2.5"
               fill="none"
               strokeLinecap="round"
@@ -110,7 +110,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
               cy={240 - plantHeight * 0.45}
               rx="5"
               ry="8"
-              fill="#22c55e"
+              fill="#66BB6A"
               initial={{ opacity: 0 }}
               animate={{ opacity: displayProgress > 45 ? leafOpacity : 0 }}
               transition={{ duration: 0.3 }}
@@ -121,7 +121,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
           <g opacity={Math.max(0, leafOpacity - 0.3)}>
             <motion.path
               d={`M 50 ${240 - plantHeight * 0.7} Q 40 ${240 - plantHeight * 0.75} 38 ${240 - plantHeight * 0.65}`}
-              stroke="#16a34a"
+              stroke="#2E7D32"
               strokeWidth="2"
               fill="none"
               strokeLinecap="round"
@@ -131,7 +131,7 @@ export default function PlantProgress({ progress, isLoading }: PlantProgressProp
             />
             <motion.path
               d={`M 50 ${240 - plantHeight * 0.75} Q 60 ${240 - plantHeight * 0.8} 62 ${240 - plantHeight * 0.7}`}
-              stroke="#16a34a"
+              stroke="#2E7D32"
               strokeWidth="2"
               fill="none"
               strokeLinecap="round"

@@ -35,11 +35,11 @@ export const CustomInput = ({
 }: CustomInputProps) => {
   const variantStyles = {
     default:
-      'bg-transparent border-b-2 border-gray-600 focus:border-green-600',
+      'bg-transparent border-b-2 border-gray-600 focus:border-[#2E7D32]',
     minimal:
-      'bg-gray-900/50 border border-gray-700 focus:border-green-600 rounded-lg px-4',
+      'bg-gray-900/50 border border-gray-700 focus:border-[#2E7D32] rounded-lg px-4',
     outlined:
-      'bg-transparent border-2 border-gray-700 focus:border-green-600 rounded-lg px-4',
+      'bg-transparent border-2 border-gray-700 focus:border-[#2E7D32] rounded-lg px-4',
   };
 
   return (
@@ -61,7 +61,7 @@ export const CustomInput = ({
       <div className="relative">
         {/* Icon (left) */}
         {icon && (
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600 pointer-events-none">
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32] pointer-events-none">
             {icon}
           </div>
         )}

@@ -14,7 +14,7 @@ export default function BlogTeaser() {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-semibold mb-6">Learn & Grow with Nature</h2>
+        <h2 className="text-2xl font-semibold mb-6 antialiased">Learn & Grow with Nature</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((p, i) => (
             <motion.div key={p.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="bg-gray-50 rounded-2xl overflow-hidden">
@@ -23,7 +23,7 @@ export default function BlogTeaser() {
                   <Image src={p.image} alt={p.title} fill className="object-cover" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-medium">{p.title}</h3>
+                  <h3 className="text-lg font-medium antialiased">{p.title}</h3>
                   <p className="mt-2 text-gray-600 text-sm">{p.excerpt}</p>
                 </div>
               </Link>

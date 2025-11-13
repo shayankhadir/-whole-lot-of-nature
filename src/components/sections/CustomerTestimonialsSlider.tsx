@@ -63,10 +63,10 @@ export default function CustomerTestimonialsSlider() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-[clamp(2rem,4vw,2.625rem)] font-montserrat font-bold text-white mb-2">
+          <h2 className="text-[clamp(2rem,4vw,2.625rem)] font-montserrat font-bold text-white mb-2 antialiased">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto antialiased">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
         </motion.div>
@@ -88,15 +88,15 @@ export default function CustomerTestimonialsSlider() {
                     <Star key={i} className="w-5 h-5 text-[#66BB6A] fill-current" />
                   ))}
                 </div>
-                <p className="text-white/80 mb-6 text-base leading-relaxed font-medium">
+                <p className="text-white/80 mb-6 text-base leading-relaxed font-medium antialiased">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center mt-auto">
-                  <div className="text-3xl mr-4">
+                  <div className="text-3xl mr-4 antialiased">
                     {testimonial.image}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white text-base font-montserrat">
+                    <h4 className="font-semibold text-white text-base font-montserrat antialiased">
                       {testimonial.name}
                     </h4>
                     <p className="text-white/60 text-xs">
@@ -122,7 +122,7 @@ export default function CustomerTestimonialsSlider() {
           </p>
           <a
             href="/shop"
-            className="inline-flex items-center px-7 py-3 bg-[#2E7D32] text-white font-semibold rounded-xl shadow-lg hover:bg-[#66BB6A] transition-colors text-lg"
+            className="inline-flex items-center px-7 py-3 bg-[#2E7D32] text-white font-semibold rounded-xl shadow-lg hover:bg-[#66BB6A] transition-colors text-lg antialiased"
           >
             Start Your Garden Journey
           </a>

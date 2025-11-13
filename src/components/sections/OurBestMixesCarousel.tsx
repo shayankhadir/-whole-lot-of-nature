@@ -82,7 +82,7 @@ export default function OurBestMixesCarousel() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black antialiased">
             Our Best Mixes
           </h2>
           <p className="mt-3 text-black">
@@ -114,11 +114,11 @@ export default function OurBestMixesCarousel() {
                     </div>
                   </Link>
                   <div className="mt-4">
-                    <Link href={`/shop/${p.slug}`} className="block text-base font-semibold text-black hover:text-primary-700">
+                    <Link href={`/shop/${p.slug}`} className="block text-base font-semibold text-black hover:text-primary-700 antialiased">
                       {p.name}
                     </Link>
                     <div className="mt-2 flex items-center gap-2">
-                      <span className="text-lg font-bold text-primary-900">₹{p.sale_price || p.price}</span>
+                      <span className="text-lg font-bold text-primary-900 antialiased">₹{p.sale_price || p.price}</span>
                       {p.sale_price && (
                         <span className="text-sm text-gray-500 line-through">₹{p.regular_price}</span>
                       )}

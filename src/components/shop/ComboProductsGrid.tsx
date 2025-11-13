@@ -107,7 +107,7 @@ export default function ComboProductsGrid({
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-gray-900 mb-4"
+          className="text-4xl font-bold text-gray-900 mb-4 antialiased"
         >
           {title}
         </motion.h2>
@@ -115,7 +115,7 @@ export default function ComboProductsGrid({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg text-gray-600 max-w-2xl mx-auto"
+          className="text-lg text-gray-600 max-w-2xl mx-auto antialiased"
         >
           {subtitle}
         </motion.p>
@@ -208,8 +208,8 @@ export default function ComboProductsGrid({
         </motion.div>
       ) : (
         <div className="text-center py-16">
-          <div className="text-6xl mb-4">🌱</div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No combos found</h3>
+          <div className="text-6xl mb-4 antialiased">🌱</div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2 antialiased">No combos found</h3>
           <p className="text-gray-600">Try adjusting your filters or check back later for new combo deals.</p>
         </div>
       )}

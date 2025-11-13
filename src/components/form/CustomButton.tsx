@@ -54,11 +54,11 @@ export const CustomButton = ({
   // Variant styles
   const variantStyles = {
     primary:
-      'bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl',
+      'bg-[#2E7D32] hover:bg-[#2E7D32] text-white border-0 shadow-lg hover:shadow-xl',
     secondary:
       'bg-gray-700 hover:bg-gray-600 text-white border-0 shadow-md hover:shadow-lg',
     outline:
-      'bg-transparent border-2 border-green-600 text-green-600 hover:bg-green-600/10',
+      'bg-transparent border-2 border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32]/10',
     ghost:
       'bg-transparent text-white hover:bg-white/10 border-0',
   };

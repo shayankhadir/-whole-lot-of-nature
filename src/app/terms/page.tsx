@@ -9,21 +9,21 @@ export default function TermsPage() {
   return (
     <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Terms & Conditions</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-8 antialiased">Terms & Conditions</h1>
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-600 mb-6">
             Last updated: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">1. Acceptance of Terms</h2>
             <p className="text-gray-700 leading-relaxed">
               By accessing and using Whole Lot of Nature's website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Product Information</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">2. Product Information</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               We strive to provide accurate product information, including descriptions, images, and pricing. However:
             </p>
@@ -36,7 +36,7 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Orders and Payment</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">3. Orders and Payment</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               When you place an order with us:
             </p>
@@ -50,7 +50,7 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Shipping and Delivery</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">4. Shipping and Delivery</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               Regarding shipping:
             </p>
@@ -64,7 +64,7 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Plant Care and Responsibility</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">5. Plant Care and Responsibility</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               As a customer purchasing live plants:
             </p>
@@ -77,14 +77,14 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Intellectual Property</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">6. Intellectual Property</h2>
             <p className="text-gray-700 leading-relaxed">
               All content on this website, including text, graphics, logos, images, and software, is the property of Whole Lot of Nature and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our explicit written permission.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. User Conduct</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">7. User Conduct</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               You agree not to:
             </p>
@@ -98,35 +98,35 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Limitation of Liability</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">8. Limitation of Liability</h2>
             <p className="text-gray-700 leading-relaxed">
               Whole Lot of Nature shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our products or services. Our total liability shall not exceed the amount paid by you for the product or service in question.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Privacy</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">9. Privacy</h2>
             <p className="text-gray-700 leading-relaxed">
               Your use of our website is also governed by our Privacy Policy. Please review our Privacy Policy to understand our practices regarding your personal information.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Changes to Terms</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">10. Changes to Terms</h2>
             <p className="text-gray-700 leading-relaxed">
               We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to the website. Your continued use of our services after changes constitutes acceptance of the modified terms.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">11. Governing Law</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">11. Governing Law</h2>
             <p className="text-gray-700 leading-relaxed">
               These terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in India.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">12. Contact Information</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 antialiased">12. Contact Information</h2>
             <p className="text-gray-700 leading-relaxed">
               If you have any questions about these Terms & Conditions, please contact us through our Contact Us page or reach out to our customer service team.
             </p>

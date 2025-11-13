@@ -12,7 +12,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 antialiased">Contact Us</h1>
           <p className="mt-4 text-gray-700 max-w-3xl mx-auto">We’re here to help. Reach out with questions about products, orders, or partnerships.</p>
         </div>
       </section>
@@ -22,15 +22,15 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">Email</h2>
+              <h2 className="text-lg font-semibold text-gray-900 antialiased">Email</h2>
               <p className="text-gray-700">store@wholelotofnature.com</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">Phone</h2>
+              <h2 className="text-lg font-semibold text-gray-900 antialiased">Phone</h2>
               <p className="text-gray-700">+91 12345 67890</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">Address</h2>
+              <h2 className="text-lg font-semibold text-gray-900 antialiased">Address</h2>
               <p className="text-gray-700">123 Nature Street, Greenville, GV 12345</p>
             </div>
             <div className="text-sm text-gray-500">

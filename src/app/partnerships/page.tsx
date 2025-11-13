@@ -47,20 +47,20 @@ export default function PartnershipsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 via-white to-green-50 border-b-4 border-green-600 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-green-50 via-white to-green-50 border-b-4 border-[#2E7D32] py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 antialiased">
               🤝 Partnerships & Collaboration
             </h1>
-            <p className="text-xl md:text-2xl text-green-700 font-semibold mb-2">
+            <p className="text-xl md:text-2xl text-[#2E7D32] font-semibold mb-2 antialiased">
               Growing Together for a Sustainable Future
             </p>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto antialiased">
               We believe in the power of collaboration. By partnering with farmers, organizations, and
               businesses aligned with our values, we're creating a stronger movement toward sustainable
               organic gardening across India.
@@ -76,7 +76,7 @@ export default function PartnershipsPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center antialiased"
           >
             Types of Partnerships
           </motion.h2>
@@ -140,15 +140,15 @@ export default function PartnershipsPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="bg-white border-2 border-black rounded-lg p-6"
               >
-                <div className="text-4xl mb-4">{partnership.icon}</div>
-                <h3 className="text-2xl font-bold text-black mb-3">{partnership.title}</h3>
+                <div className="text-4xl mb-4 antialiased">{partnership.icon}</div>
+                <h3 className="text-2xl font-bold text-black mb-3 antialiased">{partnership.title}</h3>
                 <p className="text-gray-700 mb-4">{partnership.description}</p>
                 <div>
-                  <p className="font-bold text-black mb-2">Key Benefits:</p>
+                  <p className="font-bold text-black mb-2 antialiased">Key Benefits:</p>
                   <ul className="space-y-1">
                     {partnership.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-green-600 mt-1">✓</span>
+                        <span className="text-[#2E7D32] mt-1">✓</span>
                         <span className="text-sm">{benefit}</span>
                       </li>
                     ))}
@@ -161,13 +161,13 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Our Partners Section */}
-      <section className="bg-green-50 border-y-4 border-green-600 py-16 md:py-24">
+      <section className="bg-[#2E7D32] border-y-4 border-[#2E7D32] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center antialiased"
           >
             Our Partnership Network
           </motion.h2>
@@ -183,11 +183,11 @@ export default function PartnershipsPage() {
                 className="bg-white border-2 border-black rounded-lg p-6"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-bold text-black">{partner.name}</h3>
+                  <h3 className="text-lg font-bold text-black antialiased">{partner.name}</h3>
                   <span
                     className={`text-xs px-3 py-1 rounded-full font-bold ${
                       partner.category === 'farm'
-                        ? 'bg-green-100 text-green-700'
+                        ? 'bg-[#2E7D32] text-[#2E7D32]'
                         : partner.category === 'corporate'
                           ? 'bg-blue-100 text-blue-700'
                           : partner.category === 'ngo'
@@ -200,7 +200,7 @@ export default function PartnershipsPage() {
                 </div>
                 <p className="text-gray-700 mb-3">{partner.description}</p>
                 {partner.impact && (
-                  <p className="text-green-700 font-bold">📊 {partner.impact}</p>
+                  <p className="text-[#2E7D32] font-bold antialiased">📊 {partner.impact}</p>
                 )}
               </motion.div>
             ))}
@@ -215,7 +215,7 @@ export default function PartnershipsPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center antialiased"
           >
             Partnership Success Stories
           </motion.h2>
@@ -247,11 +247,11 @@ export default function PartnershipsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-white border-2 border-green-600 rounded-lg p-6"
+                className="bg-white border-2 border-[#2E7D32] rounded-lg p-6"
               >
-                <h3 className="text-xl font-bold text-black mb-3">{story.title}</h3>
+                <h3 className="text-xl font-bold text-black mb-3 antialiased">{story.title}</h3>
                 <p className="text-gray-700 mb-4">{story.story}</p>
-                <p className="text-green-700 font-bold">✓ {story.metric}</p>
+                <p className="text-[#2E7D32] font-bold antialiased">✓ {story.metric}</p>
               </motion.div>
             ))}
           </div>
@@ -259,13 +259,13 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Partnership Benefits */}
-      <section className="bg-gradient-to-r from-green-50 to-green-100 border-y-4 border-green-600 py-16 md:py-24">
+      <section className="bg-gradient-to-r from-green-50 to-green-100 border-y-4 border-[#2E7D32] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold text-black mb-12 text-center antialiased"
           >
             Why Partner With Whole Lot of Nature?
           </motion.h2>
@@ -311,8 +311,8 @@ export default function PartnershipsPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="bg-white border-2 border-black rounded-lg p-6 text-center"
               >
-                <p className="text-4xl mb-3">{benefit.icon}</p>
-                <h3 className="text-lg font-bold text-black mb-2">{benefit.title}</h3>
+                <p className="text-4xl mb-3 antialiased">{benefit.icon}</p>
+                <h3 className="text-lg font-bold text-black mb-2 antialiased">{benefit.title}</h3>
                 <p className="text-gray-700 text-sm">{benefit.description}</p>
               </motion.div>
             ))}
@@ -321,29 +321,29 @@ export default function PartnershipsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-green-600 to-green-700 border-t-4 border-green-900 py-16 md:py-20">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 border-t-4 border-[#2E7D32] py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 antialiased">
               Ready to Collaborate?
             </h2>
-            <p className="text-xl text-green-100 mb-8">
+            <p className="text-xl text-[#2E7D32] mb-8 antialiased">
               Let's partner together to grow organic gardening and sustainability across India.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:partnerships@wholelotofnature.com"
-                className="inline-block bg-white text-green-700 px-8 py-4 rounded font-bold text-lg hover:bg-green-50 transition-colors"
+                className="inline-block bg-white text-[#2E7D32] px-8 py-4 rounded font-bold text-lg hover:bg-[#2E7D32] transition-colors antialiased"
               >
                 Become a Partner →
               </a>
               <a
                 href="/about"
-                className="inline-block bg-green-700 text-white px-8 py-4 rounded font-bold text-lg border-2 border-white hover:bg-green-800 transition-colors"
+                className="inline-block bg-[#2E7D32] text-white px-8 py-4 rounded font-bold text-lg border-2 border-white hover:bg-[#2E7D32] transition-colors antialiased"
               >
                 Learn More About Us
               </a>

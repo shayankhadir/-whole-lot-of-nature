@@ -7,7 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:smoke": "node scripts/smoke.mjs"
+    "test:smoke": "node scripts/smoke.mjs",
+    "scan": "tsx scripts/website-scanner.ts",
+    "scan:watch": "tsx watch scripts/website-scanner.ts",
+    "fix:all": "tsx scripts/auto-fix.ts all",
+    "fix:alt-text": "tsx scripts/auto-fix.ts alt-text",
+    "fix:colors": "tsx scripts/auto-fix.ts colors",
+    "fix:typography": "tsx scripts/auto-fix.ts typography",
+    "fix:glassmorphism": "tsx scripts/auto-fix.ts glassmorphism"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
@@ -44,6 +51,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }

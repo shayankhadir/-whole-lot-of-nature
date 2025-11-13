@@ -58,10 +58,10 @@ export default function Newsletter() {
               </div>
             </div>
             
-            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3">
+            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased">
               Join Our Garden Community
             </h2>
-            <p className="text-base text-white/70 mb-6 max-w-2xl mx-auto">
+            <p className="text-base text-white/70 mb-6 max-w-2xl mx-auto antialiased">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
               Plus, get 10% off your next order!
             </p>
@@ -115,7 +115,7 @@ export default function Newsletter() {
                   className="bg-[#2E7D32]/20 backdrop-blur-sm rounded-lg p-6 ring-1 ring-[#2E7D32]/30"
                 >
                   <CheckCircle className="w-12 h-12 text-[#66BB6A] mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
+                  <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
                   <p className="text-white/70">
                     You've successfully joined our garden community. Check your email for a welcome gift!
                   </p>

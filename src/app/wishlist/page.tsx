@@ -28,7 +28,7 @@ export default function WishlistPage() {
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Your Wishlist</h1>
+          <h1 className="text-3xl font-bold text-gray-900 antialiased">Your Wishlist</h1>
           {items.length > 0 && (
             <button
               onClick={clear}
@@ -41,7 +41,7 @@ export default function WishlistPage() {
 
         {items.length === 0 ? (
           <div className="text-center py-20 bg-primary-50 rounded-2xl border border-primary-200">
-            <p className="text-gray-900 text-xl mb-2">No items in wishlist</p>
+            <p className="text-gray-900 text-xl mb-2 antialiased">No items in wishlist</p>
             <p className="text-gray-600">Browse the shop and add your favorites</p>
             <Link href="/shop" className="inline-block mt-6">
               <Button>Go to Shop</Button>
@@ -58,7 +58,7 @@ export default function WishlistPage() {
                 </Link>
                 <div className="p-4">
                   <Link href={`/shop/${item.slug}`}>
-                    <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 hover:text-primary-600">{item.name}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 hover:text-primary-600 antialiased">{item.name}</h3>
                   </Link>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="text-primary-700 font-semibold">{formatPrice(item.price)}</span>

@@ -26,7 +26,7 @@ export default function ShippingIndicator({
         <div className="mt-2 w-full h-1.5 bg-primary-100 rounded-full overflow-hidden">
           <motion.div
             className={`h-full ${
-              isFreeShipping ? 'bg-green-500' : 'bg-primary-500'
+              isFreeShipping ? 'bg-[#2E7D32]' : 'bg-primary-500'
             }`}
             initial={{ width: '0%' }}
             animate={{ width: `${percentage}%` }}
@@ -56,7 +56,7 @@ export default function ShippingIndicator({
           </p>
         </div>
         {isFreeShipping && (
-          <div className="text-2xl">✅</div>
+          <div className="text-2xl antialiased">✅</div>
         )}
       </div>
 
@@ -101,9 +101,9 @@ export default function ShippingIndicator({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
-          className="mt-3 p-2 bg-white rounded-lg border border-green-200"
+          className="mt-3 p-2 bg-white rounded-lg border border-[#2E7D32]"
         >
-          <p className="text-xs text-green-700 font-medium">
+          <p className="text-xs text-[#2E7D32] font-medium">
             🌿 Enjoy your order with free delivery to your doorstep!
           </p>
         </motion.div>

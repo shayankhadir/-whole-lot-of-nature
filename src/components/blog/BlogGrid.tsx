@@ -107,7 +107,7 @@ const BlogGrid: React.FC<BlogGridProps> = ({
               placeholder="Search blog posts..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-black rounded focus:outline-none focus:border-green-600 bg-white text-black placeholder-gray-500"
+              className="w-full px-4 py-3 border-2 border-black rounded focus:outline-none focus:border-[#2E7D32] bg-white text-black placeholder-gray-500"
             />
           </div>
         </motion.div>
@@ -149,7 +149,7 @@ const BlogGrid: React.FC<BlogGridProps> = ({
           animate={{ opacity: 1, y: 0 }}
           className="text-center py-12 bg-white border-2 border-black rounded-lg"
         >
-          <p className="text-black text-xl font-bold mb-2">No posts found</p>
+          <p className="text-black text-xl font-bold mb-2 antialiased">No posts found</p>
           <p className="text-gray-700">
             {selectedCategory ? 'Try selecting a different category' : 'No blog posts available yet'}
           </p>

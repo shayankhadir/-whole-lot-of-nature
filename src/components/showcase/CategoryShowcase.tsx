@@ -63,7 +63,7 @@ export const CategoryShowcase = ({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold text-white mb-4"
+              className="text-4xl font-bold text-white mb-4 antialiased"
             >
               {title}
             </motion.h2>
@@ -74,7 +74,7 @@ export const CategoryShowcase = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-gray-400"
+              className="text-xl text-gray-400 antialiased"
             >
               {description}
             </motion.p>
@@ -132,11 +132,11 @@ const CategoryCard = ({ category, variants }: CategoryCardProps) => {
       <div className="absolute inset-0 flex flex-col justify-end p-6">
         {/* Icon */}
         {category.icon && (
-          <div className="text-4xl mb-2">{category.icon}</div>
+          <div className="text-4xl mb-2 antialiased">{category.icon}</div>
         )}
 
         {/* Name */}
-        <h3 className="text-2xl font-bold text-white mb-2">
+        <h3 className="text-2xl font-bold text-white mb-2 antialiased">
           {category.name}
         </h3>
 
@@ -149,7 +149,7 @@ const CategoryCard = ({ category, variants }: CategoryCardProps) => {
 
         {/* Count */}
         {category.count && (
-          <p className="text-green-400 text-sm font-semibold">
+          <p className="text-[#2E7D32] text-sm font-semibold">
             {category.count} items
           </p>
         )}
@@ -158,7 +158,7 @@ const CategoryCard = ({ category, variants }: CategoryCardProps) => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileHover={{ opacity: 1, y: 0 }}
-          className="mt-4 inline-flex items-center gap-2 text-green-400 font-semibold text-sm"
+          className="mt-4 inline-flex items-center gap-2 text-[#2E7D32] font-semibold text-sm"
         >
           Explore <span>→</span>
         </motion.div>

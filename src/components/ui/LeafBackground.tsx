@@ -35,7 +35,7 @@ export default function LeafBackground() {
           >
             <path
               d="M50 10 Q30 30 30 50 Q30 70 50 90 Q70 70 70 50 Q70 30 50 10 Z"
-              stroke="#047857"
+              stroke="#2E7D32"
               strokeWidth="1.5"
               fill="none"
               strokeLinecap="round"
@@ -43,25 +43,25 @@ export default function LeafBackground() {
             />
             <path
               d="M50 10 L50 90"
-              stroke="#047857"
+              stroke="#2E7D32"
               strokeWidth="1"
               strokeLinecap="round"
             />
             <path
               d="M50 30 Q60 40 65 45"
-              stroke="#047857"
+              stroke="#2E7D32"
               strokeWidth="0.8"
               strokeLinecap="round"
             />
             <path
               d="M50 50 Q60 58 65 62"
-              stroke="#047857"
+              stroke="#2E7D32"
               strokeWidth="0.8"
               strokeLinecap="round"
             />
             <path
               d="M50 70 Q60 76 65 80"
-              stroke="#047857"
+              stroke="#2E7D32"
               strokeWidth="0.8"
               strokeLinecap="round"
             />

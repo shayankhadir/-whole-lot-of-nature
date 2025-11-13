@@ -35,7 +35,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
       <div className="flex items-center border border-[#2E7D32]/30 rounded-lg overflow-hidden">
         <button
           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors"
+          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors backdrop-blur-md"
         >
           −
         </button>
@@ -44,7 +44,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
         </span>
         <button
           onClick={() => setQuantity(Math.min(product.stock_quantity || 99, quantity + 1))}
-          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors"
+          className="px-4 py-3 bg-[#2C2C2C] text-white hover:bg-[#2E7D32]/20 transition-colors backdrop-blur-md"
         >
           +
         </button>

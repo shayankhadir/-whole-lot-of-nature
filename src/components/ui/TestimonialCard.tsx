@@ -39,9 +39,9 @@ export const TestimonialCard = ({
   index = 0,
 }: TestimonialCardProps) => {
   const variantStyles = {
-    default: 'bg-white border-l-4 border-green-600',
-    minimal: 'bg-gray-50 border-l-4 border-green-500',
-    featured: 'bg-gradient-to-br from-green-50 to-white border-l-4 border-green-600',
+    default: 'bg-white border-l-4 border-[#2E7D32]',
+    minimal: 'bg-gray-50 border-l-4 border-[#2E7D32]',
+    featured: 'bg-gradient-to-br from-green-50 to-white border-l-4 border-[#2E7D32]',
   };
 
   const containerVariants = {
@@ -67,7 +67,7 @@ export const TestimonialCard = ({
       className={`p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${variantStyles[variant]} ${className}`}
     >
       {/* Quote Icon */}
-      <div className="text-6xl text-green-200 mb-4 select-none">
+      <div className="text-6xl text-[#2E7D32] mb-4 select-none antialiased">
         "
       </div>
 
@@ -93,7 +93,7 @@ export const TestimonialCard = ({
       </div>
 
       {/* Quote Text */}
-      <blockquote className="text-lg italic text-gray-700 mb-6 leading-relaxed">
+      <blockquote className="text-lg italic text-gray-700 mb-6 leading-relaxed antialiased">
         "{quote}"
       </blockquote>
 
@@ -119,7 +119,7 @@ export const TestimonialCard = ({
 
         {/* Author Info */}
         <div>
-          <p className="font-bold text-sm text-black">
+          <p className="font-bold text-sm text-black antialiased">
             {author}
           </p>
           {title && (
@@ -132,7 +132,7 @@ export const TestimonialCard = ({
 
       {/* Hover Effect Background */}
       <motion.div
-        className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"
+        className="absolute top-0 right-0 w-20 h-20 bg-[#2E7D32] rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"
         initial={{ opacity: 0, scale: 0 }}
         whileHover={{ opacity: 0.1, scale: 1 }}
       />

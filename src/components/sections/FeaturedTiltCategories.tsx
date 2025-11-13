@@ -65,13 +65,13 @@ export default function FeaturedTiltCategories() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-primary-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black">
+          <span className="inline-flex items-center rounded-full border border-primary-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black backdrop-blur-md">
             Featured Categories
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black">
+          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black antialiased">
             Shop by What You Need
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-black">
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-black antialiased">
             Six curated paths to start your green journey—each tile responds with a gentle tilt and glow.
           </p>
         </motion.div>
@@ -101,7 +101,7 @@ export default function FeaturedTiltCategories() {
 
                 <div className={`relative rounded-2xl bg-gradient-to-br ${cat.gradient} px-5 py-4 text-white transition-transform duration-300 group-hover:-translate-y-0.5`}> 
                   <div className="flex items-center justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/20">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/20 backdrop-blur-md">
                       <cat.icon className="h-5 w-5 text-black" />
                     </div>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-black">Signature</span>
@@ -109,7 +109,7 @@ export default function FeaturedTiltCategories() {
                 </div>
 
                 <div className="mt-5">
-                  <h3 className="text-2xl font-semibold text-black group-hover:text-primary-700 transition-colors">
+                  <h3 className="text-2xl font-semibold text-black group-hover:text-primary-700 transition-colors antialiased">
                     {cat.title}
                   </h3>
                   <p className="mt-2 text-sm text-black">{cat.description}</p>

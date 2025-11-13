@@ -72,20 +72,20 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-[#2E7D32] mb-6 font-header">
+          <h1 className="text-6xl md:text-8xl font-bold text-[#2E7D32] mb-6 font-header antialiased">
             BRING THE FOREST HOME
           </h1>
-          <p className="text-2xl text-[#66BB6A] mb-8 font-body">
+          <p className="text-2xl text-[#66BB6A] mb-8 font-body antialiased">
             Premium Plants & Sustainable Gardening
           </p>
-          <p className="text-lg text-white/70 mb-12 font-body">
+          <p className="text-lg text-white/70 mb-12 font-body antialiased">
             Discover organic soil mixes, rare plants, and eco-friendly essentials
           </p>
           
           {/* CTA Button */}
           <a
             href="/products"
-            className="inline-block bg-[#2E7D32] text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-[#66BB6A] transition-all duration-300 shadow-lg hover:shadow-[#2E7D32]/50"
+            className="inline-block bg-[#2E7D32] text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-[#66BB6A] transition-all duration-300 shadow-lg hover:shadow-[#2E7D32]/50 antialiased"
           >
             Explore Collection
           </a>

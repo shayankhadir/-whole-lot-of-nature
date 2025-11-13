@@ -38,13 +38,13 @@ const StatisticsCard: React.FC<StatisticsProps> = ({
   const cardClass = {
     row: 'flex-1 min-w-40 bg-white border-2 border-black rounded-lg p-4 text-center',
     grid: 'bg-white border-2 border-black rounded-lg p-6 text-center hover:shadow-xl transition-all',
-    large: 'bg-gradient-to-br from-white to-green-50 border-4 border-green-600 rounded-lg p-8 text-center',
+    large: 'bg-gradient-to-br from-white to-green-50 border-4 border-[#2E7D32] rounded-lg p-8 text-center',
   };
 
   const numberClass = {
-    row: 'text-3xl md:text-4xl font-bold text-green-600 mb-2',
-    grid: 'text-4xl md:text-5xl font-bold text-green-600 mb-3',
-    large: 'text-6xl md:text-7xl font-bold text-green-600 mb-4',
+    row: 'text-3xl md:text-4xl font-bold text-[#2E7D32] mb-2',
+    grid: 'text-4xl md:text-5xl font-bold text-[#2E7D32] mb-3',
+    large: 'text-6xl md:text-7xl font-bold text-[#2E7D32] mb-4',
   };
 
   const labelClass = {
@@ -77,15 +77,15 @@ const StatisticsCard: React.FC<StatisticsProps> = ({
     >
       {(title || subtitle) && (
         <div className="text-center mb-12">
-          {title && <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">{title}</h2>}
-          {subtitle && <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto">{subtitle}</p>}
+          {title && <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 antialiased">{title}</h2>}
+          {subtitle && <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto antialiased">{subtitle}</p>}
         </div>
       )}
 
       <motion.div variants={container} className={containerClass[variant]}>
         {statistics.map((stat, idx) => (
           <motion.div key={idx} variants={item} className={cardClass[variant]}>
-            <p className="text-3xl md:text-4xl mb-3">{stat.icon}</p>
+            <p className="text-3xl md:text-4xl mb-3 antialiased">{stat.icon}</p>
             <p className={numberClass[variant]}>{stat.number}</p>
             <p className={labelClass[variant]}>{stat.label}</p>
             {stat.description && (

@@ -17,7 +17,7 @@ export default function AccountPage() {
       >
         <div className="rounded-2xl bg-white shadow-xl ring-1 ring-black/5 p-8">
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold text-primary-900">Sign in</h1>
+            <h1 className="text-2xl font-bold text-primary-900 antialiased">Sign in</h1>
             <p className="mt-1 text-sm text-primary-900">Choose how you'd like to sign in</p>
           </div>
 

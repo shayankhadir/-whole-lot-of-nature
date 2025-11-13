@@ -76,9 +76,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   const borderClasses = {
     default: '',
-    featured: 'border-4 border-green-600',
-    centered: 'border-b-4 border-green-600 pb-4',
-    hero: 'border-l-8 border-green-600 pl-6',
+    featured: 'border-4 border-[#2E7D32]',
+    centered: 'border-b-4 border-[#2E7D32] pb-4',
+    hero: 'border-l-8 border-[#2E7D32] pl-6',
   };
 
   return (
@@ -96,7 +96,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl"
+          className="text-4xl md:text-5xl antialiased"
         >
           {icon}
         </motion.div>

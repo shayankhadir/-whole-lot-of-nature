@@ -22,7 +22,7 @@ export default function PromoBanners() {
                   <Image src={promo.image} alt={promo.title} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h3 className="text-xl font-semibold">{promo.title}</h3>
+                    <h3 className="text-xl font-semibold antialiased">{promo.title}</h3>
                   </div>
                 </div>
               </Link>

@@ -192,7 +192,7 @@ export default function Header() {
                                   <collection.icon className="h-7 w-7 text-primary-700" aria-hidden="true" strokeWidth={1.75} />
                                 </div>
                                 <div>
-                                  <h3 className="text-lg font-semibold text-black group-hover:text-primary-700 transition-colors">
+                                  <h3 className="text-lg font-semibold text-black group-hover:text-primary-700 transition-colors antialiased">
                                     {collection.title}
                                   </h3>
                                   <p className="mt-2 text-sm text-black">{collection.description}</p>
@@ -214,7 +214,7 @@ export default function Header() {
                         </div>
                         <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-gray-200 bg-white p-4 text-sm text-gray-600 shadow-sm">
                           <span>Looking for bundles or limited editions?</span>
-                          <Link href="/shop?tag=gift-bundles" className="font-medium text-green-700 hover:text-green-800">
+                          <Link href="/shop?tag=gift-bundles" className="font-medium text-[#2E7D32] hover:text-[#2E7D32]">
                             Explore curated sets →
                           </Link>
                         </div>
@@ -316,7 +316,7 @@ export default function Header() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-xl font-bold text-green-600">Whole Lot of Nature</span>
+              <span className="text-xl font-bold text-[#2E7D32] antialiased">Whole Lot of Nature</span>
             </Link>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-primary-600" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">Close menu</span>
@@ -329,7 +329,7 @@ export default function Header() {
                 {navigation.map((item) =>
                   item.dropdown ? (
                     <div key={item.name}>
-                      <span className="block px-3 py-2 text-base font-semibold text-gray-900">{item.name}</span>
+                      <span className="block px-3 py-2 text-base font-semibold text-gray-900 antialiased">{item.name}</span>
                       <div className="space-y-4 pl-3">
                         {Array.isArray(item.dropdown) &&
                           item.dropdown.map((collection) => (
@@ -343,7 +343,7 @@ export default function Header() {
                               </Link>
                               <div className="mt-2 flex flex-wrap gap-2">
                                 {collection.items.map((sub) => (
-                                  <Link key={sub.name} href={sub.href} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-600 hover:border-green-300 hover:text-green-700">
+                                  <Link key={sub.name} href={sub.href} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-600 hover:border-[#2E7D32] hover:text-[#2E7D32]">
                                     {sub.name}
                                   </Link>
                                 ))}
@@ -353,7 +353,7 @@ export default function Header() {
                       </div>
                     </div>
                   ) : (
-                    <Link key={item.name} href={item.href} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                    <Link key={item.name} href={item.href} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 antialiased">
                       {item.name}
                     </Link>
                   )

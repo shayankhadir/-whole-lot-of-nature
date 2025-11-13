@@ -49,10 +49,10 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#1A1A1A] py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-bold text-[#2E7D32] mb-4 font-header">
+          <h1 className="text-5xl md:text-7xl font-bold text-[#2E7D32] mb-4 font-header antialiased">
             Our Collection
           </h1>
-          <p className="text-xl text-[#66BB6A] font-body">
+          <p className="text-xl text-[#66BB6A] font-body antialiased">
             Premium plants and sustainable essentials
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function ShopPage() {
 
         {!loading && filteredProducts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-2xl text-white/50">No products found</p>
+            <p className="text-2xl text-white/50 antialiased">No products found</p>
           </div>
         )}
       </div>

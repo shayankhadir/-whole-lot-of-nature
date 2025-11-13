@@ -94,7 +94,7 @@ export default function ProductPage() {
                 {product.images.slice(0, 4).map((img, idx) => (
                   <div
                     key={idx}
-                    className="aspect-square relative rounded-lg overflow-hidden bg-white/5 border border-[#2E7D32]/20 cursor-pointer hover:border-[#2E7D32] transition-all"
+                    className="aspect-square relative rounded-lg overflow-hidden bg-white/5 border border-[#2E7D32]/20 cursor-pointer hover:border-[#2E7D32] transition-all backdrop-blur-md"
                   >
                     <Image
                       src={img.src}
@@ -118,7 +118,7 @@ export default function ProductPage() {
             </div>
 
             {/* Product Name - Golden Ratio H2 (68px clamped) */}
-            <h1 className="text-[clamp(2.5rem,5vw,4.25rem)] leading-tight font-montserrat font-bold text-white">
+            <h1 className="text-[clamp(2.5rem,5vw,4.25rem)] leading-tight font-montserrat font-bold text-white antialiased">
               {product.name}
             </h1>
 
@@ -128,7 +128,7 @@ export default function ProductPage() {
                 {product.categories.map(cat => (
                   <span
                     key={cat.id}
-                    className="px-3 py-1 text-xs font-semibold rounded-full bg-[#2E7D32]/20 text-[#66BB6A] border border-[#2E7D32]/30"
+                    className="px-3 py-1 text-xs font-semibold rounded-full bg-[#2E7D32]/20 text-[#66BB6A] border border-[#2E7D32]/30 backdrop-blur-md"
                   >
                     {cat.name}
                   </span>
@@ -138,7 +138,7 @@ export default function ProductPage() {
 
             {/* Price - Golden Ratio H3 (110px clamped) */}
             <div className="flex items-baseline gap-4">
-              <span className="text-[clamp(2.625rem,6vw,6.875rem)] font-bold text-[#2E7D32]">
+              <span className="text-[clamp(2.625rem,6vw,6.875rem)] font-bold text-[#2E7D32] antialiased">
                 ${product.price}
               </span>
               {product.sale_price && product.regular_price !== product.price && (
@@ -169,7 +169,7 @@ export default function ProductPage() {
             {/* Short Description */}
             {product.short_description && (
               <div
-                className="text-base leading-relaxed text-white/70 prose prose-invert max-w-none"
+                className="text-base leading-relaxed text-white/70 prose prose-invert max-w-none antialiased"
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               />
             )}

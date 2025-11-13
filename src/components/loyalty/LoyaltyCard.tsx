@@ -44,17 +44,17 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">{tierEmoji}</span>
+            <span className="text-3xl antialiased">{tierEmoji}</span>
             <div>
               <p className="text-sm text-black font-medium capitalize">{currentTier} Member</p>
-              <p className="text-2xl font-bold text-green-600">{pointsBalance.toLocaleString()} pts</p>
+              <p className="text-2xl font-bold text-[#2E7D32] antialiased">{pointsBalance.toLocaleString()} pts</p>
             </div>
           </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onRedeemClick}
-            className="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700 transition-colors"
+            className="bg-[#2E7D32] text-white px-4 py-2 rounded font-medium hover:bg-[#2E7D32] transition-colors"
           >
             Redeem
           </motion.button>
@@ -72,7 +72,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
       {/* Header with tier badge */}
       <div className="bg-gradient-to-r from-green-50 to-white border-b-2 border-black p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-black">Your Loyalty</h2>
+          <h2 className="text-2xl font-bold text-black antialiased">Your Loyalty</h2>
           <TierBadge tier={currentTier} size="lg" />
         </div>
         <p className="text-black text-sm">{tierBenefits.exclusivePerks[0]}</p>
@@ -86,7 +86,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
             key={pointsBalance}
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
-            className="text-5xl font-bold text-green-600"
+            className="text-5xl font-bold text-[#2E7D32] antialiased"
           >
             {pointsBalance.toLocaleString()}
           </motion.p>
@@ -98,7 +98,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
       <div className="p-6 border-b-2 border-black">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-black text-sm font-medium">PROGRESS TO NEXT TIER</p>
-          <p className="text-black text-sm font-bold">{tierProgress}%</p>
+          <p className="text-black text-sm font-bold antialiased">{tierProgress}%</p>
         </div>
 
         {/* Progress bar */}
@@ -107,7 +107,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
             initial={{ width: 0 }}
             animate={{ width: `${tierProgress}%` }}
             transition={{ duration: 0.5 }}
-            className="h-full bg-green-600 rounded-full"
+            className="h-full bg-[#2E7D32] rounded-full"
           />
         </div>
 
@@ -117,12 +117,12 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
           </p>
         )}
 
-        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold">🎉 You're at max tier!</p>}
+        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold antialiased">🎉 You're at max tier!</p>}
       </div>
 
       {/* Benefits */}
       <div className="p-6 border-b-2 border-black">
-        <p className="text-black font-bold text-sm mb-3">MEMBER BENEFITS</p>
+        <p className="text-black font-bold text-sm mb-3 antialiased">MEMBER BENEFITS</p>
         <div className="space-y-2">
           {tierBenefits.exclusivePerks.slice(0, 3).map((perk, idx) => (
             <motion.div
@@ -132,7 +132,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
               transition={{ delay: idx * 0.1 }}
               className="flex items-start gap-2"
             >
-              <span className="text-green-600 mt-1">✓</span>
+              <span className="text-[#2E7D32] mt-1">✓</span>
               <p className="text-black text-sm">{perk}</p>
             </motion.div>
           ))}
@@ -145,7 +145,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onRedeemClick}
-          className="flex-1 bg-green-600 text-white font-bold py-3 rounded border-2 border-green-600 hover:bg-green-700 transition-colors"
+          className="flex-1 bg-[#2E7D32] text-white font-bold py-3 rounded border-2 border-[#2E7D32] hover:bg-[#2E7D32] transition-colors antialiased"
         >
           Redeem Points
         </motion.button>
@@ -153,7 +153,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onHistoryClick}
-          className="flex-1 bg-white text-black font-bold py-3 rounded border-2 border-black hover:bg-gray-100 transition-colors"
+          className="flex-1 bg-white text-black font-bold py-3 rounded border-2 border-black hover:bg-gray-100 transition-colors antialiased"
         >
           View History
         </motion.button>

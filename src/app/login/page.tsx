@@ -131,10 +131,10 @@ export default function CustomLoginPage() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="mb-10">
-            <h1 className="text-5xl font-bold text-white mb-3">
+            <h1 className="text-5xl font-bold text-white mb-3 antialiased">
               Welcome Back
             </h1>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-400 text-lg antialiased">
               Sign in to access your account and continue your gardening journey
             </p>
           </motion.div>
@@ -144,7 +144,7 @@ export default function CustomLoginPage() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-6 p-4 bg-green-600/20 border border-green-600 rounded-lg text-green-400"
+              className="mb-6 p-4 bg-[#2E7D32]/20 border border-[#2E7D32] rounded-lg text-[#2E7D32] backdrop-blur-md"
             >
               {successMessage}
             </motion.div>
@@ -169,14 +169,14 @@ export default function CustomLoginPage() {
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <Mail className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
               </div>
               {errors.email && (
@@ -190,19 +190,19 @@ export default function CustomLoginPage() {
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600" />
+                <Lock className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#2E7D32]" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-green-600 focus:outline-none"
+                  className="w-full h-14 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 pl-8 pr-12 transition-all duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-600 transition-colors"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#2E7D32] transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -226,7 +226,7 @@ export default function CustomLoginPage() {
               </label>
               <Link
                 href="/forgot-password"
-                className="text-sm text-green-600 hover:text-green-500 transition-colors font-semibold"
+                className="text-sm text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold"
               >
                 Forgot password?
               </Link>
@@ -239,7 +239,7 @@ export default function CustomLoginPage() {
               whileTap={{ scale: 0.98 }}
               disabled={isLoading}
               type="submit"
-              className="w-full h-14 bg-green-600 hover:bg-green-700 disabled:bg-green-800 text-white font-bold rounded-full transition-all duration-300 mt-8 text-lg shadow-lg hover:shadow-xl"
+              className="w-full h-14 bg-[#2E7D32] hover:bg-[#2E7D32] disabled:bg-[#2E7D32] text-white font-bold rounded-full transition-all duration-300 mt-8 text-lg shadow-lg hover:shadow-xl antialiased"
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </motion.button>
@@ -261,7 +261,7 @@ export default function CustomLoginPage() {
           {/* Signup Link */}
           <motion.p variants={itemVariants} className="text-center text-gray-400 mt-8">
             Don't have an account?{' '}
-            <Link href="/signup" className="text-green-600 hover:text-green-500 transition-colors font-semibold">
+            <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign up here
             </Link>
           </motion.p>
@@ -292,12 +292,12 @@ export default function CustomLoginPage() {
         <motion.div
           animate={{ float: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
-          className="absolute top-20 right-10 w-40 h-40 bg-green-600/10 rounded-full blur-3xl"
+          className="absolute top-20 right-10 w-40 h-40 bg-[#2E7D32]/10 rounded-full blur-3xl backdrop-blur-md"
         />
         <motion.div
           animate={{ float: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-          className="absolute bottom-40 left-10 w-60 h-60 bg-green-600/5 rounded-full blur-3xl"
+          className="absolute bottom-40 left-10 w-60 h-60 bg-[#2E7D32]/5 rounded-full blur-3xl backdrop-blur-md"
         />
 
         {/* Content */}
@@ -307,10 +307,10 @@ export default function CustomLoginPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-5xl font-bold text-white mb-6 leading-tight antialiased">
               Welcome Home
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed antialiased">
               Continue your gardening adventure with access to exclusive seeds, gardening tips, and your personalized dashboard
             </p>
 
@@ -323,9 +323,9 @@ export default function CustomLoginPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-lg text-gray-200"
+                    className="flex items-center gap-3 text-lg text-gray-200 antialiased"
                   >
-                    <span className="text-2xl">{benefit.split(' ')[0]}</span>
+                    <span className="text-2xl antialiased">{benefit.split(' ')[0]}</span>
                     {benefit.substring(2)}
                   </motion.div>
                 )
@@ -355,9 +355,9 @@ const SocialLoginButton = ({ provider }: SocialLoginButtonProps) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       type="button"
-      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 hover:border-green-600 rounded-full flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300"
+      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 hover:border-[#2E7D32] rounded-full flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300 backdrop-blur-md"
     >
-      <span className="text-lg">{icon}</span>
+      <span className="text-lg antialiased">{icon}</span>
       {label}
     </motion.button>
   );

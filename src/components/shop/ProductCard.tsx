@@ -133,7 +133,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <div className="bg-[#C4B17C] text-[#1A1A1A] px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg">
+              <div className="bg-[#C4B17C] text-[#1A1A1A] px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
                 {getDiscountPercentage(product)}% OFF
               </div>
             </motion.div>
@@ -160,7 +160,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Price - Emerald H6 (26px clamped) */}
           <div className="mb-4">
             <div className="flex items-baseline gap-3">
-              <span className="font-montserrat text-[clamp(1.5rem,3vw,1.625rem)] text-[#2E7D32] font-bold leading-none">
+              <span className="font-montserrat text-[clamp(1.5rem,3vw,1.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (

@@ -26,7 +26,7 @@ export default function FinalCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-black"
+            className="text-4xl md:text-5xl font-serif font-bold text-black antialiased"
           >
             Grow Something Beautiful Today
           </motion.h2>
@@ -35,7 +35,7 @@ export default function FinalCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-lg text-black/80 max-w-2xl mx-auto"
+            className="mt-4 text-lg text-black/80 max-w-2xl mx-auto antialiased"
           >
             Explore our premium soil mixes, plants, and eco-friendly care essentials. 100% organic, sustainably sourced.
           </motion.p>
@@ -49,7 +49,7 @@ export default function FinalCTA() {
             <Link href="/shop" className="inline-flex items-center px-8 py-3 rounded-xl bg-[#1a4d2e] text-white font-semibold hover:bg-[#0f3620] shadow-lg transition-all hover:shadow-xl">
               Shop All Products
             </Link>
-            <Link href="/about" className="inline-flex items-center px-8 py-3 rounded-xl bg-white text-black font-semibold border-2 border-[#1a4d2e] hover:bg-green-50 shadow-lg transition-all hover:shadow-xl">
+            <Link href="/about" className="inline-flex items-center px-8 py-3 rounded-xl bg-white text-black font-semibold border-2 border-[#1a4d2e] hover:bg-[#2E7D32] shadow-lg transition-all hover:shadow-xl">
               Our Story
             </Link>
           </motion.div>

@@ -21,10 +21,10 @@ export default function BundlesShowcase() {
           <span className="inline-flex items-center rounded-full border border-primary-200 bg-primary-50/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black">
             Bundles
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black">
+          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black antialiased">
             Curated Combos To Save More
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black antialiased">
             Handpicked sets that pair perfectly—and cost less than buying separately.
           </p>
         </motion.div>

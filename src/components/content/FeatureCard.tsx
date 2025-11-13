@@ -45,7 +45,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
     : 'border-0';
 
   const highlightClass = highlighted
-    ? 'bg-green-50 border-4 border-green-600 shadow-lg'
+    ? 'bg-[#2E7D32] border-4 border-[#2E7D32] shadow-lg'
     : 'bg-white hover:shadow-lg transition-shadow';
 
   const cardClasses = `${cardBaseClass} ${highlightClass} rounded-lg p-${compact ? '4' : '6'} text-left`;
@@ -77,9 +77,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         {features.map((feature, idx) => (
           <motion.div key={idx} variants={item} className={cardClasses}>
             <div className="flex gap-4">
-              <span className="text-3xl md:text-4xl flex-shrink-0">{feature.icon}</span>
+              <span className="text-3xl md:text-4xl flex-shrink-0 antialiased">{feature.icon}</span>
               <div className="flex-grow">
-                <h3 className="font-bold text-black text-lg mb-2">{feature.title}</h3>
+                <h3 className="font-bold text-black text-lg mb-2 antialiased">{feature.title}</h3>
                 <p className="text-gray-700 mb-3">{feature.description}</p>
                 {feature.details && (
                   <ul className="space-y-1">
@@ -110,8 +110,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         {features.map((feature, idx) => (
           <motion.div key={idx} variants={item} className={`${cardClasses} flex-1 min-w-60 md:min-w-80`}>
             <div className="text-center">
-              <p className="text-4xl mb-3">{feature.icon}</p>
-              <h3 className="font-bold text-black mb-2">{feature.title}</h3>
+              <p className="text-4xl mb-3 antialiased">{feature.icon}</p>
+              <h3 className="font-bold text-black mb-2 antialiased">{feature.title}</h3>
               <p className="text-sm text-gray-700">{feature.description}</p>
             </div>
           </motion.div>

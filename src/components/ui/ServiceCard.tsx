@@ -40,19 +40,19 @@ export const ServiceCard = ({
 }: ServiceCardProps) => {
   const variantStyles = {
     default: {
-      border: 'border-2 border-gray-300 hover:border-green-500',
+      border: 'border-2 border-gray-300 hover:border-[#2E7D32]',
       background: 'bg-white',
-      icon: 'bg-green-100 group-hover:bg-green-200',
+      icon: 'bg-[#2E7D32] group-hover:bg-[#2E7D32]',
     },
     filled: {
       border: 'border-0',
-      background: 'bg-green-50 hover:bg-green-100',
-      icon: 'bg-green-600',
+      background: 'bg-[#2E7D32] hover:bg-[#2E7D32]',
+      icon: 'bg-[#2E7D32]',
     },
     outlined: {
-      border: 'border-2 border-green-300 hover:border-green-600',
+      border: 'border-2 border-[#2E7D32] hover:border-[#2E7D32]',
       background: 'bg-transparent',
-      icon: 'bg-green-100 group-hover:bg-green-200',
+      icon: 'bg-[#2E7D32] group-hover:bg-[#2E7D32]',
     },
   };
 
@@ -92,13 +92,13 @@ export const ServiceCard = ({
         variants={iconVariants}
         className={`w-16 h-16 ${styles.icon} rounded-lg flex items-center justify-center mb-6 transition-colors duration-300`}
       >
-        <div className="text-green-600 group-hover:text-green-700 transition-colors duration-300 text-2xl">
+        <div className="text-[#2E7D32] group-hover:text-[#2E7D32] transition-colors duration-300 text-2xl antialiased">
           {icon}
         </div>
       </motion.div>
 
       {/* Title */}
-      <h3 className="text-xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors duration-300">
+      <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#2E7D32] transition-colors duration-300 antialiased">
         {title}
       </h3>
 
@@ -116,7 +116,7 @@ export const ServiceCard = ({
         >
           <Link
             href={learnMoreLink}
-            className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-[#2E7D32] font-semibold hover:text-[#2E7D32] transition-colors duration-300"
           >
             {learnMoreLabel}
             <motion.span
@@ -131,7 +131,7 @@ export const ServiceCard = ({
       )}
 
       {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-24 h-24 bg-green-100 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10" />
+      <div className="absolute top-0 right-0 w-24 h-24 bg-[#2E7D32] rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10" />
     </motion.div>
   );
 };

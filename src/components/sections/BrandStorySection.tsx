@@ -22,7 +22,7 @@ export default function BrandStorySection() {
       {/* Floating leaves */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-8 top-10 text-green-700/15"
+        className="pointer-events-none absolute -left-8 top-10 text-[#2E7D32]/15"
         animate={{ y: [0, -10, 0], rotate: [0, -5, 0] }}
         transition={{ repeat: Infinity, duration: 10 }}
       >
@@ -30,7 +30,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/4 top-1/3 text-green-700/10"
+        className="pointer-events-none absolute left-1/4 top-1/3 text-[#2E7D32]/10"
         animate={{ y: [0, 15, 0], rotate: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 14 }}
       >
@@ -38,7 +38,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-24 text-green-700/15"
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-24 text-[#2E7D32]/15"
         animate={{ y: [0, 12, 0], rotate: [0, 6, 0] }}
         transition={{ repeat: Infinity, duration: 12 }}
       >
@@ -46,7 +46,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-1/4 top-1/2 text-green-700/12"
+        className="pointer-events-none absolute right-1/4 top-1/2 text-[#2E7D32]/12"
         animate={{ y: [0, -12, 0], rotate: [0, -6, 0] }}
         transition={{ repeat: Infinity, duration: 15 }}
       >
@@ -54,7 +54,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-8 top-8 text-green-700/15"
+        className="pointer-events-none absolute right-8 top-8 text-[#2E7D32]/15"
         animate={{ y: [0, -8, 0], rotate: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 9 }}
       >
@@ -62,7 +62,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-12 bottom-32 text-green-700/10"
+        className="pointer-events-none absolute right-12 bottom-32 text-[#2E7D32]/10"
         animate={{ y: [0, 10, 0], rotate: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 11 }}
       >
@@ -70,7 +70,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-10 bottom-20 text-green-700/12"
+        className="pointer-events-none absolute left-10 bottom-20 text-[#2E7D32]/12"
         animate={{ y: [0, -6, 0], rotate: [0, 5, 0] }}
         transition={{ repeat: Infinity, duration: 13 }}
       >
@@ -87,11 +87,11 @@ export default function BrandStorySection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-green-900 leading-tight">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-[#2E7D32] leading-tight antialiased">
               Stay Loyal to the Soil
             </h2>
 
-            <div className="mt-6 space-y-4 text-base md:text-lg text-gray-700">
+            <div className="mt-6 space-y-4 text-base md:text-lg text-gray-700 antialiased">
               <p>
                 Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
               </p>
@@ -107,7 +107,7 @@ export default function BrandStorySection() {
               <p>
                 Our goal isn’t just to sell — it’s to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
               </p>
-              <p className="font-medium text-green-900">
+              <p className="font-medium text-[#2E7D32]">
                 Whole Lot of Nature — bringing soil, soul, and sustainability together.
               </p>
 
@@ -121,7 +121,7 @@ export default function BrandStorySection() {
             <motion.svg
               aria-hidden
               viewBox="0 0 400 80"
-              className="mt-8 w-full text-green-800/30"
+              className="mt-8 w-full text-[#2E7D32]/30"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}

@@ -17,7 +17,7 @@ const quickActions = [
     title: "Start Shopping",
     description: "Browse our complete collection",
     href: "/shop",
-    color: "bg-green-600 hover:bg-green-700",
+    color: "bg-[#2E7D32] hover:bg-[#2E7D32]",
     textColor: "text-white"
   },
   {
@@ -49,10 +49,10 @@ export default function QuickActions() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 antialiased">
             Ready to Start Your Garden Journey?
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto antialiased">
             Whether you're a beginner or expert gardener, we're here to help you every step of the way.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ export default function QuickActions() {
                   <div className="flex justify-center mb-4">
                     <action.icon className="w-12 h-12" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
+                  <h3 className="text-xl font-semibold mb-2 antialiased">
                     {action.title}
                   </h3>
                   <p className="text-sm opacity-90">
@@ -95,7 +95,7 @@ export default function QuickActions() {
             <Users className="w-8 h-8 text-primary-600 mr-2" />
             <MessageCircle className="w-8 h-8 text-primary-700" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4 antialiased">
             Join Our Plant Community
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -104,12 +104,12 @@ export default function QuickActions() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/community">
-              <button className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors">
+              <button className="px-6 py-3 bg-[#2E7D32] text-white font-medium rounded-lg hover:bg-[#2E7D32] transition-colors">
                 Join Community
               </button>
             </Link>
             <Link href="https://wa.me/911234567890">
-              <button className="px-6 py-3 bg-white text-green-600 border-2 border-green-600 font-medium rounded-lg hover:bg-green-50 transition-colors">
+              <button className="px-6 py-3 bg-white text-[#2E7D32] border-2 border-[#2E7D32] font-medium rounded-lg hover:bg-[#2E7D32] transition-colors">
                 WhatsApp Support
               </button>
             </Link>

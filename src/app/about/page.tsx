@@ -15,10 +15,10 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-montserrat text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="font-montserrat text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight antialiased">
               Stay Loyal to the <span className="text-[#66BB6A]">Soil</span>
             </h1>
-            <p className="font-inter text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="font-inter text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto antialiased">
               We believe in organic, sustainable gardening that connects you back to nature.
             </p>
           </motion.div>

@@ -47,13 +47,13 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-[#2E7D32]/30 bg-[#2E7D32]/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#66BB6A]">
+          <span className="inline-flex items-center rounded-full border border-[#2E7D32]/30 bg-[#2E7D32]/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#66BB6A] backdrop-blur-md">
             Why Choose Us
           </span>
-          <h2 className="mt-6 text-[clamp(2.5rem,5vw,4.25rem)] font-montserrat font-bold tracking-tight text-white">
+          <h2 className="mt-6 text-[clamp(2.5rem,5vw,4.25rem)] font-montserrat font-bold tracking-tight text-white antialiased">
             Trusted by Plant Lovers
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-white/70 antialiased">
             We blend science, sustainability, and design to elevate your green journey.
           </p>
         </motion.div>
@@ -69,10 +69,10 @@ export default function WhyChooseUs() {
             >
               <SpotlightCard className="h-full">
                 <div className="p-6">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#2E7D32]/20 text-[#66BB6A]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#2E7D32]/20 text-[#66BB6A] backdrop-blur-md">
                     <p.icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-white">{p.title}</h3>
+                  <h3 className="mt-4 text-lg font-semibold text-white antialiased">{p.title}</h3>
                   <p className="mt-2 text-sm text-white/70">{p.desc}</p>
                 </div>
               </SpotlightCard>

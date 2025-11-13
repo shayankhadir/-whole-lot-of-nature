@@ -123,25 +123,25 @@ export default function CouponInput({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-green-50 border-2 border-green-200 rounded-lg p-3"
+            className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-lg p-3"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="text-sm font-semibold text-green-700">
+                <p className="text-sm font-semibold text-[#2E7D32]">
                   ✅ {result.message}
                 </p>
-                <p className="text-xs text-green-600 mt-1">
-                  Code: <span className="font-mono font-bold">{result.coupon.code}</span>
+                <p className="text-xs text-[#2E7D32] mt-1">
+                  Code: <span className="font-mono font-bold antialiased">{result.coupon.code}</span>
                 </p>
                 {result.coupon.description && (
-                  <p className="text-xs text-green-600 mt-1">
+                  <p className="text-xs text-[#2E7D32] mt-1">
                     {result.coupon.description}
                   </p>
                 )}
               </div>
               <button
                 onClick={handleRemove}
-                className="text-green-700 hover:text-green-900 text-xl"
+                className="text-[#2E7D32] hover:text-[#2E7D32] text-xl antialiased"
                 title="Remove coupon"
               >
                 ✕

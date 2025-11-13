@@ -22,7 +22,7 @@ export default function CategoryHeader({ category, productCount }: CategoryHeade
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-  <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+  <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3 antialiased">
         {category ? (
           <>
             {(() => {

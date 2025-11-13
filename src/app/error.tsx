@@ -81,7 +81,7 @@ export default function Error({
         {/* Error Title */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold text-white mb-6"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 antialiased"
         >
           Oops!
         </motion.h1>
@@ -89,14 +89,14 @@ export default function Error({
         {/* Error Message */}
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-gray-300 mb-4"
+          className="text-xl md:text-2xl text-gray-300 mb-4 antialiased"
         >
           Something went wrong
         </motion.p>
 
         <motion.p
           variants={itemVariants}
-          className="text-base md:text-lg text-gray-400 mb-8 max-w-md mx-auto"
+          className="text-base md:text-lg text-gray-400 mb-8 max-w-md mx-auto antialiased"
         >
           We encountered an unexpected error. Don't worry, our team has been notified and we're working on it.
         </motion.p>

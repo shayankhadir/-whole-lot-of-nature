@@ -51,8 +51,8 @@ export default async function BlogPage() {
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">Discover tips, guides, and inspiration for your gardening journey</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 antialiased">Our Blog</h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -76,7 +76,7 @@ export default async function BlogPage() {
                 )}
 
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
                   <div
                     className="text-gray-600 text-sm mb-4 line-clamp-3"
@@ -115,7 +115,7 @@ export default async function BlogPage() {
                   <Image src="/hero-leaves.svg" alt="Tropical leaves" fill className="object-cover opacity-80" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{p.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">{p.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{p.excerpt}</p>
                   <Link href={p.href}>
                     <Button variant="outline">Explore Articles</Button>

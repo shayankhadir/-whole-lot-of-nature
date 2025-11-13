@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       {/* Contact CTA */}
       <div className="mx-auto max-w-7xl px-6 pb-4 lg:px-8">
-        <div className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+        <div className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-md">
           <p className="text-sm text-white/85">Need help or have a question?</p>
           <Link href="/about#contact" className="inline-flex items-center rounded-none bg-white px-4 py-2 text-sm font-semibold text-primary-700 shadow hover:bg-gray-100">
             Contact us

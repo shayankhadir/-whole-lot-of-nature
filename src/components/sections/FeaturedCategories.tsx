@@ -64,7 +64,7 @@ export default function FeaturedCategories() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif antialiased">
             Explore Our Categories
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -94,10 +94,10 @@ export default function FeaturedCategories() {
                       fill
                       className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent group-hover:bg-green-900/40 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent group-hover:bg-[#2E7D32]/40 transition-all duration-300 backdrop-blur-md" />
                   </div>
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-xl font-display font-semibold mb-2 drop-shadow-lg">{category.name}</h3>
+                    <h3 className="text-xl font-display font-semibold mb-2 drop-shadow-lg antialiased">{category.name}</h3>
                     <p className="text-sm text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       {category.description}
                     </p>

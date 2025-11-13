@@ -77,7 +77,7 @@ export default function ComboProductCard({
       {/* Popular Badge */}
       {combo.popularCombo && (
         <div className="absolute top-4 left-4 z-10">
-          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
             🏆 POPULAR
           </span>
         </div>
@@ -85,7 +85,7 @@ export default function ComboProductCard({
 
       {/* Discount Badge */}
       <div className="absolute top-4 right-4 z-10">
-        <span className="bg-gradient-to-r from-primary-700 to-primary-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+        <span className="bg-gradient-to-r from-primary-700 to-primary-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
           {discountPercentage}% OFF
         </span>
       </div>
@@ -104,7 +104,7 @@ export default function ComboProductCard({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          className="absolute inset-0 bg-black/20 flex items-center justify-center space-x-3"
+          className="absolute inset-0 bg-black/20 flex items-center justify-center space-x-3 backdrop-blur-md"
         >
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -133,7 +133,7 @@ export default function ComboProductCard({
         </span>
 
         {/* Title */}
-        <h3 className="mt-2 text-lg font-bold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors">
+        <h3 className="mt-2 text-lg font-bold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors antialiased">
           {combo.name}
         </h3>
 
@@ -168,7 +168,7 @@ export default function ComboProductCard({
         <div className="mt-4 space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-xl font-bold text-gray-900 antialiased">
                 {formatPrice(combo.comboPrice)}
               </span>
               <span className="text-sm text-gray-500 line-through">
@@ -177,7 +177,7 @@ export default function ComboProductCard({
             </div>
             <div className="text-right">
               <p className="text-xs text-gray-500">You save</p>
-              <p className="text-sm font-bold text-green-600">
+              <p className="text-sm font-bold text-[#2E7D32] antialiased">
                 {formatPrice(combo.savings)}
               </p>
             </div>
@@ -187,8 +187,8 @@ export default function ComboProductCard({
         {/* Stock Status */}
         <div className="mt-4">
           {combo.inStock ? (
-            <span className="inline-flex items-center text-xs text-green-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2" />
+            <span className="inline-flex items-center text-xs text-[#2E7D32]">
+              <div className="w-2 h-2 bg-[#2E7D32] rounded-full mr-2" />
               In Stock
             </span>
           ) : (

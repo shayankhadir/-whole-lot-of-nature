@@ -28,13 +28,13 @@ function SkeletonCard() {
       <div className="h-4 bg-[#2C2C2C] rounded w-5/6 mx-auto mb-3 animate-pulse opacity-50" />
       {/* Tags skeleton */}
       <div className="flex gap-2 justify-center mb-6">
-        <div className="h-6 w-16 bg-[#2E7D32]/20 rounded-full animate-pulse" />
-        <div className="h-6 w-20 bg-[#2E7D32]/20 rounded-full animate-pulse" />
+        <div className="h-6 w-16 bg-[#2E7D32]/20 rounded-full animate-pulse backdrop-blur-md" />
+        <div className="h-6 w-20 bg-[#2E7D32]/20 rounded-full animate-pulse backdrop-blur-md" />
       </div>
       {/* Price and button skeleton */}
       <div className="flex justify-between items-center">
-        <div className="h-10 bg-[#2E7D32]/30 rounded w-24 animate-pulse" />
-        <div className="w-11 h-11 bg-[#2E7D32]/30 rounded-full animate-pulse" />
+        <div className="h-10 bg-[#2E7D32]/30 rounded w-24 animate-pulse backdrop-blur-md" />
+        <div className="w-11 h-11 bg-[#2E7D32]/30 rounded-full animate-pulse backdrop-blur-md" />
       </div>
     </div>
   );
@@ -58,11 +58,11 @@ export default function ProductGrid({ products, isLoading = false }: ProductGrid
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col items-center justify-center py-24 px-4 text-center max-w-[600px] mx-auto"
       >
-        <div className="text-7xl mb-6 opacity-40">🌿</div>
-        <h3 className="font-montserrat text-3xl font-bold text-white mb-3 tracking-wide">
+        <div className="text-7xl mb-6 opacity-40 antialiased">🌿</div>
+        <h3 className="font-montserrat text-3xl font-bold text-white mb-3 tracking-wide antialiased">
           No Products Found
         </h3>
-        <p className="font-inter text-base text-gray-400 opacity-70 leading-relaxed">
+        <p className="font-inter text-base text-gray-400 opacity-70 leading-relaxed antialiased">
           We couldn&apos;t find any products matching your criteria. Try adjusting your filters or search terms.
         </p>
       </motion.div>

@@ -59,10 +59,10 @@ export default function SoilLandingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/85 to-white" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 antialiased">
             Soil Mixes & Amendments for Faster Growth
           </h1>
-          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto antialiased">
             Get professional-grade substrates trusted by growers. Healthier roots, greener leaves, better blooms.
           </p>
           <div className="mt-8 flex items-center justify-center gap-4">
@@ -81,7 +81,7 @@ export default function SoilLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Upgrade Your Soil?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 antialiased">Why Upgrade Your Soil?</h2>
               <p className="text-gray-700 mb-6">
                 Soil quality is the single biggest factor in your plant’s health. Our mixes are engineered to keep roots oxygenated, hydrated, and nourished.
               </p>
@@ -101,7 +101,7 @@ export default function SoilLandingPage() {
                   <div className="relative h-28 bg-primary-50 overflow-hidden">
                     <Image src={h.img} alt={h.title} fill className="object-cover opacity-80" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mt-3">{h.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mt-3 antialiased">{h.title}</h3>
                   <p className="text-gray-600 text-sm mt-2">{h.desc}</p>
                   <div className="mt-4">
                     <Link href={h.href} className="inline-block px-5 py-2 bg-primary-700 text-white border border-primary-700 rounded-none font-semibold hover:bg-white hover:text-primary-700 transition-all">
@@ -121,7 +121,7 @@ export default function SoilLandingPage() {
           <div className="grid md:grid-cols-3 gap-6 text-center">
             {[{ k: '4.8/5', v: 'Average Rating' }, { k: '25,000+', v: 'Orders Delivered' }, { k: '48h', v: 'Avg. Dispatch' }].map((s) => (
               <div key={s.v} className="bg-white border border-primary-100 p-8">
-                <div className="text-3xl font-extrabold text-primary-700">{s.k}</div>
+                <div className="text-3xl font-extrabold text-primary-700 antialiased">{s.k}</div>
                 <div className="text-gray-700 mt-2">{s.v}</div>
               </div>
             ))}
@@ -132,11 +132,11 @@ export default function SoilLandingPage() {
       {/* Product Section */}
       <section id="products" className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Featured Products</h2>
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10 antialiased">Featured Products</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {highlights.map((h) => (
               <div key={h.title} className="border border-gray-200 p-6">
-                <h3 className="text-xl font-semibold text-gray-900">{h.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 antialiased">{h.title}</h3>
                 <p className="text-gray-600 mt-2">{h.desc}</p>
                 <div className="mt-4 flex gap-3">
                   <Link href={h.href} className="px-5 py-2 bg-primary-700 text-white border border-primary-700 rounded-none font-semibold hover:bg-white hover:text-primary-700 transition-all">Add to Cart</Link>
@@ -151,7 +151,7 @@ export default function SoilLandingPage() {
       {/* FAQs */}
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">FAQs</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center antialiased">FAQs</h2>
           <div className="divide-y divide-gray-200">
             {[
               { q: 'Is cinder safe for all plants?', a: 'Yes. It is inert and supports aeration. Use 10–30% of your mix depending on plant type.' },
@@ -170,7 +170,7 @@ export default function SoilLandingPage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-primary-700 to-primary-600">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold">Upgrade Your Soil Today</h2>
+          <h2 className="text-3xl md:text-4xl font-bold antialiased">Upgrade Your Soil Today</h2>
           <p className="mt-3 opacity-90">Healthier roots. Faster growth. Happier plants.</p>
           <div className="mt-6">
             <Link href="/shop?category=soil-and-growing-media" className="inline-block px-8 py-3 bg-white text-primary-700 border border-white rounded-none font-semibold hover:bg-primary-50 transition-all">Shop Soil & Media</Link>

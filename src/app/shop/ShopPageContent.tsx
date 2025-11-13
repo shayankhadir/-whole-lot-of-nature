@@ -308,7 +308,7 @@ export default function ShopPageContent() {
                   exit={{ opacity: 0, y: -20 }}
                   className="text-center py-20 bg-primary-50 rounded-2xl border border-primary-200"
                 >
-                  <p className="text-gray-900 text-xl mb-2">No products found</p>
+                  <p className="text-gray-900 text-xl mb-2 antialiased">No products found</p>
                   <p className="text-gray-600">Try adjusting your filters</p>
                   {selectedCategory && (
                     <Button onClick={() => setSelectedCategory(null)} className="mt-4">

@@ -70,7 +70,7 @@ export default function SignInPage() {
               <motion.h1
                 initial={{ scale: 0.98 }}
                 animate={{ scale: 1 }}
-                className="text-3xl font-bold text-gray-900"
+                className="text-3xl font-bold text-gray-900 antialiased"
               >
                 Welcome back
               </motion.h1>

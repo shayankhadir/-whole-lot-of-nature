@@ -14,7 +14,7 @@ export default function ComboPacks() {
   return (
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-semibold mb-6">Combo Packs</h2>
+        <h2 className="text-2xl font-semibold mb-6 antialiased">Combo Packs</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {combos.map((c) => (
             <motion.div key={c.id} whileHover={{ y: -8 }} className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -24,13 +24,13 @@ export default function ComboPacks() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium">{c.title}</h3>
-                    <span className="text-sm text-green-600 font-semibold">{c.savings}</span>
+                    <h3 className="text-lg font-medium antialiased">{c.title}</h3>
+                    <span className="text-sm text-[#2E7D32] font-semibold">{c.savings}</span>
                   </div>
                   <p className="mt-4 text-gray-600">Perfect starter bundle for new plant parents.</p>
                   <div className="mt-6 flex items-center justify-between">
-                    <span className="text-xl font-bold">${c.price.toFixed(2)}</span>
-                    <button className="px-4 py-2 bg-green-600 text-white rounded-full">Shop Pack</button>
+                    <span className="text-xl font-bold antialiased">${c.price.toFixed(2)}</span>
+                    <button className="px-4 py-2 bg-[#2E7D32] text-white rounded-full">Shop Pack</button>
                   </div>
                 </div>
               </Link>

@@ -122,7 +122,7 @@ export default function SignUpPage() {
             <motion.h1 
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              className="text-3xl font-bold text-gray-900 mb-2"
+              className="text-3xl font-bold text-gray-900 mb-2 antialiased"
             >
               Create Account
             </motion.h1>
@@ -243,7 +243,7 @@ export default function SignUpPage() {
                         />
                         <span className={
                           passwordValidation[key as keyof typeof passwordValidation]
-                            ? 'text-green-600'
+                            ? 'text-[#2E7D32]'
                             : 'text-gray-500'
                         }>
                           {text}

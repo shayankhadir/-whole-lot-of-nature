@@ -104,7 +104,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <p className="text-sm font-bold text-green-600 mb-3">⭐ FEATURED TESTIMONIAL</p>
+          <p className="text-sm font-bold text-[#2E7D32] mb-3 antialiased">⭐ FEATURED TESTIMONIAL</p>
           <TestimonialCard
             testimonial={featured}
             variant="featured"
@@ -124,11 +124,11 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Sort */}
             <div>
-              <label className="block text-xs font-bold text-black mb-2">Sort By:</label>
+              <label className="block text-xs font-bold text-black mb-2 antialiased">Sort By:</label>
               <select
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value as any)}
-                className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-green-600"
+                className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-[#2E7D32] antialiased"
               >
                 <option value="recent">Most Recent</option>
                 <option value="rating">Highest Rated</option>
@@ -138,11 +138,11 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
 
             {/* Filter by rating */}
             <div>
-              <label className="block text-xs font-bold text-black mb-2">Rating:</label>
+              <label className="block text-xs font-bold text-black mb-2 antialiased">Rating:</label>
               <select
                 value={filterRating}
                 onChange={e => setFilterRating(e.target.value === 'all' ? 'all' : parseInt(e.target.value))}
-                className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-green-600"
+                className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-[#2E7D32] antialiased"
               >
                 <option value="all">All Ratings</option>
                 <option value="5">5 Stars</option>
@@ -155,7 +155,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
           </div>
 
           {/* Count */}
-          <p className="text-sm text-gray-600 font-bold">
+          <p className="text-sm text-gray-600 font-bold antialiased">
             Showing {displayTestimonials.length} testimonial{displayTestimonials.length !== 1 ? 's' : ''}
           </p>
         </motion.div>
@@ -182,7 +182,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
         </div>
       ) : (
         <div className="text-center py-12">
-          <p className="text-black text-xl font-bold mb-2">No testimonials yet</p>
+          <p className="text-black text-xl font-bold mb-2 antialiased">No testimonials yet</p>
           <p className="text-gray-700">Be the first to share your experience!</p>
         </div>
       )}

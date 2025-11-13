@@ -96,7 +96,7 @@ export default function FilterControls({
 
       {/* Categories */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Categories</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 antialiased">Categories</h2>
         <div className="space-y-2">
           <button
             onClick={() => onCategoryChange(null)}
@@ -137,7 +137,7 @@ export default function FilterControls({
 
       {/* Availability */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Availability</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 antialiased">Availability</h2>
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-gray-800">
             <input
@@ -162,7 +162,7 @@ export default function FilterControls({
 
       {/* Price Range */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Price Range</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 antialiased">Price Range</h2>
         <div className="px-1">
           <div className="flex items-center gap-3 mb-3">
             <div className="flex-1">
@@ -213,7 +213,7 @@ export default function FilterControls({
 
       {/* Rating */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Rating</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 antialiased">Rating</h2>
         <div className="space-y-2">
           {[5, 4, 3, 0].map((r) => (
             <button

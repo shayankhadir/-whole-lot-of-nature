@@ -77,7 +77,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
-            className="mt-6 text-white/90 max-w-3xl mx-auto text-lg sm:text-xl"
+            className="mt-6 text-white/90 max-w-3xl mx-auto text-lg sm:text-xl antialiased"
           >
             Your one-stop nature hub — premium soil mixes, organic fertilizers, and living plants, delivered fresh from the heart of nature.
           </motion.h2>
@@ -94,7 +94,7 @@ export default function Hero() {
                 as="button"
                 color="#22c57d"
                 speed="6s"
-                className="px-10 py-4 gap-2 flex items-center justify-center uppercase tracking-wider font-semibold text-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
+                className="px-10 py-4 gap-2 flex items-center justify-center uppercase tracking-wider font-semibold text-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 antialiased"
               >
                 <Sprout className="w-5 h-5" />
                 Shop Now
@@ -134,7 +134,7 @@ export default function Hero() {
           <div className="flex items-center gap-3 text-white/80">
             <div className="h-8 w-4 rounded-full border-2 border-white/70 relative">
               <motion.span
-                className="absolute left-1/2 -translate-x-1/2 top-1 h-2 w-[2px] bg-white/80 rounded"
+                className="absolute left-1/2 -translate-x-1/2 top-1 h-2 w-[2px] bg-white/80 rounded backdrop-blur-md"
                 animate={{ y: [0, 16, 0], opacity: [1, 0.2, 1] }}
                 transition={{ duration: 1.6, repeat: Infinity }}
               />

@@ -16,10 +16,10 @@ export default function YouTubeEmbed() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
             Watch Our Latest Video
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
             Discover plant care tips and gardening inspiration
           </p>
         </motion.div>

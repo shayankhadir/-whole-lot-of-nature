@@ -65,9 +65,9 @@ export default function EnhancedNavigation() {
               className="flex items-center gap-2"
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">🌱</span>
+                <span className="text-white font-bold text-sm antialiased">🌱</span>
               </div>
-              <span className="font-bold text-lg hidden sm:inline bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent">
+              <span className="font-bold text-lg hidden sm:inline bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent antialiased">
                 Whole Lot of Nature
               </span>
             </motion.div>
@@ -79,12 +79,12 @@ export default function EnhancedNavigation() {
               <Link key={item.name} href={item.href}>
                 <motion.span
                   className="text-gray-700 font-medium cursor-pointer relative group"
-                  whileHover={{ color: '#16a34a' }}
+                  whileHover={{ color: '#2E7D32' }}
                   transition={{ duration: 0.2 }}
                 >
                   {item.name}
                   <motion.span
-                    className="absolute bottom-0 left-0 h-0.5 bg-green-600 rounded-full"
+                    className="absolute bottom-0 left-0 h-0.5 bg-[#2E7D32] rounded-full"
                     initial={{ width: 0 }}
                     whileHover={{ width: '100%' }}
                     transition={{ duration: 0.3 }}
@@ -100,7 +100,7 @@ export default function EnhancedNavigation() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-green-50 transition-colors"
+              className="p-2 rounded-lg hover:bg-[#2E7D32] transition-colors"
               aria-label="Search"
             >
               <Search className="w-5 h-5 text-gray-700" />
@@ -110,7 +110,7 @@ export default function EnhancedNavigation() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-green-50 transition-colors hidden sm:block"
+              className="p-2 rounded-lg hover:bg-[#2E7D32] transition-colors hidden sm:block"
               aria-label="Account"
             >
               <User className="w-5 h-5 text-gray-700" />
@@ -121,14 +121,14 @@ export default function EnhancedNavigation() {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative p-2 rounded-lg hover:bg-green-50 transition-colors cursor-pointer"
+                className="relative p-2 rounded-lg hover:bg-[#2E7D32] transition-colors cursor-pointer"
               >
                 <ShoppingCart className="w-5 h-5 text-gray-700" />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-gradient-to-r from-green-600 to-green-700 rounded-full"
+                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-gradient-to-r from-green-600 to-green-700 rounded-full antialiased"
                   >
                     {cartCount}
                   </motion.span>
@@ -141,7 +141,7 @@ export default function EnhancedNavigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-green-50 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-[#2E7D32] transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -173,7 +173,7 @@ export default function EnhancedNavigation() {
                   >
                     <Link href={item.href}>
                       <motion.span
-                        className="block px-4 py-2 text-gray-700 font-medium rounded-lg hover:bg-green-50 transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-gray-700 font-medium rounded-lg hover:bg-[#2E7D32] transition-colors cursor-pointer"
                         whileHover={{ paddingLeft: '24px' }}
                       >
                         {item.name}

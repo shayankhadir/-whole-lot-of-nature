@@ -23,12 +23,12 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 text-center">
-        <h1 className="text-[110px] md:text-[178px] font-header font-bold text-white leading-none mb-8">
+        <h1 className="text-[110px] md:text-[178px] font-header font-bold text-white leading-none mb-8 antialiased">
           BRING THE<br />
           FOREST HOME
         </h1>
         
-        <p className="text-xl md:text-2xl text-[#E0E0E0] max-w-3xl mx-auto mb-12 font-body">
+        <p className="text-xl md:text-2xl text-[#E0E0E0] max-w-3xl mx-auto mb-12 font-body antialiased">
           Discover premium plants, organic soil mixes, and sustainable gardening essentials
         </p>
 
@@ -40,7 +40,7 @@ export default function HeroSection() {
           
           <Link
             href="/shop"
-            className="group inline-flex items-center gap-3 bg-[#2E7D32] text-white px-8 py-4 rounded-lg hover:bg-[#66BB6A] transition-all duration-300 emerald-glow text-lg font-medium"
+            className="group inline-flex items-center gap-3 bg-[#2E7D32] text-white px-8 py-4 rounded-lg hover:bg-[#66BB6A] transition-all duration-300 emerald-glow text-lg font-medium antialiased"
           >
             <span>Shop Now</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

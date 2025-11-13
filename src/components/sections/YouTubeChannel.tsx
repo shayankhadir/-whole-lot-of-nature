@@ -61,11 +61,11 @@ export default function YouTubeChannel() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Youtube className="w-10 h-10 text-red-600" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-4xl md:text-5xl font-bold text-white antialiased">
               Our YouTube Channel
             </h2>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto antialiased">
             Learn gardening tips, plant care guides, and DIY projects from our expert videos
           </p>
           <a
@@ -99,7 +99,7 @@ export default function YouTubeChannel() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {/* Play Button Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center backdrop-blur-md">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all opacity-80 group-hover:opacity-100"
@@ -109,7 +109,7 @@ export default function YouTubeChannel() {
                 </div>
 
                 {/* Duration Badge */}
-                <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-xs text-white font-semibold">
+                <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-xs text-white font-semibold backdrop-blur-md">
                   {video.duration}
                 </div>
               </div>
@@ -136,15 +136,15 @@ export default function YouTubeChannel() {
           className="grid md:grid-cols-3 gap-6 mb-12"
         >
           <div className="text-center p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all">
-            <p className="text-5xl font-bold text-red-500 mb-2">50K+</p>
+            <p className="text-5xl font-bold text-red-500 mb-2 antialiased">50K+</p>
             <p className="text-gray-300 font-semibold">Subscribers</p>
           </div>
           <div className="text-center p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all">
-            <p className="text-5xl font-bold text-red-500 mb-2">150+</p>
+            <p className="text-5xl font-bold text-red-500 mb-2 antialiased">150+</p>
             <p className="text-gray-300 font-semibold">Videos</p>
           </div>
           <div className="text-center p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-white/30 transition-all">
-            <p className="text-5xl font-bold text-red-500 mb-2">2.5M+</p>
+            <p className="text-5xl font-bold text-red-500 mb-2 antialiased">2.5M+</p>
             <p className="text-gray-300 font-semibold">Total Views</p>
           </div>
         </motion.div>

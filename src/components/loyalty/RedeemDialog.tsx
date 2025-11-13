@@ -71,7 +71,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black/50 z-40"
+            className="fixed inset-0 bg-black/50 z-40 backdrop-blur-md"
           />
 
           {/* Dialog */}
@@ -84,10 +84,10 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
             <div className="bg-white border-2 border-black rounded-lg overflow-hidden">
               {/* Header */}
               <div className="bg-gradient-to-r from-green-50 to-white border-b-2 border-black px-6 py-4 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-black">Redeem Points</h2>
+                <h2 className="text-2xl font-bold text-black antialiased">Redeem Points</h2>
                 <button
                   onClick={handleClose}
-                  className="text-black text-2xl font-bold hover:text-green-600 transition-colors"
+                  className="text-black text-2xl font-bold hover:text-[#2E7D32] transition-colors antialiased"
                 >
                   ✕
                 </button>
@@ -100,7 +100,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-green-50 border-2 border-green-600 rounded-lg p-4 mb-4 text-green-900 font-medium"
+                    className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-lg p-4 mb-4 text-[#2E7D32] font-medium"
                   >
                     ✓ {successMessage}
                   </motion.div>
@@ -120,7 +120,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                 {/* Points balance */}
                 <div className="bg-gray-50 border-2 border-black rounded-lg p-4 mb-6">
                   <p className="text-black text-sm font-medium">YOUR BALANCE</p>
-                  <p className="text-3xl font-bold text-green-600">
+                  <p className="text-3xl font-bold text-[#2E7D32] antialiased">
                     {pointsBalance.toLocaleString()} pts
                   </p>
                 </div>
@@ -136,20 +136,20 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                         onClick={() => setSelectedOption(option)}
                         className={`w-full p-4 border-2 rounded-lg text-left transition-all ${
                           selectedOption?.id === option.id
-                            ? 'border-green-600 bg-green-50'
-                            : 'border-black bg-white hover:border-green-600'
+                            ? 'border-[#2E7D32] bg-[#2E7D32]'
+                            : 'border-black bg-white hover:border-[#2E7D32]'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex items-start gap-3">
-                            <span className="text-2xl">{getCategoryIcon(option.category)}</span>
+                            <span className="text-2xl antialiased">{getCategoryIcon(option.category)}</span>
                             <div>
-                              <p className="font-bold text-black">{option.name}</p>
+                              <p className="font-bold text-black antialiased">{option.name}</p>
                               <p className="text-sm text-gray-700">{option.description}</p>
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="font-bold text-green-600">{option.pointsCost}</p>
+                            <p className="font-bold text-[#2E7D32] antialiased">{option.pointsCost}</p>
                             <p className="text-xs text-black">pts</p>
                           </div>
                         </div>
@@ -158,7 +158,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                   </div>
                 ) : (
                   <div className="text-center py-8">
-                    <p className="text-black text-lg font-medium mb-2">No rewards available</p>
+                    <p className="text-black text-lg font-medium mb-2 antialiased">No rewards available</p>
                     <p className="text-gray-700 text-sm">Earn more points to unlock rewards!</p>
                   </div>
                 )}
@@ -170,7 +170,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleClose}
-                  className="flex-1 bg-white text-black font-bold py-3 rounded border-2 border-black hover:bg-gray-100 transition-colors"
+                  className="flex-1 bg-white text-black font-bold py-3 rounded border-2 border-black hover:bg-gray-100 transition-colors antialiased"
                 >
                   Cancel
                 </motion.button>
@@ -179,7 +179,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                   whileTap={{ scale: 0.98 }}
                   onClick={handleRedeem}
                   disabled={!selectedOption || isLoading || !!successMessage}
-                  className="flex-1 bg-green-600 text-white font-bold py-3 rounded border-2 border-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex-1 bg-[#2E7D32] text-white font-bold py-3 rounded border-2 border-[#2E7D32] hover:bg-[#2E7D32] disabled:opacity-50 disabled:cursor-not-allowed transition-colors antialiased"
                 >
                   {isLoading ? 'Processing...' : 'Redeem Now'}
                 </motion.button>

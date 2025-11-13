@@ -157,8 +157,8 @@ export const AuthForm = ({
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-white text-center"
             >
-              <h2 className="text-4xl font-bold mb-4">Welcome to Whole Lot of Nature</h2>
-              <p className="text-lg text-gray-200">
+              <h2 className="text-4xl font-bold mb-4 antialiased">Welcome to Whole Lot of Nature</h2>
+              <p className="text-lg text-gray-200 antialiased">
                 Discover premium organic seeds and plants for your garden
               </p>
             </motion.div>
@@ -181,7 +181,7 @@ export const AuthForm = ({
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">
+            <h1 className="text-4xl font-bold text-white mb-2 antialiased">
               {mode === 'login' ? 'Welcome Back' : 'Get Started'}
             </h1>
             <p className="text-gray-400">
@@ -205,7 +205,7 @@ export const AuthForm = ({
                   value={signupData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-green-500 focus:outline-none"
+                  className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
                 {errors.name && (
                   <p className="text-red-400 text-sm mt-1">{errors.name}</p>
@@ -224,7 +224,7 @@ export const AuthForm = ({
                 value={mode === 'login' ? loginData.email : signupData.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
-                className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-green-500 focus:outline-none"
+                className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none"
               />
               {errors.email && (
                 <p className="text-red-400 text-sm mt-1">{errors.email}</p>
@@ -243,12 +243,12 @@ export const AuthForm = ({
                   value={mode === 'login' ? loginData.password : signupData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-green-500 focus:outline-none pr-10"
+                  className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none pr-10"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-500 transition-colors"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#2E7D32] transition-colors"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -271,12 +271,12 @@ export const AuthForm = ({
                     value={signupData.confirmPassword}
                     onChange={handleChange}
                     placeholder="••••••••"
-                    className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-green-500 focus:outline-none pr-10"
+                    className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none pr-10"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-500 transition-colors"
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#2E7D32] transition-colors"
                   >
                     {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -301,14 +301,14 @@ export const AuthForm = ({
                 {mode === 'login' ? (
                   <>
                     Remember me
-                    <Link href="/forgot-password" className="ml-auto text-green-500 hover:text-green-400 transition-colors">
+                    <Link href="/forgot-password" className="ml-auto text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                       Forgot password?
                     </Link>
                   </>
                 ) : (
                   <>
                     I agree to the{' '}
-                    <Link href="/terms" className="text-green-500 hover:text-green-400 transition-colors">
+                    <Link href="/terms" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                       Terms of Service
                     </Link>
                   </>
@@ -322,7 +322,7 @@ export const AuthForm = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={isLoading}
-              className="w-full h-12 bg-green-600 hover:bg-green-700 disabled:bg-green-800 text-white font-bold rounded-lg transition-all duration-300 mt-8"
+              className="w-full h-12 bg-[#2E7D32] hover:bg-[#2E7D32] disabled:bg-[#2E7D32] text-white font-bold rounded-lg transition-all duration-300 mt-8 antialiased"
             >
               {isLoading
                 ? 'Please wait...'
@@ -355,14 +355,14 @@ export const AuthForm = ({
             {mode === 'login' ? (
               <>
                 Don't have an account?{' '}
-                <Link href="/signup" className="text-green-500 hover:text-green-400 transition-colors font-semibold">
+                <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
                   Sign up
                 </Link>
               </>
             ) : (
               <>
                 Already have an account?{' '}
-                <Link href="/login" className="text-green-500 hover:text-green-400 transition-colors font-semibold">
+                <Link href="/login" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
                   Sign in
                 </Link>
               </>
@@ -392,9 +392,9 @@ const SocialButton = ({ provider }: SocialButtonProps) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       type="button"
-      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 rounded-lg flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300"
+      className="w-full h-12 bg-white/10 hover:bg-white/20 border border-gray-600 rounded-lg flex items-center justify-center gap-3 text-white font-semibold transition-all duration-300 backdrop-blur-md"
     >
-      <span className="text-lg">{icon}</span>
+      <span className="text-lg antialiased">{icon}</span>
       Continue with {label}
     </motion.button>
   );

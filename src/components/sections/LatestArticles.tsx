@@ -44,7 +44,7 @@ export default function LatestArticles() {
     <section className="py-12 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">Latest Articles</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 antialiased">Latest Articles</h2>
           <p className="text-gray-600 mt-2">Fresh reads from our blog</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -58,7 +58,7 @@ export default function LatestArticles() {
                   </div>
                 )}
                 <div className="p-4">
-                  <h3 className="text-base font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h3 className="text-base font-semibold text-gray-900 mb-2 antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                   <p className="text-sm text-gray-600 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
                   <Link href={`/blog/${post.slug}`} className="inline-block mt-3 text-primary-700 font-medium hover:underline">
                     Read more →
