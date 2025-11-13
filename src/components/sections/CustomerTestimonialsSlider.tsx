@@ -6,6 +6,8 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 
 const testimonials = [
   {
@@ -49,8 +51,11 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="py-16 bg-primary-50/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 bg-[#1A1A1A]">
+      {/* Background Grid Effect */}
+      <BackgroundGrid />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,10 +63,10 @@ export default function CustomerTestimonialsSlider() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-2">
+          <h2 className="text-[clamp(2rem,4vw,2.625rem)] font-montserrat font-bold text-white mb-2">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-primary-700 max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
         </motion.div>
@@ -70,34 +75,36 @@ export default function CustomerTestimonialsSlider() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="keen-slider__slide flex flex-col justify-between bg-white rounded-2xl shadow-xl border border-primary-100 p-7 relative mx-2"
+              className="keen-slider__slide flex flex-col justify-between mx-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Quote className="absolute top-5 right-5 w-7 h-7 text-green-200" />
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-primary-800 mb-6 text-base leading-relaxed font-medium">
-                "{testimonial.text}"
-              </p>
-              <div className="flex items-center mt-auto">
-                <div className="text-3xl mr-4">
-                  {testimonial.image}
+              <SpotlightCard className="h-full p-7 relative">
+                <Quote className="absolute top-5 right-5 w-7 h-7 text-[#66BB6A]/40" />
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-[#66BB6A] fill-current" />
+                  ))}
                 </div>
-                <div>
-                  <h4 className="font-semibold text-primary-900 text-base font-serif">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-primary-600 text-xs">
-                    {testimonial.location}
-                  </p>
+                <p className="text-white/80 mb-6 text-base leading-relaxed font-medium">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center mt-auto">
+                  <div className="text-3xl mr-4">
+                    {testimonial.image}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-base font-montserrat">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-white/60 text-xs">
+                      {testimonial.location}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
@@ -110,12 +117,12 @@ export default function CustomerTestimonialsSlider() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <p className="text-gray-900 font-semibold mb-4">
+          <p className="text-white font-semibold mb-4">
             Join thousands of happy customers
           </p>
           <a
             href="/shop"
-            className="inline-flex items-center px-7 py-3 bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:bg-primary-700 transition-colors text-lg"
+            className="inline-flex items-center px-7 py-3 bg-[#2E7D32] text-white font-semibold rounded-xl shadow-lg hover:bg-[#66BB6A] transition-colors text-lg"
           >
             Start Your Garden Journey
           </a>

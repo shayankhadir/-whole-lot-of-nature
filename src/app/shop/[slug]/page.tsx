@@ -1,70 +1,66 @@
-import { Metadata } from 'next';
+'use client';
+
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Product } from '@/types/product';
 import AddToCartButton from '@/components/shop/AddToCartButton';
+import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-interface ProductPageProps {
-  params: {
-    slug: string;
-  };
-}
+export default function ProductPage() {
+  const params = useParams();
+  const router = useRouter();
+  const slug = params.slug as string;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
 
-async function getProduct(slug: string): Promise<Product | null> {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/products?slug=${slug}`, {
-      cache: 'no-store',
-    });
-
-    if (!res.ok) {
-      return null;
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const res = await fetch(`/api/products?slug=${slug}`);
+        const result = await res.json();
+        
+        if (result.success && result.data && result.data.length > 0) {
+          setProduct(result.data[0]);
+        } else {
+          router.push('/shop');
+        }
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        router.push('/shop');
+      } finally {
+        setLoading(false);
+      }
     }
 
-    const result = await res.json();
-    if (result.success && result.data && result.data.length > 0) {
-      return result.data[0];
-    }
-    return null;
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    return null;
-  }
-}
+    fetchProduct();
+  }, [slug, router]);
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await getProduct(params.slug);
-
-  if (!product) {
-    return {
-      title: 'Product Not Found',
-    };
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2E7D32] mx-auto"></div>
+          <p className="mt-4 text-white/70">Loading product...</p>
+        </div>
+      </div>
+    );
   }
 
-  return {
-    title: `${product.name} | Whole Lot of Nature`,
-    description: product.short_description || product.description,
-    openGraph: {
-      title: product.name,
-      description: product.short_description || product.description,
-      images: product.images.map(img => img.src),
-    },
-  };
-}
-
-export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(params.slug);
-
   if (!product) {
-    notFound();
+    return null;
   }
 
   const mainImage = product.images[0] || { src: '/images/placeholder.jpg', alt: product.name };
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden">
+      {/* Animated Background Grid */}
+      <AnimatedBackground />
+      
       {/* Subtle leaf background */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
         <Image
           src="https://admin.wholelotofnature.com/wp-content/uploads/2024/11/bgleaf1.png"
           alt=""
@@ -74,7 +70,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
 
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto"
+        >
           {/* Product Images */}
           <div className="space-y-4">
             <div className="aspect-[4/5] relative rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-[#2E7D32]/20">
@@ -210,7 +211,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

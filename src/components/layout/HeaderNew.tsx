@@ -118,10 +118,10 @@ export default function Header() {
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`sticky top-0 z-[70] backdrop-blur ${
+      className={`sticky top-0 z-[70] transition-all duration-300 ${
         scrolled
-          ? "bg-[#0d4a2f]/95 border-b border-black/20 shadow-[0_8px_20px_-10px_rgba(0,0,0,0.35)]"
-          : "bg-[#105d38]/95 border-b border-white/10"
+          ? "glass border-b border-[#2E7D32]/20 shadow-[0_8px_20px_-10px_rgba(46,125,50,0.25)]"
+          : "bg-gradient-to-b from-[#0A0A0A]/80 to-transparent backdrop-blur-md border-b border-white/5"
       } text-white overflow-x-clip`}
     >
       <nav className="relative mx-auto max-w-7xl py-2.5 px-4 lg:px-8" aria-label="Global">

@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Leaf, ShieldCheck, Truck, Recycle, Sparkles } from 'lucide-react';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 
 const points = [
   {
@@ -34,12 +36,10 @@ const points = [
 export default function WhyChooseUs() {
   return (
     <section className="relative py-16">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-50 via-white to-primary-100" />
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.08]"
-        style={{ backgroundImage: "url('/hero-leaves.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-      />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      {/* Background Grid */}
+      <BackgroundGrid />
+      
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,13 +47,13 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-primary-200 bg-primary-50/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black">
+          <span className="inline-flex items-center rounded-full border border-[#2E7D32]/30 bg-[#2E7D32]/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#66BB6A]">
             Why Choose Us
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black">
+          <h2 className="mt-6 text-[clamp(2.5rem,5vw,4.25rem)] font-montserrat font-bold tracking-tight text-white">
             Trusted by Plant Lovers
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-white/70">
             We blend science, sustainability, and design to elevate your green journey.
           </p>
         </motion.div>
@@ -66,13 +66,16 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-50 text-black">
-                <p.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-black">{p.title}</h3>
-              <p className="mt-2 text-sm text-black">{p.desc}</p>
+              <SpotlightCard className="h-full">
+                <div className="p-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#2E7D32]/20 text-[#66BB6A]">
+                    <p.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-white">{p.title}</h3>
+                  <p className="mt-2 text-sm text-white/70">{p.desc}</p>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
