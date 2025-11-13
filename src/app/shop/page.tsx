@@ -33,10 +33,11 @@ export default function ShopPage() {
 
   const categories = [
     { id: 'all', name: 'All Products' },
-    { id: 'aquatic-plants', name: 'Aquatic Plants' },
-    { id: 'indoor-plants', name: 'Indoor Plants' },
-    { id: 'outdoor-plants', name: 'Outdoor Plants' },
-    { id: 'soil-and-amendments', name: 'Soil & Amendments' },
+    { id: 'plants', name: 'Plants', subcategories: ['Indoor Plants', 'Outdoor Plants'] },
+    { id: 'aquatic-life-ecosystem', name: 'Aquatic Life & Ecosystem', subcategories: ['Aquatic Snails', 'Aquatic Plants'] },
+    { id: 'soil-growing-media', name: 'Soil & Growing Media', subcategories: ['Soil Mixes', 'Organic Fertilizers'] },
+    { id: 'herbal-products', name: 'Herbal Products' },
+    { id: 'miniature-plant-decor', name: 'Miniature Plant Decor' },
   ];
 
   const filteredProducts = selectedCategory === 'all'

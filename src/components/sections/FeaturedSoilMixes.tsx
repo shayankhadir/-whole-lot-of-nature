@@ -12,8 +12,8 @@ export default function FeaturedSoilMixes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch soil & fertilizer products
-    fetch('/api/products?category=soil-mixes-and-amendments&limit=4')
+    // Fetch soil & growing media products
+    fetch('/api/products?category=soil-growing-media&limit=4')
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data) {
