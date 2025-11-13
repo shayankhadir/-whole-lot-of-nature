@@ -61,16 +61,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="text-sm leading-6 text-white/70 hover:text-white">
-                  Our Team
-                </Link>
-              </li>
-              <li>
-                <Link href="/partnerships" className="text-sm leading-6 text-white/70 hover:text-white">
-                  Partnerships
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className="text-sm leading-6 text-white/70 hover:text-white">
                   Blog
                 </Link>
@@ -86,7 +76,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-sm leading-6 text-white/70 hover:text-white">
+                <Link href="/#faq" className="text-sm leading-6 text-white/70 hover:text-white">
                   FAQs
                 </Link>
               </li>

@@ -7,18 +7,18 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-[#0D1B0F]">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16">
+      <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 antialiased">Terms & Conditions</h1>
-          <p className="mt-4 text-gray-700 max-w-3xl mx-auto">Please review these terms carefully before using our website or purchasing our products.</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#66BB6A] antialiased mb-4">Terms & Conditions</h1>
+          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">Please review these terms carefully before using our website or purchasing our products.</p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-12">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {[{
             title: '1. Acceptance of Terms',
             body: 'By accessing or using Whole Lot of Nature (the “Site”), you agree to be bound by these Terms & Conditions and our Privacy Policy.'
@@ -53,9 +53,9 @@ export default function TermsPage() {
             title: '11. Contact',
             body: 'For questions about these Terms, contact us at info@wholelotofnature.com.'
           }].map((item) => (
-            <div key={item.title} className="bg-white border border-gray-200 rounded-none p-6">
-              <h2 className="text-xl font-semibold text-gray-900 antialiased">{item.title}</h2>
-              <p className="mt-2 text-gray-700">{item.body}</p>
+            <div key={item.title} className="bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-lg p-6">
+              <h2 className="text-lg md:text-xl font-semibold text-[#66BB6A] antialiased">{item.title}</h2>
+              <p className="mt-3 text-white/80 leading-relaxed">{item.body}</p>
             </div>
           ))}
         </div>
