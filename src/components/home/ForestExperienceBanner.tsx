@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
+import DarkVeil from '@/components/ui/DarkVeil';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function ForestExperienceBanner() {
   const ref = useRef(null);
@@ -18,18 +20,21 @@ export default function ForestExperienceBanner() {
 
   return (
     <section ref={ref} className="relative h-[30vh] sm:h-[40vh] overflow-hidden my-20">
-      {/* Parallax Background */}
-      <motion.div style={{ y }} className="absolute inset-0">
-        <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf2.png"
-          alt="Immersive forest experience"
-          fill
-          className="object-cover object-center"
-          style={{ filter: 'brightness(0.4)' }}
-          quality={90}
+      {/* DarkVeil Shader Background */}
+      <div className="absolute inset-0 z-0">
+        <DarkVeil 
+          hueShift={120}
+          noiseIntensity={0.08}
+          scanlineIntensity={0}
+          speed={0.3}
+          scanlineFrequency={0}
+          warpAmount={0.2}
+          resolutionScale={0.8}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D3B1F]/90 via-[#1A1A1A]/80 to-[#0D3B1F]/90" />
-      </motion.div>
+      </div>
+
+      {/* Overlay for content visibility */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B0F]/60 via-[#1A1A1A]/40 to-[#0D1B0F]/60 z-5" />
 
       {/* Content */}
       <motion.div
@@ -81,19 +86,19 @@ export default function ForestExperienceBanner() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <Link href="/shop">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(46,125,50,0.6)' }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-lg uppercase tracking-widest forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300 antialiased"
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              className="px-8 py-3 text-white font-montserrat font-bold text-base uppercase tracking-wider"
+              glowColor="#66BB6A"
             >
               Start Exploring
-            </motion.button>
+            </HoverBorderGradient>
           </Link>
         </motion.div>
       </motion.div>
 
       {/* Animated Particles/Leaves Effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
