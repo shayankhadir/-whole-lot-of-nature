@@ -39,7 +39,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
         >
           −
         </button>
-        <span className="px-6 py-3 bg-[#1A1A1A] text-white font-semibold min-w-[60px] text-center">
+        <span className="px-6 py-3 bg-[#0F1E11] text-white font-semibold min-w-[60px] text-center">
           {quantity}
         </span>
         <button

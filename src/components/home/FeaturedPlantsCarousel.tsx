@@ -73,7 +73,7 @@ export default function FeaturedPlantsCarousel() {
   }
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#1A1A1A] overflow-hidden">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0F1E11] overflow-hidden">
       {/* Background Leaf Decorations */}
       <div className="absolute top-10 left-0 w-48 h-48 text-[#2E7D32]/5 pointer-events-none">
         <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
@@ -91,7 +91,7 @@ export default function FeaturedPlantsCarousel() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-montserrat text-[68px] md:text-[110px] font-bold text-white uppercase tracking-wide antialiased">
+          <h2 className="font-montserrat text-[clamp(3rem,8vw,6.875rem)] font-bold text-white uppercase tracking-wide antialiased">
             Featured <span className="text-[#66BB6A]">Plants</span>
           </h2>
           <p className="font-inter text-lg text-white/70 mt-4 max-w-2xl antialiased">
@@ -167,7 +167,7 @@ export default function FeaturedPlantsCarousel() {
 
                       {/* Price - H5 (42px) */}
                       <div className="flex items-baseline justify-between">
-                        <span className="font-montserrat text-[42px] text-[#2E7D32] font-bold leading-none antialiased">
+                        <span className="font-montserrat text-[clamp(2rem,5vw,2.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
                           ₹{product.price}
                         </span>
                         <span className="text-sm font-inter text-white/50 group-hover:text-white/70 transition-colors">

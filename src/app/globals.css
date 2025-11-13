@@ -3,7 +3,7 @@
 
 :root {
   /* Forest Theme - Dark Mode Focus */
-  --background: #1A1A1A;
+  --background: #0D1B0F;
   --foreground: #FFFFFF;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,8 +12,8 @@
   --emerald: #2E7D32;
   --turquoise: #66BB6A;
   --sage: #8BC34A;
-  --charcoal: #1A1A1A;
-  --dark-gray: #2C2C2C;
+  --charcoal: #0D1B0F;
+  --dark-gray: #0F1E11;
   --medium-gray: #757575;
   --light-gray: #E0E0E0;
   --off-white: #F8F9FA;
@@ -145,9 +145,9 @@ svg[data-slot="icon"] {
 .animate-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(44, 44, 44, 1) 0%,
+    rgba(13, 27, 15, 1) 0%,
     rgba(46, 125, 50, 0.1) 50%,
-    rgba(44, 44, 44, 1) 100%
+    rgba(13, 27, 15, 1) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 2s infinite;

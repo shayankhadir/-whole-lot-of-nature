@@ -39,9 +39,9 @@ const CTAButton: React.FC<CTAButtonProps> = ({
 
   const variantClasses = {
     primary: 'bg-[#2E7D32] text-white border-2 border-[#2E7D32] hover:bg-white hover:text-[#2E7D32]',
-    secondary: 'bg-black text-white border-2 border-black hover:bg-white hover:text-black',
-    outline: 'bg-transparent text-black border-2 border-black hover:bg-black hover:text-white',
-    ghost: 'bg-transparent text-black hover:bg-[#2E7D32]',
+    secondary: 'bg-[#0F1E11] text-white border-2 border-[#2E7D32] hover:bg-[#2E7D32] hover:text-white',
+    outline: 'bg-transparent text-white border-2 border-[#2E7D32] hover:bg-[#2E7D32] hover:text-white',
+    ghost: 'bg-transparent text-white hover:bg-[#2E7D32]/20',
   };
 
   const sizeClasses = {

@@ -73,7 +73,7 @@ export default function MobileFloatingNav() {
       className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
     >
       {/* Glass-morphism background */}
-      <div className="mx-4 mb-4 rounded-2xl backdrop-blur-xl bg-[#1A1A1A]/90 border border-[#2E7D32]/30 shadow-2xl">
+      <div className="mx-4 mb-4 rounded-2xl backdrop-blur-xl bg-[#0D1B0F]/90 border border-[#2E7D32]/30 shadow-2xl">
         <div className="flex items-center justify-around px-2 py-3">
           {navItems.map((item) => {
             const active = isActive(item.href);

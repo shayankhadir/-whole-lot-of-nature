@@ -58,7 +58,7 @@ export default function ForestExperienceBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-montserrat text-[48px] sm:text-[68px] font-bold text-white uppercase tracking-wide mb-4 antialiased"
+          className="font-montserrat text-[clamp(2.5rem,6vw,4.25rem)] font-bold text-white uppercase tracking-wide mb-4 antialiased"
         >
           Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
         </motion.h2>

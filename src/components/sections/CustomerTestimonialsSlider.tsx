@@ -51,7 +51,7 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-16 bg-[#1A1A1A]">
+    <section className="relative py-16 bg-[#0F1E11]">
       {/* Background Grid Effect */}
       <BackgroundGrid />
       

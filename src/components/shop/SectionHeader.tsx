@@ -21,7 +21,7 @@ export default function SectionHeader({
       className={`mb-12 ${centered ? 'text-center' : 'text-left'}`}
     >
       {/* Main Title */}
-      <h2 className="font-montserrat text-[42px] md:text-[52px] font-bold text-white tracking-wide leading-tight antialiased">
+      <h2 className="font-montserrat text-[clamp(2rem,5vw,3.25rem)] font-bold text-white tracking-wide leading-tight antialiased">
         {title}
       </h2>
 

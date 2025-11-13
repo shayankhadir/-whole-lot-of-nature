@@ -33,13 +33,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen relative z-10 bg-[#0A0A0A]">
+    <div className="min-h-screen relative z-10 bg-[#0D1B0F]">
       {/* Immersive Forest Hero with Parallax */}
       <HeroSection />
 
       {/* Featured Plants Carousel with Emerald Glow */}
       <SeamlessSection 
-        bgColor="bg-[#0A0A0A]" 
+        bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
         rightDecoration="fern"
       >
@@ -50,7 +50,7 @@ export default function Home() {
 
       {/* Immersive Botanical Explorer - Interactive Showcase */}
       <SeamlessSection 
-        bgColor="bg-[#0F0F0F]" 
+        bgColor="bg-[#0F1E11]" 
         paddingY="md"
       >
         <ImmersiveBotanicalExplorer products={featuredProducts} />
@@ -63,7 +63,7 @@ export default function Home() {
 
       {/* Brand Story + About Preview */}
       <SeamlessSection 
-        bgColor="bg-[#0F0F0F]" 
+        bgColor="bg-[#0F1E11]" 
         paddingY="xl"
         leftDecoration="monstera"
       >
@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <SeamlessSection 
-        bgColor="bg-[#0A0A0A]" 
+        bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
         rightDecoration="monstera"
       >
@@ -83,7 +83,7 @@ export default function Home() {
 
       {/* Features Section */}
       <SeamlessSection 
-        bgColor="bg-[#0F0F0F]" 
+        bgColor="bg-[#0F1E11]" 
         paddingY="md"
         leftDecoration="fern"
       >
@@ -94,7 +94,7 @@ export default function Home() {
 
       {/* Customer Testimonials Slider */}
       <SeamlessSection 
-        bgColor="bg-[#0A0A0A]" 
+        bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
         rightDecoration="fern"
       >
@@ -103,7 +103,7 @@ export default function Home() {
 
       {/* Newsletter Signup */}
       <SeamlessSection 
-        bgColor="bg-[#0F0F0F]" 
+        bgColor="bg-[#0F1E11]" 
         paddingY="md"
         leftDecoration="monstera"
       >
@@ -114,7 +114,7 @@ export default function Home() {
 
       {/* Final CTA */}
       <SeamlessSection 
-        bgColor="bg-[#0A0A0A]" 
+        bgColor="bg-[#0D1B0F]" 
         paddingY="xl"
       >
         <FinalCTA />

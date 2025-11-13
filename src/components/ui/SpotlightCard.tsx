@@ -39,7 +39,7 @@ export default function SpotlightCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative overflow-hidden rounded-xl bg-[#1A1A1A] border border-[#2E7D32]/20 ${className}`}
+      className={`group relative overflow-hidden rounded-xl bg-[#0F1E11] border border-[#2E7D32]/20 ${className}`}
     >
       {/* Spotlight effect */}
       <motion.div

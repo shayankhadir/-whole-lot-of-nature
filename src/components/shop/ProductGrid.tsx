@@ -10,7 +10,7 @@ interface ProductGridProps {
 // Premium Skeleton Card with Emerald Shimmer
 function SkeletonCard() {
   return (
-    <div className="bg-[#1A1A1A] rounded-[6px] shadow-[0_4px_24px_rgba(46,125,50,0.12)] p-6 border border-transparent">
+    <div className="bg-[#0F1E11] rounded-[6px] shadow-[0_4px_24px_rgba(46,125,50,0.12)] p-6 border border-transparent">
       {/* Image skeleton with 4:5 aspect ratio */}
       <div className="relative w-full mb-4 overflow-hidden rounded-lg bg-[#2C2C2C]" style={{ aspectRatio: '4/5' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-[#2C2C2C] via-[#2E7D32]/10 to-[#2C2C2C] animate-shimmer" 

@@ -27,7 +27,7 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
   }
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto my-20 rounded-xl overflow-hidden bg-[#1A1A1A] shadow-2xl select-none">
+    <section className="relative w-full max-w-7xl mx-auto my-20 rounded-xl overflow-hidden bg-[#0F1E11] shadow-2xl select-none">
       {/* Parallax Background Leaves */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div

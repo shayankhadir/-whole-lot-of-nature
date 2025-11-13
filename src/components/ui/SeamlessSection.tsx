@@ -17,7 +17,7 @@ interface SeamlessSectionProps {
 
 export default function SeamlessSection({
   children,
-  bgColor = 'bg-[#0A0A0A]',
+  bgColor = 'bg-[#0D1B0F]',
   gradientFrom,
   gradientTo,
   paddingY = 'lg',
@@ -99,7 +99,7 @@ export function LeafDivider({
         whileInView={{ scale: 1, rotate: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-        className="relative z-10 bg-[#0A0A0A] px-6"
+        className="relative z-10 bg-[#0D1B0F] px-6"
       >
         <svg
           width="60"
