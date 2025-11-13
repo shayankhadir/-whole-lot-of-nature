@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { FocusCards } from '@/components/ui/focus-cards';
 import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function WhyChooseUsFocus() {
   const reasons = [
@@ -79,19 +80,22 @@ export default function WhyChooseUsFocus() {
           <p className="text-white/70 text-[clamp(0.875rem,2vw,1.125rem)] mb-6 antialiased">
             Join thousands of plant lovers who trust us for their green sanctuary
           </p>
-          <a
-            href="/shop"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2E7D32] hover:bg-[#66BB6A] text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(46,125,50,0.4)]"
-          >
-            Start Shopping
-            <svg 
-              className="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+          <a href="/shop">
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              className="inline-flex items-center gap-3 text-white font-montserrat font-semibold"
+              glowColor="#66BB6A"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+              Start Shopping
+              <svg 
+                className="w-5 h-5" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </HoverBorderGradient>
           </a>
         </motion.div>
       </div>

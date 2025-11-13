@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function HeroSection() {
   return (
@@ -56,7 +57,7 @@ export default function HeroSection() {
         </motion.p>
       </motion.div>
 
-      {/* Bottom Scroll Hint - Glowing Button */}
+      {/* Bottom Scroll Hint - HoverBorderGradient Button */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -64,11 +65,13 @@ export default function HeroSection() {
         className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
       >
         <Link href="#categories">
-          <div className="px-8 py-4 bg-[#2E7D32]/20 backdrop-blur-md border border-[#66BB6A]/50 rounded-full hover:bg-[#2E7D32]/30 hover:border-[#66BB6A] transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(102,187,106,0.6)] hover:shadow-[0_0_50px_rgba(102,187,106,0.9)]">
-            <p className="text-white text-sm uppercase tracking-[0.2em] font-inter">
-              Explore Collection
-            </p>
-          </div>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            className="text-white text-sm uppercase tracking-[0.2em] font-inter px-6 py-3"
+            glowColor="#66BB6A"
+          >
+            Explore Collection
+          </HoverBorderGradient>
         </Link>
       </motion.div>
 

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Leaf } from 'lucide-react';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function FinalCTA() {
   return (
@@ -56,14 +57,14 @@ export default function FinalCTA() {
               className="flex-shrink-0"
             >
               <Link href="/shop">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(102,187,106,0.6)' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group flex items-center gap-3 px-8 py-4 bg-white text-[#1a4d2e] font-montserrat font-bold text-base uppercase tracking-wide rounded-xl shadow-lg transition-all duration-300 hover:bg-[#66BB6A] hover:text-white"
+                <HoverBorderGradient
+                  containerClassName="rounded-full"
+                  className="flex items-center gap-3 text-white font-montserrat font-bold text-base uppercase tracking-wide"
+                  glowColor="#66BB6A"
                 >
                   Start Shopping
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </motion.button>
+                  <ArrowRight className="w-5 h-5" />
+                </HoverBorderGradient>
               </Link>
             </motion.div>
           </div>
