@@ -4,11 +4,21 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { WooCommerceService, WooCommerceProduct } from '@/lib/services/woocommerceService';
+import { WooCommerceService, WooCommerceProduct } from '@/lib/services/woocommerceservice';
 import FeatureCard from '@/components/content/FeatureCard';
 import StatisticsCard from '@/components/content/StatisticsCard';
 import { CTASection } from '@/components/content/CTAButton';
 import SectionHeader from '@/components/content/SectionHeader';
+
+// Format price to INR with proper currency symbol
+function formatPrice(priceStr: string): string {
+  const price = parseFloat(priceStr || '0');
+  // Assuming prices from WordPress are in INR (₹)
+  return `₹${price.toLocaleString('en-IN', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
+  })}`;
+}
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -150,11 +160,15 @@ export default function ProductDetailPage() {
             {/* Pricing */}
             <div className="bg-[#2E7D32] border-4 border-[#2E7D32] rounded-lg p-6">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-4xl font-bold text-[#2E7D32] antialiased">₹{product.price}</span>
-                {product.sale_price && (
+                <span className="text-4xl font-bold text-white antialiased">
+                  {formatPrice(product.price)}
+                </span>
+                {product.sale_price && product.regular_price && (
                   <>
-                    <span className="text-xl line-through text-gray-500 antialiased">₹{product.regular_price}</span>
-                    <span className="text-lg font-bold text-red-600 antialiased">
+                    <span className="text-xl line-through text-white/70 antialiased">
+                      {formatPrice(product.regular_price)}
+                    </span>
+                    <span className="text-lg font-bold text-yellow-300 antialiased">
                       -
                       {Math.round(
                         ((parseFloat(product.regular_price) - parseFloat(product.sale_price)) /
@@ -166,7 +180,7 @@ export default function ProductDetailPage() {
                   </>
                 )}
               </div>
-              <p className={`font-semibold ${product.in_stock ? 'text-[#2E7D32]' : 'text-red-600'}`}>
+              <p className={`font-semibold ${product.in_stock ? 'text-white' : 'text-yellow-300'}`}>
                 {product.in_stock ? '✓ In Stock' : '✗ Out of Stock'}
               </p>
             </div>
@@ -307,7 +321,7 @@ export default function ProductDetailPage() {
                     </div>
                   )}
                   <h3 className="font-bold text-black mb-2 line-clamp-2 antialiased">{relProd.name}</h3>
-                  <p className="text-[#2E7D32] font-bold antialiased">₹{relProd.price}</p>
+                  <p className="text-[#2E7D32] font-bold antialiased">{formatPrice(relProd.price)}</p>
                   <a
                     href={`/products/${relProd.slug}`}
                     className="mt-3 block w-full text-center py-2 bg-[#2E7D32] text-white rounded font-semibold hover:bg-[#2E7D32]"

@@ -133,7 +133,7 @@ export class WooCommerceService {
       console.log('Attempting to fetch products from WooCommerce API...');
       
       const response = await WooCommerce.get('products', {
-        per_page: limit || 20,
+        per_page: limit || 100, // Changed from 20 to 100 to fetch more products
         status: 'publish',
         stock_status: 'instock'
       });
