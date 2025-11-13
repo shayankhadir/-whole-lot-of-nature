@@ -88,29 +88,29 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <motion.div style={{ opacity }} className="relative z-10 flex flex-col items-center justify-center px-6 md:px-12 text-center max-w-[1400px] mx-auto py-20">
-        {/* Main Headline - BRING THE FOREST HOME with Golden Ratio Typography */}
+        {/* Main Headline - STAY LOYAL TO THE SOIL with Golden Ratio Typography */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="font-montserrat text-[clamp(4rem,14vw,11.125rem)] font-bold uppercase text-white leading-[0.9] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)] antialiased"
-          style={{ letterSpacing: '0.1em' }}
+          className="font-montserrat text-[clamp(2.625rem,10vw,6.875rem)] md:text-[clamp(4.25rem,12vw,6.875rem)] lg:text-[6.875rem] font-bold uppercase text-white leading-[0.95] drop-shadow-[0_12px_48px_rgba(0,0,0,0.8)] antialiased"
+          style={{ letterSpacing: '0.05em' }}
         >
-          BRING THE
+          STAY
           <br />
-          <span className="text-[#66BB6A] drop-shadow-[0_0_40px_rgba(102,187,106,0.6)]">FOREST</span>
+          LOYAL TO
           <br />
-          HOME
+          <span className="text-[#66BB6A] drop-shadow-[0_0_40px_rgba(102,187,106,0.6)]">THE SOIL</span>
         </motion.h1>
 
-        {/* Subheadline - Golden Ratio H5 (42px clamped) */}
+        {/* Subheadline - Refined messaging */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-8 md:mt-10 font-inter text-[clamp(1.125rem,2.5vw,2rem)] text-white/90 max-w-3xl leading-relaxed tracking-wide"
+          className="mt-8 md:mt-10 font-inter text-[clamp(1.125rem,2.5vw,1.5rem)] text-white/90 max-w-2xl leading-relaxed tracking-wide"
         >
-          Handpicked nature, organic plants, and sustainable growth — delivered to your door.
+          Handpicked nature, organic plants, and sustainable growth — for a greener Earth.
         </motion.p>
 
         {/* Glassmorphic CTA Card */}

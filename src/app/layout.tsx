@@ -9,7 +9,6 @@ import { LoadingProvider } from "@/contexts/LoadingContext";
 import PageLoadingScreen from "@/components/loading/PageLoadingScreen";
 import { RouteTransitionProvider } from "@/components/loading/RouteTransitionProvider";
 import { Suspense } from "react";
-import FloatingDock from "@/components/ui/FloatingDock";
 
 // Load brand typography: Inter (body), Montserrat (headings), and Playfair Display (display)
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -213,8 +212,6 @@ export default function RootLayout({
                   <Layout>
                     {children}
                   </Layout>
-                  {/* Floating Dock Navigation - macOS style */}
-                  <FloatingDock />
                 </RouteTransitionProvider>
               </Suspense>
             </LoadingProvider>

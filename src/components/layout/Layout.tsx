@@ -1,12 +1,11 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Header from './HeaderNew';
+import ResponsiveHeader from './ResponsiveHeader';
 import Footer from './Footer';
 import CartSidebar from '../cart/CartSidebar';
 import TopBanner from '../ui/TopBanner';
 import TropicalBackground from '../ui/TropicalBackground';
-import MobileBottomNav from './MobileBottomNav';
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,13 +17,12 @@ export default function Layout({ children }: LayoutProps) {
       <TropicalBackground />
       <div className="relative z-10">
         <TopBanner />
-        <Header />
+        <ResponsiveHeader />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
         <CartSidebar />
-        <MobileBottomNav />
       </div>
     </div>
   );
