@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import HeroSection from '@/components/home/HeroSection';
-import CategoryGrid from '@/components/sections/CategoryGrid';
+import CategoryGridFocus from '@/components/sections/CategoryGridFocus';
 import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
 import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
@@ -49,7 +49,7 @@ export default function Home() {
           paddingY="lg"
           leftDecoration="monstera"
         >
-          <CategoryGrid />
+          <CategoryGridFocus />
         </SeamlessSection>
       </div>
 
