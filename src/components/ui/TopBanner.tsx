@@ -36,7 +36,7 @@ export default function TopBanner() {
 
   return (
     <div
-      className="bg-black text-white py-2 px-12 text-center relative border-b border-white/10 backdrop-blur select-none"
+      className="bg-gradient-to-r from-[#1e3a28] via-[#2d5a3d] to-[#1e3a28] text-white py-2.5 px-12 text-center relative border-b border-[#2E7D32]/30 backdrop-blur-sm shadow-sm select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -48,7 +48,7 @@ export default function TopBanner() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -12, opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap text-white drop-shadow-sm"
           >
             {messages[index]}
           </motion.div>
@@ -60,7 +60,7 @@ export default function TopBanner() {
         className="absolute right-4 top-1/2 -translate-y-1/2 hover:bg-white/10 rounded p-1 transition-colors backdrop-blur-md"
         aria-label="Close banner"
       >
-        <X className="w-4 h-4" />
+        <X className="w-4 h-4 text-white" />
       </button>
     </div>
   );
