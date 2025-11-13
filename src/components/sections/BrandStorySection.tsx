@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 export default function BrandStorySection() {
   return (
-  <section className="relative overflow-hidden py-20 bg-gradient-to-b from-primary-50/50 to-white">
+  <section className="relative overflow-hidden py-20 bg-gradient-to-b from-[#0D1B0F] to-[#0F1E11]">
       {/* Leaf SVG pattern background */}
-      <div className="absolute inset-0 -z-10 opacity-5">
+      <div className="absolute inset-0 -z-10 opacity-10">
         <svg width="100%" height="100%" className="w-full h-full">
           <defs>
             <pattern id="leafPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
-              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-primary-700"/>
-              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-primary-700"/>
+              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-[#2E7D32]"/>
+              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-[#2E7D32]"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#leafPattern)" />
@@ -87,11 +87,11 @@ export default function BrandStorySection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-[#2E7D32] leading-tight antialiased">
+            <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] text-[#66BB6A] leading-tight antialiased">
               Stay Loyal to the Soil
             </h2>
 
-            <div className="mt-6 space-y-4 text-base md:text-lg text-gray-700 antialiased">
+            <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-white/80 antialiased">
               <p>
                 Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
               </p>
@@ -107,7 +107,7 @@ export default function BrandStorySection() {
               <p>
                 Our goal isn’t just to sell — it’s to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
               </p>
-              <p className="font-medium text-[#2E7D32]">
+              <p className="font-medium text-[#66BB6A]">
                 Whole Lot of Nature — bringing soil, soul, and sustainability together.
               </p>
 
@@ -147,7 +147,7 @@ export default function BrandStorySection() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-sm ring-1 ring-green-900/10">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-[#2E7D32]/30">
               <Image
                 src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80"
                 alt="Hands holding rich soil and roots"
@@ -157,7 +157,7 @@ export default function BrandStorySection() {
                 priority={false}
               />
               {/* Soft green overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-green-900/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/60 via-transparent to-transparent" />
             </div>
           </motion.div>
         </div>
