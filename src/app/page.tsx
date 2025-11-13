@@ -14,7 +14,7 @@ import BlogPreview from '@/components/sections/BlogPreview';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import Newsletter from '@/components/sections/Newsletter';
 import BrandStorySection from '@/components/sections/BrandStorySection';
-import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import WhyChooseUsFocus from '@/components/sections/WhyChooseUsFocus';
 import FinalCTA from '@/components/sections/FinalCTA';
 import SeamlessSection, { LeafDivider } from '@/components/ui/SeamlessSection';
 import { Product } from '@/types/product';
@@ -117,7 +117,7 @@ export default function Home() {
         paddingY="lg"
         rightDecoration="monstera"
       >
-        <WhyChooseUs />
+        <WhyChooseUsFocus />
       </SeamlessSection>
 
       {/* 10. Features Section */}
