@@ -86,10 +86,11 @@ class SEOAutoFix {
   }
 
   private async fixFile(file: string, issues: SEOIssue[]): Promise<void> {
-    const filePath = path.join(this.rootDir, file);
+    // Handle both absolute and relative paths
+    const filePath = path.isAbsolute(file) ? file : path.join(this.rootDir, file);
     
     if (!fs.existsSync(filePath)) {
-      this.errors.push(`File not found: ${file}`);
+      this.errors.push(`File not found: ${filePath}`);
       return;
     }
 
