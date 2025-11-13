@@ -46,13 +46,13 @@ export default function ShopPage() {
       );
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A] py-20 px-6">
+    <div className="min-h-screen bg-[#0F1E11] py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-bold text-[#2E7D32] mb-4 font-header antialiased">
+          <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-bold text-[#2E7D32] mb-4 font-header antialiased">
             Our Collection
           </h1>
-          <p className="text-xl text-[#66BB6A] font-body antialiased">
+          <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-[#66BB6A] font-body antialiased">
             Premium plants and sustainable essentials
           </p>
         </div>

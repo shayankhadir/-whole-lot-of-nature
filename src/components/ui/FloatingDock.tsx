@@ -32,7 +32,7 @@ export default function FloatingDock() {
       onMouseLeave={() => mouseX.set(Infinity)}
       className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="flex items-end gap-4 px-6 py-4 rounded-2xl backdrop-blur-xl bg-[#1A1A1A]/80 border border-[#2E7D32]/30 shadow-2xl">
+      <div className="flex items-end gap-4 px-6 py-4 rounded-2xl backdrop-blur-xl bg-[#0D1B0F]/90 border border-[#2E7D32]/30 shadow-2xl">
         {dockItems.map((item, i) => (
           <DockIcon
             key={item.href}
@@ -122,12 +122,12 @@ export function FloatingActionButton() {
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          className="absolute bottom-20 right-0 w-64 p-4 rounded-xl backdrop-blur-xl bg-[#1A1A1A]/90 border border-[#2E7D32]/30 shadow-2xl"
+          className="absolute bottom-20 right-0 w-64 p-4 rounded-xl backdrop-blur-xl bg-[#0D1B0F]/95 border border-[#2E7D32]/30 shadow-2xl"
         >
           <input
             type="text"
             placeholder="Search plants..."
-            className="w-full px-4 py-2 bg-[#2C2C2C] text-white rounded-lg border border-[#2E7D32]/30 focus:border-[#2E7D32] focus:outline-none"
+            className="w-full px-4 py-2 bg-[#0F1E11] text-white rounded-lg border border-[#2E7D32]/30 focus:border-[#2E7D32] focus:outline-none"
           />
         </motion.div>
       )}

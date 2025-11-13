@@ -59,7 +59,7 @@ export default function FeaturedPlantsCarousel() {
 
   if (loading) {
     return (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1A1A1A]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0F1E11]">
         <div className="max-w-[1600px] mx-auto">
           <div className="h-12 bg-[#2C2C2C] animate-shimmer w-64 mb-12 rounded-lg" />
           <div className="flex gap-6 overflow-hidden">
@@ -161,7 +161,7 @@ export default function FeaturedPlantsCarousel() {
                       </span>
 
                       {/* Product Name - H6 (26px) */}
-                      <h3 className="font-montserrat font-semibold text-[26px] text-white leading-tight line-clamp-2 mb-4 group-hover:text-[#66BB6A] transition-colors duration-300">
+                      <h3 className="font-montserrat font-semibold text-[clamp(1.125rem,2.5vw,1.625rem)] text-white leading-tight line-clamp-2 mb-4 group-hover:text-[#66BB6A] transition-colors duration-300">
                         {product.name}
                       </h3>
 

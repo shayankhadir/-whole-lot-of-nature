@@ -23,18 +23,18 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 text-center">
-        <h1 className="text-[110px] md:text-[178px] font-header font-bold text-white leading-none mb-8 antialiased">
+        <h1 className="text-[clamp(4rem,12vw,11rem)] font-header font-bold text-white leading-none mb-8 antialiased">
           BRING THE<br />
           FOREST HOME
         </h1>
         
-        <p className="text-xl md:text-2xl text-[#E0E0E0] max-w-3xl mx-auto mb-12 font-body antialiased">
+        <p className="text-[clamp(1rem,2.5vw,1.5rem)] text-[#E0E0E0] max-w-3xl mx-auto mb-12 font-body antialiased">
           Discover premium plants, organic soil mixes, and sustainable gardening essentials
         </p>
 
         {/* CTA Card */}
         <div className="glass forest-card-lg max-w-md mx-auto p-8 border border-[#2E7D32]/30">
-          <h3 className="text-[42px] font-header font-semibold text-[#66BB6A] mb-6">
+          <h3 className="text-[clamp(1.75rem,4.5vw,2.625rem)] font-header font-semibold text-[#66BB6A] mb-6">
             Explore Our Collection
           </h3>
           
