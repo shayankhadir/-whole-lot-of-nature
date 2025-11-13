@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { WooCommerceService, WooCommerceProduct } from '@/lib/services/woocommerceservice';
+import { WooCommerceService, WooCommerceProduct } from '@/lib/services/woocommerceService';
 import FeatureCard from '@/components/content/FeatureCard';
 import StatisticsCard from '@/components/content/StatisticsCard';
 import { CTASection } from '@/components/content/CTAButton';
