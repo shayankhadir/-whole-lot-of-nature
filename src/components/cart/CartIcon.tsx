@@ -11,29 +11,31 @@ interface CartIconProps {
   showBadge?: boolean;
 }
 
-export default function CartIcon({ className = "h-6 w-6", buttonClassName, showBadge = true }: CartIconProps) {
+export default function CartIcon({ className = "h-6 w-6 text-white", buttonClassName = "text-white hover:text-white/80", showBadge = true }: CartIconProps) {
   const { totalItems, openCart } = useCartStore();
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
       onClick={openCart}
       className={twMerge(
-        'relative group p-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-700',
+        'relative group p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white',
         buttonClassName
       )}
       aria-label="Open cart"
     >
-  <ShoppingCart className={twMerge(className, 'transition-colors')} strokeWidth={1.5} />
+      <ShoppingCart className={twMerge(className, 'transition-colors')} strokeWidth={2} />
       {showBadge && totalItems > 0 && (
         <motion.span 
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="absolute -top-1 -right-1 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold shadow-lg min-w-[20px] h-5 flex items-center justify-center antialiased"
+          className="absolute -top-1 -right-1 bg-[#2E7D32] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg"
         >
           {totalItems > 99 ? '99+' : totalItems}
         </motion.span>
       )}
-    </button>
+    </motion.button>
   );
 }

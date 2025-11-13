@@ -36,7 +36,7 @@ export default function TopBanner() {
 
   return (
     <div
-      className="bg-gradient-to-r from-[#1e3a28] via-[#2d5a3d] to-[#1e3a28] text-white py-2.5 px-12 text-center relative border-b border-[#2E7D32]/30 backdrop-blur-sm shadow-sm select-none"
+      className="sticky top-0 z-50 bg-gradient-to-r from-[#1e3a28] via-[#2d5a3d] to-[#1e3a28] text-white py-2.5 px-12 text-center relative border-b border-[#2E7D32]/30 backdrop-blur-sm shadow-sm select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

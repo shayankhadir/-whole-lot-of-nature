@@ -16,8 +16,10 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen flex flex-col relative">
       <TropicalBackground />
       <div className="relative z-10">
-        <TopBanner />
-        <ResponsiveHeader />
+        <div className="relative">
+          <TopBanner />
+          <ResponsiveHeader />
+        </div>
         <main className="flex-grow">
           {children}
         </main>
