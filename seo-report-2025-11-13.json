@@ -1,0 +1,2466 @@
+{
+  "scanDate": "2025-11-13T07:26:20.904Z",
+  "stats": {
+    "filesScanned": 30,
+    "totalIssues": 258,
+    "criticalIssues": 51,
+    "highIssues": 97,
+    "mediumIssues": 96,
+    "lowIssues": 14,
+    "metaTagsGenerated": 0,
+    "schemaAdded": 0,
+    "optimizationsApplied": 0
+  },
+  "issues": [
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "About Us - Premium Plant Nursery | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Learn about Whole Lot of Nature - your trusted plant nursery in Bangalore. Premium quality plants, expert advice, and sustainable gardening solutions."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Low word count (37 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "Very thin content (37 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Account | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Low word count (43 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "message": "Very thin content (43 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Signin | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "message": "Low word count (178 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Signup | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "meta",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Description too long (186 chars). May be truncated"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "message": "Low word count (202 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "[id] | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Old-categoryId-backup | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "Low word count (207 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "[slug] | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "message": "Low word count (200 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Cart | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Multiple H1 headings found (2). Should have exactly one",
+      "fix": "Use only one H1, convert others to H2 or H3"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "message": "Low word count (258 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Checkout | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Low word count (21 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "Very thin content (21 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Combos | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "Low word count (238 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Description too short (81 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Low word count (80 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "message": "Very thin content (80 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Learn-gardening | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Low word count (10 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "Very thin content (10 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "[id] | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Low word count (10 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "Very thin content (10 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Login | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "App | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Missing H1 heading (required for SEO)",
+      "fix": "Add exactly one H1 heading per page"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "Low word count (135 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Title too short (19 chars). Ideal: 50-60 chars",
+      "suggestion": "Expand title to include keywords"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Description too short (72 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Description too short (58 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "[slug] | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "message": "Low word count (262 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Description too short (75 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Buy Premium Plants Online | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "Low word count (160 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "[slug] | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "message": "Low word count (180 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Signup | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "message": "Title too long (62 chars). Will be truncated in search results",
+      "suggestion": "Shorten to 50-60 characters"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Title too short (21 chars). Ideal: 50-60 chars",
+      "suggestion": "Expand title to include keywords"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Description too short (92 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Description too short (69 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Description too short (95 chars). Ideal: 150-160 chars"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "Low word count (278 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Test-env | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Low word count (55 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "content",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "Very thin content (55 words). May be flagged as low-quality",
+      "suggestion": "Add substantial content (300+ words)"
+    },
+    {
+      "type": "content",
+      "severity": "low",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "message": "No internal links found. Internal linking improves SEO",
+      "suggestion": "Add relevant internal links to other pages"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing page title",
+      "fix": "Add <title> tag or export metadata object",
+      "suggestion": "Wishlist | Whole Lot of Nature"
+    },
+    {
+      "type": "meta",
+      "severity": "critical",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing meta description",
+      "fix": "Add meta description",
+      "suggestion": "Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space."
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing OG title (Facebook/social sharing)",
+      "fix": "Add og:title meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing OG description",
+      "fix": "Add og:description meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "high",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing OG image (social media preview)",
+      "fix": "Add og:image meta tag with 1200x630px image"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing Twitter Card type",
+      "fix": "Add twitter:card meta tag"
+    },
+    {
+      "type": "meta",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Missing canonical URL (helps prevent duplicate content)",
+      "fix": "Add canonical link tag"
+    },
+    {
+      "type": "heading",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Heading hierarchy skip detected (h1 → h3)",
+      "suggestion": "Maintain sequential heading levels for accessibility and SEO"
+    },
+    {
+      "type": "content",
+      "severity": "medium",
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "message": "Low word count (104 words). Recommended: 300+ words for SEO",
+      "suggestion": "Add more descriptive content"
+    },
+    {
+      "type": "sitemap",
+      "severity": "high",
+      "file": "public/robots.txt",
+      "message": "robots.txt not found",
+      "fix": "Create robots.txt to guide search engine crawlers"
+    }
+  ],
+  "pageMetadata": [
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\about\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [
+        "h1"
+      ],
+      "wordCount": 37,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\account\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1"
+      ],
+      "wordCount": 43,
+      "images": [],
+      "links": [
+        {
+          "href": "/terms",
+          "text": "terms",
+          "internal": true
+        },
+        {
+          "href": "/privacy",
+          "text": "privacy policy",
+          "internal": true
+        }
+      ],
+      "h1Text": "Sign in"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signin\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 178,
+      "images": [],
+      "links": [
+        {
+          "href": "/auth/signup",
+          "text": "\r\n                  Create one\r\n                ",
+          "internal": true
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\auth\\signup\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 335,
+      "images": [],
+      "links": [
+        {
+          "href": "/auth/signin",
+          "text": "\r\n                Sign in here\r\n              ",
+          "internal": true
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h2",
+        "h2"
+      ],
+      "wordCount": 202,
+      "images": [],
+      "links": [
+        {
+          "href": "/soil-mixes-and-amendments",
+          "text": "Soil Mixes & Amendments",
+          "internal": true
+        },
+        {
+          "href": "/shop?category=land-plants",
+          "text": "Indoor & Outdoor Plants",
+          "internal": true
+        },
+        {
+          "href": "/shop",
+          "text": "\r\n            ",
+          "internal": true
+        }
+      ],
+      "title": "Best Online Gardening Store in Bangalore (2025 Guide)",
+      "description": "Looking for the best online gardening store in Bangalore? Here’s a practical guide: what to look for, must-have products, and how to choose the right soil mixes and plants for your home.",
+      "h1Text": "\r\n          Best Online Gardening Store in Bangalore (2025 Guide)\r\n        "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\category\\[id]\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [
+        "h3",
+        "h3"
+      ],
+      "wordCount": 326,
+      "images": [],
+      "links": [
+        {
+          "href": "/blog",
+          "text": "\r\n                View All Categories\r\n              ",
+          "internal": true
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [
+        "h3",
+        "h3"
+      ],
+      "wordCount": 326,
+      "images": [],
+      "links": [
+        {
+          "href": "/blog",
+          "text": "\r\n                View All Categories\r\n              ",
+          "internal": true
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h3"
+      ],
+      "wordCount": 207,
+      "images": [
+        {
+          "src": "/hero-leaves.svg",
+          "alt": "Tropical leaves",
+          "line": 115
+        }
+      ],
+      "links": [],
+      "title": "Beginner’s Guide to Indoor Plants",
+      "h1Text": "Our Blog"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\blog\\[slug]\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3"
+      ],
+      "wordCount": 200,
+      "images": [],
+      "links": [
+        {
+          "href": "/blog",
+          "text": "\r\n            Back to Blog\r\n          ",
+          "internal": true
+        },
+        {
+          "href": "/blog",
+          "text": "\r\n              ← Back to Blog\r\n            ",
+          "internal": true
+        },
+        {
+          "href": "/shop",
+          "text": "\r\n              Shop Seeds →\r\n            ",
+          "internal": true
+        }
+      ],
+      "h1Text": "{post.title}"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\cart\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h1",
+        "h2",
+        "h3",
+        "h2"
+      ],
+      "wordCount": 258,
+      "images": [],
+      "links": [
+        {
+          "href": "/shop",
+          "text": "\r\n                  ",
+          "internal": true
+        },
+        {
+          "href": "/combos",
+          "text": "\r\n                    Or check out our combo deals →\r\n                  ",
+          "internal": true
+        },
+        {
+          "href": "/shop",
+          "text": "\r\n            ",
+          "internal": true
+        },
+        {
+          "href": "/checkout",
+          "text": "\r\n                  Proceed to Checkout\r\n                ",
+          "internal": true
+        }
+      ],
+      "h1Text": "Your Cart is Empty"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\checkout\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 21,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\combos\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [
+        "h1",
+        "h3",
+        "h3",
+        "h3",
+        "h2"
+      ],
+      "wordCount": 238,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\contact\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h2",
+        "h2"
+      ],
+      "wordCount": 80,
+      "images": [],
+      "links": [
+        {
+          "href": "/about#contact",
+          "text": "About page",
+          "internal": true
+        }
+      ],
+      "title": "Contact Us | Whole Lot of Nature",
+      "description": "Get in touch with Whole Lot of Nature for product inquiries, orders, and support.",
+      "h1Text": "Contact Us"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 10,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\learn-gardening\\[id]\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 10,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\login\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2"
+      ],
+      "wordCount": 380,
+      "images": [],
+      "links": [
+        {
+          "href": "/forgot-password",
+          "text": "\r\n                Forgot password?\r\n              ",
+          "internal": true
+        },
+        {
+          "href": "/signup",
+          "text": "\r\n              Sign up here\r\n            ",
+          "internal": true
+        }
+      ],
+      "h1Text": "\r\n              Welcome Back\r\n            "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\page.tsx",
+      "hasH1": false,
+      "headingStructure": [],
+      "wordCount": 135,
+      "images": [],
+      "links": []
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\partnerships\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3",
+        "h3",
+        "h3",
+        "h3",
+        "h2"
+      ],
+      "wordCount": 531,
+      "images": [],
+      "links": [
+        {
+          "href": "mailto:partnerships@wholelotofnature.com",
+          "text": "\r\n                Become a Partner →\r\n              ",
+          "internal": false
+        },
+        {
+          "href": "/about",
+          "text": "\r\n                Learn More About Us\r\n              ",
+          "internal": true
+        }
+      ],
+      "title": "Farmer Partnerships",
+      "description": "Partnering with 50+ organic farmers across India to source premium seeds",
+      "h1Text": "\r\n              🤝 Partnerships & Collaboration\r\n            "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\privacy-policy\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h3",
+        "h3",
+        "h2",
+        "h2",
+        "h2",
+        "h3",
+        "h3",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h3"
+      ],
+      "wordCount": 684,
+      "images": [],
+      "links": [],
+      "title": "Privacy Policy | Whole Lot of Nature",
+      "description": "Learn how we protect and handle your personal information.",
+      "h1Text": "Privacy Policy"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\products\\[slug]\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3",
+        "h3",
+        "h3"
+      ],
+      "wordCount": 262,
+      "images": [],
+      "links": [
+        {
+          "href": "/shop",
+          "text": "\r\n            Back to Shop\r\n          ",
+          "internal": true
+        }
+      ],
+      "h1Text": "{product.name}"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\refund-policy\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h3",
+        "h3",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h3"
+      ],
+      "wordCount": 532,
+      "images": [],
+      "links": [
+        {
+          "href": "/contact",
+          "text": "\r\n                  Contact Us\r\n                ",
+          "internal": true
+        },
+        {
+          "href": "/contact",
+          "text": "\r\n                contact our customer service team\r\n              ",
+          "internal": true
+        }
+      ],
+      "title": "Refund Policy | Whole Lot of Nature",
+      "description": "Learn about our refund and return policy for plants and gardening products.",
+      "h1Text": "Refund & Return Policy"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1"
+      ],
+      "wordCount": 160,
+      "images": [],
+      "links": [],
+      "h1Text": "\n            Our Collection\n          "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\shop\\[slug]\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3",
+        "h3"
+      ],
+      "wordCount": 180,
+      "images": [],
+      "links": [
+        {
+          "href": "/shop",
+          "text": "Shop",
+          "internal": true
+        }
+      ],
+      "h1Text": "\r\n              {product.name}\r\n            "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\signup\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2"
+      ],
+      "wordCount": 438,
+      "images": [],
+      "links": [
+        {
+          "href": "/terms",
+          "text": "\r\n                  Terms of Service\r\n                ",
+          "internal": true
+        },
+        {
+          "href": "/privacy",
+          "text": "\r\n                  Privacy Policy\r\n                ",
+          "internal": true
+        },
+        {
+          "href": "/login",
+          "text": "\r\n              Sign in here\r\n            ",
+          "internal": true
+        }
+      ],
+      "h1Text": "\r\n              Let's Get Started\r\n            "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h3",
+        "h2",
+        "h3",
+        "h2",
+        "h2"
+      ],
+      "wordCount": 341,
+      "images": [
+        {
+          "src": "/hero-leaves.svg",
+          "alt": "Leaves",
+          "line": 58
+        }
+      ],
+      "links": [
+        {
+          "href": "/shop?category=soil-and-growing-media",
+          "text": "\r\n              Shop Soil & Media\r\n            ",
+          "internal": true
+        },
+        {
+          "href": "#products",
+          "text": "\r\n              See Featured Products\r\n            ",
+          "internal": true
+        },
+        {
+          "href": "/shop?category=soil-and-growing-media",
+          "text": "Shop Soil & Media",
+          "internal": true
+        }
+      ],
+      "title": "Soil Mixes & Amendments | Cinder, Leaf Mould, Premium Soil Mix",
+      "description": "Boost plant growth with premium soil mixes and amendments. Shop Cinder, Leaf Mould, and our signature Soil Mix. Fast delivery across India.",
+      "ogTitle": "Premium Soil Mixes & Amendments | Cinder • Leaf Mould • Soil Mix",
+      "ogDescription": "Professional-grade substrates for healthy roots and faster growth. Order Cinder, Leaf Mould, and our signature Soil Mix today.",
+      "h1Text": "\r\n            Soil Mixes & Amendments for Faster Growth\r\n          "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\team\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3",
+        "h2"
+      ],
+      "wordCount": 440,
+      "images": [],
+      "links": [
+        {
+          "href": "mailto:careers@wholelotofnature.com",
+          "text": "\r\n              Explore Career Opportunities →\r\n            ",
+          "internal": false
+        }
+      ],
+      "title": "Excellence in Quality",
+      "description": "We maintain the highest standards in every product and every interaction with our customers.",
+      "h1Text": "\r\n              Meet Our Team 👥\r\n            "
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2",
+        "h2"
+      ],
+      "wordCount": 495,
+      "images": [],
+      "links": [],
+      "title": "Terms & Conditions | Whole Lot of Nature",
+      "description": "Read our terms and conditions for using Whole Lot of Nature services.",
+      "h1Text": "Terms & Conditions"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\terms-and-conditions\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2"
+      ],
+      "wordCount": 278,
+      "images": [],
+      "links": [],
+      "title": "Terms & Conditions | Whole Lot of Nature",
+      "description": "Read the Terms and Conditions that govern the use of Whole Lot of Nature products and services.",
+      "h1Text": "Terms & Conditions"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\test-env\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h2"
+      ],
+      "wordCount": 55,
+      "images": [],
+      "links": [],
+      "h1Text": "Environment Variables Check"
+    },
+    {
+      "file": "C:\\Users\\USER\\Documents\\whole lot of nature\\Whole lot of nature\\whole-lot-of-nature\\src\\app\\wishlist\\page.tsx",
+      "hasH1": true,
+      "headingStructure": [
+        "h1",
+        "h3"
+      ],
+      "wordCount": 104,
+      "images": [],
+      "links": [
+        {
+          "href": "/shop",
+          "text": "\r\n              ",
+          "internal": true
+        }
+      ],
+      "h1Text": "Your Wishlist"
+    }
+  ]
+}

@@ -1,0 +1,3593 @@
+{
+  "scanDate": "2025-11-13T07:34:04.682Z",
+  "stats": {
+    "filesScanned": 33,
+    "totalIssues": 140,
+    "criticalIssues": 14,
+    "highIssues": 11,
+    "mediumIssues": 36,
+    "lowIssues": 79,
+    "totalBundleSize": 524597,
+    "largeImagesCount": 16,
+    "unoptimizedImagesCount": 23,
+    "unusedCodeEstimate": 1200
+  },
+  "issues": [
+    {
+      "type": "bundle",
+      "severity": "high",
+      "file": "/_app",
+      "message": "Large bundle size: 256.17 KB",
+      "impact": "Slow page load time, poor mobile experience",
+      "fix": "Implement code splitting and dynamic imports",
+      "estimatedSavings": "Potential 77 KB reduction"
+    },
+    {
+      "type": "bundle",
+      "severity": "high",
+      "file": "/_error",
+      "message": "Large bundle size: 256.13 KB",
+      "impact": "Slow page load time, poor mobile experience",
+      "fix": "Implement code splitting and dynamic imports",
+      "estimatedSavings": "Potential 77 KB reduction"
+    },
+    {
+      "type": "image",
+      "severity": "high",
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "message": "Large image: 257.33 KB",
+      "impact": "May slow page load on mobile",
+      "fix": "Compress or convert to modern format",
+      "estimatedSavings": "103 KB reduction"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "77 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "message": "Very large image: 2311.03 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1387 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1156 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "message": "Very large image: 2261.84 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1357 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1131 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "message": "Very large image: 2176.93 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1306 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1088 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "message": "Very large image: 2346.39 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1408 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1173 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "message": "Very large image: 2536.59 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1522 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1268 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "message": "Very large image: 2670.66 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1602 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1335 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "message": "Very large image: 2814.63 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1689 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1407 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\images (1).jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "3 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\images.jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "4 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "high",
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "message": "Large image: 257.33 KB",
+      "impact": "May slow page load on mobile",
+      "fix": "Compress or convert to modern format",
+      "estimatedSavings": "103 KB reduction"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "77 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "message": "Very large image: 2311.03 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1387 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1156 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "message": "Very large image: 2261.84 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1357 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1131 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "message": "Very large image: 2176.93 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1306 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1088 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "message": "Very large image: 2346.39 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1408 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1173 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "message": "Very large image: 2536.59 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1522 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1268 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "message": "Very large image: 2670.66 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1602 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1335 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "critical",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "message": "Very large image: 2814.63 KB",
+      "impact": "Slow page load, high bandwidth usage",
+      "fix": "Compress image and convert to WebP/AVIF",
+      "estimatedSavings": "1689 KB reduction possible"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "1407 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\images (1).jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "3 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "low",
+      "file": "public\\images\\backgrounds\\images.jpg",
+      "message": "JPG format - modern formats available",
+      "impact": "Missing out on 25-35% size reduction",
+      "fix": "Convert to WebP format",
+      "estimatedSavings": "4 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\logo.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "28 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\store-logo.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "28 KB with WebP"
+    },
+    {
+      "type": "image",
+      "severity": "medium",
+      "file": "public\\Whole lot of nature logo.png",
+      "message": "PNG format for photo - inefficient",
+      "impact": "Larger file size than necessary",
+      "fix": "Convert to WebP or AVIF format",
+      "estimatedSavings": "28 KB with WebP"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\blog\\BlogCategoryFilter.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\cart\\CartIcon.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\CTAButton.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\FeatureCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\SectionHeader.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\StatisticsCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\TeamMemberCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\content\\TrustSignals.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\home\\ForestExperienceBanner.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\home\\HeroSection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\home\\HeroSectionSimple.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\layout\\Footer.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\layout\\Header.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\layout\\Layout.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\layout\\MobileBottomNav.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\loading\\PageLoadingScreen.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\loyalty\\LoyaltyCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\loyalty\\LoyaltyHistory.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\loyalty\\TierBadge.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\providers\\NextAuthProvider.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\BestSellers.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\BlogTeaser.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\BrandStorySection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\BundlesShowcase.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\CategorySection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\CategoryShowcase.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\ComboPacks.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\CustomerTestimonials.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\CustomerTestimonialsSlider.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\EnhancedCategoryShowcase.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\FeaturedCategories.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\FeaturedTiltCategories.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\Features.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\FinalCTA.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\HeroSection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\InstagramEmbed.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\NewsletterSection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\PromoBanners.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\QuickActions.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\ShopByNeed.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\Testimonials.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\WhyChooseUs.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\YouTubeChannel.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\sections\\YouTubeEmbed.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\seo\\BreadcrumbJsonLd.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\seo\\ProductJsonLd.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\seo\\ProductListJsonLd.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\shop\\CategoryHeader.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\shop\\PremiumProductSection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\shop\\SectionHeader.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\shop\\ShippingIndicator.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\testimonials\\TestimonialCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\AnimatedBackground.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\AnimatedText.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\BackgroundEffects.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\Button.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\Card.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\GlassCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\Input.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\LeafBackground.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\LeafDecoration.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\SeamlessSection.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\SpotlightCard.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\StarBorder.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\components\\ui\\TropicalBackground.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\about\\page.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\account\\page.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\not-found.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\partnerships\\page.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\team\\page.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "render",
+      "severity": "low",
+      "file": "src\\app\\wishlist\\page.tsx",
+      "message": "Marked as client component but may not need to be",
+      "impact": "Prevents server-side rendering optimization",
+      "fix": "Remove \"use client\" if hooks/browser APIs not used"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\auth\\AuthForm.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\cart\\CartSidebar.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\layout\\HeaderNew.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\sections\\BestSellers.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\sections\\BestSellers.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\sections\\InstagramFeed.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\sections\\InstagramFeed.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\sections\\Testimonials.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\sections\\Testimonials.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\sections\\YouTubeChannel.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\sections\\YouTubeChannel.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\components\\shop\\CategoryHeader.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\components\\shop\\CategoryHeader.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\auth\\signup\\page.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "high",
+      "file": "src\\app\\layout.tsx",
+      "message": "Using <img> instead of Next.js Image component",
+      "impact": "Missing automatic image optimization",
+      "fix": "Replace with next/image Image component"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\layout.tsx",
+      "message": "Image without lazy loading",
+      "impact": "All images load immediately, slowing initial load",
+      "fix": "Add loading=\"lazy\" or use Next.js Image"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\login\\page.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\partnerships\\page.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\products\\[slug]\\page.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\shop\\ShopPageContent.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "loading",
+      "severity": "medium",
+      "file": "src\\app\\signup\\page.tsx",
+      "message": "Large component not lazy loaded",
+      "impact": "Increases initial bundle size",
+      "fix": "Use next/dynamic for code splitting"
+    },
+    {
+      "type": "bundle",
+      "severity": "medium",
+      "message": "Heavy dependency detected: axios",
+      "impact": "Increases bundle size significantly",
+      "fix": "Consider Use native fetch API",
+      "estimatedSavings": "50-200 KB reduction possible"
+    },
+    {
+      "type": "bundle",
+      "severity": "low",
+      "message": "24 potentially unused dependencies",
+      "impact": "Inflated node_modules, potential security risks",
+      "fix": "Review and remove: @heroicons/react, @next-auth/prisma-adapter, @prisma/client, @woocommerce/woocommerce-rest-api, axios..."
+    }
+  ],
+  "imageAnalyses": [
+    {
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "size": 263506,
+      "format": "jpg",
+      "optimizable": true,
+      "estimatedSavings": 105402.40000000001,
+      "suggestions": [
+        "Optimize compression",
+        "Consider WebP format",
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "size": 2366491,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1419894.5999999999,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "size": 2316129,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1389677.4,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "size": 2229180,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1337508,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "size": 2402708,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1441624.8,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "size": 2597472,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1558483.2,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "size": 2734751,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1640850.5999999999,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "size": 2882183,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1729309.8,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\images (1).jpg",
+      "size": 11009,
+      "format": "jpg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\images.jpg",
+      "size": 12077,
+      "format": "jpg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\file.svg",
+      "size": 391,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\globe.svg",
+      "size": 1035,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\hero-leaves.svg",
+      "size": 1533,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\images\\backgrounds\\ai-generated-lush-tropical-green-leaves-background-photo.jpg",
+      "size": 263506,
+      "format": "jpg",
+      "optimizable": true,
+      "estimatedSavings": 105402.40000000001,
+      "suggestions": [
+        "Optimize compression",
+        "Consider WebP format",
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf1.png",
+      "size": 2366491,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1419894.5999999999,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf2.png",
+      "size": 2316129,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1389677.4,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\bgleaf3.png",
+      "size": 2229180,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1337508,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 3_53PM.png",
+      "size": 2402708,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1441624.8,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_02PM.png",
+      "size": 2597472,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1558483.2,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM (1).png",
+      "size": 2734751,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1640850.5999999999,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\Generated Image November 09, 2025 - 4_06PM.png",
+      "size": 2882183,
+      "format": "png",
+      "optimizable": true,
+      "estimatedSavings": 1729309.8,
+      "suggestions": [
+        "Compress to under 200KB",
+        "Convert to WebP format",
+        "Use responsive images with srcset",
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\images (1).jpg",
+      "size": 11009,
+      "format": "jpg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\images\\backgrounds\\images.jpg",
+      "size": 12077,
+      "format": "jpg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "JPG detected - convert to WebP for better compression"
+      ]
+    },
+    {
+      "file": "public\\leaf-foreground.svg",
+      "size": 541,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\logo.png",
+      "size": 58137,
+      "format": "png",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\logo.svg",
+      "size": 930,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\next.svg",
+      "size": 1375,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\plant-monstera.svg",
+      "size": 747,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\plant-snake.svg",
+      "size": 680,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\store-logo.png",
+      "size": 58137,
+      "format": "png",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\vercel.svg",
+      "size": 128,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    },
+    {
+      "file": "public\\Whole lot of nature logo.png",
+      "size": 58137,
+      "format": "png",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": [
+        "PNG detected - consider WebP for photos"
+      ]
+    },
+    {
+      "file": "public\\window.svg",
+      "size": 385,
+      "format": "svg",
+      "optimizable": false,
+      "estimatedSavings": 0,
+      "suggestions": []
+    }
+  ],
+  "bundleAnalyses": [],
+  "componentAnalyses": [
+    {
+      "file": "src\\components\\animations\\FloatingLeaves.tsx",
+      "linesOfCode": 83,
+      "imports": [
+        "framer-motion",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\auth\\AuthForm.tsx",
+      "linesOfCode": 404,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "next/image",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\blog\\BlogCategoryFilter.tsx",
+      "linesOfCode": 201,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\blog\\BlogGrid.tsx",
+      "linesOfCode": 163,
+      "imports": [
+        "react",
+        "framer-motion",
+        "./BlogPostCard",
+        "./BlogCategoryFilter"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\blog\\BlogPostCard.tsx",
+      "linesOfCode": 206,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\cart\\CartIcon.tsx",
+      "linesOfCode": 40,
+      "imports": [
+        "framer-motion",
+        "lucide-react",
+        "@/stores/cartStore",
+        "tailwind-merge"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\cart\\CartSidebar.tsx",
+      "linesOfCode": 313,
+      "imports": [
+        "react",
+        "@headlessui/react",
+        "lucide-react",
+        "framer-motion",
+        "next/image",
+        "next/link",
+        "@/stores/cartStore",
+        "@/lib/utils/pricing"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\checkout\\CouponInput.tsx",
+      "linesOfCode": 180,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/lib/services/couponService",
+        "@/lib/utils/priceUtils"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\CTAButton.tsx",
+      "linesOfCode": 292,
+      "imports": [
+        "react",
+        "next/link",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\FeatureCard.tsx",
+      "linesOfCode": 252,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\SectionHeader.tsx",
+      "linesOfCode": 228,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\StatisticsCard.tsx",
+      "linesOfCode": 188,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\TeamMemberCard.tsx",
+      "linesOfCode": 146,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\content\\TrustSignals.tsx",
+      "linesOfCode": 167,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\form\\CustomButton.tsx",
+      "linesOfCode": 121,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\form\\CustomInput.tsx",
+      "linesOfCode": 98,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\home\\FeaturedPlantsCarousel.tsx",
+      "linesOfCode": 216,
+      "imports": [
+        "framer-motion",
+        "react",
+        "next/image",
+        "next/link",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\home\\ForestExperienceBanner.tsx",
+      "linesOfCode": 122,
+      "imports": [
+        "framer-motion",
+        "react",
+        "next/image",
+        "next/link",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\home\\HeroSection.tsx",
+      "linesOfCode": 174,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link",
+        "lucide-react",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\home\\HeroSectionSimple.tsx",
+      "linesOfCode": 58,
+      "imports": [
+        "next/image",
+        "next/link",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\home\\ImmersiveBotanicalExplorer.tsx",
+      "linesOfCode": 172,
+      "imports": [
+        "react",
+        "next/image",
+        "framer-motion",
+        "lucide-react",
+        "@/types/product"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\JsonLd.tsx",
+      "linesOfCode": 36,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\layout\\Footer.tsx",
+      "linesOfCode": 133,
+      "imports": [
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\layout\\Header.tsx",
+      "linesOfCode": 8,
+      "imports": [],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\layout\\HeaderNew.tsx",
+      "linesOfCode": 429,
+      "imports": [
+        "react",
+        "next/navigation",
+        "next/link",
+        "next/image",
+        "framer-motion",
+        "@headlessui/react",
+        "../cart/CartIcon",
+        "@/stores/wishlistStore"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\layout\\Layout.tsx",
+      "linesOfCode": 31,
+      "imports": [
+        "react",
+        "./HeaderNew",
+        "./Footer",
+        "../cart/CartSidebar",
+        "../ui/TopBanner",
+        "../ui/TropicalBackground",
+        "./MobileBottomNav"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\layout\\MobileBottomNav.tsx",
+      "linesOfCode": 45,
+      "imports": [
+        "next/link",
+        "lucide-react",
+        "../cart/CartIcon"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loading\\LoadingScreen.tsx",
+      "linesOfCode": 1,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loading\\LoadingScreenWrapper.tsx",
+      "linesOfCode": 1,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loading\\PageLoadingScreen.tsx",
+      "linesOfCode": 72,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "@/contexts/LoadingContext"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loading\\PlantProgressBar.tsx",
+      "linesOfCode": 1,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loading\\RouteTransitionProvider.tsx",
+      "linesOfCode": 41,
+      "imports": [
+        "react",
+        "next/navigation",
+        "@/contexts/LoadingContext"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loyalty\\LoyaltyCard.tsx",
+      "linesOfCode": 166,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/lib/hooks/useLoyal",
+        "./TierBadge"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loyalty\\LoyaltyHistory.tsx",
+      "linesOfCode": 174,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/lib/types/loyalty"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loyalty\\RedeemDialog.tsx",
+      "linesOfCode": 196,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/lib/hooks/useLoyal",
+        "@/lib/services/loyaltyService",
+        "@/lib/types/loyalty"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\loyalty\\TierBadge.tsx",
+      "linesOfCode": 77,
+      "imports": [
+        "react",
+        "@/lib/types/loyalty"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\providers\\NextAuthProvider.tsx",
+      "linesOfCode": 12,
+      "imports": [
+        "next-auth/react",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\providers\\QueryClientProvider.tsx",
+      "linesOfCode": 24,
+      "imports": [
+        "@tanstack/react-query",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\providers.tsx",
+      "linesOfCode": 14,
+      "imports": [
+        "@tanstack/react-query",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\BestSellers.tsx",
+      "linesOfCode": 132,
+      "imports": [
+        "framer-motion",
+        "lucide-react",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\BlogTeaser.tsx",
+      "linesOfCode": 36,
+      "imports": [
+        "next/link",
+        "next/image",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\BrandStorySection.tsx",
+      "linesOfCode": 185,
+      "imports": [
+        "framer-motion",
+        "next/image"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\BundlesShowcase.tsx",
+      "linesOfCode": 47,
+      "imports": [
+        "framer-motion",
+        "next/link",
+        "@/components/shop/ComboProductCard",
+        "@/data/combos"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\CategorySection.tsx",
+      "linesOfCode": 112,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\CategoryShowcase.tsx",
+      "linesOfCode": 145,
+      "imports": [
+        "framer-motion",
+        "next/link",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\ComboPacks.tsx",
+      "linesOfCode": 43,
+      "imports": [
+        "next/link",
+        "next/image",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\CustomerTestimonials.tsx",
+      "linesOfCode": 122,
+      "imports": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\CustomerTestimonialsSlider.tsx",
+      "linesOfCode": 134,
+      "imports": [
+        "react",
+        "keen-slider/react",
+        "framer-motion",
+        "lucide-react",
+        "@/components/ui/SpotlightCard",
+        "@/components/ui/BackgroundEffects"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\EnhancedCategoryShowcase.tsx",
+      "linesOfCode": 251,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\EnhancedNavigation.tsx",
+      "linesOfCode": 192,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "lucide-react",
+        "@/stores/cartStore"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\FAQ.tsx",
+      "linesOfCode": 116,
+      "imports": [
+        "react",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\FeaturedCategories.tsx",
+      "linesOfCode": 122,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\FeaturedTiltCategories.tsx",
+      "linesOfCode": 130,
+      "imports": [
+        "next/link",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\Features.tsx",
+      "linesOfCode": 148,
+      "imports": [
+        "framer-motion",
+        "@/components/ui/GlassCard",
+        "@/components/ui/BackgroundEffects"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\FinalCTA.tsx",
+      "linesOfCode": 61,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\Hero.tsx",
+      "linesOfCode": 149,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "@/components/ui/Button",
+        "@/components/ui/BlurText",
+        "@/components/ui/StarBorder",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\HeroSection.tsx",
+      "linesOfCode": 232,
+      "imports": [
+        "framer-motion",
+        "next/link",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\InstagramEmbed.tsx",
+      "linesOfCode": 89,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\InstagramFeed.tsx",
+      "linesOfCode": 183,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "@/lib/graphql"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\LatestArticles.tsx",
+      "linesOfCode": 75,
+      "imports": [
+        "next/image",
+        "next/link",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\Newsletter.tsx",
+      "linesOfCode": 162,
+      "imports": [
+        "react",
+        "next/image",
+        "framer-motion",
+        "lucide-react",
+        "@/components/ui/GlassCard",
+        "@/components/ui/BackgroundEffects"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\NewsletterSection.tsx",
+      "linesOfCode": 46,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\OurBestMixesCarousel.tsx",
+      "linesOfCode": 142,
+      "imports": [
+        "react",
+        "framer-motion",
+        "keen-slider/react",
+        "next/image",
+        "next/link",
+        "@/stores/cartStore"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\ProductCarousel.tsx",
+      "linesOfCode": 60,
+      "imports": [
+        "react",
+        "next/link",
+        "next/image",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\PromoBanners.tsx",
+      "linesOfCode": 35,
+      "imports": [
+        "next/link",
+        "next/image",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\QuickActions.tsx",
+      "linesOfCode": 121,
+      "imports": [
+        "framer-motion",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\ShopByNeed.tsx",
+      "linesOfCode": 69,
+      "imports": [
+        "next/link",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\StatisticsBlock.tsx",
+      "linesOfCode": 221,
+      "imports": [
+        "framer-motion",
+        "react-intersection-observer",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\Testimonials.tsx",
+      "linesOfCode": 33,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\WhyChooseUs.tsx",
+      "linesOfCode": 86,
+      "imports": [
+        "framer-motion",
+        "lucide-react",
+        "@/components/ui/SpotlightCard",
+        "@/components/ui/BackgroundEffects"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\YouTubeChannel.tsx",
+      "linesOfCode": 172,
+      "imports": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\sections\\YouTubeEmbed.tsx",
+      "linesOfCode": 63,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\seo\\BreadcrumbJsonLd.tsx",
+      "linesOfCode": 25,
+      "imports": [
+        "next/script"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\seo\\ProductJsonLd.tsx",
+      "linesOfCode": 63,
+      "imports": [
+        "next/script"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\seo\\ProductListJsonLd.tsx",
+      "linesOfCode": 28,
+      "imports": [
+        "next/script"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\AddToCartButton.tsx",
+      "linesOfCode": 64,
+      "imports": [
+        "react",
+        "lucide-react",
+        "@/types/product"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\CartItems.tsx",
+      "linesOfCode": 141,
+      "imports": [
+        "next/image",
+        "lucide-react",
+        "framer-motion",
+        "@/lib/store/cart"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\CategoryHeader.tsx",
+      "linesOfCode": 61,
+      "imports": [
+        "framer-motion",
+        "@/lib/categoryIcons"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\ComboProductCard.tsx",
+      "linesOfCode": 221,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/image",
+        "@/lib/utils/pricing",
+        "lucide-react",
+        "@/stores/cartStore"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\ComboProductsGrid.tsx",
+      "linesOfCode": 232,
+      "imports": [
+        "react",
+        "framer-motion",
+        "./ComboProductCard",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\FilterControls.tsx",
+      "linesOfCode": 260,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/types/product",
+        "@/lib/categoryIcons",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\MobileFilterDrawer.tsx",
+      "linesOfCode": 62,
+      "imports": [
+        "react",
+        "@headlessui/react",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\PremiumProductSection.tsx",
+      "linesOfCode": 108,
+      "imports": [
+        "react",
+        "framer-motion",
+        "./SectionHeader"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\ProductCard.tsx",
+      "linesOfCode": 207,
+      "imports": [
+        "react",
+        "next/image",
+        "next/link",
+        "framer-motion",
+        "@/types/product",
+        "lucide-react",
+        "@/lib/utils/pricing",
+        "@/stores/cartStore",
+        "@/stores/wishlistStore"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\ProductGrid.tsx",
+      "linesOfCode": 106,
+      "imports": [
+        "@/types/product",
+        "framer-motion",
+        "./ProductCard"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\SectionHeader.tsx",
+      "linesOfCode": 94,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\shop\\ShippingIndicator.tsx",
+      "linesOfCode": 114,
+      "imports": [
+        "framer-motion",
+        "@/lib/utils/priceUtils"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\showcase\\CategoryShowcase.tsx",
+      "linesOfCode": 177,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "next/link"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\skeletons\\FilterSkeleton.tsx",
+      "linesOfCode": 29,
+      "imports": [
+        "@/components/ui/Skeleton"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\skeletons\\ProductGridSkeleton.tsx",
+      "linesOfCode": 23,
+      "imports": [
+        "@/components/ui/Skeleton"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\testimonials\\TestimonialCard.tsx",
+      "linesOfCode": 163,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\testimonials\\TestimonialForm.tsx",
+      "linesOfCode": 200,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\testimonials\\TestimonialsGrid.tsx",
+      "linesOfCode": 194,
+      "imports": [
+        "react",
+        "framer-motion",
+        "./TestimonialCard"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\AnimatedBackground.tsx",
+      "linesOfCode": 60,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\AnimatedText.tsx",
+      "linesOfCode": 22,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\BackgroundEffects.tsx",
+      "linesOfCode": 107,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\BlurText.tsx",
+      "linesOfCode": 121,
+      "imports": [
+        "framer-motion",
+        "react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Button.tsx",
+      "linesOfCode": 55,
+      "imports": [
+        "tailwind-merge",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Card.tsx",
+      "linesOfCode": 14,
+      "imports": [],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\CountUp.tsx",
+      "linesOfCode": 54,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\DarkVeil.tsx",
+      "linesOfCode": 162,
+      "imports": [
+        "react",
+        "ogl"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\FloatingDock.tsx",
+      "linesOfCode": 137,
+      "imports": [
+        "react",
+        "next/link",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\GlassCard.tsx",
+      "linesOfCode": 76,
+      "imports": [
+        "framer-motion",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\index.ts",
+      "linesOfCode": 18,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Input.tsx",
+      "linesOfCode": 27,
+      "imports": [],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\LeafBackground.tsx",
+      "linesOfCode": 74,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\LeafDecoration.tsx",
+      "linesOfCode": 154,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Logo.tsx",
+      "linesOfCode": 39,
+      "imports": [
+        "react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\NewsletterSignup.tsx",
+      "linesOfCode": 66,
+      "imports": [
+        "react",
+        "./Button",
+        "./Input"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\PlantProgress.tsx",
+      "linesOfCode": 196,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\ProductCard.tsx",
+      "linesOfCode": 205,
+      "imports": [
+        "next/image",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\ProductReviews.tsx",
+      "linesOfCode": 141,
+      "imports": [
+        "react",
+        "@/lib/hooks/useProducts",
+        "./Button",
+        "./Input"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\SeamlessSection.tsx",
+      "linesOfCode": 131,
+      "imports": [
+        "framer-motion",
+        "react",
+        "@/components/ui/LeafDecoration"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\ServiceCard.tsx",
+      "linesOfCode": 140,
+      "imports": [
+        "framer-motion",
+        "next/link",
+        "react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\ShinyText.tsx",
+      "linesOfCode": 28,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Skeleton.tsx",
+      "linesOfCode": 28,
+      "imports": [
+        "tailwind-merge"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\SocialShare.tsx",
+      "linesOfCode": 53,
+      "imports": [
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\SpotlightCard.tsx",
+      "linesOfCode": 83,
+      "imports": [
+        "framer-motion",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\StarBorder.tsx",
+      "linesOfCode": 55,
+      "imports": [
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\TestimonialCard.tsx",
+      "linesOfCode": 144,
+      "imports": [
+        "next/image",
+        "framer-motion",
+        "lucide-react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\TopBanner.tsx",
+      "linesOfCode": 67,
+      "imports": [
+        "react",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\TropicalBackground.tsx",
+      "linesOfCode": 154,
+      "imports": [
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\components\\ui\\Wordmark.tsx",
+      "linesOfCode": 40,
+      "imports": [
+        "react"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\about\\page.tsx",
+      "linesOfCode": 30,
+      "imports": [
+        "framer-motion",
+        "next/image",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\account\\page.tsx",
+      "linesOfCode": 42,
+      "imports": [
+        "next/link",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\auth\\register\\route.ts",
+      "linesOfCode": 64,
+      "imports": [
+        "next/server",
+        "bcryptjs",
+        "@/lib/prisma"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\auth\\[...nextauth]\\route.ts",
+      "linesOfCode": 6,
+      "imports": [
+        "next-auth",
+        "@/lib/auth/authOptions"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\categories\\route.ts",
+      "linesOfCode": 50,
+      "imports": [
+        "next/server",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\coupons\\validate\\route.ts",
+      "linesOfCode": 58,
+      "imports": [
+        "next/server",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\products\\route.ts",
+      "linesOfCode": 47,
+      "imports": [
+        "next/server",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\products\\[id]\\route.ts",
+      "linesOfCode": 34,
+      "imports": [
+        "next/server",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\reviews\\route.ts",
+      "linesOfCode": 38,
+      "imports": [
+        "@/lib/services/woocommerceService",
+        "next/server"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\test-connection\\route.ts",
+      "linesOfCode": 41,
+      "imports": [
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\api\\test-woocommerce\\route.ts",
+      "linesOfCode": 29,
+      "imports": [
+        "next/server",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\auth\\signin\\page.tsx",
+      "linesOfCode": 180,
+      "imports": [
+        "react",
+        "next-auth/react",
+        "next/navigation",
+        "next/link",
+        "framer-motion",
+        "@heroicons/react/24/outline",
+        "@/components/ui/Button",
+        "@/components/ui/Card",
+        "@/components/ui/Input",
+        "@/components/ui/Logo",
+        "@/components/ui/Wordmark"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\auth\\signup\\page.tsx",
+      "linesOfCode": 350,
+      "imports": [
+        "react",
+        "next-auth/react",
+        "next/navigation",
+        "next/link",
+        "framer-motion",
+        "@heroicons/react/24/outline",
+        "@/components/ui/Button",
+        "@/components/ui/Card"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\blog\\best-online-gardening-store-in-bangalore\\page.tsx",
+      "linesOfCode": 72,
+      "imports": [
+        "next",
+        "next/link"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\blog\\category\\[id]\\page.tsx",
+      "linesOfCode": 255,
+      "imports": [
+        "react",
+        "next/navigation",
+        "next/image",
+        "next/link",
+        "framer-motion",
+        "@/lib/services/woocommerceService",
+        "@/components/content/SectionHeader",
+        "@/components/content/CTAButton"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\blog\\old-categoryId-backup\\page.tsx",
+      "linesOfCode": 255,
+      "imports": [
+        "react",
+        "next/navigation",
+        "next/image",
+        "next/link",
+        "framer-motion",
+        "@/lib/services/woocommerceService",
+        "@/components/content/SectionHeader",
+        "@/components/content/CTAButton"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\blog\\page.tsx",
+      "linesOfCode": 132,
+      "imports": [
+        "next/image",
+        "next/link",
+        "lucide-react",
+        "@/lib/api/wordpress",
+        "@/components/ui/Button"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\blog\\[slug]\\page.tsx",
+      "linesOfCode": 286,
+      "imports": [
+        "react",
+        "next/navigation",
+        "next/image",
+        "next/link",
+        "framer-motion",
+        "@/lib/services/woocommerceService",
+        "@/components/content/SectionHeader",
+        "@/components/content/CTAButton"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\cart\\page.tsx",
+      "linesOfCode": 298,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "next/image",
+        "@/stores/cartStore",
+        "@/lib/utils/pricing"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\checkout\\page.tsx",
+      "linesOfCode": 10,
+      "imports": [
+        "next/navigation"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\combos\\page.tsx",
+      "linesOfCode": 185,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/components/shop/ComboProductsGrid",
+        "@/data/combos"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\contact\\page.tsx",
+      "linesOfCode": 59,
+      "imports": [
+        "next",
+        "@/components/ui/BlurText"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\error.tsx",
+      "linesOfCode": 158,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\head.tsx",
+      "linesOfCode": 11,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\layout.tsx",
+      "linesOfCode": 226,
+      "imports": [
+        "next",
+        "@/components/providers/NextAuthProvider",
+        "@/components/providers/QueryClientProvider",
+        "@/components/layout/Layout",
+        "next/font/google",
+        "next/script",
+        "@/contexts/LoadingContext",
+        "@/components/loading/PageLoadingScreen",
+        "@/components/loading/RouteTransitionProvider",
+        "react",
+        "@/components/ui/FloatingDock"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\layout_minimal_temp.tsx",
+      "linesOfCode": 26,
+      "imports": [
+        "next",
+        "next/font/google"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\learn-gardening\\page.tsx",
+      "linesOfCode": 5,
+      "imports": [
+        "next/navigation"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\learn-gardening\\[id]\\page.tsx",
+      "linesOfCode": 5,
+      "imports": [
+        "next/navigation"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\login\\page.tsx",
+      "linesOfCode": 365,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "next/image",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\not-found.tsx",
+      "linesOfCode": 195,
+      "imports": [
+        "framer-motion",
+        "next/link",
+        "next/image"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\page.tsx",
+      "linesOfCode": 124,
+      "imports": [
+        "react",
+        "@/components/home/HeroSection",
+        "@/components/home/FeaturedPlantsCarousel",
+        "@/components/home/ForestExperienceBanner",
+        "@/components/home/ImmersiveBotanicalExplorer",
+        "@/components/sections/CustomerTestimonialsSlider",
+        "@/components/sections/Features",
+        "@/components/sections/Newsletter",
+        "@/components/sections/BrandStorySection",
+        "@/components/sections/WhyChooseUs",
+        "@/components/sections/FinalCTA",
+        "@/components/ui/SeamlessSection",
+        "@/types/product"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\page_coming_soon_temp.tsx",
+      "linesOfCode": 97,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\page_test_delete.tsx",
+      "linesOfCode": 8,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\partnerships\\page.tsx",
+      "linesOfCode": 357,
+      "imports": [
+        "react",
+        "framer-motion"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\privacy-policy\\page.tsx",
+      "linesOfCode": 234,
+      "imports": [
+        "next"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\products\\[slug]\\page.tsx",
+      "linesOfCode": 342,
+      "imports": [
+        "react",
+        "next/navigation",
+        "next/image",
+        "framer-motion",
+        "@/lib/services/woocommerceService",
+        "@/components/content/FeatureCard",
+        "@/components/content/StatisticsCard",
+        "@/components/content/CTAButton",
+        "@/components/content/SectionHeader"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\refund-policy\\page.tsx",
+      "linesOfCode": 203,
+      "imports": [
+        "next",
+        "next/link"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\robots.ts",
+      "linesOfCode": 15,
+      "imports": [
+        "next"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\shop\\page.tsx",
+      "linesOfCode": 97,
+      "imports": [
+        "react",
+        "@/components/shop/ProductCard",
+        "@/types/product"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\shop\\ShopPageContent.tsx",
+      "linesOfCode": 336,
+      "imports": [
+        "react",
+        "next/navigation",
+        "@/components/ui/Button",
+        "framer-motion",
+        "lucide-react",
+        "@/lib/hooks/useProducts",
+        "@/components/shop/ProductGrid",
+        "@/components/seo/ProductListJsonLd",
+        "@/components/shop/FilterControls",
+        "@/components/shop/CategoryHeader",
+        "@/components/shop/MobileFilterDrawer",
+        "@/components/skeletons/ProductGridSkeleton",
+        "@/components/skeletons/FilterSkeleton"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\shop\\[slug]\\page.tsx",
+      "linesOfCode": 219,
+      "imports": [
+        "next/image",
+        "next/navigation",
+        "@/types/product",
+        "@/components/shop/AddToCartButton",
+        "@/components/ui/AnimatedBackground",
+        "framer-motion",
+        "react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\signup\\page.tsx",
+      "linesOfCode": 441,
+      "imports": [
+        "react",
+        "framer-motion",
+        "next/link",
+        "next/image",
+        "lucide-react"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\sitemap.ts",
+      "linesOfCode": 57,
+      "imports": [
+        "next",
+        "@/lib/services/woocommerceService"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\soil-mixes-and-amendments\\page.tsx",
+      "linesOfCode": 183,
+      "imports": [
+        "next",
+        "next/link",
+        "next/image"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\team\\page.tsx",
+      "linesOfCode": 210,
+      "imports": [
+        "react",
+        "framer-motion",
+        "@/components/content/TeamMemberCard"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\terms\\page.tsx",
+      "linesOfCode": 145,
+      "imports": [
+        "next"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\terms-and-conditions\\page.tsx",
+      "linesOfCode": 66,
+      "imports": [
+        "next"
+      ],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\test-env\\page.tsx",
+      "linesOfCode": 24,
+      "imports": [],
+      "isClientComponent": false,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    },
+    {
+      "file": "src\\app\\wishlist\\page.tsx",
+      "linesOfCode": 96,
+      "imports": [
+        "next/image",
+        "next/link",
+        "lucide-react",
+        "@/stores/wishlistStore",
+        "@/stores/cartStore",
+        "@/components/ui/Button",
+        "@/lib/utils/pricing"
+      ],
+      "isClientComponent": true,
+      "hasHeavyDependencies": false,
+      "suggestions": []
+    }
+  ]
+}

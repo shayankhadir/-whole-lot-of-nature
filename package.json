@@ -14,7 +14,15 @@
     "fix:alt-text": "tsx scripts/auto-fix.ts alt-text",
     "fix:colors": "tsx scripts/auto-fix.ts colors",
     "fix:typography": "tsx scripts/auto-fix.ts typography",
-    "fix:glassmorphism": "tsx scripts/auto-fix.ts glassmorphism"
+    "fix:glassmorphism": "tsx scripts/auto-fix.ts glassmorphism",
+    "seo:scan": "tsx scripts/seo-agent.ts",
+    "seo:fix": "tsx scripts/seo-fix.ts",
+    "perf:analyze": "tsx scripts/performance-agent.ts",
+    "perf:optimize": "tsx scripts/perf-optimize.ts",
+    "woo:sync": "tsx scripts/woo-agent.ts sync",
+    "woo:validate": "tsx scripts/woo-agent.ts validate",
+    "woo:monitor": "tsx scripts/woo-agent.ts monitor",
+    "woo:backup": "tsx scripts/woo-agent.ts backup"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
