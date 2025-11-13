@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import HeroSection from '@/components/home/HeroSection';
+import CategoryGrid from '@/components/sections/CategoryGrid';
+import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
+import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
 import ForestExperienceBanner from '@/components/home/ForestExperienceBanner';
 import ImmersiveBotanicalExplorer from '@/components/home/ImmersiveBotanicalExplorer';
 import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
 import Features from '@/components/sections/Features';
+import BlogPreview from '@/components/sections/BlogPreview';
+import FAQAccordion from '@/components/sections/FAQAccordion';
 import Newsletter from '@/components/sections/Newsletter';
 import BrandStorySection from '@/components/sections/BrandStorySection';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
@@ -34,10 +39,31 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative z-10 bg-[#0D1B0F]">
-      {/* Immersive Forest Hero with Parallax */}
+      {/* 1. Immersive Forest Hero with Parallax */}
       <HeroSection />
 
-      {/* Featured Plants Carousel with Emerald Glow */}
+      {/* 2. Shop by Category Grid - NEW */}
+      <SeamlessSection 
+        bgColor="bg-[#0D1B0F]" 
+        paddingY="lg"
+        leftDecoration="monstera"
+      >
+        <CategoryGrid />
+      </SeamlessSection>
+
+      <LeafDivider />
+
+      {/* 3. Trust/Awards Banner - NEW */}
+      <SeamlessSection 
+        bgColor="bg-[#0F1E11]" 
+        paddingY="sm"
+      >
+        <TrustBanner />
+      </SeamlessSection>
+
+      <LeafDivider color="#66BB6A" />
+
+      {/* 4. Best Sellers - Featured Plants Carousel */}
       <SeamlessSection 
         bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
@@ -48,20 +74,31 @@ export default function Home() {
 
       <LeafDivider />
 
-      {/* Immersive Botanical Explorer - Interactive Showcase */}
+      {/* 5. Featured Products: Soil & Mixes - NEW */}
       <SeamlessSection 
         bgColor="bg-[#0F1E11]" 
+        paddingY="lg"
+        leftDecoration="fern"
+      >
+        <FeaturedSoilMixes />
+      </SeamlessSection>
+
+      <LeafDivider color="#66BB6A" />
+
+      {/* 6. Immersive Botanical Explorer */}
+      <SeamlessSection 
+        bgColor="bg-[#0D1B0F]" 
         paddingY="md"
       >
         <ImmersiveBotanicalExplorer products={featuredProducts} />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+      <LeafDivider />
 
-      {/* Immersive Forest Experience Banner - Parallax Section */}
+      {/* 7. Forest Experience Banner - Parallax */}
       <ForestExperienceBanner />
 
-      {/* Brand Story + About Preview */}
+      {/* 8. Brand Story + About Preview */}
       <SeamlessSection 
         bgColor="bg-[#0F1E11]" 
         paddingY="xl"
@@ -72,7 +109,7 @@ export default function Home() {
 
       <LeafDivider color="#66BB6A" />
 
-      {/* Why Choose Us */}
+      {/* 9. Why Choose Us */}
       <SeamlessSection 
         bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
@@ -81,7 +118,7 @@ export default function Home() {
         <WhyChooseUs />
       </SeamlessSection>
 
-      {/* Features Section */}
+      {/* 10. Features Section */}
       <SeamlessSection 
         bgColor="bg-[#0F1E11]" 
         paddingY="md"
@@ -92,7 +129,7 @@ export default function Home() {
 
       <LeafDivider />
 
-      {/* Customer Testimonials Slider */}
+      {/* 11. Customer Testimonials */}
       <SeamlessSection 
         bgColor="bg-[#0D1B0F]" 
         paddingY="lg"
@@ -101,7 +138,29 @@ export default function Home() {
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-      {/* Newsletter Signup */}
+      <LeafDivider color="#66BB6A" />
+
+      {/* 12. Blog Preview - NEW */}
+      <SeamlessSection 
+        bgColor="bg-[#0F1E11]" 
+        paddingY="lg"
+        leftDecoration="palm"
+      >
+        <BlogPreview />
+      </SeamlessSection>
+
+      <LeafDivider />
+
+      {/* 13. FAQ Section - NEW */}
+      <SeamlessSection 
+        bgColor="bg-[#0D1B0F]" 
+        paddingY="lg"
+        rightDecoration="monstera"
+      >
+        <FAQAccordion />
+      </SeamlessSection>
+
+      {/* 14. Newsletter Signup */}
       <SeamlessSection 
         bgColor="bg-[#0F1E11]" 
         paddingY="md"
@@ -112,7 +171,7 @@ export default function Home() {
 
       <LeafDivider color="#66BB6A" />
 
-      {/* Final CTA */}
+      {/* 15. Final CTA */}
       <SeamlessSection 
         bgColor="bg-[#0D1B0F]" 
         paddingY="xl"
