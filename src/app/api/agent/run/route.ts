@@ -14,9 +14,9 @@ let agent: ScheduledTrendAgent | null = null;
 function getAgent(): ScheduledTrendAgent {
   if (!agent) {
     agent = new ScheduledTrendAgent({
-      runInterval: 'weekly',
-      publishStrategy: 'draft', // Change to 'scheduled' or 'immediate' with WordPress config
-      maxPostsPerRun: 5,
+      runInterval: 'daily', // Run daily to generate 5 posts per day
+      publishStrategy: 'draft', // Keep as draft, automatic publisher will publish
+      maxPostsPerRun: 5, // Generate 5 posts per day
       wordPressConfig: process.env.WORDPRESS_SITE_URL
         ? {
             siteUrl: process.env.WORDPRESS_SITE_URL,

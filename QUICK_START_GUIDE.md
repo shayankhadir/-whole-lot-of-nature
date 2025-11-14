@@ -14,7 +14,7 @@ Your website now has an **automated AI-powered content generator** that:
 
 ### Step 1: Access Dashboard
 ```
-https://your-site.com/admin/trends
+https://whole-lot-of-nature.vercel.app//admin/trends
 ```
 
 ### Step 2: View Statistics
@@ -41,9 +41,10 @@ Click "Execute Agent Run" to generate content
 ### Enable WordPress Publishing
 Edit `.env.local`:
 ```env
-WORDPRESS_SITE_URL=https://admin.wholelotofnature.com
-WORDPRESS_USERNAME=your_username
-WORDPRESS_PASSWORD=app_password
+WORDPRESS_API_URL=https://admin.wholelotofnature.com/wp-json
+WORDPRESS_URL=https://admin.wholelotofnature.com
+WORDPRESS_USERNAME=zebbroka@gmail.com
+WORDPRESS_APP_PASSWORD=Jm2r 8rVf 1vqw RwGx pIq9 aL7c
 ```
 
 ### Automatic Scheduling

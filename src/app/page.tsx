@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import HeroSection from '@/components/home/HeroSection';
+import CategoriesSection from '@/components/sections/CategoriesSection';
 import CategoryGridFocus from '@/components/sections/CategoryGridFocus';
 import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
@@ -42,7 +43,18 @@ export default function Home() {
       {/* 1. Immersive Forest Hero with Parallax */}
       <HeroSection />
 
-      {/* 2. Shop by Category Grid - NEW */}
+      {/* 1.5. Animated Categories with Botanical Bento */}
+      <SeamlessSection 
+        bgColor="bg-[#0D1B0F]" 
+        paddingY="lg"
+        rightDecoration="fern"
+      >
+        <CategoriesSection />
+      </SeamlessSection>
+
+      <LeafDivider />
+
+      {/* 2. Shop by Category Grid */}
       <div id="categories">
         <SeamlessSection 
           bgColor="bg-[#0D1B0F]" 
