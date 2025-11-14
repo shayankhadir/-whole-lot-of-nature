@@ -16,6 +16,7 @@ export interface WooCommerceProduct {
   id: number;
   name: string;
   slug: string;
+  sku?: string;
   price: string;
   regular_price: string;
   sale_price: string;
@@ -468,6 +469,7 @@ export class WooCommerceService {
       id: product.id,
       name: product.name,
       slug: product.slug,
+      sku: product.sku,
       // Keep raw numeric strings; formatting handled in UI utils
       price: product.price?.toString() || '0',
       regular_price: product.regular_price?.toString() || '0',

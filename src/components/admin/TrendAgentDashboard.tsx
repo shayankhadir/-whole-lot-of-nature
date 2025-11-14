@@ -104,12 +104,20 @@ export default function TrendAgentDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-[#0D1B0F] to-[#1e3a28] p-6 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <TrendingUp className="text-[#66BB6A]" size={32} />
-            Trend Agent Dashboard
-          </h1>
-          <p className="text-white/60">Monitor and manage automated content generation</p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+              <TrendingUp className="text-[#66BB6A]" size={32} />
+              Trend Agent Dashboard
+            </h1>
+            <p className="text-white/60">Monitor and manage automated content generation</p>
+          </div>
+          <a
+            href="/admin/inventory"
+            className="px-6 py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white rounded-lg font-semibold transition flex items-center gap-2"
+          >
+            📦 Inventory
+          </a>
         </div>
 
         {/* Error Message */}
