@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import DesktopHeader from './DesktopHeader';
 import MobileFloatingNav from './MobileFloatingNav';
+import MobileHeader from './MobileHeader';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 /**
@@ -12,16 +11,16 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
  * - Desktop (≥1024px): Shows only fixed header at top (transparent → colored on scroll)
  */
 export default function ResponsiveHeader() {
-  const pathname = usePathname();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+
+  if (isDesktop) {
+    return <DesktopHeader />;
+  }
 
   return (
     <>
-      {/* Desktop Header - Only shown on desktop */}
-      {isDesktop && <DesktopHeader />}
-      
-      {/* Mobile Floating Navigation - Only shown on mobile/tablet */}
-      {!isDesktop && <MobileFloatingNav />}
+      <MobileHeader />
+      <MobileFloatingNav />
     </>
   );
 }

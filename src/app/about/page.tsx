@@ -7,9 +7,9 @@ import SeamlessSection from '@/components/ui/SeamlessSection';
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#0D1B0F] min-h-screen">
+    <div className="bg-[var(--surface-canvas)] min-h-screen text-[var(--ink-900)]">
       {/* Hero Section */}
-      <SeamlessSection bgColor="bg-gradient-to-br from-[#0D3B1F] via-[#0D1B0F] to-[#1a4d2e]" paddingY="lg">
+      <SeamlessSection tone="forest" className="rounded-[3rem]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -27,7 +27,7 @@ export default function AboutPage() {
       </SeamlessSection>
 
       {/* Our Story Section */}
-      <SeamlessSection bgColor="bg-[#0F1E11]" paddingY="lg">
+  <SeamlessSection tone="onyx" className="rounded-[3rem]">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Text column */}
@@ -78,7 +78,7 @@ export default function AboutPage() {
       </SeamlessSection>
 
       {/* Mission & Values */}
-      <SeamlessSection bgColor="bg-[#0D1B0F]" paddingY="lg">
+  <SeamlessSection tone="forest" className="rounded-[3rem]">
         <div className="mx-auto max-w-7xl text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -153,7 +153,7 @@ export default function AboutPage() {
       </SeamlessSection>
 
       {/* What We Offer */}
-      <SeamlessSection bgColor="bg-gradient-to-b from-[#0F1E11] to-[#0D1B0F]" paddingY="lg">
+  <SeamlessSection tone="onyx" className="rounded-[3rem]">
         <div className="mx-auto max-w-5xl text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

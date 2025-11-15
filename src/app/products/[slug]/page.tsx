@@ -1,24 +1,131 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { WooCommerceService, WooCommerceProduct } from '@/lib/services/woocommerceService';
-import FeatureCard from '@/components/content/FeatureCard';
-import StatisticsCard from '@/components/content/StatisticsCard';
 import { CTASection } from '@/components/content/CTAButton';
 import SectionHeader from '@/components/content/SectionHeader';
+import {
+  WooCommerceProduct,
+  WooCommerceService
+} from '@/lib/services/woocommerceService';
 
-// Format price to INR with proper currency symbol
-function formatPrice(priceStr: string): string {
+interface ProductReview {
+  id: number;
+  author: string;
+  review: string;
+  rating: number;
+  date: string;
+  verified: boolean;
+}
+
+type ProductDetailTab = 'details' | 'shipping' | 'care';
+
+interface HighlightCard {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const PREMIUM_HIGHLIGHTS: HighlightCard[] = [
+  {
+    icon: '🌿',
+    title: 'Nursery-Grade Cultivation',
+    description: 'Hand-raised by specialist horticulturists for resilient growth and lasting color.'
+  },
+  {
+    icon: '🛡️',
+    title: '2-Year Wellness Guarantee',
+    description: 'Complimentary replacement or concierge support if your plant struggles within 24 months.'
+  },
+  {
+    icon: '🧪',
+    title: 'Soil Intelligence Kit',
+    description: 'Each order ships with a premium soil mix, moisture indicator, and feeding calendar.'
+  },
+  {
+    icon: '🚚',
+    title: 'Cold-Chain Delivery',
+    description: 'Insulated, shock-proof packing keeps every specimen safe from nursery to doorstep.'
+  }
+];
+
+const SHIPPING_ASSURANCES = [
+  'Same-day dispatch for metro orders placed before 4 PM',
+  'Complimentary temperature-controlled packaging upgrade',
+  'Live order tracking and WhatsApp concierge support',
+  'Free care consultation within 48 hours of delivery'
+];
+
+const CARE_FRAMEWORK = [
+  { label: 'Sunlight', value: 'Bright, indirect light for 4-6 hours daily' },
+  { label: 'Watering', value: 'Hydrate when top 2 cm of soil feels dry' },
+  { label: 'Feeding', value: 'Organic tonic every 15 days during growing season' },
+  { label: 'Maintenance', value: 'Rotate weekly + gentle misting for glossy foliage' }
+];
+
+const stripHtml = (value?: string) =>
+  value ? value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : '';
+
+const buildSeoDescription = (product: WooCommerceProduct) => {
+  const category = product.categories?.[0]?.name ?? 'premium botanical';
+  const tone = stripHtml(product.short_description || product.description);
+  const blurb = tone
+    ? tone.slice(0, 230)
+    : `${product.name} is curated by Whole Lot of Nature with ethically sourced seeds, artisanal soil mixes, and concierge-level plant care.`;
+
+  return `${product.name} — ${category} from Whole Lot of Nature. ${blurb}`.slice(0, 300);
+};
+
+const buildStructuredData = (product: WooCommerceProduct, description: string) => {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com';
+  const offerPrice = product.sale_price || product.price || product.regular_price || '0';
+
+  const structuredData: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.images?.map((img) => img.src) ?? [],
+    description,
+    sku: product.sku || product.slug,
+    brand: {
+      '@type': 'Organization',
+      name: 'Whole Lot of Nature'
+    },
+    category: product.categories?.map((cat) => cat.name) ?? [],
+    offers: {
+      '@type': 'Offer',
+      url: `${siteUrl}/products/${product.slug}`,
+      priceCurrency: 'INR',
+      price: offerPrice,
+      availability: product.in_stock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      itemCondition: 'https://schema.org/NewCondition'
+    }
+  };
+
+  if (product.average_rating) {
+    structuredData.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: Number(product.average_rating).toFixed(1),
+      reviewCount: product.rating_count || 0
+    };
+  }
+
+  return structuredData;
+};
+
+const formatPrice = (priceStr: string): string => {
   const price = parseFloat(priceStr || '0');
-  // Assuming prices from WordPress are in INR (₹)
   return `₹${price.toLocaleString('en-IN', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2
   })}`;
-}
+};
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -26,10 +133,11 @@ export default function ProductDetailPage() {
 
   const [product, setProduct] = useState<WooCommerceProduct | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<WooCommerceProduct[]>([]);
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<ProductReview[]>([]);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [activeTab, setActiveTab] = useState<ProductDetailTab>('details');
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -38,24 +146,59 @@ export default function ProductDetailPage() {
       setProduct(prod);
 
       if (prod) {
-        const related = await WooCommerceService.getRelatedProducts(prod.id, 4);
-        setRelatedProducts(related);
+        const [related, reviewsData] = await Promise.all([
+          WooCommerceService.getRelatedProducts(prod.id, 4),
+          WooCommerceService.getProductReviews(prod.id)
+        ]);
 
-        const reviewsData = await WooCommerceService.getProductReviews(prod.id);
+        setRelatedProducts(related);
         setReviews(reviewsData);
       }
+
       setLoading(false);
     };
 
     loadProduct();
   }, [slug]);
 
+  const seoDescription = useMemo(
+    () => (product ? buildSeoDescription(product) : 'Discover premium botanicals, seeds, and soil systems from Whole Lot of Nature.'),
+    [product]
+  );
+
+  const structuredData = useMemo(
+    () => (product ? buildStructuredData(product, seoDescription) : null),
+    [product, seoDescription]
+  );
+
+  const attributeChips = useMemo(() => {
+    if (!product?.attributes?.length) return [];
+    return product.attributes
+      .flatMap((attribute) => attribute.options.map((option) => `${attribute.name}: ${option}`))
+      .slice(0, 6);
+  }, [product]);
+
+  const breadcrumbTrail = useMemo(() => {
+    if (!product) return [] as Array<{ label: string; href: string | null }>;
+    const trail: Array<{ label: string; href: string | null }> = [
+      { label: 'Home', href: '/' },
+      { label: 'Shop', href: '/shop' }
+    ];
+
+    if (product.categories?.[0]) {
+      trail.push({ label: product.categories[0].name, href: `/shop?category=${product.categories[0].slug}` });
+    }
+
+    trail.push({ label: product.name, href: null });
+    return trail;
+  }, [product]);
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-2xl font-bold text-black mb-2 antialiased">🌱 Loading Product...</p>
-          <p className="text-gray-700">Please wait while we fetch the details</p>
+      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
+        <div className="text-center space-y-2">
+          <p className="text-2xl font-semibold text-emerald-900">Calibrating your botanical experience…</p>
+          <p className="text-neutral-600">Curating product insights and concierge perks.</p>
         </div>
       </div>
     );
@@ -63,293 +206,434 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-2xl font-bold text-black mb-4 antialiased">Product Not Found</p>
-          <a href="/shop" className="px-6 py-3 bg-[#2E7D32] text-white rounded-lg hover:bg-[#2E7D32]">
-            Back to Shop
-          </a>
+      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
+        <div className="text-center space-y-6">
+          <p className="text-3xl font-bold text-neutral-900">We couldn&apos;t locate that product</p>
+          <Link
+            href="/shop"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-200 hover:bg-emerald-800 transition"
+          >
+            Browse the full collection
+          </Link>
         </div>
       </div>
     );
   }
 
-  return (
-    <div className="bg-white">
-      {/* Hero Section with Product Details */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* Product Images */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col gap-4"
-          >
-            {product.images.length > 0 && (
-              <>
-                <div className="relative h-96 md:h-full rounded-lg overflow-hidden border-2 border-black">
-                  <Image
-                    src={product.images[selectedImage]?.src || '/placeholder.png'}
-                    alt={product.images[selectedImage]?.alt || product.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                {product.images.length > 1 && (
-                  <div className="flex gap-2 overflow-x-auto">
-                    {product.images.map((img, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedImage(idx)}
-                        className={`relative h-20 w-20 rounded border-2 transition ${
-                          selectedImage === idx ? 'border-[#2E7D32]' : 'border-gray-300'
-                        }`}
-                      >
-                        <Image
-                          src={img.src}
-                          alt={img.alt}
-                          fill
-                          className="object-cover"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-          </motion.div>
+  const heroImage = product.images?.[selectedImage];
+  const primaryImage = product.images?.[0];
+  const effectivePrice = product.sale_price || product.price || product.regular_price;
+  const savingsPercentage =
+    product.sale_price && product.regular_price
+      ? Math.round(
+          ((parseFloat(product.regular_price) - parseFloat(product.sale_price)) /
+            parseFloat(product.regular_price)) *
+            100
+        )
+      : null;
 
-          {/* Product Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col gap-6"
-          >
-            {/* Title & Category */}
-            <div>
-              <div className="mb-3 flex gap-2 flex-wrap">
-                {product.categories.map((cat) => (
-                  <span
-                    key={cat.id}
-                    className="inline-block px-3 py-1 bg-[#2E7D32] text-[#2E7D32] rounded-full text-sm font-semibold"
+  return (
+    <div className="bg-gradient-to-b from-emerald-50 via-white to-white text-neutral-900">
+      <Head>
+        <title>{`${product.name} | Whole Lot of Nature`}</title>
+        <meta name="description" content={seoDescription} />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com'}/products/${product.slug}`}
+        />
+        <meta property="og:title" content={`${product.name} | Whole Lot of Nature`} />
+        <meta property="og:description" content={seoDescription} />
+        {primaryImage && <meta property="og:image" content={primaryImage.src} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        {structuredData && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        )}
+      </Head>
+
+      <section className="px-4 sm:px-6 lg:px-8 py-6">
+        <nav className="text-sm text-neutral-500 flex flex-wrap gap-2">
+          {breadcrumbTrail.map((crumb, index) => (
+            <div key={crumb.label} className="flex items-center gap-2">
+              {crumb.href ? (
+                <Link href={crumb.href} className="hover:text-emerald-700 transition">
+                  {crumb.label}
+                </Link>
+              ) : (
+                <span className="text-neutral-900 font-semibold">{crumb.label}</span>
+              )}
+              {index < breadcrumbTrail.length - 1 && <span>/</span>}
+            </div>
+          ))}
+        </nav>
+      </section>
+
+      <section className="px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.15fr,0.85fr]">
+          <div className="space-y-4">
+            <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl shadow-emerald-100 border border-emerald-100">
+              {heroImage ? (
+                <Image
+                  key={heroImage.id}
+                  src={heroImage.src}
+                  alt={heroImage.alt || product.name}
+                  width={1080}
+                  height={1080}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              ) : (
+                <div className="aspect-square bg-neutral-200" />
+              )}
+              <div className="absolute top-4 left-4 flex gap-2 text-xs font-semibold">
+                {product.featured && <span className="px-3 py-1 rounded-full bg-white/90 text-emerald-800">Staff Pick</span>}
+                {savingsPercentage && (
+                  <span className="px-3 py-1 rounded-full bg-emerald-700 text-white">Save {savingsPercentage}%</span>
+                )}
+              </div>
+            </div>
+
+            {product.images?.length > 1 && (
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+                {product.images.map((img, idx) => (
+                  <button
+                    type="button"
+                    key={img.id}
+                    onClick={() => setSelectedImage(idx)}
+                    className={`relative aspect-square rounded-2xl border transition shadow-sm ${
+                      selectedImage === idx
+                        ? 'border-emerald-700 shadow-emerald-100'
+                        : 'border-transparent hover:border-emerald-200'
+                    }`}
+                    aria-label={`View image ${idx + 1}`}
                   >
-                    {cat.name}
+                    <Image src={img.src} alt={img.alt || product.name} fill className="object-cover rounded-2xl" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-xl shadow-emerald-50 p-8 space-y-7">
+            <div className="space-y-3">
+              <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                {product.categories.map((category) => (
+                  <span key={category.id} className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100">
+                    {category.name}
                   </span>
                 ))}
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-black mb-2 antialiased">{product.name}</h1>
-              
-              {/* Rating */}
+              <h1 className="text-4xl sm:text-5xl font-semibold text-neutral-900 leading-tight">{product.name}</h1>
               {product.average_rating && (
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i} className={i < Math.round(product.average_rating || 0) ? '⭐' : '☆'}>
-                        ★
-                      </span>
+                <div className="flex items-center gap-2 text-sm text-neutral-600">
+                  <div className="flex gap-1 text-amber-500">
+                    {Array.from({ length: 5 }).map((_, idx) => (
+                      <span key={idx}>{idx < Math.round(product.average_rating || 0) ? '★' : '☆'}</span>
                     ))}
                   </div>
-                  <span className="text-gray-700">
-                    {product.average_rating?.toFixed(1)} ({product.rating_count} reviews)
+                  <span>
+                    {Number(product.average_rating).toFixed(1)} · {product.rating_count ?? 0} reviews
                   </span>
                 </div>
               )}
+              {product.tags?.length ? (
+                <p className="text-sm text-neutral-500">Tagged in {product.tags.map((tag) => tag.name).join(', ')}</p>
+              ) : null}
             </div>
 
-            {/* Pricing */}
-            <div className="bg-[#2E7D32] border-4 border-[#2E7D32] rounded-lg p-6">
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-4xl font-bold text-white antialiased">
-                  {formatPrice(product.price)}
-                </span>
-                {product.sale_price && product.regular_price && (
-                  <>
-                    <span className="text-xl line-through text-white/70 antialiased">
-                      {formatPrice(product.regular_price)}
-                    </span>
-                    <span className="text-lg font-bold text-yellow-300 antialiased">
-                      -
-                      {Math.round(
-                        ((parseFloat(product.regular_price) - parseFloat(product.sale_price)) /
-                          parseFloat(product.regular_price)) *
-                          100
-                      )}
-                      %
-                    </span>
-                  </>
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-900 to-emerald-600 text-white flex flex-col gap-4">
+              <div className="flex flex-wrap items-baseline gap-3">
+                <span className="text-4xl font-semibold">{formatPrice(effectivePrice || '0')}</span>
+                {product.regular_price && product.sale_price && (
+                  <span className="line-through text-white/70">{formatPrice(product.regular_price)}</span>
                 )}
               </div>
-              <p className={`font-semibold ${product.in_stock ? 'text-white' : 'text-yellow-300'}`}>
-                {product.in_stock ? '✓ In Stock' : '✗ Out of Stock'}
+              <div className="flex flex-wrap gap-3 text-sm font-medium">
+                <span className="inline-flex items-center gap-2 bg-white/15 px-4 py-1.5 rounded-full">
+                  {product.in_stock ? '✓ In Stock' : 'Out of Stock'}
+                </span>
+                {product.stock_quantity && (
+                  <span className="inline-flex items-center gap-2 bg-white/15 px-4 py-1.5 rounded-full">
+                    {product.stock_quantity} units ready
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-white/80">
+                Includes concierge onboarding call, soil intelligence kit, and climate-smart packaging.
               </p>
             </div>
 
-            {/* Description */}
-            <div>
-              <h3 className="font-bold text-black mb-2 antialiased">About This Product</h3>
-              <div className="text-gray-700 prose prose-sm max-w-none">
-                {product.short_description && (
-                  <p dangerouslySetInnerHTML={{ __html: product.short_description }} />
-                )}
-              </div>
-            </div>
-
-            {/* Add to Cart */}
-            <div className="flex gap-4">
-              <div className="flex items-center border-2 border-black rounded-lg">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-3 font-bold hover:bg-gray-100 antialiased"
-                >
-                  −
-                </button>
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center rounded-full border border-neutral-200">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-4 py-2 text-lg"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
                 <input
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-12 text-center font-bold border-x-2 border-black antialiased"
-                />
+                    type="number"
+                    min={1}
+                    value={quantity}
+                    onChange={(event) => setQuantity(Math.max(1, parseInt(event.target.value, 10) || 1))}
+                    className="w-14 text-center font-semibold border-x border-neutral-200"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-4 py-2 text-lg"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-3 font-bold hover:bg-gray-100 antialiased"
+                  type="button"
+                  disabled={!product.in_stock}
+                  className={`flex-1 inline-flex items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-semibold text-white shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
+                    product.in_stock
+                      ? 'bg-emerald-700 hover:bg-emerald-800 shadow-emerald-200'
+                      : 'bg-neutral-300 cursor-not-allowed'
+                  }`}
                 >
-                  +
+                  🛒 Add {quantity} to Cart
                 </button>
               </div>
-              <button
-                disabled={!product.in_stock}
-                className={`flex-1 py-3 rounded-lg font-bold text-white transition ${
-                  product.in_stock
-                    ? 'bg-[#2E7D32] hover:bg-[#2E7D32]'
-                    : 'bg-gray-400 cursor-not-allowed'
-                }`}
-              >
-                🛒 Add to Cart ({quantity})
-              </button>
+              <p className="text-sm text-neutral-600 flex items-center gap-2">
+                <span>Secure checkout • Free 30-day returns • Exclusive care concierge</span>
+              </p>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t-2 border-black">
-              <div className="text-center">
-                <p className="text-2xl mb-1 antialiased">✓</p>
-                <p className="text-sm font-semibold text-black">100% Organic</p>
+            {attributeChips.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {attributeChips.map((chip) => (
+                  <span key={chip} className="px-3 py-1 rounded-full text-xs bg-neutral-100 border border-neutral-200">
+                    {chip}
+                  </span>
+                ))}
               </div>
-              <div className="text-center">
-                <p className="text-2xl mb-1 antialiased">🚚</p>
-                <p className="text-sm font-semibold text-black">Fast Delivery</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl mb-1 antialiased">💚</p>
-                <p className="text-sm font-semibold text-black">Eco-Friendly</p>
-              </div>
+            )}
+
+            <div className="space-y-2 text-base text-neutral-600">
+              <p className="leading-relaxed">
+                {stripHtml(product.short_description) || stripHtml(product.description).slice(0, 260)}
+              </p>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Full Description */}
+      <section className="bg-emerald-900 text-white py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {PREMIUM_HIGHLIGHTS.map((highlight) => (
+            <div key={highlight.title} className="p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur">
+              <p className="text-3xl mb-3">{highlight.icon}</p>
+              <h3 className="text-lg font-semibold mb-2">{highlight.title}</h3>
+              <p className="text-sm text-white/80 leading-relaxed">{highlight.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.4fr,0.6fr]">
+          <div className="space-y-6">
+            <div className="flex gap-3 text-sm font-medium">
+              {(['details', 'shipping', 'care'] as ProductDetailTab[]).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 rounded-full border transition ${
+                    activeTab === tab
+                      ? 'border-emerald-700 bg-emerald-50 text-emerald-900'
+                      : 'border-transparent text-neutral-500 hover:border-neutral-200'
+                  }`}
+                >
+                  {tab === 'details' && 'Product Story'}
+                  {tab === 'shipping' && 'Shipping & Packaging'}
+                  {tab === 'care' && 'Care Ritual'}
+                </button>
+              ))}
+            </div>
+
+            <div className="rounded-3xl border border-neutral-200 bg-white p-8 space-y-6">
+              {activeTab === 'details' && (
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold">Botanical narrative</h3>
+                  <p className="leading-relaxed text-neutral-600">
+                    {stripHtml(product.description).slice(0, 900) ||
+                      'Sourced from regenerative farms, each specimen is acclimatized in small-batch greenhouses, ensuring remarkable resilience in Indian climates.'}
+                  </p>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
+                      <p className="text-sm font-medium text-emerald-900">Sustainability</p>
+                      <p className="text-base text-neutral-700">Zero pesticide regime & reclaimed-water irrigation.</p>
+                    </div>
+                    <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
+                      <p className="text-sm font-medium text-emerald-900">Wellness boost</p>
+                      <p className="text-base text-neutral-700">Purifies indoor air, uplifts circadian rhythm, and eases stress hormones.</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'shipping' && (
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold">Logistics engineered for living things</h3>
+                  <ul className="space-y-2 text-neutral-600">
+                    {SHIPPING_ASSURANCES.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="text-emerald-600">●</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {activeTab === 'care' && (
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold">Care ritual blueprint</h3>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {CARE_FRAMEWORK.map((item) => (
+                      <div key={item.label} className="p-4 rounded-2xl bg-neutral-50 border border-neutral-100">
+                        <p className="text-sm font-semibold text-neutral-800">{item.label}</p>
+                        <p className="text-sm text-neutral-600 mt-1">{item.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-emerald-100 bg-gradient-to-b from-emerald-50 to-white p-8 space-y-6">
+            <div>
+              <p className="text-sm font-semibold text-emerald-800 uppercase tracking-wide">SEO snapshot</p>
+              <p className="text-lg font-semibold text-neutral-900 mt-2">{product.name} — botanical luxury in India</p>
+              <p className="text-sm text-neutral-600 mt-3 leading-relaxed">{seoDescription}</p>
+            </div>
+            <div className="space-y-2 text-sm text-neutral-500">
+              <p className="font-semibold text-neutral-700">Suggested focus keywords</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>{`${product.name} online India`}</li>
+                <li>{`${product.categories?.[0]?.name ?? 'organic plant'} delivery`}</li>
+                <li>Whole Lot of Nature premium botanicals</li>
+                <li>Climate smart indoor plants</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl bg-white border border-neutral-200 p-5">
+              <p className="text-sm font-semibold text-neutral-700">Meta preview</p>
+              <p className="text-sm text-neutral-500 truncate mt-1">
+                {`${product.name} | Whole Lot of Nature — ${seoDescription}`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {product.description && (
-        <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader as="h2" title="Product Details" align="center" />
-            <div className="mt-8 prose prose-lg max-w-none">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader as="h2" title="In-depth product dossier" align="center" />
+            <div className="mt-8 prose prose-lg max-w-none text-neutral-700">
               <div dangerouslySetInnerHTML={{ __html: product.description }} />
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-      {/* Reviews Section */}
       {reviews.length > 0 && (
-        <div className="py-12 px-4 sm:px-6 lg:px-8">
+        <section className="py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <SectionHeader as="h2" title={`Customer Reviews (${reviews.length})`} align="center" />
-            <div className="mt-8 space-y-6">
-              {reviews.map((review, idx) => (
+            <SectionHeader as="h2" title={`Client Stories (${reviews.length})`} align="center" />
+            <div className="mt-10 space-y-6">
+              {reviews.map((review) => (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  key={review.id}
+                  initial={{ opacity: 0, translateY: 20 }}
+                  whileInView={{ opacity: 1, translateY: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="bg-white border-2 border-black rounded-lg p-6"
+                  transition={{ duration: 0.4 }}
+                  className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-bold text-black antialiased">{review.author}</h3>
-                    <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <span key={i}>{i < review.rating ? '⭐' : '☆'}</span>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="font-semibold text-neutral-900">{review.author}</p>
+                      <p className="text-sm text-neutral-500">
+                        {new Date(review.date).toLocaleDateString('en-IN', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                        {review.verified && ' • Verified Concierge'}
+                      </p>
+                    </div>
+                    <div className="flex gap-1 text-amber-500">
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <span key={idx}>{idx < review.rating ? '★' : '☆'}</span>
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-700">{review.review}</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    {new Date(review.date).toLocaleDateString()}
-                    {review.verified && ' • ✓ Verified Purchase'}
-                  </p>
+                  <p className="mt-4 text-neutral-700 leading-relaxed">{review.review}</p>
                 </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-      {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <SectionHeader as="h2" title="Related Products" subtitle="You might also like" align="center" />
-            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((relProd, idx) => (
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader as="h2" title="Curated complements" subtitle="Hand-picked by our stylists" align="center" />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts.map((related) => (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  key={related.id}
+                  initial={{ opacity: 0, translateY: 30 }}
+                  whileInView={{ opacity: 1, translateY: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white border-2 border-black rounded-lg p-4 hover:shadow-lg transition"
+                  transition={{ duration: 0.4 }}
+                  className="rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-sm hover:shadow-xl transition"
                 >
-                  {relProd.images[0] && (
-                    <div className="relative h-40 mb-4 rounded overflow-hidden">
-                      <Image
-                        src={relProd.images[0].src}
-                        alt={relProd.name}
-                        fill
-                        className="object-cover"
-                      />
+                  {related.images[0] && (
+                    <div className="relative h-48">
+                      <Image src={related.images[0].src} alt={related.name} fill className="object-cover" />
                     </div>
                   )}
-                  <h3 className="font-bold text-black mb-2 line-clamp-2 antialiased">{relProd.name}</h3>
-                  <p className="text-[#2E7D32] font-bold antialiased">{formatPrice(relProd.price)}</p>
-                  <a
-                    href={`/products/${relProd.slug}`}
-                    className="mt-3 block w-full text-center py-2 bg-[#2E7D32] text-white rounded font-semibold hover:bg-[#2E7D32]"
-                  >
-                    View Product
-                  </a>
+                  <div className="p-5 space-y-3">
+                    <p className="font-semibold text-neutral-900 line-clamp-2">{related.name}</p>
+                    <p className="text-emerald-700 font-semibold">{formatPrice(related.price)}</p>
+                    <Link
+                      href={`/products/${related.slug}`}
+                      className="inline-flex items-center justify-center w-full rounded-full border border-neutral-200 py-2 text-sm font-semibold text-neutral-800 hover:border-emerald-700 hover:text-emerald-800"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-      {/* CTA Section */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
           <CTASection
-            title="Explore More Organic Seeds"
-            description="Discover our complete collection of 500+ plant varieties"
-            primaryButton={{
-              text: 'Browse All Products',
-              href: '/shop'
-            }}
+            title="Design a signature botanical plan"
+            description="Partner with our stylists for concierge sourcing, subscription care, and limited edition drops."
+            primaryButton={{ text: 'Book a complimentary consult', href: '/contact' }}
+            secondaryButton={{ text: 'Explore the full atelier', href: '/shop' }}
             variant="centered"
-            backgroundVariant="green"
+            backgroundVariant="emerald"
           />
         </div>
-      </div>
+      </section>
     </div>
   );
 }

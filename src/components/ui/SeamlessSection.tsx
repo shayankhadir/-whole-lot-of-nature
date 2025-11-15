@@ -12,17 +12,19 @@ interface SeamlessSectionProps {
   paddingY?: 'sm' | 'md' | 'lg' | 'xl';
   leftDecoration?: 'monstera' | 'single' | 'palm' | 'fern' | 'none';
   rightDecoration?: 'monstera' | 'single' | 'palm' | 'fern' | 'none';
+  tone?: 'forest' | 'onyx' | 'canvas' | 'ivory' | 'glass';
   className?: string;
 }
 
 export default function SeamlessSection({
   children,
-  bgColor = 'bg-[#0D1B0F]',
+  bgColor = '',
   gradientFrom,
   gradientTo,
   paddingY = 'lg',
   leftDecoration = 'none',
   rightDecoration = 'none',
+  tone = 'forest',
   className = ''
 }: SeamlessSectionProps) {
   
@@ -33,13 +35,25 @@ export default function SeamlessSection({
     xl: 'py-40 md:py-48'
   };
 
-  const backgroundStyle = gradientFrom && gradientTo
+  const toneClasses: Record<'forest' | 'onyx' | 'canvas' | 'ivory' | 'glass', string> = {
+    forest: 'surface-forest text-[var(--cream-50)]',
+    onyx: 'surface-onyx text-[var(--cream-50)]',
+    canvas: 'surface-canvas text-[var(--ink-900)]',
+    ivory: 'surface-ivory text-[var(--ink-900)]',
+    glass: 'glass-panel text-[var(--cream-50)] mx-auto max-w-[min(1400px,95%)]'
+  };
+
+  const hasCustomBackground = Boolean(bgColor || gradientFrom || gradientTo);
+  const resolvedBackground = hasCustomBackground
+    ? bgColor
+    : toneClasses[tone];
+
+  const gradientOverlay = gradientFrom && gradientTo
     ? `bg-gradient-to-b from-[${gradientFrom}] via-[${bgColor.replace('bg-[', '').replace(']', '')}] to-[${gradientTo}]`
-    : bgColor;
+    : '';
 
   return (
-    <section className={`relative w-full ${backgroundStyle} ${paddingClasses[paddingY]} overflow-hidden ${className}`}>
-      {/* Subtle gradient overlay for depth */}
+    <section className={`relative w-full ${resolvedBackground} ${gradientOverlay} ${paddingClasses[paddingY]} px-4 sm:px-6 lg:px-12 overflow-hidden ${className}`}>
       {gradientFrom && gradientTo && (
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent pointer-events-none" />
       )}
@@ -82,7 +96,7 @@ export default function SeamlessSection({
 
 // Section Divider with Leaf SVG
 export function LeafDivider({ 
-  color = '#2E7D32',
+  color = 'var(--emerald-500)',
   opacity = 0.15
 }: { 
   color?: string; 
@@ -90,16 +104,14 @@ export function LeafDivider({
 }) {
   return (
     <div className="relative w-full h-24 flex items-center justify-center overflow-hidden">
-      {/* Horizontal line */}
-      <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
       
-      {/* Central leaf ornament */}
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         whileInView={{ scale: 1, rotate: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-        className="relative z-10 bg-[#0D1B0F] px-6"
+        className="relative z-10 px-6 py-2 rounded-full surface-forest floating-border shadow-lg"
       >
         <svg
           width="60"

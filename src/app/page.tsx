@@ -39,13 +39,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen relative z-10 bg-[#0D1B0F]">
+    <div className="min-h-screen relative z-10 bg-[var(--surface-canvas)] text-[var(--ink-900)]">
       {/* 1. Immersive Forest Hero with Parallax */}
       <HeroSection />
 
       {/* 1.5. Animated Categories with Botanical Bento */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="lg"
         rightDecoration="fern"
       >
@@ -57,7 +57,7 @@ export default function Home() {
       {/* 2. Shop by Category Grid */}
       <div id="categories">
         <SeamlessSection 
-          bgColor="bg-[#0D1B0F]" 
+          tone="forest"
           paddingY="lg"
           leftDecoration="monstera"
         >
@@ -69,17 +69,17 @@ export default function Home() {
 
       {/* 3. Trust/Awards Banner - NEW */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="sm"
       >
         <TrustBanner />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+  <LeafDivider />
 
       {/* 4. Best Sellers - Featured Plants Carousel */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="lg"
         rightDecoration="fern"
       >
@@ -90,18 +90,18 @@ export default function Home() {
 
       {/* 5. Featured Products: Soil & Mixes - NEW */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="lg"
         leftDecoration="fern"
       >
         <FeaturedSoilMixes />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+  <LeafDivider />
 
       {/* 6. Immersive Botanical Explorer */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="md"
       >
         <ImmersiveBotanicalExplorer products={featuredProducts} />
@@ -114,18 +114,18 @@ export default function Home() {
 
       {/* 8. Brand Story + About Preview */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="xl"
         leftDecoration="monstera"
       >
         <BrandStorySection />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+  <LeafDivider />
 
       {/* 9. Why Choose Us */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="lg"
         rightDecoration="monstera"
       >
@@ -134,7 +134,7 @@ export default function Home() {
 
       {/* 10. Features Section */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="md"
         leftDecoration="fern"
       >
@@ -145,18 +145,18 @@ export default function Home() {
 
       {/* 11. Customer Testimonials */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="lg"
         rightDecoration="fern"
       >
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+  <LeafDivider />
 
       {/* 12. Blog Preview - NEW */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="lg"
         leftDecoration="palm"
       >
@@ -167,7 +167,7 @@ export default function Home() {
 
       {/* 13. FAQ Section - NEW */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="lg"
         rightDecoration="monstera"
       >
@@ -176,18 +176,18 @@ export default function Home() {
 
       {/* 14. Newsletter Signup */}
       <SeamlessSection 
-        bgColor="bg-[#0F1E11]" 
+        tone="onyx"
         paddingY="md"
         leftDecoration="monstera"
       >
         <Newsletter />
       </SeamlessSection>
 
-      <LeafDivider color="#66BB6A" />
+  <LeafDivider />
 
       {/* 15. Final CTA */}
       <SeamlessSection 
-        bgColor="bg-[#0D1B0F]" 
+        tone="forest"
         paddingY="xl"
       >
         <FinalCTA />
