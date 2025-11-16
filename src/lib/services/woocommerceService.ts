@@ -48,6 +48,7 @@ export interface WooCommerceProduct {
     slug: string;
   }>;
   date_created?: string;
+  variations?: number[];
 }
 
 export interface BlogPost {
@@ -101,9 +102,9 @@ interface WCRawProduct {
   sale_price?: string | number | null;
   description: string;
   short_description: string;
-  images: WCRawImage[];
-  categories: WCRawCategory[];
-  attributes: WCRawAttribute[];
+  images?: WCRawImage[];
+  categories?: WCRawCategory[];
+  attributes?: WCRawAttribute[];
   stock_status?: 'instock' | 'outofstock' | 'onbackorder';
   stock_quantity?: number | null;
   featured: boolean;
@@ -111,6 +112,7 @@ interface WCRawProduct {
   rating_count?: number;
   tags?: WCRawTag[];
   date_created?: string;
+  variations?: number[];
 }
 
 export class WooCommerceService {
@@ -465,6 +467,11 @@ export class WooCommerceService {
    * Transform WooCommerce product to our format
    */
   private static transformWooCommerceProduct(product: WCRawProduct): WooCommerceProduct {
+    const images = Array.isArray(product.images) ? product.images : [];
+    const categories = Array.isArray(product.categories) ? product.categories : [];
+    const attributes = Array.isArray(product.attributes) ? product.attributes : [];
+    const tags = Array.isArray(product.tags) ? product.tags : [];
+
     return {
       id: product.id,
       name: product.name,
@@ -474,32 +481,31 @@ export class WooCommerceService {
       price: product.price?.toString() || '0',
       regular_price: product.regular_price?.toString() || '0',
       sale_price: product.sale_price ? product.sale_price.toString() : '',
-      description: product.description,
-      short_description: product.short_description,
-      images: product.images.map((img: WCRawImage) => ({
+      description: product.description || '',
+      short_description: product.short_description || '',
+      images: images.map((img: WCRawImage) => ({
         id: img.id,
         src: img.src,
         alt: img.alt || product.name
       })),
-      categories: product.categories.map((cat: WCRawCategory) => ({
+      categories: categories.map((cat: WCRawCategory) => ({
         id: cat.id,
         name: cat.name,
         slug: cat.slug
       })),
-      attributes: product.attributes.map((attr: WCRawAttribute) => ({
+      attributes: attributes.map((attr: WCRawAttribute) => ({
         id: attr.id,
         name: attr.name,
         options: attr.options
       })),
       in_stock: product.stock_status === 'instock',
-      stock_quantity: product.stock_quantity || 0,
+      stock_quantity: typeof product.stock_quantity === 'number' ? product.stock_quantity : 0,
       featured: product.featured,
-  average_rating: product.average_rating ? parseFloat(String(product.average_rating)) : undefined,
+      average_rating: product.average_rating ? parseFloat(String(product.average_rating)) : undefined,
       rating_count: product.rating_count || 0,
-      tags: Array.isArray(product.tags)
-        ? product.tags.map((t: WCRawTag) => ({ id: t.id, name: t.name, slug: t.slug }))
-        : [],
-      date_created: product.date_created
+      tags: tags.map((t: WCRawTag) => ({ id: t.id, name: t.name, slug: t.slug })),
+      date_created: product.date_created,
+      variations: Array.isArray(product.variations) ? product.variations : []
     };
   }
 

@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { Product } from '@/types/product';
 import AddToCartButton from '@/components/shop/AddToCartButton';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { getDisplayPrice, getOriginalPrice } from '@/lib/utils/pricing';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -53,6 +54,8 @@ export default function ProductPage() {
   }
 
   const mainImage = product.images[0] || { src: '/images/placeholder.jpg', alt: product.name };
+  const displayPrice = getDisplayPrice(product);
+  const originalPrice = getOriginalPrice(product);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden">
@@ -139,11 +142,11 @@ export default function ProductPage() {
             {/* Price - Golden Ratio H3 (110px clamped) */}
             <div className="flex items-baseline gap-4">
               <span className="text-[clamp(2.625rem,6vw,6.875rem)] font-bold text-[#2E7D32] antialiased">
-                ${product.price}
+                {displayPrice}
               </span>
-              {product.sale_price && product.regular_price !== product.price && (
+              {originalPrice && (
                 <span className="text-[clamp(1.625rem,3vw,2.625rem)] line-through text-white/40">
-                  ${product.regular_price}
+                  {originalPrice}
                 </span>
               )}
             </div>

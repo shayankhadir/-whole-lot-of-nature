@@ -7,6 +7,7 @@ import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
+import { formatPrice } from '@/lib/utils/pricing';
 
 interface Product {
   id: number;
@@ -118,9 +119,13 @@ export default function OurBestMixesCarousel() {
                       {p.name}
                     </Link>
                     <div className="mt-2 flex items-center gap-2">
-                      <span className="text-lg font-bold text-primary-900 antialiased">₹{p.sale_price || p.price}</span>
+                      <span className="text-lg font-bold text-primary-900 antialiased">
+                        {formatPrice(p.sale_price || p.price || '0')}
+                      </span>
                       {p.sale_price && (
-                        <span className="text-sm text-gray-500 line-through">₹{p.regular_price}</span>
+                        <span className="text-sm text-gray-500 line-through">
+                          {formatPrice(p.regular_price || p.price || '0')}
+                        </span>
                       )}
                     </div>
                     <button

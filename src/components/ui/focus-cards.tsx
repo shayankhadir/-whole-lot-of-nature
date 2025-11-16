@@ -19,8 +19,8 @@ export const Card = React.memo(
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer",
-        hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+        "relative h-60 md:h-96 w-full cursor-pointer overflow-hidden rounded-[28px] border border-white/10 bg-[rgba(4,16,10,0.85)] shadow-[0_25px_60px_rgba(2,8,5,0.5)] transition-all duration-300 ease-out",
+        hovered !== null && hovered !== index && "blur-sm scale-[0.98] opacity-60"
       )}
     >
       <img
@@ -28,13 +28,14 @@ export const Card = React.memo(
         alt={card.title}
         className="object-cover absolute inset-0"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,10,6,0.95)] via-[rgba(2,10,6,0.65)] to-transparent" />
       <div
         className={cn(
-          "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
+          "absolute inset-0 flex items-end py-8 px-5 transition-opacity duration-300",
           hovered === index ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+        <div className="text-xl md:text-2xl font-semibold text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
           {card.title}
         </div>
       </div>

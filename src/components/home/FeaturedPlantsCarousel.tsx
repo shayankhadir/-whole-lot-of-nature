@@ -5,12 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Leaf } from 'lucide-react';
+import { formatPrice } from '@/lib/utils/pricing';
 
 interface FeaturedProduct {
   id: number;
   name: string;
   slug: string;
   price: string;
+  sale_price?: string;
+  regular_price?: string;
   image: string;
   category: string;
 }
@@ -34,7 +37,9 @@ export default function FeaturedPlantsCarousel() {
           id: p.id,
           name: p.name,
           slug: p.slug,
-          price: p.sale_price || p.price,
+          price: p.price,
+          sale_price: p.sale_price,
+          regular_price: p.regular_price,
           image: p.images[0]?.src || '/placeholder.jpg',
           category: p.categories[0]?.name || 'Plants',
         }));
@@ -143,12 +148,12 @@ export default function FeaturedPlantsCarousel() {
                     </div>
 
                     {/* Product Image - 4:5 Aspect Ratio */}
-                    <div className="relative aspect-[4/5] bg-[#F8F9FA] overflow-hidden">
+                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_top,rgba(47,182,126,0.2),rgba(4,12,8,0.9))]">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-contain p-6 transition-transform duration-400 group-hover:scale-110"
+                        className="object-contain p-6 transition-transform duration-400 group-hover:scale-110 drop-shadow-[0_25px_40px_rgba(3,8,5,0.75)]"
                         sizes="360px"
                       />
                     </div>
@@ -167,9 +172,16 @@ export default function FeaturedPlantsCarousel() {
 
                       {/* Price - H5 (42px) */}
                       <div className="flex items-baseline justify-between">
-                        <span className="font-montserrat text-[clamp(2rem,5vw,2.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
-                          ₹{product.price}
-                        </span>
+                        <div className="flex flex-col">
+                          <span className="font-montserrat text-[clamp(2rem,5vw,2.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
+                            {formatPrice(product.sale_price || product.price || '0')}
+                          </span>
+                          {product.sale_price && (
+                            <span className="text-sm text-white/50 line-through">
+                              {formatPrice(product.regular_price || product.price || '0')}
+                            </span>
+                          )}
+                        </div>
                         <span className="text-sm font-inter text-white/50 group-hover:text-white/70 transition-colors">
                           View Details →
                         </span>

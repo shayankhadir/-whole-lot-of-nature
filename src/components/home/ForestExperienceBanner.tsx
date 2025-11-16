@@ -18,102 +18,124 @@ export default function ForestExperienceBanner() {
   const y = useTransform(scrollYProgress, [0, 1], ['20%', '-20%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6]);
 
+  const statHighlights = [
+    { label: 'Live species', value: '120+' },
+    { label: 'Soil recipes', value: '45' },
+    { label: 'Care guides', value: '300+' },
+    { label: 'Live sessions', value: 'Weekly' },
+  ];
+
   return (
-    <section ref={ref} className="relative h-[30vh] sm:h-[40vh] overflow-hidden my-20">
-      {/* DarkVeil Shader Background */}
+    <section
+      ref={ref}
+      className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#040d07] my-24 shadow-[0_40px_120px_rgba(2,8,5,0.6)]"
+    >
       <div className="absolute inset-0 z-0">
-        <DarkVeil 
-          hueShift={120}
-          noiseIntensity={0.08}
+        <Image
+          src="/images/backgrounds/bgleaf2.png"
+          alt="Forest canopy pattern"
+          fill
+          priority
+          className="object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#020806]/90 via-[#06150d]/65 to-[#091f13]/80" />
+        <DarkVeil
+          hueShift={110}
+          noiseIntensity={0.1}
           scanlineIntensity={0}
-          speed={0.3}
+          speed={0.4}
           scanlineFrequency={0}
-          warpAmount={0.2}
-          resolutionScale={0.8}
+          warpAmount={0.15}
+          resolutionScale={0.9}
         />
       </div>
 
-      {/* Overlay for content visibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B0F]/60 via-[#1A1A1A]/40 to-[#0D1B0F]/60 z-5" />
-
-      {/* Content */}
       <motion.div
-        style={{ opacity }}
-        className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center"
+        style={{ opacity, y }}
+        className="relative z-10 flex flex-col gap-10 px-6 py-12 text-center md:flex-row md:items-center md:justify-between md:text-left lg:px-16"
       >
-        {/* Icon */}
-        <motion.div
-          animate={{
-            rotate: [0, 5, -5, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="mb-6"
-        >
-          <Sparkles className="w-16 h-16 text-[#66BB6A]" strokeWidth={1.5} />
-        </motion.div>
+        <div className="space-y-6 max-w-2xl mx-auto md:mx-0">
+          <motion.div
+            animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/70"
+          >
+            <Sparkles className="h-4 w-4 text-[#66BB6A]" />
+            Immersive mode
+          </motion.div>
 
-        {/* Text - Golden Ratio H4 (68px) */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="font-montserrat text-[clamp(2.5rem,6vw,2.5rem)] font-bold text-white uppercase tracking-wide mb-4 antialiased"
-        >
-          Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-inter text-lg text-white/80 max-w-2xl mb-8 antialiased"
-        >
-          Discover our interactive plant catalog and learn about sustainable organic gardening
-        </motion.p>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Link href="/shop">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              className="px-8 py-3 text-white font-montserrat font-bold text-base uppercase tracking-wider"
-              glowColor="#66BB6A"
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="font-montserrat text-[clamp(2.2rem,4vw,3rem)] font-bold text-white leading-tight"
             >
-              Start Exploring
-            </HoverBorderGradient>
-          </Link>
-        </motion.div>
+              Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-4 font-inter text-base sm:text-lg text-white/80"
+            >
+              Dive into interactive plant stories, AR-ready specimens, and regenerative gardening lessons broadcast straight from our greenhouse lab.
+            </motion.p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
+            <Link href="/shop" className="inline-flex items-center">
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                className="px-7 py-3 text-white font-montserrat font-semibold text-sm uppercase tracking-widest"
+                glowColor="#66BB6A"
+              >
+                Start exploring
+              </HoverBorderGradient>
+            </Link>
+            <Link
+              href="/about#experience"
+              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/85 backdrop-blur"
+            >
+              Watch demo
+              <span aria-hidden className="text-[#66BB6A]">→</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="grid w-full max-w-md grid-cols-2 gap-4 mx-auto md:mx-0">
+          {statHighlights.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-white/15 bg-white/5 px-4 py-5 text-left backdrop-blur"
+            >
+              <p className="text-xs uppercase tracking-[0.4em] text-white/60">{stat.label}</p>
+              <p className="mt-3 text-[clamp(1.5rem,3vw,2.25rem)] font-semibold text-white">
+                {stat.value}
+              </p>
+            </div>
+          ))}
+        </div>
       </motion.div>
 
-      {/* Animated Particles/Leaves Effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(12)].map((_, i) => (
+          <motion.span
             key={i}
-            className="absolute w-2 h-2 bg-[#66BB6A] rounded-full opacity-30"
+            className="absolute h-1 w-1 rounded-full bg-[#66BB6A]/50"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -100, 0],
-              opacity: [0.3, 0.7, 0.3],
-              scale: [1, 1.5, 1],
+              y: [0, -80, 0],
+              opacity: [0, 0.8, 0],
+              scale: [0.5, 1.2, 0.5],
             }}
             transition={{
-              duration: 5 + Math.random() * 5,
+              duration: 6 + Math.random() * 4,
               repeat: Infinity,
               delay: Math.random() * 2,
               ease: 'easeInOut',

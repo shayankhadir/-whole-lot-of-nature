@@ -16,9 +16,9 @@ export async function GET(request: NextRequest) {
     let products;
 
     if (slug) {
-      // Fetch product by slug
-      const allProducts = await WooCommerceService.getProducts(100);
-      products = allProducts.filter(p => p.slug === slug);
+      // Fetch single product by slug directly to ensure we include unpublished/out-of-stock entries
+      const product = await WooCommerceService.getProductBySlug(slug);
+      products = product ? [product] : [];
     } else if (search) {
       products = await WooCommerceService.searchProducts(search, limit);
     } else if (category) {

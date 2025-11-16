@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Leaf, ArrowRight, CheckCircle } from 'lucide-react';
 import { Product } from '@/types/product';
+import { formatPrice } from '@/lib/utils/pricing';
 
 export default function FeaturedSoilMixes() {
   const [soilProducts, setSoilProducts] = useState<Product[]>([]);
@@ -116,7 +117,7 @@ export default function FeaturedSoilMixes() {
                     {/* Product Image */}
                     <div className="relative h-48 md:h-56 overflow-hidden">
                       <Image
-                        src={product.image || product.images?.[0] || defaultProducts[index].image}
+                        src={product.image || product.images?.[0]?.src || defaultProducts[index].image}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -156,8 +157,13 @@ export default function FeaturedSoilMixes() {
                       <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
                         <div>
                           <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
-                            ₹{product.price || defaultProducts[index].price}
+                            {formatPrice(product.sale_price || product.price || defaultProducts[index].price)}
                           </span>
+                          {product.sale_price && product.regular_price && (
+                            <span className="block text-sm text-white/50 line-through">
+                              {formatPrice(product.regular_price)}
+                            </span>
+                          )}
                         </div>
                         <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300">
                           <span>Shop</span>

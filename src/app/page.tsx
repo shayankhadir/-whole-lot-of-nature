@@ -17,7 +17,7 @@ import Newsletter from '@/components/sections/Newsletter';
 import BrandStorySection from '@/components/sections/BrandStorySection';
 import WhyChooseUsFocus from '@/components/sections/WhyChooseUsFocus';
 import FinalCTA from '@/components/sections/FinalCTA';
-import SeamlessSection, { LeafDivider } from '@/components/ui/SeamlessSection';
+import SeamlessSection from '@/components/ui/SeamlessSection';
 import { Product } from '@/types/product';
 
 export default function Home() {
@@ -52,8 +52,6 @@ export default function Home() {
         <CategoriesSection />
       </SeamlessSection>
 
-      <LeafDivider />
-
       {/* 2. Shop by Category Grid */}
       <div id="categories">
         <SeamlessSection 
@@ -65,8 +63,6 @@ export default function Home() {
         </SeamlessSection>
       </div>
 
-      <LeafDivider />
-
       {/* 3. Trust/Awards Banner - NEW */}
       <SeamlessSection 
         tone="onyx"
@@ -74,8 +70,6 @@ export default function Home() {
       >
         <TrustBanner />
       </SeamlessSection>
-
-  <LeafDivider />
 
       {/* 4. Best Sellers - Featured Plants Carousel */}
       <SeamlessSection 
@@ -86,8 +80,6 @@ export default function Home() {
         <FeaturedPlantsCarousel />
       </SeamlessSection>
 
-      <LeafDivider />
-
       {/* 5. Featured Products: Soil & Mixes - NEW */}
       <SeamlessSection 
         tone="onyx"
@@ -97,8 +89,6 @@ export default function Home() {
         <FeaturedSoilMixes />
       </SeamlessSection>
 
-  <LeafDivider />
-
       {/* 6. Immersive Botanical Explorer */}
       <SeamlessSection 
         tone="forest"
@@ -106,8 +96,6 @@ export default function Home() {
       >
         <ImmersiveBotanicalExplorer products={featuredProducts} />
       </SeamlessSection>
-
-      <LeafDivider />
 
       {/* 7. Forest Experience Banner - Parallax */}
       <ForestExperienceBanner />
@@ -120,8 +108,6 @@ export default function Home() {
       >
         <BrandStorySection />
       </SeamlessSection>
-
-  <LeafDivider />
 
       {/* 9. Why Choose Us */}
       <SeamlessSection 
@@ -141,8 +127,6 @@ export default function Home() {
         <Features />
       </SeamlessSection>
 
-      <LeafDivider />
-
       {/* 11. Customer Testimonials */}
       <SeamlessSection 
         tone="forest"
@@ -152,8 +136,6 @@ export default function Home() {
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-  <LeafDivider />
-
       {/* 12. Blog Preview - NEW */}
       <SeamlessSection 
         tone="onyx"
@@ -162,8 +144,6 @@ export default function Home() {
       >
         <BlogPreview />
       </SeamlessSection>
-
-      <LeafDivider />
 
       {/* 13. FAQ Section - NEW */}
       <SeamlessSection 
@@ -182,8 +162,6 @@ export default function Home() {
       >
         <Newsletter />
       </SeamlessSection>
-
-  <LeafDivider />
 
       {/* 15. Final CTA */}
       <SeamlessSection 
