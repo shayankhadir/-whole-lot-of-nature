@@ -47,8 +47,8 @@ export default function DesktopHeader() {
   };
 
   const headerGradient = scrolled
-    ? 'linear-gradient(135deg, rgba(3,10,6,0.96), rgba(9,31,19,0.98))'
-    : 'linear-gradient(135deg, rgba(3,10,6,0.78), rgba(9,31,19,0.9))';
+    ? 'linear-gradient(135deg, rgba(15,61,42,0.96), rgba(31,122,79,0.98))'
+    : 'linear-gradient(135deg, rgba(15,61,42,0.85), rgba(31,122,79,0.92))';
 
   return (
     <motion.header
@@ -121,7 +121,7 @@ export default function DesktopHeader() {
                     leaveTo="opacity-0 -translate-y-2"
                   >
                     <div
-                      className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl"
+                      className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#0f3d2a]/95 shadow-[0_30px_90px_rgba(15,61,42,0.85)] backdrop-blur-xl"
                       onMouseEnter={() => setShopDropdownOpen(true)}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">

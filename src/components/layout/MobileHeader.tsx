@@ -19,7 +19,7 @@ export default function MobileHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#0D1B0F]/95 backdrop-blur border-b border-[#2E7D32]/20 shadow-sm lg:hidden">
+      <header className="sticky top-0 z-40 w-full bg-[#0f3d2a]/95 backdrop-blur border-b border-[#2E7D32]/20 shadow-sm lg:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <button
             type="button"
@@ -98,7 +98,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
   return (
     <Dialog open={open} onClose={onClose} className="lg:hidden">
       <div className="fixed inset-0 bg-black/40 z-40" aria-hidden="true" />
-      <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm bg-[#0F1E11] text-white shadow-2xl">
+      <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm bg-[#0f3d2a] text-white shadow-2xl">
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
           <p className="text-base font-semibold tracking-wide">Menu</p>
           <button

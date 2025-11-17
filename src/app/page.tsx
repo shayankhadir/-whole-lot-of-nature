@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import HeroSection from '@/components/home/HeroSection';
-import CategoriesSection from '@/components/sections/CategoriesSection';
 import CategoryGridFocus from '@/components/sections/CategoryGridFocus';
 import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
@@ -10,7 +9,6 @@ import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
 import ForestExperienceBanner from '@/components/home/ForestExperienceBanner';
 import ImmersiveBotanicalExplorer from '@/components/home/ImmersiveBotanicalExplorer';
 import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
-import Features from '@/components/sections/Features';
 import BlogPreview from '@/components/sections/BlogPreview';
 import FAQAccordion from '@/components/sections/FAQAccordion';
 import Newsletter from '@/components/sections/Newsletter';
@@ -42,15 +40,6 @@ export default function Home() {
     <div className="min-h-screen relative z-10 bg-[var(--surface-canvas)] text-[var(--ink-900)]">
       {/* 1. Immersive Forest Hero with Parallax */}
       <HeroSection />
-
-      {/* 1.5. Animated Categories with Botanical Bento */}
-      <SeamlessSection 
-        tone="forest"
-        paddingY="lg"
-        rightDecoration="fern"
-      >
-        <CategoriesSection />
-      </SeamlessSection>
 
       {/* 2. Shop by Category Grid */}
       <div id="categories">
@@ -118,54 +107,45 @@ export default function Home() {
         <WhyChooseUsFocus />
       </SeamlessSection>
 
-      {/* 10. Features Section */}
+      {/* 10. Customer Testimonials */}
       <SeamlessSection 
         tone="onyx"
-        paddingY="md"
-        leftDecoration="fern"
-      >
-        <Features />
-      </SeamlessSection>
-
-      {/* 11. Customer Testimonials */}
-      <SeamlessSection 
-        tone="forest"
         paddingY="lg"
-        rightDecoration="fern"
+        leftDecoration="fern"
       >
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-      {/* 12. Blog Preview - NEW */}
+      {/* 11. Blog Preview */}
       <SeamlessSection 
-        tone="onyx"
+        tone="forest"
         paddingY="lg"
         leftDecoration="palm"
       >
         <BlogPreview />
       </SeamlessSection>
 
-      {/* 13. FAQ Section - NEW */}
+      {/* 12. FAQ Section */}
       <SeamlessSection 
-        tone="forest"
+        tone="onyx"
         paddingY="lg"
         rightDecoration="monstera"
       >
         <FAQAccordion />
       </SeamlessSection>
 
-      {/* 14. Newsletter Signup */}
+      {/* 13. Newsletter Signup */}
       <SeamlessSection 
-        tone="onyx"
+        tone="forest"
         paddingY="md"
         leftDecoration="monstera"
       >
         <Newsletter />
       </SeamlessSection>
 
-      {/* 15. Final CTA */}
+      {/* 14. Final CTA */}
       <SeamlessSection 
-        tone="forest"
+        tone="onyx"
         paddingY="xl"
       >
         <FinalCTA />
