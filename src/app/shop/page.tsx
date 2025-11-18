@@ -88,7 +88,7 @@ export default function ShopPage() {
 
         {!loading && filteredProducts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-2xl text-white/50 antialiased">No products found</p>
+            <p className="text-2xl text-white/70 antialiased">No products found</p>
           </div>
         )}
       </div>

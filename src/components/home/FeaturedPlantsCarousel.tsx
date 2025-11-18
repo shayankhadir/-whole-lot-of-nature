@@ -177,12 +177,12 @@ export default function FeaturedPlantsCarousel() {
                             {formatPrice(product.sale_price || product.price || '0')}
                           </span>
                           {product.sale_price && (
-                            <span className="text-sm text-white/50 line-through">
+                            <span className="text-sm text-white/60 line-through">
                               {formatPrice(product.regular_price || product.price || '0')}
                             </span>
                           )}
                         </div>
-                        <span className="text-sm font-inter text-white/50 group-hover:text-white/70 transition-colors">
+                        <span className="text-sm font-inter text-white/60 group-hover:text-white/80 transition-colors">
                           View Details →
                         </span>
                       </div>
