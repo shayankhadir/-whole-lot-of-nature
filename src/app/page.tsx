@@ -13,11 +13,11 @@ import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonia
 import Features from '@/components/sections/Features';
 import BlogPreview from '@/components/sections/BlogPreview';
 import FAQAccordion from '@/components/sections/FAQAccordion';
-import Newsletter from '@/components/sections/Newsletter';
 import BrandStorySection from '@/components/sections/BrandStorySection';
 import WhyChooseUsFocus from '@/components/sections/WhyChooseUsFocus';
 import FinalCTA from '@/components/sections/FinalCTA';
 import SeamlessSection from '@/components/ui/SeamlessSection';
+import NewsletterPopup from '@/components/ui/NewsletterPopup';
 import { Product } from '@/types/product';
 
 export default function Home() {
@@ -40,6 +40,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative z-10 bg-[var(--surface-canvas)] text-[var(--ink-900)]">
+      {/* Newsletter Popup - appears at 60% scroll */}
+      <NewsletterPopup />
+
       {/* 1. Immersive Forest Hero with Parallax */}
       <HeroSection />
 
@@ -154,16 +157,7 @@ export default function Home() {
         <FAQAccordion />
       </SeamlessSection>
 
-      {/* 14. Newsletter Signup */}
-      <SeamlessSection 
-        tone="onyx"
-        paddingY="md"
-        leftDecoration="monstera"
-      >
-        <Newsletter />
-      </SeamlessSection>
-
-      {/* 15. Final CTA */}
+      {/* 14. Final CTA */}
       <SeamlessSection 
         tone="forest"
         paddingY="xl"
