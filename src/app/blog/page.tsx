@@ -48,11 +48,11 @@ export default async function BlogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0b1510]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 antialiased">Our Blog</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#66BB6A] mb-4 antialiased">Our Blog</h1>
+          <p className="text-white/70 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -62,7 +62,7 @@ export default async function BlogPage() {
             return (
               <article
                 key={post.id}
-                className="bg-white border border-gray-200 rounded-none overflow-hidden hover:shadow-md transition-all group"
+                className="bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-2xl overflow-hidden hover:border-[#2E7D32]/60 hover:shadow-2xl hover:shadow-[#2E7D32]/20 transition-all duration-300 hover:scale-105 group"
               >
                 {featured?.source_url && (
                   <div className="relative h-48 overflow-hidden">
@@ -70,20 +70,21 @@ export default async function BlogPage() {
                       src={featured.source_url}
                       alt={featured.alt_text || post.title.rendered}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F] via-transparent to-transparent opacity-60"></div>
                   </div>
                 )}
 
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h2 className="text-xl font-semibold text-white mb-3 group-hover:text-[#66BB6A] transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
                   <div
-                    className="text-gray-600 text-sm mb-4 line-clamp-3"
+                    className="text-white/70 text-sm mb-4 line-clamp-3"
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
 
-                  <div className="flex items-center gap-4 text-gray-500 text-sm">
+                  <div className="flex items-center gap-4 text-white/50 text-sm">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -110,13 +111,14 @@ export default async function BlogPage() {
         {(!posts || posts.length === 0) && (
           <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fallbackPosts.map((p) => (
-              <article key={p.id} className="bg-white border border-gray-200 rounded-none overflow-hidden hover:shadow-md transition-all group">
-                <div className="relative h-48 overflow-hidden bg-primary-50">
+              <article key={p.id} className="bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-2xl overflow-hidden hover:border-[#2E7D32]/60 hover:shadow-2xl hover:shadow-[#2E7D32]/20 transition-all duration-300 hover:scale-105 group">
+                <div className="relative h-48 overflow-hidden bg-[#1e3a28]">
                   <Image src="/hero-leaves.svg" alt="Tropical leaves" fill className="object-cover opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F] via-transparent to-transparent opacity-60"></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">{p.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{p.excerpt}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#66BB6A] transition-colors antialiased">{p.title}</h3>
+                  <p className="text-white/70 text-sm mb-4">{p.excerpt}</p>
                   <Link href={p.href}>
                     <Button variant="outline">Explore Articles</Button>
                   </Link>

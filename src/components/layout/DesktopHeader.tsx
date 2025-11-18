@@ -56,7 +56,7 @@ export default function DesktopHeader() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       style={{ background: headerGradient }}
-      className={`sticky top-0 left-0 w-full z-40 overflow-hidden border-b transition-all duration-300 ${
+      className={`sticky top-0 left-0 w-full z-50 overflow-visible border-b transition-all duration-300 ${
         scrolled
           ? 'border-white/10 backdrop-blur-xl shadow-[0_25px_70px_rgba(2,8,5,0.65)]'
           : 'border-transparent backdrop-blur-md shadow-none'
@@ -121,7 +121,7 @@ export default function DesktopHeader() {
                     leaveTo="opacity-0 -translate-y-2"
                   >
                     <div
-                      className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl"
+                      className="absolute left-0 right-0 top-full mt-0 z-[100] border-t border-white/10 bg-gradient-to-b from-[#0a1c0f]/98 to-[#030a06]/98 shadow-[0_30px_90px_rgba(2,8,5,0.95)] backdrop-blur-xl"
                       onMouseEnter={() => setShopDropdownOpen(true)}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">

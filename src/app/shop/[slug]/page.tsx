@@ -145,7 +145,7 @@ export default function ProductPage() {
                 {displayPrice}
               </span>
               {originalPrice && (
-                <span className="text-[clamp(1.625rem,3vw,2.625rem)] line-through text-white/40">
+                <span className="text-[clamp(1.625rem,3vw,2.625rem)] line-through text-white/60">
                   {originalPrice}
                 </span>
               )}

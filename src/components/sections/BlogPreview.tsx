@@ -139,7 +139,7 @@ export default function BlogPreview() {
                     {/* Post Info */}
                     <div className="p-5 flex-1 flex flex-col">
                       {/* Date */}
-                      <div className="flex items-center gap-2 text-white/50 text-[clamp(0.75rem,1.5vw,0.875rem)] mb-3">
+                      <div className="flex items-center gap-2 text-white/60 text-[clamp(0.75rem,1.5vw,0.875rem)] mb-3">
                         <Calendar className="w-4 h-4" />
                         <span>{post.date}</span>
                       </div>

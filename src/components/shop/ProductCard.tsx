@@ -164,7 +164,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="font-inter text-xs text-white/40 line-through">
+                <span className="font-inter text-xs text-white/60 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}
@@ -182,7 +182,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 ? 'bg-[#66BB6A] text-white'
                 : product.in_stock
                 ? 'bg-[#2E7D32] text-white emerald-glow hover:bg-[#66BB6A]'
-                : 'bg-[#2C2C2C] text-white/30 cursor-not-allowed'
+                : 'bg-[#2C2C2C] text-white/50 cursor-not-allowed'
             }`}
             aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}
           >
