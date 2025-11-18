@@ -19,7 +19,7 @@ export default function YouTubeEmbed() {
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
             Watch Our Latest Video
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto antialiased">
             Discover plant care tips and gardening inspiration
           </p>
         </motion.div>

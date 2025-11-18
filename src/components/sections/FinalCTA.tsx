@@ -59,7 +59,7 @@ export default function FinalCTA() {
               <Link href="/shop">
                 <HoverBorderGradient
                   containerClassName="rounded-full"
-                  className="flex items-center gap-3 text-white font-montserrat font-bold text-base uppercase tracking-wide"
+                  className="flex items-center gap-3 text-white font-montserrat font-bold text-base uppercase tracking-wide antialiased"
                   glowColor="#66BB6A"
                 >
                   Start Shopping
@@ -76,7 +76,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 text-center text-white/60 text-sm font-inter"
+          className="mt-6 text-center text-white/85 text-sm font-inter"
         >
           Stay Loyal to the Soil — 100% Organic, Sustainably Sourced
         </motion.p>

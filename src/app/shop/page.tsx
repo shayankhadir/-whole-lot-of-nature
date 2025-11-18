@@ -66,7 +66,7 @@ export default function ShopPage() {
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                 selectedCategory === cat.id
                   ? 'bg-[#2E7D32] text-white shadow-lg shadow-[#2E7D32]/50'
-                  : 'bg-[#2C2C2C] text-white/70 hover:bg-[#2E7D32]/20 border border-[#2E7D32]/30'
+                  : 'bg-[#2C2C2C] text-white/85 hover:bg-[#2E7D32]/20 border border-[#2E7D32]/30'
               }`}
             >
               {cat.name}

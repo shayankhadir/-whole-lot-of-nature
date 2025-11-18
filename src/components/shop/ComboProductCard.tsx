@@ -138,7 +138,7 @@ export default function ComboProductCard({
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+        <p className="mt-2 text-sm text-gray-100 line-clamp-2">
           {combo.description}
         </p>
 
@@ -151,13 +151,13 @@ export default function ComboProductCard({
             {combo.items.slice(0, 3).map((item, index) => (
               <span
                 key={item.id}
-                className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
+                className="text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full"
               >
                 {item.quantity}x {item.name}
               </span>
             ))}
             {combo.items.length > 3 && (
-              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+              <span className="text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full">
                 +{combo.items.length - 3} more
               </span>
             )}
@@ -208,7 +208,7 @@ export default function ComboProductCard({
           className={`mt-4 w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
             combo.inStock
               ? 'bg-white text-primary-700 border border-primary-200 hover:bg-primary-50'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-100 text-gray-100 cursor-not-allowed'
           }`}
         >
           <ShoppingCart className="h-5 w-5" />

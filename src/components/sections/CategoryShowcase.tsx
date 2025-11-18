@@ -73,7 +73,7 @@ export default function CategoryShowcase() {
           <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 antialiased">
             A Luxury Edit for Every Green Vision
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-gray-600 antialiased">
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-gray-100 antialiased">
             Explore a curated taxonomy of nature-first collections designed to harmonise wellbeing, interior aesthetics, and sustainable growing rituals.
           </p>
         </motion.div>
@@ -92,14 +92,14 @@ export default function CategoryShowcase() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/20 backdrop-blur-md">
                     <category.icon className="h-5 w-5" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Signature Edit</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/85">Signature Edit</span>
                   <div className="absolute -bottom-10 -right-10 h-24 w-24 rounded-full bg-white/20 blur-3xl backdrop-blur-md" />
                 </div>
                 <div className="mt-5">
                   <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-primary-700 transition-colors antialiased">
                     {category.title}
                   </h3>
-                  <p className="mt-3 text-sm text-gray-600">
+                  <p className="mt-3 text-sm text-gray-100">
                     {category.summary}
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export default function CategoryShowcase() {
                   {category.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600 group-hover:border-primary-200 group-hover:text-primary-600"
+                      className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-100 group-hover:border-primary-200 group-hover:text-primary-600"
                     >
                       {highlight}
                     </span>
@@ -129,7 +129,7 @@ export default function CategoryShowcase() {
           viewport={{ once: true }}
           className="mt-16 rounded-3xl border border-primary-100 bg-white/70 p-8 text-center shadow-lg backdrop-blur-md"
         >
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-100">
             Curious about rare specimens or limited seasonal drops?
           </p>
           <Link

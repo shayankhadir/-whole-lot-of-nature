@@ -103,13 +103,13 @@ const Feature = ({
       <div className="mb-4 relative z-10 px-10 text-[#66BB6A] dark:text-[#66BB6A]">
         {icon}
       </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#2E7D32]/30 dark:bg-[#2E7D32]/50 group-hover/feature:bg-[#66BB6A] transition-all duration-200 origin-center" />
+      <div className="text-lg font-bold mb-2 relative z-10 px-10 antialiased">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#2E7D32]/30 dark:bg-[#2E7D32]/50 group-hover/feature:bg-[#66BB6A] transition-all duration-200 origin-center backdrop-blur-md" />
         <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-white dark:text-white">
           {title}
         </span>
       </div>
-      <p className="text-sm text-white/70 dark:text-white/70 max-w-xs relative z-10 px-10 antialiased">
+      <p className="text-sm text-white/85 dark:text-white/85 max-w-xs relative z-10 px-10 antialiased">
         {description}
       </p>
     </div>

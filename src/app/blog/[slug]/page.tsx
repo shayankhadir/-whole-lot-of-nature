@@ -93,13 +93,13 @@ export default function BlogPostPage() {
                   )}
                   <div>
                     <p className="font-semibold text-black">{post.author_name || 'Author'}</p>
-                    <p className="text-sm text-gray-600">Author</p>
+                    <p className="text-sm text-gray-100">Author</p>
                   </div>
                 </div>
               </div>
 
               {/* Date & Reading Time */}
-              <div className="flex items-center gap-4 text-sm text-gray-600">
+              <div className="flex items-center gap-4 text-sm text-gray-100">
                 <span>📅 {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 {post.reading_time && <span>☕ {post.reading_time} min read</span>}
               </div>
@@ -161,7 +161,7 @@ export default function BlogPostPage() {
             {post.tags && post.tags.length > 0 && (
               <div className="py-8 px-4 sm:px-6 lg:px-8 border-y-2 border-gray-200">
                 <div className="max-w-3xl mx-auto">
-                  <p className="text-sm font-semibold text-gray-600 mb-3">Tags:</p>
+                  <p className="text-sm font-semibold text-gray-100 mb-3">Tags:</p>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag: string) => (
                       <span key={tag} className="inline-block px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-semibold">
@@ -231,7 +231,7 @@ export default function BlogPostPage() {
                   )}
                   <div className="p-4">
                     <h3 className="font-bold text-black mb-2 line-clamp-2 antialiased">{relPost.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-100 mb-4">
                       {new Date(relPost.date).toLocaleDateString()}
                       {relPost.reading_time && ` • ${relPost.reading_time} min`}
                     </p>

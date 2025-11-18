@@ -27,7 +27,7 @@ export default function ComboPacks() {
                     <h3 className="text-lg font-medium antialiased">{c.title}</h3>
                     <span className="text-sm text-[#2E7D32] font-semibold">{c.savings}</span>
                   </div>
-                  <p className="mt-4 text-gray-600">Perfect starter bundle for new plant parents.</p>
+                  <p className="mt-4 text-gray-100">Perfect starter bundle for new plant parents.</p>
                   <div className="mt-6 flex items-center justify-between">
                     <span className="text-xl font-bold antialiased">${c.price.toFixed(2)}</span>
                     <button className="px-4 py-2 bg-[#2E7D32] text-white rounded-full">Shop Pack</button>

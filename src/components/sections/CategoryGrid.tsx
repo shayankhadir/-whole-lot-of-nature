@@ -59,7 +59,7 @@ export default function CategoryGrid() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
             Shop by Category
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/70 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/85 max-w-2xl mx-auto antialiased">
             Explore our curated collections for your green sanctuary
           </p>
         </motion.div>
@@ -101,7 +101,7 @@ export default function CategoryGrid() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-center text-[clamp(0.8125rem,1.5vw,0.9375rem)] text-white/60 mb-4 antialiased">
+                  <p className="text-center text-[clamp(0.8125rem,1.5vw,0.9375rem)] text-white/85 mb-4 antialiased">
                     {category.description}
                   </p>
 
@@ -111,7 +111,7 @@ export default function CategoryGrid() {
                       {category.subcategories.map((sub) => (
                         <span 
                           key={sub}
-                          className="text-xs px-2 py-1 rounded-full bg-[#2E7D32]/20 text-[#66BB6A] border border-[#2E7D32]/30"
+                          className="text-xs px-2 py-1 rounded-full bg-[#2E7D32]/20 text-[#66BB6A] border border-[#2E7D32]/30 backdrop-blur-md"
                         >
                           {sub}
                         </span>

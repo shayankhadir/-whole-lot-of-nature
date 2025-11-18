@@ -130,7 +130,7 @@ export default function BlogCategoryPage() {
                       )}
 
                       {/* Meta Info */}
-                      <div className="flex items-center justify-between text-xs text-gray-600 mb-4 pt-4 border-t border-gray-200">
+                      <div className="flex items-center justify-between text-xs text-gray-100 mb-4 pt-4 border-t border-gray-200">
                         <div className="flex items-center gap-2">
                           {post.author_avatar && (
                             <Image
@@ -148,7 +148,7 @@ export default function BlogCategoryPage() {
 
                       {/* Reading Time */}
                       {post.reading_time && (
-                        <p className="text-xs text-gray-600 mb-4">
+                        <p className="text-xs text-gray-100 mb-4">
                           ☕ {post.reading_time} min read
                         </p>
                       )}

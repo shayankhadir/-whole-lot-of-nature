@@ -12,7 +12,7 @@ export default function ContactPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-[#66BB6A] antialiased mb-4">Contact Us</h1>
-          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">We're here to help. Reach out with questions about products, orders, or support.</p>
+          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto antialiased">We're here to help. Reach out with questions about products, orders, or support.</p>
         </div>
       </section>
 
@@ -22,15 +22,15 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-base md:text-lg font-semibold text-[#66BB6A] antialiased">Email</h2>
-              <p className="text-white/70 mt-2">store@wholelotofnature.com</p>
+              <p className="text-white/85 mt-2">store@wholelotofnature.com</p>
             </div>
             <div>
               <h2 className="text-base md:text-lg font-semibold text-[#66BB6A] antialiased">Phone</h2>
-              <p className="text-white/70 mt-2">+91 12345 67890</p>
+              <p className="text-white/85 mt-2">+91 12345 67890</p>
             </div>
             <div>
               <h2 className="text-base md:text-lg font-semibold text-[#66BB6A] antialiased">Address</h2>
-              <p className="text-white/70 mt-2">123 Nature Street, Greenville, GV 12345</p>
+              <p className="text-white/85 mt-2">123 Nature Street, Greenville, GV 12345</p>
             </div>
             <div className="text-sm text-white/50 pt-4">
               Prefer a quick note? You can also reach us via the contact section on the <a href="/about#contact" className="text-[#66BB6A] hover:text-[#2E7D32] underline transition-colors">About page</a>.

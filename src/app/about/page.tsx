@@ -144,7 +144,7 @@ export default function AboutPage() {
               <h3 className="font-montserrat text-[clamp(1.125rem,3vw,1.5rem)] font-semibold text-white mb-3">
                 {value.title}
               </h3>
-              <p className="text-[clamp(0.875rem,2vw,1rem)] text-white/70">
+              <p className="text-[clamp(0.875rem,2vw,1rem)] text-white/85">
                 {value.description}
               </p>
             </motion.div>
@@ -176,21 +176,21 @@ export default function AboutPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 mt-8 text-left">
-              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20">
+              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20 backdrop-blur-md">
                 <h3 className="font-semibold text-[#66BB6A] mb-3 text-[clamp(1rem,2.5vw,1.25rem)]">Premium Soil & Fertilizers</h3>
-                <p className="text-white/70 text-[clamp(0.875rem,2vw,1rem)]">Organic soil mixes and eco-friendly fertilizers crafted for optimal plant growth</p>
+                <p className="text-white/85 text-[clamp(0.875rem,2vw,1rem)]">Organic soil mixes and eco-friendly fertilizers crafted for optimal plant growth</p>
               </div>
-              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20">
+              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20 backdrop-blur-md">
                 <h3 className="font-semibold text-[#66BB6A] mb-3 text-[clamp(1rem,2.5vw,1.25rem)]">Living Plants</h3>
-                <p className="text-white/70 text-[clamp(0.875rem,2vw,1rem)]">Indoor plants, succulents, and aquatic greens to bring nature into your space</p>
+                <p className="text-white/85 text-[clamp(0.875rem,2vw,1rem)]">Indoor plants, succulents, and aquatic greens to bring nature into your space</p>
               </div>
-              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20">
+              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20 backdrop-blur-md">
                 <h3 className="font-semibold text-[#66BB6A] mb-3 text-[clamp(1rem,2.5vw,1.25rem)]">Herbal Products</h3>
-                <p className="text-white/70 text-[clamp(0.875rem,2vw,1rem)]">Handmade organic herbal hair oils and natural care products</p>
+                <p className="text-white/85 text-[clamp(0.875rem,2vw,1rem)]">Handmade organic herbal hair oils and natural care products</p>
               </div>
-              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20">
+              <div className="bg-[#0D1B0F]/50 p-6 rounded-xl border border-[#2E7D32]/20 backdrop-blur-md">
                 <h3 className="font-semibold text-[#66BB6A] mb-3 text-[clamp(1rem,2.5vw,1.25rem)]">Expert Guidance</h3>
-                <p className="text-white/70 text-[clamp(0.875rem,2vw,1rem)]">Resources and support to help you succeed in your gardening journey</p>
+                <p className="text-white/85 text-[clamp(0.875rem,2vw,1rem)]">Resources and support to help you succeed in your gardening journey</p>
               </div>
             </div>
 

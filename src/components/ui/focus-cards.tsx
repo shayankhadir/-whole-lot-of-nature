@@ -35,7 +35,7 @@ export const Card = React.memo(
           hovered === index ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="text-xl md:text-2xl font-semibold text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+        <div className="text-xl md:text-2xl font-semibold text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] antialiased">
           {card.title}
         </div>
       </div>

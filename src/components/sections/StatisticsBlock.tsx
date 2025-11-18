@@ -80,7 +80,7 @@ export const StatisticsBlock = ({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-gray-600 max-w-2xl mx-auto antialiased"
+              className="text-xl text-gray-100 max-w-2xl mx-auto antialiased"
             >
               {description}
             </motion.p>
@@ -197,7 +197,7 @@ const StatisticItemComponent = ({
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
-        className="text-gray-600 font-semibold mb-2"
+        className="text-gray-100 font-semibold mb-2"
       >
         {item.label}
       </motion.p>

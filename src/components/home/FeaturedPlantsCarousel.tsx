@@ -99,7 +99,7 @@ export default function FeaturedPlantsCarousel() {
           <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-white uppercase tracking-wide antialiased">
             Featured <span className="text-[#66BB6A]">Plants</span>
           </h2>
-          <p className="font-inter text-lg text-white/70 mt-4 max-w-2xl antialiased">
+          <p className="font-inter text-lg text-white/85 mt-4 max-w-2xl antialiased">
             Handpicked organic plants, carefully curated for your home and garden.
           </p>
         </motion.div>
@@ -182,7 +182,7 @@ export default function FeaturedPlantsCarousel() {
                             </span>
                           )}
                         </div>
-                        <span className="text-sm font-inter text-white/50 group-hover:text-white/70 transition-colors">
+                        <span className="text-sm font-inter text-white/50 group-hover:text-white/85 transition-colors">
                           View Details →
                         </span>
                       </div>

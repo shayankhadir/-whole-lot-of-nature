@@ -14,13 +14,13 @@ export default function RefundPolicyPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-[#66BB6A] antialiased mb-4">Refund & Return Policy</h1>
-          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">Clear, customer-first policies for live plants and gardening supplies.</p>
+          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto antialiased">Clear, customer-first policies for live plants and gardening supplies.</p>
         </div>
       </section>
 
       <div className="max-w-4xl mx-auto py-12 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
-          <p className="text-white/60 text-sm">
+          <p className="text-white/85 text-sm">
             Last updated: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
 

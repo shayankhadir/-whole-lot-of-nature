@@ -564,16 +564,16 @@ const BotanicalCategoryBento = ({
                 >
                   <div className="flex flex-col gap-2">
                     {category.icon && (
-                      <div className="text-2xl sm:text-3xl transition-transform group-hover:scale-110">
+                      <div className="text-2xl sm:text-3xl transition-transform group-hover:scale-110 antialiased">
                         {category.icon}
                       </div>
                     )}
-                    <h3 className="font-semibold text-sm sm:text-base text-[#66BB6A] leading-tight">
+                    <h3 className="font-semibold text-sm sm:text-base text-[#66BB6A] leading-tight antialiased">
                       {category.name}
                     </h3>
                   </div>
                   {category.description && (
-                    <p className="text-xs text-white/70 line-clamp-2">
+                    <p className="text-xs text-white/85 line-clamp-2">
                       {category.description}
                     </p>
                   )}
@@ -589,16 +589,16 @@ const BotanicalCategoryBento = ({
               >
                 <div className="flex flex-col gap-2">
                   {category.icon && (
-                    <div className="text-2xl sm:text-3xl">
+                    <div className="text-2xl sm:text-3xl antialiased">
                       {category.icon}
                     </div>
                   )}
-                  <h3 className="font-semibold text-sm sm:text-base text-[#66BB6A] leading-tight">
+                  <h3 className="font-semibold text-sm sm:text-base text-[#66BB6A] leading-tight antialiased">
                     {category.name}
                   </h3>
                 </div>
                 {category.description && (
-                  <p className="text-xs text-white/70 line-clamp-2">
+                  <p className="text-xs text-white/85 line-clamp-2">
                     {category.description}
                   </p>
                 )}

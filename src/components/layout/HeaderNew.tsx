@@ -212,7 +212,7 @@ export default function Header() {
                               </Link>
                             ))}
                         </div>
-                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-gray-200 bg-white p-4 text-sm text-gray-600 shadow-sm">
+                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-gray-200 bg-white p-4 text-sm text-gray-100 shadow-sm">
                           <span>Looking for bundles or limited editions?</span>
                           <Link href="/shop?tag=gift-bundles" className="font-medium text-[#2E7D32] hover:text-[#2E7D32]">
                             Explore curated sets →
@@ -339,11 +339,11 @@ export default function Header() {
                                   <collection.icon className="h-4 w-4 text-primary-600" aria-hidden="true" />
                                   {collection.title}
                                 </span>
-                                <ChevronDown className="h-4 w-4 rotate-[-90deg] text-gray-400" />
+                                <ChevronDown className="h-4 w-4 rotate-[-90deg] text-gray-100" />
                               </Link>
                               <div className="mt-2 flex flex-wrap gap-2">
                                 {collection.items.map((sub) => (
-                                  <Link key={sub.name} href={sub.href} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-600 hover:border-[#2E7D32] hover:text-[#2E7D32]">
+                                  <Link key={sub.name} href={sub.href} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-100 hover:border-[#2E7D32] hover:text-[#2E7D32]">
                                     {sub.name}
                                   </Link>
                                 ))}

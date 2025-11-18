@@ -142,7 +142,7 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
                 <span className="text-2xl antialiased">{getTransactionIcon(transaction.type)}</span>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-black truncate antialiased">{transaction.reason}</p>
-                  <p className="text-sm text-gray-600">{formatDate(transaction.createdAt)}</p>
+                  <p className="text-sm text-gray-100">{formatDate(transaction.createdAt)}</p>
                 </div>
               </div>
 

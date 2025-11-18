@@ -84,7 +84,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
                 {feature.details && (
                   <ul className="space-y-1">
                     {feature.details.map((detail, didx) => (
-                      <li key={didx} className="text-sm text-gray-600">
+                      <li key={didx} className="text-sm text-gray-100">
                         • {detail}
                       </li>
                     ))}
@@ -141,7 +141,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           {feature.benefits && !compact && (
             <ul className="space-y-1">
               {feature.benefits.map((benefit, bidx) => (
-                <li key={bidx} className="text-sm text-gray-600">
+                <li key={bidx} className="text-sm text-gray-100">
                   ✓ {benefit}
                 </li>
               ))}

@@ -66,7 +66,7 @@ export default function CustomerTestimonialsSlider() {
           <h2 className="text-[clamp(2rem,4vw,2.625rem)] font-montserrat font-bold text-white mb-2 antialiased">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto antialiased">
+          <p className="text-lg text-white/85 max-w-2xl mx-auto antialiased">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export default function CustomerTestimonialsSlider() {
                     <h4 className="font-semibold text-white text-base font-montserrat antialiased">
                       {testimonial.name}
                     </h4>
-                    <p className="text-white/60 text-xs">
+                    <p className="text-white/85 text-xs">
                       {testimonial.location}
                     </p>
                   </div>

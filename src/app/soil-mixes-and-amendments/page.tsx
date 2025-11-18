@@ -102,7 +102,7 @@ export default function SoilLandingPage() {
                     <Image src={h.img} alt={h.title} fill className="object-cover opacity-80" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mt-3 antialiased">{h.title}</h3>
-                  <p className="text-gray-600 text-sm mt-2">{h.desc}</p>
+                  <p className="text-gray-100 text-sm mt-2">{h.desc}</p>
                   <div className="mt-4">
                     <Link href={h.href} className="inline-block px-5 py-2 bg-primary-700 text-white border border-primary-700 rounded-none font-semibold hover:bg-white hover:text-primary-700 transition-all">
                       Shop Now
@@ -137,7 +137,7 @@ export default function SoilLandingPage() {
             {highlights.map((h) => (
               <div key={h.title} className="border border-gray-200 p-6">
                 <h3 className="text-xl font-semibold text-gray-900 antialiased">{h.title}</h3>
-                <p className="text-gray-600 mt-2">{h.desc}</p>
+                <p className="text-gray-100 mt-2">{h.desc}</p>
                 <div className="mt-4 flex gap-3">
                   <Link href={h.href} className="px-5 py-2 bg-primary-700 text-white border border-primary-700 rounded-none font-semibold hover:bg-white hover:text-primary-700 transition-all">Add to Cart</Link>
                   <Link href={h.href} className="px-5 py-2 border-2 border-primary-700 text-primary-700 rounded-none font-semibold hover:bg-primary-700 hover:text-white transition-all">Learn More</Link>
@@ -160,7 +160,7 @@ export default function SoilLandingPage() {
             ].map((f) => (
               <div key={f.q} className="py-4">
                 <div className="font-semibold text-gray-900">{f.q}</div>
-                <div className="text-gray-600 mt-1">{f.a}</div>
+                <div className="text-gray-100 mt-1">{f.a}</div>
               </div>
             ))}
           </div>

@@ -67,7 +67,7 @@ export default function FAQAccordion() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
             Frequently Asked Questions
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/70 antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/85 antialiased">
             Got questions? We've got answers!
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ export default function FAQAccordion() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-[#2E7D32]/10 transition-colors duration-200"
+                className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-[#2E7D32]/10 transition-colors duration-200 backdrop-blur-md"
               >
                 <span className="font-montserrat text-[clamp(0.9375rem,2vw,1.125rem)] font-semibold text-white pr-4 antialiased">
                   {faq.question}
@@ -107,7 +107,7 @@ export default function FAQAccordion() {
                     className="overflow-hidden"
                   >
                     <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
-                      <p className="text-[clamp(0.875rem,1.5vw,1rem)] text-white/70 leading-relaxed antialiased">
+                      <p className="text-[clamp(0.875rem,1.5vw,1rem)] text-white/85 leading-relaxed antialiased">
                         {faq.answer}
                       </p>
                     </div>
@@ -124,7 +124,7 @@ export default function FAQAccordion() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-12 p-6 bg-[#2E7D32]/10 border border-[#2E7D32]/30 rounded-xl"
+          className="text-center mt-12 p-6 bg-[#2E7D32]/10 border border-[#2E7D32]/30 rounded-xl backdrop-blur-md"
         >
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/80 mb-4 antialiased">
             Still have questions?

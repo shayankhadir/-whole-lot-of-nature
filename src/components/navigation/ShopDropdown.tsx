@@ -83,13 +83,13 @@ export default function ShopDropdown() {
             <div className="grid grid-cols-2 gap-3 mb-4">
               <Link
                 href="/shop"
-                className="px-3 py-2 rounded-lg bg-[#66BB6A]/10 border border-[#66BB6A]/30 text-[#66BB6A] hover:bg-[#66BB6A]/20 transition-colors text-sm font-medium"
+                className="px-3 py-2 rounded-lg bg-[#66BB6A]/10 border border-[#66BB6A]/30 text-[#66BB6A] hover:bg-[#66BB6A]/20 transition-colors text-sm font-medium backdrop-blur-md"
               >
                 All Products
               </Link>
               <Link
                 href="/combos"
-                className="px-3 py-2 rounded-lg bg-[#66BB6A]/10 border border-[#66BB6A]/30 text-[#66BB6A] hover:bg-[#66BB6A]/20 transition-colors text-sm font-medium"
+                className="px-3 py-2 rounded-lg bg-[#66BB6A]/10 border border-[#66BB6A]/30 text-[#66BB6A] hover:bg-[#66BB6A]/20 transition-colors text-sm font-medium backdrop-blur-md"
               >
                 Combo Deals
               </Link>

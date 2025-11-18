@@ -61,7 +61,7 @@ export default function Newsletter() {
             <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased">
               Join Our Garden Community
             </h2>
-            <p className="text-base text-white/70 mb-6 max-w-2xl mx-auto antialiased">
+            <p className="text-base text-white/85 mb-6 max-w-2xl mx-auto antialiased">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
               Plus, get 10% off your next order!
             </p>
@@ -116,7 +116,7 @@ export default function Newsletter() {
                 >
                   <CheckCircle className="w-12 h-12 text-[#66BB6A] mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
-                  <p className="text-white/70">
+                  <p className="text-white/85">
                     You've successfully joined our garden community. Check your email for a welcome gift!
                   </p>
                 </motion.div>
@@ -148,7 +148,7 @@ export default function Newsletter() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-white/60">
+                  <p className="text-sm text-white/85">
                     We respect your privacy. Unsubscribe at any time.
                   </p>
                 </form>

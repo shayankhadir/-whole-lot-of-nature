@@ -148,7 +148,7 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
                 className="object-contain p-8"
               />
             ) : (
-              <div className="flex h-full items-center justify-center text-white/60">
+              <div className="flex h-full items-center justify-center text-white/85">
                 <span>No image available</span>
               </div>
             )}

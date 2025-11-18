@@ -11,7 +11,7 @@ export default function TermsPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-[#66BB6A] mb-12 antialiased">Terms & Conditions</h1>
         <div className="space-y-6">
-          <p className="text-white/60 text-sm">
+          <p className="text-white/85 text-sm">
             Last updated: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
 

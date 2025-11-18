@@ -45,7 +45,7 @@ export default function CategoryGridFocus() {
           <h2 className="font-montserrat text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
             Shop by Category
           </h2>
-          <p className="text-[clamp(0.875rem,2vw,1.125rem)] text-white/70 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.875rem,2vw,1.125rem)] text-white/85 max-w-2xl mx-auto antialiased">
             Explore our curated collections for your green sanctuary
           </p>
         </div>

@@ -84,7 +84,7 @@ export default function InstagramFeed() {
               Follow Us on Instagram
             </h2>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto antialiased">
             Join our community and see the latest from Whole Lot of Nature
           </p>
           <a
@@ -113,7 +113,7 @@ export default function InstagramFeed() {
 
         {/* Error State */}
         {error && !isLoading && (
-          <div className="text-center py-12 text-gray-600">
+          <div className="text-center py-12 text-gray-100">
             <p>{error}</p>
           </div>
         )}
@@ -151,7 +151,7 @@ export default function InstagramFeed() {
               {/* Caption */}
               <div className="bg-white p-4">
                 <p className="text-gray-800 text-sm line-clamp-2">{post.caption}</p>
-                <p className="text-gray-400 text-xs mt-2">
+                <p className="text-gray-100 text-xs mt-2">
                   {new Date(post.timestamp).toLocaleDateString()}
                 </p>
               </div>

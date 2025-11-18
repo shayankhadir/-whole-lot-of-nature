@@ -40,13 +40,13 @@ export default function TrustBanner() {
               transition={{ delay: index * 0.1 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#2E7D32]/20 flex items-center justify-center mb-3 group-hover:bg-[#2E7D32]/30 transition-colors duration-300">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#2E7D32]/20 flex items-center justify-center mb-3 group-hover:bg-[#2E7D32]/30 transition-colors duration-300 backdrop-blur-md">
                 <signal.icon className="w-6 h-6 md:w-7 md:h-7 text-[#66BB6A]" />
               </div>
               <h3 className="font-montserrat text-[clamp(0.875rem,2vw,1rem)] font-semibold text-white mb-1 antialiased">
                 {signal.title}
               </h3>
-              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-white/60 antialiased">
+              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-white/85 antialiased">
                 {signal.description}
               </p>
             </motion.div>

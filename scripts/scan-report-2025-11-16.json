@@ -1,0 +1,47 @@
+{
+  "scanDate": "2025-11-16T21:26:25.604Z",
+  "stats": {
+    "filesScanned": 0,
+    "totalIssues": 0,
+    "criticalIssues": 0,
+    "highIssues": 0,
+    "mediumIssues": 0,
+    "lowIssues": 0,
+    "totalWarnings": 0,
+    "totalSuggestions": 0
+  },
+  "designSystem": {
+    "colors": {
+      "emerald": "#2E7D32",
+      "turquoise": "#66BB6A",
+      "charcoal": "#0A0A0A",
+      "darkGray": "#0F0F0F"
+    },
+    "typography": {
+      "goldenRatio": 1.618,
+      "baseSize": 16,
+      "scale": {
+        "body": "16px",
+        "h6": "26px",
+        "h5": "42px",
+        "h4": "68px",
+        "h3": "110px",
+        "h2": "178px",
+        "h1": "clamp(4rem, 14vw, 18rem)"
+      },
+      "fontFamily": {
+        "primary": "var(--font-geist-sans)",
+        "mono": "var(--font-geist-mono)"
+      }
+    },
+    "spacing": {
+      "goldenRatioBase": 38
+    },
+    "effects": {
+      "glassmorphism": "backdrop-blur-md",
+      "borderRadius": "6px-8px",
+      "emeraldGlow": "0_8px_20px_-10px_rgba(46,125,50,0.25)"
+    }
+  },
+  "results": []
+}

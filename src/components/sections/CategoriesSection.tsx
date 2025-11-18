@@ -51,10 +51,10 @@ export default function CategoriesSection() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2 antialiased">
           Explore Our Collection
         </h2>
-        <p className="text-white/70 text-sm sm:text-base">
+        <p className="text-white/85 text-sm sm:text-base antialiased">
           Discover the perfect plants and supplies for your botanical journey
         </p>
       </div>

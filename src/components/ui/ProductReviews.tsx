@@ -64,11 +64,11 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
           <div key={review.id} className="border-t border-gray-200 pt-6">
             <div className="flex items-center">
               <StarRating rating={review.rating} />
-              <p className="ml-3 text-sm text-gray-600">
+              <p className="ml-3 text-sm text-gray-100">
                 by {review.reviewer}
               </p>
             </div>
-            <div className="mt-4 space-y-6 text-sm text-gray-600">
+            <div className="mt-4 space-y-6 text-sm text-gray-100">
               <p>{review.review}</p>
             </div>
           </div>

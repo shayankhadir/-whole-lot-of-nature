@@ -82,7 +82,7 @@ export default function SectionHeader({
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-inter text-base md:text-lg text-gray-400 mt-6 max-w-2xl leading-relaxed antialiased"
+          className="font-inter text-base md:text-lg text-gray-100 mt-6 max-w-2xl leading-relaxed antialiased"
           style={{ margin: centered ? '1.5rem auto 0' : '1.5rem 0 0' }}
         >
           {subtitle}

@@ -131,9 +131,9 @@ export default function DesktopHeader() {
                               key={collection.title}
                               href={collection.href}
                               onClick={() => setShopDropdownOpen(false)}
-                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40"
+                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40 backdrop-blur-md"
                             >
-                              <div className="relative overflow-hidden rounded-full bg-[#66BB6A]/15 p-4 ring-1 ring-[#66BB6A]/30 w-14 h-14 flex items-center justify-center">
+                              <div className="relative overflow-hidden rounded-full bg-[#66BB6A]/15 p-4 ring-1 ring-[#66BB6A]/30 w-14 h-14 flex items-center justify-center backdrop-blur-md">
                                 <collection.icon
                                   className="h-7 w-7 text-[#66BB6A]"
                                   aria-hidden="true"
@@ -144,7 +144,7 @@ export default function DesktopHeader() {
                                 <h3 className="text-lg font-semibold text-white group-hover:text-[#66BB6A] transition-colors antialiased">
                                   {collection.title}
                                 </h3>
-                                <p className="mt-2 text-sm text-white/70">
+                                <p className="mt-2 text-sm text-white/85">
                                   {collection.description}
                                 </p>
                               </div>
@@ -157,7 +157,7 @@ export default function DesktopHeader() {
                                       e.stopPropagation();
                                       setShopDropdownOpen(false);
                                     }}
-                                    className="inline-flex items-center rounded-md border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white hover:border-[#66BB6A]/40 hover:text-[#66BB6A]"
+                                    className="inline-flex items-center rounded-md border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white hover:border-[#66BB6A]/40 hover:text-[#66BB6A] backdrop-blur-md"
                                   >
                                     {sub.name}
                                   </Link>
@@ -166,7 +166,7 @@ export default function DesktopHeader() {
                             </Link>
                           ))}
                         </div>
-                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-sm text-white/80 shadow-inner">
+                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-sm text-white/80 shadow-inner backdrop-blur-md">
                           <span>Looking for bundles or limited editions?</span>
                           <Link
                             href="/shop?tag=gift-bundles"
@@ -260,7 +260,7 @@ export default function DesktopHeader() {
               >
                 <Heart className="w-6 h-6" strokeWidth={2} />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#2E7D32] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-[#2E7D32] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center antialiased">
                     {wishlistCount}
                   </span>
                 )}

@@ -93,7 +93,7 @@ export default function SignInPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-montserrat text-7xl md:text-8xl lg:text-9xl font-bold text-white uppercase leading-[0.9] text-center"
+            className="font-montserrat text-7xl md:text-8xl lg:text-9xl font-bold text-white uppercase leading-[0.9] text-center antialiased"
           >
             SIGN
             <br />
@@ -104,7 +104,7 @@ export default function SignInPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-8 font-inter text-xl text-white/80 text-center max-w-md"
+            className="mt-8 font-inter text-xl text-white/80 text-center max-w-md antialiased"
           >
             Welcome back to Whole Lot of Nature
           </motion.p>
@@ -115,7 +115,7 @@ export default function SignInPage() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mt-12 text-center"
           >
-            <p className="text-sm text-white/60 uppercase tracking-widest font-montserrat">
+            <p className="text-sm text-white/85 uppercase tracking-widest font-montserrat">
               Stay Loyal to the Soil
             </p>
           </motion.div>
@@ -139,10 +139,10 @@ export default function SignInPage() {
 
             <div className="relative z-10">
               {/* Header */}
-              <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-2">
+              <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-2 antialiased">
                 Welcome Back
               </h2>
-              <p className="font-inter text-white/70 mb-8">
+              <p className="font-inter text-white/85 mb-8">
                 Sign in to continue your green journey
               </p>
 
@@ -177,8 +177,8 @@ export default function SignInPage() {
                       >
                         <CheckCircle2 className="w-20 h-20 text-[#66BB6A] mx-auto mb-4" />
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-white">Welcome Back!</h3>
-                      <p className="text-white/70 mt-2">Redirecting...</p>
+                      <h3 className="text-2xl font-bold text-white antialiased">Welcome Back!</h3>
+                      <p className="text-white/85 mt-2">Redirecting...</p>
                     </div>
                   </motion.div>
                 )}
@@ -220,7 +220,7 @@ export default function SignInPage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/85 hover:text-white transition-colors"
                     >
                       {showPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -233,10 +233,10 @@ export default function SignInPage() {
 
                 {/* Remember Me & Forgot Password */}
                 <div className="flex items-center justify-between text-sm">
-                  <label className="flex items-center text-white/70 hover:text-white cursor-pointer">
+                  <label className="flex items-center text-white/85 hover:text-white cursor-pointer">
                     <input
                       type="checkbox"
-                      className="mr-2 w-4 h-4 rounded border-white/20 bg-white/5 text-[#2E7D32] focus:ring-[#2E7D32] focus:ring-offset-0"
+                      className="mr-2 w-4 h-4 rounded border-white/20 bg-white/5 text-[#2E7D32] focus:ring-[#2E7D32] focus:ring-offset-0 backdrop-blur-md"
                     />
                     Remember me
                   </label>
@@ -254,7 +254,7 @@ export default function SignInPage() {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-[#2E7D32] text-white font-montserrat font-bold text-lg py-4 rounded-lg hover:bg-[#66BB6A] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#2E7D32] text-white font-montserrat font-bold text-lg py-4 rounded-lg hover:bg-[#66BB6A] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed antialiased"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
@@ -275,7 +275,7 @@ export default function SignInPage() {
                     <div className="w-full border-t border-white/10"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-[#0A0A0A]/50 text-white/60">Or continue with</span>
+                    <span className="px-4 bg-[#0A0A0A]/50 text-white/85 backdrop-blur-md">Or continue with</span>
                   </div>
                 </div>
 
@@ -298,7 +298,7 @@ export default function SignInPage() {
               </form>
 
               {/* Sign Up Link */}
-              <p className="mt-8 text-center text-sm text-white/70">
+              <p className="mt-8 text-center text-sm text-white/85">
                 Don't have an account?{' '}
                 <Link href="/auth/signup" className="text-[#66BB6A] hover:text-[#2E7D32] font-semibold transition-colors">
                   Sign up

@@ -58,7 +58,7 @@ export default function ForestExperienceBanner() {
           <motion.div
             animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/70"
+            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/85 backdrop-blur-md"
           >
             <Sparkles className="h-4 w-4 text-[#66BB6A]" />
             Immersive mode
@@ -70,7 +70,7 @@ export default function ForestExperienceBanner() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-montserrat text-[clamp(2.2rem,4vw,3rem)] font-bold text-white leading-tight"
+              className="font-montserrat text-[clamp(2.2rem,4vw,3rem)] font-bold text-white leading-tight antialiased"
             >
               Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
             </motion.h2>
@@ -79,7 +79,7 @@ export default function ForestExperienceBanner() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-4 font-inter text-base sm:text-lg text-white/80"
+              className="mt-4 font-inter text-base sm:text-lg text-white/80 antialiased"
             >
               Dive into interactive plant stories, AR-ready specimens, and regenerative gardening lessons broadcast straight from our greenhouse lab.
             </motion.p>
@@ -111,7 +111,7 @@ export default function ForestExperienceBanner() {
               key={stat.label}
               className="rounded-2xl border border-white/15 bg-white/5 px-4 py-5 text-left backdrop-blur"
             >
-              <p className="text-xs uppercase tracking-[0.4em] text-white/60">{stat.label}</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-white/85">{stat.label}</p>
               <p className="mt-3 text-[clamp(1.5rem,3vw,2.25rem)] font-semibold text-white">
                 {stat.value}
               </p>
@@ -124,7 +124,7 @@ export default function ForestExperienceBanner() {
         {[...Array(12)].map((_, i) => (
           <motion.span
             key={i}
-            className="absolute h-1 w-1 rounded-full bg-[#66BB6A]/50"
+            className="absolute h-1 w-1 rounded-full bg-[#66BB6A]/50 backdrop-blur-md"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

@@ -12,7 +12,7 @@ export default function TermsPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-[#66BB6A] antialiased mb-4">Terms & Conditions</h1>
-          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">Please review these terms carefully before using our website or purchasing our products.</p>
+          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto antialiased">Please review these terms carefully before using our website or purchasing our products.</p>
         </div>
       </section>
 

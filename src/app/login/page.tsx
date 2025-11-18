@@ -134,7 +134,7 @@ export default function CustomLoginPage() {
             <h1 className="text-5xl font-bold text-white mb-3 antialiased">
               Welcome Back
             </h1>
-            <p className="text-gray-400 text-lg antialiased">
+            <p className="text-gray-100 text-lg antialiased">
               Sign in to access your account and continue your gardening journey
             </p>
           </motion.div>
@@ -222,7 +222,7 @@ export default function CustomLoginPage() {
                   onChange={handleChange}
                   className="w-4 h-4 accent-green-600 cursor-pointer"
                 />
-                <span className="text-sm text-gray-400">Remember me</span>
+                <span className="text-sm text-gray-100">Remember me</span>
               </label>
               <Link
                 href="/forgot-password"
@@ -259,7 +259,7 @@ export default function CustomLoginPage() {
           </motion.div>
 
           {/* Signup Link */}
-          <motion.p variants={itemVariants} className="text-center text-gray-400 mt-8">
+          <motion.p variants={itemVariants} className="text-center text-gray-100 mt-8">
             Don't have an account?{' '}
             <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign up here

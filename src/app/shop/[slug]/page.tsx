@@ -43,7 +43,7 @@ export default function ProductPage() {
       <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2E7D32] mx-auto"></div>
-          <p className="mt-4 text-white/70">Loading product...</p>
+          <p className="mt-4 text-white/85">Loading product...</p>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ export default function ProductPage() {
             <div className="text-sm text-white/50">
               <a href="/shop" className="hover:text-[#2E7D32] transition-colors">Shop</a>
               <span className="mx-2">/</span>
-              <span className="text-white/70">{product.name}</span>
+              <span className="text-white/85">{product.name}</span>
             </div>
 
             {/* Product Name - Golden Ratio H2 (68px clamped) */}
@@ -172,7 +172,7 @@ export default function ProductPage() {
             {/* Short Description */}
             {product.short_description && (
               <div
-                className="text-base leading-relaxed text-white/70 prose prose-invert max-w-none antialiased"
+                className="text-base leading-relaxed text-white/85 prose prose-invert max-w-none antialiased"
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               />
             )}
@@ -187,7 +187,7 @@ export default function ProductPage() {
                   Description
                 </h3>
                 <div
-                  className="prose prose-invert max-w-none text-white/70"
+                  className="prose prose-invert max-w-none text-white/85"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
@@ -205,7 +205,7 @@ export default function ProductPage() {
                       <dt className="text-sm font-semibold text-white/50 min-w-[120px]">
                         {attr.name}:
                       </dt>
-                      <dd className="text-sm text-white/70">
+                      <dd className="text-sm text-white/85">
                         {attr.options.join(', ')}
                       </dd>
                     </div>

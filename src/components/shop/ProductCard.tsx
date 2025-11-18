@@ -7,6 +7,7 @@ import { ShoppingCart, Heart, Check, Leaf } from 'lucide-react';
 import { getDisplayPrice, getOriginalPrice, isOnSale, getDiscountPercentage } from '@/lib/utils/pricing';
 import { useCartStore } from '@/stores/cartStore';
 import { useWishlistStore } from '@/stores/wishlistStore';
+import { ProductQuickView } from '@/components/shop/ProductQuickView';
 
 interface ProductCardProps {
   product: Product;
@@ -26,7 +27,7 @@ function WishlistButton({ isWishlisted, onToggle }: { isWishlisted: boolean; onT
       aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
       animate={{ scale: popping ? [1, 1.3, 1] : 1 }}
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-      className="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-[#2E7D32] hover:border-[#2E7D32] transition-all duration-300 group"
+      className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full glass flex items-center justify-center hover:bg-[#2E7D32] hover:border-[#2E7D32] transition-all duration-300 group active:scale-95 touch-manipulation"
     >
       <Heart 
         className={`w-5 h-5 transition-all ${isWishlisted ? 'fill-[#2E7D32] text-[#2E7D32]' : 'text-white group-hover:text-white'}`} 
@@ -38,6 +39,7 @@ function WishlistButton({ isWishlisted, onToggle }: { isWishlisted: boolean; onT
 export default function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [showQuickView, setShowQuickView] = useState(false);
   const { addItem, openCart } = useCartStore();
   const isWishlisted = useWishlistStore((s) => s.isWishlisted(product.id.toString()));
   const toggleWishlist = useWishlistStore((s) => s.toggle);
@@ -108,7 +110,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Wishlist Button - Top Right */}
-          <div className="absolute top-4 right-4 z-10">
+          <div className="absolute top-3 right-3 z-10">
             <WishlistButton
               isWishlisted={isWishlisted}
               onToggle={(e) => {
@@ -138,28 +140,44 @@ export default function ProductCard({ product }: ProductCardProps) {
               </div>
             </motion.div>
           )}
+
+          {/* Quick View Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 z-10">
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowQuickView(true);
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-semibold hover:bg-emerald-50 transition shadow-lg translate-y-4 group-hover:translate-y-0 duration-300 min-h-[44px] touch-manipulation"
+            >
+              Quick View
+            </motion.button>
+          </div>
         </Link>
 
         {/* Product Content - Generous Padding with Golden Ratio */}
-        <div className="p-6 flex-1 flex flex-col">
+        <div className="p-5 sm:p-6 flex-1 flex flex-col">
           {/* Product Name */}
           <Link 
             href={`/shop/${product.slug}`}
-            className="font-montserrat font-semibold text-[clamp(0.875rem,2vw,1rem)] leading-tight text-white hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 mb-3"
+            className="font-montserrat font-semibold text-[clamp(0.875rem,2vw,1rem)] leading-tight text-white hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 mb-3 min-h-[44px] flex items-center touch-manipulation"
           >
             {product.name}
           </Link>
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="font-inter text-xs text-white/60 line-clamp-2 leading-relaxed mb-4 flex-1">
+            <p className="font-inter text-xs text-white/85 line-clamp-2 leading-relaxed mb-3 sm:mb-4 flex-1">
               {shortDesc}
             </p>
           )}
 
           {/* Price */}
-          <div className="mb-4">
-            <div className="flex items-baseline gap-3">
+          <div className="mb-3 sm:mb-4">
+            <div className="flex items-baseline gap-2 sm:gap-3">
               <span className="font-montserrat text-[clamp(1.125rem,2.5vw,1.25rem)] text-[#2E7D32] font-bold leading-none antialiased">
                 {getDisplayPrice(product)}
               </span>
@@ -171,13 +189,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
 
-          {/* Add to Cart Button - Full Width, Sharp Corners */}
+          {/* Add to Cart Button - Full Width, Sharp Corners, Touch Optimized */}
           <motion.button
             onClick={handleAddToCart}
             disabled={!product.in_stock}
             whileHover={{ scale: product.in_stock ? 1.02 : 1 }}
             whileTap={{ scale: 0.98 }}
-            className={`w-full py-4 forest-card flex items-center justify-center gap-3 font-montserrat font-bold text-base uppercase tracking-wider transition-all duration-300 ${
+            className={`w-full py-4 min-h-[44px] forest-card flex items-center justify-center gap-3 font-montserrat font-bold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 touch-manipulation active:scale-95 ${
               addedToCart
                 ? 'bg-[#66BB6A] text-white'
                 : product.in_stock
@@ -194,7 +212,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             ) : product.in_stock ? (
               <>
                 <ShoppingCart className="w-5 h-5" />
-                Add to Cart
+                <span className="hidden xs:inline">Add to Cart</span>
+                <span className="xs:hidden">Add</span>
               </>
             ) : (
               'Out of Stock'
@@ -202,6 +221,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           </motion.button>
         </div>
       </div>
+
+      {/* Quick View Modal */}
+      <ProductQuickView
+        isOpen={showQuickView}
+        onClose={() => setShowQuickView(false)}
+        product={product}
+      />
     </motion.div>
   );
 }

@@ -58,7 +58,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           )}
           <div className="flex-1 min-w-0">
             <h3 className="font-bold text-black line-clamp-2 mb-1 antialiased">{post.title}</h3>
-            <p className="text-xs text-gray-600">{formatDate(post.date)}</p>
+            <p className="text-xs text-gray-100">{formatDate(post.date)}</p>
             {post.readTime && <p className="text-xs text-[#2E7D32] font-bold antialiased">📖 {post.readTime} min read</p>}
           </div>
         </div>
@@ -104,7 +104,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           <p className="text-gray-700 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-xs text-gray-600 font-medium mb-4">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-gray-100 font-medium mb-4">
             {post.author && <span>By {post.author}</span>}
             <span>{formatDate(post.date)}</span>
             {post.readTime && <span>📖 {post.readTime} min read</span>}
@@ -177,7 +177,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
         <p className="text-gray-700 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
 
         {/* Meta */}
-        <div className="flex items-center justify-between text-xs text-gray-600 font-medium mb-3 border-t border-gray-200 pt-3">
+        <div className="flex items-center justify-between text-xs text-gray-100 font-medium mb-3 border-t border-gray-200 pt-3">
           <span>{formatDate(post.date)}</span>
           {post.readTime && <span>📖 {post.readTime} min</span>}
         </div>

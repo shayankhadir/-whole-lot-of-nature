@@ -118,7 +118,7 @@ const BlogGrid: React.FC<BlogGridProps> = ({
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-sm text-gray-600 font-medium mb-4"
+          className="text-sm text-gray-100 font-medium mb-4"
         >
           Found {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''}
         </motion.p>

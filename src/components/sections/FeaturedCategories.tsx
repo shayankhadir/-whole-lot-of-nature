@@ -67,7 +67,7 @@ export default function FeaturedCategories() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif antialiased">
             Explore Our Categories
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-100 max-w-2xl mx-auto">
             Discover our curated selection of premium gardening essentials, designed to help you create and maintain your perfect green space.
           </p>
         </motion.div>

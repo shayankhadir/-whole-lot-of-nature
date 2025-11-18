@@ -96,7 +96,7 @@ export default function Error({
 
         <motion.p
           variants={itemVariants}
-          className="text-base md:text-lg text-gray-400 mb-8 max-w-md mx-auto antialiased"
+          className="text-base md:text-lg text-gray-100 mb-8 max-w-md mx-auto antialiased"
         >
           We encountered an unexpected error. Don't worry, our team has been notified and we're working on it.
         </motion.p>

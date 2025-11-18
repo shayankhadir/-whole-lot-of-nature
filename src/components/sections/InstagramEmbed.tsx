@@ -15,7 +15,7 @@ export default function InstagramEmbed() {
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
             Follow Us on Instagram
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto antialiased">
             Join our community for daily plant inspiration and care tips
           </p>
         </motion.div>

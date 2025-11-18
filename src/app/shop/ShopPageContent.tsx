@@ -201,7 +201,7 @@ export default function ShopPageContent() {
           <div className="flex items-center justify-between">
             <div />
             <div className="flex items-center gap-3">
-              <label htmlFor="sort" className="text-sm text-gray-600">Sort By</label>
+              <label htmlFor="sort" className="text-sm text-gray-100">Sort By</label>
               <select
                 id="sort"
                 value={sortBy}
@@ -309,7 +309,7 @@ export default function ShopPageContent() {
                   className="text-center py-20 bg-primary-50 rounded-2xl border border-primary-200"
                 >
                   <p className="text-gray-900 text-xl mb-2 antialiased">No products found</p>
-                  <p className="text-gray-600">Try adjusting your filters</p>
+                  <p className="text-gray-100">Try adjusting your filters</p>
                   {selectedCategory && (
                     <Button onClick={() => setSelectedCategory(null)} className="mt-4">
                       Clear Filters

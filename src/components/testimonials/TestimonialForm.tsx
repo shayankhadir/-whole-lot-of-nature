@@ -93,7 +93,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
       {/* Header */}
       <div className="bg-gradient-to-r from-green-50 to-white border-b-2 border-black px-6 py-4">
         <h3 className="text-xl font-bold text-black antialiased">Share Your Experience</h3>
-        {productName && <p className="text-sm text-gray-600 mt-1">{productName}</p>}
+        {productName && <p className="text-sm text-gray-100 mt-1">{productName}</p>}
       </div>
 
       {/* Form */}
@@ -161,7 +161,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
               </motion.button>
             ))}
           </div>
-          <p className="text-sm text-gray-600 mt-2">{rating} out of 5 stars</p>
+          <p className="text-sm text-gray-100 mt-2">{rating} out of 5 stars</p>
         </div>
 
         {/* Content field */}
@@ -174,7 +174,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
             rows={5}
             className="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:border-[#2E7D32] bg-white text-black resize-none"
           />
-          <p className="text-xs text-gray-600 mt-1">{content.length} characters</p>
+          <p className="text-xs text-gray-100 mt-1">{content.length} characters</p>
         </div>
 
         {/* Submit button */}
@@ -188,7 +188,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           {isSubmitting ? 'Submitting...' : 'Submit Testimonial'}
         </motion.button>
 
-        <p className="text-xs text-gray-600 text-center">
+        <p className="text-xs text-gray-100 text-center">
           Your testimonial will be reviewed before appearing on our site.
         </p>
       </form>

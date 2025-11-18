@@ -131,7 +131,7 @@ export default function EnhancedCategoryShowcase() {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4 antialiased">
             Explore Our Collections
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-lg text-gray-100 max-w-2xl mx-auto antialiased">
             Discover plants tailored to your lifestyle, space, and expertise level.
             From beginner-friendly to expert selections.
           </p>
@@ -175,7 +175,7 @@ export default function EnhancedCategoryShowcase() {
                         {category.name}
                       </h3>
 
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      <p className="text-gray-100 text-sm mb-4 line-clamp-2">
                         {category.description}
                       </p>
                     </div>

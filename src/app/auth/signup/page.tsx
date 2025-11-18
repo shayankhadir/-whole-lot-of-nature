@@ -126,7 +126,7 @@ export default function SignUpPage() {
             >
               Create Account
             </motion.h1>
-            <p className="text-gray-600">Join us and start your plant journey</p>
+            <p className="text-gray-100">Join us and start your plant journey</p>
           </div>
 
           {error && (
@@ -336,7 +336,7 @@ export default function SignUpPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-gray-600">
+            <p className="text-gray-100">
               Already have an account?{' '}
               <Link href="/auth/signin" className="text-primary-600 hover:text-primary-500 font-medium">
                 Sign in here

@@ -78,7 +78,7 @@ export default function Home() {
           <p className="text-2xl text-[#66BB6A] mb-8 font-body antialiased">
             Premium Plants & Sustainable Gardening
           </p>
-          <p className="text-lg text-white/70 mb-12 font-body antialiased">
+          <p className="text-lg text-white/85 mb-12 font-body antialiased">
             Discover organic soil mixes, rare plants, and eco-friendly essentials
           </p>
           

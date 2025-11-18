@@ -48,7 +48,7 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
                 {signal.details && (
                   <ul className="space-y-1">
                     {signal.details.map((detail, didx) => (
-                      <li key={didx} className="text-sm text-gray-600">
+                      <li key={didx} className="text-sm text-gray-100">
                         • {detail}
                       </li>
                     ))}
@@ -81,7 +81,7 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({ signals, variant = 'grid', 
           >
             <div className="text-5xl mb-2 antialiased">{signal.icon}</div>
             <p className="font-bold text-black antialiased">{signal.title}</p>
-            <p className="text-sm text-gray-600">{signal.description}</p>
+            <p className="text-sm text-gray-100">{signal.description}</p>
           </motion.div>
         ))}
       </motion.div>

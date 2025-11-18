@@ -62,7 +62,7 @@ export default function CartPage() {
             >
               <ShoppingBagIcon className="mx-auto h-24 w-24 text-primary-600 mb-6" />
               <h1 className="text-3xl font-bold text-gray-900 mb-4 antialiased">Your Cart is Empty</h1>
-              <p className="text-lg text-gray-600 mb-8 antialiased">
+              <p className="text-lg text-gray-100 mb-8 antialiased">
                 Looks like you haven't added any plants to your cart yet. 
                 Start shopping to build your perfect plant collection!
               </p>
@@ -155,7 +155,7 @@ export default function CartPage() {
                             {formatPrice(item.price)}
                           </span>
                           {item.originalPrice && item.originalPrice > item.price && (
-                            <span className="text-sm text-gray-400 line-through">
+                            <span className="text-sm text-gray-100 line-through">
                               {formatPrice(item.originalPrice)}
                             </span>
                           )}
@@ -163,7 +163,7 @@ export default function CartPage() {
 
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-3">
-                            <span className="text-sm text-gray-600">Quantity:</span>
+                            <span className="text-sm text-gray-100">Quantity:</span>
                             <div className="flex items-center border border-gray-300 rounded-lg">
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -245,7 +245,7 @@ export default function CartPage() {
 
               <div className="space-y-3 border-t border-gray-200 pt-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-gray-100">Subtotal</span>
                   <span className="font-medium">{formatPrice(subtotal)}</span>
                 </div>
                 
@@ -257,7 +257,7 @@ export default function CartPage() {
                 )}
                 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
+                  <span className="text-gray-100">Shipping</span>
                   <span className="font-medium">
                     {shipping > 0 ? formatPrice(shipping) : (
                       <span className="text-[#2E7D32]">Free</span>
@@ -266,7 +266,7 @@ export default function CartPage() {
                 </div>
                 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Tax (GST 18%)</span>
+                  <span className="text-gray-100">Tax (GST 18%)</span>
                   <span className="font-medium">{formatPrice(tax)}</span>
                 </div>
                 

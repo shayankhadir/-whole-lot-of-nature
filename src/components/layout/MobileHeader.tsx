@@ -24,7 +24,7 @@ export default function MobileHeader() {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors backdrop-blur-md"
             aria-label="Open navigation menu"
           >
             <Menu className="w-6 h-6" />
@@ -44,7 +44,7 @@ export default function MobileHeader() {
           <div className="flex items-center gap-2">
             <Link
               href="/wishlist"
-              className="relative p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              className="relative p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors backdrop-blur-md"
               aria-label="View wishlist"
             >
               <Heart className="w-5 h-5" />
@@ -97,14 +97,14 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
 
   return (
     <Dialog open={open} onClose={onClose} className="lg:hidden">
-      <div className="fixed inset-0 bg-black/40 z-40" aria-hidden="true" />
+      <div className="fixed inset-0 bg-black/40 z-40 backdrop-blur-md" aria-hidden="true" />
       <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm bg-[#0F1E11] text-white shadow-2xl">
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
-          <p className="text-base font-semibold tracking-wide">Menu</p>
+          <p className="text-base font-semibold tracking-wide antialiased">Menu</p>
           <button
             type="button"
             onClick={() => onClose(false)}
-            className="p-2 rounded-full hover:bg-white/10"
+            className="p-2 rounded-full hover:bg-white/10 backdrop-blur-md"
             aria-label="Close menu"
           >
             <X className="w-6 h-6" />
@@ -113,8 +113,8 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
 
         <div className="flex flex-col h-full overflow-hidden">
           <div className="px-4 py-4 space-y-6 overflow-y-auto">
-            <form onSubmit={submitSearch} className="flex items-center gap-3 rounded-full border border-white/15 px-4 py-2.5 bg-white/5">
-              <Search className="w-5 h-5 text-white/70" />
+            <form onSubmit={submitSearch} className="flex items-center gap-3 rounded-full border border-white/15 px-4 py-2.5 bg-white/5 backdrop-blur-md">
+              <Search className="w-5 h-5 text-white/85" />
               <input
                 type="search"
                 value={search}
@@ -133,16 +133,16 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                   className="flex items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-sm font-semibold tracking-wide uppercase"
                 >
                   <span>{item.name}</span>
-                  <ChevronRight className="w-4 h-4 text-white/60" />
+                  <ChevronRight className="w-4 h-4 text-white/85" />
                 </Link>
               ))}
             </nav>
 
             <div className="space-y-4">
-              <p className="text-xs font-semibold tracking-wider text-white/60 uppercase">Shop categories</p>
+              <p className="text-xs font-semibold tracking-wider text-white/85 uppercase">Shop categories</p>
               <div className="space-y-3">
                 {shopCollections.map((collection) => (
-                  <div key={collection.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                  <div key={collection.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 backdrop-blur-md">
                     <Link
                       href={collection.href}
                       onClick={() => onClose(false)}
@@ -160,7 +160,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                           key={item.name}
                           href={item.href}
                           onClick={() => onClose(false)}
-                          className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70 hover:border-[#66BB6A] hover:text-white"
+                          className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/85 hover:border-[#66BB6A] hover:text-white"
                         >
                           {item.name}
                         </Link>
@@ -172,11 +172,11 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
             </div>
           </div>
 
-          <div className="mt-auto border-t border-white/10 bg-white/5 px-4 py-4">
+          <div className="mt-auto border-t border-white/10 bg-white/5 px-4 py-4 backdrop-blur-md">
             <div className="grid grid-cols-2 gap-3 text-center">
               <Link href="/wishlist" onClick={() => onClose(false)} className="rounded-xl border border-white/15 px-3 py-2">
-                <p className="text-xs uppercase tracking-wider text-white/60">Wishlist</p>
-                <p className="text-lg font-semibold">{wishlistCount}</p>
+                <p className="text-xs uppercase tracking-wider text-white/85">Wishlist</p>
+                <p className="text-lg font-semibold antialiased">{wishlistCount}</p>
               </Link>
               <button
                 type="button"
@@ -187,8 +187,8 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                 }}
                 className="rounded-xl border border-white/15 px-3 py-2"
               >
-                <p className="text-xs uppercase tracking-wider text-white/60">Cart</p>
-                <p className="text-lg font-semibold">{cartCount}</p>
+                <p className="text-xs uppercase tracking-wider text-white/85">Cart</p>
+                <p className="text-lg font-semibold antialiased">{cartCount}</p>
               </button>
             </div>
             <Link

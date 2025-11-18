@@ -79,7 +79,7 @@ export default function HeroSection() {
                   Home
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl antialiased">
+              <p className="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-xl antialiased">
                 Discover our curated collection of premium plants, organic soil, and eco-friendly gardening essentials.
               </p>
             </motion.div>
@@ -140,15 +140,15 @@ export default function HeroSection() {
             >
               <div>
                 <div className="text-3xl font-bold text-primary-700 antialiased">500+</div>
-                <div className="text-sm text-gray-600">Plant Varieties</div>
+                <div className="text-sm text-gray-100">Plant Varieties</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-700 antialiased">10k+</div>
-                <div className="text-sm text-gray-600">Happy Customers</div>
+                <div className="text-sm text-gray-100">Happy Customers</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-700 antialiased">100%</div>
-                <div className="text-sm text-gray-600">Satisfaction</div>
+                <div className="text-sm text-gray-100">Satisfaction</div>
               </div>
             </motion.div>
           </div>
@@ -174,7 +174,7 @@ export default function HeroSection() {
                   </div>
                   <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-primary-200/30">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 antialiased">Premium Plants</h3>
-                    <p className="text-gray-600">Hand-picked for your home</p>
+                    <p className="text-gray-100">Hand-picked for your home</p>
                   </div>
                 </div>
               </motion.div>
@@ -188,7 +188,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <div className="text-4xl font-bold text-primary-700 mb-1 antialiased">20%</div>
-                    <div className="text-sm text-gray-600">First Order</div>
+                    <div className="text-sm text-gray-100">First Order</div>
                   </div>
                 </div>
               </motion.div>
@@ -221,7 +221,7 @@ export default function HeroSection() {
             >
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-700 antialiased">🌿</div>
-                <div className="text-xs font-semibold text-gray-600 mt-1">Eco-Friendly</div>
+                <div className="text-xs font-semibold text-gray-100 mt-1">Eco-Friendly</div>
               </div>
             </motion.div>
           </motion.div>

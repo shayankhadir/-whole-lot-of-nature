@@ -86,7 +86,7 @@ export default function BlogPreview() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-[#2E7D32]/20 border border-[#2E7D32]/30 rounded-full px-4 py-2 mb-4">
+          <div className="inline-flex items-center gap-2 bg-[#2E7D32]/20 border border-[#2E7D32]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
             <Leaf className="w-4 h-4 text-[#66BB6A]" />
             <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[#66BB6A] font-semibold uppercase tracking-wider antialiased">
               Learn & Grow
@@ -95,7 +95,7 @@ export default function BlogPreview() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
             Latest from Our Blog
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/70 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/85 max-w-2xl mx-auto antialiased">
             Expert tips, plant care guides, and sustainable gardening insights
           </p>
         </motion.div>
@@ -150,7 +150,7 @@ export default function BlogPreview() {
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/60 mb-4 line-clamp-3 flex-1 antialiased">
+                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-3 flex-1 antialiased">
                         {post.excerpt}
                       </p>
 

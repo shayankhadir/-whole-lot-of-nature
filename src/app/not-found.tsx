@@ -109,7 +109,7 @@ export default function NotFound() {
         {/* Additional Info */}
         <motion.p
           variants={itemVariants}
-          className="text-lg text-gray-400 mb-10 italic antialiased"
+          className="text-lg text-gray-100 mb-10 italic antialiased"
         >
           It seems our digital garden has a gap. Let's plant you back to the right place! 🌱
         </motion.p>
@@ -147,7 +147,7 @@ export default function NotFound() {
           variants={itemVariants}
           className="mt-12 pt-8 border-t border-gray-700"
         >
-          <p className="text-gray-400 text-sm mb-4">
+          <p className="text-gray-100 text-sm mb-4">
             Need help? Visit our support resources:
           </p>
           <div className="flex justify-center gap-6">

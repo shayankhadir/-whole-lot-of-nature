@@ -47,10 +47,10 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-12 space-y-12">
-        <div className="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5/50 px-6 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div className="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5/50 px-6 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left backdrop-blur-md">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-white/60">Need help?</p>
-            <p className="text-lg font-semibold text-white">Our greenhouse support line is open daily 9am–9pm IST.</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-white/85">Need help?</p>
+            <p className="text-lg font-semibold text-white antialiased">Our greenhouse support line is open daily 9am–9pm IST.</p>
           </div>
           <Link
             href="/about#contact"
@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-4">
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-white/70">Whole Lot of Nature</p>
+              <p className="text-sm uppercase tracking-[0.35em] text-white/85">Whole Lot of Nature</p>
               <p className="mt-3 text-[clamp(1rem,2vw,1.1rem)] text-white/80">
                 Regenerative plants, handcrafted soil, and mindful rituals from our forest studio in Hyderabad.
               </p>
@@ -75,7 +75,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/70 transition-all hover:border-[#66BB6A] hover:text-white"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/85 transition-all hover:border-[#66BB6A] hover:text-white backdrop-blur-md"
                 >
                   <span className="sr-only">{link.label}</span>
                   {link.icon}
@@ -84,7 +84,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 text-sm text-white/70 sm:grid-cols-3 lg:col-span-5">
+          <div className="grid grid-cols-2 gap-8 text-sm text-white/85 sm:grid-cols-3 lg:col-span-5">
             <div>
               <p className="font-semibold text-white">Shop</p>
               <ul className="mt-4 space-y-3">
@@ -140,14 +140,14 @@ export default function Footer() {
 
           <div className="lg:col-span-3">
             <p className="font-semibold text-white">Garden dispatch</p>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-white/85">
               Weekly soil notes, limited drops, and invites to live demos.
             </p>
             <form className="mt-6 space-y-3">
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="w-full rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/50 focus:border-[#66BB6A] focus:outline-none"
+                className="w-full rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/50 focus:border-[#66BB6A] focus:outline-none backdrop-blur-md"
               />
               <button
                 type="submit"
@@ -159,7 +159,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/85 md:flex-row md:items-center md:justify-between">
           <p>&copy; {new Date().getFullYear()} Whole Lot of Nature. Crafted in Hyderabad, India.</p>
           <div className="flex flex-wrap gap-4">
             <Link href="/sitemap" className="hover:text-white">Sitemap</Link>

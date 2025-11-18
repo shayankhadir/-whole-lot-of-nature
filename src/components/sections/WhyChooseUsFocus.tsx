@@ -54,7 +54,7 @@ export default function WhyChooseUsFocus() {
           <h2 className="mt-6 text-[clamp(1.5rem,4vw,2.5rem)] font-montserrat font-bold tracking-tight text-white antialiased">
             Why Choose Whole Lot of Nature
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.875rem,2vw,1.125rem)] text-white/70 antialiased">
+          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.875rem,2vw,1.125rem)] text-white/85 antialiased">
             We blend science, sustainability, and design to elevate your green journey
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ export default function WhyChooseUsFocus() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-white/70 text-[clamp(0.875rem,2vw,1.125rem)] mb-6 antialiased">
+          <p className="text-white/85 text-[clamp(0.875rem,2vw,1.125rem)] mb-6 antialiased">
             Join thousands of plant lovers who trust us for their green sanctuary
           </p>
           <a href="/shop">

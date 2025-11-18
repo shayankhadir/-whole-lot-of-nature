@@ -48,7 +48,7 @@ export default function CombosPage() {
             <h1 className="text-5xl font-bold text-gray-900 mb-6 antialiased">
               Plant Combo <span className="text-primary-600">Deals</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto antialiased">
+            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto antialiased">
               Discover our curated plant bundles designed to save you money while creating beautiful, 
               thriving plant collections for your home and garden.
             </p>
@@ -62,7 +62,7 @@ export default function CombosPage() {
                 className="text-center"
               >
                 <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">25-40%</div>
-                <div className="text-gray-600">Average Savings</div>
+                <div className="text-gray-100">Average Savings</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ export default function CombosPage() {
                 className="text-center"
               >
                 <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">50+</div>
-                <div className="text-gray-600">Combo Options</div>
+                <div className="text-gray-100">Combo Options</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function CombosPage() {
                 className="text-center"
               >
                 <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">95%</div>
-                <div className="text-gray-600">Customer Satisfaction</div>
+                <div className="text-gray-100">Customer Satisfaction</div>
               </motion.div>
             </div>
           </motion.div>
@@ -101,7 +101,7 @@ export default function CombosPage() {
                 <span className="text-2xl antialiased">💰</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Save More Money</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Get better value with our bundle deals. Save 25-40% compared to buying items individually.
               </p>
             </motion.div>
@@ -117,7 +117,7 @@ export default function CombosPage() {
                 <span className="text-2xl antialiased">🎯</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Expertly Curated</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Each combo is carefully selected by our plant experts for compatibility and care requirements.
               </p>
             </motion.div>
@@ -133,7 +133,7 @@ export default function CombosPage() {
                 <span className="text-2xl antialiased">📦</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Complete Solutions</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Everything you need included - plants, pots, soil, fertilizers, and care guides.
               </p>
             </motion.div>

@@ -115,7 +115,7 @@ export default function ComboProductsGrid({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg text-gray-600 max-w-2xl mx-auto antialiased"
+          className="text-lg text-gray-100 max-w-2xl mx-auto antialiased"
         >
           {subtitle}
         </motion.p>
@@ -181,7 +181,7 @@ export default function ComboProductsGrid({
         </div>
 
         {/* Results Count */}
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-gray-100">
           Showing {sortedCombos.length} combo{sortedCombos.length !== 1 ? 's' : ''} 
           {selectedCategory !== 'All Combos' && ` in ${selectedCategory}`}
         </div>
@@ -210,7 +210,7 @@ export default function ComboProductsGrid({
         <div className="text-center py-16">
           <div className="text-6xl mb-4 antialiased">🌱</div>
           <h3 className="text-xl font-semibold text-gray-900 mb-2 antialiased">No combos found</h3>
-          <p className="text-gray-600">Try adjusting your filters or check back later for new combo deals.</p>
+          <p className="text-gray-100">Try adjusting your filters or check back later for new combo deals.</p>
         </div>
       )}
 

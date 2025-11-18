@@ -104,7 +104,7 @@ export default function InventoryPage() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-4xl font-bold text-[#2E7D32]">📦 Inventory Management</h1>
+            <h1 className="text-4xl font-bold text-[#2E7D32] antialiased">📦 Inventory Management</h1>
             <Link
               href="/admin/trends"
               className="px-4 py-2 bg-[#2E7D32] text-white rounded-lg hover:bg-[#1B5E20] transition"
@@ -117,20 +117,20 @@ export default function InventoryPage() {
           {stats && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-[#2C2C2C] border border-[#2E7D32]/30 rounded-lg p-6">
-                <p className="text-white/70 text-sm mb-2">Total Products</p>
-                <p className="text-3xl font-bold text-[#66BB6A]">{stats.total_products}</p>
+                <p className="text-white/85 text-sm mb-2">Total Products</p>
+                <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.total_products}</p>
               </div>
-              <div className="bg-[#2C2C2C] border border-green-500/30 rounded-lg p-6">
-                <p className="text-white/70 text-sm mb-2">In Stock</p>
-                <p className="text-3xl font-bold text-green-400">{stats.in_stock}</p>
+              <div className="bg-[#2C2C2C] border border-[#2E7D32]/30 rounded-lg p-6">
+                <p className="text-white/85 text-sm mb-2">In Stock</p>
+                <p className="text-3xl font-bold text-[#2E7D32] antialiased">{stats.in_stock}</p>
               </div>
               <div className="bg-[#2C2C2C] border border-red-500/30 rounded-lg p-6">
-                <p className="text-white/70 text-sm mb-2">Out of Stock</p>
-                <p className="text-3xl font-bold text-red-400">{stats.out_of_stock}</p>
+                <p className="text-white/85 text-sm mb-2">Out of Stock</p>
+                <p className="text-3xl font-bold text-red-400 antialiased">{stats.out_of_stock}</p>
               </div>
               <div className="bg-[#2C2C2C] border border-yellow-500/30 rounded-lg p-6">
-                <p className="text-white/70 text-sm mb-2">Low Stock (&lt;5)</p>
-                <p className="text-3xl font-bold text-yellow-400">{stats.low_stock}</p>
+                <p className="text-white/85 text-sm mb-2">Low Stock (&lt;5)</p>
+                <p className="text-3xl font-bold text-yellow-400 antialiased">{stats.low_stock}</p>
               </div>
             </div>
           )}
@@ -139,7 +139,7 @@ export default function InventoryPage() {
           <div className="bg-[#2C2C2C] border border-[#2E7D32]/30 rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/70 text-sm">Last Synced</p>
+                <p className="text-white/85 text-sm">Last Synced</p>
                 <p className="text-white font-medium">
                   {stats?.last_synced ? new Date(stats.last_synced).toLocaleString() : 'Never'}
                 </p>
@@ -160,7 +160,7 @@ export default function InventoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Search */}
             <div>
-              <label className="block text-white/70 text-sm mb-2">Search Products</label>
+              <label className="block text-white/85 text-sm mb-2">Search Products</label>
               <input
                 type="text"
                 placeholder="Product name or SKU..."
@@ -172,7 +172,7 @@ export default function InventoryPage() {
 
             {/* Filter */}
             <div>
-              <label className="block text-white/70 text-sm mb-2">Filter by Status</label>
+              <label className="block text-white/85 text-sm mb-2">Filter by Status</label>
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value as any)}
@@ -204,12 +204,12 @@ export default function InventoryPage() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-[#2E7D32]/30 bg-[#1a1a1a]">
-                      <th className="px-6 py-4 text-left text-white/70 text-sm font-semibold">Product</th>
-                      <th className="px-6 py-4 text-left text-white/70 text-sm font-semibold">SKU</th>
-                      <th className="px-6 py-4 text-center text-white/70 text-sm font-semibold">Stock</th>
-                      <th className="px-6 py-4 text-left text-white/70 text-sm font-semibold">Status</th>
-                      <th className="px-6 py-4 text-left text-white/70 text-sm font-semibold">Price</th>
-                      <th className="px-6 py-4 text-left text-white/70 text-sm font-semibold">Category</th>
+                      <th className="px-6 py-4 text-left text-white/85 text-sm font-semibold">Product</th>
+                      <th className="px-6 py-4 text-left text-white/85 text-sm font-semibold">SKU</th>
+                      <th className="px-6 py-4 text-center text-white/85 text-sm font-semibold">Stock</th>
+                      <th className="px-6 py-4 text-left text-white/85 text-sm font-semibold">Status</th>
+                      <th className="px-6 py-4 text-left text-white/85 text-sm font-semibold">Price</th>
+                      <th className="px-6 py-4 text-left text-white/85 text-sm font-semibold">Category</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -219,7 +219,7 @@ export default function InventoryPage() {
                         className="border-b border-[#2E7D32]/10 hover:bg-[#1a1a1a] transition"
                       >
                         <td className="px-6 py-4 text-white font-medium">{item.name}</td>
-                        <td className="px-6 py-4 text-white/70 text-sm font-mono">{item.sku || 'N/A'}</td>
+                        <td className="px-6 py-4 text-white/85 text-sm font-mono">{item.sku || 'N/A'}</td>
                         <td className="px-6 py-4 text-center">
                           <span className="font-semibold text-white">{item.stock_quantity}</span>
                         </td>
@@ -233,13 +233,13 @@ export default function InventoryPage() {
                               Low Stock
                             </span>
                           ) : (
-                            <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold">
+                            <span className="px-3 py-1 bg-[#2E7D32]/20 text-[#2E7D32] rounded-full text-xs font-semibold backdrop-blur-md">
                               In Stock
                             </span>
                           )}
                         </td>
-                        <td className="px-6 py-4 text-white/70">₹{item.price}</td>
-                        <td className="px-6 py-4 text-white/70 text-sm">
+                        <td className="px-6 py-4 text-white/85">₹{item.price}</td>
+                        <td className="px-6 py-4 text-white/85 text-sm">
                           {item.categories.map((cat) => cat.name).join(', ') || 'Uncategorized'}
                         </td>
                       </tr>
@@ -253,7 +253,7 @@ export default function InventoryPage() {
 
         {/* Summary */}
         <div className="mt-8 p-6 bg-[#2C2C2C] border border-[#2E7D32]/30 rounded-lg">
-          <p className="text-white/70 text-sm">
+          <p className="text-white/85 text-sm">
             Showing {filteredInventory.length} of {inventory.length} products
           </p>
         </div>

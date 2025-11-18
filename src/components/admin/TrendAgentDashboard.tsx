@@ -106,11 +106,11 @@ export default function TrendAgentDashboard() {
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+            <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3 antialiased">
               <TrendingUp className="text-[#66BB6A]" size={32} />
               Trend Agent Dashboard
             </h1>
-            <p className="text-white/60">Monitor and manage automated content generation</p>
+            <p className="text-white/85">Monitor and manage automated content generation</p>
           </div>
           <a
             href="/admin/inventory"
@@ -131,34 +131,34 @@ export default function TrendAgentDashboard() {
         {/* Stats Grid */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Total Runs</p>
-              <p className="text-3xl font-bold text-[#66BB6A]">{stats.totalRuns}</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Total Runs</p>
+              <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.totalRuns}</p>
             </div>
 
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Success Rate</p>
-              <p className="text-3xl font-bold text-[#66BB6A]">{stats.successRate}%</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Success Rate</p>
+              <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.successRate}%</p>
             </div>
 
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Total Posts</p>
-              <p className="text-3xl font-bold text-[#66BB6A]">{stats.totalPosts}</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Total Posts</p>
+              <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.totalPosts}</p>
             </div>
 
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Published</p>
-              <p className="text-3xl font-bold text-[#A8D5BA]">{stats.totalPublished}</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Published</p>
+              <p className="text-3xl font-bold text-[#A8D5BA] antialiased">{stats.totalPublished}</p>
             </div>
 
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Trends Collected</p>
-              <p className="text-3xl font-bold text-[#66BB6A]">{stats.totalTrends}</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Trends Collected</p>
+              <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.totalTrends}</p>
             </div>
 
-            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-              <p className="text-white/60 text-sm">Avg Posts/Run</p>
-              <p className="text-3xl font-bold text-[#66BB6A]">{stats.averagePostsPerRun}</p>
+            <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+              <p className="text-white/85 text-sm">Avg Posts/Run</p>
+              <p className="text-3xl font-bold text-[#66BB6A] antialiased">{stats.averagePostsPerRun}</p>
             </div>
           </div>
         )}
@@ -186,8 +186,8 @@ export default function TrendAgentDashboard() {
 
         {/* Latest Run */}
         {latestRun && (
-          <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 mb-8">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 mb-8 backdrop-blur-md">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2 antialiased">
               {latestRun.status === 'completed' ? (
                 <CheckCircle className="text-[#66BB6A]" size={24} />
               ) : latestRun.status === 'failed' ? (
@@ -200,20 +200,20 @@ export default function TrendAgentDashboard() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div>
-                <p className="text-white/60 text-sm">Status</p>
-                <p className="text-lg font-semibold text-[#66BB6A] capitalize">{latestRun.status}</p>
+                <p className="text-white/85 text-sm">Status</p>
+                <p className="text-lg font-semibold text-[#66BB6A] capitalize antialiased">{latestRun.status}</p>
               </div>
               <div>
-                <p className="text-white/60 text-sm">Trends</p>
-                <p className="text-lg font-semibold text-[#66BB6A]">{latestRun.trendsCollected}</p>
+                <p className="text-white/85 text-sm">Trends</p>
+                <p className="text-lg font-semibold text-[#66BB6A] antialiased">{latestRun.trendsCollected}</p>
               </div>
               <div>
-                <p className="text-white/60 text-sm">Generated</p>
-                <p className="text-lg font-semibold text-[#66BB6A]">{latestRun.postsGenerated}</p>
+                <p className="text-white/85 text-sm">Generated</p>
+                <p className="text-lg font-semibold text-[#66BB6A] antialiased">{latestRun.postsGenerated}</p>
               </div>
               <div>
-                <p className="text-white/60 text-sm">Published</p>
-                <p className="text-lg font-semibold text-[#A8D5BA]">{latestRun.postsPublished}</p>
+                <p className="text-white/85 text-sm">Published</p>
+                <p className="text-lg font-semibold text-[#A8D5BA] antialiased">{latestRun.postsPublished}</p>
               </div>
             </div>
 
@@ -232,15 +232,15 @@ export default function TrendAgentDashboard() {
 
         {/* Recent Runs */}
         {runs.length > 0 && (
-          <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2 antialiased">
               <FileText className="text-[#66BB6A]" size={24} />
               Recent Runs
             </h2>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="border-b border-[#2E7D32]/30 text-white/60 text-xs uppercase">
+                <thead className="border-b border-[#2E7D32]/30 text-white/85 text-xs uppercase">
                   <tr>
                     <th className="pb-3 px-2">Run ID</th>
                     <th className="pb-3 px-2">Status</th>
@@ -252,13 +252,13 @@ export default function TrendAgentDashboard() {
                 </thead>
                 <tbody>
                   {runs.map((run) => (
-                    <tr key={run.id} className="border-b border-[#2E7D32]/20 hover:bg-[#2E7D32]/10 transition-colors">
+                    <tr key={run.id} className="border-b border-[#2E7D32]/20 hover:bg-[#2E7D32]/10 transition-colors backdrop-blur-md">
                       <td className="py-3 px-2 text-white/80 font-mono text-xs">{run.id.substring(0, 12)}</td>
                       <td className="py-3 px-2">
                         <span
                           className={`px-2 py-1 rounded text-xs font-semibold ${
                             run.status === 'completed'
-                              ? 'bg-green-500/20 text-green-300'
+                              ? 'bg-[#2E7D32]/20 text-[#2E7D32]'
                               : run.status === 'failed'
                               ? 'bg-red-500/20 text-red-300'
                               : 'bg-yellow-500/20 text-yellow-300'
@@ -270,7 +270,7 @@ export default function TrendAgentDashboard() {
                       <td className="py-3 px-2 text-white/80">{run.trendsCollected}</td>
                       <td className="py-3 px-2 text-white/80">{run.postsGenerated}</td>
                       <td className="py-3 px-2 text-white/80">{run.postsPublished}</td>
-                      <td className="py-3 px-2 text-white/60 text-xs">
+                      <td className="py-3 px-2 text-white/85 text-xs">
                         {new Date(run.timestamp).toLocaleTimeString()}
                       </td>
                     </tr>

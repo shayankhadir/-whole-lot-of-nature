@@ -24,7 +24,7 @@ export default function BlogTeaser() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-medium antialiased">{p.title}</h3>
-                  <p className="mt-2 text-gray-600 text-sm">{p.excerpt}</p>
+                  <p className="mt-2 text-gray-100 text-sm">{p.excerpt}</p>
                 </div>
               </Link>
             </motion.div>

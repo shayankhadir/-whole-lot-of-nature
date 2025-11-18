@@ -103,7 +103,7 @@ export const ServiceCard = ({
       </h3>
 
       {/* Description */}
-      <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+      <p className="text-gray-100 text-sm mb-6 leading-relaxed">
         {description}
       </p>
 

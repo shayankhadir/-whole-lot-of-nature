@@ -92,7 +92,7 @@ export default function CartSidebar() {
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
-                            className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                            className="relative -m-2 p-2 text-gray-100 hover:text-gray-500"
                             onClick={closeCart}
                           >
                             <span className="absolute -inset-0.5" />
@@ -111,7 +111,7 @@ export default function CartSidebar() {
                               animate={{ opacity: 1, y: 0 }}
                               className="text-center py-12"
                             >
-                              <ShoppingBag className="mx-auto h-12 w-12 text-gray-400" />
+                              <ShoppingBag className="mx-auto h-12 w-12 text-gray-100" />
                               <h3 className="mt-2 text-sm font-medium text-gray-900">Your cart is empty</h3>
                               <p className="mt-1 text-sm text-gray-500">Start adding some plants to get started!</p>
                               <div className="mt-6">
@@ -158,7 +158,7 @@ export default function CartSidebar() {
                                           {item.type} {item.category && `• ${item.category}`}
                                         </p>
                                         {item.originalPrice && item.originalPrice > item.price && (
-                                          <p className="text-sm text-gray-400 line-through">
+                                          <p className="text-sm text-gray-100 line-through">
                                             {formatPrice(item.originalPrice)}
                                           </p>
                                         )}
@@ -229,14 +229,14 @@ export default function CartSidebar() {
                             </button>
                           </div>
                           {couponStatus && (
-                            <p className="mt-1 text-sm text-gray-600">{couponStatus}</p>
+                            <p className="mt-1 text-sm text-gray-100">{couponStatus}</p>
                           )}
                         </div>
 
                         {/* Order Summary */}
                         <div className="space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Subtotal</span>
+                            <span className="text-gray-100">Subtotal</span>
                             <span className="font-medium">{formatPrice(subtotal)}</span>
                           </div>
                           {discount > 0 && (
@@ -246,13 +246,13 @@ export default function CartSidebar() {
                             </div>
                           )}
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Shipping</span>
+                            <span className="text-gray-100">Shipping</span>
                             <span className="font-medium">
                               {shipping > 0 ? formatPrice(shipping) : 'Free'}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Tax (GST 18%)</span>
+                            <span className="text-gray-100">Tax (GST 18%)</span>
                             <span className="font-medium">{formatPrice(tax)}</span>
                           </div>
                           <div className="border-t pt-2 flex justify-between text-base font-medium antialiased">

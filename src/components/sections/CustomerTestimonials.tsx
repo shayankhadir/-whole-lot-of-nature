@@ -48,7 +48,7 @@ export default function CustomerTestimonials() {
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 antialiased">
             What Our Customers Say
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-base text-gray-100 max-w-2xl mx-auto antialiased">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
         </motion.div>
@@ -106,7 +106,7 @@ export default function CustomerTestimonials() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-100 mb-4">
             Join thousands of happy customers
           </p>
           <a

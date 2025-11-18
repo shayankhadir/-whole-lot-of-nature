@@ -184,7 +184,7 @@ export const AuthForm = ({
             <h1 className="text-4xl font-bold text-white mb-2 antialiased">
               {mode === 'login' ? 'Welcome Back' : 'Get Started'}
             </h1>
-            <p className="text-gray-400">
+            <p className="text-gray-100">
               {mode === 'login'
                 ? 'Sign in to your account to continue'
                 : 'Create an account to start your journey'}
@@ -297,7 +297,7 @@ export const AuthForm = ({
                 id="checkbox"
                 className="w-4 h-4 accent-green-600 cursor-pointer"
               />
-              <label htmlFor="checkbox" className="ml-3 text-sm text-gray-400 cursor-pointer">
+              <label htmlFor="checkbox" className="ml-3 text-sm text-gray-100 cursor-pointer">
                 {mode === 'login' ? (
                   <>
                     Remember me
@@ -336,7 +336,7 @@ export const AuthForm = ({
           {showSocial && (
             <motion.div variants={itemVariants} className="flex items-center gap-4 my-8">
               <div className="flex-1 h-px bg-gray-600" />
-              <span className="text-gray-400 text-sm">OR</span>
+              <span className="text-gray-100 text-sm">OR</span>
               <div className="flex-1 h-px bg-gray-600" />
             </motion.div>
           )}
@@ -351,7 +351,7 @@ export const AuthForm = ({
           )}
 
           {/* Link to other form */}
-          <motion.p variants={itemVariants} className="text-center text-gray-400 mt-6">
+          <motion.p variants={itemVariants} className="text-center text-gray-100 mt-6">
             {mode === 'login' ? (
               <>
                 Don't have an account?{' '}

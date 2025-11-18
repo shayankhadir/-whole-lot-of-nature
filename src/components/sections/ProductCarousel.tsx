@@ -48,7 +48,7 @@ export default function ProductCarousel() {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium">{p.name}</h3>
-                  <p className="text-gray-600 mt-1">${p.price.toFixed(2)}</p>
+                  <p className="text-gray-100 mt-1">${p.price.toFixed(2)}</p>
                 </div>
               </Link>
             </motion.div>

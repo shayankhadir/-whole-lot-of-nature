@@ -91,14 +91,14 @@ export default function MobileFloatingNav() {
                   className={`relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
                     active
                       ? 'bg-[#2E7D32] text-white scale-110'
-                      : 'text-white/70 group-hover:bg-[#2E7D32]/20 group-hover:text-white'
+                      : 'text-white/85 group-hover:bg-[#2E7D32]/20 group-hover:text-white'
                   }`}
                 >
                   {item.icon}
 
                   {/* Badge */}
                   {badgeCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg antialiased">
                       {badgeCount > 9 ? '9+' : badgeCount}
                     </span>
                   )}
@@ -107,7 +107,7 @@ export default function MobileFloatingNav() {
                 {/* Label */}
                 <span
                   className={`mt-1 text-xs font-medium transition-colors ${
-                    active ? 'text-[#66BB6A]' : 'text-white/60'
+                    active ? 'text-[#66BB6A]' : 'text-white/85'
                   }`}
                 >
                   {item.title}

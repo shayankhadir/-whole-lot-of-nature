@@ -74,7 +74,7 @@ export const CategoryShowcase = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-gray-400 antialiased"
+              className="text-xl text-gray-100 antialiased"
             >
               {description}
             </motion.p>

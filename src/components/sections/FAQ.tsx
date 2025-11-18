@@ -60,7 +60,7 @@ export default function FAQ() {
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 antialiased">
             Frequently Asked Questions
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-base text-gray-100 max-w-2xl mx-auto antialiased">
             Find answers to common questions about our plants, shipping, care instructions, and more.
           </p>
         </div>

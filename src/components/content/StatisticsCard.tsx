@@ -89,7 +89,7 @@ const StatisticsCard: React.FC<StatisticsProps> = ({
             <p className={numberClass[variant]}>{stat.number}</p>
             <p className={labelClass[variant]}>{stat.label}</p>
             {stat.description && (
-              <p className="text-xs md:text-sm text-gray-600 mt-2">{stat.description}</p>
+              <p className="text-xs md:text-sm text-gray-100 mt-2">{stat.description}</p>
             )}
           </motion.div>
         ))}
