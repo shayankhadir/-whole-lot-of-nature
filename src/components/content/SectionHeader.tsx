@@ -107,8 +107,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         className={`${titleSizeClasses[size]} font-bold ${
           withBackground
             ? textColorClasses[backgroundColor]
-            : 'text-black'
-        } ${alignClasses[align]}`}
+            : 'text-[#66BB6A]'
+        } ${alignClasses[align]} antialiased`}
       >
         {title}
       </HeadingTag>
@@ -119,8 +119,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           className={`${subtitleSizeClasses[size]} font-semibold ${
             withBackground
               ? textColorClasses[backgroundColor]
-              : 'text-gray-800'
-          } ${alignClasses[align]}`}
+              : 'text-white/80'
+          } ${alignClasses[align]} antialiased`}
         >
           {subtitle}
         </p>
@@ -134,10 +134,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           } ${
             withBackground
               ? textColorClasses[backgroundColor]
-              : 'text-gray-700'
+              : 'text-white/70'
           } ${alignClasses[align]} max-w-3xl ${
             align === 'center' ? 'mx-auto' : ''
-          }`}
+          } antialiased`}
         >
           {description}
         </p>
