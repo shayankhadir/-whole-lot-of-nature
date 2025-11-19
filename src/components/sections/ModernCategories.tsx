@@ -66,17 +66,17 @@ export default function ModernCategories() {
   }
 
   return (
-    <section id="categories" className="relative py-20 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-emerald-950/30 to-slate-950" />
-      
-      {/* Decorative Grid */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(16,185,129,0.3) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+    <section id="categories" className="relative py-20 px-4 overflow-hidden bg-[var(--surface-onyx)]">
+      {/* Leaf Background Decorations */}
+      <div className="absolute top-10 left-0 w-64 h-64 text-[var(--emerald-700)]/5 pointer-events-none">
+        <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
       </div>
+      <div className="absolute bottom-20 right-0 w-96 h-96 text-[var(--emerald-500)]/5 pointer-events-none">
+        <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
+      </div>
+      
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
@@ -87,20 +87,18 @@ export default function ModernCategories() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-medium tracking-wider uppercase mb-4"
-          >
-            Explore Our Collections
-          </motion.span>
+          <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
+            <Package className="w-4 h-4 text-[var(--emerald-500)]" />
+            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
+              Explore Our Collections
+            </span>
+          </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent mb-4">
-            Shop by Category
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-white mb-4 antialiased">
+            Shop by <span className="text-[var(--emerald-500)]">Category</span>
           </h2>
           
-          <p className="text-emerald-100/80 text-lg max-w-2xl mx-auto">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
             Discover curated collections for every gardening need
           </p>
         </motion.div>
@@ -121,38 +119,38 @@ export default function ModernCategories() {
                 <Link href={`/shop?category=${category.slug}`}>
                   <motion.div
                     whileHover={{ y: -8, scale: 1.02 }}
-                    className="group relative h-full p-8 rounded-2xl bg-gradient-to-br from-emerald-900/40 via-slate-900/50 to-emerald-950/40 border border-emerald-500/20 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:shadow-[0_20px_60px_rgba(16,185,129,0.2)]"
+                    className="group relative h-full p-8 rounded-[var(--radius-lg)] bg-[var(--ink-700)]/40 backdrop-blur-md border border-[var(--emerald-700)]/20 overflow-hidden transition-all duration-300 hover:border-[var(--emerald-500)]/40 hover:shadow-[var(--shadow-card)]"
                   >
                     {/* Hover Glow Effect */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-green-500/0 to-emerald-600/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
+                      className="absolute inset-0 bg-gradient-to-br from-[var(--emerald-500)]/0 via-[var(--emerald-700)]/0 to-[var(--emerald-900)]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
                     />
 
                     {/* Icon */}
                     <div className="relative mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-600/20 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <Icon className="w-8 h-8 text-emerald-300" strokeWidth={1.5} />
+                      <div className="w-16 h-16 rounded-[var(--radius-md)] bg-[var(--emerald-700)]/20 border border-[var(--emerald-500)]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                        <Icon className="w-8 h-8 text-[var(--emerald-500)]" strokeWidth={1.5} />
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="relative">
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[var(--emerald-500)] transition-colors antialiased">
                         {category.name}
                       </h3>
                       
-                      <p className="text-emerald-100/70 text-sm leading-relaxed mb-6 line-clamp-2">
+                      <p className="text-[var(--mint-100)] text-sm leading-relaxed mb-6 line-clamp-2 antialiased">
                         {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 
                       {/* Product Count Badge */}
                       <div className="flex items-center justify-between">
-                        <span className="text-xs px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-200/80 group-hover:bg-emerald-500/20 group-hover:border-emerald-400/40 transition-all">
+                        <span className="text-xs px-3 py-1.5 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-[var(--emerald-300)] group-hover:bg-[var(--emerald-500)]/20 group-hover:border-[var(--emerald-500)]/40 transition-all antialiased">
                           {category.count} {category.count === 1 ? 'Product' : 'Products'}
                         </span>
 
                         {/* Arrow */}
-                        <div className="flex items-center gap-2 text-emerald-300 font-medium text-sm">
+                        <div className="flex items-center gap-2 text-[var(--emerald-500)] font-medium text-sm antialiased">
                           <span>Explore</span>
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                         </div>
@@ -160,7 +158,7 @@ export default function ModernCategories() {
                     </div>
 
                     {/* Corner Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[var(--emerald-500)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
                 </Link>
               </motion.div>
@@ -180,7 +178,7 @@ export default function ModernCategories() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-full shadow-lg hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all"
+              className="group px-8 py-4 bg-[var(--emerald-500)] text-white font-semibold rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
             >
               <span className="flex items-center gap-2">
                 View All Categories

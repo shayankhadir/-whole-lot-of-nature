@@ -62,17 +62,17 @@ export default function TagFilterSection() {
   }, [selectedTag]);
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-950 to-emerald-950/20" />
-      
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(16,185,129,0.4) 2px, transparent 0)`,
-          backgroundSize: '60px 60px'
-        }} />
+    <section className="relative py-24 px-4 overflow-hidden bg-[var(--surface-onyx)]">
+      {/* Leaf Background Decorations */}
+      <div className="absolute top-20 right-10 w-72 h-72 text-[var(--emerald-700)]/5 pointer-events-none">
+        <Tag className="w-full h-full rotate-45" strokeWidth={0.3} />
       </div>
+      <div className="absolute bottom-10 left-10 w-56 h-56 text-[var(--emerald-500)]/5 pointer-events-none">
+        <Sparkles className="w-full h-full" strokeWidth={0.3} />
+      </div>
+      
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
@@ -87,17 +87,17 @@ export default function TagFilterSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-medium tracking-wider uppercase mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-[var(--emerald-500)] text-sm font-medium tracking-wider uppercase mb-4 backdrop-blur-md antialiased"
           >
             <TrendingUp className="w-4 h-4" />
             <span>Popular Collections</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent mb-4">
-            Shop by Tags
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-white mb-4 antialiased">
+            Shop by <span className="text-[var(--emerald-500)]">Tags</span>
           </h2>
           
-          <p className="text-emerald-100/80 text-lg max-w-2xl mx-auto">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
             Discover products by our most popular tags and themes
           </p>
         </motion.div>
@@ -114,10 +114,10 @@ export default function TagFilterSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedTag(tag.slug)}
-              className={`group px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`group px-6 py-3 rounded-full font-medium transition-all duration-300 antialiased ${
                 selectedTag === tag.slug
-                  ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/30'
-                  : 'bg-emerald-900/30 text-emerald-200 border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-400/50'
+                  ? 'bg-[var(--emerald-500)] text-white shadow-[var(--shadow-card)]'
+                  : 'bg-[var(--ink-700)]/40 text-[var(--emerald-300)] border border-[var(--emerald-700)]/30 hover:bg-[var(--emerald-700)]/20 hover:border-[var(--emerald-500)]/40'
               }`}
             >
               <span className="flex items-center gap-2">
@@ -153,7 +153,7 @@ export default function TagFilterSection() {
                   <Link href={`/products/${product.slug}`}>
                     <motion.div
                       whileHover={{ y: -8 }}
-                      className="group relative rounded-2xl bg-gradient-to-br from-emerald-900/30 via-slate-900/40 to-emerald-950/30 border border-emerald-500/20 overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:shadow-[0_20px_60px_rgba(16,185,129,0.2)]"
+                      className="group relative rounded-[var(--radius-lg)] bg-[var(--ink-700)]/40 backdrop-blur-md border border-[var(--emerald-700)]/20 overflow-hidden transition-all duration-300 hover:border-[var(--emerald-500)]/40 hover:shadow-[var(--shadow-card)]"
                     >
                       {/* Image */}
                       <div className="relative aspect-square overflow-hidden bg-slate-900/50">
@@ -176,17 +176,17 @@ export default function TagFilterSection() {
 
                       {/* Content */}
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-emerald-300 transition-colors">
+                        <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-[var(--emerald-500)] transition-colors antialiased">
                           {product.name}
                         </h3>
                         
                         {/* Price */}
                         <div className="flex items-center gap-2 mb-4">
-                          <span className="text-2xl font-bold text-emerald-300">
+                          <span className="text-2xl font-bold text-[var(--emerald-500)] antialiased">
                             ₹{product.price}
                           </span>
                           {product.regularPrice && product.regularPrice !== product.price && (
-                            <span className="text-sm text-emerald-100/50 line-through">
+                            <span className="text-sm text-[var(--mint-100)]/50 line-through antialiased">
                               ₹{product.regularPrice}
                             </span>
                           )}
@@ -196,7 +196,7 @@ export default function TagFilterSection() {
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                          className="w-full py-3 bg-[var(--emerald-500)] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[var(--emerald-700)] transition-all antialiased"
                         >
                           <ShoppingCart className="w-4 h-4" />
                           Quick Add
@@ -219,7 +219,7 @@ export default function TagFilterSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-full shadow-lg hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all"
+                  className="group px-8 py-4 bg-[var(--emerald-500)] text-white font-semibold rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
                 >
                   <span className="flex items-center gap-2">
                     View All "{tags.find(t => t.slug === selectedTag)?.name}" Products

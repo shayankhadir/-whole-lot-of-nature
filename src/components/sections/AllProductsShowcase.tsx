@@ -45,9 +45,17 @@ export default function AllProductsShowcase() {
   }
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-emerald-950/20 to-slate-950" />
+    <section className="relative py-24 px-4 overflow-hidden bg-[var(--surface-onyx)]">
+      {/* Leaf Background Decorations */}
+      <div className="absolute top-10 left-0 w-64 h-64 text-[var(--emerald-700)]/5 pointer-events-none">
+        <ShoppingCart className="w-full h-full rotate-12" strokeWidth={0.3} />
+      </div>
+      <div className="absolute bottom-20 right-0 w-80 h-80 text-[var(--emerald-500)]/5 pointer-events-none">
+        <Eye className="w-full h-full -rotate-12" strokeWidth={0.3} />
+      </div>
+      
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
@@ -62,16 +70,16 @@ export default function AllProductsShowcase() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-medium tracking-wider uppercase mb-4"
+            className="inline-block px-4 py-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-[var(--emerald-500)] text-sm font-medium tracking-wider uppercase mb-4 backdrop-blur-md antialiased"
           >
             Our Collection
           </motion.span>
           
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent mb-4">
-            All Products
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-white mb-4 antialiased">
+            All <span className="text-[var(--emerald-500)]">Products</span>
           </h2>
           
-          <p className="text-emerald-100/80 text-lg max-w-2xl mx-auto">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
             Browse our complete selection of premium plants and gardening essentials
           </p>
         </motion.div>
@@ -89,7 +97,7 @@ export default function AllProductsShowcase() {
               <Link href={`/products/${product.slug}`}>
                 <motion.div
                   whileHover={{ y: -8 }}
-                  className="group relative rounded-2xl bg-gradient-to-br from-emerald-900/30 via-slate-900/40 to-emerald-950/30 border border-emerald-500/20 overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:shadow-[0_20px_60px_rgba(16,185,129,0.2)]"
+                  className="group relative rounded-[var(--radius-lg)] bg-[var(--ink-700)]/40 backdrop-blur-md border border-[var(--emerald-700)]/20 overflow-hidden transition-all duration-300 hover:border-[var(--emerald-500)]/40 hover:shadow-[var(--shadow-card)]"
                 >
                   {/* Image */}
                   <div className="relative aspect-square overflow-hidden bg-slate-900/50">
@@ -107,11 +115,11 @@ export default function AllProductsShowcase() {
                     )}
                     
                     {/* Overlay on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink-900)]/90 via-[var(--emerald-900)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 hover:bg-emerald-500/30 transition-all"
+                        className="p-3 bg-[var(--ink-700)]/80 backdrop-blur-md rounded-full border border-[var(--emerald-500)]/30 hover:bg-[var(--emerald-700)]/40 transition-all"
                       >
                         <Eye className="w-5 h-5 text-white" />
                       </motion.button>
@@ -134,17 +142,17 @@ export default function AllProductsShowcase() {
 
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-[var(--emerald-500)] transition-colors antialiased">
                       {product.name}
                     </h3>
                     
                     {/* Price */}
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="text-2xl font-bold text-emerald-300">
+                      <span className="text-2xl font-bold text-[var(--emerald-500)] antialiased">
                         ₹{product.price}
                       </span>
                       {product.regularPrice && product.regularPrice !== product.price && (
-                        <span className="text-sm text-emerald-100/50 line-through">
+                        <span className="text-sm text-[var(--mint-100)]/50 line-through antialiased">
                           ₹{product.regularPrice}
                         </span>
                       )}
@@ -154,7 +162,7 @@ export default function AllProductsShowcase() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                      className="w-full py-3 bg-[var(--emerald-500)] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[var(--emerald-700)] transition-all antialiased"
                     >
                       <ShoppingCart className="w-4 h-4" />
                       Add to Cart
@@ -178,7 +186,7 @@ export default function AllProductsShowcase() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group px-10 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all"
+              className="group px-10 py-4 bg-[var(--emerald-500)] text-white font-bold text-lg rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
             >
               <span className="flex items-center gap-3">
                 View All Products
