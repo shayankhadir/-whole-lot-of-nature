@@ -8,6 +8,7 @@ type WCCategory = {
   id: number;
   name: string;
   slug: string;
+  parent: number;
   count?: number;
   description?: string;
   image?: unknown;
@@ -26,6 +27,7 @@ export async function GET() {
       id: cat.id,
       name: cat.name,
       slug: cat.slug,
+      parent: cat.parent,
       count: cat.count ?? 0,
       description: cat.description ?? '',
       image: cat.image ?? null,

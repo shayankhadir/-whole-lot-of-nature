@@ -11,6 +11,7 @@ interface WooCategory {
   id: number;
   name: string;
   slug: string;
+  parent: number;
   count: number;
   description: string;
   image: any;
@@ -36,9 +37,9 @@ export default function ModernCategories() {
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data) {
-          // Filter out categories with no products and limit to top 6
+          // Filter out categories with no products, only show top-level categories (parent === 0), and limit to top 6
           const filteredCategories = data.data
-            .filter((cat: WooCategory) => cat.count > 0)
+            .filter((cat: WooCategory) => cat.count > 0 && cat.parent === 0)
             .slice(0, 6);
           setCategories(filteredCategories);
         }
