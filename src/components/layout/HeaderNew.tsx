@@ -177,6 +177,7 @@ export default function Header() {
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="fixed inset-x-0 top-[72px] z-[999] border-t border-black/10 bg-white shadow-2xl"
                       onMouseEnter={() => setShopDropdownOpen(true)}
+                      onMouseLeave={() => setShopDropdownOpen(false)}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">

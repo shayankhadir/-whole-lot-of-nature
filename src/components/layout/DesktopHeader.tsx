@@ -123,6 +123,7 @@ export default function DesktopHeader() {
                     <div
                       className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl"
                       onMouseEnter={() => setShopDropdownOpen(true)}
+                      onMouseLeave={() => setShopDropdownOpen(false)}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
