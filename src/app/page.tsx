@@ -12,6 +12,7 @@ import Features from '@/components/sections/Features';
 import BlogPreview from '@/components/sections/BlogPreview';
 import Newsletter from '@/components/sections/Newsletter';
 import FinalCTA from '@/components/sections/FinalCTA';
+import FAQSection from '@/components/sections/FAQSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
 
 export default function Home() {
@@ -85,7 +86,15 @@ export default function Home() {
         <Newsletter />
       </SeamlessSection>
 
-      {/* 12. Final CTA */}
+      {/* 12. FAQ Section */}
+      <SeamlessSection 
+        tone="forest"
+        paddingY="lg"
+      >
+        <FAQSection />
+      </SeamlessSection>
+
+      {/* 13. Final CTA */}
       <SeamlessSection 
         tone="forest"
         paddingY="xl"
