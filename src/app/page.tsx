@@ -1,58 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import HeroSection from '@/components/home/HeroSection';
-import CategoryGridFocus from '@/components/sections/CategoryGridFocus';
+import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
 import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
-import ForestExperienceBanner from '@/components/home/ForestExperienceBanner';
-import ImmersiveBotanicalExplorer from '@/components/home/ImmersiveBotanicalExplorer';
+import ModernCategories from '@/components/sections/ModernCategories';
+import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
 import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
 import Features from '@/components/sections/Features';
 import BlogPreview from '@/components/sections/BlogPreview';
-import FAQAccordion from '@/components/sections/FAQAccordion';
 import Newsletter from '@/components/sections/Newsletter';
-import BrandStorySection from '@/components/sections/BrandStorySection';
 import FinalCTA from '@/components/sections/FinalCTA';
 import SeamlessSection from '@/components/ui/SeamlessSection';
-import { Product } from '@/types/product';
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    setIsVisible(true);
-    
-    // Fetch featured products for botanical explorer
-    fetch('/api/products?limit=3')
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.data) {
-          setFeaturedProducts(data.data);
-        }
-      })
-      .catch(err => console.error('Failed to fetch featured products:', err));
-  }, []);
-
   return (
-    <div className="min-h-screen relative z-10 bg-[var(--surface-canvas)] text-[var(--ink-900)]">
-      {/* 1. Immersive Forest Hero with Parallax */}
-      <HeroSection />
+    <div className="min-h-screen relative z-10 bg-slate-950 text-white">
+      {/* 1. Interactive Hero Section */}
+      <InteractiveHero />
 
-      {/* 2. Shop by Category Grid */}
-      <div id="categories">
-        <SeamlessSection 
-          tone="forest"
-          paddingY="lg"
-          leftDecoration="monstera"
-        >
-          <CategoryGridFocus />
-        </SeamlessSection>
-      </div>
-
-      {/* 3. Trust/Awards Banner - NEW */}
+      {/* 2. Trust Banner */}
       <SeamlessSection 
         tone="onyx"
         paddingY="sm"
@@ -60,90 +27,61 @@ export default function Home() {
         <TrustBanner />
       </SeamlessSection>
 
-      {/* 4. Best Sellers - Featured Plants Carousel */}
+      {/* 3. Featured Products Section */}
       <SeamlessSection 
         tone="forest"
         paddingY="lg"
-        rightDecoration="fern"
       >
         <FeaturedPlantsCarousel />
       </SeamlessSection>
 
-      {/* 5. Featured Products: Soil & Mixes - NEW */}
+      {/* 4. Modern Categories Section */}
+      <ModernCategories />
+
+      {/* 5. Featured Soil Mixes */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"
-        leftDecoration="fern"
       >
         <FeaturedSoilMixes />
       </SeamlessSection>
 
-      {/* 6. Immersive Botanical Explorer */}
-      <SeamlessSection 
-        tone="forest"
-        paddingY="md"
-      >
-        <ImmersiveBotanicalExplorer products={featuredProducts} />
-      </SeamlessSection>
+      {/* 6. All Products Showcase */}
+      <AllProductsShowcase />
 
-      {/* 7. Forest Experience Banner - Parallax */}
-      <ForestExperienceBanner />
-
-      {/* 8. Brand Story + About Preview */}
+      {/* 7. Features Section */}
       <SeamlessSection 
         tone="onyx"
-        paddingY="xl"
-        leftDecoration="monstera"
-      >
-        <BrandStorySection />
-      </SeamlessSection>
-
-      {/* 10. Features Section */}
-      <SeamlessSection 
-        tone="onyx"
-        paddingY="md"
-        leftDecoration="fern"
+        paddingY="lg"
       >
         <Features />
       </SeamlessSection>
 
-      {/* 11. Customer Testimonials */}
+      {/* 8. Customer Testimonials */}
       <SeamlessSection 
         tone="forest"
         paddingY="lg"
-        rightDecoration="fern"
       >
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-      {/* 12. Blog Preview - NEW */}
+      {/* 9. Blog Preview */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"
-        leftDecoration="palm"
       >
         <BlogPreview />
       </SeamlessSection>
 
-      {/* 13. FAQ Section - NEW */}
-      <SeamlessSection 
-        tone="forest"
-        paddingY="lg"
-        rightDecoration="monstera"
-      >
-        <FAQAccordion />
-      </SeamlessSection>
-
-      {/* 14. Newsletter Signup */}
+      {/* 10. Newsletter Signup */}
       <SeamlessSection 
         tone="onyx"
         paddingY="md"
-        leftDecoration="monstera"
       >
         <Newsletter />
       </SeamlessSection>
 
-      {/* 15. Final CTA */}
+      {/* 11. Final CTA */}
       <SeamlessSection 
         tone="forest"
         paddingY="xl"

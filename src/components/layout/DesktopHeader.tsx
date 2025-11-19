@@ -62,8 +62,8 @@ export default function DesktopHeader() {
   };
 
   const headerGradient = scrolled
-    ? 'linear-gradient(135deg, rgba(3,10,6,0.96), rgba(9,31,19,0.98))'
-    : 'linear-gradient(135deg, rgba(3,10,6,0.78), rgba(9,31,19,0.9))';
+    ? 'linear-gradient(135deg, rgba(27,64,36,0.96), rgba(21,50,28,0.98))'
+    : 'linear-gradient(135deg, rgba(27,64,36,0.85), rgba(21,50,28,0.92))';
 
   return (
     <motion.header
@@ -114,7 +114,6 @@ export default function DesktopHeader() {
                     transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-1 text-sm font-semibold tracking-wide uppercase text-white/85 hover:text-white"
-                    onClick={() => setShopDropdownOpen((open) => !open)}
                   >
                     {item.name}
                     <motion.div
