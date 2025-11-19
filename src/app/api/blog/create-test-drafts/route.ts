@@ -87,7 +87,7 @@ const samplePosts = [
 
 <h2>Creating a Blooming Calendar</h2>
 <p>Plant 2-3 of these varieties to ensure continuous blooms and a vibrant garden year-round.</p>`,
-    excerpt: 'Discover 7 beautiful flowering plants that bloom throughout the year in Indian climate. Create a garden that's always in bloom!',
+    excerpt: 'Discover 7 beautiful flowering plants that bloom throughout the year in Indian climate. Create a garden that is always in bloom!',
     categories: ['Flowering Plants', 'Indian Gardening'],
     tags: ['year-round flowers', 'indian plants', 'flowering', 'garden design'],
   },
