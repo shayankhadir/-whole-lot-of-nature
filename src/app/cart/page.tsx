@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils/pricing';
+import FreeShippingProgress from '@/components/cart/FreeShippingProgress';
+import CouponCode from '@/components/cart/CouponCode';
 import { 
   TrashIcon, 
   MinusIcon, 
@@ -30,19 +32,49 @@ export default function CartPage() {
   } = useCartStore();
 
   const [promoCode, setPromoCode] = useState('');
+  const [appliedCoupon, setAppliedCoupon] = useState('');
+  const [couponDiscount, setCouponDiscount] = useState(0);
   const [isApplyingPromo, setIsApplyingPromo] = useState(false);
   const isEmpty = items.length === 0;
 
-  const handleApplyPromoCode = async () => {
-    if (!promoCode.trim()) return;
-    setIsApplyingPromo(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    if (promoCode.toLowerCase() === 'welcome10') {
-      alert('Promo code applied! 10% discount added.');
-    } else {
-      alert('Invalid promo code');
+  const handleApplyCoupon = async (code: string) => {
+    if (!code) {
+      // Remove coupon
+      setAppliedCoupon('');
+      setCouponDiscount(0);
+      return { success: true, message: 'Coupon removed' };
     }
-    setIsApplyingPromo(false);
+
+    // Simulate API call to validate coupon
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const coupons: Record<string, { discount: number; type: 'percentage' | 'fixed' }> = {
+      'SAVE06': { discount: 6, type: 'percentage' },
+      'WELCOME10': { discount: 10, type: 'percentage' },
+      'FLAT50': { discount: 50, type: 'fixed' },
+    };
+
+    const coupon = coupons[code.toUpperCase()];
+    
+    if (coupon) {
+      const discountAmount = coupon.type === 'percentage' 
+        ? (subtotal * coupon.discount) / 100 
+        : coupon.discount;
+      
+      setAppliedCoupon(code.toUpperCase());
+      setCouponDiscount(discountAmount);
+      
+      return {
+        success: true,
+        message: `Coupon applied! ${coupon.type === 'percentage' ? `${coupon.discount}%` : `₹${coupon.discount}`} discount`,
+        discount: discountAmount,
+      };
+    }
+    
+    return {
+      success: false,
+      message: 'Invalid coupon code. Try SAVE06 or WELCOME10',
+    };
   };
 
   const handleMoveToWishlist = (itemId: string) => {
@@ -220,73 +252,66 @@ export default function CartPage() {
             <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6 antialiased">Order Summary</h2>
 
+              {/* Free Shipping Progress */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Promo Code
-                </label>
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={promoCode}
-                    onChange={(e) => setPromoCode(e.target.value)}
-                    placeholder="Enter code"
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  />
-                  <button
-                    onClick={handleApplyPromoCode}
-                    disabled={isApplyingPromo || !promoCode.trim()}
-                    className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  >
-                    {isApplyingPromo ? 'Applying...' : 'Apply'}
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">Try: WELCOME10 for 10% off</p>
+                <FreeShippingProgress cartTotal={subtotal} freeShippingThreshold={150} />
+              </div>
+
+              {/* Coupon Code */}
+              <div className="mb-6">
+                <CouponCode
+                  onApplyCoupon={handleApplyCoupon}
+                  appliedCoupon={appliedCoupon}
+                  discount={couponDiscount}
+                />
               </div>
 
               <div className="space-y-3 border-t border-gray-200 pt-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-100">Subtotal</span>
+                  <span className="text-gray-600">Subtotal</span>
                   <span className="font-medium">{formatPrice(subtotal)}</span>
                 </div>
                 
-                {discount > 0 && (
+                {(discount > 0 || couponDiscount > 0) && (
                   <div className="flex justify-between text-[#2E7D32]">
                     <span>Discount</span>
-                    <span>-{formatPrice(discount)}</span>
+                    <span>-{formatPrice(discount + couponDiscount)}</span>
                   </div>
                 )}
                 
                 <div className="flex justify-between">
-                  <span className="text-gray-100">Shipping</span>
+                  <span className="text-gray-600">Shipping</span>
                   <span className="font-medium">
-                    {shipping > 0 ? formatPrice(shipping) : (
-                      <span className="text-[#2E7D32]">Free</span>
+                    {subtotal >= 150 ? (
+                      <span className="text-[#2E7D32] font-semibold">FREE</span>
+                    ) : (
+                      formatPrice(shipping)
                     )}
                   </span>
                 </div>
                 
                 <div className="flex justify-between">
-                  <span className="text-gray-100">Tax (GST 18%)</span>
+                  <span className="text-gray-600">Tax (GST 18%)</span>
                   <span className="font-medium">{formatPrice(tax)}</span>
                 </div>
                 
                 <div className="border-t border-gray-200 pt-3 flex justify-between text-lg font-bold antialiased">
                   <span>Total</span>
-                  <span>{formatPrice(totalPrice)}</span>
+                  <span>{formatPrice(totalPrice - couponDiscount)}</span>
                 </div>
               </div>
 
               <div className="mt-8 space-y-4">
                 <Link
                   href="/checkout"
-                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-primary-700 transition-colors shadow-lg block"
+                  className="w-full bg-[#2E7D32] text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-[#1B5E20] transition-colors shadow-lg block"
                 >
                   Proceed to Checkout
                 </Link>
                 
                 <div className="text-center text-sm text-gray-500">
-                  <p>Free shipping on orders over ₹999</p>
-                  <p>Secure checkout with SSL encryption</p>
+                  <p>🔒 Secure checkout with SSL encryption</p>
+                  <p>✓ Cash on Delivery available</p>
                 </div>
               </div>
             </div>

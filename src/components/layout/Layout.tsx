@@ -5,6 +5,7 @@ import ResponsiveHeader from './ResponsiveHeader';
 import Footer from './Footer';
 import CartSidebar from '../cart/CartSidebar';
 import TopBanner from '../ui/TopBanner';
+import PromoBanner from './PromoBanner';
 import TropicalBackground from '../ui/TropicalBackground';
 
 interface LayoutProps {
@@ -17,6 +18,7 @@ export default function Layout({ children }: LayoutProps) {
       <TropicalBackground />
       <div className="relative z-10">
         <div className="relative">
+          <PromoBanner />
           <TopBanner />
           <ResponsiveHeader />
         </div>
