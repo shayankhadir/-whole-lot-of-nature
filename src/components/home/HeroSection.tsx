@@ -19,7 +19,7 @@ export default function HeroSection() {
           quality={95}
         />
         {/* Luxury Gradient Overlay - Emerald to Deep Charcoal */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D3B1F]/60 via-[#1A1A1A]/50 to-[#000000]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--emerald-900)]/60 via-[var(--ink-900)]/50 to-[var(--surface-onyx)]/70" />
       </div>
 
       {/* Main Headline - Premium Serif Typography */}
@@ -43,7 +43,7 @@ export default function HeroSection() {
         <h1 
           className="font-montserrat text-white text-[clamp(1.5rem,5vw,2.5rem)] font-bold leading-tight tracking-wider drop-shadow-[0_10px_40px_rgba(0,0,0,0.9)] mb-6 antialiased"
         >
-          WHOLE LOT OF <span className="text-[#66BB6A]">NATURE</span>
+          WHOLE LOT OF <span className="text-[var(--emerald-500)]">NATURE</span>
         </h1>
 
         {/* Subheading */}
@@ -68,7 +68,7 @@ export default function HeroSection() {
           <HoverBorderGradient
             containerClassName="rounded-full"
             className="text-white text-sm uppercase tracking-[0.2em] font-inter px-6 py-3"
-            glowColor="#66BB6A"
+            glowColor="var(--emerald-500)"
           >
             Explore Collection
           </HoverBorderGradient>
@@ -80,7 +80,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 0.2, scale: 1 }}
         transition={{ duration: 1.5, delay: 1 }}
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-[#66BB6A]/20 to-transparent blur-3xl pointer-events-none"
+        className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-[var(--emerald-500)]/20 to-transparent blur-3xl pointer-events-none"
       />
 
       {/* Decorative Corner Accent - Bottom Left */}
@@ -88,7 +88,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 0.15, scale: 1 }}
         transition={{ duration: 1.5, delay: 1.2 }}
-        className="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-gradient-radial from-[#2E7D32]/20 to-transparent blur-3xl pointer-events-none"
+        className="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-gradient-radial from-[var(--emerald-700)]/20 to-transparent blur-3xl pointer-events-none"
       />
     </section>
   );

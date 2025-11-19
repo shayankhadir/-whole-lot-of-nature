@@ -37,7 +37,7 @@ export default function Newsletter() {
           className="object-cover opacity-30"
           quality={75}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#1A1A1A]/95 to-[#1A1A1A]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)] via-[var(--ink-900)]/95 to-[var(--ink-900)]/90" />
       </div>
 
       {/* Animated Background Effects */}

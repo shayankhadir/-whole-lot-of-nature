@@ -42,7 +42,7 @@ export default function CategoryGridFocus() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-montserrat text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
+          <h2 className="font-montserrat text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
             Shop by Category
           </h2>
         </div>

@@ -28,7 +28,7 @@ export default function ForestExperienceBanner() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#040d07] my-24 shadow-[0_40px_120px_rgba(2,8,5,0.6)]"
+      className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[var(--ink-900)] my-24 shadow-[0_40px_120px_rgba(2,8,5,0.6)]"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -38,7 +38,7 @@ export default function ForestExperienceBanner() {
           priority
           className="object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#020806]/90 via-[#06150d]/65 to-[#091f13]/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)]/90 via-[#06150d]/65 to-[#091f13]/80" />
         <DarkVeil
           hueShift={110}
           noiseIntensity={0.1}
@@ -60,7 +60,7 @@ export default function ForestExperienceBanner() {
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/85 backdrop-blur-md"
           >
-            <Sparkles className="h-4 w-4 text-[#66BB6A]" />
+            <Sparkles className="h-4 w-4 text-[var(--emerald-500)]" />
             Immersive mode
           </motion.div>
 
@@ -72,7 +72,7 @@ export default function ForestExperienceBanner() {
               transition={{ duration: 0.6 }}
               className="font-montserrat text-[clamp(2.2rem,4vw,3rem)] font-bold text-white leading-tight antialiased"
             >
-              Explore the <span className="text-[#66BB6A]">Virtual Forest</span>
+              Explore the <span className="text-[var(--emerald-500)]">Virtual Forest</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export default function ForestExperienceBanner() {
               <HoverBorderGradient
                 containerClassName="rounded-full"
                 className="px-7 py-3 text-white font-montserrat font-semibold text-sm uppercase tracking-widest"
-                glowColor="#66BB6A"
+                glowColor="var(--emerald-500)"
               >
                 Start exploring
               </HoverBorderGradient>

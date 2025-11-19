@@ -6,7 +6,7 @@ import BackgroundBeams, { BackgroundParticles } from '@/components/ui/Background
 
 export default function Features() {
   return (
-    <section className="relative py-20 bg-[#0D1B0F]">
+    <section className="relative py-20 bg-[var(--surface-onyx)]">
       {/* Animated Background Beams */}
       <BackgroundBeams />
       <BackgroundParticles />

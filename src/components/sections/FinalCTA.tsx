@@ -15,13 +15,13 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e3a28] via-[#2d5a3d] to-[#1a4d2e] p-8 sm:p-10 shadow-2xl border border-[#2E7D32]/30"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--emerald-900)] via-[var(--emerald-700)] to-[var(--emerald-900)] p-8 sm:p-10 shadow-2xl border border-[var(--emerald-700)]/30"
         >
           {/* Decorative Leaf Pattern */}
-          <div className="absolute -top-10 -right-10 w-40 h-40 text-[#66BB6A]/10 pointer-events-none">
+          <div className="absolute -top-10 -right-10 w-40 h-40 text-[var(--emerald-500)]/10 pointer-events-none">
             <Leaf className="w-full h-full rotate-45" strokeWidth={0.5} />
           </div>
-          <div className="absolute -bottom-8 -left-8 w-32 h-32 text-[#2E7D32]/10 pointer-events-none">
+          <div className="absolute -bottom-8 -left-8 w-32 h-32 text-[var(--emerald-700)]/10 pointer-events-none">
             <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
           </div>
 

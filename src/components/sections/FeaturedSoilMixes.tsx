@@ -80,13 +80,13 @@ export default function FeaturedSoilMixes() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-[#2E7D32]/20 border border-[#2E7D32]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Leaf className="w-4 h-4 text-[#66BB6A]" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[#66BB6A] font-semibold uppercase tracking-wider antialiased">
+          <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
+            <Leaf className="w-4 h-4 text-[var(--emerald-500)]" />
+            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
               Featured Products
             </span>
           </div>
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
             Premium Soil & Mixes
           </h2>
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/85 max-w-2xl mx-auto antialiased">
@@ -97,7 +97,7 @@ export default function FeaturedSoilMixes() {
         {/* Products Grid */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#2E7D32] border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-[var(--emerald-700)] border-t-transparent"></div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

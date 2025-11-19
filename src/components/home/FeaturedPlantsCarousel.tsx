@@ -64,12 +64,12 @@ export default function FeaturedPlantsCarousel() {
 
   if (loading) {
     return (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0F1E11]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)]">
         <div className="max-w-[1600px] mx-auto">
-          <div className="h-12 bg-[#2C2C2C] animate-shimmer w-64 mb-12 rounded-lg" />
+          <div className="h-12 bg-[var(--ink-700)] animate-shimmer w-64 mb-12 rounded-lg" />
           <div className="flex gap-6 overflow-hidden">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="min-w-[320px] h-[480px] bg-[#2C2C2C] animate-shimmer forest-card" />
+              <div key={i} className="min-w-[320px] h-[480px] bg-[var(--ink-700)] animate-shimmer forest-card" />
             ))}
           </div>
         </div>
@@ -78,12 +78,12 @@ export default function FeaturedPlantsCarousel() {
   }
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0F1E11] overflow-hidden">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)] overflow-hidden">
       {/* Background Leaf Decorations */}
-      <div className="absolute top-10 left-0 w-48 h-48 text-[#2E7D32]/5 pointer-events-none">
+      <div className="absolute top-10 left-0 w-48 h-48 text-[var(--emerald-700)]/5 pointer-events-none">
         <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
       </div>
-      <div className="absolute bottom-10 right-0 w-64 h-64 text-[#66BB6A]/5 pointer-events-none">
+      <div className="absolute bottom-10 right-0 w-64 h-64 text-[var(--emerald-500)]/5 pointer-events-none">
         <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
       </div>
 
@@ -97,7 +97,7 @@ export default function FeaturedPlantsCarousel() {
           className="mb-12"
         >
           <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-white uppercase tracking-wide antialiased">
-            Featured <span className="text-[#66BB6A]">Plants</span>
+            Featured <span className="text-[var(--emerald-500)]">Plants</span>
           </h2>
           <p className="font-inter text-lg text-white/85 mt-4 max-w-2xl antialiased">
             Handpicked organic plants, carefully curated for your home and garden.

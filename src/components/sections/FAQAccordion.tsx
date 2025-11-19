@@ -64,7 +64,7 @@ export default function FAQAccordion() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[#66BB6A] mb-4 antialiased">
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
             Frequently Asked Questions
           </h2>
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/85 antialiased">
@@ -81,17 +81,17 @@ export default function FAQAccordion() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-xl border border-[#2E7D32]/30 overflow-hidden"
+              className="bg-gradient-to-br from-[var(--emerald-900)] to-[var(--surface-onyx)] rounded-xl border border-[var(--emerald-700)]/30 overflow-hidden"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-[#2E7D32]/10 transition-colors duration-200 backdrop-blur-md"
+                className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-[var(--emerald-700)]/10 transition-colors duration-200 backdrop-blur-md"
               >
                 <span className="font-montserrat text-[clamp(0.9375rem,2vw,1.125rem)] font-semibold text-white pr-4 antialiased">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-[#66BB6A] flex-shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 text-[var(--emerald-500)] flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                 />
@@ -124,14 +124,14 @@ export default function FAQAccordion() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-12 p-6 bg-[#2E7D32]/10 border border-[#2E7D32]/30 rounded-xl backdrop-blur-md"
+          className="text-center mt-12 p-6 bg-[var(--emerald-700)]/10 border border-[var(--emerald-700)]/30 rounded-xl backdrop-blur-md"
         >
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/80 mb-4 antialiased">
             Still have questions?
           </p>
           <a
             href="mailto:support@wholelotofnature.com"
-            className="inline-flex items-center gap-2 text-[#66BB6A] hover:text-[#2E7D32] font-semibold transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-[var(--emerald-500)] hover:text-[var(--emerald-700)] font-semibold transition-colors duration-300"
           >
             Contact our support team
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
