@@ -71,25 +71,20 @@ export default function FeaturedSoilMixes() {
   const displayProducts = soilProducts.length > 0 ? soilProducts : defaultProducts;
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-24 overflow-hidden bg-emerald-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Leaf className="w-4 h-4 text-[var(--emerald-500)]" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
-              Featured Products
-            </span>
-          </div>
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
-            Premium Soil & Mixes
+          <span className="section-eyebrow mb-4">Featured Products</span>
+          <h2 className="font-serif text-[clamp(2rem,5vw,3rem)] font-bold text-cream-50 mb-4">
+            Premium Soil & <span className="text-gold-gradient">Mixes</span>
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(1rem,2vw,1.125rem)] text-cream-200/80 max-w-2xl mx-auto font-sans">
             Organic, nutrient-rich soil blends crafted for optimal plant growth
           </p>
         </motion.div>
@@ -97,10 +92,10 @@ export default function FeaturedSoilMixes() {
         {/* Products Grid */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-[var(--emerald-700)] border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-gold-500 border-t-transparent"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {displayProducts.slice(0, 4).map((product: any, index: number) => (
               <motion.div
                 key={product.id}
@@ -113,39 +108,39 @@ export default function FeaturedSoilMixes() {
                   href={`/shop/${product.slug}`}
                   className="group block h-full"
                 >
-                  <div className="relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
+                  <div className="relative bg-emerald-900/20 rounded-[2rem] overflow-hidden border border-emerald-800/50 hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)] h-full flex flex-col backdrop-blur-sm">
                     {/* Product Image */}
-                    <div className="relative h-48 md:h-56 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden">
                       <Image
                         src={product.image || product.images?.[0]?.src || defaultProducts[index].image}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F] via-transparent to-transparent opacity-60"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-transparent to-transparent opacity-60"></div>
                       
                       {/* Featured Badge */}
-                      <div className="absolute top-3 left-3 bg-[#2E7D32] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      <div className="absolute top-4 left-4 bg-gold-500/90 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         Featured
                       </div>
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="font-serif text-xl font-medium text-cream-50 mb-2 group-hover:text-gold-200 transition-colors duration-300">
                         {product.name}
                       </h3>
-                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-2 antialiased">
+                      <p className="text-sm text-cream-200/60 mb-4 line-clamp-2 font-sans">
                         {product.description || defaultProducts[index].description}
                       </p>
 
                       {/* Features */}
                       {(product.features || defaultProducts[index].features) && (
-                        <div className="space-y-1.5 mb-4 flex-1">
+                        <div className="space-y-2 mb-6 flex-1">
                           {(product.features || defaultProducts[index].features).slice(0, 3).map((feature: string, i: number) => (
                             <div key={i} className="flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 text-[#66BB6A] flex-shrink-0" />
-                              <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-white/85 antialiased">
+                              <CheckCircle className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                              <span className="text-xs text-cream-100/80 font-sans">
                                 {feature}
                               </span>
                             </div>
@@ -154,18 +149,18 @@ export default function FeaturedSoilMixes() {
                       )}
 
                       {/* Price & CTA */}
-                      <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
+                      <div className="flex items-center justify-between pt-4 border-t border-white/10">
                         <div>
-                          <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
+                          <span className="text-2xl font-bold text-emerald-400 font-sans">
                             {formatPrice(product.sale_price || product.price || defaultProducts[index].price)}
                           </span>
                           {product.sale_price && product.regular_price && (
-                            <span className="block text-sm text-white/50 line-through">
+                            <span className="block text-xs text-cream-200/40 line-through font-sans">
                               {formatPrice(product.regular_price)}
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300">
+                        <div className="flex items-center gap-1 text-gold-400 text-sm font-medium group-hover:gap-2 transition-all duration-300 group-hover:text-gold-300">
                           <span>Shop</span>
                           <ArrowRight className="w-4 h-4" />
                         </div>
@@ -184,11 +179,11 @@ export default function FeaturedSoilMixes() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
           <Link
             href="/shop?category=soil-mixes-and-amendments"
-            className="inline-flex items-center gap-2 bg-[#2E7D32] hover:bg-[#66BB6A] text-white font-semibold text-[clamp(0.9375rem,2vw,1.125rem)] px-8 py-4 rounded-lg transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#2E7D32]/30"
+            className="btn-gold inline-flex items-center gap-2 group"
           >
             View All Soil Products
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

@@ -1,4 +1,5 @@
 export default function Home() {
+  const leafTexture = "url('/images/backgrounds/seamless-tropical-canopy.svg')";
   return (
     <div className="min-h-screen bg-[#1A1A1A] relative overflow-hidden">
       {/* Forest Leaf Decorations */}
@@ -7,7 +8,7 @@ export default function Home() {
         <div 
           className="absolute -top-32 -left-32 w-96 h-96 opacity-10"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf2.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(-15deg)',
@@ -18,7 +19,7 @@ export default function Home() {
         <div 
           className="absolute -top-24 -right-24 w-80 h-80 opacity-8"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf3.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(25deg)',
@@ -29,7 +30,7 @@ export default function Home() {
         <div 
           className="absolute -bottom-40 -left-40 w-[500px] h-[500px] opacity-12"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(45deg)',
@@ -40,7 +41,7 @@ export default function Home() {
         <div 
           className="absolute -bottom-32 -right-32 w-96 h-96 opacity-10"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf2.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(-35deg)',
@@ -51,7 +52,7 @@ export default function Home() {
         <div 
           className="absolute top-1/3 right-10 w-64 h-64 opacity-6"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf3.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(60deg)',
@@ -61,7 +62,7 @@ export default function Home() {
         <div 
           className="absolute bottom-1/4 left-16 w-72 h-72 opacity-8"
           style={{
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png)',
+            backgroundImage: leafTexture,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: 'rotate(-20deg)',

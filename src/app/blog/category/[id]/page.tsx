@@ -53,9 +53,11 @@ export default function BlogCategoryPage() {
   };
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-white">
+    <>
+      <h1 className="sr-only">{getCategoryName()} Articles | Whole Lot of Nature Blog</h1>
+      <div className="bg-white">
+        {/* Hero Section */}
+        <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-white">
         <div className="max-w-4xl mx-auto">
           <SectionHeader
             as="h1"
@@ -249,6 +251,7 @@ export default function BlogCategoryPage() {
           backgroundVariant="green"
         />
       </div>
-    </div>
+      </div>
+    </>
   );
 }

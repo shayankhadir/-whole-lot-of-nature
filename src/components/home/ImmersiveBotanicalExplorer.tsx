@@ -32,9 +32,9 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
       {/* Parallax Background Leaves */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div
-          className="absolute top-0 left-0 w-full h-full opacity-20"
+          className="absolute top-0 left-0 w-full h-full opacity-50"
           style={{ 
-            backgroundImage: 'url(https://admin.wholelotofnature.com/wp-content/uploads/2024/11/bgleaf1.png)',
+            backgroundImage: 'url(/images/backgrounds/seamless-tropical-canopy.svg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}

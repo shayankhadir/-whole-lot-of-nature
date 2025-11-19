@@ -77,112 +77,85 @@ export default function BlogPreview() {
   }, []);
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-24 overflow-hidden bg-emerald-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Leaf className="w-4 h-4 text-[var(--emerald-500)]" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
+          <div className="inline-flex items-center gap-2 bg-emerald-900/30 border border-emerald-800/50 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
+            <Leaf className="w-4 h-4 text-gold-400" />
+            <span className="text-sm text-gold-400 font-semibold uppercase tracking-wider font-sans">
               Learn & Grow
             </span>
           </div>
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
-            Latest from Our Blog
+          <h2 className="font-serif text-[clamp(2rem,5vw,3rem)] font-bold text-cream-50 mb-4">
+            Latest from <span className="text-gold-gradient">Our Blog</span>
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(1rem,2vw,1.125rem)] text-cream-200/80 max-w-2xl mx-auto font-sans">
             Expert tips, plant care guides, and sustainable gardening insights
           </p>
         </motion.div>
 
         {/* Blog Grid */}
-        {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#2E7D32] border-t-transparent"></div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {posts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group block h-full"
-                >
-                  <div className="relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
-                    {/* Post Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F] via-transparent to-transparent opacity-60"></div>
-                      
-                      {/* Category Badge */}
-                      <div className="absolute top-3 left-3 bg-[#2E7D32] text-white text-xs font-semibold px-3 py-1 rounded-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {posts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group h-full"
+            >
+              <Link href={`/blog/${post.slug}`} className="block h-full">
+                <article className="h-full flex flex-col bg-emerald-900/20 rounded-[2rem] overflow-hidden border border-emerald-800/30 hover:border-gold-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-black/20">
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 to-transparent opacity-60" />
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-emerald-950/80 backdrop-blur-md text-gold-400 text-xs font-bold uppercase tracking-wider rounded-full border border-gold-500/20">
                         {post.category}
-                      </div>
-                    </div>
-
-                    {/* Post Info */}
-                    <div className="p-5 flex-1 flex flex-col">
-                      {/* Date */}
-                      <div className="flex items-center gap-2 text-white/50 text-[clamp(0.75rem,1.5vw,0.875rem)] mb-3">
-                        <Calendar className="w-4 h-4" />
-                        <span>{post.date}</span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.125rem)] font-bold text-white mb-3 group-hover:text-[#66BB6A] transition-colors duration-300 line-clamp-2 antialiased">
-                        {post.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-3 flex-1 antialiased">
-                        {post.excerpt}
-                      </p>
-
-                      {/* Read More Link */}
-                      <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300 pt-4 border-t border-[#2E7D32]/20">
-                        <span>Read More</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        )}
 
-        {/* View All Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-[#66BB6A] hover:text-[#2E7D32] font-semibold text-[clamp(0.9375rem,2vw,1.125rem)] transition-colors duration-300 group"
-          >
-            View All Articles
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </motion.div>
+                  {/* Content */}
+                  <div className="flex-1 p-6 flex flex-col">
+                    <div className="flex items-center gap-2 text-cream-200/60 text-sm mb-3 font-sans">
+                      <Calendar className="w-4 h-4" />
+                      <time>{post.date}</time>
+                    </div>
+                    
+                    <h3 className="text-xl font-serif font-bold text-cream-50 mb-3 line-clamp-2 group-hover:text-gold-400 transition-colors">
+                      {post.title}
+                    </h3>
+                    
+                    <p className="text-cream-200/70 text-sm line-clamp-3 mb-6 font-sans flex-1">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center text-gold-400 font-medium text-sm group/link mt-auto font-sans">
+                      Read Article
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

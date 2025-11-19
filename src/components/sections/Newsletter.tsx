@@ -27,133 +27,108 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="relative py-12 overflow-hidden">
+    <section className="relative py-20 overflow-hidden bg-emerald-950">
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/backgrounds/bgleaf2.png"
-          alt="Decorative leaf background"
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
-          className="object-cover opacity-30"
-          quality={75}
+          className="object-cover opacity-40"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)] via-[var(--ink-900)]/95 to-[var(--ink-900)]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950 via-emerald-950/95 to-emerald-950/90" />
       </div>
 
       {/* Animated Background Effects */}
       <BackgroundParticles />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <FrostedGlassCard>
+        <FrostedGlassCard className="border-emerald-800/50 bg-emerald-900/30">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center text-white p-8"
+            className="text-center text-cream-50 p-8"
           >
             <div className="flex justify-center mb-6">
-              <div className="bg-[#2E7D32]/30 backdrop-blur-sm p-4 rounded-full ring-1 ring-[#2E7D32]/50">
-                <Mail className="w-8 h-8 text-[#66BB6A]" />
+              <div className="bg-emerald-800/30 backdrop-blur-sm p-4 rounded-full ring-1 ring-gold-500/30">
+                <Mail className="w-8 h-8 text-gold-400" />
               </div>
             </div>
             
-            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased">
-              Join Our Garden Community
+            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-serif font-bold mb-3">
+              Join Our <span className="text-gold-gradient">Garden Community</span>
             </h2>
-            <p className="text-base text-[var(--mint-100)] mb-6 max-w-2xl mx-auto antialiased">
+            <p className="text-base text-cream-200/80 mb-8 max-w-2xl mx-auto font-sans">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
-              Plus, get 10% off your next order!
+              Plus, get <span className="text-gold-400 font-bold">10% off</span> your next order!
             </p>
 
             {/* Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <Leaf className="w-5 h-5 text-[#66BB6A]" />
-                <span>Weekly Plant Care Tips</span>
+                <Leaf className="w-5 h-5 text-gold-400" />
+                <span className="font-sans">Weekly Plant Care Tips</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <Gift className="w-5 h-5 text-[#66BB6A]" />
-                <span>Exclusive Offers</span>
+                <Gift className="w-5 h-5 text-gold-400" />
+                <span className="font-sans">Exclusive Offers</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <CheckCircle className="w-5 h-5 text-[#66BB6A]" />
-                <span>New Arrivals First</span>
+                <CheckCircle className="w-5 h-5 text-gold-400" />
+                <span className="font-sans">New Arrivals First</span>
               </motion.div>
             </div>
 
-            {/* Newsletter form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="max-w-md mx-auto"
-            >
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#2E7D32]/20 backdrop-blur-sm rounded-lg p-6 ring-1 ring-[#2E7D32]/30"
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto relative">
+              <div className="relative flex items-center">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="w-full px-6 py-4 bg-emerald-950/50 border border-emerald-700/50 rounded-full text-cream-50 placeholder:text-emerald-600/70 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500/50 transition-all font-sans"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading || isSubmitted}
+                  className="absolute right-2 top-2 bottom-2 px-6 bg-gold-500 hover:bg-gold-400 text-emerald-950 font-bold rounded-full transition-all disabled:opacity-70 disabled:cursor-not-allowed font-sans"
                 >
-                  <CheckCircle className="w-12 h-12 text-[#66BB6A] mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
-                  <p className="text-white/85">
-                    You've successfully joined our garden community. Check your email for a welcome gift!
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="flex-1">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
-                        className="w-full px-4 py-3 rounded-lg text-white bg-white/10 backdrop-blur-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#66BB6A]/50 placeholder-white/50"
-                        required
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="px-6 py-3 bg-[#2E7D32] text-white font-semibold rounded-lg hover:bg-[#66BB6A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                    >
-                      {isLoading ? (
-                        <div className="flex items-center space-x-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          <span>Joining...</span>
-                        </div>
-                      ) : (
-                        'Join Now & Save 10%'
-                      )}
-                    </button>
-                  </div>
-                  <p className="text-sm text-white/85">
-                    We respect your privacy. Unsubscribe at any time.
-                  </p>
-                </form>
+                  {isLoading ? 'Joining...' : isSubmitted ? 'Joined!' : 'Subscribe'}
+                </button>
+              </div>
+              {isSubmitted && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute -bottom-8 left-0 right-0 text-gold-400 text-sm font-medium font-sans"
+                >
+                  Welcome to the family! Check your inbox for your discount code.
+                </motion.p>
               )}
-            </motion.div>
+            </form>
           </motion.div>
         </FrostedGlassCard>
       </div>

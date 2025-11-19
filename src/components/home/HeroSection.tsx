@@ -11,12 +11,11 @@ export default function HeroSection() {
       {/* Full-Bleed Leaf Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png"
-          alt="Lush green foliage background"
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
-          className="object-cover object-center brightness-[0.35]"
+          className="object-cover object-center brightness-[0.65]"
           priority
-          quality={95}
         />
         {/* Luxury Gradient Overlay - Emerald to Deep Charcoal */}
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--emerald-900)]/60 via-[var(--ink-900)]/50 to-[var(--surface-onyx)]/70" />

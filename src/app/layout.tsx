@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Whole Lot of Nature",
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "/store-logo.png",
         width: 1200,
         height: 630,
         alt: "Whole Lot of Nature",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       "Premium plants, soil mixes, and eco-friendly gardening essentials delivered across India.",
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "/store-logo.png",
         alt: "Whole Lot of Nature",
       },
     ],

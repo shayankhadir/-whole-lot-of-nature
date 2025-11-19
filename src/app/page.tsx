@@ -17,6 +17,7 @@ import SeamlessSection from '@/components/ui/SeamlessSection';
 export default function Home() {
   return (
     <div className="min-h-screen relative z-10 bg-slate-950 text-white">
+      <h1 className="sr-only">Whole Lot of Nature | Premium Plant Boutique</h1>
       {/* 1. Interactive Hero Section */}
       <InteractiveHero />
 

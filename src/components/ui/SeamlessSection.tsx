@@ -37,11 +37,11 @@ export default function SeamlessSection({
   };
 
   const toneClasses: Record<'forest' | 'onyx' | 'canvas' | 'ivory' | 'glass', string> = {
-    forest: 'surface-forest text-[var(--cream-50)]',
-    onyx: 'surface-onyx text-[var(--cream-50)]',
-    canvas: 'surface-canvas text-[var(--ink-900)]',
-    ivory: 'surface-ivory text-[var(--ink-900)]',
-    glass: 'glass-panel text-[var(--cream-50)] mx-auto max-w-[min(1400px,95%)]'
+    forest: 'surface-forest',
+    onyx: 'surface-onyx',
+    canvas: 'surface-canvas',
+    ivory: 'surface-ivory',
+    glass: 'glass-panel mx-auto max-w-[min(1400px,95%)]'
   };
 
   const hasCustomBackground = Boolean(bgColor || gradientFrom || gradientTo);
@@ -50,7 +50,7 @@ export default function SeamlessSection({
     : toneClasses[tone];
 
   const gradientOverlay = gradientFrom && gradientTo
-    ? `bg-gradient-to-b from-[${gradientFrom}] via-[${bgColor.replace('bg-[', '').replace(']', '')}] to-[${gradientTo}]`
+    ? `bg-gradient-to-b from-[${gradientFrom}] via-transparent to-[${gradientTo}]`
     : '';
 
   return (
@@ -59,13 +59,13 @@ export default function SeamlessSection({
       {(tone === 'forest' || tone === 'onyx') && (
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
-            alt="Tropical leaves background"
+            src="/images/backgrounds/seamless-tropical-canopy.svg"
+            alt="Seamless tropical canopy"
             fill
-            className="object-cover opacity-10"
-            quality={90}
+            className="object-cover opacity-70"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
       )}
 

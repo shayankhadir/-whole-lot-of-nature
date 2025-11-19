@@ -1,3 +1,15 @@
+import { buildPageMetadata } from '@/lib/seo/pageMetadata';
+
+export const metadata = buildPageMetadata({
+  title: 'Environment Variable Diagnostics | Whole Lot of Nature',
+  description: 'Internal utility for confirming WordPress, WooCommerce, and public environment variables.',
+  path: '/test-env',
+  robots: {
+    index: false,
+    follow: false,
+  },
+});
+
 export default function TestEnvPage() {
   const envVars = {
     WORDPRESS_API_URL: process.env.WORDPRESS_API_URL ? '✅ Set' : '❌ Missing',

@@ -280,6 +280,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-neutral-50">
         <div className="text-center space-y-2">
+          <h1 className="sr-only">Loading product details</h1>
           <p className="text-2xl font-semibold text-emerald-900 antialiased">Calibrating your botanical experience…</p>
           <p className="text-neutral-600">Curating product insights and concierge perks.</p>
         </div>
@@ -291,6 +292,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-neutral-50">
         <div className="text-center space-y-6">
+          <h1 className="sr-only">Product not found</h1>
           <p className="text-3xl font-bold text-neutral-900 antialiased">We couldn&apos;t locate that product</p>
           <Link
             href="/shop"
@@ -318,6 +320,7 @@ export default function ProductDetailPage() {
 
   return (
     <div className="bg-gradient-to-b from-emerald-50 via-white to-white text-neutral-900">
+      <h1 className="sr-only">{product.name}</h1>
       <Head>
         <title>{`${product.name} | Whole Lot of Nature`}</title>
         <meta name="description" content={seoDescription} />

@@ -59,16 +59,18 @@ export default function ProductPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden">
+      <h1 className="sr-only">{product.name}</h1>
       {/* Animated Background Grid */}
       <AnimatedBackground />
       
       {/* Subtle leaf background */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
+      <div className="absolute inset-0 opacity-40 pointer-events-none z-0">
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2024/11/bgleaf1.png"
-          alt=""
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
           className="object-cover"
+          priority
         />
       </div>
 

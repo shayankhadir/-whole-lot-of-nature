@@ -32,11 +32,11 @@ export default function ForestExperienceBanner() {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/bgleaf2.png"
-          alt="Forest canopy pattern"
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
           priority
-          className="object-cover opacity-60"
+          className="object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)]/90 via-[#06150d]/65 to-[#091f13]/80" />
         <DarkVeil

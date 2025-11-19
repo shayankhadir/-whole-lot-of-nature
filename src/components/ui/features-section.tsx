@@ -89,27 +89,25 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 border-[#2E7D32]/20",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800 border-[#2E7D32]/20",
-        index < 4 && "lg:border-b dark:border-neutral-800 border-[#2E7D32]/20"
+        "flex flex-col lg:border-r py-10 relative group/feature border-emerald-800/30",
+        (index === 0 || index === 4) && "lg:border-l border-emerald-800/30",
+        index < 4 && "lg:border-b border-emerald-800/30"
       )}
     >
       {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-[#2E7D32]/10 dark:from-[#2E7D32]/20 to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-emerald-800/10 to-transparent pointer-events-none" />
       )}
       {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#2E7D32]/10 dark:from-[#2E7D32]/20 to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-emerald-800/10 to-transparent pointer-events-none" />
       )}
-      <div className="mb-4 relative z-10 px-10 text-[#66BB6A] dark:text-[#66BB6A]">
-        {icon}
-      </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10 antialiased">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#2E7D32]/30 dark:bg-[#2E7D32]/50 group-hover/feature:bg-[#66BB6A] transition-all duration-200 origin-center backdrop-blur-md" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-white dark:text-white">
+      <div className="mb-4 relative z-10 px-10 text-gold-400">{icon}</div>
+      <div className="text-lg font-bold mb-2 relative z-10 px-10 font-serif">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-emerald-800/30 group-hover/feature:bg-gold-500 transition-all duration-200 origin-center backdrop-blur-md" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-cream-50">
           {title}
         </span>
       </div>
-      <p className="text-sm text-[var(--mint-100)] dark:text-[var(--mint-100)] max-w-xs relative z-10 px-10 antialiased">
+      <p className="text-sm text-cream-200/80 max-w-xs relative z-10 px-10 font-sans">
         {description}
       </p>
     </div>

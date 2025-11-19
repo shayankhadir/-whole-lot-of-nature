@@ -40,6 +40,7 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <h1 className="sr-only">Loading blog article</h1>
         <p className="text-2xl font-bold text-black antialiased">📖 Loading Article...</p>
       </div>
     );
@@ -49,6 +50,7 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
+          <h1 className="sr-only">Blog article not found</h1>
           <p className="text-2xl font-bold text-black mb-4 antialiased">Article Not Found</p>
           <Link href="/blog" className="px-6 py-3 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#2E7D32]">
             Back to Blog
@@ -60,6 +62,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="bg-white">
+      <h1 className="sr-only">{post.title}</h1>
       {/* Article Hero */}
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">

@@ -10,13 +10,12 @@ export default function HeroSection() {
       {/* Static Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png"
-          alt="Dense forest leaves background"
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
           className="object-cover object-center"
-          style={{ filter: 'brightness(0.3)' }}
+          style={{ filter: 'brightness(0.5)' }}
           priority
-          quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0D3B1F]/80 via-[#1A1A1A]/70 to-[#000000]/90" />
       </div>

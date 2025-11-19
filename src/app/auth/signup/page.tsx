@@ -117,6 +117,7 @@ export default function SignUpPage() {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full"
       >
+          <h1 className="sr-only">Create a Whole Lot of Nature Account</h1>
         <Card className="p-8">
           <div className="text-center mb-8">
             <motion.h1 

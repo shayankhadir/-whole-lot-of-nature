@@ -54,12 +54,13 @@ export default function SignInPage() {
 
   return (
     <div className="min-h-screen flex">
+      <h1 className="sr-only">Sign In to Whole Lot of Nature</h1>
       {/* Left Side - Forest Background with "SIGN IN" Text */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         {/* Forest Background Image */}
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png"
-          alt="Lush forest background"
+          src="/images/backgrounds/seamless-tropical-canopy.svg"
+          alt="Seamless tropical canopy"
           fill
           className="object-cover"
           priority

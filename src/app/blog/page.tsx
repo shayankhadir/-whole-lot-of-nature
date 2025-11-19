@@ -4,6 +4,14 @@ import Link from 'next/link';
 import { Calendar, User } from 'lucide-react';
 import { getPosts, Post } from '@/lib/api/wordpress';
 import Button from '@/components/ui/Button';
+import { buildPageMetadata } from '@/lib/seo/pageMetadata';
+
+export const metadata = buildPageMetadata({
+  title: 'Gardening Tips & Stories | Whole Lot of Nature Blog',
+  description: 'Browse tutorials, growing guides, and studio stories from the Whole Lot of Nature editorial team.',
+  path: '/blog',
+  type: 'article',
+});
 
 export default async function BlogPage() {
   const posts: Post[] = await getPosts({ per_page: 12 });

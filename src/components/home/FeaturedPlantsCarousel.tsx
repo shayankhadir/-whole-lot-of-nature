@@ -64,12 +64,12 @@ export default function FeaturedPlantsCarousel() {
 
   if (loading) {
     return (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-emerald-950">
         <div className="max-w-[1600px] mx-auto">
-          <div className="h-12 bg-[var(--ink-700)] animate-shimmer w-64 mb-12 rounded-lg" />
+          <div className="h-12 bg-emerald-900/50 animate-pulse w-64 mb-12 rounded-lg" />
           <div className="flex gap-6 overflow-hidden">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="min-w-[320px] h-[480px] bg-[var(--ink-700)] animate-shimmer forest-card" />
+              <div key={i} className="min-w-[320px] h-[480px] bg-emerald-900/30 animate-pulse rounded-2xl" />
             ))}
           </div>
         </div>
@@ -78,28 +78,29 @@ export default function FeaturedPlantsCarousel() {
   }
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)] overflow-hidden">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-emerald-950 overflow-hidden">
       {/* Background Leaf Decorations */}
-      <div className="absolute top-10 left-0 w-48 h-48 text-[var(--emerald-700)]/5 pointer-events-none">
+      <div className="absolute top-10 left-0 w-64 h-64 text-emerald-900/20 pointer-events-none">
         <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
       </div>
-      <div className="absolute bottom-10 right-0 w-64 h-64 text-[var(--emerald-500)]/5 pointer-events-none">
+      <div className="absolute bottom-10 right-0 w-80 h-80 text-emerald-800/10 pointer-events-none">
         <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
       </div>
 
       <div className="max-w-[1600px] mx-auto relative">
-        {/* Section Header - Golden Ratio H3 (110px) */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-16 text-center md:text-left"
         >
-          <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-white uppercase tracking-wide antialiased">
-            Featured <span className="text-[var(--emerald-500)]">Plants</span>
+          <span className="section-eyebrow mb-4">Curated Collection</span>
+          <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] font-bold text-cream-50 mb-4">
+            Featured <span className="text-gold-gradient">Plants</span>
           </h2>
-          <p className="font-inter text-lg text-white/85 mt-4 max-w-2xl antialiased">
+          <p className="font-sans text-lg text-cream-200/80 max-w-2xl">
             Handpicked organic plants, carefully curated for your home and garden.
           </p>
         </motion.div>
@@ -109,24 +110,24 @@ export default function FeaturedPlantsCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#2E7D32] -translate-x-6"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-emerald-900/80 border border-gold-500/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-emerald-800 hover:border-gold-500 -translate-x-6 backdrop-blur-sm"
             aria-label="Scroll left"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-6 h-6 text-gold-400" />
           </button>
 
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#2E7D32] translate-x-6"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-emerald-900/80 border border-gold-500/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-emerald-800 hover:border-gold-500 translate-x-6 backdrop-blur-sm"
             aria-label="Scroll right"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-6 h-6 text-gold-400" />
           </button>
 
           {/* Scrolling Cards */}
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
+            className="flex gap-8 overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4"
           >
             {products.map((product, index) => (
               <motion.div
@@ -138,64 +139,51 @@ export default function FeaturedPlantsCarousel() {
                 className="min-w-[320px] sm:min-w-[360px]"
               >
                 <Link href={`/shop/${product.slug}`}>
-                  <div className="group relative bg-[#2C2C2C] forest-card-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 h-full">
-                    {/* Emerald Glow on Hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none emerald-glow-lg" />
-
-                    {/* Forest Leaf Corner Decoration */}
-                    <div className="absolute -top-6 -right-6 w-20 h-20 text-[#2E7D32]/15 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
-                    </div>
-
+                  <div className="group relative bg-emerald-900/20 border border-emerald-800/50 rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-gold-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] h-full">
+                    
                     {/* Product Image - 4:5 Aspect Ratio */}
-                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_top,rgba(47,182,126,0.2),rgba(4,12,8,0.9))]">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-emerald-900/10 to-emerald-950/50">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-contain p-6 transition-transform duration-400 group-hover:scale-110 drop-shadow-[0_25px_40px_rgba(3,8,5,0.75)]"
+                        className="object-contain p-8 transition-transform duration-700 group-hover:scale-110 drop-shadow-2xl"
                         sizes="360px"
                       />
+                      
+                      {/* Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-transparent to-transparent opacity-60" />
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-6">
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
                       {/* Category Badge */}
-                      <span className="inline-block text-xs uppercase tracking-widest text-[#66BB6A] font-montserrat font-semibold mb-3">
+                      <span className="inline-block text-xs uppercase tracking-[0.2em] text-gold-400 font-medium mb-3">
                         {product.category}
                       </span>
 
-                      {/* Product Name - H6 (26px) */}
-                      <h3 className="font-montserrat font-semibold text-[clamp(1.125rem,2.5vw,1.625rem)] text-white leading-tight line-clamp-2 mb-4 group-hover:text-[#66BB6A] transition-colors duration-300">
+                      {/* Product Name */}
+                      <h3 className="font-serif text-[1.75rem] text-cream-50 leading-tight mb-4 group-hover:text-gold-200 transition-colors duration-300">
                         {product.name}
                       </h3>
 
-                      {/* Price - H5 (42px) */}
-                      <div className="flex items-baseline justify-between">
+                      {/* Price */}
+                      <div className="flex items-end justify-between border-t border-white/10 pt-4">
                         <div className="flex flex-col">
-                          <span className="font-montserrat text-[clamp(2rem,5vw,2.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
+                          <span className="font-sans text-2xl text-emerald-400 font-bold">
                             {formatPrice(product.sale_price || product.price || '0')}
                           </span>
                           {product.sale_price && (
-                            <span className="text-sm text-white/50 line-through">
+                            <span className="text-sm text-white/40 line-through">
                               {formatPrice(product.regular_price || product.price || '0')}
                             </span>
                           )}
                         </div>
-                        <span className="text-sm font-inter text-white/50 group-hover:text-white/85 transition-colors">
-                          View Details →
+                        <span className="text-sm font-medium text-gold-400/80 group-hover:text-gold-300 transition-colors flex items-center gap-1">
+                          View Details <ArrowRight className="w-3 h-3" />
                         </span>
                       </div>
                     </div>
-
-                    {/* Subtle Animated Green Shadow - Sunlight Through Leaves Effect */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        boxShadow: '0 8px 32px rgba(46, 125, 50, 0.3)',
-                        filter: 'blur(8px)',
-                      }}
-                    />
                   </div>
                 </Link>
               </motion.div>
@@ -209,13 +197,13 @@ export default function FeaturedPlantsCarousel() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
           <Link href="/shop">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-[#2E7D32] text-white font-montserrat font-bold text-base uppercase tracking-wider forest-card-lg emerald-glow hover:bg-[#66BB6A] transition-all duration-300 antialiased"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-gold"
             >
               View All Products
             </motion.button>

@@ -2,32 +2,68 @@
 @plugin "tailwindcss-animate";
 
 :root {
+  /* Main Green Palette - Sophisticated & Deep */
+  --emerald-950: #051f15;
   --emerald-900: #0f3d2a;
+  --emerald-800: #16593e;
   --emerald-700: #1f7a4f;
+  --emerald-600: #269660;
   --emerald-500: #2fb67e;
+  --emerald-400: #5cc795;
   --emerald-300: #8ad1b1;
-  --mint-100: #e6f4ef;
+  --emerald-200: #a7f3d0;
+  --emerald-100: #d1fae5;
+  --emerald-50: #ecfdf5;
 
-  --cream-50: #fdfbf5;
-  --cream-200: #f3ede2;
+  /* Warm Neutrals & Ivory Whites */
+  --cream-50: #fdfbf7; /* Ivory White */
+  --cream-100: #f7f3e8;
+  --cream-200: #efe8d6;
+  --cream-300: #e2d6b8;
+  
+  /* Metallic Accents - Subtle Gold */
+  --gold-100: #fbf6e0;
+  --gold-200: #f5e8b0;
+  --gold-300: #e8d275;
+  --gold-400: #dcb943;
+  --gold-500: #c49b22; /* Main Gold */
+  --gold-600: #a37816;
+
+  /* Ink / Text Colors */
+  --ink-950: #050a07;
   --ink-900: #0d1b10;
+  --ink-800: #16261b;
   --ink-700: #1f2b23;
   --ink-500: #4a5a4f;
+  --ink-300: #9ca3af;
 
+  /* Surface Colors */
   --surface-canvas: var(--cream-50);
+  --surface-paper: #ffffff;
   --surface-forest: linear-gradient(180deg, #0f2418 0%, #07110a 100%);
   --surface-onyx: #0b1510;
-  --surface-card: rgba(255, 255, 255, 0.05);
+  --surface-card: rgba(255, 255, 255, 0.8);
+  --surface-card-dark: rgba(15, 36, 24, 0.6);
 
+  /* UI Elements */
   --ring-color: rgba(47, 182, 126, 0.35);
-  --shadow-soft: 0 20px 80px rgba(4, 20, 11, 0.18);
-  --shadow-card: 0 10px 40px rgba(15, 61, 42, 0.15);
+  --border-light: var(--cream-200);
+  --border-dark: rgba(255, 255, 255, 0.1);
+  
+  /* Shadows */
+  --shadow-soft: 0 20px 80px rgba(4, 20, 11, 0.08);
+  --shadow-card: 0 10px 30px rgba(15, 61, 42, 0.08);
+  --shadow-hover: 0 20px 40px rgba(15, 61, 42, 0.12);
+  --shadow-gold: 0 4px 20px rgba(196, 155, 34, 0.2);
 
+  /* Border Radius */
   --radius-pill: 999px;
-  --radius-lg: 2rem;
-  --radius-md: 1.25rem;
-  --radius-sm: 0.75rem;
+  --radius-xl: 2rem;
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.5rem;
 
+  /* Typography */
   --font-sans: var(--font-inter, 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   --font-display: var(--font-montserrat, 'Montserrat', 'Inter', sans-serif);
   --font-serif: var(--font-playfair-display, 'Playfair Display', Georgia, serif);
@@ -111,8 +147,16 @@ strong {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-panel-dark {
+  background: rgba(5, 31, 21, 0.6);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
@@ -120,8 +164,9 @@ strong {
 
 .surface-card {
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: var(--shadow-soft);
+  background: #ffffff;
+  border: 1px solid var(--cream-200);
+  box-shadow: var(--shadow-card);
 }
 
 .surface-card--dark {
@@ -132,12 +177,12 @@ strong {
 
 .surface-forest {
   background: var(--surface-forest);
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--cream-50);
 }
 
 .surface-onyx {
   background: var(--surface-onyx);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--cream-100);
 }
 
 .surface-canvas {
@@ -148,21 +193,78 @@ strong {
 .surface-ivory {
   background: var(--cream-50);
   color: var(--ink-900);
-  box-shadow: inset 0 0 1px rgba(13, 27, 16, 0.08);
+  border-top: 1px solid var(--cream-200);
+  border-bottom: 1px solid var(--cream-200);
 }
 
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.9rem;
+  padding: 0.35rem 1rem;
   border-radius: var(--radius-pill);
-  background: rgba(47, 182, 126, 0.12);
-  color: var(--emerald-700);
+  background: rgba(196, 155, 34, 0.1);
+  color: var(--gold-600);
+  border: 1px solid rgba(196, 155, 34, 0.2);
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   font-weight: 600;
+  font-family: var(--font-sans);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: var(--emerald-800);
+  color: var(--cream-50);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: var(--emerald-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--emerald-900);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  border: 1px solid var(--emerald-800);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--emerald-50);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(196, 155, 34, 0.3);
 }
 
 .gradient-emerald {

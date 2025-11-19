@@ -6,7 +6,7 @@ import BackgroundBeams, { BackgroundParticles } from '@/components/ui/Background
 
 export default function Features() {
   return (
-    <section className="relative py-20 bg-[var(--surface-onyx)]">
+    <section className="relative py-24 bg-emerald-950">
       {/* Animated Background Beams */}
       <BackgroundBeams />
       <BackgroundParticles />
@@ -19,10 +19,11 @@ export default function Features() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-[clamp(2rem,4vw,2.5rem)] font-montserrat font-bold text-white mb-3 antialiased">
-            Why Choose Whole Lot of Nature
+          <span className="section-eyebrow mb-4">Our Promise</span>
+          <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-bold text-cream-50 mb-4">
+            Why Choose <span className="text-gold-gradient">Whole Lot of Nature</span>
           </h2>
-          <p className="text-[clamp(0.875rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-3xl mx-auto antialiased">
+          <p className="text-[clamp(1rem,2vw,1.125rem)] text-cream-200/80 max-w-3xl mx-auto font-sans">
             Premium products, expert guidance, and exceptional service for your gardening journey
           </p>
         </motion.div>
