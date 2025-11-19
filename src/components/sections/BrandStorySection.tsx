@@ -93,22 +93,19 @@ export default function BrandStorySection() {
 
             <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-white/80 antialiased">
               <p>
-                Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
+                At Whole Lot of Nature, we believe that every plant has a story, and every garden is a sanctuary. We're on a mission to connect people with nature through thoughtfully curated plants, premium growing essentials, and sustainable practices.
               </p>
               <p>
-                From organic soil mixes crafted with care, to eco-friendly fertilizers, living indoor plants, aquatic greens, and handmade herbal products, we blend nature’s purity with modern design and conscious living.
+                Our carefully selected collection includes vibrant indoor and outdoor plants, premium organic soil mixes, eco-friendly fertilizers, aquatic ecosystems, and handcrafted herbal products. Each item is chosen with care to ensure it meets our high standards for quality and sustainability.
               </p>
               <p>
-                Every product — whether it’s a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives.
+                We're committed to making plant parenthood accessible, enjoyable, and rewarding for everyone – whether you're starting your first green space or tending an entire garden. Our expert team is always here to guide you on your botanical journey.
               </p>
               <p>
-                We believe in sustainable gardening, mindful consumption, and staying loyal to the soil — because when you nurture nature, it gives back more than you imagine.
-              </p>
-              <p>
-                Our goal isn’t just to sell — it’s to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
+                When you shop with us, you're not just getting plants and products – you're joining a community dedicated to greener living, mindful consumption, and nurturing the Earth.
               </p>
               <p className="font-medium text-[#66BB6A]">
-                Whole Lot of Nature — bringing soil, soul, and sustainability together.
+                Welcome to Whole Lot of Nature – where every root matters.
               </p>
 
               {/* Visually-hidden SEO helper */}
