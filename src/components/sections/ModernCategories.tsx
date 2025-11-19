@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -67,16 +68,28 @@ export default function ModernCategories() {
 
   return (
     <section id="categories" className="relative py-20 px-4 overflow-hidden bg-[var(--surface-onyx)]">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Tropical leaves background"
+          fill
+          className="object-cover opacity-10"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface-onyx)]/95 via-[var(--surface-onyx)]/80 to-[var(--surface-onyx)]/95" />
+      </div>
+
       {/* Leaf Background Decorations */}
-      <div className="absolute top-10 left-0 w-64 h-64 text-[var(--emerald-700)]/5 pointer-events-none">
+      <div className="absolute top-10 left-0 w-64 h-64 text-[var(--emerald-700)]/5 pointer-events-none z-0">
         <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
       </div>
-      <div className="absolute bottom-20 right-0 w-96 h-96 text-[var(--emerald-500)]/5 pointer-events-none">
+      <div className="absolute bottom-20 right-0 w-96 h-96 text-[var(--emerald-500)]/5 pointer-events-none z-0">
         <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
       </div>
       
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}

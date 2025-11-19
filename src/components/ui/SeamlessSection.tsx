@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import Image from 'next/image';
 import LeafDecoration, { FernDecoration } from '@/components/ui/LeafDecoration';
 
 interface SeamlessSectionProps {
@@ -54,6 +55,20 @@ export default function SeamlessSection({
 
   return (
     <section className={`relative w-full ${resolvedBackground} ${gradientOverlay} ${paddingClasses[paddingY]} px-4 sm:px-6 lg:px-12 overflow-hidden ${className}`}>
+      {/* Background Image for dark tones */}
+      {(tone === 'forest' || tone === 'onyx') && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            alt="Tropical leaves background"
+            fill
+            className="object-cover opacity-10"
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
+        </div>
+      )}
+
       {gradientFrom && gradientTo && (
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent pointer-events-none" />
       )}
