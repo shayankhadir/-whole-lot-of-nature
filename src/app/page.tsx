@@ -5,6 +5,7 @@ import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
 import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
 import ModernCategories from '@/components/sections/ModernCategories';
+import TagFilterSection from '@/components/sections/TagFilterSection';
 import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
 import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
 import Features from '@/components/sections/Features';
@@ -38,7 +39,10 @@ export default function Home() {
       {/* 4. Modern Categories Section */}
       <ModernCategories />
 
-      {/* 5. Featured Soil Mixes */}
+      {/* 5. Tag-Based Product Filter */}
+      <TagFilterSection />
+
+      {/* 6. Featured Soil Mixes */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"
@@ -46,10 +50,10 @@ export default function Home() {
         <FeaturedSoilMixes />
       </SeamlessSection>
 
-      {/* 6. All Products Showcase */}
+      {/* 7. All Products Showcase */}
       <AllProductsShowcase />
 
-      {/* 7. Features Section */}
+      {/* 8. Features Section */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"
@@ -57,7 +61,7 @@ export default function Home() {
         <Features />
       </SeamlessSection>
 
-      {/* 8. Customer Testimonials */}
+      {/* 9. Customer Testimonials */}
       <SeamlessSection 
         tone="forest"
         paddingY="lg"
@@ -65,7 +69,7 @@ export default function Home() {
         <CustomerTestimonialsSlider />
       </SeamlessSection>
 
-      {/* 9. Blog Preview */}
+      {/* 10. Blog Preview */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"
@@ -73,7 +77,7 @@ export default function Home() {
         <BlogPreview />
       </SeamlessSection>
 
-      {/* 10. Newsletter Signup */}
+      {/* 11. Newsletter Signup */}
       <SeamlessSection 
         tone="onyx"
         paddingY="md"
@@ -81,7 +85,7 @@ export default function Home() {
         <Newsletter />
       </SeamlessSection>
 
-      {/* 11. Final CTA */}
+      {/* 12. Final CTA */}
       <SeamlessSection 
         tone="forest"
         paddingY="xl"

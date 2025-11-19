@@ -1,11 +1,70 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { shopCollections } from '@/components/layout/navigationData';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+interface WooCategory {
+  id: number;
+  name: string;
+  slug: string;
+  count: number;
+  description: string;
+  image: any;
+}
+
+// Map category names to icons
+const getCategoryIcon = (name: string): LucideIcon => {
+  const lowerName = name.toLowerCase();
+  if (lowerName.includes('soil') || lowerName.includes('growing')) return Sprout;
+  if (lowerName.includes('plant') || lowerName.includes('indoor') || lowerName.includes('outdoor')) return Leaf;
+  if (lowerName.includes('aquatic') || lowerName.includes('water')) return Droplet;
+  if (lowerName.includes('wellness') || lowerName.includes('herbal')) return Sparkles;
+  if (lowerName.includes('decor') || lowerName.includes('miniature')) return Gem;
+  return Package;
+};
 
 export default function ModernCategories() {
+  const [categories, setCategories] = useState<WooCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/categories')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          // Filter out categories with no products and limit to top 6
+          const filteredCategories = data.data
+            .filter((cat: WooCategory) => cat.count > 0)
+            .slice(0, 6);
+          setCategories(filteredCategories);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch categories:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="categories" className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="animate-pulse">
+                <div className="h-64 bg-emerald-900/20 rounded-2xl" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="categories" className="relative py-20 px-4 overflow-hidden">
       {/* Background */}
@@ -48,18 +107,18 @@ export default function ModernCategories() {
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {shopCollections.map((collection, index) => {
-            const Icon = collection.icon;
+          {categories.map((category, index) => {
+            const Icon = getCategoryIcon(category.name);
             
             return (
               <motion.div
-                key={collection.title}
+                key={category.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link href={collection.href}>
+                <Link href={`/shop?category=${category.slug}`}>
                   <motion.div
                     whileHover={{ y: -8, scale: 1.02 }}
                     className="group relative h-full p-8 rounded-2xl bg-gradient-to-br from-emerald-900/40 via-slate-900/50 to-emerald-950/40 border border-emerald-500/20 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:shadow-[0_20px_60px_rgba(16,185,129,0.2)]"
@@ -79,29 +138,24 @@ export default function ModernCategories() {
                     {/* Content */}
                     <div className="relative">
                       <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
-                        {collection.title}
+                        {category.name}
                       </h3>
                       
-                      <p className="text-emerald-100/70 text-sm leading-relaxed mb-6">
-                        {collection.description}
+                      <p className="text-emerald-100/70 text-sm leading-relaxed mb-6 line-clamp-2">
+                        {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 
-                      {/* Subcategories */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {collection.items.slice(0, 3).map((item) => (
-                          <span
-                            key={item.name}
-                            className="text-xs px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-200/80 group-hover:bg-emerald-500/20 group-hover:border-emerald-400/40 transition-all"
-                          >
-                            {item.name}
-                          </span>
-                        ))}
-                      </div>
+                      {/* Product Count Badge */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-200/80 group-hover:bg-emerald-500/20 group-hover:border-emerald-400/40 transition-all">
+                          {category.count} {category.count === 1 ? 'Product' : 'Products'}
+                        </span>
 
-                      {/* Arrow */}
-                      <div className="flex items-center gap-2 text-emerald-300 font-medium text-sm">
-                        <span>Explore</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                        {/* Arrow */}
+                        <div className="flex items-center gap-2 text-emerald-300 font-medium text-sm">
+                          <span>Explore</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                        </div>
                       </div>
                     </div>
 
