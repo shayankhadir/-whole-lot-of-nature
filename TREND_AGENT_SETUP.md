@@ -10,7 +10,9 @@ WORDPRESS_SITE_URL=https://your-site.com
 WORDPRESS_USERNAME=your_api_user
 WORDPRESS_PASSWORD=your_app_password
 
-# OpenAI Configuration (Optional - for enhanced content generation)
+# AI Content Configuration (Optional - for premium copy)
+PERPLEXITY_API_KEY=pplx-your-api-key
+# Legacy fallback (only if you still use OpenAI)
 OPENAI_API_KEY=sk-your-api-key
 
 # Reddit Configuration (Optional - for enhanced Reddit scraping)
@@ -52,7 +54,7 @@ Automatically creates:
 - FAQ sections
 - Engaging conclusions with CTAs
 
-**No API required** - uses intelligent templates!
+**Optional AI boost** - add `PERPLEXITY_API_KEY` to unlock Perplexity-powered narratives. Without a key, intelligent templates still deliver structured content.
 
 ### 4. WordPress Publishing (Optional)
 

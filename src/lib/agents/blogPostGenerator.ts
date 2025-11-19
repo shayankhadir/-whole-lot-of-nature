@@ -5,6 +5,7 @@
 
 import { TrendData } from './trendScraper';
 import SEOOptimizer, { BlogPostSEO } from './seoOptimizer';
+import PerplexityClient from '../ai/perplexityClient';
 
 export interface GeneratedBlogPost {
   title: string;
@@ -24,9 +25,18 @@ export interface GeneratedBlogPost {
 class BlogPostGenerator {
   private seoOptimizer = new SEOOptimizer();
   private apiKey: string;
+  private aiClient?: PerplexityClient;
 
   constructor(apiKey?: string) {
-    this.apiKey = apiKey || process.env.OPENAI_API_KEY || '';
+    this.apiKey =
+      apiKey ||
+      process.env.PERPLEXITY_API_KEY ||
+      process.env.OPENAI_API_KEY ||
+      '';
+
+    if (this.apiKey) {
+      this.aiClient = new PerplexityClient(this.apiKey);
+    }
   }
 
   /**
@@ -88,9 +98,121 @@ class BlogPostGenerator {
     topic: string,
     description?: string
   ): Promise<string> {
-    // Since we don't have live API integration, generate well-structured content
-    // In production, this would call OpenAI API or similar
+    if (this.aiClient) {
+      try {
+        const aiResponse = await this.generateContentWithPerplexity(
+          h1,
+          h2s,
+          h3s,
+          mainKeyword,
+          topic,
+          description
+        );
 
+        if (aiResponse?.trim()) {
+          return aiResponse;
+        }
+      } catch (error) {
+        console.error('Perplexity content generation failed. Falling back to template content.', error);
+      }
+    }
+
+    return this.generateTemplateContent(h1, h2s, h3s, mainKeyword, topic, description);
+  }
+
+  private async generateContentWithPerplexity(
+    h1: string,
+    h2s: string[],
+    h3s: string[],
+    mainKeyword: string,
+    topic: string,
+    description?: string
+  ): Promise<string> {
+    if (!this.aiClient) {
+      throw new Error('Perplexity client not configured');
+    }
+
+    const prompt = this.buildAIContentPrompt(h1, h2s, h3s, mainKeyword, topic, description);
+    const aiContent = await this.aiClient.complete(prompt, {
+      temperature: 0.35,
+      maxTokens: 2400,
+      systemPrompt:
+        'You are a senior horticulture strategist writing for the Whole Lot of Nature premium gardening brand. Prioritize Indian climate data, organic care, actionable steps, and empathetic coaching.',
+    });
+
+    const structuredContent = this.ensureHeadingStructure(aiContent, h1);
+    return this.ensureCTA(structuredContent, topic);
+  }
+
+  private buildAIContentPrompt(
+    h1: string,
+    h2s: string[],
+    h3s: string[],
+    mainKeyword: string,
+    topic: string,
+    description?: string
+  ): string {
+    const intro = description?.trim() || topic;
+    return `Create a long-form gardening blog article for Whole Lot of Nature, a premium Indian gardening store.
+
+Context:
+- Trend/Topic: ${topic}
+- Primary keyword: ${mainKeyword}
+- Trend description: ${intro}
+- Target audience: Indian urban home gardeners who value organic methods and premium tools.
+
+Requirements:
+1. Output Markdown only. Start with "# ${h1}" as the H1 heading.
+2. Keep the voice confident, warm, and instructional. Use specific Indian climate cues, measurements (metric + INR), and seasonal timing.
+3. Cover 900-1200 words with detailed, step-by-step explanations, comparison tables or checklists, and at least one quick-reference list.
+4. Use these H2 sections (rename for clarity if it helps, but cover the intent):
+${this.formatSectionList(h2s)}
+5. Weave these supporting talking points / H3 ideas where relevant:
+${this.formatSectionList(h3s)}
+6. Highlight sustainable practices, organic pest control, and troubleshooting guidance.
+7. Finish with a motivating conclusion plus a CTA inviting readers to explore Whole Lot of Nature's premium gardening essentials.
+
+Return Markdown only.`;
+  }
+
+  private ensureHeadingStructure(content: string, fallbackH1: string): string {
+    const normalized = content.replace(/\r\n/g, '\n').trim();
+    if (!normalized.startsWith('#')) {
+      return `# ${fallbackH1}\n\n${normalized}`;
+    }
+
+    return normalized;
+  }
+
+  private ensureCTA(content: string, topic: string): string {
+    const normalized = content.trim();
+    const hasBrandMention = normalized.toLowerCase().includes('whole lot of nature');
+    if (hasBrandMention) {
+      return normalized;
+    }
+
+    return `${normalized}\n\n${this.seoOptimizer.generateCTA(topic)}`;
+  }
+
+  private formatSectionList(sections: string[]): string {
+    if (!sections || sections.length === 0) {
+      return '- Provide a comprehensive exploration of the topic';
+    }
+
+    return sections
+      .filter((section) => Boolean(section))
+      .map((section) => `- ${section}`)
+      .join('\n');
+  }
+
+  private generateTemplateContent(
+    h1: string,
+    h2s: string[],
+    h3s: string[],
+    mainKeyword: string,
+    topic: string,
+    description?: string
+  ): string {
     const content = `# ${h1}
 
 ${this.generateIntroduction(topic, mainKeyword, description)}
