@@ -58,7 +58,7 @@ export default function ForestExperienceBanner() {
           <motion.div
             animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/85 backdrop-blur-md"
+            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-[var(--mint-100)] backdrop-blur-md"
           >
             <Sparkles className="h-4 w-4 text-[var(--emerald-500)]" />
             Immersive mode
@@ -79,7 +79,7 @@ export default function ForestExperienceBanner() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-4 font-inter text-base sm:text-lg text-white/80 antialiased"
+              className="mt-4 font-inter text-base sm:text-lg text-[var(--mint-100)] antialiased"
             >
               Dive into interactive plant stories, AR-ready specimens, and regenerative gardening lessons broadcast straight from our greenhouse lab.
             </motion.p>

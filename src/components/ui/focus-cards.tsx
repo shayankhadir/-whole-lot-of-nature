@@ -3,6 +3,13 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
+type Card = {
+  title: string;
+  src: string;
+  description?: string;
+  href?: string;
+};
+
 export const Card = React.memo(
   ({
     card,
@@ -10,7 +17,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: Card;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -31,24 +38,24 @@ export const Card = React.memo(
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,10,6,0.95)] via-[rgba(2,10,6,0.65)] to-transparent" />
       <div
         className={cn(
-          "absolute inset-0 flex items-end py-8 px-5 transition-opacity duration-300",
+          "absolute inset-0 flex flex-col justify-end py-8 px-5 transition-opacity duration-300",
           hovered === index ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="text-xl md:text-2xl font-semibold text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] antialiased">
+        <div className="text-xl md:text-2xl font-semibold text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] antialiased mb-2">
           {card.title}
         </div>
+        {card.description && (
+          <div className="text-sm text-[var(--mint-100)] drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)] antialiased">
+            {card.description}
+          </div>
+        )}
       </div>
     </div>
   )
 );
 
 Card.displayName = "Card";
-
-type Card = {
-  title: string;
-  src: string;
-};
 
 export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);

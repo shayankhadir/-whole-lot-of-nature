@@ -61,7 +61,7 @@ export default function Newsletter() {
             <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased">
               Join Our Garden Community
             </h2>
-            <p className="text-base text-white/85 mb-6 max-w-2xl mx-auto antialiased">
+            <p className="text-base text-[var(--mint-100)] mb-6 max-w-2xl mx-auto antialiased">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
               Plus, get 10% off your next order!
             </p>
@@ -73,7 +73,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-white/80"
+                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
               >
                 <Leaf className="w-5 h-5 text-[#66BB6A]" />
                 <span>Weekly Plant Care Tips</span>
@@ -83,7 +83,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-white/80"
+                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
               >
                 <Gift className="w-5 h-5 text-[#66BB6A]" />
                 <span>Exclusive Offers</span>
@@ -93,7 +93,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-white/80"
+                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
               >
                 <CheckCircle className="w-5 h-5 text-[#66BB6A]" />
                 <span>New Arrivals First</span>

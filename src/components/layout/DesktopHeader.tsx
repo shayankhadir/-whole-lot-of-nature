@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -24,6 +24,7 @@ export default function DesktopHeader() {
   const [searchOpen, setSearchOpen] = useState(false);
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const router = useRouter();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +37,20 @@ export default function DesktopHeader() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setShopDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setShopDropdownOpen(false);
+    }, 200);
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,7 +105,8 @@ export default function DesktopHeader() {
                 <div
                   key={item.name}
                   className="relative"
-                  onMouseLeave={() => setShopDropdownOpen(false)}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={handleMouseEnter}
                 >
                   <motion.button
                     initial={{ opacity: 0, y: -10 }}
@@ -98,7 +114,6 @@ export default function DesktopHeader() {
                     transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-1 text-sm font-semibold tracking-wide uppercase text-white/85 hover:text-white"
-                    onMouseEnter={() => setShopDropdownOpen(true)}
                     onClick={() => setShopDropdownOpen((open) => !open)}
                   >
                     {item.name}
@@ -122,8 +137,8 @@ export default function DesktopHeader() {
                   >
                     <div
                       className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl"
-                      onMouseEnter={() => setShopDropdownOpen(true)}
-                      onMouseLeave={() => setShopDropdownOpen(false)}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">

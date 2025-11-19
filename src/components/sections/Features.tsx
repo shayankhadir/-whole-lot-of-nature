@@ -22,7 +22,7 @@ export default function Features() {
           <h2 className="text-[clamp(2rem,4vw,2.5rem)] font-montserrat font-bold text-white mb-3 antialiased">
             Why Choose Whole Lot of Nature
           </h2>
-          <p className="text-[clamp(0.875rem,2vw,1.125rem)] text-white/85 max-w-3xl mx-auto antialiased">
+          <p className="text-[clamp(0.875rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-3xl mx-auto antialiased">
             Premium products, expert guidance, and exceptional service for your gardening journey
           </p>
         </motion.div>
