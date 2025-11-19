@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Leaf } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Leaf, ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/utils/pricing';
 
 interface FeaturedProduct {
