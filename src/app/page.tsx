@@ -13,6 +13,7 @@ import BlogPreview from '@/components/sections/BlogPreview';
 import Newsletter from '@/components/sections/Newsletter';
 import FinalCTA from '@/components/sections/FinalCTA';
 import FAQSection from '@/components/sections/FAQSection';
+import TrustBadges from '@/components/sections/TrustBadges';
 import SeamlessSection from '@/components/ui/SeamlessSection';
 
 export default function Home() {
@@ -28,6 +29,9 @@ export default function Home() {
       >
         <TrustBanner />
       </SeamlessSection>
+
+      {/* 2.5. Trust Badges */}
+      <TrustBadges />
 
       {/* 3. Featured Products Section */}
       <SeamlessSection 
