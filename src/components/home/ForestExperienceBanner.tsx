@@ -38,7 +38,7 @@ export default function ForestExperienceBanner() {
           priority
           className="object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)]/90 via-[#06150d]/65 to-[#091f13]/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010a05]/95 via-[#041107]/90 to-[#010a05]/95" />
         <DarkVeil
           hueShift={110}
           noiseIntensity={0.1}

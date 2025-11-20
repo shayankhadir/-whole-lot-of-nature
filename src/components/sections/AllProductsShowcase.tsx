@@ -55,7 +55,7 @@ export default function AllProductsShowcase() {
           className="object-cover opacity-15"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3512]/95 via-[#12501a]/80 to-[#0d3512]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
       </div>
 
       {/* Leaf Background Decorations */}
@@ -67,7 +67,7 @@ export default function AllProductsShowcase() {
       </div>
       
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#020f07]/70 to-[#010904]/85 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}

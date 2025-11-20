@@ -35,7 +35,7 @@ export default function InteractiveHero() {
           quality={95}
         />
         {/* Interactive gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d3512]/90 via-[#12501a]/85 to-[#0d3512]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010a05]/98 via-[#041107]/95 to-[#010a05]/98" />
         
         {/* Animated light rays */}
         <motion.div

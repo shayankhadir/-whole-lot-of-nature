@@ -34,10 +34,10 @@ export default function Newsletter() {
           src="/images/backgrounds/bgleaf2.png"
           alt="Decorative leaf background"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
           quality={75}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink-900)] via-[var(--ink-900)]/95 to-[var(--ink-900)]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010a05]/98 via-[#020f07]/94 to-[#010a05]/98" />
       </div>
 
       {/* Animated Background Effects */}

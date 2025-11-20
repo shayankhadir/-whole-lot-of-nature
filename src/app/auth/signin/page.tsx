@@ -58,7 +58,7 @@ export default function SignInPage() {
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         {/* Forest Background Image */}
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.png"
           alt="Lush forest background"
           fill
           className="object-cover"
@@ -66,7 +66,7 @@ export default function SignInPage() {
         />
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0D3B1F]/90 via-[#1A1A1A]/85 to-[#000000]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
 
         {/* Decorative Leaf SVGs */}
         <motion.div

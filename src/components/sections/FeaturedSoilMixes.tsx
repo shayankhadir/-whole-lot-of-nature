@@ -81,7 +81,7 @@ export default function FeaturedSoilMixes() {
           className="object-cover opacity-12"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#12501a]/95 via-[#0d3512]/80 to-[#12501a]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\n        {/* Section Header */}

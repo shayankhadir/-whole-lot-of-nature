@@ -30,6 +30,7 @@ const getCategoryIcon = (name: string): LucideIcon => {
 
 export default function ModernCategories() {
   const [categories, setCategories] = useState<WooCategory[]>([]);
+  const [subcategoriesByParent, setSubcategoriesByParent] = useState<Record<number, WooCategory[]>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,11 +38,21 @@ export default function ModernCategories() {
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data) {
-          // Filter out categories with no products, only show top-level categories (parent === 0), and limit to top 6
-          const filteredCategories = data.data
-            .filter((cat: WooCategory) => cat.count > 0 && cat.parent === 0)
-            .slice(0, 6);
-          setCategories(filteredCategories);
+          const allCategories: WooCategory[] = data.data;
+          const topLevelCategories = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0);
+          const childMap: Record<number, WooCategory[]> = {};
+
+          allCategories
+            .filter((cat) => cat.count > 0 && cat.parent !== 0)
+            .forEach((child) => {
+              if (!childMap[child.parent]) {
+                childMap[child.parent] = [];
+              }
+              childMap[child.parent].push(child);
+            });
+
+          setCategories(topLevelCategories);
+          setSubcategoriesByParent(childMap);
         }
         setLoading(false);
       })
@@ -78,7 +89,7 @@ export default function ModernCategories() {
           className="object-cover opacity-15"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3512]/95 via-[#12501a]/80 to-[#0d3512]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
       </div>
 
       {/* Leaf Background Decorations */}
@@ -90,7 +101,7 @@ export default function ModernCategories() {
       </div>
       
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--emerald-900)]/5 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#020f07]/70 to-[#010904]/85 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
@@ -121,6 +132,7 @@ export default function ModernCategories() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {categories.map((category, index) => {
             const Icon = getCategoryIcon(category.name);
+            const childCategories = subcategoriesByParent[category.id] || [];
             
             return (
               <motion.div
@@ -156,6 +168,27 @@ export default function ModernCategories() {
                       <p className="text-cream-100 text-sm leading-relaxed mb-6 line-clamp-2 antialiased">
                         {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
+
+                      {childCategories.length > 0 && (
+                        <div className="mb-6">
+                          <p className="text-xs uppercase tracking-wide text-emerald-300 mb-2 antialiased">Subcategories</p>
+                          <div className="flex flex-wrap gap-2">
+                            {childCategories.slice(0, 4).map((subcat) => (
+                              <span
+                                key={subcat.id}
+                                className="px-3 py-1 rounded-full bg-[var(--emerald-900)]/40 border border-[var(--emerald-700)]/30 text-emerald-200 text-xs antialiased"
+                              >
+                                {subcat.name}
+                              </span>
+                            ))}
+                            {childCategories.length > 4 && (
+                              <span className="px-3 py-1 rounded-full bg-[var(--emerald-900)]/40 border border-[var(--emerald-700)]/30 text-emerald-200 text-xs antialiased">
+                                +{childCategories.length - 4} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Product Count Badge */}
                       <div className="flex items-center justify-between">

@@ -62,15 +62,15 @@ export default function SeamlessSection({
             src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
             alt="Tropical leaves background"
             fill
-            className="object-cover opacity-10"
+            className="object-cover opacity-15"
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/90 via-[#010904]/75 to-[#010a05]/90" />
         </div>
       )}
 
       {gradientFrom && gradientTo && (
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/70 via-[#010904]/60 to-[#010904]/70 pointer-events-none" />
       )}
 
       {/* Left Decoration */}

@@ -65,8 +65,8 @@ export default function ProductPage() {
       {/* Subtle leaf background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2024/11/bgleaf1.png"
-          alt=""
+          src="/images/backgrounds/bgleaf1.png"
+          alt="Tropical foliage backdrop"
           fill
           className="object-cover"
         />
