@@ -27,10 +27,10 @@ function WishlistButton({ isWishlisted, onToggle }: { isWishlisted: boolean; onT
       aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
       animate={{ scale: popping ? [1, 1.3, 1] : 1 }}
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-      className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full glass flex items-center justify-center hover:bg-[#2E7D32] hover:border-[#2E7D32] transition-all duration-300 group active:scale-95 touch-manipulation"
+      className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full glass flex items-center justify-center hover:bg-[#86efbe] hover:border-[#86efbe] transition-all duration-300 group active:scale-95 touch-manipulation"
     >
       <Heart 
-        className={`w-5 h-5 transition-all ${isWishlisted ? 'fill-[#2E7D32] text-[#2E7D32]' : 'text-white group-hover:text-white'}`} 
+        className={`w-5 h-5 transition-all ${isWishlisted ? 'fill-[#86efbe] text-[#86efbe]' : 'text-[#daf2d0] group-hover:text-[#0d3512]'}`} 
       />
     </motion.button>
   );
@@ -76,15 +76,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       className="h-full"
     >
-      <div className="group relative bg-[#2C2C2C] forest-card overflow-hidden transition-all duration-300 hover:-translate-y-2 emerald-glow-lg h-full flex flex-col">
+      <div className="group relative bg-[#12501a] forest-card overflow-hidden transition-all duration-300 hover:-translate-y-2 emerald-glow-lg h-full flex flex-col">
         
         {/* Forest Leaf Decoration - Extending from Corner */}
-        <div className="absolute -top-8 -right-8 w-24 h-24 text-[#2E7D32]/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute -top-8 -right-8 w-24 h-24 text-[#86efbe]/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
         </div>
 
         {/* Product Image Container with 4:5 Aspect Ratio */}
-        <Link href={`/shop/${product.slug}`} className="relative block aspect-[4/5] bg-[#F8F9FA] overflow-hidden">
+        <Link href={`/shop/${product.slug}`} className="relative block aspect-[4/5] bg-[#0d3512] overflow-hidden">
           {/* Skeleton Loader */}
           {!imageLoaded && (
             <div className="absolute inset-0 animate-shimmer" />
@@ -104,8 +104,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               onLoad={() => setImageLoaded(true)}
             />
           ) : (
-            <div className="absolute inset-0 bg-[#F8F9FA] flex items-center justify-center">
-              <span className="text-[#2E7D32]/30 text-sm">No image</span>
+            <div className="absolute inset-0 bg-[#0d3512] flex items-center justify-center">
+              <span className="text-[#86efbe]/30 text-sm">No image</span>
             </div>
           )}
 
@@ -135,7 +135,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <div className="bg-emerald-400 text-emerald-950 px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
+              <div className="bg-[#86efbe] text-[#0d3512] px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
                 {getDiscountPercentage(product)}% OFF
               </div>
             </motion.div>
@@ -151,7 +151,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-semibold hover:bg-emerald-50 transition shadow-lg translate-y-4 group-hover:translate-y-0 duration-300 min-h-[44px] touch-manipulation"
+              className="bg-[#86efbe] text-[#0d3512] px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#daf2d0] transition shadow-lg translate-y-4 group-hover:translate-y-0 duration-300 min-h-[44px] touch-manipulation"
             >
               Quick View
             </motion.button>
@@ -163,14 +163,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Product Name */}
           <Link 
             href={`/shop/${product.slug}`}
-            className="font-montserrat font-semibold text-[clamp(0.875rem,2vw,1rem)] leading-tight text-white hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 mb-3 min-h-[44px] flex items-center touch-manipulation"
+            className="font-montserrat font-semibold text-[clamp(0.875rem,2vw,1rem)] leading-tight text-[#daf2d0] hover:text-[#86efbe] transition-colors duration-200 line-clamp-2 mb-3 min-h-[44px] flex items-center touch-manipulation"
           >
             {product.name}
           </Link>
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="font-inter text-xs text-white/85 line-clamp-2 leading-relaxed mb-3 sm:mb-4 flex-1">
+            <p className="font-inter text-xs text-[#daf2d0]/85 line-clamp-2 leading-relaxed mb-3 sm:mb-4 flex-1">
               {shortDesc}
             </p>
           )}
@@ -178,11 +178,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Price */}
           <div className="mb-3 sm:mb-4">
             <div className="flex items-baseline gap-2 sm:gap-3">
-              <span className="font-montserrat text-[clamp(1.125rem,2.5vw,1.25rem)] text-[#2E7D32] font-bold leading-none antialiased">
+              <span className="font-montserrat text-[clamp(1.125rem,2.5vw,1.25rem)] text-[#86efbe] font-bold leading-none antialiased">
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="font-inter text-xs text-white/40 line-through">
+                <span className="font-inter text-xs text-[#daf2d0]/40 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}
@@ -197,10 +197,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             whileTap={{ scale: 0.98 }}
             className={`w-full py-4 min-h-[44px] forest-card flex items-center justify-center gap-3 font-montserrat font-bold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 touch-manipulation active:scale-95 ${
               addedToCart
-                ? 'bg-[#66BB6A] text-white'
+                ? 'bg-[#86efbe] text-[#0d3512]'
                 : product.in_stock
-                ? 'bg-[#2E7D32] text-white emerald-glow hover:bg-[#66BB6A]'
-                : 'bg-[#2C2C2C] text-white/30 cursor-not-allowed'
+                ? 'bg-[#12501a] text-[#daf2d0] emerald-glow hover:bg-[#86efbe] hover:text-[#0d3512]'
+                : 'bg-[#0d3512] text-[#daf2d0]/30 cursor-not-allowed'
             }`}
             aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}
           >

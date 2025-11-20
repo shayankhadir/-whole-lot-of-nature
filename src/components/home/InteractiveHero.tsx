@@ -27,15 +27,15 @@ export default function InteractiveHero() {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="https://admin.wholelotofnature.com/wp-content/uploads/2025/11/bgleaf1.png"
-          alt="Lush green foliage background"
+          src="/images/backgrounds/bgleaf1.png"
+          alt="Tropical leaves background"
           fill
           className="object-cover object-center"
           priority
           quality={95}
         />
         {/* Interactive gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/85 via-slate-950/80 to-emerald-900/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d3512]/90 via-[#12501a]/85 to-[#0d3512]/90" />
         
         {/* Animated light rays */}
         <motion.div
@@ -114,7 +114,7 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-emerald-100 text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
+          className="text-emerald-300 text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>

@@ -66,13 +66,13 @@ export default function TagFilterSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
-          alt="Tropical leaves background"
+          src="/images/backgrounds/bgleaf3.png"
+          alt="Tropical palm leaves background"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-12"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface-onyx)]/95 via-[var(--surface-onyx)]/80 to-[var(--surface-onyx)]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3512]/95 via-[#12501a]/80 to-[#0d3512]/95" />
       </div>
 
       {/* Leaf Background Decorations */}

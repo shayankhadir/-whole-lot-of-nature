@@ -46,7 +46,7 @@ export default function TrustBanner() {
               <h3 className="font-montserrat text-[clamp(0.875rem,2vw,1rem)] font-semibold text-cream-50 mb-1 antialiased">
                 {signal.title}
               </h3>
-              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-cream-100 antialiased">
+              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-emerald-300 antialiased">
                 {signal.description}
               </p>
             </motion.div>

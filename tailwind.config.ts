@@ -22,12 +22,19 @@ const config: Config = {
           900: '#064e3b',
           950: '#022c22',
         },
-        // Green shades for consistency (aliases to primary for flexibility)
+        // Custom brand colors
+        brand: {
+          bg1: '#0d3512',      // Dark forest green background
+          bg2: '#12501a',      // Medium forest green background
+          text: '#daf2d0',     // Light mint text/description
+          accent: '#86efbe',   // Bright accent green (green-300)
+        },
+        // Green shades for consistency
         green: {
           50: '#f0fdf7',
           100: '#dcfcec',
           200: '#bbf7da',
-          300: '#86efbe',
+          300: '#86efbe',      // Accent color
           400: '#4ade9a',
           500: '#22c57d',
           600: '#0d9f6e',
@@ -36,10 +43,10 @@ const config: Config = {
           900: '#064e3b',
           950: '#022c22',
         },
-        // Cream shades for consistency (aliases to primary for flexibility)
+        // Cream shades - updated to match brand text color
         cream: {
-          50: '#fdfbf5',
-          100: '#f7f5ed',
+          50: '#daf2d0',       // Brand text color
+          100: '#daf2d0',      // Brand text color
           200: '#f3ede2',
           300: '#e8dfcc',
           400: '#d8cbb0',

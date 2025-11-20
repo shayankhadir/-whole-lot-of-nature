@@ -2,26 +2,34 @@
 @plugin "tailwindcss-animate";
 
 :root {
-  --emerald-900: #0f3d2a;
-  --emerald-700: #1f7a4f;
-  --emerald-500: #2fb67e;
-  --emerald-300: #8ad1b1;
-  --mint-100: #e6f4ef;
+  /* Brand Colors */
+  --brand-bg1: #0d3512;
+  --brand-bg2: #12501a;
+  --brand-text: #daf2d0;
+  --brand-accent: #86efbe;
 
-  --cream-50: #fdfbf5;
-  --cream-200: #f3ede2;
-  --ink-900: #0d1b10;
-  --ink-700: #1f2b23;
-  --ink-500: #4a5a4f;
+  /* Legacy emerald colors (mapped to brand) */
+  --emerald-900: #0d3512;
+  --emerald-700: #12501a;
+  --emerald-500: #86efbe;
+  --emerald-300: #86efbe;
+  --mint-100: #daf2d0;
 
-  --surface-canvas: var(--cream-50);
-  --surface-forest: linear-gradient(180deg, #0f2418 0%, #07110a 100%);
-  --surface-onyx: #0b1510;
-  --surface-card: rgba(255, 255, 255, 0.05);
+  /* Updated cream to match brand text */
+  --cream-50: #daf2d0;
+  --cream-200: #daf2d0;
+  --ink-900: #0d3512;
+  --ink-700: #12501a;
+  --ink-500: #1a6626;
 
-  --ring-color: rgba(47, 182, 126, 0.35);
-  --shadow-soft: 0 20px 80px rgba(4, 20, 11, 0.18);
-  --shadow-card: 0 10px 40px rgba(15, 61, 42, 0.15);
+  --surface-canvas: var(--brand-text);
+  --surface-forest: linear-gradient(180deg, #0d3512 0%, #0a2510 100%);
+  --surface-onyx: #0d3512;
+  --surface-card: rgba(134, 239, 190, 0.05);
+
+  --ring-color: rgba(134, 239, 190, 0.35);
+  --shadow-soft: 0 20px 80px rgba(13, 53, 18, 0.3);
+  --shadow-card: 0 10px 40px rgba(18, 80, 26, 0.2);
 
   --radius-pill: 999px;
   --radius-lg: 2rem;
@@ -42,8 +50,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
-  background: var(--surface-canvas);
-  color: var(--ink-900);
+  background: var(--brand-bg1);
+  color: var(--brand-text);
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
 }

@@ -28,14 +28,14 @@ export default function AllProductsShowcase() {
 
   if (loading) {
     return (
-      <section className="py-20 px-4 bg-slate-950">
+      <section className="py-20 px-4 bg-[#0d3512]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-square bg-emerald-900/20 rounded-2xl mb-4" />
-                <div className="h-4 bg-emerald-900/20 rounded mb-2" />
-                <div className="h-3 bg-emerald-900/20 rounded w-2/3" />
+                <div className="aspect-square bg-[#12501a]/40 rounded-2xl mb-4" />
+                <div className="h-4 bg-[#12501a]/40 rounded mb-2" />
+                <div className="h-3 bg-[#12501a]/40 rounded w-2/3" />
               </div>
             ))}
           </div>
@@ -45,17 +45,17 @@ export default function AllProductsShowcase() {
   }
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden bg-[var(--surface-onyx)]">
+    <section className="relative py-24 px-4 overflow-hidden bg-[#0d3512]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
-          alt="Tropical leaves background"
+          src="/images/backgrounds/bgleaf1.png"
+          alt="Tropical palm leaves background"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-15"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface-onyx)]/95 via-[var(--surface-onyx)]/80 to-[var(--surface-onyx)]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3512]/95 via-[#12501a]/80 to-[#0d3512]/95" />
       </div>
 
       {/* Leaf Background Decorations */}

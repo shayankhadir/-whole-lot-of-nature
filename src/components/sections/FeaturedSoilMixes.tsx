@@ -71,9 +71,20 @@ export default function FeaturedSoilMixes() {
   const displayProducts = soilProducts.length > 0 ? soilProducts : defaultProducts;
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section className="relative py-20 overflow-hidden bg-[#12501a]">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/backgrounds/bgleaf3.png"
+          alt="Tropical foliage background"
+          fill
+          className="object-cover opacity-12"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#12501a]/95 via-[#0d3512]/80 to-[#12501a]/95" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\n        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
