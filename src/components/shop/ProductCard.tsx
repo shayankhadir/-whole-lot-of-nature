@@ -76,15 +76,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       className="h-full"
     >
-      <div className="group relative bg-[#12501a] forest-card overflow-hidden transition-all duration-300 hover:-translate-y-2 emerald-glow-lg h-full flex flex-col">
+      <div className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
         
         {/* Forest Leaf Decoration - Extending from Corner */}
-        <div className="absolute -top-8 -right-8 w-24 h-24 text-[#86efbe]/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute -top-6 -right-6 w-20 h-20 text-[#2E7D32]/15 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
         </div>
 
-        {/* Product Image Container with 4:5 Aspect Ratio */}
-        <Link href={`/shop/${product.slug}`} className="relative block aspect-[4/5] bg-[#0d3512] overflow-hidden">
+        {/* Product Image Container */}
+        <div className="relative h-48 md:h-56 overflow-hidden">
           {/* Skeleton Loader */}
           {!imageLoaded && (
             <div className="absolute inset-0 animate-shimmer" />
@@ -96,9 +96,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               alt={mainImage.alt || product.name}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-contain p-4 transition-transform duration-400 group-hover:scale-110"
-                  style={{ aspectRatio: '4/5' }}
-                  priority={false}
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
               quality={90}
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
@@ -108,6 +106,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               <span className="text-[#86efbe]/30 text-sm">No image</span>
             </div>
           )}
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
 
           {/* Wishlist Button - Top Right */}
           <div className="absolute top-3 right-3 z-10">
@@ -127,99 +127,71 @@ export default function ProductCard({ product }: ProductCardProps) {
             />
           </div>
 
-          {/* Sale Badge - Bright Green */}
+          {/* Sale Badge */}
           {isOnSale(product) && (
             <motion.div 
-              className="absolute top-4 left-4 z-10"
+              className="absolute top-3 left-3 z-10"
               initial={{ scale: 0, rotate: -10 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <div className="bg-[#86efbe] text-[#0d3512] px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
+              <div className="bg-[#2E7D32] text-white text-xs font-semibold px-3 py-1 rounded-full">
                 {getDiscountPercentage(product)}% OFF
               </div>
             </motion.div>
           )}
+        </div>
 
-          {/* Quick View Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 z-10">
-            <motion.button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setShowQuickView(true);
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#86efbe] text-[#0d3512] px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#daf2d0] transition shadow-lg translate-y-4 group-hover:translate-y-0 duration-300 min-h-[44px] touch-manipulation"
-            >
-              Quick View
-            </motion.button>
-          </div>
-        </Link>
-
-        {/* Product Content - Generous Padding with Golden Ratio */}
-        <div className="p-5 sm:p-6 flex-1 flex flex-col">
+        {/* Product Content */}
+        <Link href={`/shop/${product.slug}`} className="p-5 flex-1 flex flex-col">
           {/* Product Name */}
-          <Link 
-            href={`/shop/${product.slug}`}
-            className="font-montserrat font-semibold text-[clamp(0.875rem,2vw,1rem)] leading-tight text-[#daf2d0] hover:text-[#86efbe] transition-colors duration-200 line-clamp-2 mb-3 min-h-[44px] flex items-center touch-manipulation"
-          >
+          <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
             {product.name}
-          </Link>
+          </h3>
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="font-inter text-xs text-[#daf2d0]/85 line-clamp-2 leading-relaxed mb-3 sm:mb-4 flex-1">
+            <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-2 antialiased flex-1">
               {shortDesc}
             </p>
           )}
 
-          {/* Price */}
-          <div className="mb-3 sm:mb-4">
-            <div className="flex items-baseline gap-2 sm:gap-3">
-              <span className="font-montserrat text-[clamp(1.125rem,2.5vw,1.25rem)] text-[#86efbe] font-bold leading-none antialiased">
+          {/* Price & CTA */}
+          <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
+            <div>
+              <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="font-inter text-xs text-[#daf2d0]/40 line-through">
+                <span className="block text-sm text-white/50 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}
             </div>
-          </div>
-
-          {/* Add to Cart Button - Full Width, Sharp Corners, Touch Optimized */}
-          <motion.button
-            onClick={handleAddToCart}
-            disabled={!product.in_stock}
-            whileHover={{ scale: product.in_stock ? 1.02 : 1 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full py-4 min-h-[44px] forest-card flex items-center justify-center gap-3 font-montserrat font-bold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 touch-manipulation active:scale-95 ${
-              addedToCart
-                ? 'bg-[#86efbe] text-[#0d3512]'
-                : product.in_stock
-                ? 'bg-[#12501a] text-[#daf2d0] emerald-glow hover:bg-[#86efbe] hover:text-[#0d3512]'
-                : 'bg-[#0d3512] text-[#daf2d0]/30 cursor-not-allowed'
-            }`}
-            aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}
-          >
-            {addedToCart ? (
-              <>
+            <motion.button
+              onClick={handleAddToCart}
+              disabled={!product.in_stock}
+              whileHover={{ scale: product.in_stock ? 1.05 : 1 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-3 rounded-full transition-all ${
+                addedToCart
+                  ? 'bg-[#66BB6A] text-white'
+                  : product.in_stock
+                  ? 'bg-[#2E7D32] text-white hover:bg-[#66BB6A]'
+                  : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+              }`}
+              aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}
+            >
+              {addedToCart ? (
                 <Check className="w-5 h-5" />
-                Added
-              </>
-            ) : product.in_stock ? (
-              <>
+              ) : product.in_stock ? (
                 <ShoppingCart className="w-5 h-5" />
-                <span className="hidden xs:inline">Add to Cart</span>
-                <span className="xs:hidden">Add</span>
-              </>
-            ) : (
-              'Out of Stock'
-            )}
-          </motion.button>
-        </div>
+              ) : (
+                <ShoppingCart className="w-5 h-5" />
+              )}
+            </motion.button>
+          </div>
+        </Link>
       </div>
 
       {/* Quick View Modal */}

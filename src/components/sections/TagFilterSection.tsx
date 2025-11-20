@@ -164,11 +164,11 @@ export default function TagFilterSection() {
                 >
                   <Link href={`/products/${product.slug}`}>
                     <motion.div
-                      whileHover={{ y: -8 }}
-                      className="group relative rounded-[var(--radius-lg)] bg-[var(--ink-700)]/40 backdrop-blur-md border border-[var(--emerald-700)]/20 overflow-hidden transition-all duration-300 hover:border-[var(--emerald-500)]/40 hover:shadow-[var(--shadow-card)]"
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="group relative h-full rounded-2xl bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:shadow-2xl hover:shadow-[#2E7D32]/20"
                     >
                       {/* Image */}
-                      <div className="relative aspect-square overflow-hidden bg-slate-900/50">
+                      <div className="relative h-56 overflow-hidden">
                         {product.images && product.images.length > 0 ? (
                           <Image
                             src={product.images[0].src}
@@ -177,42 +177,43 @@ export default function TagFilterSection() {
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-emerald-900/20">
-                            <Sparkles className="w-12 h-12 text-emerald-300/50" />
+                          <div className="w-full h-full flex items-center justify-center bg-[#0d3512]">
+                            <Sparkles className="w-12 h-12 text-[#66BB6A]/30" />
                           </div>
                         )}
                         
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Darker Hover overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
                       </div>
 
                       {/* Content */}
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-cream-50 mb-2 line-clamp-2 group-hover:text-emerald-400 transition-colors antialiased">
+                        <h3 className="text-lg font-semibold font-montserrat text-white mb-2 line-clamp-2 group-hover:text-[#66BB6A] transition-colors antialiased">
                           {product.name}
                         </h3>
                         
                         {/* Price */}
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="text-2xl font-bold text-emerald-400 antialiased">
-                            ₹{product.price}
-                          </span>
-                          {product.regularPrice && product.regularPrice !== product.price && (
-                            <span className="text-sm text-cream-100/50 line-through antialiased">
-                              ₹{product.regularPrice}
+                        <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
+                          <div>
+                            <span className="text-2xl font-bold text-[#66BB6A] antialiased">
+                              ₹{product.price}
                             </span>
-                          )}
-                        </div>
+                            {product.regularPrice && product.regularPrice !== product.price && (
+                              <span className="block text-sm text-white/50 line-through antialiased">
+                                ₹{product.regularPrice}
+                              </span>
+                            )}
+                          </div>
 
-                        {/* Quick add button */}
-                        <motion.button
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="w-full py-3 bg-emerald-500 text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all antialiased"
-                        >
-                          <ShoppingCart className="w-4 h-4" />
-                          Quick Add
-                        </motion.button>
+                          {/* Quick add button */}
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="p-3 bg-[#2E7D32] text-white rounded-full hover:bg-[#66BB6A] transition-all"
+                          >
+                            <ShoppingCart className="w-5 h-5" />
+                          </motion.button>
+                        </div>
                       </div>
                     </motion.div>
                   </Link>

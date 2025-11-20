@@ -138,64 +138,53 @@ export default function FeaturedPlantsCarousel() {
                 className="min-w-[320px] sm:min-w-[360px]"
               >
                 <Link href={`/shop/${product.slug}`}>
-                  <div className="group relative bg-[#2C2C2C] forest-card-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 h-full">
-                    {/* Emerald Glow on Hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none emerald-glow-lg" />
-
+                  <div className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
                     {/* Forest Leaf Corner Decoration */}
                     <div className="absolute -top-6 -right-6 w-20 h-20 text-[#2E7D32]/15 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
                     </div>
 
-                    {/* Product Image - 4:5 Aspect Ratio */}
-                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_top,rgba(47,182,126,0.2),rgba(4,12,8,0.9))]">
+                    {/* Product Image */}
+                    <div className="relative h-48 md:h-56 overflow-hidden">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-contain p-6 transition-transform duration-400 group-hover:scale-110 drop-shadow-[0_25px_40px_rgba(3,8,5,0.75)]"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                         sizes="360px"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
+                      
+                      {/* Category Badge */}
+                      <div className="absolute top-3 left-3 bg-[#2E7D32] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {product.category}
+                      </div>
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-6">
-                      {/* Category Badge */}
-                      <span className="inline-block text-xs uppercase tracking-widest text-[#66BB6A] font-montserrat font-semibold mb-3">
-                        {product.category}
-                      </span>
-
-                      {/* Product Name - H6 (26px) */}
-                      <h3 className="font-montserrat font-semibold text-[clamp(1.125rem,2.5vw,1.625rem)] text-white leading-tight line-clamp-2 mb-4 group-hover:text-[#66BB6A] transition-colors duration-300">
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
                         {product.name}
                       </h3>
 
-                      {/* Price - H5 (42px) */}
-                      <div className="flex items-baseline justify-between">
-                        <div className="flex flex-col">
-                          <span className="font-montserrat text-[clamp(2rem,5vw,2.625rem)] text-[#2E7D32] font-bold leading-none antialiased">
+                      {/* Price & CTA */}
+                      <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20 mt-auto">
+                        <div>
+                          <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
                             {formatPrice(product.sale_price || product.price || '0')}
                           </span>
                           {product.sale_price && (
-                            <span className="text-sm text-white/50 line-through">
+                            <span className="block text-sm text-white/50 line-through">
                               {formatPrice(product.regular_price || product.price || '0')}
                             </span>
                           )}
                         </div>
-                        <span className="text-sm font-inter text-white/50 group-hover:text-white/85 transition-colors">
-                          View Details →
-                        </span>
+                        <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300">
+                          <span>Shop</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
                       </div>
                     </div>
-
-                    {/* Subtle Animated Green Shadow - Sunlight Through Leaves Effect */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        boxShadow: '0 8px 32px rgba(46, 125, 50, 0.3)',
-                        filter: 'blur(8px)',
-                      }}
-                    />
                   </div>
                 </Link>
               </motion.div>
