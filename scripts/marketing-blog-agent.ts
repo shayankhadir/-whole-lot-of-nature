@@ -357,31 +357,31 @@ class MarketingBlogAgent {
   private createBlogTopic(keyword: string, source: 'competitor' | 'trend' | 'pillar'): string {
     const templates: { [key: string]: string[] } = {
       competitor: [
-        `The Complete Guide to ${keyword}`,
-        `Everything You Need to Know About ${keyword}`,
-        `${keyword}: Best Practices for Beginners`,
-        `How to Master ${keyword} in Your Garden`,
-        `${keyword}: Tips from the Experts`,
+        `The Complete Guide to {keyword}`,
+        `Everything You Need to Know About {keyword}`,
+        `{keyword}: Best Practices for Beginners`,
+        `How to Master {keyword} in Your Garden`,
+        `{keyword}: Tips from the Experts`,
       ],
       trend: [
-        `${keyword}: The Ultimate Guide for Indian Gardeners`,
-        `Why ${keyword} is Trending in 2025`,
-        `${keyword}: Top 10 Tips for Success`,
-        `The Truth About ${keyword} That Nobody Tells You`,
-        `${keyword} Made Easy: A Step-by-Step Guide`,
+        `{keyword}: The Ultimate Guide for Indian Gardeners`,
+        `Why {keyword} is Trending in 2025`,
+        `{keyword}: Top 10 Tips for Success`,
+        `The Truth About {keyword} That Nobody Tells You`,
+        `{keyword} Made Easy: A Step-by-Step Guide`,
       ],
       pillar: [
-        `${keyword}: A Comprehensive Guide`,
-        `Mastering ${keyword} for Sustainable Living`,
-        `${keyword}: From Beginner to Expert`,
-        `The Science and Art of ${keyword}`,
-        `${keyword}: Transform Your Garden Naturally`,
+        `{keyword}: A Comprehensive Guide`,
+        `Mastering {keyword} for Sustainable Living`,
+        `{keyword}: From Beginner to Expert`,
+        `The Science and Art of {keyword}`,
+        `{keyword}: Transform Your Garden Naturally`,
       ],
     };
 
     const templateList = templates[source];
     const template = templateList[Math.floor(Math.random() * templateList.length)];
-    return template.replace('${keyword}', keyword);
+    return template.replace('{keyword}', keyword);
   }
 
   /**
@@ -463,7 +463,13 @@ class MarketingBlogAgent {
   }
 
   private generateBody(topic: string, keywords: string[], pillar: any): string {
-    return `## Understanding ${topic}\n\n${topic} is more than just a gardening practice — it's a way of life. When you embrace ${topic.toLowerCase()}, you're participating in Earth's natural cycles and creating a healthier environment.\n\n### Key Benefits of ${topic}\n\n- **Sustainable Living**: ${keywords[0]} supports eco-friendly practices\n- **Natural Connection**: Strengthens your relationship with ${keywords[1]}\n- **Health Benefits**: Promotes ${keywords[2]} and overall wellbeing\n- **Cost-Effective**: Reduces dependence on commercial products\n- **Community Building**: Connects you with like-minded nature lovers\n\n## Getting Started with ${topic}\n\n**Step 1: Choose the Right ${keywords[0]}**\nNot all ${keywords[0]} are created equal. Look for native varieties that are adapted to your local climate and soil conditions.\n\n**Step 2: Prepare Your ${keywords[1]}**\nHealthy ${keywords[1]} is the foundation of success. Ensure proper drainage, nutrients, and organic matter.\n\n**Step 3: Practice Sustainable ${keywords[2]}**\nAvoid chemical solutions. Instead, focus on natural, organic methods that support long-term ecosystem health.\n\n## Common Mistakes to Avoid\n\n❌ **Over-reliance on chemicals** — Synthetic fertilizers damage soil biology\n❌ **Ignoring native plants** — Non-native species require more resources\n❌ **Impatient approach** — Natural methods take time but yield better results\n\n✅ Instead, embrace organic, patient, and soil-centered practices.\n\n## How We Can Help\n\nAt ${this.brandVoice.brand.name}, we offer:\n\n🌱 **100% Organic Products** — No harmful chemicals\n💚 **Expert Guidance** — Free consultations and care tips\n🌍 **Sustainable Sourcing** — Supporting local ecosystems\n📦 **Fast Delivery** — Fresh products delivered to your door\n\nExplore our collection of ${keywords[0]}, ${keywords[1]}, and ${keywords[2]} products to start your journey today.`;
+    // Ensure we have at least 3 keywords by padding with defaults if needed
+    const safeKeywords = [...keywords];
+    while (safeKeywords.length < 3) {
+      safeKeywords.push('gardening');
+    }
+    
+    return `## Understanding ${topic}\n\n${topic} is more than just a gardening practice — it's a way of life. When you embrace ${topic.toLowerCase()}, you're participating in Earth's natural cycles and creating a healthier environment.\n\n### Key Benefits of ${topic}\n\n- **Sustainable Living**: ${safeKeywords[0]} supports eco-friendly practices\n- **Natural Connection**: Strengthens your relationship with ${safeKeywords[1]}\n- **Health Benefits**: Promotes ${safeKeywords[2]} and overall wellbeing\n- **Cost-Effective**: Reduces dependence on commercial products\n- **Community Building**: Connects you with like-minded nature lovers\n\n## Getting Started with ${topic}\n\n**Step 1: Choose the Right ${safeKeywords[0]}**\nNot all ${safeKeywords[0]} are created equal. Look for native varieties that are adapted to your local climate and soil conditions.\n\n**Step 2: Prepare Your ${safeKeywords[1]}**\nHealthy ${safeKeywords[1]} is the foundation of success. Ensure proper drainage, nutrients, and organic matter.\n\n**Step 3: Practice Sustainable ${safeKeywords[2]}**\nAvoid chemical solutions. Instead, focus on natural, organic methods that support long-term ecosystem health.\n\n## Common Mistakes to Avoid\n\n❌ **Over-reliance on chemicals** — Synthetic fertilizers damage soil biology\n❌ **Ignoring native plants** — Non-native species require more resources\n❌ **Impatient approach** — Natural methods take time but yield better results\n\n✅ Instead, embrace organic, patient, and soil-centered practices.\n\n## How We Can Help\n\nAt ${this.brandVoice.brand.name}, we offer:\n\n🌱 **100% Organic Products** — No harmful chemicals\n💚 **Expert Guidance** — Free consultations and care tips\n🌍 **Sustainable Sourcing** — Supporting local ecosystems\n📦 **Fast Delivery** — Fresh products delivered to your door\n\nExplore our collection of ${safeKeywords[0]}, ${safeKeywords[1]}, and ${safeKeywords[2]} products to start your journey today.`;
   }
 
   private generateConclusion(topic: string): string {
@@ -471,7 +477,10 @@ class MarketingBlogAgent {
   }
 
   private generateMetaDescription(topic: string, keywords: string[]): string {
-    return `Complete guide to ${topic.toLowerCase()}. Learn about ${keywords[0]}, ${keywords[1]}, and sustainable practices. Expert tips from ${this.brandVoice.brand.name}.`;
+    // Ensure we have at least 2 keywords
+    const k0 = keywords[0] || 'gardening';
+    const k1 = keywords[1] || 'plants';
+    return `Complete guide to ${topic.toLowerCase()}. Learn about ${k0}, ${k1}, and sustainable practices. Expert tips from ${this.brandVoice.brand.name}.`;
   }
 
   private findContentPillar(topic: string): any {
