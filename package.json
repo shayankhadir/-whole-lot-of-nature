@@ -29,7 +29,9 @@
     "content:product": "tsx scripts/content-agent.ts product",
     "content:social": "tsx scripts/content-agent.ts social",
     "content:meta": "tsx scripts/content-agent.ts meta",
-    "content:email": "tsx scripts/content-agent.ts email"
+    "content:email": "tsx scripts/content-agent.ts email",
+    "marketing:blog": "tsx scripts/marketing-blog-agent.ts",
+    "marketing:blog:quick": "tsx scripts/marketing-blog-agent.ts --quick"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

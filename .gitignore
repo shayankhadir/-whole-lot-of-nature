@@ -43,3 +43,8 @@ next-env.d.ts
 /src/generated/prisma
 
 .vercel
+
+# Marketing & Content Generation Output (regenerate as needed)
+/marketing-reports
+/content-output/*.md
+!content-output/.gitkeep
