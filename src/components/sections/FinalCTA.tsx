@@ -33,7 +33,7 @@ export default function FinalCTA() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-montserrat text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-white leading-tight antialiased"
+                className="font-montserrat text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-cream-50 leading-tight antialiased"
               >
                 Ready to Grow?
               </motion.h2>
@@ -42,7 +42,7 @@ export default function FinalCTA() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-3 font-inter text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] antialiased"
+                className="mt-3 font-inter text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 antialiased"
               >
                 Explore premium plants, organic soils & eco-friendly essentials
               </motion.p>
@@ -59,8 +59,8 @@ export default function FinalCTA() {
               <Link href="/shop">
                 <HoverBorderGradient
                   containerClassName="rounded-full"
-                  className="flex items-center gap-3 text-white font-montserrat font-bold text-base uppercase tracking-wide antialiased"
-                  glowColor="#66BB6A"
+                  className="flex items-center gap-3 text-cream-50 font-montserrat font-bold text-base uppercase tracking-wide antialiased"
+                  glowColor="#4ade9a"
                 >
                   Start Shopping
                   <ArrowRight className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 text-center text-[var(--mint-100)] text-sm font-inter"
+          className="mt-6 text-center text-cream-100 text-sm font-inter"
         >
           Stay Loyal to the Soil — 100% Organic, Sustainably Sourced
         </motion.p>

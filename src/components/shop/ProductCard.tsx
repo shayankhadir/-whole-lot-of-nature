@@ -127,7 +127,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             />
           </div>
 
-          {/* Sale Badge - Muted Gold */}
+          {/* Sale Badge - Bright Green */}
           {isOnSale(product) && (
             <motion.div 
               className="absolute top-4 left-4 z-10"
@@ -135,7 +135,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <div className="bg-[#C4B17C] text-[#1A1A1A] px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
+              <div className="bg-emerald-400 text-emerald-950 px-4 py-2 forest-card text-xs font-bold uppercase tracking-wider shadow-lg antialiased">
                 {getDiscountPercentage(product)}% OFF
               </div>
             </motion.div>

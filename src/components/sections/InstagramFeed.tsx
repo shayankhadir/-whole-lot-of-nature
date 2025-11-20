@@ -69,8 +69,11 @@ export default function InstagramFeed() {
   }, []);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-[var(--surface-onyx)] relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface-onyx)] via-[var(--emerald-900)]/5 to-[var(--surface-onyx)] pointer-events-none" />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,19 +82,19 @@ export default function InstagramFeed() {
           className="mb-16 text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Instagram className="w-8 h-8 text-pink-600" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 antialiased">
+            <Instagram className="w-8 h-8 text-pink-500" />
+            <h2 className="text-4xl md:text-5xl font-bold text-cream-50 antialiased">
               Follow Us on Instagram
             </h2>
           </div>
-          <p className="text-xl text-gray-100 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-cream-100 max-w-2xl mx-auto antialiased">
             Join our community and see the latest from Whole Lot of Nature
           </p>
           <a
             href="https://instagram.com/wholelotofnature"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white rounded-full font-semibold hover:shadow-lg transition-all"
+            className="inline-block mt-6 px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105"
           >
             @wholelotofnature
           </a>
@@ -113,7 +116,7 @@ export default function InstagramFeed() {
 
         {/* Error State */}
         {error && !isLoading && (
-          <div className="text-center py-12 text-gray-100">
+          <div className="text-center py-12 text-cream-100">
             <p>{error}</p>
           </div>
         )}
@@ -130,10 +133,10 @@ export default function InstagramFeed() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-[var(--emerald-700)]/20"
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden bg-gray-200">
+              <div className="relative h-64 overflow-hidden bg-[var(--ink-700)]">
                 <img
                   src={post.media_url}
                   alt={post.caption}
@@ -149,9 +152,9 @@ export default function InstagramFeed() {
               </div>
 
               {/* Caption */}
-              <div className="bg-white p-4">
-                <p className="text-gray-800 text-sm line-clamp-2">{post.caption}</p>
-                <p className="text-gray-100 text-xs mt-2">
+              <div className="bg-[var(--ink-700)]/40 backdrop-blur-md p-4 border-t border-[var(--emerald-700)]/20">
+                <p className="text-cream-50 text-sm line-clamp-2">{post.caption}</p>
+                <p className="text-cream-100/60 text-xs mt-2">
                   {new Date(post.timestamp).toLocaleDateString()}
                 </p>
               </div>
@@ -171,7 +174,7 @@ export default function InstagramFeed() {
             href="https://instagram.com/wholelotofnature"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02]"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-[1.02]"
           >
             View More on Instagram
           </a>

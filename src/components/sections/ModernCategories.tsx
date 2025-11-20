@@ -102,17 +102,17 @@ export default function ModernCategories() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Package className="w-4 h-4 text-[var(--emerald-500)]" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
+            <Package className="w-4 h-4 text-emerald-400" />
+            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-emerald-400 font-semibold uppercase tracking-wider antialiased">
               Explore Our Collections
             </span>
           </div>
           
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-white mb-4 antialiased">
-            Shop by <span className="text-[var(--emerald-500)]">Category</span>
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-cream-50 mb-4 antialiased">
+            Shop by <span className="text-emerald-400">Category</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
             Discover curated collections for every gardening need
           </p>
         </motion.div>
@@ -143,28 +143,28 @@ export default function ModernCategories() {
                     {/* Icon */}
                     <div className="relative mb-6">
                       <div className="w-16 h-16 rounded-[var(--radius-md)] bg-[var(--emerald-700)]/20 border border-[var(--emerald-500)]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <Icon className="w-8 h-8 text-[var(--emerald-500)]" strokeWidth={1.5} />
+                        <Icon className="w-8 h-8 text-emerald-400" strokeWidth={1.5} />
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="relative">
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[var(--emerald-500)] transition-colors antialiased">
+                      <h3 className="text-2xl font-bold text-cream-50 mb-3 group-hover:text-emerald-400 transition-colors antialiased">
                         {category.name}
                       </h3>
                       
-                      <p className="text-[var(--mint-100)] text-sm leading-relaxed mb-6 line-clamp-2 antialiased">
+                      <p className="text-cream-100 text-sm leading-relaxed mb-6 line-clamp-2 antialiased">
                         {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 
                       {/* Product Count Badge */}
                       <div className="flex items-center justify-between">
-                        <span className="text-xs px-3 py-1.5 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-[var(--emerald-300)] group-hover:bg-[var(--emerald-500)]/20 group-hover:border-[var(--emerald-500)]/40 transition-all antialiased">
+                        <span className="text-xs px-3 py-1.5 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-emerald-300 group-hover:bg-[var(--emerald-500)]/20 group-hover:border-[var(--emerald-500)]/40 transition-all antialiased">
                           {category.count} {category.count === 1 ? 'Product' : 'Products'}
                         </span>
 
                         {/* Arrow */}
-                        <div className="flex items-center gap-2 text-[var(--emerald-500)] font-medium text-sm antialiased">
+                        <div className="flex items-center gap-2 text-emerald-400 font-medium text-sm antialiased">
                           <span>Explore</span>
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                         </div>

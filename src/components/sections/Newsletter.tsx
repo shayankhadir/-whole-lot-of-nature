@@ -53,15 +53,15 @@ export default function Newsletter() {
             className="text-center text-white p-8"
           >
             <div className="flex justify-center mb-6">
-              <div className="bg-[#2E7D32]/30 backdrop-blur-sm p-4 rounded-full ring-1 ring-[#2E7D32]/50">
-                <Mail className="w-8 h-8 text-[#66BB6A]" />
+              <div className="bg-emerald-500/30 backdrop-blur-sm p-4 rounded-full ring-1 ring-emerald-400/50">
+                <Mail className="w-8 h-8 text-emerald-400" />
               </div>
             </div>
             
-            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased">
+            <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased text-cream-50">
               Join Our Garden Community
             </h2>
-            <p className="text-base text-[var(--mint-100)] mb-6 max-w-2xl mx-auto antialiased">
+            <p className="text-base text-cream-100 mb-6 max-w-2xl mx-auto antialiased">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
               Plus, get 10% off your next order!
             </p>
@@ -73,9 +73,9 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <Leaf className="w-5 h-5 text-[#66BB6A]" />
+                <Leaf className="w-5 h-5 text-emerald-400" />
                 <span>Weekly Plant Care Tips</span>
               </motion.div>
               <motion.div
@@ -83,9 +83,9 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <Gift className="w-5 h-5 text-[#66BB6A]" />
+                <Gift className="w-5 h-5 text-emerald-400" />
                 <span>Exclusive Offers</span>
               </motion.div>
               <motion.div
@@ -93,9 +93,9 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-[var(--mint-100)]"
+                className="flex items-center justify-center space-x-2 text-cream-100"
               >
-                <CheckCircle className="w-5 h-5 text-[#66BB6A]" />
+                <CheckCircle className="w-5 h-5 text-emerald-400" />
                 <span>New Arrivals First</span>
               </motion.div>
             </div>

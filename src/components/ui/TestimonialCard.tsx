@@ -84,7 +84,7 @@ export const TestimonialCard = ({
               size={18}
               className={`transition-colors duration-300 ${
                 i < rating
-                  ? 'fill-yellow-400 text-yellow-400'
+                  ? 'fill-emerald-400 text-emerald-400'
                   : 'text-gray-300'
               }`}
             />

@@ -41,26 +41,26 @@ export default function LatestArticles() {
   if (loading || posts.length === 0) return null;
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-[var(--surface-onyx)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 antialiased">Latest Articles</h2>
-          <p className="text-gray-100 mt-2">Fresh reads from our blog</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-cream-50 antialiased">Latest Articles</h2>
+          <p className="text-cream-100 mt-2">Fresh reads from our blog</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post: WPPost) => {
             const featured = post._embedded?.['wp:featuredmedia']?.[0];
             return (
-              <article key={post.id} className="rounded-xl border border-gray-100 overflow-hidden hover:shadow-sm transition-shadow">
+              <article key={post.id} className="rounded-xl border border-[var(--emerald-700)]/30 bg-[var(--ink-700)]/40 overflow-hidden hover:shadow-lg transition-all backdrop-blur-md">
                 {featured?.source_url && (
                   <div className="relative h-48">
                     <Image src={featured.source_url} alt={featured.alt_text || post.title.rendered} fill className="object-cover" />
                   </div>
                 )}
                 <div className="p-4">
-                  <h3 className="text-base font-semibold text-gray-900 mb-2 antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                  <p className="text-sm text-gray-100 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-                  <Link href={`/blog/${post.slug}`} className="inline-block mt-3 text-primary-700 font-medium hover:underline">
+                  <h3 className="text-base font-semibold text-cream-50 mb-2 antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <p className="text-sm text-cream-100 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+                  <Link href={`/blog/${post.slug}`} className="inline-block mt-3 text-emerald-400 font-medium hover:text-emerald-300 transition-colors">
                     Read more →
                   </Link>
                 </div>

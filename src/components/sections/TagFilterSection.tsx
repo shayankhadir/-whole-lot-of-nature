@@ -99,17 +99,17 @@ export default function TagFilterSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-[var(--emerald-500)] text-sm font-medium tracking-wider uppercase mb-4 backdrop-blur-md antialiased"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-emerald-400 text-sm font-medium tracking-wider uppercase mb-4 backdrop-blur-md antialiased"
           >
             <TrendingUp className="w-4 h-4" />
             <span>Popular Collections</span>
           </motion.div>
           
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-white mb-4 antialiased">
-            Shop by <span className="text-[var(--emerald-500)]">Tags</span>
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-cream-50 mb-4 antialiased">
+            Shop by <span className="text-emerald-400">Tags</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
             Discover products by our most popular tags and themes
           </p>
         </motion.div>
@@ -128,8 +128,8 @@ export default function TagFilterSection() {
               onClick={() => setSelectedTag(tag.slug)}
               className={`group px-6 py-3 rounded-full font-medium transition-all duration-300 antialiased ${
                 selectedTag === tag.slug
-                  ? 'bg-[var(--emerald-500)] text-white shadow-[var(--shadow-card)]'
-                  : 'bg-[var(--ink-700)]/40 text-[var(--emerald-300)] border border-[var(--emerald-700)]/30 hover:bg-[var(--emerald-700)]/20 hover:border-[var(--emerald-500)]/40'
+                  ? 'bg-emerald-500 text-white shadow-[var(--shadow-card)]'
+                  : 'bg-[var(--ink-700)]/40 text-emerald-300 border border-[var(--emerald-700)]/30 hover:bg-[var(--emerald-700)]/20 hover:border-emerald-400/40'
               }`}
             >
               <span className="flex items-center gap-2">
@@ -188,17 +188,17 @@ export default function TagFilterSection() {
 
                       {/* Content */}
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-[var(--emerald-500)] transition-colors antialiased">
+                        <h3 className="text-lg font-semibold text-cream-50 mb-2 line-clamp-2 group-hover:text-emerald-400 transition-colors antialiased">
                           {product.name}
                         </h3>
                         
                         {/* Price */}
                         <div className="flex items-center gap-2 mb-4">
-                          <span className="text-2xl font-bold text-[var(--emerald-500)] antialiased">
+                          <span className="text-2xl font-bold text-emerald-400 antialiased">
                             ₹{product.price}
                           </span>
                           {product.regularPrice && product.regularPrice !== product.price && (
-                            <span className="text-sm text-[var(--mint-100)]/50 line-through antialiased">
+                            <span className="text-sm text-cream-100/50 line-through antialiased">
                               ₹{product.regularPrice}
                             </span>
                           )}
@@ -208,7 +208,7 @@ export default function TagFilterSection() {
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full py-3 bg-[var(--emerald-500)] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[var(--emerald-700)] transition-all antialiased"
+                          className="w-full py-3 bg-emerald-500 text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all antialiased"
                         >
                           <ShoppingCart className="w-4 h-4" />
                           Quick Add

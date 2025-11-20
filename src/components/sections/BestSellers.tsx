@@ -41,7 +41,10 @@ export default function BestSellers() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-green-50 to-white relative overflow-hidden">
+    <section className="py-24 bg-[var(--surface-onyx)] relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface-onyx)] via-[var(--emerald-900)]/5 to-[var(--surface-onyx)] pointer-events-none" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +52,10 @@ export default function BestSellers() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
+          <h2 className="text-5xl md:text-6xl font-bold text-cream-50 mb-6 antialiased">
             Best Sellers
           </h2>
-          <p className="text-xl text-gray-100 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-cream-100 max-w-2xl mx-auto antialiased">
             Our most loved plants, chosen by plant enthusiasts worldwide
           </p>
         </motion.div>
@@ -67,22 +70,22 @@ export default function BestSellers() {
               className="group relative"
             >
               <Link href="/shop" className="block">
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-[#2E7D32] hover:border-[#2E7D32]">
+                <div className="relative bg-[var(--ink-700)]/40 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[var(--emerald-700)]/30 hover:border-emerald-400/50 backdrop-blur-md">
                   {/* Image Container */}
-                  <div className="relative h-80 bg-gradient-to-br from-green-50 to-white overflow-hidden">
+                  <div className="relative h-80 bg-[var(--ink-700)] overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-[#2E7D32] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    <div className="absolute top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                       {product.sales}
                     </div>
                   </div>
 
                   {/* Product Info */}
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#2E7D32] transition-colors antialiased">
+                    <h3 className="text-2xl font-bold text-cream-50 mb-2 group-hover:text-emerald-400 transition-colors antialiased">
                       {product.name}
                     </h3>
                     
@@ -91,7 +94,7 @@ export default function BestSellers() {
                       {[...Array(product.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-5 h-5 fill-green-600 text-[#2E7D32]"
+                          className="w-5 h-5 fill-emerald-400 text-emerald-400"
                         />
                       ))}
                     </div>

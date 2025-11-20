@@ -76,8 +76,8 @@ export default function FAQSection({
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">{title}</h2>
-          <p className="text-gray-400 text-lg">{subtitle}</p>
+          <h2 className="text-4xl font-bold text-cream-50 mb-4">{title}</h2>
+          <p className="text-cream-200 text-lg">{subtitle}</p>
         </div>
 
         {/* FAQ List */}
@@ -92,11 +92,11 @@ export default function FAQSection({
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
               >
-                <span className="text-lg font-semibold text-white pr-8">
+                <span className="text-lg font-semibold text-cream-50 pr-8">
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-6 h-6 text-[#2E7D32] transition-transform flex-shrink-0 ${
+                  className={`w-6 h-6 text-emerald-400 transition-transform flex-shrink-0 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"

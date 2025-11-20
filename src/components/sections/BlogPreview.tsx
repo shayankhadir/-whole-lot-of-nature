@@ -87,15 +87,15 @@ export default function BlogPreview() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Leaf className="w-4 h-4 text-[var(--emerald-500)]" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--emerald-500)] font-semibold uppercase tracking-wider antialiased">
+            <Leaf className="w-4 h-4 text-emerald-400" />
+            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-emerald-400 font-semibold uppercase tracking-wider antialiased">
               Learn & Grow
             </span>
           </div>
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
+          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-emerald-400 mb-4 antialiased">
             Latest from Our Blog
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
             Expert tips, plant care guides, and sustainable gardening insights
           </p>
         </motion.div>

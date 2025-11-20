@@ -41,12 +41,12 @@ export default function TrustBanner() {
               className="flex flex-col items-center text-center group"
             >
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[var(--emerald-700)]/20 flex items-center justify-center mb-3 group-hover:bg-[var(--emerald-700)]/30 transition-colors duration-300 backdrop-blur-md">
-                <signal.icon className="w-6 h-6 md:w-7 md:h-7 text-[var(--emerald-500)]" />
+                <signal.icon className="w-6 h-6 md:w-7 md:h-7 text-emerald-400" />
               </div>
-              <h3 className="font-montserrat text-[clamp(0.875rem,2vw,1rem)] font-semibold text-white mb-1 antialiased">
+              <h3 className="font-montserrat text-[clamp(0.875rem,2vw,1rem)] font-semibold text-cream-50 mb-1 antialiased">
                 {signal.title}
               </h3>
-              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-[var(--mint-100)] antialiased">
+              <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-cream-100 antialiased">
                 {signal.description}
               </p>
             </motion.div>

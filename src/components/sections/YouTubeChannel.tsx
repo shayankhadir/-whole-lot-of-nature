@@ -50,8 +50,11 @@ export default function YouTubeChannel() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-red-900/20 to-gray-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-[var(--surface-onyx)] relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface-onyx)] via-[var(--emerald-900)]/10 to-[var(--surface-onyx)] pointer-events-none" />
+      
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,19 +63,19 @@ export default function YouTubeChannel() {
           className="mb-16 text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Youtube className="w-10 h-10 text-red-600" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white antialiased">
+            <Youtube className="w-10 h-10 text-red-500" />
+            <h2 className="text-4xl md:text-5xl font-bold text-cream-50 antialiased">
               Our YouTube Channel
             </h2>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-cream-100 max-w-2xl mx-auto antialiased">
             Learn gardening tips, plant care guides, and DIY projects from our expert videos
           </p>
           <a
             href="https://youtube.com/@wholelotofnature"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-6 px-8 py-3 bg-white text-primary-700 rounded-full font-semibold border border-primary-200 hover:bg-primary-50 transition-all hover:shadow-sm"
+            className="inline-block mt-6 px-8 py-3 bg-emerald-500 text-white rounded-full font-semibold hover:bg-emerald-600 transition-all hover:shadow-lg hover:scale-105"
           >
             Subscribe Now
           </a>

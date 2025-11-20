@@ -51,8 +51,8 @@ const categories = [
 
 export default function FeaturedCategories() {
   return (
-    <section className="relative py-20">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-50 via-white to-primary-100" />
+    <section className="relative py-20 bg-[var(--surface-onyx)]">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--surface-onyx)] via-[var(--emerald-900)]/5 to-[var(--surface-onyx)]" />
       <div
         className="absolute inset-0 -z-10 opacity-[0.08]"
         style={{ backgroundImage: "url('/hero-leaves.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -64,10 +64,10 @@ export default function FeaturedCategories() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif antialiased">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-cream-50 antialiased">
             Explore Our Categories
           </h2>
-          <p className="text-gray-100 max-w-2xl mx-auto">
+          <p className="text-cream-100 max-w-2xl mx-auto">
             Discover our curated selection of premium gardening essentials, designed to help you create and maintain your perfect green space.
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ export default function FeaturedCategories() {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: '0 12px 40px rgba(16,93,56,0.28)' }}
                   transition={{ duration: 0.3 }}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-xl ring-1 ring-green-900/10"
+                  className="group relative bg-[var(--ink-700)]/40 rounded-2xl overflow-hidden shadow-xl ring-1 ring-[var(--emerald-700)]/30 backdrop-blur-md"
                 >
                   <div className="aspect-w-4 aspect-h-3">
                     <Image
@@ -94,11 +94,11 @@ export default function FeaturedCategories() {
                       fill
                       className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent group-hover:bg-[#2E7D32]/40 transition-all duration-300 backdrop-blur-md" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--emerald-900)]/90 via-transparent to-transparent group-hover:bg-emerald-500/20 transition-all duration-300 backdrop-blur-[2px]" />
                   </div>
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-cream-50">
                     <h3 className="text-xl font-display font-semibold mb-2 drop-shadow-lg antialiased">{category.name}</h3>
-                    <p className="text-sm text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <p className="text-sm text-cream-100 mb-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       {category.description}
                     </p>
                     <motion.span

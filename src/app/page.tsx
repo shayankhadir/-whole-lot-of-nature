@@ -18,7 +18,7 @@ import SeamlessSection from '@/components/ui/SeamlessSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative z-10 bg-slate-950 text-white">
+    <div className="min-h-screen relative z-10 bg-slate-950 text-cream-50">
       {/* 1. Interactive Hero Section */}
       <InteractiveHero />
 

@@ -51,13 +51,13 @@ export default function TrustBadges() {
               key={index}
               className="flex flex-col items-center text-center p-4 rounded-lg hover:bg-white/5 transition-colors"
             >
-              <div className="text-[#2E7D32] mb-3">
+              <div className="text-emerald-400 mb-3">
                 {badge.icon}
               </div>
-              <h3 className="text-white font-semibold text-sm mb-1">
+              <h3 className="text-cream-50 font-semibold text-sm mb-1">
                 {badge.title}
               </h3>
-              <p className="text-gray-400 text-xs">
+              <p className="text-cream-200 text-xs">
                 {badge.description}
               </p>
             </div>

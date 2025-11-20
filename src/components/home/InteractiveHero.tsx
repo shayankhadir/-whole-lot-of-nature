@@ -87,8 +87,8 @@ export default function InteractiveHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-emerald-500/10 border border-emerald-300/30 backdrop-blur-md mb-6"
         >
-          <Sparkles className="w-4 h-4 text-emerald-300" />
-          <span className="text-emerald-200 text-sm font-medium tracking-wider uppercase">
+          <Sparkles className="w-4 h-4 text-emerald-400" />
+          <span className="text-emerald-300 text-sm font-medium tracking-wider uppercase">
             Welcome to
           </span>
         </motion.div>

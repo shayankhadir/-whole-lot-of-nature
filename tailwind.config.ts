@@ -36,6 +36,20 @@ const config: Config = {
           900: '#064e3b',
           950: '#022c22',
         },
+        // Cream shades for consistency (aliases to primary for flexibility)
+        cream: {
+          50: '#fdfbf5',
+          100: '#f7f5ed',
+          200: '#f3ede2',
+          300: '#e8dfcc',
+          400: '#d8cbb0',
+          500: '#c2b08e',
+          600: '#a6926d',
+          700: '#857252',
+          800: '#6b5a42',
+          900: '#574a38',
+          950: '#2e271d',
+        },
         // Extended white, black, gray for neutral UI only
         white: '#ffffff',
         black: '#000000',

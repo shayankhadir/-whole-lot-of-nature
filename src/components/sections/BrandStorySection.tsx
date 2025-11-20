@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 export default function BrandStorySection() {
   return (
-  <section className="relative overflow-hidden py-20 bg-gradient-to-b from-[#0D1B0F] to-[#0F1E11]">
+  <section className="relative overflow-hidden py-20 bg-[var(--surface-onyx)]">
       {/* Leaf SVG pattern background */}
       <div className="absolute inset-0 -z-10 opacity-10">
         <svg width="100%" height="100%" className="w-full h-full">
           <defs>
             <pattern id="leafPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
-              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-[#2E7D32]"/>
-              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-[#2E7D32]"/>
+              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-emerald-900"/>
+              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-emerald-900"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#leafPattern)" />
@@ -22,7 +22,7 @@ export default function BrandStorySection() {
       {/* Floating leaves */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-8 top-10 text-[#2E7D32]/15"
+        className="pointer-events-none absolute -left-8 top-10 text-emerald-700/15"
         animate={{ y: [0, -10, 0], rotate: [0, -5, 0] }}
         transition={{ repeat: Infinity, duration: 10 }}
       >
@@ -30,7 +30,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/4 top-1/3 text-[#2E7D32]/10"
+        className="pointer-events-none absolute left-1/4 top-1/3 text-emerald-700/10"
         animate={{ y: [0, 15, 0], rotate: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 14 }}
       >
@@ -38,7 +38,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-24 text-[#2E7D32]/15"
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-24 text-emerald-700/15"
         animate={{ y: [0, 12, 0], rotate: [0, 6, 0] }}
         transition={{ repeat: Infinity, duration: 12 }}
       >
@@ -46,7 +46,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-1/4 top-1/2 text-[#2E7D32]/12"
+        className="pointer-events-none absolute right-1/4 top-1/2 text-emerald-700/12"
         animate={{ y: [0, -12, 0], rotate: [0, -6, 0] }}
         transition={{ repeat: Infinity, duration: 15 }}
       >
@@ -54,7 +54,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-8 top-8 text-[#2E7D32]/15"
+        className="pointer-events-none absolute right-8 top-8 text-emerald-700/15"
         animate={{ y: [0, -8, 0], rotate: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 9 }}
       >
@@ -62,7 +62,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-12 bottom-32 text-[#2E7D32]/10"
+        className="pointer-events-none absolute right-12 bottom-32 text-emerald-700/10"
         animate={{ y: [0, 10, 0], rotate: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 11 }}
       >
@@ -70,7 +70,7 @@ export default function BrandStorySection() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-10 bottom-20 text-[#2E7D32]/12"
+        className="pointer-events-none absolute left-10 bottom-20 text-emerald-700/12"
         animate={{ y: [0, -6, 0], rotate: [0, 5, 0] }}
         transition={{ repeat: Infinity, duration: 13 }}
       >
@@ -87,11 +87,11 @@ export default function BrandStorySection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <h2 className="font-display text-[clamp(2rem,5vw,2.5rem)] text-[#66BB6A] leading-tight antialiased">
+            <h2 className="font-display text-[clamp(2rem,5vw,2.5rem)] text-emerald-400 leading-tight antialiased">
               Stay Loyal to the Soil
             </h2>
 
-            <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-white/80 antialiased">
+            <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 antialiased">
               <p>
                 At Whole Lot of Nature, we believe that every plant has a story, and every garden is a sanctuary. We're on a mission to connect people with nature through thoughtfully curated plants, premium growing essentials, and sustainable practices.
               </p>
