@@ -123,7 +123,7 @@ export const TestimonialCard = ({
             {author}
           </p>
           {title && (
-            <p className="text-xs text-gray-100">
+            <p className="text-xs text-gray-500">
               {title}
             </p>
           )}

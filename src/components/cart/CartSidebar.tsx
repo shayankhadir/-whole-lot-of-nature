@@ -23,6 +23,7 @@ export default function CartSidebar() {
     updateQuantity,
     removeItem,
     clearCart,
+    isLoading,
   } = useCartStore();
 
   const isEmpty = items.length === 0;
@@ -82,7 +83,13 @@ export default function CartSidebar() {
                 leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl relative">
+                    {/* Loading Overlay */}
+                    {isLoading && (
+                      <div className="absolute inset-0 bg-white/50 backdrop-blur-sm z-50 flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                      </div>
+                    )}
                     {/* Header */}
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">

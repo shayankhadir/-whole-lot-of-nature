@@ -164,7 +164,7 @@ export const ProductCard = ({
 
         {/* Description */}
         {description && (
-          <p className="text-sm text-gray-100 mb-3 line-clamp-2">
+          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
             {description}
           </p>
         )}
@@ -176,7 +176,7 @@ export const ProductCard = ({
               ${price.toFixed(2)}
             </span>
             {originalPrice && originalPrice > price && (
-              <span className="text-sm sm:text-base text-gray-100 line-through antialiased">
+              <span className="text-sm sm:text-base text-gray-500 line-through antialiased">
                 ${originalPrice.toFixed(2)}
               </span>
             )}

@@ -115,7 +115,7 @@ export default function ComboProductsGrid({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg text-gray-100 max-w-2xl mx-auto antialiased"
+          className="text-lg text-gray-600 max-w-2xl mx-auto antialiased"
         >
           {subtitle}
         </motion.p>
@@ -181,7 +181,7 @@ export default function ComboProductsGrid({
         </div>
 
         {/* Results Count */}
-        <div className="mt-4 text-sm text-gray-100">
+        <div className="mt-4 text-sm text-gray-600">
           Showing {sortedCombos.length} combo{sortedCombos.length !== 1 ? 's' : ''} 
           {selectedCategory !== 'All Combos' && ` in ${selectedCategory}`}
         </div>

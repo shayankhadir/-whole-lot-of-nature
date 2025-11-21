@@ -244,7 +244,7 @@ export default function TagFilterSection() {
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-emerald-300 text-lg">No products found for this tag</p>
+            <p className="text-emerald-300 text-lg antialiased">No products found for this tag</p>
           </div>
         )}
       </div>

@@ -73,7 +73,7 @@ export default function CategoryShowcase() {
           <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 antialiased">
             A Luxury Edit for Every Green Vision
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-gray-100 antialiased">
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-gray-600 antialiased">
             Explore a curated taxonomy of nature-first collections designed to harmonise wellbeing, interior aesthetics, and sustainable growing rituals.
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export default function CategoryShowcase() {
                   <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-primary-700 transition-colors antialiased">
                     {category.title}
                   </h3>
-                  <p className="mt-3 text-sm text-gray-100">
+                  <p className="mt-3 text-sm text-gray-600">
                     {category.summary}
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export default function CategoryShowcase() {
                   {category.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-100 group-hover:border-primary-200 group-hover:text-primary-600"
+                      className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600 group-hover:border-primary-200 group-hover:text-primary-600"
                     >
                       {highlight}
                     </span>

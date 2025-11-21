@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { BUSINESS_EMAIL } from '@/lib/config/site';
 
 const faqData = [
   {
@@ -34,7 +35,7 @@ const faqData = [
   },
   {
     question: "Do you offer bulk orders for offices or events?",
-    answer: "Yes! We offer special pricing for bulk orders, corporate gifting, and event decorations. Contact our team for customized quotes and arrangements. We also provide maintenance services for office plants."
+    answer: `Yes! We offer special pricing for bulk orders, corporate gifting, and event decorations. Contact our team at ${BUSINESS_EMAIL} for customized quotes and arrangements. We also provide maintenance services for office plants.`
   },
   {
     question: "How often should I water my plants?",
@@ -104,7 +105,7 @@ export default function FAQ() {
             Can't find what you're looking for?
           </p>
           <a
-            href="mailto:support@wholelotofnature.com"
+            href={`mailto:${BUSINESS_EMAIL}`}
             className="inline-flex items-center px-7 py-3 bg-white text-primary-700 font-bold rounded-xl border border-primary-200 hover:bg-primary-50 transition-colors text-lg antialiased"
           >
             Contact Support

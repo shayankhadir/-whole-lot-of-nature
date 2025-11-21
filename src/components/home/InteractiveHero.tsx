@@ -98,7 +98,7 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-montserrat text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.1] mb-6"
+          className="font-montserrat text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.1] mb-6 antialiased"
         >
           <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
             WHOLE LOT OF
@@ -202,7 +202,7 @@ export default function InteractiveHero() {
           ease: "easeInOut",
           delay: 1
         }}
-        className="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-green-600/20 rounded-full blur-[120px] pointer-events-none"
+        className="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-[#2E7D32]/20 rounded-full blur-[120px] pointer-events-none backdrop-blur-md"
       />
     </section>
   );

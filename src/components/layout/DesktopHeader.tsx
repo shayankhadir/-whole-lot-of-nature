@@ -25,6 +25,7 @@ export default function DesktopHeader() {
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const router = useRouter();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +38,32 @@ export default function DesktopHeader() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!shopDropdownOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShopDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setShopDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [shopDropdownOpen]);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -107,6 +134,7 @@ export default function DesktopHeader() {
                   className="relative"
                   onMouseLeave={handleMouseLeave}
                   onMouseEnter={handleMouseEnter}
+                  ref={dropdownRef}
                 >
                   <motion.button
                     initial={{ opacity: 0, y: -10 }}
@@ -114,6 +142,9 @@ export default function DesktopHeader() {
                     transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-1 text-sm font-semibold tracking-wide uppercase text-white/85 hover:text-white"
+                    aria-haspopup="true"
+                    aria-expanded={shopDropdownOpen}
+                    onClick={() => setShopDropdownOpen((prev) => !prev)}
                   >
                     {item.name}
                     <motion.div
@@ -142,43 +173,44 @@ export default function DesktopHeader() {
                       <div className="mx-auto w-full max-w-7xl p-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
                           {item.dropdown.map((collection) => (
-                            <Link
+                            <article
                               key={collection.title}
-                              href={collection.href}
-                              onClick={() => setShopDropdownOpen(false)}
-                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40 backdrop-blur-md"
+                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40 backdrop-blur-md focus-within:border-[#66BB6A]/50"
                             >
-                              <div className="relative overflow-hidden rounded-full bg-[#66BB6A]/15 p-4 ring-1 ring-[#66BB6A]/30 w-14 h-14 flex items-center justify-center backdrop-blur-md">
-                                <collection.icon
-                                  className="h-7 w-7 text-[#66BB6A]"
-                                  aria-hidden="true"
-                                  strokeWidth={1.75}
-                                />
-                              </div>
-                              <div>
-                                <h3 className="text-lg font-semibold text-white group-hover:text-[#66BB6A] transition-colors antialiased">
-                                  {collection.title}
-                                </h3>
-                                <p className="mt-2 text-sm text-white/85">
-                                  {collection.description}
-                                </p>
-                              </div>
+                              <Link
+                                href={collection.href}
+                                className="flex items-start gap-4"
+                                onClick={() => setShopDropdownOpen(false)}
+                              >
+                                <div className="relative overflow-hidden rounded-full bg-[#66BB6A]/15 p-4 ring-1 ring-[#66BB6A]/30 w-14 h-14 flex items-center justify-center backdrop-blur-md">
+                                  <collection.icon
+                                    className="h-7 w-7 text-[#66BB6A]"
+                                    aria-hidden="true"
+                                    strokeWidth={1.75}
+                                  />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg font-semibold text-white group-hover:text-[#66BB6A] transition-colors antialiased">
+                                    {collection.title}
+                                  </h3>
+                                  <p className="mt-2 text-sm text-white/85">
+                                    {collection.description}
+                                  </p>
+                                </div>
+                              </Link>
                               <div className="flex flex-wrap gap-2">
                                 {collection.items.map((sub) => (
                                   <Link
                                     key={sub.name}
                                     href={sub.href}
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setShopDropdownOpen(false);
-                                    }}
+                                    onClick={() => setShopDropdownOpen(false)}
                                     className="inline-flex items-center rounded-md border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white hover:border-[#66BB6A]/40 hover:text-[#66BB6A] backdrop-blur-md"
                                   >
                                     {sub.name}
                                   </Link>
                                 ))}
                               </div>
-                            </Link>
+                            </article>
                           ))}
                         </div>
                         <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-sm text-white/80 shadow-inner backdrop-blur-md">

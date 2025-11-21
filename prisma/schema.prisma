@@ -126,4 +126,136 @@ model WishlistItem {
   @@unique([userId, productId])
 }
 
+// Email intelligence + marketing models
+
+model EmailContact {
+  id               String           @id @default(cuid())
+  email            String           @unique
+  firstName        String?
+  lastName         String?
+  source           EmailSource      @default(FORM)
+  sourceReference  String?
+  tags             Json?
+  metadata         Json?
+  intentScore      Int              @default(50)
+  totalSpend       Float            @default(0)
+  lastInteraction  DateTime?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  newsletter       NewsletterSubscription?
+  intent           EmailIntent?
+  events           EmailEvent[]
+  campaignEntries  EmailCampaignRecipient[]
+}
+
+model NewsletterSubscription {
+  id            String           @id @default(cuid())
+  contactId     String           @unique
+  status        NewsletterStatus @default(ACTIVE)
+  preferences   Json?
+  welcomeSent   Boolean          @default(false)
+  welcomeSentAt DateTime?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  contact EmailContact @relation(fields: [contactId], references: [id])
+}
+
+model EmailIntent {
+  id         String    @id @default(cuid())
+  contactId  String    @unique
+  intentType String
+  score      Int       @default(50)
+  signals    Json?
+  notes      String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  contact EmailContact @relation(fields: [contactId], references: [id])
+}
+
+model EmailCampaign {
+  id          String          @id @default(cuid())
+  name        String
+  subjectLine String
+  templateId  String?
+  content     Json
+  status      CampaignStatus  @default(DRAFT)
+  scheduledAt DateTime?
+  sentAt      DateTime?
+  stats       Json?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  recipients EmailCampaignRecipient[]
+}
+
+model EmailCampaignRecipient {
+  id          String           @id @default(cuid())
+  campaignId  String
+  contactId   String
+  status      RecipientStatus  @default(PENDING)
+  openedAt    DateTime?
+  clickedAt   DateTime?
+  bouncedAt   DateTime?
+  metadata    Json?
+
+  campaign EmailCampaign @relation(fields: [campaignId], references: [id])
+  contact  EmailContact  @relation(fields: [contactId], references: [id])
+}
+
+model EmailEvent {
+  id        String         @id @default(cuid())
+  contactId String
+  type      EmailEventType
+  payload   Json?
+  createdAt DateTime       @default(now())
+
+  contact EmailContact @relation(fields: [contactId], references: [id])
+}
+
+enum EmailSource {
+  FORM
+  NEWSLETTER
+  ORDER
+  SUPPORT
+  MANUAL
+  SCRAPED
+}
+
+enum NewsletterStatus {
+  ACTIVE
+  PAUSED
+  UNSUBSCRIBED
+}
+
+enum CampaignStatus {
+  DRAFT
+  SCHEDULED
+  SENDING
+  SENT
+  FAILED
+}
+
+enum RecipientStatus {
+  PENDING
+  SCHEDULED
+  SENT
+  OPENED
+  CLICKED
+  BOUNCED
+}
+
+enum EmailEventType {
+  SUBSCRIBED
+  UNSUBSCRIBED
+  PURCHASED
+  CART_ABANDONED
+  CAMPAIGN_SENT
+  CAMPAIGN_OPEN
+  CAMPAIGN_CLICK
+  MANUAL_NOTE
+}
+
 // Note: WordPress integration will be added once database connection is resolved

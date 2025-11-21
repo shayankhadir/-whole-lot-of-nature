@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useLoading } from '@/contexts/LoadingContext';
 
 export default function PageLoadingScreen() {
-  const { isLoading, progress } = useLoading();
+  const { isLoading } = useLoading();
 
   return (
     <AnimatePresence>
@@ -15,55 +15,38 @@ export default function PageLoadingScreen() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-[#1a4d2e] to-[#0f3620]"
+          transition={{ duration: 0.4 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#030a06]"
         >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="flex flex-col items-center justify-center gap-8"
-          >
-            {/* Logo */}
+          <div className="relative flex flex-col items-center gap-8">
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center justify-center"
+              className="relative"
             >
               <Image
                 src="/Whole lot of nature logo.png"
                 alt="Whole Lot of Nature"
-                width={120}
-                height={120}
+                width={100}
+                height={100}
                 priority
-                className="drop-shadow-lg"
+                className="opacity-90"
+              />
+              {/* Subtle pulse effect behind logo */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-emerald-500/20 blur-2xl"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
               />
             </motion.div>
 
-            {/* Loading Bar Container */}
-            <div className="w-64 flex flex-col items-center gap-3">
-              {/* Bar Background */}
-              <div className="w-full h-1.5 bg-gray-300 rounded-full overflow-hidden shadow-lg">
-                {/* Animated Bar */}
-                <motion.div
-                  className="h-full bg-white rounded-full origin-left"
-                  animate={{ scaleX: progress / 100 }}
-                  transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-                />
-              </div>
-
-              {/* Progress Text */}
-              <motion.p
-                className="text-white text-sm font-medium tracking-wide"
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                {Math.round(progress)}%
-              </motion.p>
+            <div className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-500/80 animate-bounce [animation-delay:-0.3s]" />
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-500/80 animate-bounce [animation-delay:-0.15s]" />
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-500/80 animate-bounce" />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

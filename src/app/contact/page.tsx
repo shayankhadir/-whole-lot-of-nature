@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import ContactForm from '@/components/forms/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Whole Lot of Nature',
@@ -36,21 +37,7 @@ export default function ContactPage() {
               Prefer a quick note? You can also reach us via the contact section on the <a href="/about#contact" className="text-[#66BB6A] hover:text-[#2E7D32] underline transition-colors">About page</a>.
             </div>
           </div>
-          <form className="space-y-4 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-lg p-6">
-            <div>
-              <label className="block text-sm font-medium text-white/90">Name</label>
-              <input className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all" placeholder="Your name" required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-white/90">Email</label>
-              <input type="email" className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all" placeholder="your@email.com" required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-white/90">Message</label>
-              <textarea rows={4} className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all" placeholder="Your message..." required />
-            </div>
-            <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-[#2E7D32] to-[#1e5628] text-white rounded-lg hover:from-[#66BB6A] hover:to-[#2E7D32] transition-all duration-300 font-semibold">Send Message</button>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </div>

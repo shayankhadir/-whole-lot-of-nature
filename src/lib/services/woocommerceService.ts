@@ -464,6 +464,35 @@ export class WooCommerceService {
   }
 
   /**
+   * Get WooCommerce customers for CRM/email intelligence tools
+   */
+  static async getCustomers(limit: number = 50): Promise<WooCommerceCustomer[]> {
+    try {
+      const response = await WooCommerce.get('customers', {
+        per_page: limit,
+        orderby: 'date',
+        order: 'desc',
+      });
+
+      const raw: unknown = response.data;
+      const list = Array.isArray(raw) ? (raw as WCRawCustomer[]) : [];
+      return list.map((customer) => ({
+        id: customer.id,
+        email: customer.email,
+        first_name: customer.first_name,
+        last_name: customer.last_name,
+        orders_count: customer.orders_count,
+        total_spent: customer.total_spent,
+        date_created: customer.date_created,
+        billing: customer.billing,
+      }));
+    } catch (error) {
+      console.error('Error fetching WooCommerce customers:', error);
+      return [];
+    }
+  }
+
+  /**
    * Transform WooCommerce product to our format
    */
   private static transformWooCommerceProduct(product: WCRawProduct): WooCommerceProduct {
@@ -498,8 +527,10 @@ export class WooCommerceService {
         name: attr.name,
         options: attr.options
       })),
-      in_stock: product.stock_status === 'instock',
-      stock_quantity: typeof product.stock_quantity === 'number' ? product.stock_quantity : 0,
+      // Default to in_stock if status is missing or ambiguous to prevent "Out of Stock" errors
+      // when inventory management is disabled or not yet set up in WordPress.
+      in_stock: product.stock_status === 'instock' || product.stock_status === 'onbackorder' || !product.stock_status,
+      stock_quantity: typeof product.stock_quantity === 'number' ? product.stock_quantity : 100,
       featured: product.featured,
       average_rating: product.average_rating ? parseFloat(String(product.average_rating)) : undefined,
       rating_count: product.rating_count || 0,
@@ -544,3 +575,4 @@ export class WooCommerceService {
     }
   }
 }
+

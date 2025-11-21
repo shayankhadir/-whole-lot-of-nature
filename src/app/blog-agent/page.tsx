@@ -26,12 +26,13 @@ export default function MarketingDashboard() {
   const [publishResult, setPublishResult] = useState<any>(null);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
-  const [activeTab, setActiveTab] = useState<'agent' | 'posts' | 'marketing' | 'social' | 'design'>('agent');
+  const [activeTab, setActiveTab] = useState<'blog' | 'marketing' | 'social' | 'design'>('blog');
   const [marketingLoading, setMarketingLoading] = useState(false);
   const [marketingResult, setMarketingResult] = useState<any>(null);
   const [marketingError, setMarketingError] = useState<string | null>(null);
   const [automationLoading, setAutomationLoading] = useState(false);
   const [automationResult, setAutomationResult] = useState<any>(null);
+  const [automationSummary, setAutomationSummary] = useState<any>(null);
   const [designAuditLoading, setDesignAuditLoading] = useState(false);
   const [designAuditResult, setDesignAuditResult] = useState<any>(null);
   const [socialLoading, setSocialLoading] = useState(false);
@@ -136,6 +137,7 @@ export default function MarketingDashboard() {
     setAutomationLoading(true);
     setMarketingError(null);
     setAutomationResult(null);
+    setAutomationSummary(null);
 
     try {
       const response = await fetch('/api/marketing/automate?action=full-automation', {
@@ -143,7 +145,15 @@ export default function MarketingDashboard() {
       });
       const data = await response.json();
       if (data.success) {
-        setAutomationResult(data);
+        setAutomationResult(data.results);
+        setAutomationSummary(data.summary);
+        if (data.results?.step1?.data?.competitors) {
+          setMarketingResult({
+            competitorsAnalyzed: data.results.step1.data.competitors.length,
+            results: data.results.step1.data.competitors,
+            insights: data.results.step1.data.insights,
+          });
+        }
       } else {
         setMarketingError(data.error || 'Automation failed');
       }
@@ -468,6 +478,10 @@ export default function MarketingDashboard() {
     }
   };
 
+  const step1Data = automationResult?.step1?.data || automationResult?.step1 || null;
+  const step2Data = automationResult?.step2?.data || automationResult?.step2 || null;
+  const step3Data = automationResult?.step3?.data || automationResult?.step3 || null;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-8">
       <div className="max-w-7xl mx-auto">
@@ -485,24 +499,14 @@ export default function MarketingDashboard() {
         <div className="bg-white rounded-2xl shadow-xl mb-8 overflow-hidden">
           <div className="flex border-b">
             <button
-              onClick={() => setActiveTab('agent')}
+              onClick={() => setActiveTab('blog')}
               className={`flex-1 py-4 px-6 font-semibold transition-colors ${
-                activeTab === 'agent'
+                activeTab === 'blog'
                   ? 'bg-[#2E7D32] text-white'
                   : 'bg-white text-gray-100 hover:bg-gray-50'
               }`}
             >
-              🤖 Blog Generator
-            </button>
-            <button
-              onClick={() => setActiveTab('posts')}
-              className={`flex-1 py-4 px-6 font-semibold transition-colors ${
-                activeTab === 'posts'
-                  ? 'bg-[#2E7D32] text-white'
-                  : 'bg-white text-gray-100 hover:bg-gray-50'
-              }`}
-            >
-              📝 All Posts ({blogPosts.length})
+              🌿 Blog Studio ({blogPosts.length})
             </button>
             <button
               onClick={() => setActiveTab('marketing')}
@@ -537,8 +541,8 @@ export default function MarketingDashboard() {
           </div>
         </div>
 
-        {/* Blog Generator Tab */}
-        {activeTab === 'agent' && (
+        {/* Blog Tab */}
+        {activeTab === 'blog' && (
           <div className="space-y-8">
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <div className="space-y-6">
@@ -615,15 +619,14 @@ export default function MarketingDashboard() {
                 </div>
               </div>
             )}
-          </div>
-        )}
 
-        {/* Blog Posts Tab */}
-        {activeTab === 'posts' && (
-          <div className="space-y-8">
+            {/* WordPress Posts */}
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800 antialiased">📝 Blog Posts</h2>
+                <div>
+                  <p className="text-sm uppercase tracking-wide text-gray-400 font-semibold">WordPress Feed</p>
+                  <h2 className="text-2xl font-bold text-gray-800 antialiased">📝 Blog Posts</h2>
+                </div>
                 <button
                   onClick={fetchBlogPosts}
                   disabled={loadingPosts}
@@ -688,6 +691,8 @@ export default function MarketingDashboard() {
           </div>
         )}
 
+        {/* Blog Posts Tab merged above */}
+
         {/* Marketing Agent Tab */}
         {activeTab === 'marketing' && (
           <div className="space-y-8">
@@ -741,27 +746,27 @@ export default function MarketingDashboard() {
                     <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
                       <h4 className="font-bold text-blue-800 mb-2 antialiased">📊 Step 1: Competitor Analysis</h4>
                       <p className="text-gray-700">
-                        Analyzed <span className="font-bold text-blue-600 antialiased">{automationResult.step1?.data?.competitorsAnalyzed || automationResult.step1?.competitorsAnalyzed || 0}</span> competitors
-                        {automationResult.step1?.data?.topKeywords && ` • Found ${automationResult.step1.data.topKeywords.length} keywords`}
+                        Analyzed <span className="font-bold text-blue-600 antialiased">{step1Data?.competitorsAnalyzed || 0}</span> competitors
+                        {step1Data?.topKeywords && ` • Found ${step1Data.topKeywords.length} keywords`}
                       </p>
                     </div>
                     
                     <div className="bg-white rounded-lg p-4 border-l-4 border-[#2E7D32]">
                       <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">✍️ Step 2: Content Generation</h4>
                       <p className="text-gray-700">
-                        Generated <span className="font-bold text-[#2E7D32] antialiased">{automationResult.step2?.contentGenerated || 0}</span> SEO-optimized articles
-                        (avg. {automationResult.step2?.avgWordCount || '1200+'} words each)
+                        Generated <span className="font-bold text-[#2E7D32] antialiased">{step2Data?.contentGenerated || 0}</span> SEO-optimized articles
+                        (avg. {step2Data?.avgWordCount || '1200+'} words each)
                       </p>
                     </div>
                     
                     <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
                       <h4 className="font-bold text-purple-800 mb-2 antialiased">🚀 Step 3: Landing Pages Created</h4>
                       <p className="text-gray-700">
-                        Created <span className="font-bold text-purple-600 antialiased">{automationResult.step3?.pagesCreated || 0}</span> landing pages
+                        Created <span className="font-bold text-purple-600 antialiased">{step3Data?.pagesCreated || 0}</span> landing pages
                       </p>
-                      {automationResult.step3?.pages && automationResult.step3.pages.length > 0 && (
+                      {step3Data?.pages && step3Data.pages.length > 0 && (
                         <div className="mt-3 space-y-2">
-                          {automationResult.step3.pages.map((page: any, i: number) => (
+                          {step3Data.pages.map((page: any, i: number) => (
                             <a 
                               key={i} 
                               href={`/seo-pages/${page?.slug || ''}`}
@@ -780,15 +785,15 @@ export default function MarketingDashboard() {
                   {/* Summary Stats */}
                   <div className="grid grid-cols-3 gap-4">
                     <div className="bg-white rounded-xl p-4 text-center border-2 border-blue-200">
-                      <p className="text-2xl font-bold text-blue-600 antialiased">{automationResult.step1?.competitorsAnalyzed || 0}</p>
+                      <p className="text-2xl font-bold text-blue-600 antialiased">{automationSummary?.competitorsAnalyzed ?? step1Data?.competitorsAnalyzed ?? 0}</p>
                       <p className="text-xs text-blue-700 font-semibold">Competitors</p>
                     </div>
                     <div className="bg-white rounded-xl p-4 text-center border-2 border-[#2E7D32]">
-                      <p className="text-2xl font-bold text-[#2E7D32] antialiased">{automationResult.step2?.contentGenerated || 0}</p>
+                      <p className="text-2xl font-bold text-[#2E7D32] antialiased">{automationSummary?.contentGenerated ?? step2Data?.contentGenerated ?? 0}</p>
                       <p className="text-xs text-[#2E7D32] font-semibold">Articles</p>
                     </div>
                     <div className="bg-white rounded-xl p-4 text-center border-2 border-purple-200">
-                      <p className="text-2xl font-bold text-purple-600 antialiased">{automationResult.step3?.pagesCreated || 0}</p>
+                      <p className="text-2xl font-bold text-purple-600 antialiased">{automationSummary?.pagesCreated ?? step3Data?.pagesCreated ?? 0}</p>
                       <p className="text-xs text-purple-700 font-semibold">Pages</p>
                     </div>
                   </div>
@@ -1060,18 +1065,18 @@ export default function MarketingDashboard() {
                   {bufferStatus && (
                     <div className={`p-4 rounded-lg border-2 ${
                       bufferStatus.success 
-                        ? 'bg-green-50 border-green-300' 
+                        ? 'bg-[#2E7D32] border-[#2E7D32]' 
                         : 'bg-yellow-50 border-yellow-300'
                     }`}>
                       {bufferStatus.success ? (
                         <div>
-                          <p className="font-bold text-green-800 mb-2">✅ Instagram Connected!</p>
+                          <p className="font-bold text-[#2E7D32] mb-2 antialiased">✅ Instagram Connected!</p>
                           {bufferStatus.account && (
                             <>
-                              <p className="text-sm text-green-700">
+                              <p className="text-sm text-[#2E7D32]">
                                 @{bufferStatus.account.username}
                               </p>
-                              <div className="mt-2 text-xs text-green-600 space-y-1">
+                              <div className="mt-2 text-xs text-[#2E7D32] space-y-1">
                                 <div>👥 {bufferStatus.account.followers?.toLocaleString()} followers</div>
                                 <div>📸 {bufferStatus.account.posts} posts</div>
                               </div>
@@ -1080,7 +1085,7 @@ export default function MarketingDashboard() {
                         </div>
                       ) : (
                         <div>
-                          <p className="font-bold text-yellow-800 mb-2">⚠️ Instagram Not Connected</p>
+                          <p className="font-bold text-yellow-800 mb-2 antialiased">⚠️ Instagram Not Connected</p>
                           <p className="text-sm text-yellow-700 mb-2">
                             {bufferStatus.error || 'Set up Instagram API to enable auto-scheduling'}
                           </p>
@@ -1117,7 +1122,7 @@ export default function MarketingDashboard() {
                         <button 
                           onClick={runInstagramAutomation}
                           disabled={socialLoading}
-                          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 shadow-lg"
+                          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 shadow-lg antialiased"
                         >
                           {socialLoading ? '⏳ Automating...' : '🚀 Generate & Auto-Schedule to Instagram'}
                         </button>
@@ -1136,17 +1141,17 @@ export default function MarketingDashboard() {
                   {/* Progress Tracker */}
                   {automationProgress.length > 0 && (
                     <div className="bg-white rounded-lg p-4 border-2 border-indigo-200">
-                      <h4 className="font-bold text-indigo-800 mb-3">📊 Automation Progress</h4>
+                      <h4 className="font-bold text-indigo-800 mb-3 antialiased">📊 Automation Progress</h4>
                       <div className="space-y-2">
                         {automationProgress.map((progress, i) => (
                           <div key={i} className="flex items-center gap-3">
-                            <span className="text-2xl">
+                            <span className="text-2xl antialiased">
                               {progress.status === 'running' && '⏳'}
                               {progress.status === 'complete' && '✅'}
                               {progress.status === 'error' && '❌'}
                             </span>
                             <span className={`text-sm ${
-                              progress.status === 'complete' ? 'text-green-700' :
+                              progress.status === 'complete' ? 'text-[#2E7D32]' :
                               progress.status === 'error' ? 'text-red-700' :
                               'text-gray-700'
                             }`}>
@@ -1209,9 +1214,9 @@ export default function MarketingDashboard() {
                       
                       <div className="bg-white rounded-xl p-6 mb-6 border-2 border-purple-200">
                         <div className="flex items-center gap-4 mb-4">
-                          <span className="text-5xl">✅</span>
+                          <span className="text-5xl antialiased">✅</span>
                           <div>
-                            <h4 className="text-2xl font-bold text-purple-800">
+                            <h4 className="text-2xl font-bold text-purple-800 antialiased">
                               {socialResult.postsScheduled} Posts Scheduled to Instagram!
                             </h4>
                             <p className="text-gray-600">
@@ -1222,41 +1227,41 @@ export default function MarketingDashboard() {
 
                         <div className="grid grid-cols-3 gap-4 mt-6">
                           <div className="bg-purple-50 rounded-lg p-4 text-center">
-                            <p className="text-3xl font-bold text-purple-600">{socialResult.postsScheduled}</p>
+                            <p className="text-3xl font-bold text-purple-600 antialiased">{socialResult.postsScheduled}</p>
                             <p className="text-sm text-purple-700 font-semibold">Posts Scheduled</p>
                           </div>
                           <div className="bg-pink-50 rounded-lg p-4 text-center">
-                            <p className="text-3xl font-bold text-pink-600">{socialResult.summary?.totalDays || 30}</p>
+                            <p className="text-3xl font-bold text-pink-600 antialiased">{socialResult.summary?.totalDays || 30}</p>
                             <p className="text-sm text-pink-700 font-semibold">Days Covered</p>
                           </div>
                           <div className="bg-rose-50 rounded-lg p-4 text-center">
-                            <p className="text-3xl font-bold text-rose-600">{socialResult.summary?.postsPerDay || '2+'}</p>
+                            <p className="text-3xl font-bold text-rose-600 antialiased">{socialResult.summary?.postsPerDay || '2+'}</p>
                             <p className="text-sm text-rose-700 font-semibold">Posts Per Day</p>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-green-100 border-2 border-green-300 rounded-xl p-6">
-                        <h4 className="font-bold text-green-800 mb-3 text-lg">✅ What Happens Next?</h4>
-                        <ul className="space-y-2 text-green-700">
+                      <div className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-xl p-6">
+                        <h4 className="font-bold text-[#2E7D32] mb-3 text-lg antialiased">✅ What Happens Next?</h4>
+                        <ul className="space-y-2 text-[#2E7D32]">
                           <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">1.</span>
+                            <span className="text-[#2E7D32] font-bold antialiased">1.</span>
                             <span>Open the Instagram app and go to your profile</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">2.</span>
+                            <span className="text-[#2E7D32] font-bold antialiased">2.</span>
                             <span>View your scheduled posts by tapping the menu → "Scheduled Content"</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">3.</span>
+                            <span className="text-[#2E7D32] font-bold antialiased">3.</span>
                             <span>Review and edit any posts if needed before they go live</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">4.</span>
+                            <span className="text-[#2E7D32] font-bold antialiased">4.</span>
                             <span>Instagram will automatically publish at the scheduled times</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">5.</span>
+                            <span className="text-[#2E7D32] font-bold antialiased">5.</span>
                             <span>Monitor engagement and run automation again anytime for fresh content!</span>
                           </li>
                         </ul>
@@ -1265,11 +1270,11 @@ export default function MarketingDashboard() {
                       {/* Calendar Preview */}
                       {socialResult.calendar && socialResult.calendar.length > 0 && (
                         <div className="mt-6">
-                          <h4 className="font-bold text-indigo-800 mb-4">📅 Your Content Calendar (Next 7 Days)</h4>
+                          <h4 className="font-bold text-indigo-800 mb-4 antialiased">📅 Your Content Calendar (Next 7 Days)</h4>
                           <div className="space-y-3">
                             {socialResult.calendar.slice(0, 7).map((day: any, i: number) => (
                               <div key={i} className="bg-white rounded-lg p-4 border-2 border-indigo-200">
-                                <h5 className="font-bold text-gray-800 mb-2">
+                                <h5 className="font-bold text-gray-800 mb-2 antialiased">
                                   {new Date(day.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                                 </h5>
                                 <p className="text-sm text-gray-600 mb-2">{day.posts?.length || 0} posts scheduled</p>
@@ -1301,7 +1306,7 @@ export default function MarketingDashboard() {
                         <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
                           <h4 className="font-bold text-blue-800 mb-2 antialiased">📊 Step 1: Competitor Analysis</h4>
                           <p className="text-gray-700">
-                            Analyzed <span className="font-bold text-blue-600">{socialResult.results.step1?.data?.competitorsAnalyzed || 0}</span> competitors
+                            Analyzed <span className="font-bold text-blue-600 antialiased">{socialResult.results.step1?.data?.competitorsAnalyzed || 0}</span> competitors
                             {socialResult.results.step1?.data?.trendingTopics && ` • Found ${socialResult.results.step1.data.trendingTopics.length} trending topics`}
                           </p>
                         </div>
@@ -1309,7 +1314,7 @@ export default function MarketingDashboard() {
                         <div className="bg-white rounded-lg p-4 border-l-4 border-[#2E7D32]">
                           <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">📱 Step 2: Posts Generated</h4>
                           <p className="text-gray-700">
-                            Created <span className="font-bold text-[#2E7D32]">{socialResult.results.step2?.data?.postsGenerated || 0}</span> social media posts
+                            Created <span className="font-bold text-[#2E7D32] antialiased">{socialResult.results.step2?.data?.postsGenerated || 0}</span> social media posts
                             {socialResult.results.step2?.data?.platforms && ` across ${socialResult.results.step2.data.platforms.length} platforms`}
                           </p>
                         </div>
@@ -1317,7 +1322,7 @@ export default function MarketingDashboard() {
                         <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
                           <h4 className="font-bold text-purple-800 mb-2 antialiased">📅 Step 3: Content Calendar</h4>
                           <p className="text-gray-700">
-                            Built <span className="font-bold text-purple-600">{socialResult.results.step3?.data?.totalDays || 0}</span>-day calendar
+                            Built <span className="font-bold text-purple-600 antialiased">{socialResult.results.step3?.data?.totalDays || 0}</span>-day calendar
                             {socialResult.results.step3?.data?.postsPerDay && ` with ${socialResult.results.step3.data.postsPerDay} posts/day`}
                           </p>
                         </div>
@@ -1331,7 +1336,7 @@ export default function MarketingDashboard() {
                             {socialResult.results.step2.data.posts.slice(0, 3).map((post: any, i: number) => (
                               <div key={i} className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200">
                                 <div className="flex items-center gap-2 mb-2">
-                                  <span className="text-2xl">
+                                  <span className="text-2xl antialiased">
                                     {post.platform === 'instagram' && '📸'}
                                     {post.platform === 'facebook' && '📘'}
                                     {post.platform === 'twitter' && '🐦'}
@@ -1368,7 +1373,7 @@ export default function MarketingDashboard() {
                         {socialResult.posts.slice(0, 5).map((post: any, i: number) => (
                           <div key={i} className="bg-white rounded-lg p-4 border-2 border-gray-200">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="text-2xl">
+                              <span className="text-2xl antialiased">
                                 {post.platform === 'instagram' && '📸'}
                                 {post.platform === 'facebook' && '📘'}
                                 {post.platform === 'twitter' && '🐦'}
@@ -1402,19 +1407,19 @@ export default function MarketingDashboard() {
                       {/* Summary Stats */}
                       <div className="grid grid-cols-4 gap-4 mb-6">
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <p className="text-2xl font-bold text-orange-600">{socialResult.summary?.totalDays || 0}</p>
+                          <p className="text-2xl font-bold text-orange-600 antialiased">{socialResult.summary?.totalDays || 0}</p>
                           <p className="text-xs text-orange-700 font-semibold">Days</p>
                         </div>
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <p className="text-2xl font-bold text-orange-600">{socialResult.summary?.totalPosts || 0}</p>
+                          <p className="text-2xl font-bold text-orange-600 antialiased">{socialResult.summary?.totalPosts || 0}</p>
                           <p className="text-xs text-orange-700 font-semibold">Total Posts</p>
                         </div>
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <p className="text-2xl font-bold text-orange-600">{socialResult.summary?.postsPerDay || 0}</p>
+                          <p className="text-2xl font-bold text-orange-600 antialiased">{socialResult.summary?.postsPerDay || 0}</p>
                           <p className="text-xs text-orange-700 font-semibold">Posts/Day</p>
                         </div>
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <p className="text-2xl font-bold text-orange-600">
+                          <p className="text-2xl font-bold text-orange-600 antialiased">
                             {socialResult.summary?.platformBreakdown ? Object.keys(socialResult.summary.platformBreakdown).length : 0}
                           </p>
                           <p className="text-xs text-orange-700 font-semibold">Platforms</p>
@@ -1424,7 +1429,7 @@ export default function MarketingDashboard() {
                       {/* First Week Preview */}
                       {socialResult.calendar.slice(0, 7).map((day: any, i: number) => (
                         <div key={i} className="bg-white rounded-lg p-4 mb-3 border-2 border-orange-200">
-                          <h4 className="font-bold text-gray-800 mb-2">
+                          <h4 className="font-bold text-gray-800 mb-2 antialiased">
                             📅 {new Date(day.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                           </h4>
                           <p className="text-sm text-gray-600 mb-3">Theme: {day.theme}</p>

@@ -4,19 +4,32 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import ScheduledTrendAgent from '@/lib/agents/scheduledTrendAgent';
+import ScheduledTrendAgent, { AgentConfig } from '@/lib/agents/scheduledTrendAgent';
 
 export const dynamic = 'force-dynamic';
 
 // Store agent in memory (in production, use database)
 let agent: ScheduledTrendAgent | null = null;
+let cachedPublishStrategy: AgentConfig['publishStrategy'] | null = null;
 
-function getAgent(): ScheduledTrendAgent {
-  if (!agent) {
+const DEFAULT_PUBLISH_STRATEGY: AgentConfig['publishStrategy'] =
+  resolvePublishStrategy(process.env.AGENT_PUBLISH_STRATEGY) || 'scheduled';
+
+function resolvePublishStrategy(value?: string | null): AgentConfig['publishStrategy'] | undefined {
+  if (value === 'draft' || value === 'scheduled' || value === 'immediate') {
+    return value;
+  }
+  return undefined;
+}
+
+function getAgent(strategyOverride?: AgentConfig['publishStrategy']): ScheduledTrendAgent {
+  const publishStrategy = strategyOverride || cachedPublishStrategy || DEFAULT_PUBLISH_STRATEGY;
+
+  if (!agent || cachedPublishStrategy !== publishStrategy) {
     agent = new ScheduledTrendAgent({
-      runInterval: 'daily', // Run daily to generate 5 posts per day
-      publishStrategy: 'draft', // Keep as draft, automatic publisher will publish
-      maxPostsPerRun: 5, // Generate 5 posts per day
+      runInterval: 'daily',
+      publishStrategy,
+      maxPostsPerRun: 5,
       wordPressConfig: process.env.WORDPRESS_SITE_URL
         ? {
             siteUrl: process.env.WORDPRESS_SITE_URL,
@@ -25,6 +38,7 @@ function getAgent(): ScheduledTrendAgent {
           }
         : undefined,
     });
+    cachedPublishStrategy = publishStrategy;
   }
 
   return agent;
@@ -35,7 +49,8 @@ export async function POST(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
 
-    const agent = getAgent();
+    const strategyParam = resolvePublishStrategy(searchParams.get('publishStrategy'));
+    const agent = getAgent(strategyParam);
 
     if (action === 'execute') {
       // Execute a full agent run
@@ -80,7 +95,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
 
-    const agent = getAgent();
+    const strategyParam = resolvePublishStrategy(searchParams.get('publishStrategy'));
+    const agent = getAgent(strategyParam);
 
     if (action === 'history') {
       const limit = parseInt(searchParams.get('limit') || '10');

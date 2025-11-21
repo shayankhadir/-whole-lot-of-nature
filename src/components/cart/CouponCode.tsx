@@ -73,12 +73,12 @@ export default function CouponCode({
 
       {/* Applied Coupon Display */}
       {appliedCoupon && (
-        <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+        <div className="flex items-center justify-between p-3 bg-[#2E7D32] border border-[#2E7D32] rounded-lg">
           <div className="flex items-center gap-2">
-            <span className="text-green-700 font-semibold">
+            <span className="text-[#2E7D32] font-semibold">
               {appliedCoupon}
             </span>
-            <span className="text-sm text-green-600">
+            <span className="text-sm text-[#2E7D32]">
               (-₹{discount.toFixed(2)})
             </span>
           </div>
@@ -95,7 +95,7 @@ export default function CouponCode({
       {message && (
         <p
           className={`text-sm ${
-            messageType === 'success' ? 'text-green-600' : 'text-red-600'
+            messageType === 'success' ? 'text-[#2E7D32]' : 'text-red-600'
           }`}
         >
           {message}

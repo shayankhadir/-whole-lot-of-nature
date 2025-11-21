@@ -25,7 +25,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
 
   return (
     <div className="flex items-center gap-3">
-      <Share2 className="w-5 h-5 text-gray-100" />
+      <Share2 className="w-5 h-5 text-gray-600" />
       <button
         onClick={shareOnFacebook}
         className="p-2 hover:bg-gray-100 rounded-lg transition-colors"

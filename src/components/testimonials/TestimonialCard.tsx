@@ -67,7 +67,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <div className="flex items-start justify-between mb-3">
           <div>
             <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
-            {testimonial.productName && <p className="text-sm text-gray-100">{testimonial.productName}</p>}
+            {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
           {testimonial.verifiedPurchase && <span className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded font-bold antialiased">✓ Verified</span>}
         </div>
@@ -100,7 +100,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <div className="flex items-center justify-between border-t-2 border-black pt-4">
           <div>
             <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
-            {testimonial.productName && <p className="text-sm text-gray-100">{testimonial.productName}</p>}
+            {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
           <div className="text-right">
             {testimonial.verifiedPurchase && (
@@ -139,7 +139,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       {/* Author */}
       <div className="border-t-2 border-black pt-4 mb-4">
         <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
-        {testimonial.productName && <p className="text-xs text-gray-100">{testimonial.productName}</p>}
+        {testimonial.productName && <p className="text-xs text-gray-600">{testimonial.productName}</p>}
         {testimonial.createdAt && <p className="text-xs text-gray-500 mt-1">{formatDate(testimonial.createdAt)}</p>}
       </div>
 

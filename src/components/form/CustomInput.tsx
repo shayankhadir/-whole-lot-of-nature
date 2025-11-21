@@ -88,7 +88,7 @@ export const CustomInput = ({
 
       {/* Helper Text */}
       {helperText && !error && (
-        <p className="text-gray-100 text-sm mt-2">{helperText}</p>
+        <p className="text-gray-400 text-sm mt-2">{helperText}</p>
       )}
     </motion.div>
   );

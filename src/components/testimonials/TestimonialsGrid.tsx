@@ -155,7 +155,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
           </div>
 
           {/* Count */}
-          <p className="text-sm text-gray-100 font-bold antialiased">
+          <p className="text-sm text-gray-600 font-bold antialiased">
             Showing {displayTestimonials.length} testimonial{displayTestimonials.length !== 1 ? 's' : ''}
           </p>
         </motion.div>

@@ -25,11 +25,11 @@ export default function ErrorPage() {
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-green-600 hover:text-green-700">
+            <Link href="/" className="text-[#2E7D32] hover:text-[#2E7D32]">
               Home
             </Link>
             <span className="text-gray-100">/</span>
-            <Link href="/seo-pages" className="text-green-600 hover:text-green-700">
+            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#2E7D32]">
               Guides
             </Link>
             <span className="text-gray-100">/</span>
@@ -41,18 +41,18 @@ export default function ErrorPage() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 antialiased">
             Error - Tips, Tricks & Complete Guide
           </h1>
-          <p className="text-xl text-gray-100 leading-relaxed">
+          <p className="text-xl text-gray-100 leading-relaxed antialiased">
             Discover everything about error with our comprehensive guide. Expert tips, best practices, and actionable advice for error. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">error</span>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">error online</span>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">error india</span>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">buy error</span>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">best error</span>
+            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">error</span>
+            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">error online</span>
+            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">error india</span>
+            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy error</span>
+            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best error</span>
           </div>
         </header>
 
@@ -90,13 +90,13 @@ export default function ErrorPage() {
 
             {/* FAQs */}
             <div className="bg-white rounded-2xl shadow-lg p-8 mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 antialiased">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
                 
                 <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">
                     What is the best error for beginners?
                   </h3>
                   <p className="text-gray-700">
@@ -104,7 +104,7 @@ export default function ErrorPage() {
                   </p>
                 </div>
                 <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">
                     How much does error cost in India?
                   </h3>
                   <p className="text-gray-700">
@@ -112,7 +112,7 @@ export default function ErrorPage() {
                   </p>
                 </div>
                 <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">
                     Is error suitable for Indian climate?
                   </h3>
                   <p className="text-gray-700">
@@ -120,7 +120,7 @@ export default function ErrorPage() {
                   </p>
                 </div>
                 <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">
                     How do I maintain error?
                   </h3>
                   <p className="text-gray-700">
@@ -128,7 +128,7 @@ export default function ErrorPage() {
                   </p>
                 </div>
                 <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">
                     Where can I buy quality error online?
                   </h3>
                   <p className="text-gray-700">
@@ -143,21 +143,21 @@ export default function ErrorPage() {
           <div className="lg:col-span-1">
             {/* CTA Box */}
             <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg p-6 text-white sticky top-4">
-              <h3 className="text-2xl font-bold mb-4">Shop Now</h3>
+              <h3 className="text-2xl font-bold mb-4 antialiased">Shop Now</h3>
               <p className="mb-6">
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
                 href="/shop/plants"
-                className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
+                className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-green-500">
+              <div className="mt-6 pt-6 border-t border-[#2E7D32]">
                 <p className="text-sm mb-4">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -166,38 +166,38 @@ export default function ErrorPage() {
 
             {/* Related Links */}
             <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 antialiased">
                 Related Guides
               </h3>
               <ul className="space-y-3">
                 
                 <li>
-                  <Link href="/shop/plants" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/plants" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/seeds" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/seeds" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/fertilizers" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/blog" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Gardening Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/care-guides" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/care-guides" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/about" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     About Us
                   </Link>
                 </li>
@@ -206,21 +206,21 @@ export default function ErrorPage() {
 
             {/* Stats */}
             <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 antialiased">
                 Quick Facts
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b">
                   <span className="text-gray-100">Article Length</span>
-                  <span className="font-bold text-green-600">334 words</span>
+                  <span className="font-bold text-[#2E7D32] antialiased">334 words</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b">
                   <span className="text-gray-100">Read Time</span>
-                  <span className="font-bold text-green-600">2 min</span>
+                  <span className="font-bold text-[#2E7D32] antialiased">2 min</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-100">Target Keywords</span>
-                  <span className="font-bold text-green-600">8</span>
+                  <span className="font-bold text-[#2E7D32] antialiased">8</span>
                 </div>
               </div>
             </div>

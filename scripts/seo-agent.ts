@@ -64,7 +64,7 @@ interface ProductSchema {
 // SEO AGENT CLASS
 // ============================================================================
 
-class SEOAgent {
+export class SEOAgent {
   private issues: SEOIssue[] = [];
   private stats: SEOStats = {
     filesScanned: 0,
@@ -754,9 +754,9 @@ Add this to your product page:
 // MAIN EXECUTION
 // ============================================================================
 
-async function main() {
-  const agent = new SEOAgent();
-  await agent.scan();
+if (import.meta.url === `file://${process.argv[1]}`) {
+  (async function main() {
+    const agent = new SEOAgent();
+    await agent.scan();
+  })().catch(console.error);
 }
-
-main().catch(console.error);

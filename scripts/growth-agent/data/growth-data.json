@@ -1,0 +1,13 @@
+{
+  "lastRun": null,
+  "seoScore": 0,
+  "leads": [],
+  "activities": [
+    {
+      "timestamp": "2025-11-21T01:55:23.204Z",
+      "type": "INFO",
+      "message": "Test log entry"
+    }
+  ],
+  "agentStatus": "IDLE"
+}

@@ -370,8 +370,8 @@ export default function ProductDetailPage() {
                     className="h-full w-full object-cover transition-transform group-hover:scale-105"
                     priority
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition bg-white/95 rounded-full px-4 py-2 text-sm font-semibold text-neutral-900 shadow-lg">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center backdrop-blur-md">
+                    <span className="opacity-0 group-hover:opacity-100 transition bg-white/95 rounded-full px-4 py-2 text-sm font-semibold text-neutral-900 shadow-lg backdrop-blur-md">
                       🔍 Click to zoom
                     </span>
                   </div>
@@ -616,7 +616,7 @@ export default function ProductDetailPage() {
                             <IconComponent className="w-6 h-6" />
                           </div>
                           <div className="flex-1">
-                            <p className="text-base font-semibold text-neutral-900 mb-1">{item.label}</p>
+                            <p className="text-base font-semibold text-neutral-900 mb-1 antialiased">{item.label}</p>
                             <p className="text-sm text-neutral-600 leading-relaxed">{item.value}</p>
                           </div>
                         </div>
@@ -712,7 +712,7 @@ export default function ProductDetailPage() {
                                     fill
                                     className="object-cover group-hover:scale-110 transition"
                                   />
-                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center">
+                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center backdrop-blur-md">
                                     <Camera className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition" />
                                   </div>
                                 </div>
@@ -750,7 +750,7 @@ export default function ProductDetailPage() {
 
                   {reviews.length === 0 && (
                     <div className="text-center py-12 rounded-2xl border border-neutral-200 bg-neutral-50">
-                      <p className="text-lg font-semibold text-neutral-900 mb-2">No reviews yet</p>
+                      <p className="text-lg font-semibold text-neutral-900 mb-2 antialiased">No reviews yet</p>
                       <p className="text-neutral-600">Be the first to share your experience with this product!</p>
                     </div>
                   )}
@@ -901,13 +901,13 @@ export default function ProductDetailPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-md"
           onClick={() => setIsZoomed(false)}
         >
           <button
             type="button"
             onClick={() => setIsZoomed(false)}
-            className="absolute top-4 right-4 text-white hover:text-emerald-400 transition p-2 rounded-full bg-black/50"
+            className="absolute top-4 right-4 text-white hover:text-emerald-400 transition p-2 rounded-full bg-black/50 backdrop-blur-md"
             aria-label="Close zoom"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

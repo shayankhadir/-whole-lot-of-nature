@@ -35,7 +35,7 @@ export default function PromoBanner({
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1 text-center">
-            <p className="text-sm md:text-base font-semibold" style={{ color: textColor }}>
+            <p className="text-sm md:text-base font-semibold antialiased" style={{ color: textColor }}>
               {message}
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function PromoBanner({
           {dismissible && (
             <button
               onClick={() => setIsVisible(false)}
-              className="flex-shrink-0 p-1 rounded-full hover:bg-white/20 transition-colors"
+              className="flex-shrink-0 p-1 rounded-full hover:bg-white/20 transition-colors backdrop-blur-md"
               aria-label="Dismiss banner"
               style={{ color: textColor }}
             >

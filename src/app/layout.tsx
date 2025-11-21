@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import QueryProvider from "@/components/providers/QueryClientProvider";
+import { BUSINESS_EMAIL } from '@/lib/config/site';
 import Layout from "@/components/layout/Layout";
 import { Inter, Playfair_Display, Montserrat } from "next/font/google";
 import Script from "next/script";
@@ -80,6 +81,9 @@ export const metadata: Metadata = {
       ['max-video-preview']: -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -153,6 +157,7 @@ export default function RootLayout({
               '@type': 'ContactPoint',
               contactType: 'customer support',
               email: 'info@wholelotofnature.com',
+                email: BUSINESS_EMAIL,
               areaServed: 'IN',
               availableLanguage: ['en', 'hi'],
             }],

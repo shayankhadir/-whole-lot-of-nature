@@ -33,9 +33,9 @@ export default function AllProductsShowcase() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-square bg-[#12501a]/40 rounded-2xl mb-4" />
-                <div className="h-4 bg-[#12501a]/40 rounded mb-2" />
-                <div className="h-3 bg-[#12501a]/40 rounded w-2/3" />
+                <div className="aspect-square bg-[#12501a]/40 rounded-2xl mb-4 backdrop-blur-md" />
+                <div className="h-4 bg-[#12501a]/40 rounded mb-2 backdrop-blur-md" />
+                <div className="h-3 bg-[#12501a]/40 rounded w-2/3 backdrop-blur-md" />
               </div>
             ))}
           </div>

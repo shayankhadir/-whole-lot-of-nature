@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BUSINESS_EMAIL } from '@/lib/config/site';
 
 interface FAQItem {
   question: string;
@@ -54,7 +55,7 @@ const defaultFAQs: FAQItem[] = [
   },
   {
     question: 'Do you offer bulk discounts?',
-    answer: 'Yes! We offer special pricing for bulk orders. Contact us at support@wholelotofnature.com for bulk order inquiries.',
+    answer: `Yes! We offer special pricing for bulk orders. Contact us at ${BUSINESS_EMAIL} for bulk order inquiries.`,
     category: 'Pricing'
   },
 ];
@@ -76,8 +77,8 @@ export default function FAQSection({
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-cream-50 mb-4">{title}</h2>
-          <p className="text-cream-200 text-lg">{subtitle}</p>
+          <h2 className="text-4xl font-bold text-cream-50 mb-4 antialiased">{title}</h2>
+          <p className="text-cream-200 text-lg antialiased">{subtitle}</p>
         </div>
 
         {/* FAQ List */}
@@ -90,9 +91,9 @@ export default function FAQSection({
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/5 transition-colors backdrop-blur-md"
               >
-                <span className="text-lg font-semibold text-cream-50 pr-8">
+                <span className="text-lg font-semibold text-cream-50 pr-8 antialiased">
                   {faq.question}
                 </span>
                 <svg

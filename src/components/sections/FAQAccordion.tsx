@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { BUSINESS_EMAIL } from '@/lib/config/site';
 
 const faqs = [
   {
@@ -130,7 +131,7 @@ export default function FAQAccordion() {
             Still have questions?
           </p>
           <a
-            href="mailto:support@wholelotofnature.com"
+            href={`mailto:${BUSINESS_EMAIL}`}
             className="inline-flex items-center gap-2 text-[var(--emerald-500)] hover:text-[var(--emerald-700)] font-semibold transition-colors duration-300"
           >
             Contact our support team

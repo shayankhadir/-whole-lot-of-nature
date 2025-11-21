@@ -103,15 +103,15 @@ export default function ${this.generateComponentName(content.slug)}Page() {
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-green-600 hover:text-green-700">
+            <Link href="/" className="text-[#2E7D32] hover:text-[#1B5E20]">
               Home
             </Link>
-            <span className="text-gray-100">/</span>
-            <Link href="/seo-pages" className="text-green-600 hover:text-green-700">
+            <span className="text-gray-400">/</span>
+            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#1B5E20]">
               Guides
             </Link>
-            <span className="text-gray-100">/</span>
-            <span className="text-gray-100">${this.escapeString(content.title)}</span>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-600">${this.escapeString(content.title)}</span>
           </nav>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             ${this.escapeString(content.h1)}
           </h1>
-          <p className="text-xl text-gray-100 leading-relaxed">
+          <p className="text-xl text-gray-600 leading-relaxed">
             ${this.escapeString(content.metaDescription)}
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
@@ -130,7 +130,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
               .slice(0, 5)
               .map(
                 (kw) =>
-                  `<span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">${kw}</span>`
+                  `<span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">${kw}</span>`
               )
               .join('\n            ')}
           </div>
@@ -218,15 +218,15 @@ export default function ${this.generateComponentName(content.slug)}Page() {
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-100">Article Length</span>
+                  <span className="text-gray-600">Article Length</span>
                   <span className="font-bold text-green-600">${content.wordCount} words</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-100">Read Time</span>
+                  <span className="text-gray-600">Read Time</span>
                   <span className="font-bold text-green-600">${Math.ceil(content.wordCount / 200)} min</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-100">Target Keywords</span>
+                  <span className="text-gray-600">Target Keywords</span>
                   <span className="font-bold text-green-600">${content.keywords.length}</span>
                 </div>
               </div>

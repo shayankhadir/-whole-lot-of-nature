@@ -49,8 +49,8 @@ export function StickyAddToCart({ isVisible, product, onAddToCart }: StickyAddTo
                   </div>
                 )}
                 <div className="min-w-0">
-                  <p className="font-semibold text-sm sm:text-base text-neutral-900 truncate">{product.name}</p>
-                  <p className="text-emerald-700 font-bold text-base sm:text-lg">{displayPrice}</p>
+                  <p className="font-semibold text-sm sm:text-base text-neutral-900 truncate antialiased">{product.name}</p>
+                  <p className="text-emerald-700 font-bold text-base sm:text-lg antialiased">{displayPrice}</p>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ export function StickyAddToCart({ isVisible, product, onAddToCart }: StickyAddTo
                   >
                     <Minus className="w-4 h-4" />
                   </button>
-                  <span className="w-8 sm:w-12 text-center font-semibold text-base sm:text-lg">{quantity}</span>
+                  <span className="w-8 sm:w-12 text-center font-semibold text-base sm:text-lg antialiased">{quantity}</span>
                   <button
                     type="button"
                     onClick={incrementQuantity}

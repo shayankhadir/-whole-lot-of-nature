@@ -84,7 +84,7 @@ interface GeneratedContent {
   suggestions: string[];
 }
 
-class ContentAgent {
+export class ContentAgent {
   private brandVoice: BrandVoice;
   private outputDir: string;
 
@@ -558,47 +558,47 @@ class ContentAgent {
 
 // ===== CLI INTERFACE =====
 
-const args = process.argv.slice(2);
-const command = args[0];
-const agent = new ContentAgent();
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const args = process.argv.slice(2);
+  const command = args[0];
+  const agent = new ContentAgent();
 
-async function main() {
-  if (!command) {
-    console.log(`
-✍️  CONTENT GENERATION AGENT
-Usage: npm run content:<command> [options]
-
-Commands:
-  blog <topic>              Generate a blog post
-  product <name>            Generate product description
-  social <topic>            Generate social media caption
-  meta <topic>              Generate meta tags
-  email <topic>             Generate email content
-
-Examples:
-  npm run content:blog "Sustainable Gardening"
-  npm run content:product "Organic Soil Mix"
-  npm run content:social "Native Plants"
-  npm run content:meta "Plant Care Tips"
-  npm run content:email "Monthly Newsletter"
-`);
-    return;
-  }
-
-  const topic = args.slice(1).join(' ') || 'Sustainable Gardening';
-
-  const request: ContentRequest = {
-    type: command as any,
-    topic,
-    length: 'medium',
-    tone: 'educational'
-  };
-
-  try {
-    await agent.generate(request);
-  } catch (error) {
-    console.error('❌ Error generating content:', error);
-  }
+  (async function main() {
+    if (!command) {
+      console.log(`
+  ✍️  CONTENT GENERATION AGENT
+  Usage: npm run content:<command> [options]
+  
+  Commands:
+    blog <topic>              Generate a blog post
+    product <name>            Generate product description
+    social <topic>            Generate social media caption
+    meta <topic>              Generate meta tags
+    email <topic>             Generate email content
+  
+  Examples:
+    npm run content:blog "Sustainable Gardening"
+    npm run content:product "Organic Soil Mix"
+    npm run content:social "Native Plants"
+    npm run content:meta "Plant Care Tips"
+    npm run content:email "Monthly Newsletter"
+  `);
+      return;
+    }
+  
+    const topic = args.slice(1).join(' ') || 'Sustainable Gardening';
+  
+    const request: ContentRequest = {
+      type: command as any,
+      topic,
+      length: 'medium',
+      tone: 'educational'
+    };
+  
+    try {
+      await agent.generate(request);
+    } catch (error) {
+      console.error('❌ Error generating content:', error);
+    }
+  })();
 }
-
-main();

@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { cartService } from '@/lib/services/cartService';
 
 export interface CartItem {
   id: string;
+  key?: string; // WooCommerce cart item key
   name: string;
   price: number;
   originalPrice?: number;
@@ -29,12 +31,14 @@ interface CartState {
   discount: number;
   shipping: number;
   tax: number;
+  isLoading: boolean;
 }
 
 interface CartActions {
-  addItem: (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => void;
-  removeItem: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  fetchCart: () => Promise<void>;
+  addItem: (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => Promise<void>;
+  removeItem: (id: string) => Promise<void>;
+  updateQuantity: (id: string, quantity: number) => Promise<void>;
   clearCart: () => void;
   toggleCart: () => void;
   openCart: () => void;
@@ -45,18 +49,31 @@ interface CartActions {
 
 type CartStore = CartState & CartActions;
 
-const calculateCartTotals = (items: CartItem[], discount: number = 0, shipping: number = 0) => {
-  const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const tax = Math.round(subtotal * 0.18); // 18% GST for India
-  const totalPrice = subtotal - discount + shipping + tax;
+// Helper to map WC cart response to our store state
+const mapWCCartToState = (wcCart: any) => {
+  const items: CartItem[] = wcCart.items.map((item: any) => ({
+    id: item.id.toString(),
+    key: item.key,
+    name: item.name,
+    price: parseFloat(item.prices.price) / 100, // WC Store API returns prices in minor units
+    originalPrice: parseFloat(item.prices.regular_price) / 100,
+    image: item.images[0]?.src || '',
+    quantity: item.quantity,
+    type: 'product',
+    inStock: true,
+    category: item.categories?.[0]?.name,
+  }));
 
-  return {
-    subtotal,
-    totalItems,
-    totalPrice,
-    tax,
+  const totals = {
+    subtotal: parseFloat(wcCart.totals.total_items) / 100,
+    totalPrice: parseFloat(wcCart.totals.total_price) / 100,
+    tax: parseFloat(wcCart.totals.total_tax) / 100,
+    shipping: parseFloat(wcCart.totals.total_shipping) / 100,
+    discount: parseFloat(wcCart.totals.total_discount) / 100,
+    totalItems: wcCart.items_count,
   };
+
+  return { items, ...totals };
 };
 
 export const useCartStore = create<CartStore>()(
@@ -71,132 +88,92 @@ export const useCartStore = create<CartStore>()(
       discount: 0,
       shipping: 0,
       tax: 0,
+      isLoading: false,
 
       // Actions
-      addItem: (newItem) => {
-        const { items } = get();
-        const existingItemIndex = items.findIndex(item => item.id === newItem.id);
-        
-        if (existingItemIndex > -1) {
-          // Item already exists, update quantity
-          const updatedItems = [...items];
-          const existingItem = updatedItems[existingItemIndex];
-          const newQuantity = existingItem.quantity + (newItem.quantity || 1);
-          const maxQty = existingItem.maxQuantity || 10;
-          
-          updatedItems[existingItemIndex] = {
-            ...existingItem,
-            quantity: Math.min(newQuantity, maxQty)
-          };
-          
-          const totals = calculateCartTotals(updatedItems, get().discount, get().shipping);
-          
-          set({
-            items: updatedItems,
-            ...totals
-          });
-        } else {
-          // New item
-          const itemToAdd: CartItem = {
-            ...newItem,
-            quantity: newItem.quantity || 1
-          };
-          
-          const updatedItems = [...items, itemToAdd];
-          const totals = calculateCartTotals(updatedItems, get().discount, get().shipping);
-          
-          set({
-            items: updatedItems,
-            ...totals
-          });
+      fetchCart: async () => {
+        set({ isLoading: true });
+        try {
+          const wcCart = await cartService.getCart();
+          set({ ...mapWCCartToState(wcCart), isLoading: false });
+        } catch (error) {
+          console.error('Failed to fetch cart:', error);
+          set({ isLoading: false });
         }
       },
 
-      removeItem: (id) => {
-        const { items } = get();
-        const updatedItems = items.filter(item => item.id !== id);
-        const totals = calculateCartTotals(updatedItems, get().discount, get().shipping);
-        
-        set({
-          items: updatedItems,
-          ...totals
-        });
-      },
-
-      updateQuantity: (id, quantity) => {
-        if (quantity < 1) {
-          get().removeItem(id);
-          return;
-        }
-
-        const { items } = get();
-        const updatedItems = items.map(item => {
-          if (item.id === id) {
-            const maxQty = item.maxQuantity || 10;
-            return {
-              ...item,
-              quantity: Math.min(quantity, maxQty)
-            };
+      addItem: async (newItem) => {
+        set({ isLoading: true });
+        try {
+          const productId = parseInt(newItem.id);
+          if (isNaN(productId)) {
+             console.error("Invalid product ID for WooCommerce:", newItem.id);
+             set({ isLoading: false });
+             return;
           }
-          return item;
-        });
 
-        const totals = calculateCartTotals(updatedItems, get().discount, get().shipping);
-        
-        set({
-          items: updatedItems,
-          ...totals
-        });
+          const wcCart = await cartService.addItem(productId, newItem.quantity || 1);
+          set({ ...mapWCCartToState(wcCart), isOpen: true, isLoading: false });
+        } catch (error) {
+          console.error('Failed to add item:', error);
+          set({ isLoading: false });
+        }
+      },
+
+      removeItem: async (id) => {
+        set({ isLoading: true });
+        try {
+          const { items } = get();
+          const item = items.find(i => i.id === id);
+          if (!item?.key) {
+             await get().fetchCart();
+             return;
+          }
+          
+          const wcCart = await cartService.removeItem(item.key);
+          set({ ...mapWCCartToState(wcCart), isLoading: false });
+        } catch (error) {
+          console.error('Failed to remove item:', error);
+          set({ isLoading: false });
+        }
+      },
+
+      updateQuantity: async (id, quantity) => {
+        set({ isLoading: true });
+        try {
+          const { items } = get();
+          const item = items.find(i => i.id === id);
+          if (!item?.key) {
+            set({ isLoading: false });
+            return;
+          }
+
+          const wcCart = await cartService.updateItem(item.key, quantity);
+          set({ ...mapWCCartToState(wcCart), isLoading: false });
+        } catch (error) {
+          console.error('Failed to update quantity:', error);
+          set({ isLoading: false });
+        }
       },
 
       clearCart: () => {
-        set({
-          items: [],
-          totalItems: 0,
-          totalPrice: 0,
-          subtotal: 0,
-          discount: 0,
-          shipping: 0,
-          tax: 0,
-        });
+        set({ items: [], totalItems: 0, totalPrice: 0, subtotal: 0 });
       },
 
-      toggleCart: () => {
-        set((state) => ({ isOpen: !state.isOpen }));
-      },
-
-      openCart: () => {
-        set({ isOpen: true });
-      },
-
-      closeCart: () => {
-        set({ isOpen: false });
-      },
-
-      applyDiscount: (discountAmount) => {
-        const { items, shipping } = get();
-        const totals = calculateCartTotals(items, discountAmount, shipping);
-        
-        set({
-          discount: discountAmount,
-          ...totals
-        });
-      },
-
-      calculateTotals: () => {
-        const { items, discount, shipping } = get();
-        const totals = calculateCartTotals(items, discount, shipping);
-        
-        set(totals);
-      },
+      toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
+      openCart: () => set({ isOpen: true }),
+      closeCart: () => set({ isOpen: false }),
+      
+      applyDiscount: (amount) => set({ discount: amount }), 
+      calculateTotals: () => {},
     }),
     {
       name: 'cart-storage',
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({
-        items: state.items,
-        discount: state.discount,
-        shipping: state.shipping,
+      partialize: (state) => ({ 
+        items: state.items, 
+        totalItems: state.totalItems, 
+        totalPrice: state.totalPrice 
       }),
     }
   )

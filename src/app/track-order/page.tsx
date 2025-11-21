@@ -117,7 +117,7 @@ export default function TrackOrderPage() {
       case 'in-transit':
         return 'text-purple-600 bg-purple-50';
       case 'delivered':
-        return 'text-green-600 bg-green-50';
+        return 'text-[#2E7D32] bg-[#2E7D32]';
       default:
         return 'text-gray-600 bg-gray-50';
     }
@@ -128,10 +128,10 @@ export default function TrackOrderPage() {
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">
             Track Your Order
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg antialiased">
             Enter your order details to track your plants
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function TrackOrderPage() {
                 onChange={(e) => setOrderNumber(e.target.value)}
                 placeholder="e.g., WLN123456"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent backdrop-blur-md"
               />
             </div>
 
@@ -169,7 +169,7 @@ export default function TrackOrderPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent backdrop-blur-md"
               />
             </div>
 
@@ -210,7 +210,7 @@ export default function TrackOrderPage() {
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8">
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className="text-2xl font-bold text-white mb-2 antialiased">
                     Order #{orderStatus.orderId}
                   </h2>
                   <p className="text-gray-400">
@@ -258,7 +258,7 @@ export default function TrackOrderPage() {
 
             {/* Timeline */}
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-white mb-6">Order Timeline</h3>
+              <h3 className="text-xl font-bold text-white mb-6 antialiased">Order Timeline</h3>
               
               <div className="space-y-6">
                 {orderStatus.timeline.map((event, index) => (
@@ -292,7 +292,7 @@ export default function TrackOrderPage() {
                         {event.status}
                       </h4>
                       <p className="text-gray-400 text-sm mb-1">{event.date}</p>
-                      <p className="text-gray-500 text-sm">{event.description}</p>
+                      <p className="text-gray-400 text-sm">{event.description}</p>
                     </div>
                   </div>
                 ))}
@@ -307,13 +307,13 @@ export default function TrackOrderPage() {
               <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="/contact"
-                  className="px-6 py-2 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                  className="px-6 py-2 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors backdrop-blur-md"
                 >
                   Contact Support
                 </a>
                 <a
                   href="/refund-policy"
-                  className="px-6 py-2 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                  className="px-6 py-2 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors backdrop-blur-md"
                 >
                   Return Policy
                 </a>

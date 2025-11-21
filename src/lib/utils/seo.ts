@@ -6,6 +6,7 @@
 export interface SEOMetadata {
   title: string;
   description: string;
+import { BUSINESS_EMAIL } from '@/lib/config/site';
   keywords?: string[];
   ogTitle?: string;
   ogDescription?: string;
@@ -232,10 +233,10 @@ export function generateOrganizationSchema() {
       'https://facebook.com/wholelotofnature',
       'https://instagram.com/wholelotofnature'
     ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Customer Support',
-      email: 'support@wholelotofnature.com'
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Support',
+        email: BUSINESS_EMAIL
     }
   };
 }

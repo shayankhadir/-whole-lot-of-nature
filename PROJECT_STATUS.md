@@ -206,6 +206,27 @@ White: #ffffff
 
 ---
 
+## 📦 Content & Strategy Updates (Nov 9)
+
+### ✅ Smart Categorization & Pricing
+**Implemented via:** `scripts/smart-categorize-and-price.ts`
+- **Categorization:** Products automatically sorted into Plants, Soil & Fertilizers, Aquatic Life, Wellness, Seeds, etc.
+- **Competitor Pricing:** Prices adjusted to match market leaders (Entry level ₹99, Plants ₹249).
+- **Variable Pricing:** Logic applied to Small/Medium/Large variations (1x, 1.5x, 2.5x multipliers).
+
+### ✅ Image Matching
+**Implemented via:** `scripts/match-images-to-products.ts`
+- **Function:** Scans WordPress Media Library for images matching product names.
+- **Status:** Matched 3 products. Many images in the library are named "Generated Image..." and cannot be automatically matched.
+
+### ✅ Product Enrichment
+**Implemented via:** `scripts/update-products-woo.ts`
+- **Descriptions:** SEO-optimized descriptions added to 40 products.
+- **Care Guides:** Added "How to Care" sections to plant descriptions.
+- **Variations:** Converted simple plant products to Variable products (Small, Medium, Large).
+
+---
+
 ## 🌐 Pages & Routes
 
 | Route | Status | Features |

@@ -10,20 +10,36 @@ import { BackgroundParticles } from '@/components/ui/BackgroundEffects';
 export default function Newsletter() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
-    setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+    setStatus('loading');
+    setError(null);
+
+    try {
+      const response = await fetch('/api/email/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'newsletter', email }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to join the newsletter.');
+      }
+
       setIsSubmitted(true);
-      setIsLoading(false);
+      setStatus('success');
       setEmail('');
-    }, 1000);
+    } catch (err: any) {
+      setStatus('error');
+      setError(err.message || 'Something went wrong.');
+    }
   };
 
   return (
@@ -135,10 +151,10 @@ export default function Newsletter() {
                     </div>
                     <button
                       type="submit"
-                      disabled={isLoading}
+                      disabled={status === 'loading'}
                       className="px-6 py-3 bg-[#2E7D32] text-white font-semibold rounded-lg hover:bg-[#66BB6A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
-                      {isLoading ? (
+                      {status === 'loading' ? (
                         <div className="flex items-center space-x-2">
                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                           <span>Joining...</span>
@@ -148,6 +164,9 @@ export default function Newsletter() {
                       )}
                     </button>
                   </div>
+                  {status === 'error' && error && (
+                    <p className="text-sm text-red-300">{error}</p>
+                  )}
                   <p className="text-sm text-white/85">
                     We respect your privacy. Unsubscribe at any time.
                   </p>

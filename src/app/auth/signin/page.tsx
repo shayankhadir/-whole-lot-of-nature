@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, EyeOff, Leaf, CheckCircle2 } from 'lucide-react';
+import { Eye, EyeOff, Leaf, CheckCircle2, Mail } from 'lucide-react';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -19,6 +19,12 @@ export default function SignInPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!password) {
+      setError('Password is required for password sign in');
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
@@ -50,6 +56,36 @@ export default function SignInPage() {
 
   const handleGoogleSignIn = () => {
     signIn('google', { callbackUrl: '/' });
+  };
+
+  const handleMagicLinkSignIn = async () => {
+    if (!email) {
+      setError('Please enter your email address to sign in with a magic link');
+      return;
+    }
+    
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const result = await signIn('email', { 
+        email, 
+        redirect: false,
+        callbackUrl: '/' 
+      });
+
+      if (result?.error) {
+        setError('Error sending magic link. Please try again.');
+      } else {
+        setSuccess(true);
+        // Show a message that the email was sent
+        setError('Check your email for the sign-in link!');
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -213,7 +249,6 @@ export default function SignInPage() {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent transition-all backdrop-blur-sm pr-12"
                       placeholder="••••••••"
                     />
@@ -294,6 +329,18 @@ export default function SignInPage() {
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
                   Sign in with Google
+                </motion.button>
+
+                {/* Magic Link Sign In */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="button"
+                  onClick={handleMagicLinkSignIn}
+                  className="w-full mt-3 bg-white/10 text-white font-medium py-3 rounded-lg border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm flex items-center justify-center gap-3"
+                >
+                  <Mail className="w-5 h-5" />
+                  Sign in with Email Link
                 </motion.button>
               </form>
 

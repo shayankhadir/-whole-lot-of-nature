@@ -56,7 +56,7 @@ export default function QuickLinks() {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
       {quickLinks.map((section) => (
         <div key={section.title}>
-          <h3 className="text-white font-semibold text-lg mb-4">
+          <h3 className="text-white font-semibold text-lg mb-4 antialiased">
             {section.title}
           </h3>
           <ul className="space-y-2">

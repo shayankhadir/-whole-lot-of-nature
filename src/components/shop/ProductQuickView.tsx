@@ -79,7 +79,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 overflow-y-auto backdrop-blur-md"
           onClick={onClose}
         >
           <motion.div
@@ -122,7 +122,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                     {/* Badges */}
                     {isOnSale(product) && (
                       <div className="absolute top-4 left-4">
-                        <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                        <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
                           SAVE {getDiscountPercentage(product)}%
                         </span>
                       </div>
@@ -158,7 +158,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                 {/* Product Info */}
                 <div className="space-y-6">
                   <div>
-                    <h2 className="text-3xl font-bold text-neutral-900 mb-2">{product.name}</h2>
+                    <h2 className="text-3xl font-bold text-neutral-900 mb-2 antialiased">{product.name}</h2>
                     {product.categories && product.categories.length > 0 && (
                       <p className="text-sm text-neutral-500">
                         {product.categories.map((cat) => cat.name).join(', ')}
@@ -168,9 +168,9 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
 
                   {/* Price */}
                   <div className="flex items-baseline gap-3">
-                    <p className="text-4xl font-bold text-emerald-700">{displayPrice}</p>
+                    <p className="text-4xl font-bold text-emerald-700 antialiased">{displayPrice}</p>
                     {isOnSale(product) && (
-                      <p className="text-xl text-neutral-500 line-through">
+                      <p className="text-xl text-neutral-500 line-through antialiased">
                         ₹{product.regular_price}
                       </p>
                     )}
@@ -195,7 +195,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                       >
                         −
                       </button>
-                      <span className="w-16 text-center font-semibold text-xl">{quantity}</span>
+                      <span className="w-16 text-center font-semibold text-xl antialiased">{quantity}</span>
                       <button
                         type="button"
                         onClick={() => setQuantity((q) => q + 1)}
@@ -215,7 +215,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                       className={`flex-1 inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold text-white transition-all ${
                         product.in_stock
                           ? addedToCart
-                            ? 'bg-green-600'
+                            ? 'bg-[#2E7D32]'
                             : 'bg-emerald-700 hover:bg-emerald-800 hover:scale-105'
                           : 'bg-neutral-300 cursor-not-allowed'
                       }`}

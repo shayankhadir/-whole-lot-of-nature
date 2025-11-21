@@ -42,7 +42,7 @@ export default function WishlistPage() {
         {items.length === 0 ? (
           <div className="text-center py-20 bg-primary-50 rounded-2xl border border-primary-200">
             <p className="text-gray-900 text-xl mb-2 antialiased">No items in wishlist</p>
-            <p className="text-gray-100">Browse the shop and add your favorites</p>
+            <p className="text-gray-600">Browse the shop and add your favorites</p>
             <Link href="/shop" className="inline-block mt-6">
               <Button>Go to Shop</Button>
             </Link>

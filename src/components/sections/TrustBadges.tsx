@@ -49,7 +49,7 @@ export default function TrustBadges() {
           {trustBadges.map((badge, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center p-4 rounded-lg hover:bg-white/5 transition-colors"
+              className="flex flex-col items-center text-center p-4 rounded-lg hover:bg-white/5 transition-colors backdrop-blur-md"
             >
               <div className="text-emerald-400 mb-3">
                 {badge.icon}

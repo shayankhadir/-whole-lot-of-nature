@@ -451,16 +451,51 @@ class WebsiteScanner {
       }
     }
 
-    // Check for contrast issues
-    if (line.includes('text-white') && (line.includes('bg-white') || line.includes('bg-gray-100'))) {
-      result.issues.push({
-        type: 'accessibility',
-        severity: 'critical',
-        line: lineNumber,
-        code: line.trim(),
-        message: 'Insufficient color contrast: white text on light background',
-        fix: 'Use dark text on light backgrounds for WCAG AA compliance'
-      });
+    // Check for contrast issues - Light text on light background
+    const lightText = ['text-white', 'text-gray-50', 'text-gray-100', 'text-gray-200', 'text-gray-300'];
+    const lightBg = ['bg-white', 'bg-gray-50', 'bg-gray-100', 'bg-gray-200', 'bg-yellow-200', 'bg-yellow-300', 'bg-lime-300'];
+    
+    if (lightText.some(t => line.includes(t)) && lightBg.some(b => line.includes(b))) {
+       // Exception for hover states or dark mode if on same line (simplified check)
+       if (!line.includes('hover:') && !line.includes('dark:')) {
+        result.issues.push({
+          type: 'accessibility',
+          severity: 'critical',
+          line: lineNumber,
+          code: line.trim(),
+          message: 'Insufficient color contrast: light text on light background',
+          fix: 'Use dark text on light backgrounds for WCAG AA compliance'
+        });
+       }
+    }
+
+    // Check for contrast issues - Dark text on dark background
+    const darkText = ['text-black', 'text-gray-900', 'text-gray-800', 'text-gray-700'];
+    const darkBg = ['bg-black', 'bg-gray-900', 'bg-gray-800', 'bg-primary-900', 'bg-emerald-900'];
+
+    if (darkText.some(t => line.includes(t)) && darkBg.some(b => line.includes(b))) {
+       if (!line.includes('hover:') && !line.includes('dark:')) {
+        result.issues.push({
+          type: 'accessibility',
+          severity: 'critical',
+          line: lineNumber,
+          code: line.trim(),
+          message: 'Insufficient color contrast: dark text on dark background',
+          fix: 'Use light text on dark backgrounds for WCAG AA compliance'
+        });
+       }
+    }
+    
+    // Check for low contrast gray text on white
+    if (line.includes('bg-white') && (line.includes('text-gray-300') || line.includes('text-gray-400'))) {
+        result.issues.push({
+          type: 'accessibility',
+          severity: 'high',
+          line: lineNumber,
+          code: line.trim(),
+          message: 'Low contrast gray text on white background',
+          fix: 'Use text-gray-500 or darker for better readability'
+        });
     }
   }
 

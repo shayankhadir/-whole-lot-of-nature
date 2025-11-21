@@ -138,7 +138,7 @@ export default function ComboProductCard({
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-sm text-gray-100 line-clamp-2">
+        <p className="mt-2 text-sm text-gray-600 line-clamp-2">
           {combo.description}
         </p>
 
@@ -151,37 +151,44 @@ export default function ComboProductCard({
             {combo.items.slice(0, 3).map((item, index) => (
               <span
                 key={item.id}
-                className="text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full"
+                className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
               >
                 {item.quantity}x {item.name}
               </span>
             ))}
             {combo.items.length > 3 && (
-              <span className="text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full">
+              <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
                 +{combo.items.length - 3} more
               </span>
             )}
           </div>
         </div>
 
-        {/* Pricing */}
-        <div className="mt-4 space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-gray-900 antialiased">
-                {formatPrice(combo.comboPrice)}
+        {/* Price & Action */}
+        <div className="mt-6 flex items-center justify-between">
+          <div>
+            <span className="text-lg font-bold text-primary-700 antialiased">
+              ${combo.comboPrice.toFixed(2)}
+            </span>
+            {combo.originalTotalPrice && (
+              <span className="ml-2 text-sm text-gray-500 line-through antialiased">
+                ${combo.originalTotalPrice.toFixed(2)}
               </span>
-              <span className="text-sm text-gray-500 line-through">
-                {formatPrice(combo.originalTotalPrice)}
-              </span>
-            </div>
-            <div className="text-right">
-              <p className="text-xs text-gray-500">You save</p>
-              <p className="text-sm font-bold text-[#2E7D32] antialiased">
-                {formatPrice(combo.savings)}
-              </p>
-            </div>
+            )}
           </div>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => onAddToCart?.(combo)}
+            disabled={!combo.inStock}
+            className={
+              combo.inStock
+                ? 'bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-md hover:shadow-lg'
+                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+            }
+          >
+            {combo.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </motion.button>
         </div>
 
         {/* Stock Status */}
@@ -208,7 +215,7 @@ export default function ComboProductCard({
           className={`mt-4 w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
             combo.inStock
               ? 'bg-white text-primary-700 border border-primary-200 hover:bg-primary-50'
-              : 'bg-gray-100 text-gray-100 cursor-not-allowed'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
           }`}
         >
           <ShoppingCart className="h-5 w-5" />
