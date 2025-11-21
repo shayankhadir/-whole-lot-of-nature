@@ -16,47 +16,48 @@ export async function POST(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
 
-    if (action === 'full-automation') {
-      console.log('🚀 Starting full marketing automation...');
-      const response = await automationAgent.runFullAutomation();
-
-      return NextResponse.json({
-        ...response,
-        timestamp: new Date().toISOString(),
-      });
-      const analysisAgent = new CompetitorAnalysisAgent();
-      const competitorData = [];
-
-      const contentResponse = await automationAgent.generateContentOnly();
-
-      if (!contentResponse.success) {
-        return NextResponse.json(
-          { success: false, error: 'No competitors analyzed' },
-          { status: 500 }
-        );
+    switch (action) {
+      case 'full-automation': {
+        console.log('🚀 Starting full marketing automation...');
+        const response = await automationAgent.runFullAutomation();
+        return NextResponse.json({
+          ...response,
+          timestamp: new Date().toISOString(),
+        });
       }
+      case 'generate-content-only': {
+        const contentResponse = await automationAgent.generateContentOnly();
 
-      return NextResponse.json({
-        ...contentResponse,
-        timestamp: new Date().toISOString(),
-      });
+        if (!contentResponse.success) {
+          return NextResponse.json(
+            { success: false, error: 'No competitors analyzed' },
+            { status: 500 }
+          );
+        }
 
-      return NextResponse.json({
-      const pages = await automationAgent.listGeneratedPages();
-        pages: pages.map((slug) => ({
-          slug,
-          url: `/seo-pages/${slug}`,
-        })),
-        timestamp: new Date().toISOString(),
-      });
-    } else {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid action. Use: full-automation, generate-content-only, or list-pages',
-        },
-        { status: 400 }
-      );
+        return NextResponse.json({
+          ...contentResponse,
+          timestamp: new Date().toISOString(),
+        });
+      }
+      case 'list-pages': {
+        const pages = await automationAgent.listGeneratedPages();
+        return NextResponse.json({
+          pages: pages.map((slug) => ({
+            slug,
+            url: `/seo-pages/${slug}`,
+          })),
+          timestamp: new Date().toISOString(),
+        });
+      }
+      default:
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Invalid action. Use: full-automation, generate-content-only, or list-pages',
+          },
+          { status: 400 }
+        );
     }
   } catch (error: any) {
     console.error('Marketing automation error:', error);
