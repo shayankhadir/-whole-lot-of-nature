@@ -82,10 +82,11 @@ class BusinessGrowthAgent {
       this.store.update({ agentStatus: 'IDLE' });
       this.store.log('Growth cycle completed successfully', 'SUCCESS');
 
-    } catch (error) {
-      console.error("Cycle failed:", error);
+    } catch (error: unknown) {
+      const normalizedError = error instanceof Error ? error : new Error(String(error));
+      console.error("Cycle failed:", normalizedError);
       this.store.update({ agentStatus: 'ERROR' });
-      this.store.log(`Cycle failed: ${error.message}`, 'ERROR');
+      this.store.log(`Cycle failed: ${normalizedError.message}`, 'ERROR');
     }
   }
 }
