@@ -202,10 +202,12 @@ export default class EmailIntelligenceAgent {
   }
 
   async getDashboardSnapshot() {
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    
     const [contacts, newsletterActive, events] = await Promise.all([
       prisma.emailContact.count(),
       prisma.newsletterSubscription.count({ where: { status: NewsletterStatus.ACTIVE } }),
-      prisma.emailEvent.count({ where: { createdAt: { gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } })
+      prisma.emailEvent.count({ where: { createdAt: { gte: sevenDaysAgo } } })
     ]);
 
     return {
