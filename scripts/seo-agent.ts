@@ -503,16 +503,20 @@ export class SEOAgent {
 
     // Extract OG tags
     const ogTitleMatch = content.match(/openGraph.*?title:\s*["']([^"']+)["']/s);
+    const ogTitleMatch = content.match(/openGraph[\s\S]*?title:\s*["']([^"']+)["']/);
     if (ogTitleMatch) metadata.ogTitle = ogTitleMatch[1];
 
     const ogDescMatch = content.match(/openGraph.*?description:\s*["']([^"']+)["']/s);
+    const ogDescMatch = content.match(/openGraph[\s\S]*?description:\s*["']([^"']+)["']/);
     if (ogDescMatch) metadata.ogDescription = ogDescMatch[1];
 
     const ogImageMatch = content.match(/openGraph.*?images:.*?url:\s*["']([^"']+)["']/s);
+    const ogImageMatch = content.match(/openGraph[\s\S]*?images:[\s\S]*?url:\s*["']([^"']+)["']/);
     if (ogImageMatch) metadata.ogImage = ogImageMatch[1];
 
     // Extract Twitter Card
     const twitterMatch = content.match(/twitter.*?card:\s*["']([^"']+)["']/s);
+    const twitterMatch = content.match(/twitter[\s\S]*?card:\s*["']([^"']+)["']/);
     if (twitterMatch) metadata.twitterCard = twitterMatch[1];
 
     // Extract headings
