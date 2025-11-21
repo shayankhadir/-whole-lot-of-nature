@@ -299,7 +299,7 @@ class AutoFixer {
     return arrayOfFiles;
   }
 
-  private printStats(): void {
+  printStats(): void {
     console.log('\n' + '='.repeat(80));
     console.log('📊 AUTO-FIX RESULTS');
     console.log('='.repeat(80) + '\n');
