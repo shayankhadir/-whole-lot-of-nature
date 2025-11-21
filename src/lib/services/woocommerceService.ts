@@ -51,6 +51,58 @@ export interface WooCommerceProduct {
   variations?: number[];
 }
 
+export interface WooCommerceCustomer {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  billing?: {
+    first_name?: string;
+    last_name?: string;
+    address_1?: string;
+    address_2?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+    phone?: string;
+  };
+  shipping?: {
+    first_name?: string;
+    last_name?: string;
+    address_1?: string;
+    address_2?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+  };
+  total_spent?: string;
+  orders_count?: number;
+  date_created?: string;
+}
+
+export interface WooCommerceOrderItem {
+  id: number;
+  name: string;
+  product_id: number;
+  quantity: number;
+  total: string;
+}
+
+export interface WooCommerceOrder {
+  id: number;
+  status: string;
+  total: string;
+  currency: string;
+  date_created: string;
+  payment_method_title?: string;
+  line_items: WooCommerceOrderItem[];
+  shipping_total?: string;
+  shipping_lines?: Array<{ method_title?: string; total?: string }>;
+  meta_data?: Array<{ key: string; value: string }>;
+}
+
 export interface BlogPost {
   id: number;
   title: string;
@@ -126,6 +178,46 @@ export class WooCommerceService {
     } catch (error) {
       console.error(`Error fetching product by id ${id}:`, error);
       return null;
+    }
+  }
+
+  /**
+   * Fetch WooCommerce customer by email address
+   */
+  static async getCustomerByEmail(email: string): Promise<WooCommerceCustomer | null> {
+    try {
+      const response = await WooCommerce.get('customers', {
+        email,
+        per_page: 1,
+      });
+
+      const raw: unknown = response.data;
+      const list = Array.isArray(raw) ? (raw as WooCommerceCustomer[]) : [];
+      return list[0] || null;
+    } catch (error) {
+      console.error(`Error fetching customer for email ${email}:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch recent orders for a WooCommerce customer
+   */
+  static async getOrdersForCustomer(customerId: number, limit: number = 5): Promise<WooCommerceOrder[]> {
+    try {
+      const response = await WooCommerce.get('orders', {
+        customer: customerId,
+        per_page: limit,
+        orderby: 'date',
+        order: 'desc',
+      });
+
+      const raw: unknown = response.data;
+      const list = Array.isArray(raw) ? (raw as WooCommerceOrder[]) : [];
+      return list;
+    } catch (error) {
+      console.error(`Error fetching orders for customer ${customerId}:`, error);
+      return [];
     }
   }
   /**

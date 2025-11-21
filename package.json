@@ -25,13 +25,17 @@
     "woo:validate": "tsx scripts/woo-agent.ts validate",
     "woo:monitor": "tsx scripts/woo-agent.ts monitor",
     "woo:backup": "tsx scripts/woo-agent.ts backup",
+    "woo:enhance-content": "tsx scripts/enhance-product-content.ts",
+    "woo:weights": "tsx scripts/woocommerce/bulk-weight-tag-updater.ts",
+    "woo:shipping:simulate": "tsx scripts/woocommerce/shipping-fee-simulator.ts",
     "content:blog": "tsx scripts/content-agent.ts blog",
     "content:product": "tsx scripts/content-agent.ts product",
     "content:social": "tsx scripts/content-agent.ts social",
     "content:meta": "tsx scripts/content-agent.ts meta",
     "content:email": "tsx scripts/content-agent.ts email",
     "growth:run": "tsx scripts/growth-agent/main.ts",
-    "growth:auto": "tsx scripts/growth-agent/scheduler.ts"
+    "growth:auto": "tsx scripts/growth-agent/scheduler.ts",
+    "qa:responsive": "tsx scripts/responsive-qa.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
@@ -41,6 +45,7 @@
     "@tanstack/react-query": "^5.90.2",
     "@use-gesture/react": "^10.3.1",
     "@woocommerce/woocommerce-rest-api": "^1.0.2",
+    "dotenv": "^16.4.7",
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "cheerio": "^1.1.2",
@@ -75,6 +80,8 @@
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",
     "tsx": "^4.20.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wait-on": "^7.2.0",
+    "playwright": "^1.48.2"
   }
 }

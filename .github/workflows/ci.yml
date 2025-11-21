@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - copilot/analyze-competitors-and-optimize
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint checks
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Start production server
+        run: |
+          PORT=3000 npm run start &
+          echo $! > .next_pid
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000
+
+      - name: Smoke tests
+        env:
+          BASE_URL: http://localhost:3000
+        run: npm run test:smoke
+
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f .next_pid ]; then
+            kill $(cat .next_pid) || true
+          fi

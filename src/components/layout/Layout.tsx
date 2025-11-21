@@ -7,6 +7,7 @@ import CartSidebar from '../cart/CartSidebar';
 import TopBanner from '../ui/TopBanner';
 import PromoBanner from './PromoBanner';
 import TropicalBackground from '../ui/TropicalBackground';
+import PlantsyChatWidget from '../agents/PlantsyChatWidget';
 import { useCartStore } from '@/stores/cartStore';
 
 interface LayoutProps {
@@ -31,6 +32,7 @@ export default function Layout({ children }: LayoutProps) {
         </main>
         <Footer />
         <CartSidebar />
+        <PlantsyChatWidget />
       </div>
     </div>
   );
