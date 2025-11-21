@@ -13,8 +13,24 @@ export function RouteTransitionProvider({
   const searchParams = useSearchParams();
   const { show, hide, simulateProgress } = useLoading();
   const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const previousRouteKeyRef = useRef<string | null>(null);
+  const isInitialRenderRef = useRef(true);
 
   useEffect(() => {
+    const currentKey = `${pathname}?${searchParams?.toString() ?? ''}`;
+
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      previousRouteKeyRef.current = currentKey;
+      return;
+    }
+
+    if (previousRouteKeyRef.current === currentKey) {
+      return;
+    }
+
+    previousRouteKeyRef.current = currentKey;
+
     // Show loading screen when route changes
     show(10);
     simulateProgress();

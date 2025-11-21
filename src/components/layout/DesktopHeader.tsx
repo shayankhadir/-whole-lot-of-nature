@@ -98,7 +98,7 @@ export default function DesktopHeader() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       style={{ background: headerGradient }}
-      className={`sticky top-0 left-0 w-full z-40 overflow-hidden border-b transition-all duration-300 ${
+      className={`sticky top-0 left-0 w-full z-40 border-b transition-all duration-300 ${
         scrolled
           ? 'border-white/10 backdrop-blur-xl shadow-[0_25px_70px_rgba(2,8,5,0.65)]'
           : 'border-transparent backdrop-blur-md shadow-none'
