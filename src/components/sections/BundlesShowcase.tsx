@@ -9,7 +9,7 @@ export default function BundlesShowcase() {
   const combos = sampleCombos.slice(0, 3);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#0d3512]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,13 +18,13 @@ export default function BundlesShowcase() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-primary-200 bg-primary-50/50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black">
+          <span className="inline-flex items-center rounded-full border border-[#2E7D32] bg-[#2E7D32]/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#66BB6A]">
             Bundles
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-black antialiased">
+          <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-[#E8F5E9] antialiased">
             Curated Combos To Save More
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-black antialiased">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-[#daf2d0] antialiased">
             Handpicked sets that pair perfectly—and cost less than buying separately.
           </p>
         </motion.div>

@@ -40,7 +40,7 @@ const quickActions = [
 
 export default function QuickActions() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#0d3512]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +49,10 @@ export default function QuickActions() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 antialiased">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#E8F5E9] mb-4 antialiased">
             Ready to Start Your Garden Journey?
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-lg text-[#daf2d0] max-w-2xl mx-auto antialiased">
             Whether you're a beginner or expert gardener, we're here to help you every step of the way.
           </p>
         </motion.div>
@@ -89,13 +89,13 @@ export default function QuickActions() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-8 text-center"
+          className="mt-16 bg-[#12501a] rounded-2xl p-8 text-center border border-[#2E7D32]/30"
         >
           <div className="flex justify-center items-center mb-4">
-            <Users className="w-8 h-8 text-primary-600 mr-2" />
-            <MessageCircle className="w-8 h-8 text-primary-700" />
+            <Users className="w-8 h-8 text-[#66BB6A] mr-2" />
+            <MessageCircle className="w-8 h-8 text-[#86efbe]" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4 antialiased">
+          <h3 className="text-2xl font-bold text-[#E8F5E9] mb-4 antialiased">
             Join Our Plant Community
           </h3>
           <p className="text-gray-100 mb-6 max-w-2xl mx-auto">

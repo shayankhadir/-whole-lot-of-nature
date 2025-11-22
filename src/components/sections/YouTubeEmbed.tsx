@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 export default function YouTubeEmbed() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-green-50">
+    <section className="py-24 bg-[#0d3512]">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,10 +16,10 @@ export default function YouTubeEmbed() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 antialiased">
+          <h2 className="text-5xl md:text-6xl font-bold text-[#E8F5E9] mb-6 antialiased">
             Watch Our Latest Video
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-[#daf2d0] max-w-2xl mx-auto antialiased">
             Discover plant care tips and gardening inspiration
           </p>
         </motion.div>

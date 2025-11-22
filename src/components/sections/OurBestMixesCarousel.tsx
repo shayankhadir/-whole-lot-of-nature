@@ -74,7 +74,7 @@ export default function OurBestMixesCarousel() {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#0d3512]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,10 +83,10 @@ export default function OurBestMixesCarousel() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black antialiased">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#E8F5E9] antialiased">
             Our Best Mixes
           </h2>
-          <p className="mt-3 text-black">
+          <p className="mt-3 text-[#daf2d0]">
             Featured, organic soil blends trusted by thousands.
           </p>
         </motion.div>

@@ -70,14 +70,14 @@ export default function ComboProductCard({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100"
+      className="group relative bg-[#1e3a28] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32] hover:shadow-[#2E7D32]/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Popular Badge */}
       {combo.popularCombo && (
         <div className="absolute top-4 left-4 z-10">
-          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
+          <span className="bg-gradient-to-r from-[#2E7D32] to-[#66BB6A] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
             🏆 POPULAR
           </span>
         </div>
@@ -85,13 +85,13 @@ export default function ComboProductCard({
 
       {/* Discount Badge */}
       <div className="absolute top-4 right-4 z-10">
-        <span className="bg-gradient-to-r from-primary-700 to-primary-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
+        <span className="bg-gradient-to-r from-[#2E7D32] to-[#0d9f6e] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
           {discountPercentage}% OFF
         </span>
       </div>
 
       {/* Main Image */}
-      <div className="relative aspect-square overflow-hidden bg-gray-50">
+      <div className="relative aspect-square overflow-hidden bg-[#0F1E11]">
         <Image
           src={combo.image}
           alt={combo.name}
@@ -104,23 +104,23 @@ export default function ComboProductCard({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          className="absolute inset-0 bg-black/20 flex items-center justify-center space-x-3 backdrop-blur-md"
+          className="absolute inset-0 bg-black/40 flex items-center justify-center space-x-3 backdrop-blur-md"
         >
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => onQuickView?.(combo)}
-            className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-colors"
+            className="bg-[#daf2d0]/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-[#daf2d0] transition-colors"
           >
-            <Eye className="h-5 w-5 text-gray-700" />
+            <Eye className="h-5 w-5 text-[#0d3512]" />
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => onAddToWishlist?.(combo)}
-            className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-colors"
+            className="bg-[#daf2d0]/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-[#daf2d0] transition-colors"
           >
-            <Heart className="h-5 w-5 text-primary-600" />
+            <Heart className="h-5 w-5 text-[#2E7D32]" />
           </motion.button>
         </motion.div>
       </div>
@@ -128,36 +128,36 @@ export default function ComboProductCard({
       {/* Product Info */}
       <div className="p-6">
         {/* Category */}
-        <span className="text-xs font-semibold text-primary-600 uppercase tracking-wide">
+        <span className="text-xs font-semibold text-[#66BB6A] uppercase tracking-wide">
           {combo.category}
         </span>
 
         {/* Title */}
-        <h3 className="mt-2 text-lg font-bold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors antialiased">
+        <h3 className="mt-2 text-lg font-bold text-[#E8F5E9] line-clamp-2 group-hover:text-[#86efbe] transition-colors antialiased">
           {combo.name}
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+        <p className="mt-2 text-sm text-[#daf2d0] line-clamp-2">
           {combo.description}
         </p>
 
         {/* Included Items */}
         <div className="mt-4">
-          <p className="text-xs font-semibold text-gray-700 mb-2">
+          <p className="text-xs font-semibold text-[#86efbe] mb-2">
             Includes {combo.items.length} items:
           </p>
           <div className="flex flex-wrap gap-1">
             {combo.items.slice(0, 3).map((item, index) => (
               <span
                 key={item.id}
-                className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                className="text-xs bg-[#2E7D32]/30 text-[#86efbe] px-2 py-1 rounded-full border border-[#2E7D32]/50"
               >
                 {item.quantity}x {item.name}
               </span>
             ))}
             {combo.items.length > 3 && (
-              <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+              <span className="text-xs bg-[#2E7D32]/30 text-[#86efbe] px-2 py-1 rounded-full border border-[#2E7D32]/50">
                 +{combo.items.length - 3} more
               </span>
             )}
@@ -167,11 +167,11 @@ export default function ComboProductCard({
         {/* Price & Action */}
         <div className="mt-6 flex items-center justify-between">
           <div>
-            <span className="text-lg font-bold text-primary-700 antialiased">
+            <span className="text-lg font-bold text-[#66BB6A] antialiased">
               ${combo.comboPrice.toFixed(2)}
             </span>
             {combo.originalTotalPrice && (
-              <span className="ml-2 text-sm text-gray-500 line-through antialiased">
+              <span className="ml-2 text-sm text-[#daf2d0]/50 line-through antialiased">
                 ${combo.originalTotalPrice.toFixed(2)}
               </span>
             )}
@@ -183,8 +183,8 @@ export default function ComboProductCard({
             disabled={!combo.inStock}
             className={
               combo.inStock
-                ? 'bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-md hover:shadow-lg'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                ? 'bg-[#2E7D32] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#66BB6A] transition-colors shadow-md hover:shadow-lg'
+                : 'bg-gray-700 text-gray-400 cursor-not-allowed'
             }
           >
             {combo.inStock ? 'Add to Cart' : 'Out of Stock'}
@@ -199,8 +199,8 @@ export default function ComboProductCard({
               In Stock
             </span>
           ) : (
-            <span className="inline-flex items-center text-xs text-primary-600">
-              <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
+            <span className="inline-flex items-center text-xs text-[#daf2d0]">
+              <div className="w-2 h-2 bg-[#daf2d0] rounded-full mr-2" />
               Out of Stock
             </span>
           )}
@@ -214,8 +214,8 @@ export default function ComboProductCard({
           disabled={!combo.inStock}
           className={`mt-4 w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
             combo.inStock
-              ? 'bg-white text-primary-700 border border-primary-200 hover:bg-primary-50'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              ? 'bg-[#66BB6A] text-[#0d3512] border border-[#66BB6A] hover:bg-[#86efbe]'
+              : 'bg-gray-700 text-gray-400 cursor-not-allowed'
           }`}
         >
           <ShoppingCart className="h-5 w-5" />
