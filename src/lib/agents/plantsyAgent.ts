@@ -45,7 +45,7 @@ export class PlantDoctorAgent {
 
     const [products, posts] = await Promise.all([
       WooCommerceService.getProducts(60),
-      getPosts({ per_page: 6, _embed: true }).catch(() => [] as Post[]),
+      getPosts({ per_page: 6 }).catch(() => [] as Post[]),
     ]);
 
     this.cachedProducts = products;
@@ -75,8 +75,9 @@ export class PlantDoctorAgent {
     product.tags?.forEach((tag) => applyMatch(tag.name, 2));
 
     if (context?.preferredCategory) {
+      const category = context.preferredCategory;
       const match = product.categories?.some(
-        (cat) => cat.slug === context.preferredCategory || cat.name.toLowerCase().includes(context.preferredCategory.toLowerCase()),
+        (cat) => cat.slug === category || cat.name.toLowerCase().includes(category.toLowerCase()),
       );
       if (match) score += 3;
     }
@@ -173,7 +174,7 @@ Pair it with our ${product.categories?.[0]?.name ?? 'signature'} soil mix for be
         type: 'product',
         title: top.name,
         url: `/shop/${top.slug}`,
-        snippet: top.short_description?.replace(/<[^>]+>/g, '').slice(0, 140) + '…' ?? '',
+        snippet: top.short_description ? top.short_description.replace(/<[^>]+>/g, '').slice(0, 140) + '…' : '',
       },
       ...this.selectArticles(question),
     ];

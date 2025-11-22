@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Tag, TrendingUp, Sparkles, ArrowRight, ShoppingCart } from 'lucide-react';
 import { Product } from '@/types/product';
+import { DEMO_TAGS, DEMO_TAG_PRODUCTS } from '@/data/demoCatalog';
 
 interface ProductTag {
   id: number;
@@ -25,19 +26,22 @@ export default function TagFilterSection() {
     fetch('/api/tags')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data) {
-          // Get top 8 most popular tags
+        if (data.success && data.data?.length) {
           const topTags = data.data.slice(0, 8);
           setTags(topTags);
-          // Auto-select first tag
           if (topTags.length > 0) {
             setSelectedTag(topTags[0].slug);
           }
+        } else {
+          setTags(DEMO_TAGS);
+          setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch tags:', err);
+        setTags(DEMO_TAGS);
+        setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
         setLoading(false);
       });
   }, []);
@@ -50,13 +54,16 @@ export default function TagFilterSection() {
     fetch(`/api/products?tag=${selectedTag}&limit=8`)
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data) {
+        if (data.success && data.data?.length) {
           setProducts(data.data);
+        } else {
+          setProducts(DEMO_TAG_PRODUCTS[selectedTag] || []);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch products:', err);
+        setProducts(DEMO_TAG_PRODUCTS[selectedTag] || []);
         setLoading(false);
       });
   }, [selectedTag]);
@@ -162,7 +169,7 @@ export default function TagFilterSection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
-                  <Link href={`/products/${product.slug}`}>
+                  <Link href={`/shop/${product.slug}`}>
                     <motion.div
                       whileHover={{ y: -8, scale: 1.02 }}
                       className="group relative h-full rounded-2xl bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:shadow-2xl hover:shadow-[#2E7D32]/20"
@@ -198,9 +205,9 @@ export default function TagFilterSection() {
                             <span className="text-2xl font-bold text-[#66BB6A] antialiased">
                               ₹{product.price}
                             </span>
-                            {product.regularPrice && product.regularPrice !== product.price && (
+                            {product.regular_price && product.regular_price !== product.price && (
                               <span className="block text-sm text-white/50 line-through antialiased">
-                                ₹{product.regularPrice}
+                                ₹{product.regular_price}
                               </span>
                             )}
                           </div>

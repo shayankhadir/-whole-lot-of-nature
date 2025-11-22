@@ -58,17 +58,14 @@ export const ServiceCard = ({
 
   const styles = variantStyles[variant];
 
-  const containerVariants = {
-    initial: { opacity: 0, y: 20 },
+  const variants = {
+    initial: { opacity: 0, y: 20, scale: 1 },
     animate: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: { delay: index * 0.1, duration: 0.5 },
     },
-  };
-
-  const hoverVariants = {
-    initial: { scale: 1 },
     hover: { scale: 1.02, y: -4 },
   };
 
@@ -79,11 +76,10 @@ export const ServiceCard = ({
 
   return (
     <motion.div
-      variants={containerVariants}
+      variants={variants}
       initial="initial"
       whileInView="animate"
       whileHover="hover"
-      variants={hoverVariants}
       viewport={{ once: true, margin: '-100px' }}
       className={`group relative p-8 rounded-lg transition-all duration-300 cursor-pointer ${styles.background} ${styles.border} shadow-md hover:shadow-lg ${className}`}
     >
@@ -92,13 +88,13 @@ export const ServiceCard = ({
         variants={iconVariants}
         className={`w-16 h-16 ${styles.icon} rounded-lg flex items-center justify-center mb-6 transition-colors duration-300`}
       >
-        <div className="text-[#2E7D32] group-hover:text-[#2E7D32] transition-colors duration-300 text-2xl antialiased">
+        <div className="text-[#66BB6A] group-hover:text-[#66BB6A] transition-colors duration-300 text-2xl antialiased">
           {icon}
         </div>
       </motion.div>
 
       {/* Title */}
-      <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#2E7D32] transition-colors duration-300 antialiased">
+      <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased">
         {title}
       </h3>
 
@@ -116,7 +112,7 @@ export const ServiceCard = ({
         >
           <Link
             href={learnMoreLink}
-            className="inline-flex items-center gap-2 text-[#2E7D32] font-semibold hover:text-[#2E7D32] transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-[#66BB6A] font-semibold hover:text-[#43A047] transition-colors duration-300"
           >
             {learnMoreLabel}
             <motion.span

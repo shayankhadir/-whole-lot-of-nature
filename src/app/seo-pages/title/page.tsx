@@ -25,11 +25,11 @@ export default function TitlePage() {
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#2E7D32] hover:text-[#2E7D32]">
+            <Link href="/" className="text-[#66BB6A] hover:text-[#43A047]">
               Home
             </Link>
             <span className="text-gray-400">/</span>
-            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#2E7D32]">
+            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#43A047]">
               Guides
             </Link>
             <span className="text-gray-400">/</span>
@@ -48,11 +48,11 @@ export default function TitlePage() {
             Discover everything about title with our comprehensive guide. Expert tips, best practices, and actionable advice for title. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">title</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">title online</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">title india</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy title</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best title</span>
+            <span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">title</span>
+            <span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">title online</span>
+            <span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">title india</span>
+            <span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">buy title</span>
+            <span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">best title</span>
           </div>
         </header>
 
@@ -149,15 +149,15 @@ export default function TitlePage() {
               </p>
               <Link
                 href="/shop/plants"
-                className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
+                className="block w-full bg-white text-[#66BB6A] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-[#2E7D32]">
+              <div className="mt-6 pt-6 border-t border-[#66BB6A]">
                 <p className="text-sm mb-4">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-[#66BB6A] hover:bg-[#43A047] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -172,32 +172,32 @@ export default function TitlePage() {
               <ul className="space-y-3">
                 
                 <li>
-                  <Link href="/shop/plants" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop/plants" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/seeds" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop/seeds" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/fertilizers" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop/fertilizers" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/blog" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     Gardening Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/care-guides" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/care-guides" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/about" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     About Us
                   </Link>
                 </li>

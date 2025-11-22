@@ -219,7 +219,7 @@ export default class BacklinkAgent {
     };
   }
 
-  private extractKeywords($: cheerio.Root): string[] {
+  private extractKeywords($: cheerio.CheerioAPI): string[] {
     const keywords: string[] = [];
     $('h1, h2, h3, h4').each((_, el) => {
       const text = $(el).text().trim();

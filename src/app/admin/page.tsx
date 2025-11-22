@@ -4,21 +4,21 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 antialiased">Admin Dashboard</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Growth Agent Card */}
           <Link href="/admin/growth" className="block group">
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-3 bg-green-100 rounded-lg text-green-600">
+                <div className="p-3 bg-[#66BB6A]/10 rounded-lg text-[#66BB6A]">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 </div>
-                <span className="text-xs font-medium bg-green-50 text-green-700 px-2 py-1 rounded-full">Active</span>
+                <span className="text-xs font-medium bg-[#66BB6A]/10 text-[#66BB6A] px-2 py-1 rounded-full">Active</span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition-colors">Business Growth Agent</h3>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#66BB6A] transition-colors antialiased">Business Growth Agent</h3>
               <p className="text-gray-500 mt-2 text-sm">
                 Autonomous lead generation, sales scoring, and outreach management.
               </p>
@@ -35,7 +35,7 @@ export default function AdminDashboard() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Inventory Management</h3>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors antialiased">Inventory Management</h3>
               <p className="text-gray-500 mt-2 text-sm">
                 Manage products, stock levels, and categories.
               </p>
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">Market Trends</h3>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors antialiased">Market Trends</h3>
               <p className="text-gray-500 mt-2 text-sm">
                 Analyze competitor pricing and market opportunities.
               </p>

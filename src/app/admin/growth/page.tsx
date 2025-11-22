@@ -10,6 +10,7 @@ interface Lead {
   status: string;
   score: number;
   source: string;
+  niche?: string;
 }
 
 interface Activity {
@@ -59,12 +60,12 @@ export default function GrowthDashboard() {
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Business Growth Agent</h1>
+            <h1 className="text-3xl font-bold text-gray-900 antialiased">Business Growth Agent</h1>
             <p className="text-gray-500">Autonomous Growth & Sales Engine</p>
           </div>
           <div className="flex items-center gap-4">
             <div className={`px-4 py-2 rounded-full text-sm font-medium ${
-              data.agentStatus === 'RUNNING' ? 'bg-green-100 text-green-800 animate-pulse' : 'bg-gray-200 text-gray-700'
+              data.agentStatus === 'RUNNING' ? 'bg-[#66BB6A]/10 text-[#66BB6A] animate-pulse' : 'bg-gray-200 text-gray-700'
             }`}>
               Status: {data.agentStatus}
             </div>
@@ -79,12 +80,12 @@ export default function GrowthDashboard() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="text-sm font-medium text-gray-500 mb-2">SEO Health Score</h3>
             <div className="flex items-end gap-2">
-              <span className="text-4xl font-bold text-gray-900">{data.seoScore}</span>
+              <span className="text-4xl font-bold text-gray-900 antialiased">{data.seoScore}</span>
               <span className="text-gray-400 mb-1">/ 100</span>
             </div>
             <div className="w-full bg-gray-100 h-2 rounded-full mt-4 overflow-hidden">
               <div 
-                className={`h-full rounded-full ${data.seoScore > 80 ? 'bg-green-500' : data.seoScore > 50 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                className={`h-full rounded-full ${data.seoScore > 80 ? 'bg-[#66BB6A]' : data.seoScore > 50 ? 'bg-yellow-500' : 'bg-red-500'}`}
                 style={{ width: `${data.seoScore}%` }}
               />
             </div>
@@ -95,15 +96,15 @@ export default function GrowthDashboard() {
             <h3 className="text-sm font-medium text-gray-500 mb-2">Lead Pipeline</h3>
             <div className="flex justify-between items-center mt-2">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{data.leads.length}</div>
+                <div className="text-2xl font-bold text-gray-900 antialiased">{data.leads.length}</div>
                 <div className="text-xs text-gray-500">Total</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{newLeads.length}</div>
+                <div className="text-2xl font-bold text-blue-600 antialiased">{newLeads.length}</div>
                 <div className="text-xs text-gray-500">New</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-500">{hotLeads.length}</div>
+                <div className="text-2xl font-bold text-orange-500 antialiased">{hotLeads.length}</div>
                 <div className="text-xs text-gray-500">Hot/Active</div>
               </div>
             </div>
@@ -112,7 +113,7 @@ export default function GrowthDashboard() {
           {/* Outreach Card */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="text-sm font-medium text-gray-500 mb-2">Outreach Activity</h3>
-            <div className="text-4xl font-bold text-gray-900">
+            <div className="text-4xl font-bold text-gray-900 antialiased">
               {data.leads.filter(l => l.status === 'CONTACTED').length}
             </div>
             <p className="text-sm text-gray-500 mt-1">Emails Drafted/Sent</p>
@@ -123,7 +124,7 @@ export default function GrowthDashboard() {
           {/* Lead List */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-lg font-semibold text-gray-900">High Priority Leads</h2>
+              <h2 className="text-lg font-semibold text-gray-900 antialiased">High Priority Leads</h2>
             </div>
             <div className="divide-y divide-gray-100 max-h-[400px] overflow-y-auto">
               {hotLeads.length === 0 ? (
@@ -141,9 +142,9 @@ export default function GrowthDashboard() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-bold text-green-600">{lead.score}</div>
+                        <div className="text-lg font-bold text-[#66BB6A] antialiased">{lead.score}</div>
                         <span className={`text-xs px-2 py-1 rounded-full ${
-                          lead.status === 'CONTACTED' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'
+                          lead.status === 'CONTACTED' ? 'bg-[#66BB6A]/10 text-[#66BB6A]' : 'bg-orange-100 text-orange-800'
                         }`}>
                           {lead.status}
                         </span>
@@ -158,14 +159,14 @@ export default function GrowthDashboard() {
           {/* Activity Log */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-lg font-semibold text-gray-900">Agent Activity Log</h2>
+              <h2 className="text-lg font-semibold text-gray-900 antialiased">Agent Activity Log</h2>
             </div>
             <div className="bg-gray-900 p-4 max-h-[400px] overflow-y-auto font-mono text-sm">
               {data.activities.map((log, i) => (
                 <div key={i} className="mb-2">
                   <span className="text-gray-500">[{new Date(log.timestamp).toLocaleTimeString()}]</span>{' '}
                   <span className={
-                    log.type === 'SUCCESS' ? 'text-green-400' :
+                    log.type === 'SUCCESS' ? 'text-[#66BB6A]' :
                     log.type === 'ERROR' ? 'text-red-400' :
                     log.type === 'WARNING' ? 'text-yellow-400' : 'text-blue-300'
                   }>

@@ -28,19 +28,19 @@ export default function HeroSection() {
           FOREST HOME
         </h1>
         
-        <p className="text-[clamp(1rem,2.5vw,1.5rem)] text-[#E0E0E0] max-w-3xl mx-auto mb-12 font-body antialiased">
+        <p className="text-[clamp(1rem,2.5vw,1.5rem)] text-[#66BB6A] max-w-3xl mx-auto mb-12 font-body antialiased">
           Discover premium plants, organic soil mixes, and sustainable gardening essentials
         </p>
 
         {/* CTA Card */}
         <div className="glass forest-card-lg max-w-md mx-auto p-8 border border-[#2E7D32]/30">
-          <h3 className="text-[clamp(1.75rem,4.5vw,2.625rem)] font-header font-semibold text-[#66BB6A] mb-6">
+          <h3 className="text-[clamp(1.75rem,4.5vw,2.625rem)] font-header font-semibold text-white mb-6">
             Explore Our Collection
           </h3>
           
           <Link
             href="/shop"
-            className="group inline-flex items-center gap-3 bg-[#2E7D32] text-white px-8 py-4 rounded-lg hover:bg-[#66BB6A] transition-all duration-300 emerald-glow text-lg font-medium antialiased"
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white px-8 py-4 rounded-lg hover:from-emerald-400 hover:to-green-500 transition-all duration-300 emerald-glow text-lg font-medium antialiased shadow-lg"
           >
             <span>Shop Now</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -49,7 +49,7 @@ export default function HeroSection() {
       </div>
 
       {/* Floating Leaf Decoration */}
-      <div className="absolute bottom-32 right-16 text-[#2E7D32] opacity-10 pointer-events-none hidden lg:block">
+      <div className="absolute bottom-32 right-16 text-[#2E7D32] opacity-20 pointer-events-none hidden lg:block">
         <Leaf className="w-32 h-32" strokeWidth={1} />
       </div>
     </section>

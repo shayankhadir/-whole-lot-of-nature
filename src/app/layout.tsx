@@ -99,6 +99,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable}`}>
       <body className="font-sans">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J8K5Q8"
+          height="0" width="0" className="hidden invisible"></iframe>
+        </noscript>
+        
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5J8K5Q8');
+          `}
+        </Script>
+
         {/* Google Analytics (GA4) */}
         {process.env.NEXT_PUBLIC_GA_ID ? (
           <>
@@ -156,12 +173,26 @@ export default function RootLayout({
             contactPoint: [{
               '@type': 'ContactPoint',
               contactType: 'customer support',
-              email: 'info@wholelotofnature.com',
-                email: BUSINESS_EMAIL,
+              email: BUSINESS_EMAIL,
               areaServed: 'IN',
               availableLanguage: ['en', 'hi'],
             }],
           })}
+        </Script>
+
+        {/* Google Tag Manager */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GTNKXBTF7P"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-GTNKXBTF7P');
+          `}
         </Script>
 
         {/* JSON-LD: Website with SearchAction (point to shop search) */}

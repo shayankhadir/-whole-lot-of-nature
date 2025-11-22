@@ -11,8 +11,8 @@ export default function BrandStorySection() {
         <svg width="100%" height="100%" className="w-full h-full">
           <defs>
             <pattern id="leafPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
-              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-emerald-900"/>
-              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-emerald-900"/>
+              <path d="M50 50 Q 70 30 80 50 Q 70 70 50 50" stroke="currentColor" fill="currentColor" className="text-emerald-600"/>
+              <path d="M140 100 Q 160 80 170 100 Q 160 120 140 100" stroke="currentColor" fill="currentColor" className="text-emerald-600"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#leafPattern)" />

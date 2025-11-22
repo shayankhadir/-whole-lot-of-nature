@@ -280,7 +280,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-neutral-50">
         <div className="text-center space-y-2">
-          <p className="text-2xl font-semibold text-emerald-900 antialiased">Calibrating your botanical experience…</p>
+          <p className="text-2xl font-semibold text-emerald-700 antialiased">Calibrating your botanical experience…</p>
           <p className="text-neutral-600">Curating product insights and concierge perks.</p>
         </div>
       </div>
@@ -448,7 +448,7 @@ export default function ProductDetailPage() {
               ) : null}
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-900 to-emerald-600 text-white flex flex-col gap-4">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-700 to-emerald-500 text-white flex flex-col gap-4">
               <div className="flex flex-wrap items-baseline gap-3">
                 <span className="text-4xl font-semibold antialiased">{formatPrice(effectivePrice || '0')}</span>
                 {product.regular_price && product.sale_price && (
@@ -533,7 +533,7 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="bg-emerald-900 text-white py-12">
+      <section className="bg-emerald-700 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {PREMIUM_HIGHLIGHTS.map((highlight) => (
             <div key={highlight.title} className="p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur">
@@ -556,7 +556,7 @@ export default function ProductDetailPage() {
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 rounded-full border transition whitespace-nowrap ${
                     activeTab === tab
-                      ? 'border-emerald-700 bg-emerald-50 text-emerald-900'
+                      ? 'border-emerald-700 bg-emerald-50 text-emerald-700'
                       : 'border-transparent text-neutral-500 hover:border-neutral-200'
                   }`}
                 >
@@ -578,11 +578,11 @@ export default function ProductDetailPage() {
                   </p>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
-                      <p className="text-sm font-medium text-emerald-900">Sustainability</p>
+                      <p className="text-sm font-medium text-emerald-700">Sustainability</p>
                       <p className="text-base text-neutral-700 antialiased">Zero pesticide regime & reclaimed-water irrigation.</p>
                     </div>
                     <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
-                      <p className="text-sm font-medium text-emerald-900">Wellness boost</p>
+                      <p className="text-sm font-medium text-emerald-700">Wellness boost</p>
                       <p className="text-base text-neutral-700 antialiased">Purifies indoor air, uplifts circadian rhythm, and eases stress hormones.</p>
                     </div>
                   </div>

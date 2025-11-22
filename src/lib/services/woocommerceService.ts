@@ -103,6 +103,15 @@ export interface WooCommerceOrder {
   meta_data?: Array<{ key: string; value: string }>;
 }
 
+export interface WooCommerceCategory {
+  id: number;
+  name: string;
+  slug: string;
+  parent: number;
+  description?: string;
+  image?: string;
+}
+
 export interface BlogPost {
   id: number;
   title: string;
@@ -131,6 +140,9 @@ interface WCRawCategory {
   id: number;
   name: string;
   slug: string;
+  parent?: number;
+  description?: string;
+  image?: { src?: string };
 }
 
 interface WCRawAttribute {
@@ -149,6 +161,7 @@ interface WCRawProduct {
   id: number;
   name: string;
   slug: string;
+  sku?: string;
   price?: string | number;
   regular_price?: string | number;
   sale_price?: string | number | null;
@@ -165,6 +178,37 @@ interface WCRawProduct {
   tags?: WCRawTag[];
   date_created?: string;
   variations?: number[];
+}
+
+interface WCRawCustomer {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  billing?: {
+    first_name?: string;
+    last_name?: string;
+    address_1?: string;
+    address_2?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+    phone?: string;
+  };
+  shipping?: {
+    first_name?: string;
+    last_name?: string;
+    address_1?: string;
+    address_2?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+  };
+  total_spent?: string;
+  orders_count?: number;
+  date_created?: string;
 }
 
 export class WooCommerceService {
@@ -330,7 +374,7 @@ export class WooCommerceService {
   /**
    * Get product categories
    */
-  static async getCategories(): Promise<Array<{id: number, name: string, slug: string, description?: string, image?: string}>> {
+  static async getCategories(): Promise<WooCommerceCategory[]> {
     try {
       const response = await WooCommerce.get('products/categories', {
         per_page: 50,
@@ -339,12 +383,13 @@ export class WooCommerceService {
 
       const raw: unknown = response.data;
       const list = Array.isArray(raw) ? (raw as WCRawCategory[]) : [];
-      return list.map((category: any) => ({
+      return list.map((category) => ({
         id: category.id,
         name: category.name,
         slug: category.slug,
+        parent: typeof category.parent === 'number' ? category.parent : 0,
         description: category.description,
-        image: category.image?.src
+        image: category.image?.src,
       }));
     } catch (error) {
       console.error('Error fetching categories:', error);

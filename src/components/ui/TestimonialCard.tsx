@@ -39,9 +39,9 @@ export const TestimonialCard = ({
   index = 0,
 }: TestimonialCardProps) => {
   const variantStyles = {
-    default: 'bg-white border-l-4 border-[#2E7D32]',
-    minimal: 'bg-gray-50 border-l-4 border-[#2E7D32]',
-    featured: 'bg-gradient-to-br from-green-50 to-white border-l-4 border-[#2E7D32]',
+    default: 'bg-white border-l-4 border-[#66BB6A]',
+    minimal: 'bg-gray-50 border-l-4 border-[#66BB6A]',
+    featured: 'bg-gradient-to-br from-green-50 to-white border-l-4 border-[#66BB6A]',
   };
 
   const containerVariants = {
@@ -67,7 +67,7 @@ export const TestimonialCard = ({
       className={`p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${variantStyles[variant]} ${className}`}
     >
       {/* Quote Icon */}
-      <div className="text-6xl text-[#2E7D32] mb-4 select-none antialiased">
+      <div className="text-6xl text-[#66BB6A] mb-4 select-none antialiased">
         "
       </div>
 

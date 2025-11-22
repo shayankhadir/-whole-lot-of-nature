@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { WooCommerceService } from '@/lib/services/woocommerceService';
 
-// Mark this route as dynamic to prevent static rendering issues
-export const dynamic = 'force-dynamic';
+// Enable ISR with 5-minute revalidation
+export const revalidate = 300; // Revalidate every 5 minutes
 export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {

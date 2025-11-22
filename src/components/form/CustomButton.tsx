@@ -1,9 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface CustomButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    MotionProps {
+interface CustomButtonProps extends HTMLMotionProps<"button"> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   icon?: ReactNode;
@@ -77,8 +75,8 @@ export const CustomButton = ({
 
   return (
     <motion.button
-      whileHover={!disabled && (whileHover || defaultHover)}
-      whileTap={!disabled && (whileTap || defaultTap)}
+      whileHover={!disabled ? (whileHover || defaultHover) : undefined}
+      whileTap={!disabled ? (whileTap || defaultTap) : undefined}
       disabled={disabled || isLoading}
       className={`
         ${sizeStyles[size]}
@@ -107,7 +105,7 @@ export const CustomButton = ({
       )}
 
       {/* Text */}
-      <span>{isLoading ? loadingText : children}</span>
+      <span>{isLoading ? loadingText : (children as ReactNode)}</span>
 
       {/* Icon (right) */}
       {icon && iconPosition === 'right' && !isLoading && (

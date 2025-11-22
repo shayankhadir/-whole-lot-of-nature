@@ -8,6 +8,7 @@ import TopBanner from '../ui/TopBanner';
 import PromoBanner from './PromoBanner';
 import TropicalBackground from '../ui/TropicalBackground';
 import PlantsyChatWidget from '../agents/PlantsyChatWidget';
+import GlobalSearchOverlay from '../search/GlobalSearchOverlay';
 import { useCartStore } from '@/stores/cartStore';
 
 interface LayoutProps {
@@ -33,6 +34,7 @@ export default function Layout({ children }: LayoutProps) {
         <Footer />
         <CartSidebar />
         <PlantsyChatWidget />
+        <GlobalSearchOverlay />
       </div>
     </div>
   );

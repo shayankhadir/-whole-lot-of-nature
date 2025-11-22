@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { DEMO_CATEGORIES, DEMO_CHILD_CATEGORIES } from '@/data/demoCatalog';
 
 interface WooCategory {
   id: number;
@@ -37,7 +38,7 @@ export default function ModernCategories() {
     fetch('/api/categories')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data) {
+        if (data.success && data.data?.length) {
           const allCategories: WooCategory[] = data.data;
           const topLevelCategories = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0);
           const childMap: Record<number, WooCategory[]> = {};
@@ -53,11 +54,16 @@ export default function ModernCategories() {
 
           setCategories(topLevelCategories);
           setSubcategoriesByParent(childMap);
+        } else {
+          setCategories(DEMO_CATEGORIES as unknown as WooCategory[]);
+          setSubcategoriesByParent(DEMO_CHILD_CATEGORIES as unknown as Record<number, WooCategory[]>);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch categories:', err);
+        setCategories(DEMO_CATEGORIES as unknown as WooCategory[]);
+        setSubcategoriesByParent(DEMO_CHILD_CATEGORIES as unknown as Record<number, WooCategory[]>);
         setLoading(false);
       });
   }, []);

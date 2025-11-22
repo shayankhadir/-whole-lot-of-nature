@@ -1,8 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 
 interface StatisticItem {
   id: string;
@@ -43,9 +42,10 @@ export const StatisticsBlock = ({
   className = '',
   animated = true,
 }: StatisticsBlockProps) => {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    amount: 0.1,
+    once: true,
   });
 
   const variantStyles = {

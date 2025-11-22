@@ -130,7 +130,7 @@ export default function Newsletter() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-[#2E7D32]/20 backdrop-blur-sm rounded-lg p-6 ring-1 ring-[#2E7D32]/30"
                 >
-                  <CheckCircle className="w-12 h-12 text-[#66BB6A] mx-auto mb-4" />
+                  <CheckCircle className="w-12 h-12 text-[#4ADE80] mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
                   <p className="text-white/85">
                     You've successfully joined our garden community. Check your email for a welcome gift!
@@ -145,14 +145,14 @@ export default function Newsletter() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email address"
-                        className="w-full px-4 py-3 rounded-lg text-white bg-white/10 backdrop-blur-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#66BB6A]/50 placeholder-white/50"
+                        className="w-full px-4 py-3 rounded-lg text-white bg-white/10 backdrop-blur-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#4ADE80]/50 placeholder-white/50"
                         required
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="px-6 py-3 bg-[#2E7D32] text-white font-semibold rounded-lg hover:bg-[#66BB6A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                      className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-lg hover:from-emerald-400 hover:to-green-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-lg"
                     >
                       {status === 'loading' ? (
                         <div className="flex items-center space-x-2">

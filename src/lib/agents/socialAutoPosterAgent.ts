@@ -49,7 +49,7 @@ export class SocialMediaAutoPosterAgent {
   async generateCalendar(options: GenerateOptions = {}): Promise<SocialCalendarResponse> {
     const [products, blogPosts] = await Promise.all([
       WooCommerceService.getProducts(options.productLimit ?? 4),
-      getPosts({ per_page: options.blogLimit ?? 2, _embed: true }).catch(() => [] as Post[]),
+      getPosts({ per_page: options.blogLimit ?? 2 }).catch(() => [] as Post[]),
     ]);
 
     const start = options.startDate ?? new Date();

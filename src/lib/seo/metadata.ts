@@ -42,7 +42,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       canonical: fullUrl,
     },
     openGraph: {
-      type,
+      type: type as any,
       url: fullUrl,
       title: fullTitle,
       description,

@@ -39,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map(star => (
-          <span key={star} className={star <= rating ? 'text-[#2E7D32] text-lg' : 'text-gray-300 text-lg'}>
+          <span key={star} className={star <= rating ? 'text-[#66BB6A] text-lg' : 'text-gray-300 text-lg'}>
             ★
           </span>
         ))}
@@ -69,7 +69,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
             {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
-          {testimonial.verifiedPurchase && <span className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded font-bold antialiased">✓ Verified</span>}
+          {testimonial.verifiedPurchase && <span className="text-xs bg-[#66BB6A]/10 text-[#66BB6A] px-2 py-1 rounded font-bold antialiased">✓ Verified</span>}
         </div>
         <p className="text-black text-sm mb-3 line-clamp-2">{testimonial.content}</p>
         <div className="flex items-center justify-between">
@@ -88,7 +88,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="bg-gradient-to-br from-green-50 to-white border-2 border-black rounded-lg p-6 md:p-8"
       >
         {/* Quote icon */}
-        <div className="text-4xl text-[#2E7D32] mb-4 opacity-50 antialiased">❝</div>
+        <div className="text-4xl text-[#66BB6A] mb-4 opacity-50 antialiased">❝</div>
 
         {/* Stars */}
         <div className="mb-4">{renderStars(testimonial.rating)}</div>
@@ -149,7 +149,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         whileTap={{ scale: 0.95 }}
         onClick={() => onLike?.(testimonial.id)}
         className={`flex items-center gap-2 px-3 py-2 rounded border-2 font-bold transition-all ${
-          liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
+          liked ? 'border-[#66BB6A] bg-[#66BB6A]/10 text-[#66BB6A]' : 'border-black text-black hover:border-[#66BB6A]'
         }`}
       >
         <span>👍</span>

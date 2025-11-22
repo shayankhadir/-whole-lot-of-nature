@@ -179,7 +179,7 @@ export default function InventoryPage() {
                 className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#2E7D32]/30 rounded-lg text-white focus:outline-none focus:border-[#2E7D32]"
               >
                 <option value="all">All Products</option>
-                <option value="in-stock">In Stock (>5)</option>
+                <option value="in-stock">In Stock (&gt;5)</option>
                 <option value="low-stock">Low Stock (1-5)</option>
                 <option value="out-of-stock">Out of Stock</option>
               </select>

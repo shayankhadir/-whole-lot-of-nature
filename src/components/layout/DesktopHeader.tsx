@@ -1,15 +1,21 @@
 'use client';
 
-import { useEffect, useState, Fragment, useRef } from 'react';
+import { useEffect, useState, Fragment, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Search, Heart, User, ChevronDown } from 'lucide-react';
+import { Search, Heart, User, ChevronDown, Loader2 } from 'lucide-react';
 import { Transition } from '@headlessui/react';
 import CartIcon from '../cart/CartIcon';
 import { useWishlistStore } from '@/stores/wishlistStore';
-import { useRouter } from 'next/navigation';
 import { navigation } from './navigationData';
+import { useSearchStore } from '@/stores/searchStore';
+import { useProductCategories } from '@/hooks/useProductCategories';
+import type { WooCommerceCategory } from '@/lib/services/woocommerceService';
+import { DEMO_CATEGORIES } from '@/data/demoCatalog';
+
+type CategoryNode = WooCommerceCategory & { children: CategoryNode[] };
+const REQUIRED_CATEGORY_SLUGS = ['seeds', 'ebooks'];
 
 /**
  * Desktop Header Component
@@ -20,12 +26,14 @@ import { navigation } from './navigationData';
 export default function DesktopHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchOpen, setSearchOpen] = useState(false);
   const wishlistCount = useWishlistStore((s) => s.items.length);
-  const router = useRouter();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const openSearch = useSearchStore((state) => state.open);
+  const { categories, isLoading: categoriesLoading } = useProductCategories();
+
+  const normalizedCategories = useMemo(() => filterAndAugmentCategories(categories), [categories]);
+  const categoryTree = useMemo<CategoryNode[]>(() => buildCategoryTree(normalizedCategories), [normalizedCategories]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,15 +87,6 @@ export default function DesktopHeader() {
     }, 200);
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchOpen(false);
-      setSearchQuery('');
-    }
-  };
-
   const headerGradient = scrolled
     ? 'linear-gradient(135deg, rgba(27,64,36,0.96), rgba(21,50,28,0.98))'
     : 'linear-gradient(135deg, rgba(27,64,36,0.85), rgba(21,50,28,0.92))';
@@ -128,7 +127,7 @@ export default function DesktopHeader() {
           {/* Left: Navigation Links */}
           <div className="flex items-center gap-8">
             {navigation.map((item, index) =>
-              item.dropdown ? (
+              item.name.toLowerCase() === 'shop' ? (
                 <div
                   key={item.name}
                   className="relative"
@@ -154,7 +153,6 @@ export default function DesktopHeader() {
                       <ChevronDown className="h-4 w-4" strokeWidth={1.5} />
                     </motion.div>
                   </motion.button>
-
                   <Transition
                     show={shopDropdownOpen}
                     as={Fragment}
@@ -166,55 +164,64 @@ export default function DesktopHeader() {
                     leaveTo="opacity-0 -translate-y-2"
                   >
                     <div
-                      className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl"
+                      className="fixed left-0 right-0 top-20 z-50 border-t border-white/10 bg-[#030a06]/95 shadow-[0_30px_90px_rgba(2,8,5,0.85)] backdrop-blur-xl max-h-[calc(100vh-6rem)] overflow-y-auto"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
                       <div className="mx-auto w-full max-w-7xl p-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
-                          {item.dropdown.map((collection) => (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                          {categoriesLoading && (
+                            <div className="col-span-full flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-6 text-white/70">
+                              <Loader2 className="h-5 w-5 animate-spin text-[#66BB6A]" />
+                              <span className="ml-3">Loading categories...</span>
+                            </div>
+                          )}
+
+                          {!categoriesLoading && categoryTree.length === 0 && (
+                            <div className="col-span-full rounded-2xl border border-dashed border-white/15 bg-white/5 p-6 text-white/70">
+                              Live WooCommerce categories will appear here once they are published.
+                            </div>
+                          )}
+
+                          {categoryTree.map((parent) => (
                             <article
-                              key={collection.title}
-                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40 backdrop-blur-md focus-within:border-[#66BB6A]/50"
+                              key={parent.id}
+                              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(2,8,5,0.65)] hover:border-[#66BB6A]/40 backdrop-blur-md"
                             >
                               <Link
-                                href={collection.href}
-                                className="flex items-start gap-4"
+                                href={`/shop?category=${encodeURIComponent(parent.slug)}`}
+                                className="flex flex-col gap-2"
                                 onClick={() => setShopDropdownOpen(false)}
                               >
-                                <div className="relative overflow-hidden rounded-full bg-[#66BB6A]/15 p-4 ring-1 ring-[#66BB6A]/30 w-14 h-14 flex items-center justify-center backdrop-blur-md">
-                                  <collection.icon
-                                    className="h-7 w-7 text-[#66BB6A]"
-                                    aria-hidden="true"
-                                    strokeWidth={1.75}
-                                  />
-                                </div>
-                                <div>
-                                  <h3 className="text-lg font-semibold text-white group-hover:text-[#66BB6A] transition-colors antialiased">
-                                    {collection.title}
-                                  </h3>
-                                  <p className="mt-2 text-sm text-white/85">
-                                    {collection.description}
-                                  </p>
-                                </div>
+                                <h3 className="text-[17px] font-semibold text-white group-hover:text-[#66BB6A] transition-colors antialiased">
+                                  {parent.name}
+                                </h3>
+                                <p className="text-sm text-white/80">
+                                  {getCategoryDescription(parent)}
+                                </p>
                               </Link>
-                              <div className="flex flex-wrap gap-2">
-                                {collection.items.map((sub) => (
-                                  <Link
-                                    key={sub.name}
-                                    href={sub.href}
-                                    onClick={() => setShopDropdownOpen(false)}
-                                    className="inline-flex items-center rounded-md border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white hover:border-[#66BB6A]/40 hover:text-[#66BB6A] backdrop-blur-md"
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                ))}
+                              <div className="space-y-2">
+                                {parent.children.length > 0 ? (
+                                  parent.children.map((child) => (
+                                    <Link
+                                      key={child.id}
+                                      href={`/shop?category=${encodeURIComponent(child.slug)}`}
+                                      onClick={() => setShopDropdownOpen(false)}
+                                      className="flex items-center gap-2 text-sm text-white/80 hover:text-white"
+                                    >
+                                      <span className="h-px w-6 bg-white/30" aria-hidden />
+                                      <span>{child.name}</span>
+                                    </Link>
+                                  ))
+                                ) : (
+                                  <p className="text-xs uppercase tracking-wide text-white/40">All items</p>
+                                )}
                               </div>
                             </article>
                           ))}
                         </div>
-                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-sm text-white/80 shadow-inner backdrop-blur-md">
-                          <span>Looking for bundles or limited editions?</span>
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-sm text-white/80 shadow-inner backdrop-blur-md">
+                          <span>Need curated bundles or gift sets?</span>
                           <Link
                             href="/shop?tag=gift-bundles"
                             className="font-medium text-[#66BB6A] hover:text-white"
@@ -260,43 +267,15 @@ export default function DesktopHeader() {
           {/* Right: Action Icons */}
           <div className="flex items-center gap-4">
             {/* Search */}
-            <div className="relative">
-              {searchOpen ? (
-                <motion.form
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 'auto', opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  onSubmit={handleSearch}
-                  className="flex items-center"
-                >
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search products..."
-                    className="w-48 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent backdrop-blur-sm"
-                    autoFocus
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setSearchOpen(false)}
-                    className="ml-2 p-2 text-white hover:text-white/80 transition-colors"
-                  >
-                    ✕
-                  </button>
-                </motion.form>
-              ) : (
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSearchOpen(true)}
-                  className="p-2 text-white hover:text-white/80 transition-colors"
-                  aria-label="Search"
-                >
-                  <Search className="w-6 h-6" strokeWidth={2} />
-                </motion.button>
-              )}
-            </div>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={openSearch}
+              className="p-2 text-white hover:text-white/80 transition-colors"
+              aria-label="Open search"
+            >
+              <Search className="w-6 h-6" strokeWidth={2} />
+            </motion.button>
 
             {/* Wishlist */}
             <Link href="/wishlist" className="relative">
@@ -335,3 +314,60 @@ export default function DesktopHeader() {
     </motion.header>
   );
 }
+
+const filterAndAugmentCategories = (categoryList: WooCommerceCategory[] = []): WooCommerceCategory[] => {
+  const filtered = categoryList.filter((category) => category.slug !== 'uncategorized');
+  const missing = REQUIRED_CATEGORY_SLUGS.filter((slug) => !filtered.some((category) => category.slug === slug));
+
+  if (!missing.length) {
+    return filtered;
+  }
+
+  const additions = DEMO_CATEGORIES.filter((category) => missing.includes(category.slug)).map((category) => ({
+    id: category.id,
+    name: category.name,
+    slug: category.slug,
+    parent: category.parent,
+    description: category.description,
+    image: category.image || undefined,
+  }));
+
+  return [...filtered, ...additions];
+};
+
+const buildCategoryTree = (categories: WooCommerceCategory[] = []): CategoryNode[] => {
+  const map = new Map<number, CategoryNode>();
+  categories.forEach((category) => {
+    map.set(category.id, { ...category, children: [] });
+  });
+
+  const roots: CategoryNode[] = [];
+  const sortByName = (a: CategoryNode, b: CategoryNode) => a.name.localeCompare(b.name);
+
+  map.forEach((node) => {
+    if (node.parent && node.parent !== 0 && map.has(node.parent)) {
+      map.get(node.parent)!.children.push(node);
+    } else {
+      roots.push(node);
+    }
+  });
+
+  map.forEach((node) => node.children.sort(sortByName));
+  roots.sort(sortByName);
+
+  return roots;
+};
+
+const getCategoryDescription = (category: WooCommerceCategory): string => {
+  if (!category.description) {
+    return 'Explore thoughtfully sourced botanicals.';
+  }
+
+  const stripped = category.description.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
+  if (!stripped) {
+    return 'Explore thoughtfully sourced botanicals.';
+  }
+
+  return stripped.length > 120 ? `${stripped.slice(0, 117)}...` : stripped;
+};

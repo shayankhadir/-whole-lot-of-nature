@@ -42,7 +42,7 @@ export default function NotFound() {
       opacity: 1,
       scale: 1,
       rotateX: 0,
-      transition: { duration: 0.8, type: 'spring', stiffness: 100 },
+      transition: { duration: 0.8, type: 'spring' as const, stiffness: 100 },
     },
   };
 

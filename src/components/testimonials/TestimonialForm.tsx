@@ -103,7 +103,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-lg p-4 text-[#2E7D32] font-medium"
+            className="bg-[#66BB6A]/10 border-2 border-[#66BB6A] rounded-lg p-4 text-[#66BB6A] font-medium"
           >
             ✓ {successMessage}
           </motion.div>
@@ -128,7 +128,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
             value={authorName}
             onChange={e => setAuthorName(e.target.value)}
             placeholder="Enter your full name"
-            className="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:border-[#2E7D32] bg-white text-black"
+            className="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:border-[#66BB6A] bg-white text-black"
           />
         </div>
 
@@ -140,7 +140,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
             value={authorEmail}
             onChange={e => setAuthorEmail(e.target.value)}
             placeholder="your@email.com"
-            className="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:border-[#2E7D32] bg-white text-black"
+            className="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:border-[#66BB6A] bg-white text-black"
           />
         </div>
 
@@ -155,7 +155,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setRating(star)}
-                className={`text-4xl transition-all ${star <= rating ? 'text-[#2E7D32]' : 'text-gray-300 opacity-50'}`}
+                className={`text-4xl transition-all ${star <= rating ? 'text-[#66BB6A]' : 'text-gray-300 opacity-50'}`}
               >
                 ★
               </motion.button>

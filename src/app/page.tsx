@@ -3,7 +3,6 @@
 import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
 import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
-import FeaturedSoilMixes from '@/components/sections/FeaturedSoilMixes';
 import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
 import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
@@ -14,10 +13,12 @@ import Newsletter from '@/components/sections/Newsletter';
 import FinalCTA from '@/components/sections/FinalCTA';
 import FAQSection from '@/components/sections/FAQSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
+import NewsletterPopup from '@/components/ui/NewsletterPopup';
 
 export default function Home() {
   return (
     <div className="min-h-screen relative z-10 bg-[#0d3512] text-[#daf2d0]">
+      <NewsletterPopup />
       {/* 1. Interactive Hero Section */}
       <InteractiveHero />
 
@@ -43,18 +44,10 @@ export default function Home() {
       {/* 5. Tag-Based Product Filter */}
       <TagFilterSection />
 
-      {/* 6. Featured Soil Mixes */}
-      <SeamlessSection 
-        tone="onyx"
-        paddingY="lg"
-      >
-        <FeaturedSoilMixes />
-      </SeamlessSection>
-
-      {/* 7. All Products Showcase */}
+      {/* 6. All Products Showcase */}
       <AllProductsShowcase />
 
-      {/* 8. Features Section */}
+      {/* 7. Features Section */}
       <SeamlessSection 
         tone="onyx"
         paddingY="lg"

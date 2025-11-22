@@ -8,5 +8,16 @@
     "WORDPRESS_URL": "https://wholelotofnature.com",
     "NEXT_PUBLIC_API_URL": "https://wholelotofnature.com/wp-json",
     "NEXT_PUBLIC_WORDPRESS_URL": "https://wholelotofnature.com"
-  }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=300, stale-while-revalidate=600"
+        }
+      ]
+    }
+  ]
 }

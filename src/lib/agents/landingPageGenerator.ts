@@ -103,11 +103,11 @@ export default function ${this.generateComponentName(content.slug)}Page() {
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <Link href="/" className="text-[#66BB6A] hover:text-[#43A047]">
               Home
             </Link>
             <span className="text-gray-400">/</span>
-            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#43A047]">
               Guides
             </Link>
             <span className="text-gray-400">/</span>
@@ -130,7 +130,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
               .slice(0, 5)
               .map(
                 (kw) =>
-                  `<span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">${kw}</span>`
+                  `<span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">${kw}</span>`
               )
               .join('\n            ')}
           </div>
@@ -170,22 +170,22 @@ export default function ${this.generateComponentName(content.slug)}Page() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg p-6 text-white sticky top-4">
+            <div className="bg-gradient-to-br from-[#66BB6A] to-[#43A047] rounded-2xl shadow-lg p-6 text-white sticky top-4">
               <h3 className="text-2xl font-bold mb-4">Shop Now</h3>
               <p className="mb-6">
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
                 href="/shop/plants"
-                className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
+                className="block w-full bg-white text-[#66BB6A] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-green-500">
+              <div className="mt-6 pt-6 border-t border-[#66BB6A]">
                 <p className="text-sm mb-4">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-[#43A047] hover:bg-[#2E7D32] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -202,7 +202,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
                   .map(
                     (link) => `
                 <li>
-                  <Link href="${link}" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="${link}" className="text-[#66BB6A] hover:text-[#43A047] hover:underline">
                     ${this.getLinkText(link)}
                   </Link>
                 </li>`
@@ -219,15 +219,15 @@ export default function ${this.generateComponentName(content.slug)}Page() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b">
                   <span className="text-gray-600">Article Length</span>
-                  <span className="font-bold text-green-600">${content.wordCount} words</span>
+                  <span className="font-bold text-[#66BB6A]">${content.wordCount} words</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b">
                   <span className="text-gray-600">Read Time</span>
-                  <span className="font-bold text-green-600">${Math.ceil(content.wordCount / 200)} min</span>
+                  <span className="font-bold text-[#66BB6A]">${Math.ceil(content.wordCount / 200)} min</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Target Keywords</span>
-                  <span className="font-bold text-green-600">${content.keywords.length}</span>
+                  <span className="font-bold text-[#66BB6A]">${content.keywords.length}</span>
                 </div>
               </div>
             </div>

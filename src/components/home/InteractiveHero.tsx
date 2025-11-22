@@ -114,7 +114,7 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-emerald-300 text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
+          className="text-green-100 text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>

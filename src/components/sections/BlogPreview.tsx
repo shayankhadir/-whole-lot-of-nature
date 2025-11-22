@@ -145,17 +145,17 @@ export default function BlogPreview() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.125rem)] font-bold text-white mb-3 group-hover:text-[#66BB6A] transition-colors duration-300 line-clamp-2 antialiased">
+                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.125rem)] font-bold text-white mb-3 group-hover:text-[#4ADE80] transition-colors duration-300 line-clamp-2 antialiased">
                         {post.title}
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-3 flex-1 antialiased">
+                      <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-[#66BB6A] mb-4 line-clamp-3 flex-1 antialiased">
                         {post.excerpt}
                       </p>
 
                       {/* Read More Link */}
-                      <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300 pt-4 border-t border-[#2E7D32]/20">
+                      <div className="flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all duration-300 pt-4 border-t border-white/20">
                         <span>Read More</span>
                         <ArrowRight className="w-4 h-4" />
                       </div>
@@ -177,7 +177,7 @@ export default function BlogPreview() {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#66BB6A] hover:text-[#2E7D32] font-semibold text-[clamp(0.9375rem,2vw,1.125rem)] transition-colors duration-300 group"
+            className="inline-flex items-center gap-2 text-white hover:text-[#4ADE80] font-semibold text-[clamp(0.9375rem,2vw,1.125rem)] transition-colors duration-300 group"
           >
             View All Articles
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { woocommerceClient as woocommerce } from '@/lib/services/woocommerceService';
 
-export const dynamic = 'force-dynamic';
+// Enable ISR with 10-minute revalidation (categories change less frequently)
+export const revalidate = 600;
 export const runtime = 'nodejs';
 
 type WCCategory = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -9,6 +9,8 @@ export default function NewsletterPopup() {
   const [hasSeen, setHasSeen] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +26,22 @@ export default function NewsletterPopup() {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+        setIsVisible(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasSeen]);
+    if (isVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [hasSeen, isVisible]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +64,7 @@ export default function NewsletterPopup() {
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           className="fixed bottom-4 right-4 z-50 w-full max-w-md p-4 md:bottom-8 md:right-8"
         >
-          <div className="relative overflow-hidden rounded-2xl border border-[#2E7D32]/30 bg-[#0A0A0A]/90 p-6 backdrop-blur-xl shadow-2xl">
+          <div ref={popupRef} className="relative overflow-hidden rounded-2xl border border-[#2E7D32]/30 bg-[#0A0A0A]/90 p-6 backdrop-blur-xl shadow-2xl">
             {/* Close Button */}
             <button
               onClick={() => setIsVisible(false)}
@@ -92,7 +107,7 @@ export default function NewsletterPopup() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full rounded-lg bg-[#2E7D32] px-4 py-3 font-semibold text-white hover:bg-[#1B5E20] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-green-600 px-4 py-3 font-semibold text-white hover:from-emerald-400 hover:to-green-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                   >
                     {status === 'loading' ? 'Signing up...' : 'Unlock My 10% Off'}
                   </button>

@@ -4,8 +4,9 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Leaf } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Leaf, ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/utils/pricing';
+import { DEMO_PRODUCTS } from '@/data/demoCatalog';
 
 interface FeaturedProduct {
   id: number;
@@ -17,6 +18,17 @@ interface FeaturedProduct {
   image: string;
   category: string;
 }
+
+const FALLBACK_FEATURED: FeaturedProduct[] = DEMO_PRODUCTS.filter((product) => product.featured).map((product) => ({
+  id: product.id,
+  name: product.name,
+  slug: product.slug,
+  price: product.price,
+  sale_price: product.sale_price,
+  regular_price: product.regular_price,
+  image: product.images[0]?.src || '/images/placeholder.jpg',
+  category: product.categories[0]?.name || 'Plants'
+}));
 
 export default function FeaturedPlantsCarousel() {
   const [products, setProducts] = useState<FeaturedProduct[]>([]);
@@ -30,10 +42,26 @@ export default function FeaturedPlantsCarousel() {
 
   async function fetchFeaturedProducts() {
     try {
-      const response = await fetch('/api/products?limit=8');
-      const data = await response.json();
-      if (data.success) {
-        const featured = data.data.map((p: any) => ({
+      // Fetch products from specific categories: soil, soil-mixes, herbal
+      const categories = ['soil', 'soil-mixes', 'herbal'];
+      const responses = await Promise.all(
+        categories.map(cat => fetch(`/api/products?category=${cat}&limit=4`))
+      );
+      
+      const results = await Promise.all(responses.map(res => res.json()));
+      
+      let allProducts: any[] = [];
+      results.forEach(data => {
+        if (data.success && data.data) {
+          allProducts = [...allProducts, ...data.data];
+        }
+      });
+
+      // Remove duplicates
+      allProducts = Array.from(new Map(allProducts.map(item => [item.id, item])).values());
+
+      if (allProducts.length > 0) {
+        const featured = allProducts.map((p: any) => ({
           id: p.id,
           name: p.name,
           slug: p.slug,
@@ -41,12 +69,15 @@ export default function FeaturedPlantsCarousel() {
           sale_price: p.sale_price,
           regular_price: p.regular_price,
           image: p.images[0]?.src || '/placeholder.jpg',
-          category: p.categories[0]?.name || 'Plants',
+          category: p.categories[0]?.name || 'Shop',
         }));
         setProducts(featured);
+      } else {
+        setProducts(FALLBACK_FEATURED);
       }
     } catch (error) {
       console.error('Failed to fetch featured products:', error);
+      setProducts(FALLBACK_FEATURED);
     } finally {
       setLoading(false);
     }
@@ -64,12 +95,12 @@ export default function FeaturedPlantsCarousel() {
 
   if (loading) {
     return (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5 backdrop-blur-lg border-y border-white/10">
         <div className="max-w-[1600px] mx-auto">
-          <div className="h-12 bg-[var(--ink-700)] animate-shimmer w-64 mb-12 rounded-lg" />
+          <div className="h-12 bg-white/10 animate-shimmer w-64 mb-12 rounded-lg" />
           <div className="flex gap-6 overflow-hidden">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="min-w-[320px] h-[480px] bg-[var(--ink-700)] animate-shimmer forest-card" />
+              <div key={i} className="min-w-[320px] h-[480px] bg-white/5 animate-shimmer rounded-2xl" />
             ))}
           </div>
         </div>
@@ -78,9 +109,9 @@ export default function FeaturedPlantsCarousel() {
   }
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[var(--surface-onyx)] overflow-hidden">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white/5 backdrop-blur-lg border-y border-white/10 overflow-hidden">
       {/* Background Leaf Decorations */}
-      <div className="absolute top-10 left-0 w-48 h-48 text-[var(--emerald-700)]/5 pointer-events-none">
+      <div className="absolute top-10 left-0 w-48 h-48 text-emerald-500/10 pointer-events-none">
         <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
       </div>
       <div className="absolute bottom-10 right-0 w-64 h-64 text-[var(--emerald-500)]/5 pointer-events-none">
@@ -96,11 +127,11 @@ export default function FeaturedPlantsCarousel() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-cream-50 uppercase tracking-wide antialiased">
-            Featured <span className="text-emerald-400">Plants</span>
+          <h2 className="font-montserrat text-[clamp(1.5rem,8vw,2.5rem)] font-bold text-white uppercase tracking-wide antialiased">
+            Featured <span className="text-emerald-400">Products</span>
           </h2>
-          <p className="font-inter text-lg text-white/85 mt-4 max-w-2xl antialiased">
-            Handpicked organic plants, carefully curated for your home and garden.
+          <p className="font-inter text-lg text-green-100 mt-4 max-w-2xl antialiased">
+            Premium soil mixes, herbal products, and gardening essentials for your home.
           </p>
         </motion.div>
 
@@ -109,7 +140,7 @@ export default function FeaturedPlantsCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#2E7D32] -translate-x-6"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-emerald-500 -translate-x-6"
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-6 h-6 text-white" />
@@ -117,7 +148,7 @@ export default function FeaturedPlantsCarousel() {
 
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#2E7D32] translate-x-6"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-emerald-500 translate-x-6"
             aria-label="Scroll right"
           >
             <ChevronRight className="w-6 h-6 text-white" />
@@ -138,9 +169,9 @@ export default function FeaturedPlantsCarousel() {
                 className="min-w-[320px] sm:min-w-[360px]"
               >
                 <Link href={`/shop/${product.slug}`}>
-                  <div className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
+                  <div className="group relative bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20 h-full flex flex-col">
                     {/* Forest Leaf Corner Decoration */}
-                    <div className="absolute -top-6 -right-6 w-20 h-20 text-[#2E7D32]/15 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute -top-6 -right-6 w-20 h-20 text-emerald-500/20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
                     </div>
 
@@ -153,24 +184,24 @@ export default function FeaturedPlantsCarousel() {
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                         sizes="360px"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                       
                       {/* Category Badge */}
-                      <div className="absolute top-3 left-3 bg-[#2E7D32] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      <div className="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
                         {product.category}
                       </div>
                     </div>
 
                     {/* Product Info */}
                     <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
+                      <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#4ADE80] transition-colors duration-300 antialiased line-clamp-2">
                         {product.name}
                       </h3>
 
                       {/* Price & CTA */}
-                      <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20 mt-auto">
+                      <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
                         <div>
-                          <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
+                          <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-white antialiased">
                             {formatPrice(product.sale_price || product.price || '0')}
                           </span>
                           {product.sale_price && (
@@ -179,7 +210,7 @@ export default function FeaturedPlantsCarousel() {
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-[#66BB6A] text-sm font-semibold group-hover:gap-2 transition-all duration-300">
+                        <div className="flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all duration-300">
                           <span>Shop</span>
                           <ArrowRight className="w-4 h-4" />
                         </div>

@@ -97,7 +97,7 @@ export default function PlantsyChatWidget() {
               <p className="text-xs text-emerald-50/90">Live data from your WooCommerce catalog + blog tips.</p>
             </div>
 
-            <div className="flex max-h-96 flex-col gap-4 overflow-y-auto bg-emerald-50/40 p-4 text-sm text-emerald-900">
+            <div className="flex max-h-96 flex-col gap-4 overflow-y-auto bg-emerald-50/40 p-4 text-sm text-emerald-700">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -106,8 +106,8 @@ export default function PlantsyChatWidget() {
                   <p className="whitespace-pre-line leading-relaxed">{message.content}</p>
                   {message.references && message.references.length > 0 && (
                     <div className="mt-2 text-xs">
-                      <p className="font-semibold text-emerald-700">References</p>
-                      <ul className="list-inside list-disc text-emerald-600">
+                      <p className="font-semibold text-emerald-500">References</p>
+                      <ul className="list-inside list-disc text-emerald-400">
                         {message.references.map((ref) => (
                           <li key={ref.url}>
                             <a href={ref.url} target="_blank" rel="noreferrer" className="underline">
@@ -121,7 +121,7 @@ export default function PlantsyChatWidget() {
                 </div>
               ))}
               {pending && (
-                <div className="flex items-center gap-2 rounded-2xl bg-white/70 px-4 py-2 text-emerald-700">
+                <div className="flex items-center gap-2 rounded-2xl bg-white/70 px-4 py-2 text-emerald-500">
                   <Loader2 className="h-4 w-4 animate-spin" />
                   <span>Plantsy is thinking…</span>
                 </div>
@@ -132,13 +132,13 @@ export default function PlantsyChatWidget() {
               <input
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
-                className="flex-1 rounded-full border border-emerald-100 px-3 py-2 text-sm focus:border-emerald-400 focus:outline-none"
+                className="flex-1 rounded-full border border-emerald-100 px-3 py-2 text-sm text-emerald-700 placeholder:text-emerald-400 focus:border-emerald-400 focus:outline-none"
                 placeholder="e.g. Tips for ZZ plant in low light?"
               />
               <button
                 type="submit"
                 disabled={pending}
-                className="inline-flex items-center justify-center rounded-full bg-emerald-500 p-2 text-white shadow hover:bg-emerald-600 disabled:opacity-50"
+                className="inline-flex items-center justify-center rounded-full bg-emerald-400 p-2 text-white shadow hover:bg-emerald-500 disabled:opacity-50"
               >
                 {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
               </button>

@@ -1,14 +1,14 @@
 {
-  "scanDate": "2025-11-21T00:25:42.020Z",
+  "scanDate": "2025-11-21T02:41:14.827Z",
   "stats": {
-    "filesScanned": 191,
-    "totalIssues": 32,
-    "criticalIssues": 15,
-    "highIssues": 4,
+    "filesScanned": 194,
+    "totalIssues": 30,
+    "criticalIssues": 12,
+    "highIssues": 5,
     "mediumIssues": 13,
     "lowIssues": 0,
-    "totalWarnings": 545,
-    "totalSuggestions": 3522
+    "totalWarnings": 563,
+    "totalSuggestions": 3575
   },
   "designSystem": {
     "colors": {
@@ -341,6 +341,199 @@
           "type": "component",
           "message": "Using motion component - verify Framer Motion is imported",
           "improvement": "Import: import { motion } from \"framer-motion\""
+        }
+      ]
+    },
+    {
+      "file": "src\\app\\admin\\growth\\page.tsx",
+      "issues": [],
+      "warnings": [
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 79
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 94
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 113
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 124
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 159
+        }
+      ],
+      "suggestions": [
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
         }
       ]
     },
@@ -679,6 +872,69 @@
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        }
+      ]
+    },
+    {
+      "file": "src\\app\\admin\\page.tsx",
+      "issues": [],
+      "warnings": [
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 12
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 30
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 47
+        }
+      ],
+      "suggestions": [
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
           "type": "typography",
@@ -7997,8 +8253,68 @@
     },
     {
       "file": "src\\app\\shop\\[slug]\\page.tsx",
-      "issues": [],
-      "warnings": [],
+      "issues": [
+        {
+          "type": "accessibility",
+          "severity": "high",
+          "line": 213,
+          "code": "<Image",
+          "message": "Image without alt text",
+          "fix": "Add alt=\"\" for decorative images or alt=\"description\" for meaningful images"
+        }
+      ],
+      "warnings": [
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 147
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 169
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 178
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 185
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 189
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 193
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 222
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 224
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 282
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 292
+        }
+      ],
       "suggestions": [
         {
           "type": "component",
@@ -8031,6 +8347,111 @@
           "improvement": "Add \"use client\"; at top of file if not server component"
         },
         {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "spacing",
+          "message": "Vertical padding without horizontal - ensure intentional",
+          "improvement": "Consider symmetric padding: py-X px-X"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
@@ -8066,11 +8487,6 @@
           "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
@@ -8084,46 +8500,6 @@
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "component",
-          "message": "Semi-transparent background without backdrop-blur",
-          "improvement": "Add backdrop-blur-md for glassmorphism effect"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "component",
-          "message": "Using motion component - verify Framer Motion is imported",
-          "improvement": "Import: import { motion } from \"framer-motion\""
         }
       ]
     },
@@ -13076,6 +13452,23 @@
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        }
+      ]
+    },
+    {
+      "file": "src\\components\\layout\\Layout.tsx",
+      "issues": [],
+      "warnings": [],
+      "suggestions": [
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
         }
       ]
     },
@@ -18472,37 +18865,12 @@
     },
     {
       "file": "src\\components\\shop\\ComboProductCard.tsx",
-      "issues": [
-        {
-          "type": "accessibility",
-          "severity": "critical",
-          "line": 154,
-          "code": "className=\"text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full\"",
-          "message": "Insufficient color contrast: light text on light background",
-          "fix": "Use dark text on light backgrounds for WCAG AA compliance"
-        },
-        {
-          "type": "accessibility",
-          "severity": "critical",
-          "line": 160,
-          "code": "<span className=\"text-xs bg-gray-100 text-gray-100 px-2 py-1 rounded-full\">",
-          "message": "Insufficient color contrast: light text on light background",
-          "fix": "Use dark text on light backgrounds for WCAG AA compliance"
-        },
-        {
-          "type": "accessibility",
-          "severity": "critical",
-          "line": 211,
-          "code": ": 'bg-gray-100 text-gray-100 cursor-not-allowed'",
-          "message": "Insufficient color contrast: light text on light background",
-          "fix": "Use dark text on light backgrounds for WCAG AA compliance"
-        }
-      ],
+      "issues": [],
       "warnings": [
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 208
+          "line": 215
         }
       ],
       "suggestions": [
@@ -18587,19 +18955,14 @@
           "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
         },
         {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
         },
         {
           "type": "typography",

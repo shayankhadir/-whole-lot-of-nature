@@ -164,7 +164,7 @@ export const ProductCard = ({
 
         {/* Description */}
         {description && (
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+          <p className="text-sm text-[#66BB6A] mb-3 line-clamp-2">
             {description}
           </p>
         )}
@@ -188,7 +188,7 @@ export const ProductCard = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onAddToCart}
-          className="w-full bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+          className="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
         >
           <ShoppingCart size={18} />
           <span>Add to Cart</span>

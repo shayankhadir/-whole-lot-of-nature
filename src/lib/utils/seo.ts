@@ -3,10 +3,11 @@
  * Used across all dynamic pages (products, blog posts, categories)
  */
 
+import { BUSINESS_EMAIL } from '@/lib/config/site';
+
 export interface SEOMetadata {
   title: string;
   description: string;
-import { BUSINESS_EMAIL } from '@/lib/config/site';
   keywords?: string[];
   ogTitle?: string;
   ogDescription?: string;

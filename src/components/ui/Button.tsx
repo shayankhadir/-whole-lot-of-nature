@@ -14,19 +14,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     
     const variants = {
       // Primary: Vibrant green solid button - most prominent
-      primary: 'bg-gradient-to-br from-green-600 to-green-700 text-white border border-[#2E7D32] shadow-lg hover:from-green-500 hover:to-green-600 hover:shadow-xl hover:scale-105 active:scale-98 active:shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+      primary: 'bg-gradient-to-r from-emerald-500 to-green-600 text-white border border-emerald-400/20 shadow-lg hover:from-emerald-400 hover:to-green-500 hover:shadow-xl hover:scale-105 active:scale-98 active:shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
       
       // Secondary: Slightly lighter solid green
-      secondary: 'bg-gradient-to-br from-green-500 to-green-600 text-white border border-[#2E7D32] shadow-md hover:from-green-400 hover:to-green-500 hover:shadow-lg hover:scale-105 active:scale-98 active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+      secondary: 'bg-gradient-to-r from-emerald-600 to-green-700 text-white border border-emerald-500/20 shadow-md hover:from-emerald-500 hover:to-green-600 hover:shadow-lg hover:scale-105 active:scale-98 active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
       
       // Outline: Ghost button with border that fills on hover
-      outline: 'border-2 border-[#2E7D32] bg-transparent text-[#2E7D32] hover:bg-[#2E7D32] hover:text-white hover:scale-105 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+      outline: 'border-2 border-emerald-500 bg-transparent text-emerald-400 hover:bg-emerald-500 hover:text-white hover:scale-105 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
       
       // Ghost: Minimal button with background fill on hover
-      ghost: 'bg-transparent text-[#2E7D32] hover:bg-[#2E7D32] hover:scale-105 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+      ghost: 'bg-transparent text-emerald-400 hover:bg-emerald-500/10 hover:scale-105 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
       
       // Text: Minimal text-only button for tertiary actions
-      text: 'bg-transparent text-[#2E7D32] hover:text-[#2E7D32] hover:underline active:text-[#2E7D32] disabled:opacity-50 disabled:cursor-not-allowed',
+      text: 'bg-transparent text-emerald-400 hover:text-emerald-300 hover:underline active:text-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed',
     };
 
     const sizes = {

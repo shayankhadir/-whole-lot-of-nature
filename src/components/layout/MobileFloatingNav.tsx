@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Home, Search, ShoppingCart, User, Heart } from 'lucide-react';
+import { Home, Search, ShoppingCart, User, Heart, ShoppingBag } from 'lucide-react';
 import { useWishlistStore } from '@/stores/wishlistStore';
 import { useCartStore } from '@/stores/cartStore';
 
@@ -33,8 +33,8 @@ export default function MobileFloatingNav() {
       href: '/',
     },
     {
-      title: 'Search',
-      icon: <Search className="w-6 h-6" strokeWidth={2} />,
+      title: 'Shop',
+      icon: <ShoppingBag className="w-6 h-6" strokeWidth={2} />,
       href: '/shop',
     },
     {

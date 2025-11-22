@@ -8,7 +8,7 @@ const DEFAULT_SPOTLIGHT_RADIUS = 250;
 const DEFAULT_GLOW_COLOR = '102, 187, 106'; // Green #66BB6A
 const MOBILE_BREAKPOINT = 768;
 
-const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
+const createParticleElement = (x: number, y: number, color: string = DEFAULT_GLOW_COLOR) => {
   const el = document.createElement('div');
   el.className = 'particle';
   el.style.cssText = `
@@ -26,12 +26,12 @@ const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
   return el;
 };
 
-const calculateSpotlightValues = radius => ({
+const calculateSpotlightValues = (radius: number) => ({
   proximity: radius * 0.5,
   fadeDistance: radius * 0.75
 });
 
-const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
+const updateCardGlowProperties = (card: HTMLElement, mouseX: number, mouseY: number, glow: string, radius: number) => {
   const rect = card.getBoundingClientRect();
   const relativeX = ((mouseX - rect.left) / rect.width) * 100;
   const relativeY = ((mouseY - rect.top) / rect.height) * 100;
@@ -41,6 +41,18 @@ const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
   card.style.setProperty('--glow-intensity', glow.toString());
   card.style.setProperty('--glow-radius', `${radius}px`);
 };
+
+interface ParticleCardProps {
+  children: React.ReactNode;
+  className?: string;
+  disableAnimations?: boolean;
+  style?: React.CSSProperties;
+  particleCount?: number;
+  glowColor?: string;
+  enableTilt?: boolean;
+  clickEffect?: boolean;
+  enableMagnetism?: boolean;
+}
 
 const ParticleCard = ({
   children,
@@ -52,14 +64,14 @@ const ParticleCard = ({
   enableTilt = true,
   clickEffect = false,
   enableMagnetism = false
-}) => {
-  const cardRef = useRef(null);
-  const particlesRef = useRef([]);
-  const timeoutsRef = useRef([]);
+}: ParticleCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const particlesRef = useRef<HTMLDivElement[]>([]);
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const isHoveredRef = useRef(false);
-  const memoizedParticles = useRef([]);
+  const memoizedParticles = useRef<HTMLDivElement[]>([]);
   const particlesInitialized = useRef(false);
-  const magnetismAnimationRef = useRef(null);
+  const magnetismAnimationRef = useRef<any>(null);
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;
@@ -101,7 +113,7 @@ const ParticleCard = ({
       const timeoutId = setTimeout(() => {
         if (!isHoveredRef.current || !cardRef.current) return;
 
-        const clone = particle.cloneNode(true);
+        const clone = particle.cloneNode(true) as HTMLDivElement;
         cardRef.current.appendChild(clone);
         particlesRef.current.push(clone);
 
@@ -173,7 +185,7 @@ const ParticleCard = ({
       }
     };
 
-    const handleMouseMove = e => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!enableTilt && !enableMagnetism) return;
 
       const rect = element.getBoundingClientRect();
@@ -208,7 +220,7 @@ const ParticleCard = ({
       }
     };
 
-    const handleClick = e => {
+    const handleClick = (e: MouseEvent) => {
       if (!clickEffect) return;
 
       const rect = element.getBoundingClientRect();
@@ -279,14 +291,22 @@ const ParticleCard = ({
   );
 };
 
+interface GlobalSpotlightProps {
+  gridRef: React.RefObject<HTMLDivElement | null>;
+  disableAnimations?: boolean;
+  enabled?: boolean;
+  spotlightRadius?: number;
+  glowColor?: string;
+}
+
 const GlobalSpotlight = ({
   gridRef,
   disableAnimations = false,
   enabled = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   glowColor = DEFAULT_GLOW_COLOR
-}) => {
-  const spotlightRef = useRef(null);
+}: GlobalSpotlightProps) => {
+  const spotlightRef = useRef<HTMLDivElement>(null);
   const isInsideSection = useRef(false);
 
   useEffect(() => {
@@ -315,7 +335,7 @@ const GlobalSpotlight = ({
     document.body.appendChild(spotlight);
     spotlightRef.current = spotlight;
 
-    const handleMouseMove = e => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!spotlightRef.current || !gridRef.current) return;
 
       const section = gridRef.current.closest('.bento-section');
@@ -333,7 +353,7 @@ const GlobalSpotlight = ({
           ease: 'power2.out'
         });
         cards.forEach(card => {
-          card.style.setProperty('--glow-intensity', '0');
+          (card as HTMLElement).style.setProperty('--glow-intensity', '0');
         });
         return;
       }
@@ -359,7 +379,7 @@ const GlobalSpotlight = ({
           glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
         }
 
-        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius);
+        updateCardGlowProperties(cardElement as HTMLElement, e.clientX, e.clientY, glowIntensity.toString(), spotlightRadius);
       });
 
       gsap.to(spotlightRef.current, {
@@ -386,7 +406,7 @@ const GlobalSpotlight = ({
     const handleMouseLeave = () => {
       isInsideSection.current = false;
       gridRef.current?.querySelectorAll('.category-card').forEach(card => {
-        card.style.setProperty('--glow-intensity', '0');
+        (card as HTMLElement).style.setProperty('--glow-intensity', '0');
       });
       if (spotlightRef.current) {
         gsap.to(spotlightRef.current, {
@@ -410,8 +430,32 @@ const GlobalSpotlight = ({
   return null;
 };
 
+interface Category {
+  name: string;
+  description?: string;
+  icon?: React.ReactNode;
+  backgroundColor?: string;
+  href?: string;
+}
+
+interface BotanicalCategoryBentoProps {
+  categories?: Category[];
+  textAutoHide?: boolean;
+  enableStars?: boolean;
+  enableSpotlight?: boolean;
+  enableBorderGlow?: boolean;
+  disableAnimations?: boolean;
+  spotlightRadius?: number;
+  particleCount?: number;
+  enableTilt?: boolean;
+  glowColor?: string;
+  clickEffect?: boolean;
+  enableMagnetism?: boolean;
+  columns?: number;
+}
+
 const BotanicalCategoryBento = ({
-  categories = [],
+  categories = [] as Category[],
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -424,8 +468,8 @@ const BotanicalCategoryBento = ({
   clickEffect = true,
   enableMagnetism = true,
   columns = 3
-}) => {
-  const gridRef = useRef(null);
+}: BotanicalCategoryBentoProps) => {
+  const gridRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

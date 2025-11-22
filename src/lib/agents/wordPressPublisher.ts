@@ -27,7 +27,7 @@ export interface WordPressPost {
   content: string;
   excerpt: string;
   slug: string;
-  status: 'publish' | 'draft' | 'pending' | 'private';
+  status: 'publish' | 'draft' | 'pending' | 'private' | 'future';
   categories: number[];
   tags: number[];
   featured_media?: number;

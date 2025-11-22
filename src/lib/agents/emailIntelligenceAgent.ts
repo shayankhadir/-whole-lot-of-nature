@@ -265,6 +265,16 @@ export default class EmailIntelligenceAgent {
     });
   }
 
+  private async recordEvent(contactId: string, type: EmailEventType, metadata: Record<string, any> = {}) {
+    await prisma.emailEvent.create({
+      data: {
+        contactId,
+        type,
+        payload: metadata,
+      },
+    });
+  }
+
   private async refreshIntentForContact(contactId: string) {
     const contact = await prisma.emailContact.findUnique({ where: { id: contactId } });
     if (!contact) return;

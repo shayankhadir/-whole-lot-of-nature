@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -40,10 +40,27 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
   const [showQuickView, setShowQuickView] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   const { addItem, openCart } = useCartStore();
   const isWishlisted = useWishlistStore((s) => s.isWishlisted(product.id.toString()));
   const toggleWishlist = useWishlistStore((s) => s.toggle);
   const mainImage = product.images && product.images.length > 0 ? product.images[0] : null;
+  const displayImages = product.images && product.images.length > 0 ? product.images : [{ id: -1, src: '/placeholder-image.jpg', alt: product.name }];
+  const imageCount = displayImages.length;
+
+  useEffect(() => {
+    if (!isHovering || imageCount < 2) {
+      setActiveImageIndex(0);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % imageCount);
+    }, 1600);
+
+    return () => clearInterval(interval);
+  }, [isHovering, imageCount]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -76,7 +93,13 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       className="h-full"
     >
-      <div className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col">
+      <div
+        className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2E7D32]/20 h-full flex flex-col"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        onTouchStart={() => setIsHovering(true)}
+        onTouchEnd={() => setIsHovering(false)}
+      >
         
         {/* Forest Leaf Decoration - Extending from Corner */}
         <div className="absolute -top-6 -right-6 w-20 h-20 text-[#2E7D32]/15 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -85,29 +108,38 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Product Image Container */}
         <div className="relative h-48 md:h-56 overflow-hidden">
-          {/* Skeleton Loader */}
-          {!imageLoaded && (
-            <div className="absolute inset-0 animate-shimmer" />
-          )}
-          
-          {mainImage ? (
+          {!imageLoaded && <div className="absolute inset-0 animate-shimmer" />}
+
+          {displayImages.slice(0, 4).map((image, idx) => (
             <Image
-              src={mainImage.src}
-              alt={mainImage.alt || product.name}
+              key={image.id ?? idx}
+              src={image.src}
+              alt={image.alt || `${product.name} ${idx + 1}`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-110 transition-transform duration-500"
+              className={`absolute inset-0 object-cover transition-opacity duration-700 ${
+                idx === activeImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+              }`}
               quality={90}
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
             />
-          ) : (
-            <div className="absolute inset-0 bg-[#0d3512] flex items-center justify-center">
-              <span className="text-[#86efbe]/30 text-sm">No image</span>
+          ))}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent" />
+
+          {imageCount > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              {displayImages.slice(0, 4).map((_, idx) => (
+                <span
+                  key={`dot-${product.id}-${idx}`}
+                  className={`h-1.5 w-4 rounded-full transition-all ${
+                    idx === activeImageIndex ? 'bg-white' : 'bg-white/30'
+                  }`}
+                />
+              ))}
             </div>
           )}
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
 
           {/* Wishlist Button - Top Right */}
           <div className="absolute top-3 right-3 z-10">

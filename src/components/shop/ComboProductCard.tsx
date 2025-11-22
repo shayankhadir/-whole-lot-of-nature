@@ -194,8 +194,8 @@ export default function ComboProductCard({
         {/* Stock Status */}
         <div className="mt-4">
           {combo.inStock ? (
-            <span className="inline-flex items-center text-xs text-[#2E7D32]">
-              <div className="w-2 h-2 bg-[#2E7D32] rounded-full mr-2" />
+            <span className="inline-flex items-center text-xs text-[#66BB6A]">
+              <div className="w-2 h-2 bg-[#66BB6A] rounded-full mr-2" />
               In Stock
             </span>
           ) : (

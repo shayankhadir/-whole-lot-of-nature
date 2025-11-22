@@ -6,6 +6,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ShoppingCart, Heart, Eye } from 'lucide-react';
 import { Product } from '@/types/product';
+import { DEMO_PRODUCTS } from '@/data/demoCatalog';
+import { getDisplayPrice, getOriginalPrice, isOnSale } from '@/lib/utils/pricing';
+
+const FALLBACK_PRODUCTS = DEMO_PRODUCTS;
 
 export default function AllProductsShowcase() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,13 +19,16 @@ export default function AllProductsShowcase() {
     fetch('/api/products?limit=12')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data) {
+        if (data.success && data.data?.length) {
           setProducts(data.data);
+        } else {
+          setProducts(FALLBACK_PRODUCTS);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch products:', err);
+        setProducts(FALLBACK_PRODUCTS);
         setLoading(false);
       });
   }, []);
@@ -106,7 +113,7 @@ export default function AllProductsShowcase() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
             >
-              <Link href={`/products/${product.slug}`}>
+              <Link href={`/shop/${product.slug}`}>
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="group relative rounded-2xl bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:shadow-2xl hover:shadow-[#2E7D32]/20"
@@ -130,7 +137,7 @@ export default function AllProductsShowcase() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
 
                     {/* Badge */}
-                    {product.onSale && (
+                    {isOnSale(product) && (
                       <div className="absolute top-3 left-3 px-3 py-1 bg-[#2E7D32] text-white text-xs font-semibold rounded-full">
                         SALE
                       </div>
@@ -147,11 +154,11 @@ export default function AllProductsShowcase() {
                     <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
                       <div>
                         <span className="text-2xl font-bold text-[#66BB6A] antialiased">
-                          ₹{product.price}
+                          {getDisplayPrice(product)}
                         </span>
-                        {product.regularPrice && product.regularPrice !== product.price && (
+                        {getOriginalPrice(product) && (
                           <span className="block text-sm text-white/50 line-through antialiased">
-                            ₹{product.regularPrice}
+                            {getOriginalPrice(product)}
                           </span>
                         )}
                       </div>
