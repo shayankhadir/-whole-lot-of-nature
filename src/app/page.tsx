@@ -2,7 +2,7 @@
 
 import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
-import FeaturedPlantsCarousel from '@/components/home/FeaturedPlantsCarousel';
+import PremiumFeaturedShowcase from '@/components/home/PremiumFeaturedShowcase';
 import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
 import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
@@ -31,12 +31,7 @@ export default function Home() {
       </SeamlessSection>
 
       {/* 3. Featured Products Section */}
-      <SeamlessSection 
-        tone="forest"
-        paddingY="lg"
-      >
-        <FeaturedPlantsCarousel />
-      </SeamlessSection>
+      <PremiumFeaturedShowcase />
 
       {/* 4. Modern Categories Section */}
       <ModernCategories />

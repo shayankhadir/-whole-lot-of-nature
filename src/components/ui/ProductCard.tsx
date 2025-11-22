@@ -15,7 +15,7 @@ interface ProductCardProps {
   isFavorite?: boolean;
   onAddToCart?: () => void;
   onToggleFavorite?: () => void;
-  variant?: 'default' | 'minimal' | 'featured';
+  variant?: 'default' | 'minimal' | 'featured' | 'glass';
   className?: string;
 }
 
@@ -59,6 +59,7 @@ export const ProductCard = ({
     default: 'bg-white',
     minimal: 'bg-transparent border border-gray-200',
     featured: 'bg-gradient-to-br from-green-50 to-white',
+    glass: 'bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/10',
   };
 
   const containerVariants = {
