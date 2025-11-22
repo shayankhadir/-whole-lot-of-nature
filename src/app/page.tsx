@@ -49,7 +49,7 @@ export default function Home() {
 
       {/* 7. Features Section */}
       <SeamlessSection 
-        tone="onyx"
+        tone="forest"
         paddingY="lg"
       >
         <Features />
