@@ -95,14 +95,6 @@ export default function PremiumFeaturedShowcase() {
     }
   }
 
-  if (loading) {
-    return (
-      <div className="h-[600px] w-full flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2E7D32]"></div>
-      </div>
-    );
-  }
-
   const mainProduct = products[0];
   const sideProducts = products.slice(1, 5);
 
@@ -115,112 +107,118 @@ export default function PremiumFeaturedShowcase() {
         <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl"
-          >
-            <div className="flex items-center gap-2 text-[#66BB6A] mb-4 font-medium tracking-wider text-sm uppercase">
-              <Sparkles className="w-4 h-4" />
-              <span>Curated Collection</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-[#E8F5E9] leading-tight">
-              Premium Essentials for <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66BB6A] to-[#A5D6A7]">
-                Thriving Gardens
-              </span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link 
-              href="/shop"
-              className="group flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full backdrop-blur-md transition-all duration-300"
-            >
-              <span className="text-[#E8F5E9] font-medium">View Full Collection</span>
-              <ArrowRight className="w-5 h-5 text-[#66BB6A] group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+      {loading ? (
+        <div className="h-[600px] w-full flex items-center justify-center relative z-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2E7D32]"></div>
         </div>
+      ) : (
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="max-w-2xl"
+            >
+              <div className="flex items-center gap-2 text-[#66BB6A] mb-4 font-medium tracking-wider text-sm uppercase">
+                <Sparkles className="w-4 h-4" />
+                <span>Curated Collection</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-[#E8F5E9] leading-tight">
+                Premium Essentials for <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66BB6A] to-[#A5D6A7]">
+                  Thriving Gardens
+                </span>
+              </h2>
+            </motion.div>
 
-        {/* Unique Layout - Asymmetric Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Main Highlight Product - Spans 5 columns */}
-          <motion.div 
-            style={{ y }}
-            className="lg:col-span-5 relative group"
-          >
-            <Link href={`/shop/${mainProduct.slug}`} className="block h-full">
-              <div className="relative h-[600px] lg:h-[700px] rounded-[2rem] overflow-hidden">
-                <Image
-                  src={mainProduct.image}
-                  alt={mainProduct.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
-                <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                  <span className="inline-block px-4 py-1.5 bg-[#2E7D32] text-white text-xs font-bold tracking-wider uppercase rounded-full mb-4">
-                    Featured Choice
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-playfair text-white mb-3">
-                    {mainProduct.name}
-                  </h3>
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-2xl font-medium text-[#66BB6A]">
-                      ₹{mainProduct.price}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Link 
+                href="/shop"
+                className="group flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full backdrop-blur-md transition-all duration-300"
+              >
+                <span className="text-[#E8F5E9] font-medium">View Full Collection</span>
+                <ArrowRight className="w-5 h-5 text-[#66BB6A] group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Unique Layout - Asymmetric Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Main Highlight Product - Spans 5 columns */}
+            <motion.div 
+              style={{ y }}
+              className="lg:col-span-5 relative group"
+            >
+              <Link href={`/shop/${mainProduct.slug}`} className="block h-full">
+                <div className="relative h-[600px] lg:h-[700px] rounded-[2rem] overflow-hidden">
+                  <Image
+                    src={mainProduct.image}
+                    alt={mainProduct.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+                    <span className="inline-block px-4 py-1.5 bg-[#2E7D32] text-white text-xs font-bold tracking-wider uppercase rounded-full mb-4">
+                      Featured Choice
                     </span>
-                    {mainProduct.regular_price && (
-                      <span className="text-lg text-white/60 line-through decoration-white/40">
-                        ₹{mainProduct.regular_price}
+                    <h3 className="text-3xl md:text-4xl font-playfair text-white mb-3">
+                      {mainProduct.name}
+                    </h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-2xl font-medium text-[#66BB6A]">
+                        ₹{mainProduct.price}
                       </span>
-                    )}
-                  </div>
-                  <p className="text-white/80 line-clamp-2 mb-8 max-w-md">
-                    Experience premium quality with our top-rated selection, perfect for enhancing your green space.
-                  </p>
-                  <div className="flex items-center gap-2 text-white font-medium group-hover:gap-4 transition-all">
-                    Shop Now <ArrowRight className="w-5 h-5" />
+                      {mainProduct.regular_price && (
+                        <span className="text-lg text-white/60 line-through decoration-white/40">
+                          ₹{mainProduct.regular_price}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-white/80 line-clamp-2 mb-8 max-w-md">
+                      Experience premium quality with our top-rated selection, perfect for enhancing your green space.
+                    </p>
+                    <div className="flex items-center gap-2 text-white font-medium group-hover:gap-4 transition-all">
+                      Shop Now <ArrowRight className="w-5 h-5" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </motion.div>
+              </Link>
+            </motion.div>
 
-          {/* Secondary Grid - Spans 7 columns */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 content-center">
-            {sideProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <ProductCard
-                  id={String(product.id)}
-                  name={product.name}
-                  image={product.image}
-                  price={parseFloat(product.price)}
-                  originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
-                  rating={product.rating || 4.5}
-                  reviewCount={product.reviewCount || 0}
-                  variant="glass"
-                />
-              </motion.div>
-            ))}
+            {/* Secondary Grid - Spans 7 columns */}
+            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 content-center">
+              {sideProducts.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <ProductCard
+                    id={String(product.id)}
+                    name={product.name}
+                    image={product.image}
+                    price={parseFloat(product.price)}
+                    originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
+                    rating={product.rating || 4.5}
+                    reviewCount={product.reviewCount || 0}
+                    variant="glass"
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
