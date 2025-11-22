@@ -75,9 +75,10 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair-display)', 'serif'],
         display: ['var(--font-playfair-display)', 'serif'],
-        montserrat: ['Montserrat', 'var(--font-inter)', 'sans-serif'],
-        inter: ['Inter', 'var(--font-inter)', 'sans-serif'],
+        montserrat: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        inter: ['var(--font-inter)', 'Inter', 'sans-serif'],
       },
       backdropBlur: {
         xs: '2px',

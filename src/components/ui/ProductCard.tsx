@@ -73,6 +73,8 @@ export const ProductCard = ({
     whileHover: { scale: 1.1 },
   };
 
+  const isGlass = variant === 'glass';
+
   return (
     <motion.div
       variants={containerVariants}
@@ -159,13 +161,17 @@ export const ProductCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5">
         {/* Name */}
-        <h3 className="font-bold text-base sm:text-lg mb-1.5 text-black line-clamp-2 group-hover:text-[#2E7D32] transition-colors duration-300 antialiased">
+        <h3 className={`font-montserrat font-bold text-base sm:text-lg mb-1.5 line-clamp-2 transition-colors duration-300 antialiased ${
+          isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-black group-hover:text-[#2E7D32]'
+        }`}>
           {name}
         </h3>
 
         {/* Description */}
         {description && (
-          <p className="text-sm text-[#66BB6A] mb-3 line-clamp-2">
+          <p className={`text-sm mb-3 line-clamp-2 ${
+            isGlass ? 'text-white/80' : 'text-[#66BB6A]'
+          }`}>
             {description}
           </p>
         )}
@@ -173,11 +179,15 @@ export const ProductCard = ({
         {/* Price Section */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-[#2E7D32] antialiased">
+            <span className={`text-xl sm:text-2xl font-bold antialiased ${
+              isGlass ? 'text-[#66BB6A]' : 'text-[#2E7D32]'
+            }`}>
               ${price.toFixed(2)}
             </span>
             {originalPrice && originalPrice > price && (
-              <span className="text-sm sm:text-base text-gray-500 line-through antialiased">
+              <span className={`text-sm sm:text-base line-through antialiased ${
+                isGlass ? 'text-white/50' : 'text-gray-500'
+              }`}>
                 ${originalPrice.toFixed(2)}
               </span>
             )}

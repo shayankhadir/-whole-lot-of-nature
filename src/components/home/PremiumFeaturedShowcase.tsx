@@ -125,7 +125,7 @@ export default function PremiumFeaturedShowcase() {
                 <Sparkles className="w-4 h-4" />
                 <span>Curated Collection</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-[#E8F5E9] leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-[#E8F5E9] leading-tight">
                 Premium Essentials for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66BB6A] to-[#A5D6A7]">
                   Thriving Gardens
@@ -169,7 +169,7 @@ export default function PremiumFeaturedShowcase() {
                     <span className="inline-block px-4 py-1.5 bg-[#2E7D32] text-white text-xs font-bold tracking-wider uppercase rounded-full mb-4">
                       Featured Choice
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-playfair text-white mb-3">
+                    <h3 className="text-3xl md:text-4xl font-display text-white mb-3">
                       {mainProduct.name}
                     </h3>
                     <div className="flex items-center gap-4 mb-6">
