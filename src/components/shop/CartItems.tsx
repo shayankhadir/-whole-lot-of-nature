@@ -109,7 +109,7 @@ export default function CartItems() {
             exit={{ opacity: 0 }}
             className="text-center py-12 bg-white rounded-lg shadow-sm"
           >
-            <p className="text-gray-500">Your cart is empty</p>
+            <p className="text-[#E8F5E9]/70">Your cart is empty</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -126,7 +126,7 @@ export default function CartItems() {
               <p>Subtotal</p>
               <p>${subtotal.toFixed(2)}</p>
             </div>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-[#E8F5E9]/70">
               Shipping and taxes calculated at checkout.
             </p>
             <p className="mt-2 text-sm text-primary-600">

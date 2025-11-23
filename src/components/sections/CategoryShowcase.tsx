@@ -70,10 +70,10 @@ export default function CategoryShowcase() {
           <span className="inline-flex items-center rounded-full border border-primary-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-600 backdrop-blur-md">
             Shop by Category
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 antialiased">
+          <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-[#daf2d0] antialiased">
             A Luxury Edit for Every Green Vision
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-gray-600 antialiased">
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-[#E8F5E9]/80 antialiased">
             Explore a curated taxonomy of nature-first collections designed to harmonise wellbeing, interior aesthetics, and sustainable growing rituals.
           </p>
         </motion.div>
