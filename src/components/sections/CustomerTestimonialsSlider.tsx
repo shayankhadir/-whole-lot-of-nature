@@ -51,7 +51,7 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-16 bg-[#0F1E11]">
+    <section className="relative py-20 bg-[#0d3512] overflow-hidden">
       {/* Background Grid Effect */}
       <BackgroundGrid />
       
@@ -61,14 +61,31 @@ export default function CustomerTestimonialsSlider() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-16 space-y-4"
         >
-          <h2 className="text-[clamp(2rem,4vw,2.625rem)] font-montserrat font-bold text-cream-50 mb-2 antialiased">
+          {/* Badge */}
+          <div className="flex items-center justify-center">
+            <div className="inline-flex items-center rounded-full border border-[#66BB6A]/30 bg-[#66BB6A]/10 px-4 py-1.5 text-xs font-medium text-[#66BB6A] backdrop-blur-sm">
+              ✨ Community Voices
+            </div>
+          </div>
+
+          {/* Main Heading */}
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#daf2d0] antialiased leading-tight">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-cream-100 max-w-2xl mx-auto antialiased">
+
+          {/* Subtitle */}
+          <p className="text-lg text-[#E8F5E9] max-w-2xl mx-auto antialiased font-light">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
+
+          {/* Decorative Line */}
+          <div className="flex items-center justify-center gap-3 pt-2">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#66BB6A]/50" />
+            <div className="w-2 h-2 rounded-full bg-[#66BB6A]" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#66BB6A]/50" />
+          </div>
         </motion.div>
 
         <div ref={sliderRef} className="keen-slider">
