@@ -62,7 +62,7 @@ export default function NewsletterPopup() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 100, scale: 0.9 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="fixed bottom-4 right-4 z-50 w-full max-w-md p-4 md:bottom-8 md:right-8"
+          className="fixed bottom-4 right-4 z-[9999] w-full max-w-md p-4 md:bottom-8 md:right-8"
         >
           <div ref={popupRef} className="relative overflow-hidden rounded-2xl border border-[#2E7D32]/30 bg-[#0A0A0A]/90 p-6 backdrop-blur-xl shadow-2xl">
             {/* Close Button */}
