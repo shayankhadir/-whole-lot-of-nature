@@ -177,7 +177,7 @@ export default function PremiumFeaturedShowcase() {
                         ₹{mainProduct.price}
                       </span>
                       {mainProduct.regular_price && (
-                        <span className="text-lg text-white/60 line-through decoration-white/40">
+                        <span className="text-lg text-white/85 line-through decoration-white/40">
                           ₹{mainProduct.regular_price}
                         </span>
                       )}

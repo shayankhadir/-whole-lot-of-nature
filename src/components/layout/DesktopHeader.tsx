@@ -171,14 +171,14 @@ export default function DesktopHeader() {
                       <div className="mx-auto w-full max-w-7xl p-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                           {categoriesLoading && (
-                            <div className="col-span-full flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-6 text-white/70">
+                            <div className="col-span-full flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-6 text-white/90">
                               <Loader2 className="h-5 w-5 animate-spin text-[#66BB6A]" />
                               <span className="ml-3">Loading categories...</span>
                             </div>
                           )}
 
                           {!categoriesLoading && categoryTree.length === 0 && (
-                            <div className="col-span-full rounded-2xl border border-dashed border-white/15 bg-white/5 p-6 text-white/70">
+                            <div className="col-span-full rounded-2xl border border-dashed border-white/15 bg-white/5 p-6 text-white/90">
                               Live WooCommerce categories will appear here once they are published.
                             </div>
                           )}

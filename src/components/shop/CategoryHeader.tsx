@@ -38,7 +38,7 @@ export default function CategoryHeader({ category, productCount }: CategoryHeade
   <div className="text-gray-700 mb-4">
         {category?.description || 'Browse our collection of natural products'}
       </div>
-  <div className="flex items-center text-sm text-gray-500">
+  <div className="flex items-center text-sm text-white/80">
         <span>{productCount} products</span>
       </div>
       {category?.image && (

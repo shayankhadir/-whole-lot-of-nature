@@ -132,7 +132,7 @@ export default function Newsletter() {
                 >
                   <CheckCircle className="w-12 h-12 text-[#4ADE80] mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
-                  <p className="text-white/85">
+                  <p className="text-white/90">
                     You've successfully joined our garden community. Check your email for a welcome gift!
                   </p>
                 </motion.div>

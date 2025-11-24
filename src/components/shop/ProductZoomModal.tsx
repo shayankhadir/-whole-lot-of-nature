@@ -68,7 +68,7 @@ export function ProductZoomModal({ isOpen, onClose, imageSrc, productName }: Pro
             />
           </motion.div>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm">
             Press ESC to close • Click outside to exit
           </div>
         </motion.div>

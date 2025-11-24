@@ -123,7 +123,7 @@ export default function OurBestMixesCarousel() {
                         {formatPrice(p.sale_price || p.price || '0')}
                       </span>
                       {p.sale_price && (
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-sm text-white/80 line-through">
                           {formatPrice(p.regular_price || p.price || '0')}
                         </span>
                       )}

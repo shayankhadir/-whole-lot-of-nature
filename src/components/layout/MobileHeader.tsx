@@ -120,7 +120,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search products"
-                className="flex-1 bg-transparent text-sm placeholder:text-white/50 focus:outline-none"
+                className="flex-1 bg-transparent text-sm placeholder:text-white/60 focus:outline-none"
               />
             </form>
 
@@ -152,7 +152,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                         <collection.icon className="w-4 h-4 text-[#66BB6A]" />
                         {collection.title}
                       </span>
-                      <ChevronRight className="w-4 h-4 text-white/50" />
+                      <ChevronRight className="w-4 h-4 text-white/60" />
                     </Link>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {collection.items.map((item) => (

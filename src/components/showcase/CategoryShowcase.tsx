@@ -74,11 +74,11 @@ export const CategoryShowcase = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-gray-100 antialiased"
+              className="text-xl text-white/90 antialiased"
             >
               {description}
             </motion.p>
-          )}
+          )
         </div>
       )}
 
@@ -142,10 +142,10 @@ const CategoryCard = ({ category, variants }: CategoryCardProps) => {
 
         {/* Description */}
         {category.description && (
-          <p className="text-gray-300 text-sm mb-3 line-clamp-2">
+          <p className="text-white/90 text-sm mb-3 line-clamp-2">
             {category.description}
           </p>
-        )}
+        )
 
         {/* Count */}
         {category.count && (

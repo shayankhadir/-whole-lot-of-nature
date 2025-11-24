@@ -205,7 +205,7 @@ export default function FeaturedPlantsCarousel() {
                             {formatPrice(product.sale_price || product.price || '0')}
                           </span>
                           {product.sale_price && (
-                            <span className="block text-sm text-white/50 line-through">
+                            <span className="block text-sm text-white/70 line-through">
                               {formatPrice(product.regular_price || product.price || '0')}
                             </span>
                           )}

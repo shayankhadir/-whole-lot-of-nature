@@ -220,7 +220,7 @@ export default function Footer() {
 					</div>
 				</div>
 
-				<div className="flex flex-col gap-6 border-t border-white/10 pt-8 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
+				<div className="flex flex-col gap-6 border-t border-white/10 pt-8 text-xs text-white/85 md:flex-row md:items-center md:justify-between">
 					<div className="flex flex-col gap-2">
 						<p>
 							&copy; {new Date().getFullYear()} Whole Lot of Nature. Crafted in

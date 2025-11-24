@@ -98,7 +98,7 @@ export default function ShopDropdown() {
 
           {/* Categories Grid */}
           <div className="mb-4">
-            <p className="text-xs text-white/50 uppercase tracking-wider mb-3">Categories</p>
+            <p className="text-xs text-white/60 uppercase tracking-wider mb-3">Categories</p>
             <BotanicalCategoryBento
               categories={shopCategories}
               textAutoHide={true}

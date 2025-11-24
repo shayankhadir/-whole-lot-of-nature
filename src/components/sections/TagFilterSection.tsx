@@ -206,7 +206,7 @@ export default function TagFilterSection() {
                               ₹{product.price}
                             </span>
                             {product.regular_price && product.regular_price !== product.price && (
-                              <span className="block text-sm text-white/50 line-through antialiased">
+                              <span className="block text-sm text-white/70 line-through antialiased">
                                 ₹{product.regular_price}
                               </span>
                             )}

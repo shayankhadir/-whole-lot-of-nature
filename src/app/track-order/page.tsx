@@ -131,7 +131,7 @@ export default function TrackOrderPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">
             Track Your Order
           </h1>
-          <p className="text-gray-400 text-lg antialiased">
+          <p className="text-white/80 text-lg antialiased">>
             Enter your order details to track your plants
           </p>
         </div>

@@ -113,7 +113,7 @@ export const ProductCard = ({
           <span className="text-yellow-400">⭐</span>
           <span>{rating.toFixed(1)}</span>
           {reviewCount > 0 && (
-            <span className="text-xs text-gray-300">({reviewCount})</span>
+            <span className="text-xs text-white/80">({reviewCount})</span>
           )}
         </motion.div>
 

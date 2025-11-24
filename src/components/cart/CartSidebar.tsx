@@ -135,7 +135,7 @@ export default function CartSidebar() {
 										<div className="border-b border-white/10 bg-gradient-to-br from-[#05150a] to-[#030a06] px-6 py-6">
 											<div className="flex items-start justify-between">
 												<div>
-													<p className="text-xs uppercase tracking-[0.4em] text-white/50">
+													<p className="text-xs uppercase tracking-[0.4em] text-white/60">
 														Your Cart
 													</p>
 													<Dialog.Title className="mt-2 text-2xl font-semibold antialiased">
@@ -143,7 +143,7 @@ export default function CartSidebar() {
 															? "Your bag is waiting"
 															: `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
 													</Dialog.Title>
-													<p className="mt-1 text-sm text-white/60">
+													<p className="mt-1 text-sm text-white/80">
 														{isEmpty
 															? "Add something green to bring this space to life."
 															: "Delivers in 3-5 days"}
@@ -160,21 +160,21 @@ export default function CartSidebar() {
 											</div>
 
 											{!isEmpty && (
-												<div className="mt-6 grid grid-cols-3 gap-3 text-xs uppercase tracking-wide text-white/60">
+													<div className="mt-6 grid grid-cols-3 gap-3 text-xs uppercase tracking-wide text-white/80">
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-														<p className="text-[10px] text-white/50">Subtotal</p>
+																	<p className="text-[10px] text-white/60">Subtotal</p>
 														<p className="mt-1 text-base font-semibold text-white">
 															{formatPrice(subtotal)}
 														</p>
 													</div>
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-														<p className="text-[10px] text-white/50">Savings</p>
+																	<p className="text-[10px] text-white/60">Savings</p>
 														<p className="mt-1 text-base font-semibold text-emerald-300">
 															{formatPrice(savings)}
 														</p>
 													</div>
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-														<p className="text-[10px] text-white/50">Delivery</p>
+																	<p className="text-[10px] text-white/60">Delivery</p>
 														<p className="mt-1 text-base font-semibold text-white">
 															{hasFreeShipping ? "Free" : "3-5 days"}
 														</p>
@@ -210,7 +210,7 @@ export default function CartSidebar() {
 												>
 													<ShoppingBag className="mx-auto h-12 w-12 text-white/40" />
 													<h3 className="mt-4 text-lg font-semibold">Your cart is empty</h3>
-													<p className="mt-2 text-sm text-white/60">
+													<p className="mt-2 text-sm text-white/80">
 														Start adding plants, combos, or accessories to see them here.
 													</p>
 													<Link
@@ -249,7 +249,7 @@ export default function CartSidebar() {
 																			<h3 className="text-base font-semibold leading-snug">
 																				<span className="line-clamp-2">{item.name}</span>
 																			</h3>
-																			<p className="mt-1 text-xs uppercase tracking-wide text-white/50">
+																			<p className="mt-1 text-xs uppercase tracking-wide text-white/60">
 																				{item.type} {item.category && `• ${item.category}`}
 																			</p>
 																		</div>
@@ -293,7 +293,7 @@ export default function CartSidebar() {
 																		<button
 																			type="button"
 																			onClick={() => removeItem(item.id)}
-																			className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50 hover:text-red-300"
+																			className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70 hover:text-red-300"
 																		>
 																			<Trash2 className="h-4 w-4" /> Remove
 																		</button>
@@ -309,7 +309,7 @@ export default function CartSidebar() {
 										<div className="border-t border-white/10 bg-black/30 px-6 py-6 space-y-6">
 											{!isEmpty && (
 												<div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-													<div className="flex items-center gap-2 text-sm text-white/60">
+													<div className="flex items-center gap-2 text-sm text-white/80">
 														<ShieldCheck className="h-4 w-4 text-emerald-300" />
 														<span>Have a promo code?</span>
 													</div>
@@ -352,7 +352,7 @@ export default function CartSidebar() {
 													<Link
 														href="/cart"
 														onClick={closeCart}
-														className="flex-1 rounded-full border border-white/15 px-4 py-3 text-center font-semibold text-white/70 hover:text-white"
+															className="flex-1 rounded-full border border-white/15 px-4 py-3 text-center font-semibold text-white/90 hover:text-white"
 													>
 														View Cart
 													</Link>

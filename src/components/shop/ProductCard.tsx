@@ -183,7 +183,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-2 antialiased flex-1">
+            <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/90 mb-4 line-clamp-2 antialiased flex-1">
               {shortDesc}
             </p>
           )}
@@ -195,7 +195,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="block text-sm text-white/50 line-through">
+                <span className="block text-sm text-white/85 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}

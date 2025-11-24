@@ -98,7 +98,7 @@ export default function QuickActions() {
           <h3 className="text-2xl font-bold text-[#E8F5E9] mb-4 antialiased">
             Join Our Plant Community
           </h3>
-          <p className="text-gray-100 mb-6 max-w-2xl mx-auto">
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
             Connect with fellow gardening enthusiasts, share your plant journey, 
             and get personalized advice from our experts.
           </p>

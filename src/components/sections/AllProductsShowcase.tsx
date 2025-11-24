@@ -157,7 +157,7 @@ export default function AllProductsShowcase() {
                           {getDisplayPrice(product)}
                         </span>
                         {getOriginalPrice(product) && (
-                          <span className="block text-sm text-white/50 line-through antialiased">
+                          <span className="block text-sm text-white/70 line-through antialiased">
                             {getOriginalPrice(product)}
                           </span>
                         )}

@@ -184,7 +184,7 @@ export default function ComboProductCard({
             className={
               combo.inStock
                 ? 'bg-[#2E7D32] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#66BB6A] transition-colors shadow-md hover:shadow-lg'
-                : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                : 'bg-white/10 text-white/50 cursor-not-allowed'
             }
           >
             {combo.inStock ? 'Add to Cart' : 'Out of Stock'}
@@ -215,7 +215,7 @@ export default function ComboProductCard({
           className={`mt-4 w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
             combo.inStock
               ? 'bg-[#66BB6A] text-[#0d3512] border border-[#66BB6A] hover:bg-[#86efbe]'
-              : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+              : 'bg-white/10 text-white/50 cursor-not-allowed'
           }`}
         >
           <ShoppingCart className="h-5 w-5" />

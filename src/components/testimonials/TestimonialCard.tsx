@@ -39,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map(star => (
-          <span key={star} className={star <= rating ? 'text-[#66BB6A] text-lg' : 'text-gray-300 text-lg'}>
+          <span key={star} className={star <= rating ? 'text-[#66BB6A] text-lg' : 'text-white/40 text-lg'}>
             ★
           </span>
         ))}

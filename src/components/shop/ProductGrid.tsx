@@ -62,7 +62,7 @@ export default function ProductGrid({ products, isLoading = false }: ProductGrid
         <h3 className="font-montserrat text-3xl font-bold text-white mb-3 tracking-wide antialiased">
           No Products Found
         </h3>
-        <p className="font-inter text-base text-gray-100 opacity-70 leading-relaxed antialiased">
+        <p className="font-inter text-base text-white/90 leading-relaxed antialiased">
           We couldn&apos;t find any products matching your criteria. Try adjusting your filters or search terms.
         </p>
       </motion.div>

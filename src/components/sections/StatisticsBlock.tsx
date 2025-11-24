@@ -197,7 +197,7 @@ const StatisticItemComponent = ({
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
-        className="text-gray-100 font-semibold mb-2"
+        className="text-white/90 font-semibold mb-2"
       >
         {item.label}
       </motion.p>
@@ -208,7 +208,7 @@ const StatisticItemComponent = ({
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-          className="text-sm text-gray-500 leading-relaxed"
+          className="text-sm text-white/80 leading-relaxed"
         >
           {item.description}
         </motion.p>

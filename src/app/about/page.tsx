@@ -26,7 +26,7 @@ export default function AboutPage() {
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight antialiased">
               Stay Loyal to the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Soil</span>
             </h1>
-            <p className="font-inter text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto antialiased">
+            <p className="font-inter text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto antialiased">
               We believe in organic, sustainable gardening that connects you back to nature.
             </p>
           </motion.div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 Our Story
               </h2>
 
-              <div className="space-y-6 text-lg text-white/70 antialiased leading-relaxed">
+              <div className="space-y-6 text-lg text-white/90 antialiased leading-relaxed">
                 <p>
                   Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
                 </p>
@@ -100,7 +100,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-white/60 max-w-2xl mx-auto"
+            className="text-lg text-white/90 max-w-2xl mx-auto"
           >
             We believe in sustainable gardening, mindful consumption, and staying loyal to the soil — because when you nurture nature, it gives back more than you imagine.
           </motion.p>
@@ -153,7 +153,7 @@ export default function AboutPage() {
               <h3 className="font-montserrat text-xl font-semibold text-white mb-3">
                 {value.title}
               </h3>
-              <p className="text-white/60 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 {value.description}
               </p>
             </motion.div>
@@ -180,7 +180,7 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="space-y-12"
           >
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Our goal isn't just to sell — it's to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
             </p>
             
@@ -193,7 +193,7 @@ export default function AboutPage() {
               ].map((item, i) => (
                 <div key={i} className="bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-[#2E7D32]/30 transition-colors">
                   <h3 className="text-xl font-semibold text-[#4ADE80] mb-3">{item.title}</h3>
-                  <p className="text-white/60">{item.desc}</p>
+                  <p className="text-white/90">{item.desc}</p>
                 </div>
               ))}
             </div>

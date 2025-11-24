@@ -156,7 +156,7 @@ export default function CustomSignupPage() {
             <h1 className="text-5xl font-bold text-white mb-3 antialiased">
               Let's Get Started
             </h1>
-            <p className="text-gray-100 text-lg antialiased">
+            <p className="text-white/90 text-lg antialiased">
               Create your account to explore premium organic seeds and plants
             </p>
           </motion.div>
@@ -293,7 +293,7 @@ export default function CustomSignupPage() {
                 id="terms"
                 className="w-5 h-5 accent-green-600 cursor-pointer mt-0.5 flex-shrink-0"
               />
-              <label htmlFor="terms" className="text-sm text-gray-100 cursor-pointer leading-relaxed">
+              <label htmlFor="terms" className="text-sm text-white/90 cursor-pointer leading-relaxed">
                 I agree to the{' '}
                 <Link href="/terms" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                   Terms of Service
@@ -335,7 +335,7 @@ export default function CustomSignupPage() {
           </motion.div>
 
           {/* Login Link */}
-          <motion.p variants={itemVariants} className="text-center text-gray-100 mt-8">
+          <motion.p variants={itemVariants} className="text-center text-white/90 mt-8">
             Already have an account?{' '}
             <Link href="/login" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign in here
@@ -386,7 +386,7 @@ export default function CustomSignupPage() {
             <h2 className="text-5xl font-bold text-white mb-6 leading-tight antialiased">
               Join Our Garden Community
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed antialiased">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed antialiased">
               Get exclusive access to premium organic seeds, expert gardening tips, and a thriving community of plant lovers
             </p>
 
@@ -399,7 +399,7 @@ export default function CustomSignupPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-lg text-gray-200 antialiased"
+                    className="flex items-center gap-3 text-lg text-white/90 antialiased"
                   >
                     <span className="text-2xl antialiased">{feature.split(' ')[0]}</span>
                     {feature.substring(2)}

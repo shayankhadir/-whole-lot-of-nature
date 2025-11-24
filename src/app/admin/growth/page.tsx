@@ -81,7 +81,7 @@ export default function GrowthDashboard() {
             <h3 className="text-sm font-medium text-gray-500 mb-2">SEO Health Score</h3>
             <div className="flex items-end gap-2">
               <span className="text-4xl font-bold text-gray-900 antialiased">{data.seoScore}</span>
-              <span className="text-gray-400 mb-1">/ 100</span>
+              <span className="text-white/60 mb-1">/ 100</span>
             </div>
             <div className="w-full bg-gray-100 h-2 rounded-full mt-4 overflow-hidden">
               <div 

@@ -155,13 +155,13 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setRating(star)}
-                className={`text-4xl transition-all ${star <= rating ? 'text-[#66BB6A]' : 'text-gray-300 opacity-50'}`}
+                className={`text-4xl transition-all ${star <= rating ? 'text-[#66BB6A]' : 'text-white/40'}`}
               >
                 ★
               </motion.button>
             ))}
           </div>
-          <p className="text-sm text-gray-600 mt-2">{rating} out of 5 stars</p>
+          <p className="text-sm text-white/80 mt-2">{rating} out of 5 stars</p>
         </div>
 
         {/* Content field */}

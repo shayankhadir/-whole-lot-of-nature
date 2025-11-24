@@ -231,7 +231,7 @@ export default function ProductPage() {
                         <StarIcon key={i} className="h-5 w-5" />
                       ))}
                     </div>
-                    <span className="text-white/60 text-sm font-medium">(4.8)</span>
+                    <span className="text-white/85 text-sm font-medium">(4.8)</span>
                   </div>
                 </div>
 
@@ -325,7 +325,7 @@ export default function ProductPage() {
                           <StarIcon key={star} className="h-4 w-4" />
                         ))}
                       </div>
-                      <p className="text-sm text-white/70">
+                      <p className="text-sm text-white/90">
                         {i === 1 ? "Absolutely love this plant! Arrived in perfect condition and looks great in my living room." : "Great quality soil mix. My plants are thriving."}
                       </p>
                     </div>

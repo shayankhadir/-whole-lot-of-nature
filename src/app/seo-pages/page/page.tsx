@@ -44,7 +44,7 @@ export default function PagePage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 antialiased">
             Best Page - Expert Guide 2025
           </h1>
-          <p className="text-xl text-gray-100 leading-relaxed antialiased">
+          <p className="text-xl text-white/90 leading-relaxed antialiased">
             Discover everything about page with our comprehensive guide. Expert tips, best practices, and actionable advice for page. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
@@ -211,15 +211,15 @@ export default function PagePage() {
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-100">Article Length</span>
+                  <span className="text-white/90">Article Length</span>
                   <span className="font-bold text-[#2E7D32] antialiased">334 words</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-100">Read Time</span>
+                  <span className="text-white/90">Read Time</span>
                   <span className="font-bold text-[#2E7D32] antialiased">2 min</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-100">Target Keywords</span>
+                  <span className="text-white/90">Target Keywords</span>
                   <span className="font-bold text-[#2E7D32] antialiased">8</span>
                 </div>
               </div>

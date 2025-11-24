@@ -16,7 +16,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         <svg
           key={star}
           className={`h-5 w-5 ${
-            star <= rating ? 'text-primary-500' : 'text-gray-200'
+            star <= rating ? 'text-primary-500' : 'text-white/40'
           }`}
           fill="currentColor"
           viewBox="0 0 20 20"

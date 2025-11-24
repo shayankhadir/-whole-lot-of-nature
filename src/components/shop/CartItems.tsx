@@ -14,7 +14,7 @@ export default function CartItems() {
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500">Your cart is empty</p>
+        <p className="text-white/80">Your cart is empty</p>
       </div>
     );
   }

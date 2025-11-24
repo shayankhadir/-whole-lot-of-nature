@@ -92,7 +92,7 @@ export default function NewsletterPopup() {
               <h3 className="mt-3 text-xl font-bold text-white">
                 Get 10% Off Your First Order
               </h3>
-              <p className="mt-2 text-sm text-white/70">
+              <p className="mt-2 text-sm text-white/90">
                 Subscribe to our newsletter for expert gardening tips, new arrivals, and exclusive offers.
               </p>
 

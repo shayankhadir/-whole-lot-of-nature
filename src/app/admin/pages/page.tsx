@@ -72,7 +72,7 @@ export default function AdminPagesView() {
           </Link>
           <div>
             <h1 className="text-3xl font-bold font-display">Website Pages Overview</h1>
-            <p className="text-white/60">A complete map of all pages in your application.</p>
+            <p className=\"text-white/90\">A complete map of all pages in your application.</p>
           </div>
         </div>
 
