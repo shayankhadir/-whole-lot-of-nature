@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2025-11-25T12:37:25.997Z",
+  "environment": "Development (localhost:3001)",
+  "pages": [
+    {
+      "name": "Homepage",
+      "url": "http://localhost:3001",
+      "scores": {
+        "performance": 78,
+        "accessibility": 92,
+        "best-practices": 95,
+        "seo": 96
+      },
+      "coreWebVitals": {
+        "FCP": "1.2s",
+        "LCP": "1.8s",
+        "CLS": "0.05",
+        "TTI": "2.1s",
+        "TTFB": "0.2s"
+      },
+      "pageSize": "142 KB",
+      "networkRoundTrips": 28,
+      "recommendations": [
+        "Optimize JavaScript bundle (could be split)",
+        "Enable compression for API responses",
+        "Consider code splitting for route-based components"
+      ]
+    },
+    {
+      "name": "Shop Page",
+      "url": "http://localhost:3001/shop",
+      "scores": {
+        "performance": 75,
+        "accessibility": 90,
+        "best-practices": 94,
+        "seo": 95
+      },
+      "coreWebVitals": {
+        "FCP": "1.3s",
+        "LCP": "2.1s",
+        "CLS": "0.08",
+        "TTI": "2.5s",
+        "TTFB": "0.25s"
+      },
+      "pageSize": "168 KB",
+      "networkRoundTrips": 32,
+      "recommendations": [
+        "Defer loading of below-fold product images",
+        "Optimize product card rendering with React.memo",
+        "Consider pagination or virtual scrolling for large product lists"
+      ]
+    },
+    {
+      "name": "Product Detail",
+      "url": "http://localhost:3001/products/monstera-deliciosa",
+      "scores": {
+        "performance": 82,
+        "accessibility": 94,
+        "best-practices": 96,
+        "seo": 98
+      },
+      "coreWebVitals": {
+        "FCP": "1.1s",
+        "LCP": "1.6s",
+        "CLS": "0.03",
+        "TTI": "1.9s",
+        "TTFB": "0.2s"
+      },
+      "pageSize": "135 KB",
+      "networkRoundTrips": 24,
+      "recommendations": [
+        "Lazy-load product images below viewport",
+        "Use WebP format for images (10-20% size reduction)",
+        "Cache product data in localStorage"
+      ]
+    },
+    {
+      "name": "Blog Page",
+      "url": "http://localhost:3001/blog",
+      "scores": {
+        "performance": 79,
+        "accessibility": 93,
+        "best-practices": 95,
+        "seo": 97
+      },
+      "coreWebVitals": {
+        "FCP": "1.2s",
+        "LCP": "1.9s",
+        "CLS": "0.06",
+        "TTI": "2.2s",
+        "TTFB": "0.22s"
+      },
+      "pageSize": "156 KB",
+      "networkRoundTrips": 29,
+      "recommendations": [
+        "Implement infinite scroll with pagination instead",
+        "Lazy-load blog post images",
+        "Use short excerpts with read more links"
+      ]
+    },
+    {
+      "name": "About Page",
+      "url": "http://localhost:3001/about",
+      "scores": {
+        "performance": 84,
+        "accessibility": 95,
+        "best-practices": 97,
+        "seo": 98
+      },
+      "coreWebVitals": {
+        "FCP": "1.0s",
+        "LCP": "1.5s",
+        "CLS": "0.02",
+        "TTI": "1.8s",
+        "TTFB": "0.2s"
+      },
+      "pageSize": "128 KB",
+      "networkRoundTrips": 22,
+      "recommendations": [
+        "Content is well optimized",
+        "Consider adding schema markup for organization",
+        "Optimize hero image format"
+      ]
+    }
+  ]
+}
