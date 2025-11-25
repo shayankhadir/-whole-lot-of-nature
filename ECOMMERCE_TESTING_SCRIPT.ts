@@ -213,4 +213,5 @@ async function runTests() {
 }
 
 // Export for use
-export { runTests, TestResult };
+export { runTests };
+export type { TestResult };

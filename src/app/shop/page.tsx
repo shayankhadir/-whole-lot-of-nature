@@ -12,8 +12,11 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [subcategoriesByParent, setSubcategoriesByParent] = useState<Record<number, any[]>>({});
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set());
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Sync state with URL params
@@ -27,8 +30,37 @@ function ShopContent() {
   }, [searchParams]);
 
   useEffect(() => {
+    fetchCategories();
     fetchProducts();
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/categories');
+      const result = await response.json();
+      
+      if (result.success && result.data) {
+        const allCategories = result.data;
+        // Get only top-level categories
+        const topLevel = allCategories.filter((cat: any) => cat.count > 0 && cat.parent === 0);
+        // Get subcategories mapped by parent
+        const subMap: Record<number, any[]> = {};
+        allCategories
+          .filter((cat: any) => cat.count > 0 && cat.parent !== 0)
+          .forEach((child: any) => {
+            if (!subMap[child.parent]) {
+              subMap[child.parent] = [];
+            }
+            subMap[child.parent].push(child);
+          });
+        
+        setCategories(topLevel);
+        setSubcategoriesByParent(subMap);
+      }
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -57,17 +89,15 @@ function ShopContent() {
     setMobileFiltersOpen(false);
   };
 
-  const categories = [
-    { id: 'all', name: 'All Products' },
-    { id: 'indoor-plants', name: 'Indoor Plants' },
-    { id: 'outdoor-plants', name: 'Outdoor Plants' },
-    { id: 'aquatic', name: 'Aquatic Life' },
-    { id: 'soil-mixes', name: 'Soil & Growing Media' },
-    { id: 'seeds', name: 'Seeds & Bulbs' },
-    { id: 'diy-kits', name: 'DIY Kits' },
-    { id: 'ebooks', name: 'E-Books' },
-    { id: 'wellness', name: 'Wellness & Tea' },
-  ];
+  const toggleCategoryExpand = (categoryId: number) => {
+    const newExpanded = new Set(expandedCategories);
+    if (newExpanded.has(categoryId)) {
+      newExpanded.delete(categoryId);
+    } else {
+      newExpanded.add(categoryId);
+    }
+    setExpandedCategories(newExpanded);
+  };
 
   const filteredProducts = selectedCategory === 'all'
     ? products
@@ -104,22 +134,74 @@ function ShopContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Sidebar Filters (Desktop) */}
-          <aside className="hidden lg:block w-64 flex-shrink-0 space-y-8">
+          <aside className="hidden lg:block w-72 flex-shrink-0 space-y-8">
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-4">Categories</h3>
-              <div className="space-y-2">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-6">Categories</h3>
+              <div className="space-y-1">
+                {/* All Products Button */}
+                <button
+                  onClick={() => handleCategoryChange('all')}
+                  className={`block w-full text-left px-4 py-2.5 rounded-lg text-sm transition-all font-medium ${
+                    selectedCategory === 'all'
+                      ? 'bg-emerald-500/30 text-emerald-200 border border-emerald-500/40'
+                      : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
+                  }`}
+                >
+                  ✦ All Products
+                </button>
+
+                {/* Categories with Subcategories */}
                 {categories.map(cat => (
-                  <button
-                    key={cat.id}
-                    onClick={() => handleCategoryChange(cat.id)}
-                    className={`block w-full text-left px-4 py-2 rounded-lg text-sm transition-all ${
-                      selectedCategory === cat.id
-                        ? 'bg-emerald-500/20 text-emerald-300 font-medium border border-emerald-500/30'
-                        : 'text-white/60 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {cat.name}
-                  </button>
+                  <div key={cat.id}>
+                    <div className="flex items-center">
+                      <button
+                        onClick={() => handleCategoryChange(cat.slug)}
+                        className={`flex-1 text-left px-4 py-2.5 rounded-lg text-sm transition-all ${
+                          selectedCategory === cat.slug
+                            ? 'bg-emerald-500/30 text-emerald-200 font-medium border border-emerald-500/40'
+                            : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
+                        }`}
+                      >
+                        {cat.name}
+                      </button>
+                      {subcategoriesByParent[cat.id] && subcategoriesByParent[cat.id].length > 0 && (
+                        <button
+                          onClick={() => toggleCategoryExpand(cat.id)}
+                          className="px-2 py-2.5 text-emerald-400 hover:text-emerald-300 transition-colors"
+                        >
+                          <span className={`transition-transform inline-block ${expandedCategories.has(cat.id) ? 'rotate-180' : ''}`}>
+                            ▼
+                          </span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Subcategories */}
+                    {expandedCategories.has(cat.id) && subcategoriesByParent[cat.id] && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="space-y-1 mt-2 pl-4 border-l-2 border-emerald-500/20">
+                          {subcategoriesByParent[cat.id].map((subcat: any) => (
+                            <button
+                              key={subcat.id}
+                              onClick={() => handleCategoryChange(subcat.slug)}
+                              className={`block w-full text-left px-3 py-2 rounded text-xs transition-all ${
+                                selectedCategory === subcat.slug
+                                  ? 'bg-emerald-400/20 text-emerald-200 font-medium'
+                                  : 'text-white/50 hover:text-white/70 hover:bg-white/3'
+                              }`}
+                            >
+                              → {subcat.name}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

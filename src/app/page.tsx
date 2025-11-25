@@ -9,7 +9,6 @@ import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
 import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
 import Features from '@/components/sections/Features';
 import BlogPreview from '@/components/sections/BlogPreview';
-import Newsletter from '@/components/sections/Newsletter';
 import FinalCTA from '@/components/sections/FinalCTA';
 import FAQSection from '@/components/sections/FAQSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
@@ -66,15 +65,7 @@ export default function Home() {
         <BlogPreview />
       </SeamlessSection>
 
-      {/* 11. Newsletter Signup */}
-      <SeamlessSection 
-        tone="onyx"
-        paddingY="md"
-      >
-        <Newsletter />
-      </SeamlessSection>
-
-      {/* 12. FAQ Section */}
+      {/* 11. FAQ Section */}
       <SeamlessSection 
         tone="forest"
         paddingY="lg"

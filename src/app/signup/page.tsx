@@ -383,9 +383,7 @@ export default function CustomSignupPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold text-white mb-6 leading-tight antialiased">
-              Join Our Garden Community
-            </h2>
+
             <p className="text-xl text-white/90 mb-8 leading-relaxed antialiased">
               Get exclusive access to premium organic seeds, expert gardening tips, and a thriving community of plant lovers
             </p>

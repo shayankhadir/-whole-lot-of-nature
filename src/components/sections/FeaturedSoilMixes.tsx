@@ -221,7 +221,7 @@ export default function FeaturedSoilMixes() {
                     {/* Product Image */}
                     <div className="relative h-48 md:h-56 overflow-hidden">
                       <Image
-                        src={product.image || product.images?.[0]?.src || defaultProducts[index].image}
+                        src={product.image || product.images?.[0]?.src || (activeTab === 'soil' ? defaultSoilProducts[index]?.image : defaultHerbalProducts[index]?.image)}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -240,13 +240,13 @@ export default function FeaturedSoilMixes() {
                         {product.name}
                       </h3>
                       <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/85 mb-4 line-clamp-2 antialiased">
-                        {product.description || defaultProducts[index].description}
+                        {product.description || (activeTab === 'soil' ? defaultSoilProducts[index]?.description : defaultHerbalProducts[index]?.description)}
                       </p>
 
                       {/* Features */}
-                      {(product.features || defaultProducts[index].features) && (
+                      {(product.features || (activeTab === 'soil' ? defaultSoilProducts[index]?.features : defaultHerbalProducts[index]?.features)) && (
                         <div className="space-y-1.5 mb-4 flex-1">
-                          {(product.features || defaultProducts[index].features).slice(0, 3).map((feature: string, i: number) => (
+                          {(product.features || (activeTab === 'soil' ? defaultSoilProducts[index]?.features : defaultHerbalProducts[index]?.features)).slice(0, 3).map((feature: string, i: number) => (
                             <div key={i} className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-[#66BB6A] flex-shrink-0" />
                               <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-white/85 antialiased">
@@ -261,7 +261,7 @@ export default function FeaturedSoilMixes() {
                       <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
                         <div>
                           <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
-                            {formatPrice(product.sale_price || product.price || defaultProducts[index].price)}
+                            {formatPrice(product.sale_price || product.price || (activeTab === 'soil' ? defaultSoilProducts[index]?.price : defaultHerbalProducts[index]?.price))}
                           </span>
                           {product.sale_price && product.regular_price && (
                             <span className="block text-sm text-white/70 line-through">
