@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/shop/ProductCard';
 import { Product } from '@/types/product';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Filter, X } from 'lucide-react';
+import { Filter, X, Search } from 'lucide-react';
 
 // Separate component to handle search params
 function ShopContent() {
@@ -18,6 +18,8 @@ function ShopContent() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set());
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string>('name'); // 'name', 'price-asc', 'price-desc', 'newest'
 
   // Sync state with URL params
   useEffect(() => {
@@ -99,11 +101,36 @@ function ShopContent() {
     setExpandedCategories(newExpanded);
   };
 
-  const filteredProducts = selectedCategory === 'all'
+  // Filter and sort products
+  let filteredProducts = selectedCategory === 'all'
     ? products
     : products.filter(p => 
         p.categories.some(cat => cat.slug === selectedCategory)
       );
+
+  // Apply search filter
+  if (searchQuery.trim()) {
+    const query = searchQuery.toLowerCase();
+    filteredProducts = filteredProducts.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.short_description?.toLowerCase().includes(query)
+    );
+  }
+
+  // Apply sorting
+  filteredProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case 'price-asc':
+        return (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0);
+      case 'price-desc':
+        return (parseFloat(b.price) || 0) - (parseFloat(a.price) || 0);
+      case 'newest':
+        return new Date(b.date_created || 0).getTime() - new Date(a.date_created || 0).getTime();
+      case 'name':
+      default:
+        return a.name.localeCompare(b.name);
+    }
+  });
 
   return (
     <div className="min-h-screen bg-[#030a06] text-white">
@@ -237,7 +264,11 @@ function ShopContent() {
                 >
                   <div className="flex items-center justify-between mb-8">
                     <h3 className="text-lg font-semibold text-white">Filters</h3>
-                    <button onClick={() => setMobileFiltersOpen(false)} className="p-2 text-white/60 hover:text-white">
+                    <button 
+                      onClick={() => setMobileFiltersOpen(false)} 
+                      title="Close filters"
+                      className="p-2 text-white/60 hover:text-white"
+                    >
                       <X className="w-5 h-5" />
                     </button>
                   </div>
@@ -271,9 +302,40 @@ function ShopContent() {
               </div>
             ) : (
               <>
+                {/* Search and Sort Bar */}
+                <div className="mb-8 flex flex-col sm:flex-row gap-4">
+                  {/* Search Input */}
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/40" />
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-emerald-500/50 focus:bg-white/15 transition-all"
+                    />
+                  </div>
+
+                  {/* Sort Dropdown */}
+                  <div className="relative">
+                    <label htmlFor="sort-select" className="sr-only">Sort products</label>
+                    <select
+                      id="sort-select"
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/15 transition-all cursor-pointer"
+                    >
+                      <option value="name">Sort by Name</option>
+                      <option value="price-asc">Price: Low to High</option>
+                      <option value="price-desc">Price: High to Low</option>
+                      <option value="newest">Newest First</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div className="mb-6 flex items-center justify-between">
                   <p className="text-sm text-white/60">
-                    Showing {filteredProducts.length} results
+                    Showing {filteredProducts.length} results{searchQuery && ` for "${searchQuery}"`}
                   </p>
                 </div>
                 
@@ -285,9 +347,14 @@ function ShopContent() {
                   </div>
                 ) : (
                   <div className="text-center py-20 rounded-2xl border border-dashed border-white/10 bg-white/5">
-                    <p className="text-xl text-white/50 antialiased">No products found in this category.</p>
+                    <p className="text-xl text-white/50 antialiased">
+                      {searchQuery ? `No products match "${searchQuery}".` : 'No products found in this category.'}
+                    </p>
                     <button 
-                      onClick={() => handleCategoryChange('all')}
+                      onClick={() => {
+                        setSearchQuery('');
+                        handleCategoryChange('all');
+                      }}
                       className="mt-4 text-emerald-400 hover:text-emerald-300 text-sm font-medium"
                     >
                       View all products
