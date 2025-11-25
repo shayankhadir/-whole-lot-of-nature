@@ -4,32 +4,48 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Leaf, ArrowRight, CheckCircle } from 'lucide-react';
+import { Leaf, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import { Product } from '@/types/product';
 import { formatPrice } from '@/lib/utils/pricing';
 
 export default function FeaturedSoilMixes() {
-  const [soilProducts, setSoilProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'soil' | 'herbal'>('soil');
 
   useEffect(() => {
-    // Fetch soil products - strictly filtering for 'soil' category
-    fetch('/api/products?category=soil&limit=4')
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.data) {
-          setSoilProducts(data.data);
+    // Fetch from both soil and herbal categories
+    const fetchProducts = async () => {
+      try {
+        const [soilRes, herbalRes] = await Promise.all([
+          fetch('/api/products?category=soil-mixes&limit=4'),
+          fetch('/api/products?category=herbal&limit=4'),
+        ]);
+
+        const soilData = await soilRes.json();
+        const herbalData = await herbalRes.json();
+
+        const soilProducts = (soilData.success && soilData.data) ? soilData.data : [];
+        const herbalProducts = (herbalData.success && herbalData.data) ? herbalData.data : [];
+
+        // Combine based on active tab - store all but display based on tab
+        if (activeTab === 'soil') {
+          setProducts(soilProducts.length > 0 ? soilProducts : herbalProducts);
+        } else {
+          setProducts(herbalProducts.length > 0 ? herbalProducts : soilProducts);
         }
+      } catch (err) {
+        console.error('Failed to fetch products:', err);
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch soil products:', err);
-        setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchProducts();
+  }, [activeTab]);
 
   // Default fallback data if API fails
-  const defaultProducts = [
+  const defaultSoilProducts = [
     {
       id: 1,
       name: 'Premium Potting Mix',
@@ -68,7 +84,48 @@ export default function FeaturedSoilMixes() {
     },
   ];
 
-  const displayProducts = soilProducts.length > 0 ? soilProducts : defaultProducts;
+  const defaultHerbalProducts = [
+    {
+      id: 5,
+      name: 'Organic Tulsi Leaves',
+      description: 'Premium dried tulsi for wellness',
+      price: 199,
+      image: 'https://images.unsplash.com/photo-1569718185008-ffd6a93df89d?auto=format&fit=crop&w=800&q=80',
+      slug: 'organic-tulsi',
+      features: ['100% organic', 'High potency', 'Hand-picked'],
+    },
+    {
+      id: 6,
+      name: 'Neem Leaves',
+      description: 'Natural pest control solution',
+      price: 149,
+      image: 'https://images.unsplash.com/photo-1578926078328-123456789012?auto=format&fit=crop&w=800&q=80',
+      slug: 'neem-leaves',
+      features: ['Pure neem', 'Pesticide-free', 'Sustainable'],
+    },
+    {
+      id: 7,
+      name: 'Ashwagandha Root',
+      description: 'Premium adaptogenic herb',
+      price: 299,
+      image: 'https://images.unsplash.com/photo-1578926078328-123456789013?auto=format&fit=crop&w=800&q=80',
+      slug: 'ashwagandha-root',
+      features: ['Stress relief', 'High quality', 'Ayurvedic'],
+    },
+    {
+      id: 8,
+      name: 'Brahmi Leaves',
+      description: 'Traditional ayurvedic herb',
+      price: 169,
+      image: 'https://images.unsplash.com/photo-1578926078328-123456789014?auto=format&fit=crop&w=800&q=80',
+      slug: 'brahmi-leaves',
+      features: ['Memory support', 'Organic', 'Traditional'],
+    },
+  ];
+
+  const displayProducts = activeTab === 'soil' 
+    ? (products.length > 0 ? products : defaultSoilProducts)
+    : (products.length > 0 ? products : defaultHerbalProducts);
 
   return (
     <section className="relative py-20 overflow-hidden bg-[#12501a]">
@@ -92,17 +149,53 @@ export default function FeaturedSoilMixes() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Leaf className="w-4 h-4 text-emerald-400" />
+            {activeTab === 'soil' ? (
+              <Leaf className="w-4 h-4 text-emerald-400" />
+            ) : (
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+            )}
             <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-emerald-400 font-semibold uppercase tracking-wider antialiased">
-              Featured Products
+              {activeTab === 'soil' ? 'Premium Soil Mixes' : 'Herbal Essentials'}
             </span>
           </div>
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-emerald-400 mb-4 antialiased">
-            Premium Soil & Mixes
+            {activeTab === 'soil' ? 'Soil & Growing Mixes' : 'Herbal Wellness Products'}
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
-            Organic, nutrient-rich soil blends crafted for optimal plant growth
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased mb-8">
+            {activeTab === 'soil' 
+              ? 'Organic, nutrient-rich soil blends crafted for optimal plant growth'
+              : 'Premium herbal products for wellness, gardening, and natural remedies'}
           </p>
+
+          {/* Category Tabs */}
+          <div className="flex justify-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveTab('soil')}
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${
+                activeTab === 'soil'
+                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                  : 'bg-[var(--ink-700)]/40 text-emerald-300 border border-[var(--emerald-700)]/30 hover:bg-[var(--emerald-700)]/20'
+              }`}
+            >
+              <Leaf className="w-4 h-4" />
+              Soil Mixes
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveTab('herbal')}
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${
+                activeTab === 'herbal'
+                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                  : 'bg-[var(--ink-700)]/40 text-emerald-300 border border-[var(--emerald-700)]/30 hover:bg-[var(--emerald-700)]/20'
+              }`}
+            >
+              <Sparkles className="w-4 h-4" />
+              Herbal Products
+            </motion.button>
+          </div>
         </motion.div>
 
         {/* Products Grid */}

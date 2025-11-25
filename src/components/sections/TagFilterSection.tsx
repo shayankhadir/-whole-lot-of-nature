@@ -21,27 +21,45 @@ export default function TagFilterSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Trendy tags to prioritize/filter
+  const TRENDY_TAGS = ['vastu', 'bedroom', 'office', 'lucky', 'air-purifying', 'low-maintenance', 'indoor', 'beginner-friendly', 'outdoor'];
+
   // Fetch tags on mount
   useEffect(() => {
     fetch('/api/tags')
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data?.length) {
-          const topTags = data.data.slice(0, 8);
-          setTags(topTags);
-          if (topTags.length > 0) {
-            setSelectedTag(topTags[0].slug);
+          // Filter to include only trendy tags and top tags
+          const allTags: ProductTag[] = data.data;
+          const trendyTags = allTags.filter(tag => 
+            TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
+          );
+          
+          // If we have trendy tags, use them; otherwise use top 8
+          const tagsToUse = trendyTags.length > 0 ? trendyTags.slice(0, 8) : allTags.slice(0, 8);
+          
+          setTags(tagsToUse);
+          if (tagsToUse.length > 0) {
+            setSelectedTag(tagsToUse[0].slug);
           }
         } else {
-          setTags(DEMO_TAGS);
-          setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
+          // Fallback to demo tags
+          const filteredDemo = DEMO_TAGS.filter(tag => 
+            TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
+          );
+          setTags(filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS);
+          setSelectedTag((filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS)[0]?.slug ?? null);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch tags:', err);
-        setTags(DEMO_TAGS);
-        setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
+        const filteredDemo = DEMO_TAGS.filter(tag => 
+          TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
+        );
+        setTags(filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS);
+        setSelectedTag((filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS)[0]?.slug ?? null);
         setLoading(false);
       });
   }, []);
