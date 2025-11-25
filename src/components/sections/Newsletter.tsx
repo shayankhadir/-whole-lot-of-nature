@@ -77,7 +77,7 @@ export default function Newsletter() {
             <h2 className="text-[clamp(1.625rem,3vw,2.625rem)] font-montserrat font-bold mb-3 antialiased text-cream-50">
               Join Our Garden Community
             </h2>
-            <p className="text-base text-cream-100 mb-6 max-w-2xl mx-auto antialiased">
+            <p className="text-base text-white/90 mb-6 max-w-2xl mx-auto antialiased">
               Get weekly gardening tips, exclusive offers, and be the first to know about new arrivals. 
               Plus, get 10% off your next order!
             </p>
@@ -167,7 +167,7 @@ export default function Newsletter() {
                   {status === 'error' && error && (
                     <p className="text-sm text-red-300">{error}</p>
                   )}
-                  <p className="text-sm text-white/85">
+                  <p className="text-sm text-white/90">
                     We respect your privacy. Unsubscribe at any time.
                   </p>
                 </form>

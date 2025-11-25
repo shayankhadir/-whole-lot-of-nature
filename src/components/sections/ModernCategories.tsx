@@ -129,7 +129,7 @@ export default function ModernCategories() {
             Shop by <span className="text-emerald-400">Category</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
             Discover curated collections for every gardening need
           </p>
         </motion.div>

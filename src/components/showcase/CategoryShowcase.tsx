@@ -78,7 +78,7 @@ export const CategoryShowcase = ({
             >
               {description}
             </motion.p>
-          )
+          )}
         </div>
       )}
 
@@ -145,7 +145,7 @@ const CategoryCard = ({ category, variants }: CategoryCardProps) => {
           <p className="text-white/90 text-sm mb-3 line-clamp-2">
             {category.description}
           </p>
-        )
+        )}
 
         {/* Count */}
         {category.count && (

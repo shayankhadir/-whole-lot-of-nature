@@ -51,7 +51,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-[var(--mint-100)] text-[clamp(0.875rem,1.5vw,1rem)] font-light leading-relaxed max-w-2xl mx-auto font-inter"
+          className="text-white/90 text-[clamp(0.875rem,1.5vw,1rem)] font-light leading-relaxed max-w-2xl mx-auto font-inter"
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>

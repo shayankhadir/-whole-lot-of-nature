@@ -94,10 +94,10 @@ export default function Footer() {
 				<div className="grid gap-12 lg:grid-cols-12">
 					<div className="space-y-6 lg:col-span-4">
 						<div>
-							<p className="text-sm uppercase tracking-[0.35em] text-white/85">
+							<p className="text-sm uppercase tracking-[0.35em] text-white/90">
 								Whole Lot of Nature
 							</p>
-							<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)] text-white/80">
+							<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)] text-white/90">
 								Regenerative plants, handcrafted soil, and mindful rituals from
 								our forest studio in Hyderabad.
 							</p>
