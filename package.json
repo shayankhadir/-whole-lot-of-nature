@@ -45,12 +45,12 @@
     "@tanstack/react-query": "^5.90.2",
     "@use-gesture/react": "^10.3.1",
     "@woocommerce/woocommerce-rest-api": "^1.0.2",
-    "dotenv": "^16.4.7",
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "cheerio": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.23.22",
     "graphql": "^16.11.0",
     "graphql-request": "^7.3.0",
@@ -78,10 +78,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "lighthouse": "^13.0.1",
+    "playwright": "^1.48.2",
     "tailwindcss": "^4",
     "tsx": "^4.20.6",
     "typescript": "^5",
-    "wait-on": "^7.2.0",
-    "playwright": "^1.48.2"
+    "wait-on": "^7.2.0"
   }
 }
