@@ -46,7 +46,7 @@ export const Card = React.memo(
           {card.title}
         </div>
         {card.description && (
-          <div className="text-sm text-[var(--mint-100)] drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)] antialiased">
+          <div className="text-sm text-white/90 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)] antialiased">
             {card.description}
           </div>
         )}

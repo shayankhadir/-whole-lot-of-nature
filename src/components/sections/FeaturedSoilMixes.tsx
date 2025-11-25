@@ -100,7 +100,7 @@ export default function FeaturedSoilMixes() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-emerald-400 mb-4 antialiased">
             Premium Soil & Mixes
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
             Organic, nutrient-rich soil blends crafted for optimal plant growth
           </p>
         </motion.div>

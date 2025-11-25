@@ -89,7 +89,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-cream-100"
+                className="flex items-center justify-center space-x-2 text-white/90"
               >
                 <Leaf className="w-5 h-5 text-emerald-400" />
                 <span>Weekly Plant Care Tips</span>
@@ -99,7 +99,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-cream-100"
+                className="flex items-center justify-center space-x-2 text-white/90"
               >
                 <Gift className="w-5 h-5 text-emerald-400" />
                 <span>Exclusive Offers</span>
@@ -109,7 +109,7 @@ export default function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center space-x-2 text-cream-100"
+                className="flex items-center justify-center space-x-2 text-white/90"
               >
                 <CheckCircle className="w-5 h-5 text-emerald-400" />
                 <span>New Arrivals First</span>

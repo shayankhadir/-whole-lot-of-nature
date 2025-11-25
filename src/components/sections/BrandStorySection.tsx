@@ -91,7 +91,7 @@ export default function BrandStorySection() {
               Stay Loyal to the Soil
             </h2>
 
-            <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 antialiased">
+            <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 antialiased">
               <p>
                 At Whole Lot of Nature, we believe that every plant has a story, and every garden is a sanctuary. We're on a mission to connect people with nature through thoughtfully curated plants, premium growing essentials, and sustainable practices.
               </p>

@@ -105,7 +105,7 @@ export default function CustomerTestimonialsSlider() {
                     <Star key={i} className="w-5 h-5 text-emerald-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-cream-100 mb-6 text-base leading-relaxed font-medium antialiased">
+                <p className="text-white/90 mb-6 text-base leading-relaxed font-medium antialiased">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center mt-auto">

@@ -55,7 +55,7 @@ export default function BestSellers() {
           <h2 className="text-5xl md:text-6xl font-bold text-cream-50 mb-6 antialiased">
             Best Sellers
           </h2>
-          <p className="text-xl text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto antialiased">
             Our most loved plants, chosen by plant enthusiasts worldwide
           </p>
         </motion.div>

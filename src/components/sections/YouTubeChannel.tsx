@@ -68,7 +68,7 @@ export default function YouTubeChannel() {
               Our YouTube Channel
             </h2>
           </div>
-          <p className="text-xl text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto antialiased">
             Learn gardening tips, plant care guides, and DIY projects from our expert videos
           </p>
           <a

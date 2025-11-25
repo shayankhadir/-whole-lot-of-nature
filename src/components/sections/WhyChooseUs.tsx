@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
           <h2 className="mt-6 text-[clamp(2.5rem,5vw,2.5rem)] font-montserrat font-bold tracking-tight text-cream-50 antialiased">
             Trusted by Plant Lovers
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-cream-100 antialiased">
+          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-white/90 antialiased">
             We blend science, sustainability, and design to elevate your green journey.
           </p>
         </motion.div>
@@ -73,7 +73,7 @@ export default function WhyChooseUs() {
                     <p.icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-cream-50 antialiased">{p.title}</h3>
-                  <p className="mt-2 text-sm text-cream-100">{p.desc}</p>
+                  <p className="mt-2 text-sm text-white/90">{p.desc}</p>
                 </div>
               </SpotlightCard>
             </motion.div>

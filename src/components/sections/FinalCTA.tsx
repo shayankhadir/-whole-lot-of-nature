@@ -42,7 +42,7 @@ export default function FinalCTA() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-3 font-inter text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 antialiased"
+                className="mt-3 font-inter text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 antialiased"
               >
                 Explore premium plants, organic soils & eco-friendly essentials
               </motion.p>
@@ -76,7 +76,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 text-center text-cream-100 text-sm font-inter"
+          className="mt-6 text-center text-white/90 text-sm font-inter"
         >
           Stay Loyal to the Soil — 100% Organic, Sustainably Sourced
         </motion.p>

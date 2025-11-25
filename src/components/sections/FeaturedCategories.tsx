@@ -67,7 +67,7 @@ export default function FeaturedCategories() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-cream-50 antialiased">
             Explore Our Categories
           </h2>
-          <p className="text-cream-100 max-w-2xl mx-auto">
+          <p className="text-white/90 max-w-2xl mx-auto">
             Discover our curated selection of premium gardening essentials, designed to help you create and maintain your perfect green space.
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export default function FeaturedCategories() {
                   </div>
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-cream-50">
                     <h3 className="text-xl font-display font-semibold mb-2 drop-shadow-lg antialiased">{category.name}</h3>
-                    <p className="text-sm text-cream-100 mb-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <p className="text-sm text-white/90 mb-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       {category.description}
                     </p>
                     <motion.span

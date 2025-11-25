@@ -116,7 +116,7 @@ export default function TagFilterSection() {
             Shop by <span className="text-emerald-400">Tags</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
             Discover products by our most popular tags and themes
           </p>
         </motion.div>

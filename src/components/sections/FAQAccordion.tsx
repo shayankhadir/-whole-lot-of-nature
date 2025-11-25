@@ -68,7 +68,7 @@ export default function FAQAccordion() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-[var(--emerald-500)] mb-4 antialiased">
             Frequently Asked Questions
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--mint-100)] antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 antialiased">
             Got questions? We've got answers!
           </p>
         </motion.div>
@@ -108,7 +108,7 @@ export default function FAQAccordion() {
                     className="overflow-hidden"
                   >
                     <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
-                      <p className="text-[clamp(0.875rem,1.5vw,1rem)] text-[var(--mint-100)] leading-relaxed antialiased">
+                      <p className="text-[clamp(0.875rem,1.5vw,1rem)] text-white/90 leading-relaxed antialiased">
                         {faq.answer}
                       </p>
                     </div>

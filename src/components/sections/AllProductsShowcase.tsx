@@ -98,7 +98,7 @@ export default function AllProductsShowcase() {
             All <span className="text-emerald-400">Products</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-cream-100 max-w-2xl mx-auto antialiased">
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
             Browse our complete selection of premium plants and gardening essentials
           </p>
         </motion.div>

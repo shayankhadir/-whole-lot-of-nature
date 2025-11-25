@@ -71,7 +71,7 @@ export default function FeaturedTiltCategories() {
           <h2 className="mt-6 text-4xl md:text-5xl font-serif font-bold tracking-tight text-cream-50 antialiased">
             Shop by What You Need
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-cream-100 antialiased">
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-white/90 antialiased">
             Six curated paths to start your green journey—each tile responds with a gentle tilt and glow.
           </p>
         </motion.div>
@@ -112,7 +112,7 @@ export default function FeaturedTiltCategories() {
                   <h3 className="text-2xl font-semibold text-cream-50 group-hover:text-emerald-400 transition-colors antialiased">
                     {cat.title}
                   </h3>
-                  <p className="mt-2 text-sm text-cream-100">{cat.description}</p>
+                  <p className="mt-2 text-sm text-white/90">{cat.description}</p>
                 </div>
 
                 <div className="mt-6 flex items-center justify-between text-sm font-semibold text-emerald-400">

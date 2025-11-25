@@ -45,7 +45,7 @@ export default function LatestArticles() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-cream-50 antialiased">Latest Articles</h2>
-          <p className="text-cream-100 mt-2">Fresh reads from our blog</p>
+          <p className="text-white/90 mt-2">Fresh reads from our blog</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post: WPPost) => {
@@ -59,7 +59,7 @@ export default function LatestArticles() {
                 )}
                 <div className="p-4">
                   <h3 className="text-base font-semibold text-cream-50 mb-2 antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                  <p className="text-sm text-cream-100 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+                  <p className="text-sm text-white/90 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
                   <Link href={`/blog/${post.slug}`} className="inline-block mt-3 text-emerald-400 font-medium hover:text-emerald-300 transition-colors">
                     Read more →
                   </Link>
