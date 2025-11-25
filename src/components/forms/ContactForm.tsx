@@ -1,5 +1,5 @@
-'use client';
-
+"use client";
+"use client";
 import { useState } from 'react';
 
 interface FormState {
@@ -55,12 +55,12 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <div className="space-y-3 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-lg p-6 text-white/90">
-        <h3 className="text-xl font-semibold antialiased">We received your message 🌿</h3>
+        <h3 className="text-xl font-semibold">We received your message 🌿</h3>
         <p>Our support team will reply from store@wholelotofnature.com soon.</p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="text-sm text-[#66BB6A] underline hover:text-[#2E7D32] transition-colors"
+          className="text-sm text-[#66BB6A] underline hover:text-[#43A047] transition-colors"
         >
           Send another message
         </button>
