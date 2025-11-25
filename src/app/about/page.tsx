@@ -1,8 +1,12 @@
 'use client';
 
+import type { Metadata } from "next";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Leaf, Heart, Users, Sprout, Droplet, Recycle } from 'lucide-react';
+
+// Note: This is a client component, so metadata export won't work here.
+// For proper SEO, consider converting to server component or using Route Handlers.
 
 export default function AboutPage() {
   return (
