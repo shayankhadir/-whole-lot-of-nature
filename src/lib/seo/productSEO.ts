@@ -71,7 +71,15 @@ export const generateProductKeywords = (product: WooCommerceProduct): string[] =
 export const generateProductDescription = (product: WooCommerceProduct): string => {
   const category = product.categories?.[0]?.name || 'Plant';
   const price = product.sale_price || product.price || product.regular_price;
-  const priceText = price ? `₹${parseFloat(price).toLocaleString('en-IN')}` : 'Best price';
+  
+  // Safely parse price with fallback
+  let priceText = 'Best price';
+  if (price) {
+    const parsedPrice = parseFloat(price);
+    if (!isNaN(parsedPrice)) {
+      priceText = `₹${parsedPrice.toLocaleString('en-IN')}`;
+    }
+  }
   
   // Try to use short description first
   let description = stripHtml(product.short_description || product.description || '');

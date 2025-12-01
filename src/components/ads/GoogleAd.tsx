@@ -2,6 +2,13 @@
 
 import { useEffect } from 'react';
 
+// Declare global types for AdSense
+declare global {
+  interface Window {
+    adsbygoogle: Array<Record<string, unknown>>;
+  }
+}
+
 interface GoogleAdProps {
   /**
    * Ad slot ID from Google AdSense
@@ -56,7 +63,6 @@ export default function GoogleAd({
   useEffect(() => {
     try {
       // Push ad to AdSense queue
-      // @ts-ignore - AdSense global
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
       console.error('AdSense error:', err);
