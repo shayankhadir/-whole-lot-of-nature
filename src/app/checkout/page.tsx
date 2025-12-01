@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
@@ -12,6 +13,7 @@ import {
   TruckIcon,
   CreditCardIcon,
   LockClosedIcon,
+  UserIcon,
 } from '@heroicons/react/24/outline';
 
 interface BillingInfo {
@@ -38,6 +40,7 @@ const indianStates = [
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { data: session, status } = useSession();
   const { items, subtotal, tax, totalPrice, clearCart } = useCartStore();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,10 +59,19 @@ export default function CheckoutPage() {
     country: 'IN',
   });
 
-  // Hydration fix
+  // Hydration fix and pre-fill user data
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (session?.user) {
+      const nameParts = session.user.name?.split(' ') || ['', ''];
+      setBilling(prev => ({
+        ...prev,
+        firstName: nameParts[0] || '',
+        lastName: nameParts.slice(1).join(' ') || '',
+        email: session.user?.email || '',
+      }));
+    }
+  }, [session]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -166,11 +178,107 @@ export default function CheckoutPage() {
     }
   };
 
-  // Show loading state during hydration
-  if (!mounted) {
+  // Show loading state during hydration or auth loading
+  if (!mounted || status === 'loading') {
     return (
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2E7D32]"></div>
+      </div>
+    );
+  }
+
+  // Require authentication - show login/signup prompt
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <Link
+              href="/cart"
+              className="inline-flex items-center space-x-2 text-[#2E7D32] hover:text-[#66BB6A] mb-6"
+            >
+              <ArrowLeftIcon className="h-4 w-4" />
+              <span>Back to Cart</span>
+            </Link>
+            
+            <div className="bg-[#1a1a1a] rounded-2xl shadow-lg p-8 border border-[#2E7D32]/20">
+              <div className="text-center mb-8">
+                <UserIcon className="mx-auto h-16 w-16 text-[#2E7D32] mb-4" />
+                <h1 className="text-2xl font-bold text-white mb-2">Sign in to Continue</h1>
+                <p className="text-gray-400">
+                  Please sign in or create an account to complete your purchase.
+                </p>
+              </div>
+
+              {/* Cart Summary */}
+              <div className="bg-[#0a0a0a] rounded-xl p-4 mb-6 border border-[#333]">
+                <h3 className="text-sm font-medium text-gray-400 mb-3">Your Cart ({items.length} items)</h3>
+                <div className="space-y-2 max-h-32 overflow-y-auto">
+                  {items.slice(0, 3).map(item => (
+                    <div key={item.id} className="flex justify-between text-sm">
+                      <span className="text-white truncate">{item.name} × {item.quantity}</span>
+                      <span className="text-[#2E7D32]">{formatPrice(item.price * item.quantity)}</span>
+                    </div>
+                  ))}
+                  {items.length > 3 && (
+                    <p className="text-xs text-gray-500">+{items.length - 3} more items</p>
+                  )}
+                </div>
+                <div className="border-t border-[#333] mt-3 pt-3 flex justify-between font-semibold">
+                  <span className="text-white">Total</span>
+                  <span className="text-[#2E7D32]">{formatPrice(totalPrice)}</span>
+                </div>
+              </div>
+
+              {/* Auth Options */}
+              <div className="space-y-4">
+                <Link
+                  href="/auth/signin?callbackUrl=/checkout"
+                  className="w-full bg-[#2E7D32] text-white py-4 px-6 rounded-xl font-semibold text-center hover:bg-[#66BB6A] transition-colors shadow-lg flex items-center justify-center gap-2"
+                >
+                  <LockClosedIcon className="h-5 w-5" />
+                  Sign In to Checkout
+                </Link>
+                
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-[#333]"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-4 bg-[#1a1a1a] text-gray-500">or</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/auth/signup?callbackUrl=/checkout"
+                  className="w-full bg-transparent border-2 border-[#2E7D32] text-[#2E7D32] py-4 px-6 rounded-xl font-semibold text-center hover:bg-[#2E7D32]/10 transition-colors flex items-center justify-center gap-2"
+                >
+                  <UserIcon className="h-5 w-5" />
+                  Create Account
+                </Link>
+              </div>
+
+              {/* Benefits */}
+              <div className="mt-8 pt-6 border-t border-[#333]">
+                <h3 className="text-sm font-medium text-gray-400 mb-4">Why create an account?</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li className="flex items-center gap-2">
+                    <ShieldCheckIcon className="h-4 w-4 text-[#2E7D32]" />
+                    Track your orders anytime
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <TruckIcon className="h-4 w-4 text-[#2E7D32]" />
+                    Save addresses for faster checkout
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CreditCardIcon className="h-4 w-4 text-[#2E7D32]" />
+                    Access exclusive offers & rewards
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

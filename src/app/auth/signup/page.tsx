@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { EyeIcon, EyeSlashIcon, CheckIcon } from '@heroicons/react/24/outline';
@@ -29,6 +29,8 @@ export default function SignUpPage() {
     special: false
   });
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const validatePassword = (password: string) => {
     setPasswordValidation({
@@ -91,7 +93,7 @@ export default function SignUpPage() {
         });
 
         if (result?.ok) {
-          router.push('/');
+          router.push(callbackUrl);
           router.refresh();
         }
       } else {
@@ -106,7 +108,7 @@ export default function SignUpPage() {
   };
 
   const handleGoogleSignIn = () => {
-    signIn('google', { callbackUrl: '/' });
+    signIn('google', { callbackUrl });
   };
 
   return (
