@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils/pricing';
+import FreeShippingProgress from './FreeShippingProgress';
 
 export default function CartSidebar() {
   const {
@@ -210,6 +211,15 @@ export default function CartSidebar() {
                     {/* Footer */}
                     {!isEmpty && (
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                        {/* Free Shipping Progress */}
+                        <div className="mb-6">
+                          <FreeShippingProgress 
+                            cartTotal={subtotal}
+                            threshold={500}
+                            variant="default"
+                          />
+                        </div>
+
                         {/* Coupon */}
                         <div className="mb-4">
                           <label className="block text-sm font-medium text-gray-700 mb-1">Coupon Code</label>

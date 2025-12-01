@@ -300,3 +300,160 @@ strong {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* ============================================
+   MOBILE-FIRST RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Mobile touch optimization */
+@media (max-width: 768px) {
+  /* Increase touch targets for better mobile UX */
+  button, 
+  a[role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Prevent zoom on input focus (iOS) */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  
+  /* Better mobile navigation spacing */
+  nav {
+    padding: 0.75rem 0;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  /* Smaller headings on very small screens */
+  h1 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+  
+  /* Tighter spacing */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Tablet and above */
+@media (min-width: 768px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Improve scrollbar on mobile */
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Safe areas for notched devices (iPhone X+) */
+@supports (padding: max(0px)) {
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  
+  .safe-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Better link tap highlights on mobile */
+a,
+button {
+  -webkit-tap-highlight-color: rgba(47, 182, 126, 0.2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading skeleton animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Focus visible for keyboard navigation */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--emerald-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}
