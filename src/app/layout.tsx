@@ -137,6 +137,16 @@ export default function RootLayout({
             </noscript>
           </>
         ) : null}
+
+        {/* Google AdSense */}
+        {process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID ? (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        ) : null}
         {/* JSON-LD: Organization */}
         <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
