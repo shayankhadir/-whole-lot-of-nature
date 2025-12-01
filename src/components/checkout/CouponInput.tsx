@@ -157,9 +157,9 @@ export default function CouponInput({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-red-50 border-2 border-red-200 rounded-lg p-3"
+            className="bg-black/5 border-2 border-black/20 rounded-lg p-3"
           >
-            <p className="text-sm font-semibold text-red-700">
+            <p className="text-sm font-semibold text-black">
               ❌ {result.message}
             </p>
             <button
@@ -167,7 +167,7 @@ export default function CouponInput({
                 setResult(null);
                 setShowInput(true);
               }}
-              className="text-xs text-red-600 hover:text-red-700 mt-2 underline"
+              className="text-xs text-black/70 hover:text-black mt-2 underline"
             >
               Try another code
             </button>

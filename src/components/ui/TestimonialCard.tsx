@@ -84,8 +84,8 @@ export const TestimonialCard = ({
               size={18}
               className={`transition-colors duration-300 ${
                 i < rating
-                  ? 'fill-yellow-400 text-yellow-400'
-                  : 'text-gray-300'
+                  ? 'fill-[#2E7D32] text-[#2E7D32]'
+                  : 'text-black/40'
               }`}
             />
           </motion.div>

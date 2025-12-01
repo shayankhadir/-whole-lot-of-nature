@@ -114,7 +114,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-red-50 border-2 border-red-600 rounded-lg p-4 text-red-900 font-medium"
+            className="bg-black/5 border-2 border-black/20 rounded-lg p-4 text-black font-medium"
           >
             ✕ {errorMessage}
           </motion.div>

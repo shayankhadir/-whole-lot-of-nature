@@ -107,10 +107,10 @@ export const ProductCard = ({
           transition={{ delay: 0.2 }}
           className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 text-white text-sm flex items-center gap-1 font-semibold"
         >
-          <span className="text-yellow-400">⭐</span>
+          <span className="text-[#2E7D32]">⭐</span>
           <span>{rating.toFixed(1)}</span>
           {reviewCount > 0 && (
-            <span className="text-xs text-gray-300">({reviewCount})</span>
+            <span className="text-xs text-white/70">({reviewCount})</span>
           )}
         </motion.div>
 
@@ -131,7 +131,7 @@ export const ProductCard = ({
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="absolute bottom-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full antialiased"
+            className="absolute bottom-3 left-3 bg-[#2E7D32] text-white text-xs font-bold px-2.5 py-1 rounded-full antialiased"
           >
             -{discountPercentage}%
           </motion.div>
@@ -148,8 +148,8 @@ export const ProductCard = ({
             size={18}
             className={`transition-colors duration-300 ${
               isFavorite
-                ? 'fill-red-500 text-red-500'
-                : 'text-gray-700 hover:text-red-500'
+                ? 'fill-[#2E7D32] text-[#2E7D32]'
+                : 'text-black hover:text-[#2E7D32]'
             }`}
           />
         </motion.button>
