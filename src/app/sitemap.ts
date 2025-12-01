@@ -5,23 +5,34 @@ type WCProductLite = { slug: string; date_modified?: string };
 type WCCategoryLite = { slug: string };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Get all products
-  const productsResponse = await woocommerce.get('products', {
-    per_page: 100,
-    status: 'publish',
-  });
-  const productsRaw: unknown = productsResponse.data;
-  const products = Array.isArray(productsRaw) ? (productsRaw as WCProductLite[]) : [];
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://wholelotofnature.com';
+  
+  let products: WCProductLite[] = [];
+  let categories: WCCategoryLite[] = [];
 
-  // Get all categories
-  const categoriesResponse = await woocommerce.get('products/categories', {
-    per_page: 100,
-    hide_empty: true,
-  });
-  const categoriesRaw: unknown = categoriesResponse.data;
-  const categories = Array.isArray(categoriesRaw) ? (categoriesRaw as WCCategoryLite[]) : [];
+  // Fetch products with error handling
+  try {
+    const productsResponse = await woocommerce.get('products', {
+      per_page: 100,
+      status: 'publish',
+    });
+    const productsRaw: unknown = productsResponse.data;
+    products = Array.isArray(productsRaw) ? (productsRaw as WCProductLite[]) : [];
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch products', error);
+  }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  // Fetch categories with error handling
+  try {
+    const categoriesResponse = await woocommerce.get('products/categories', {
+      per_page: 100,
+      hide_empty: true,
+    });
+    const categoriesRaw: unknown = categoriesResponse.data;
+    categories = Array.isArray(categoriesRaw) ? (categoriesRaw as WCCategoryLite[]) : [];
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch categories', error);
+  }
 
   // Static routes
   const routes = [

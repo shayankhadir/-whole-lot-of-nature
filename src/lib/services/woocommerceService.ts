@@ -2,10 +2,10 @@ import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
 
 // Initialize WooCommerce API with Legacy API (v2)
 const WooCommerce = new WooCommerceRestApi({
-  url: process.env.WORDPRESS_URL || 'https://wholelotofnature.com',
-  consumerKey: process.env.WC_CONSUMER_KEY || '',
-  consumerSecret: process.env.WC_CONSUMER_SECRET || '',
-  version: 'wc/v2', // Changed to Legacy API
+  url: process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://admin.wholelotofnature.com',
+  consumerKey: process.env.WC_CONSUMER_KEY || process.env.NEXT_PUBLIC_WC_CONSUMER_KEY || '',
+  consumerSecret: process.env.WC_CONSUMER_SECRET || process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET || '',
+  version: 'wc/v3', // Use v3 API
   queryStringAuth: true // For https
 });
 
