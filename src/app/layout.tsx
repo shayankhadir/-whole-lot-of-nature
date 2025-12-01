@@ -3,17 +3,11 @@ import "./globals.css";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import QueryProvider from "@/components/providers/QueryClientProvider";
 import Layout from "@/components/layout/Layout";
-import { Inter, Playfair_Display, Montserrat } from "next/font/google";
 import Script from "next/script";
 import { LoadingProvider } from "@/contexts/LoadingContext";
 import PageLoadingScreen from "@/components/loading/PageLoadingScreen";
 import { RouteTransitionProvider } from "@/components/loading/RouteTransitionProvider";
 import { Suspense } from "react";
-
-// Load brand typography: Inter (body), Montserrat (headings), and Playfair Display (display)
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair-display", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wholelotofnature.com"),
@@ -93,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable}`}>
+    <html lang="en">
       <body className="font-sans">
         {/* Google Analytics (GA4) */}
         {process.env.NEXT_PUBLIC_GA_ID ? (
