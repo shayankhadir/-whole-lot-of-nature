@@ -48,11 +48,11 @@ export default function OutdoorGardeningTipsPage() {
             Discover everything about outdoor gardening tips with our comprehensive guide. Expert tips, best practices, and actionable advice for outdoor gardening tips. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips online</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips india</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy outdoor gardening tips</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best outdoor gardening tips</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips online</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">outdoor gardening tips india</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">buy outdoor gardening tips</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">best outdoor gardening tips</span>
           </div>
         </header>
 
@@ -224,3 +224,4 @@ export default function OutdoorGardeningTipsPage() {
     </div>
   );
 }
+

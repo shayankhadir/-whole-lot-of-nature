@@ -127,7 +127,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div className="flex items-center gap-2 mb-2">
             {renderStars(testimonial.rating)}
             {testimonial.verifiedPurchase && (
-              <span className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-0.5 rounded font-bold antialiased">✓ Verified</span>
+              <span className="text-xs bg-[#2E7D32] text-white px-2 py-0.5 rounded font-bold antialiased">✓ Verified</span>
             )}
           </div>
         </div>

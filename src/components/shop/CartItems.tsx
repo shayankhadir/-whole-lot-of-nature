@@ -73,6 +73,7 @@ export default function CartItems() {
                         onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                         disabled={item.quantity <= 1}
                         className="p-1 rounded-full hover:bg-gray-100 disabled:opacity-50"
+                        aria-label="Decrease quantity"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
@@ -84,6 +85,7 @@ export default function CartItems() {
                       <button
                         onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                         className="p-1 rounded-full hover:bg-gray-100"
+                        aria-label="Increase quantity"
                       >
                         <Plus className="h-4 w-4" />
                       </button>

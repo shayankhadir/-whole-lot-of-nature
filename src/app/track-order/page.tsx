@@ -117,7 +117,7 @@ export default function TrackOrderPage() {
       case 'in-transit':
         return 'text-purple-600 bg-purple-50';
       case 'delivered':
-        return 'text-[#2E7D32] bg-[#2E7D32]';
+        return 'text-[#2E7D32] bg-green-50';
       default:
         return 'text-gray-600 bg-gray-50';
     }

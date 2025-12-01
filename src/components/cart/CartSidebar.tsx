@@ -222,15 +222,16 @@ export default function CartSidebar() {
 													</Link>
 												</motion.div>
 											) : (
-												<ul role="list" className="space-y-4">
-													<AnimatePresence initial={false}>
+														<div className="space-y-4" role="list">
+															<AnimatePresence initial={false}>
 														{items.map((item, index) => (
-															<motion.li
+															<motion.div
 																key={item.id}
 																initial={{ opacity: 0, y: 20 }}
 																animate={{ opacity: 1, y: 0 }}
 																exit={{ opacity: 0, y: -20 }}
 																transition={{ delay: index * 0.05 }}
+																role="listitem"
 																className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_15px_45px_rgba(3,10,6,0.4)]"
 															>
 																<div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
@@ -299,10 +300,10 @@ export default function CartSidebar() {
 																		</button>
 																	</div>
 																</div>
-															</motion.li>
+															</motion.div>
 														))}
 													</AnimatePresence>
-												</ul>
+												</div>
 											)}
 										</div>
 

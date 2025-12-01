@@ -137,6 +137,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                           key={img.id}
                           type="button"
                           onClick={() => setSelectedImageIndex(idx)}
+                          aria-label={`View image ${idx + 1}`}
                           className={`relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition ${
                             idx === selectedImageIndex
                               ? 'border-emerald-700'

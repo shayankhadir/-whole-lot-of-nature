@@ -101,6 +101,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
               value={formData.rating}
               onChange={(e) => setFormData({ ...formData, rating: Number(e.target.value) })}
               className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm antialiased"
+              aria-label="Select rating"
             >
               <option value="5">5 stars</option>
               <option value="4">4 stars</option>
@@ -118,6 +119,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
             </label>
             <div className="mt-1">
               <textarea
+                id="review"
                 rows={4}
                 required
                 value={formData.review}

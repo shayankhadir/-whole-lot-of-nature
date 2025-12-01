@@ -69,7 +69,7 @@ export default function BlogPostPage() {
           >
             {/* Category Badge */}
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-[#2E7D32] text-[#2E7D32] rounded-full text-sm font-bold antialiased">
+              <span className="inline-block px-3 py-1 bg-[#2E7D32] text-white rounded-full text-sm font-bold antialiased">
                 Gardening Tips
               </span>
             </div>

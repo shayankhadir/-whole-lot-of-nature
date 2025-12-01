@@ -48,11 +48,11 @@ export default function LoadingPage() {
             Discover everything about loading with our comprehensive guide. Expert tips, best practices, and actionable advice for loading. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">loading</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">loading online</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">loading india</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy loading</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best loading</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">loading</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">loading online</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">loading india</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">buy loading</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">best loading</span>
           </div>
         </header>
 
@@ -230,3 +230,4 @@ export default function LoadingPage() {
     </div>
   );
 }
+

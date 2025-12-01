@@ -129,6 +129,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value as any)}
                 className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-[#2E7D32] antialiased"
+                aria-label="Sort testimonials by"
               >
                 <option value="recent">Most Recent</option>
                 <option value="rating">Highest Rated</option>
@@ -143,6 +144,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
                 value={filterRating}
                 onChange={e => setFilterRating(e.target.value === 'all' ? 'all' : parseInt(e.target.value))}
                 className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-[#2E7D32] antialiased"
+                aria-label="Filter by rating"
               >
                 <option value="all">All Ratings</option>
                 <option value="5">5 Stars</option>

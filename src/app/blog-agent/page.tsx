@@ -833,7 +833,7 @@ export default function MarketingDashboard() {
                         <h4 className="font-semibold text-gray-800 mb-2">🔑 Top Keywords to Target:</h4>
                         <div className="flex flex-wrap gap-2">
                           {marketingResult.insights.topKeywords.slice(0, 15).map((keyword: string, i: number) => (
-                            <span key={i} className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">
+                            <span key={i} className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">
                               {keyword}
                             </span>
                           ))}
@@ -1599,3 +1599,4 @@ export default function MarketingDashboard() {
     </div>
   );
 }
+

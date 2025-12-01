@@ -90,7 +90,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           {post.categories && post.categories.length > 0 && (
             <div className="flex gap-2 mb-3">
               {post.categories.slice(0, 2).map(cat => (
-                <span key={cat} className="text-xs bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full font-bold antialiased">
+                <span key={cat} className="text-xs bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full font-bold antialiased">
                   {cat}
                 </span>
               ))}
@@ -127,7 +127,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             whileTap={{ scale: 0.95 }}
             onClick={() => onLike?.(post.id)}
             className={`flex items-center gap-2 px-4 py-2 rounded border-2 font-bold transition-all ${
-              liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
+              liked ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40' : 'border-black text-black hover:border-[#2E7D32]'
             }`}
           >
             <span>❤️</span>
@@ -162,7 +162,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
         {/* Categories */}
         {post.categories && post.categories.length > 0 && (
           <div className="mb-2">
-            <span className="inline-block text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded-full font-bold antialiased">
+            <span className="inline-block text-xs bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-2 py-1 rounded-full font-bold antialiased">
               {post.categories[0]}
             </span>
           </div>
@@ -191,7 +191,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             onLike?.(post.id);
           }}
           className={`flex items-center gap-2 px-3 py-2 rounded border-2 text-sm font-bold transition-all ${
-            liked ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]' : 'border-black text-black hover:border-[#2E7D32]'
+            liked ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40' : 'border-black text-black hover:border-[#2E7D32]'
           }`}
         >
           <span>❤️</span>
@@ -203,3 +203,4 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
 };
 
 export default BlogPostCard;
+

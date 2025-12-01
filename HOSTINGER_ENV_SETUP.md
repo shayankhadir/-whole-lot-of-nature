@@ -24,7 +24,8 @@ A file in your project root that contains all environment variables. Next.js aut
 #### **STEP 1: SSH into Hostinger**
 ```bash
 ssh -p 65002 u951576049@46.28.45.97
-# Password: Wholelotofnature@123
+# Password: Wholelotofnature@123Last login: Nov 27 2025 from XXX.XXX.XXX.XXX
+u951576049@in-mum-web1276 [~]:
 ```
 
 #### **STEP 2: Navigate to your project**

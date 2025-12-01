@@ -172,11 +172,12 @@ export default function InventoryPage() {
 
             {/* Filter */}
             <div>
-              <label className="block text-white/85 text-sm mb-2">Filter by Status</label>
+              <label className="block text-white/85 text-sm mb-2" id="filter-label">Filter by Status</label>
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value as any)}
                 className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#2E7D32]/30 rounded-lg text-white focus:outline-none focus:border-[#2E7D32]"
+                aria-labelledby="filter-label"
               >
                 <option value="all">All Products</option>
                 <option value="in-stock">In Stock (&gt;5)</option>

@@ -28,6 +28,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Duplicate folder (backup)
+-whole-lot-of-nature/
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)

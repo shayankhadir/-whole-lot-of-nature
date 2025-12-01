@@ -79,6 +79,7 @@ export default function NewsletterPopup() {
             <button
               onClick={() => setIsVisible(false)}
               className="absolute right-4 top-4 text-white/40 hover:text-white transition-colors"
+              aria-label="Close newsletter popup"
             >
               <XMarkIcon className="h-6 w-6" />
             </button>

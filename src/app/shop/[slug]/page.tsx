@@ -180,6 +180,7 @@ export default function ProductPage() {
                     type="button"
                     key={img.id ?? idx}
                     onClick={() => setActiveImageIndex(idx)}
+                    aria-label={`View image ${idx + 1}`}
                     className={`aspect-square relative rounded-2xl overflow-hidden border transition-all duration-300 ${
                       idx === activeImageIndex
                         ? 'border-emerald-500 ring-2 ring-emerald-500/30 opacity-100 scale-105'

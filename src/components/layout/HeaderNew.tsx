@@ -256,6 +256,7 @@ export default function Header() {
                 className="p-2 rounded-full text-white hover:bg-primary-400/20 transition-colors"
                 aria-haspopup="true"
                 aria-expanded={accountOpen}
+                aria-label="Account menu"
                 onClick={() => setAccountOpen((v) => !v)}
               >
                 <UserCircle className="h-6 w-6" strokeWidth={1.5} />
@@ -291,6 +292,7 @@ export default function Header() {
                 window.dispatchEvent(event);
               }}
               className="relative p-2 rounded-full text-white hover:bg-primary-400/20 transition-colors"
+              aria-label="Open shopping cart"
             >
               <ShoppingCart className="h-6 w-6" strokeWidth={1.5} />
             </button>

@@ -63,7 +63,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
           onClick={() => onCategoryChange(null)}
           className={`p-4 rounded-lg border-2 font-bold transition-all text-center ${
             !selectedCategory
-              ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]'
+              ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40'
               : 'border-black bg-white text-black hover:border-[#2E7D32]'
           }`}
         >
@@ -86,7 +86,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
             onClick={() => onCategoryChange(category.slug)}
             className={`p-4 rounded-lg border-2 font-bold transition-all text-center ${
               selectedCategory === category.slug
-                ? 'border-[#2E7D32] bg-[#2E7D32] text-[#2E7D32]'
+                ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40'
                 : 'border-black bg-white text-black hover:border-[#2E7D32]'
             }`}
           >
@@ -113,7 +113,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
             onClick={() => onCategoryChange(null)}
             className={`w-full p-4 text-left font-bold transition-colors ${
               !selectedCategory
-                ? 'bg-[#2E7D32] text-[#2E7D32] border-l-4 border-[#2E7D32]'
+                ? 'bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 border-l-4 border-[#2E7D32]'
                 : 'bg-white text-black hover:bg-gray-50'
             }`}
           >
@@ -133,7 +133,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
               onClick={() => onCategoryChange(category.slug)}
               className={`w-full p-4 text-left font-bold transition-colors ${
                 selectedCategory === category.slug
-                  ? 'bg-[#2E7D32] text-[#2E7D32] border-l-4 border-[#2E7D32]'
+                  ? 'bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 border-l-4 border-[#2E7D32]'
                   : 'bg-white text-black hover:bg-gray-50'
               }`}
             >
@@ -198,3 +198,4 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
 };
 
 export default BlogCategoryFilter;
+

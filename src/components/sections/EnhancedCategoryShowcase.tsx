@@ -106,7 +106,7 @@ export default function EnhancedCategoryShowcase() {
   };
 
   const difficultyColors = {
-    Easy: 'bg-[#2E7D32] text-[#2E7D32]',
+    Easy: 'bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40',
     Medium: 'bg-amber-100 text-amber-800',
     Hard: 'bg-red-100 text-red-800',
   };
@@ -248,3 +248,4 @@ export default function EnhancedCategoryShowcase() {
     </section>
   );
 }
+

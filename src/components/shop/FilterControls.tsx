@@ -166,8 +166,9 @@ export default function FilterControls({
         <div className="px-1">
           <div className="flex items-center gap-3 mb-3">
             <div className="flex-1">
-              <label className="block text-xs text-gray-600 mb-1">Min</label>
+              <label htmlFor="price-min" className="block text-xs text-gray-600 mb-1">Min</label>
               <input
+                id="price-min"
                 type="number"
                 min={minPrice}
                 max={priceRange[1]}
@@ -177,8 +178,9 @@ export default function FilterControls({
               />
             </div>
             <div className="flex-1">
-              <label className="block text-xs text-gray-600 mb-1">Max</label>
+              <label htmlFor="price-max" className="block text-xs text-gray-600 mb-1">Max</label>
               <input
+                id="price-max"
                 type="number"
                 min={priceRange[0]}
                 max={maxPrice}
@@ -195,6 +197,7 @@ export default function FilterControls({
             value={priceRange[0]}
             onChange={(e) => handlePriceChange([parseInt(e.target.value), priceRange[1]])}
             className="w-full accent-primary-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            aria-label="Minimum price range"
           />
           <input
             type="range"
@@ -203,6 +206,7 @@ export default function FilterControls({
             value={priceRange[1]}
             onChange={(e) => handlePriceChange([priceRange[0], parseInt(e.target.value)])}
             className="w-full mt-2 accent-primary-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            aria-label="Maximum price range"
           />
           <div className="flex justify-between mt-2 text-gray-600 text-sm">
             <span>₹{priceRange[0]}</span>

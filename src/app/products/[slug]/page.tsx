@@ -487,6 +487,7 @@ export default function ProductDetailPage() {
                     value={quantity}
                     onChange={(event) => setQuantity(Math.max(1, parseInt(event.target.value, 10) || 1))}
                     className="w-14 text-center font-semibold border-x border-neutral-200"
+                    aria-label="Product quantity"
                   />
                   <button
                     type="button"
@@ -642,6 +643,7 @@ export default function ProductDetailPage() {
                         value={reviewFilter}
                         onChange={(e) => setReviewFilter(e.target.value as ReviewFilter)}
                         className="px-4 py-2 rounded-full border border-neutral-200 text-sm bg-white focus:outline-none focus:border-emerald-700"
+                        aria-label="Filter reviews"
                       >
                         <option value="helpful">Most Helpful</option>
                         <option value="recent">Most Recent</option>

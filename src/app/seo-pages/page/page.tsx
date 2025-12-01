@@ -48,11 +48,11 @@ export default function PagePage() {
             Discover everything about page with our comprehensive guide. Expert tips, best practices, and actionable advice for page. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">page</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">page online</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">page india</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy page</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best page</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">page</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">page online</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">page india</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">buy page</span>
+            <span className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">best page</span>
           </div>
         </header>
 
@@ -230,3 +230,4 @@ export default function PagePage() {
     </div>
   );
 }
+

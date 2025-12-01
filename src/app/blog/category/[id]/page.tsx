@@ -113,7 +113,7 @@ export default function BlogCategoryPage() {
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-grow">
                       {/* Category Badge */}
-                      <span className="inline-block w-fit mb-3 px-3 py-1 bg-[#2E7D32] text-[#2E7D32] rounded-full text-xs font-bold antialiased">
+                      <span className="inline-block w-fit mb-3 px-3 py-1 bg-[#2E7D32] text-white rounded-full text-xs font-bold antialiased">
                         {getCategoryName()}
                       </span>
 

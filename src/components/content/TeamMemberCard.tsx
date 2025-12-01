@@ -56,7 +56,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
             <p className="font-bold text-black mb-3 antialiased">Expertise:</p>
             <div className="flex flex-wrap gap-2">
               {member.expertise.map((skill, idx) => (
-                <span key={idx} className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-bold antialiased">
+                <span key={idx} className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-bold antialiased">
                   {skill}
                 </span>
               ))}
@@ -106,7 +106,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
         {/* Skills */}
         <div className="flex flex-wrap gap-2 mb-4">
           {member.expertise.slice(0, 2).map((skill, idx) => (
-            <span key={idx} className="text-xs bg-[#2E7D32] text-[#2E7D32] px-2 py-1 rounded border border-[#2E7D32] font-bold antialiased">
+            <span key={idx} className="text-xs bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-2 py-1 rounded border border-[#2E7D32] font-bold antialiased">
               {skill}
             </span>
           ))}
@@ -143,3 +143,4 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
 };
 
 export default TeamMemberCard;
+

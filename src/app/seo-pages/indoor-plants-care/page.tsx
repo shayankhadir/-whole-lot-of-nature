@@ -48,11 +48,11 @@ export default function IndoorPlantsCarePage() {
             Discover everything about indoor plants care with our comprehensive guide. Expert tips, best practices, and actionable advice for indoor plants care. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor plants care</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor plants care online</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor plants care india</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy indoor plants care</span>
-            <span className="bg-[#2E7D32] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best indoor plants care</span>
+            <span className="bg-[#2E7D32]/20 text-white px-3 py-1 rounded-full text-sm font-semibold border border-[#2E7D32]/40">indoor plants care</span>
+            <span className="bg-[#2E7D32]/20 text-white px-3 py-1 rounded-full text-sm font-semibold border border-[#2E7D32]/40">indoor plants care online</span>
+            <span className="bg-[#2E7D32]/20 text-white px-3 py-1 rounded-full text-sm font-semibold border border-[#2E7D32]/40">indoor plants care india</span>
+            <span className="bg-[#2E7D32]/20 text-white px-3 py-1 rounded-full text-sm font-semibold border border-[#2E7D32]/40">buy indoor plants care</span>
+            <span className="bg-[#2E7D32]/20 text-white px-3 py-1 rounded-full text-sm font-semibold border border-[#2E7D32]/40">best indoor plants care</span>
           </div>
         </header>
 

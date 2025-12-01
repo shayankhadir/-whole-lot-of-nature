@@ -244,7 +244,7 @@ export default function GlobalSearchOverlay() {
                     <span className="hidden sm:inline">Press</span>
                     <kbd className="rounded bg-white/10 px-2 py-1 text-[10px] uppercase tracking-wide">⌘ K</kbd>
                   </div>
-                  <button onClick={close} className="rounded-full p-1.5 text-white/80 hover:text-white">
+                  <button onClick={close} className="rounded-full p-1.5 text-white/80 hover:text-white" aria-label="Close search">
                     <X className="h-4 w-4" />
                   </button>
                 </div>

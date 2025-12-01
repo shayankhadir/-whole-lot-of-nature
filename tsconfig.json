@@ -25,6 +25,8 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": [
     "node_modules",
+    "scripts",
+    "-whole-lot-of-nature",
     "src/components/layout/Header.tsx"
   ]
 }
