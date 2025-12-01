@@ -71,7 +71,7 @@ export const CustomInput = ({
           {...props}
           className={`w-full h-14 ${variantStyles[variant]} text-white placeholder-gray-500 transition-all duration-300 focus:outline-none ${
             icon ? 'pl-8' : ''
-          } ${error ? 'border-[#2E7D32]' : ''} ${className}`}
+          } ${error ? 'border-white/50 border-2' : ''} ${className}`}
         />
       </div>
 
@@ -80,7 +80,7 @@ export const CustomInput = ({
         <motion.p
           initial={{ opacity: 0, y: -5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-white/70 text-sm mt-2"
+          className="text-white text-sm mt-2"
         >
           {error}
         </motion.p>
