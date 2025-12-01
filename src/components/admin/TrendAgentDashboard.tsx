@@ -122,7 +122,7 @@ export default function TrendAgentDashboard() {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg flex items-center gap-2 text-red-200">
+          <div className="mb-6 p-4 bg-black/20 border border-white/20 rounded-lg flex items-center gap-2 text-white/80">
             <AlertCircle size={20} />
             {error}
           </div>
@@ -191,9 +191,9 @@ export default function TrendAgentDashboard() {
               {latestRun.status === 'completed' ? (
                 <CheckCircle className="text-[#66BB6A]" size={24} />
               ) : latestRun.status === 'failed' ? (
-                <AlertCircle className="text-red-500" size={24} />
+                <AlertCircle className="text-white/70" size={24} />
               ) : (
-                <Loader className="text-yellow-500 animate-spin" size={24} />
+                <Loader className="text-[#66BB6A] animate-spin" size={24} />
               )}
               Latest Run: {latestRun.id}
             </h2>
@@ -218,7 +218,7 @@ export default function TrendAgentDashboard() {
             </div>
 
             {latestRun.errors.length > 0 && (
-              <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded text-red-200 text-sm">
+              <div className="mt-4 p-3 bg-black/20 border border-white/20 rounded text-white/80 text-sm">
                 <p className="font-semibold mb-2">Errors:</p>
                 <ul className="list-disc list-inside space-y-1">
                   {latestRun.errors.map((error, idx) => (
@@ -260,8 +260,8 @@ export default function TrendAgentDashboard() {
                             run.status === 'completed'
                               ? 'bg-[#2E7D32]/20 text-[#2E7D32]'
                               : run.status === 'failed'
-                              ? 'bg-red-500/20 text-red-300'
-                              : 'bg-yellow-500/20 text-yellow-300'
+                              ? 'bg-black/20 text-white/70'
+                              : 'bg-[#66BB6A]/20 text-[#66BB6A]'
                           }`}
                         >
                           {run.status}

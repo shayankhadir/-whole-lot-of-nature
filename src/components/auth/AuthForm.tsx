@@ -208,7 +208,7 @@ export const AuthForm = ({
                   className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none"
                 />
                 {errors.name && (
-                  <p className="text-red-400 text-sm mt-1">{errors.name}</p>
+                  <p className="text-white/70 text-sm mt-1">{errors.name}</p>
                 )}
               </motion.div>
             )}
@@ -227,7 +227,7 @@ export const AuthForm = ({
                 className="w-full h-12 bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500 transition-colors duration-300 focus:border-[#2E7D32] focus:outline-none"
               />
               {errors.email && (
-                <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+                <p className="text-white/70 text-sm mt-1">{errors.email}</p>
               )}
             </motion.div>
 
@@ -254,7 +254,7 @@ export const AuthForm = ({
                 </button>
               </div>
               {errors.password && (
-                <p className="text-red-400 text-sm mt-1">{errors.password}</p>
+                <p className="text-white/70 text-sm mt-1">{errors.password}</p>
               )}
             </motion.div>
 
@@ -282,7 +282,7 @@ export const AuthForm = ({
                   </button>
                 </div>
                 {errors.confirmPassword && (
-                  <p className="text-red-400 text-sm mt-1">{errors.confirmPassword}</p>
+                  <p className="text-white/70 text-sm mt-1">{errors.confirmPassword}</p>
                 )}
               </motion.div>
             )}
