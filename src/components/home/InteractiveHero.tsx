@@ -109,12 +109,13 @@ export default function InteractiveHero() {
           </span>
         </motion.h1>
 
-        {/* Subheading - Light/Bright for visibility */}
+        {/* Subheading - Pure white for visibility */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-white/90 text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
+          className="text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
+          style={{ color: '#ffffff' }}
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>
