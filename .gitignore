@@ -46,3 +46,9 @@ next-env.d.ts
 /src/generated/prisma
 
 .vercel
+
+# agent outputs and reports
+/content-output/**/*.md
+seo-report-*.json
+performance-report-*.json
+scan-report-*.json
