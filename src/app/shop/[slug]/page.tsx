@@ -33,28 +33,24 @@ export default function ProductPage() {
           setProduct(currentProduct);
           setActiveImageIndex(0);
 
-          // Fetch related products (simulated via category or cross-sells)
-          if (currentProduct.cross_sell_ids && currentProduct.cross_sell_ids.length > 0) {
-             // In a real app, we'd fetch these by ID. For now, we might need a new API endpoint or just fetch all and filter (inefficient but works for small catalog)
-             // Or just fetch category products
-             const catId = currentProduct.categories[0]?.id;
-             if (catId) {
-               const relatedRes = await fetch(`/api/products?category=${catId}&per_page=4`);
-               const relatedResult = await relatedRes.json();
-               if (relatedResult.success) {
-                 setRelatedProducts(relatedResult.data.filter((p: Product) => p.id !== currentProduct.id));
-               }
-             }
-          } else {
-             // Fallback to category
-             const catId = currentProduct.categories[0]?.id;
-             if (catId) {
-               const relatedRes = await fetch(`/api/products?category=${catId}&per_page=4`);
-               const relatedResult = await relatedRes.json();
-               if (relatedResult.success) {
-                 setRelatedProducts(relatedResult.data.filter((p: Product) => p.id !== currentProduct.id));
-               }
-             }
+          // Fetch related products using the dedicated API endpoint
+          try {
+            const relatedRes = await fetch(`/api/products?related_to=${currentProduct.id}&per_page=6`);
+            const relatedResult = await relatedRes.json();
+            if (relatedResult.success && relatedResult.data) {
+              setRelatedProducts(relatedResult.data);
+            }
+          } catch (relatedError) {
+            console.error('Error fetching related products:', relatedError);
+            // Fallback: try to fetch by category
+            const catId = currentProduct.categories[0]?.id;
+            if (catId) {
+              const fallbackRes = await fetch(`/api/products?category=${catId}&per_page=6&exclude=${currentProduct.id}`);
+              const fallbackResult = await fallbackRes.json();
+              if (fallbackResult.success) {
+                setRelatedProducts(fallbackResult.data);
+              }
+            }
           }
 
         } else {
