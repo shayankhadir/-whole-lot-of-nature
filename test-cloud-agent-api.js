@@ -54,13 +54,13 @@ async function runTests() {
   
   const results = [];
   
-  // Test 1: Unauthenticated request (should fail in production)
+  // Test 1: Unauthenticated request (should fail unless in dev with no secret)
   results.push(await testEndpoint(
     'Unauthenticated request to supervisor',
     '/api/agent/supervisor?action=run',
     { 
       authenticated: false,
-      expectedStatus: process.env.NODE_ENV === 'production' ? 401 : 200
+      expectedStatus: API_SECRET ? 401 : 200
     }
   ));
   

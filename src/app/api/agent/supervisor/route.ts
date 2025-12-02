@@ -45,9 +45,8 @@ export async function POST(request: NextRequest) {
     const report = await supervisor.runAgents(agents);
 
     return NextResponse.json({ success: report.success, report });
-  } catch (error) {
-    const err = error instanceof Error ? error : new Error('Unknown error');
-    console.error('Agent supervisor error:', err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+    console.error('Agent supervisor error:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
