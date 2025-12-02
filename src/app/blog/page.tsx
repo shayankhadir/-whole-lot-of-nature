@@ -48,11 +48,11 @@ export default async function BlogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#0d3512] via-[#0a2810] to-[#061208]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 antialiased">Our Blog</h1>
-          <p className="text-gray-100 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">Our Blog</h1>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -62,7 +62,7 @@ export default async function BlogPage() {
             return (
               <article
                 key={post.id}
-                className="bg-white border border-gray-200 rounded-none overflow-hidden hover:shadow-md transition-all group"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group"
               >
                 {featured?.source_url && (
                   <div className="relative h-48 overflow-hidden">
@@ -76,14 +76,14 @@ export default async function BlogPage() {
                 )}
 
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h2 className="text-xl font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
                   <div
-                    className="text-gray-100 text-sm mb-4 line-clamp-3"
+                    className="text-gray-300 text-sm mb-4 line-clamp-3"
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
 
-                  <div className="flex items-center gap-4 text-gray-500 text-sm">
+                  <div className="flex items-center gap-4 text-gray-400 text-sm">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -110,13 +110,13 @@ export default async function BlogPage() {
         {(!posts || posts.length === 0) && (
           <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fallbackPosts.map((p) => (
-              <article key={p.id} className="bg-white border border-gray-200 rounded-none overflow-hidden hover:shadow-md transition-all group">
-                <div className="relative h-48 overflow-hidden bg-primary-50">
+              <article key={p.id} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group">
+                <div className="relative h-48 overflow-hidden bg-emerald-900/30">
                   <Image src="/hero-leaves.svg" alt="Tropical leaves" fill className="object-cover opacity-80" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 antialiased">{p.title}</h3>
-                  <p className="text-gray-100 text-sm mb-4">{p.excerpt}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">{p.title}</h3>
+                  <p className="text-gray-300 text-sm mb-4">{p.excerpt}</p>
                   <Link href={p.href}>
                     <Button variant="outline">Explore Articles</Button>
                   </Link>

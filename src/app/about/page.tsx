@@ -10,7 +10,7 @@ import { Leaf, Heart, Users, Sprout, Droplet, Recycle } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen text-white overflow-hidden">
+    <div className="bg-[#0D1B0F] min-h-screen text-white overflow-hidden">
       {/* Hero Section */}
       <div className="relative py-32 lg:py-48">
         <div className="absolute inset-0 overflow-hidden">

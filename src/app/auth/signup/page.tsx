@@ -110,7 +110,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-[#0D1B0F] px-4 sm:px-6 lg:px-8 py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function SignUpPage() {
             <motion.h1 
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              className="text-3xl font-bold text-gray-900 mb-2 antialiased"
+              className="text-3xl font-bold text-[#daf2d0] mb-2 antialiased"
             >
               Create Account
             </motion.h1>
@@ -303,7 +303,7 @@ export default function SignUpPage() {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-[#0D1B0F] text-emerald-200/60">Or continue with</span>
               </div>
             </div>
 
@@ -311,7 +311,7 @@ export default function SignUpPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleGoogleSignIn}
-              className="mt-4 w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors"
+              className="mt-4 w-full flex items-center justify-center px-4 py-3 border border-emerald-900/30 rounded-lg bg-[#0d3512]/50 text-white hover:bg-[#0d3512]/70 transition-colors"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                 <path

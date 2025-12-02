@@ -36,19 +36,19 @@ export default function CombosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-[#0d3512] via-[#0a2810] to-[#061208]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 via-white to-green-50 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 antialiased">
-              Plant Combo <span className="text-primary-600">Deals</span>
+            <h1 className="text-5xl font-bold text-white mb-6 antialiased">
+              Plant Combo <span className="text-emerald-400">Deals</span>
             </h1>
-            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto antialiased">
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto antialiased">
               Discover our curated plant bundles designed to save you money while creating beautiful, 
               thriving plant collections for your home and garden.
             </p>
@@ -61,8 +61,8 @@ export default function CombosPage() {
                 transition={{ delay: 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">25-40%</div>
-                <div className="text-gray-100">Average Savings</div>
+                <div className="text-3xl font-bold text-emerald-400 mb-2 antialiased">25-40%</div>
+                <div className="text-gray-300">Average Savings</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -70,8 +70,8 @@ export default function CombosPage() {
                 transition={{ delay: 0.2 }}
                 className="text-center"
               >
-                <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">50+</div>
-                <div className="text-gray-100">Combo Options</div>
+                <div className="text-3xl font-bold text-emerald-400 mb-2 antialiased">50+</div>
+                <div className="text-gray-300">Combo Options</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -79,8 +79,8 @@ export default function CombosPage() {
                 transition={{ delay: 0.3 }}
                 className="text-center"
               >
-                <div className="text-3xl font-bold text-primary-600 mb-2 antialiased">95%</div>
-                <div className="text-gray-100">Customer Satisfaction</div>
+                <div className="text-3xl font-bold text-emerald-400 mb-2 antialiased">95%</div>
+                <div className="text-gray-300">Customer Satisfaction</div>
               </motion.div>
             </div>
           </motion.div>
@@ -88,7 +88,7 @@ export default function CombosPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
@@ -97,11 +97,11 @@ export default function CombosPage() {
               viewport={{ once: true }}
               className="text-center p-6"
             >
-              <div className="w-16 h-16 bg-[#2E7D32] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl antialiased">💰</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Save More Money</h3>
-              <p className="text-gray-100">
+              <h3 className="text-xl font-bold text-white mb-2 antialiased">Save More Money</h3>
+              <p className="text-gray-300">
                 Get better value with our bundle deals. Save 25-40% compared to buying items individually.
               </p>
             </motion.div>
@@ -113,11 +113,11 @@ export default function CombosPage() {
               transition={{ delay: 0.1 }}
               className="text-center p-6"
             >
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl antialiased">🎯</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Expertly Curated</h3>
-              <p className="text-gray-100">
+              <h3 className="text-xl font-bold text-white mb-2 antialiased">Expertly Curated</h3>
+              <p className="text-gray-300">
                 Each combo is carefully selected by our plant experts for compatibility and care requirements.
               </p>
             </motion.div>
@@ -129,11 +129,11 @@ export default function CombosPage() {
               transition={{ delay: 0.2 }}
               className="text-center p-6"
             >
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl antialiased">📦</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 antialiased">Complete Solutions</h3>
-              <p className="text-gray-100">
+              <h3 className="text-xl font-bold text-white mb-2 antialiased">Complete Solutions</h3>
+              <p className="text-gray-300">
                 Everything you need included - plants, pots, soil, fertilizers, and care guides.
               </p>
             </motion.div>
@@ -142,7 +142,7 @@ export default function CombosPage() {
       </section>
 
       {/* Combos Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <ComboProductsGrid
             combos={sampleCombos}
@@ -156,7 +156,7 @@ export default function CombosPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="py-16 bg-emerald-900/30">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,13 +167,13 @@ export default function CombosPage() {
             <h2 className="text-3xl font-bold text-white mb-4 antialiased">
               Can't Find the Perfect Combo?
             </h2>
-            <p className="text-xl text-primary-100 mb-8 antialiased">
+            <p className="text-xl text-gray-300 mb-8 antialiased">
               Contact our plant experts to create a custom combo tailored to your specific needs and space.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200 antialiased"
+              className="bg-emerald-500 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-emerald-400 transition-all duration-200 antialiased"
             >
               Get Custom Combo
             </motion.button>

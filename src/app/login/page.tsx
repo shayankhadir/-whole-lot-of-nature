@@ -115,7 +115,7 @@ export default function CustomLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex overflow-hidden">
+    <div className="min-h-screen bg-[#0D1B0F] flex overflow-hidden">
       {/* Left Side - Form Container */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
@@ -131,10 +131,10 @@ export default function CustomLoginPage() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="mb-10">
-            <h1 className="text-5xl font-bold text-white mb-3 antialiased">
+            <h1 className="text-5xl font-bold text-[#daf2d0] mb-3 antialiased">
               Welcome Back
             </h1>
-            <p className="text-gray-100 text-lg antialiased">
+            <p className="text-emerald-200/80 text-lg antialiased">
               Sign in to access your account and continue your gardening journey
             </p>
           </motion.div>
@@ -222,7 +222,7 @@ export default function CustomLoginPage() {
                   onChange={handleChange}
                   className="w-4 h-4 accent-green-600 cursor-pointer"
                 />
-                <span className="text-sm text-gray-100">Remember me</span>
+                <span className="text-sm text-emerald-200/80">Remember me</span>
               </label>
               <Link
                 href="/forgot-password"
@@ -259,7 +259,7 @@ export default function CustomLoginPage() {
           </motion.div>
 
           {/* Signup Link */}
-          <motion.p variants={itemVariants} className="text-center text-gray-100 mt-8">
+          <motion.p variants={itemVariants} className="text-center text-emerald-200/80 mt-8">
             Don't have an account?{' '}
             <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign up here
