@@ -1,0 +1,77 @@
+name: Cloud Agents
+
+on:
+  # Run daily at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      agents:
+        description: 'Comma-separated list of agents to run (trend,marketing,publisher,backlinks,social,email) or leave empty for all'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  run-agents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Agent Supervisor
+        env:
+          DEPLOYMENT_URL: ${{ secrets.DEPLOYMENT_URL }}
+          AGENT_API_SECRET: ${{ secrets.AGENT_API_SECRET }}
+        run: |
+          echo "Running cloud agents..."
+          
+          # Prepare the deployment URL
+          DEPLOY_URL="${DEPLOYMENT_URL:-https://wholelotofnature.com}"
+          
+          # Prepare agent list if provided
+          AGENTS_JSON="{}"
+          if [ -n "${{ github.event.inputs.agents }}" ]; then
+            # Convert comma-separated string to JSON array
+            IFS=',' read -ra AGENT_ARRAY <<< "${{ github.event.inputs.agents }}"
+            AGENTS_LIST=$(printf '%s\n' "${AGENT_ARRAY[@]}" | jq -R . | jq -s .)
+            AGENTS_JSON=$(jq -n --argjson agents "$AGENTS_LIST" '{agents: $agents}')
+          fi
+          
+          # Call the agent supervisor API
+          RESPONSE=$(curl -s -X POST "${DEPLOY_URL}/api/agent/supervisor?action=run" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${AGENT_API_SECRET}" \
+            -d "${AGENTS_JSON}" \
+            -w "\n%{http_code}")
+          
+          # Extract HTTP status code
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n 1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "Response (HTTP $HTTP_CODE):"
+          echo "$BODY" | jq '.' || echo "$BODY"
+          
+          # Check for success
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✓ Cloud agents executed successfully"
+            
+            # Parse and display results
+            SUCCESS=$(echo "$BODY" | jq -r '.success // false')
+            if [ "$SUCCESS" = "true" ]; then
+              echo "All agents completed successfully!"
+              echo "$BODY" | jq -r '.report.results[] | "  - \(.name): \(if .success then "✓" else "✗" end) (\(.durationMs)ms)"'
+            else
+              echo "Some agents failed:"
+              echo "$BODY" | jq -r '.report.results[] | select(.success == false) | "  - \(.name): \(.error)"'
+              exit 1
+            fi
+          else
+            echo "✗ Failed to execute cloud agents (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::warning::Cloud agents execution failed. Please check the logs above."

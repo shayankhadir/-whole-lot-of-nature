@@ -28,6 +28,7 @@ Store sensitive values in `.env.local` (never commit). Minimum configuration:
 | `WORDPRESS_PASSWORD` or `WORDPRESS_APP_PASSWORD` | Matching credential/app password for the above user. |
 | `WC_CONSUMER_KEY` / `WC_CONSUMER_SECRET` | WooCommerce API keys with read/write scope for storefront sync. |
 | `NEXT_PUBLIC_SITE_URL` | Public origin used when generating absolute URLs in emails/SEO metadata. |
+| `AGENT_API_SECRET` | (Production only) Secret key for authenticating cloud agent API calls. Generate with `openssl rand -base64 32`. |
 
 Other integrations already wired in the repo (Google/Facebook auth, Instagram, Perplexity, GA, FB Pixel, etc.) remain optional unless those features are needed.
 
@@ -48,3 +49,16 @@ Both the Contact and Newsletter forms submit to `/api/email/submit`, which trigg
 3. User-facing success/error states handled client-side.
 
 Once `RESEND_API_KEY` and sender info are configured, no extra code changes are required.
+
+## Cloud Agent Automation
+
+The platform includes automated agents that run on a schedule via GitHub Actions:
+
+- **Trend Agent** - Scrapes trending topics and generates blog posts
+- **Marketing Agent** - Performs competitor analysis and creates landing pages  
+- **Publisher Agent** - Auto-publishes WordPress drafts on schedule
+- **Backlink Agent** - Analyzes backlink opportunities
+- **Social Agent** - Creates social media content calendar
+- **Email Agent** - Syncs WooCommerce customers and scores purchase intent
+
+**See [CLOUD_AGENT_DELEGATION.md](./CLOUD_AGENT_DELEGATION.md)** for setup instructions, configuration, and monitoring.
