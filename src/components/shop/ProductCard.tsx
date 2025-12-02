@@ -8,6 +8,7 @@ import { getDisplayPrice, getOriginalPrice, isOnSale, getDiscountPercentage } fr
 import { useCartStore } from '@/stores/cartStore';
 import { useWishlistStore } from '@/stores/wishlistStore';
 import { ProductQuickView } from '@/components/shop/ProductQuickView';
+import { cleanProductDescription } from '@/lib/utils';
 
 interface ProductCardProps {
   product: Product;
@@ -82,7 +83,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   const shortDesc = product.short_description 
-    ? product.short_description.replace(/<[^>]*>/g, '').substring(0, 100)
+    ? cleanProductDescription(product.short_description).replace(/<[^>]*>/g, '').substring(0, 100)
     : '';
 
   return (

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { DEMO_CATEGORIES, DEMO_CHILD_CATEGORIES } from '@/data/demoCatalog';
+import { cleanProductDescription } from '@/lib/utils';
 
 interface WooCategory {
   id: number;
@@ -172,7 +173,7 @@ export default function ModernCategories() {
                       </h3>
                       
                       <p className="text-xs leading-relaxed mb-4 line-clamp-2 antialiased" style={{ color: '#86efac' }}>
-                        {category.description || `Explore our ${category.name.toLowerCase()} collection`}
+                        {cleanProductDescription(category.description) || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 
                       {childCategories.length > 0 && (

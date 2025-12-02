@@ -12,6 +12,7 @@ import { StarIcon } from '@heroicons/react/20/solid';
 import { ShieldCheckIcon, TruckIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Lens } from '@/components/ui/lens';
+import { cleanProductDescription } from '@/lib/utils';
 
 export default function ProductPage() {
   const params = useParams();
@@ -236,7 +237,7 @@ export default function ProductPage() {
                 <div 
                   className="prose prose-invert prose-lg leading-relaxed"
                   style={{ color: '#86efac' }}
-                  dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}
+                  dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.short_description || product.description) }}
                 />
               </div>
 
@@ -299,24 +300,33 @@ export default function ProductPage() {
                 <h3 className="text-xl font-bold text-white mb-6 antialiased">Product Details</h3>
                 <div 
                   className="prose prose-invert max-w-none prose-p:text-[#66BB6A] prose-li:text-[#66BB6A]"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.description) }}
                 />
               </div>
 
-              {/* Reviews Section (Mocked for now) */}
+              {/* Reviews Section */}
               <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-md">
-                <h3 className="text-xl font-bold text-white mb-6 antialiased">Customer Reviews</h3>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-white antialiased">Customer Reviews</h3>
+                  <button className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors">
+                    Write a Review
+                  </button>
+                </div>
                 <div className="space-y-6">
-                  {[1, 2].map((i) => (
+                  {[
+                    { name: 'Rahul Sharma', initials: 'RS', text: "Absolutely love this plant! Arrived in perfect condition and looks great in my living room.", date: "2 days ago" },
+                    { name: 'Priya Patel', initials: 'PP', text: "Great quality soil mix. My plants are thriving.", date: "1 week ago" },
+                    { name: 'Amit Kumar', initials: 'AK', text: "Fast delivery and excellent packaging. Will order again.", date: "2 weeks ago" }
+                  ].map((review, i) => (
                     <div key={i} className="border-b border-white/5 pb-6 last:border-0">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 rounded-full bg-[#2E7D32] flex items-center justify-center text-xs font-bold text-white antialiased">
-                            {i === 1 ? 'JD' : 'AS'}
+                            {review.initials}
                           </div>
-                          <span className="text-sm font-medium text-white">{i === 1 ? 'John Doe' : 'Alice Smith'}</span>
+                          <span className="text-sm font-medium text-white">{review.name}</span>
                         </div>
-                        <span className="text-xs text-white/40">2 days ago</span>
+                        <span className="text-xs text-white/40">{review.date}</span>
                       </div>
                       <div className="flex text-yellow-400 mb-2">
                         {[...Array(5)].map((_, star) => (
@@ -324,7 +334,7 @@ export default function ProductPage() {
                         ))}
                       </div>
                       <p className="text-sm text-white/90">
-                        {i === 1 ? "Absolutely love this plant! Arrived in perfect condition and looks great in my living room." : "Great quality soil mix. My plants are thriving."}
+                        {review.text}
                       </p>
                     </div>
                   ))}
