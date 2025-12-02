@@ -129,7 +129,7 @@ export default function ModernCategories() {
             Shop by <span className="text-emerald-400">Category</span>
           </h2>
           
-          <p className="text-base text-white/80 max-w-xl mx-auto antialiased">
+          <p className="text-base max-w-xl mx-auto antialiased" style={{ color: '#86efac' }}>
             Discover curated collections for every gardening need
           </p>
         </motion.div>

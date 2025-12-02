@@ -76,7 +76,7 @@ export default function CustomerTestimonialsSlider() {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-lg text-[#E8F5E9] max-w-2xl mx-auto antialiased font-light">
+          <p className="text-lg max-w-2xl mx-auto antialiased font-light" style={{ color: '#86efac' }}>
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
 

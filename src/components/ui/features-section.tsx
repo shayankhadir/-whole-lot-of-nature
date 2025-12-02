@@ -109,7 +109,7 @@ const Feature = ({
           {title}
         </span>
       </div>
-      <p className="text-sm text-white/90 dark:text-white/90 max-w-xs relative z-10 px-10 antialiased">
+      <p className="text-sm max-w-xs relative z-10 px-10 antialiased" style={{ color: '#86efac' }}>
         {description}
       </p>
     </div>
