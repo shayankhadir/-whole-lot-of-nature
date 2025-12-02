@@ -85,10 +85,10 @@ export default function GrowthDashboard() {
           <div className="flex items-center gap-4">
             <button
               onClick={runAgent}
-              disabled={running || data.agentStatus === 'RUNNING'}
+              disabled={running || (data?.agentStatus === 'RUNNING')}
               className="px-6 py-3 bg-[#66BB6A] text-white font-medium rounded-lg hover:bg-[#5CAA60] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
-              {running || data.agentStatus === 'RUNNING' ? (
+              {running || data?.agentStatus === 'RUNNING' ? (
                 <>
                   <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />

@@ -40,24 +40,31 @@ export async function POST() {
 
 export async function GET() {
   try {
-    // Return the latest SEO report if it exists
+    // Find the latest SEO report dynamically
     const fs = await import('fs');
     const path = await import('path');
-    const reportPath = path.join(process.cwd(), 'seo-report-2025-11-21.json');
+    const reportsDir = process.cwd();
     
-    if (fs.existsSync(reportPath)) {
-      const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
+    // Get all SEO report files
+    const files = fs.readdirSync(reportsDir).filter(file => file.startsWith('seo-report-') && file.endsWith('.json'));
+    
+    if (files.length === 0) {
       return NextResponse.json({
-        success: true,
-        report,
-        timestamp: new Date().toISOString(),
-      });
+        success: false,
+        message: 'No SEO report available',
+      }, { status: 404 });
     }
 
+    // Sort by date (filename format: seo-report-YYYY-MM-DD.json) and get the latest
+    const latestReport = files.sort().reverse()[0];
+    const reportPath = path.join(reportsDir, latestReport);
+    
+    const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
     return NextResponse.json({
-      success: false,
-      message: 'No SEO report available',
-    }, { status: 404 });
+      success: true,
+      report,
+      timestamp: new Date().toISOString(),
+    });
   } catch (error: unknown) {
     const err = error as Error;
     return NextResponse.json({

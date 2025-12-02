@@ -106,20 +106,20 @@ export default function SEODashboard() {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <div className="text-sm text-blue-600 mb-1">SEO Score</div>
-                  <div className="text-3xl font-bold text-blue-900 antialiased">{report.seoScore || 0}</div>
+                  <div className="text-3xl font-bold text-blue-900 antialiased">{report.seoScore ?? 0}</div>
                   <div className="text-xs text-blue-600 mt-1">/ 100</div>
                 </div>
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="text-sm text-gray-600 mb-1">Pages Scanned</div>
-                  <div className="text-3xl font-bold text-gray-900 antialiased">{report.filesScanned || 0}</div>
+                  <div className="text-3xl font-bold text-gray-900 antialiased">{report.filesScanned ?? 0}</div>
                 </div>
                 <div className="p-4 bg-red-50 rounded-lg">
                   <div className="text-sm text-red-600 mb-1">Critical Issues</div>
-                  <div className="text-3xl font-bold text-red-900 antialiased">{report.criticalIssues || 0}</div>
+                  <div className="text-3xl font-bold text-red-900 antialiased">{report.criticalIssues ?? 0}</div>
                 </div>
                 <div className="p-4 bg-orange-50 rounded-lg">
                   <div className="text-sm text-orange-600 mb-1">Total Issues</div>
-                  <div className="text-3xl font-bold text-orange-900 antialiased">{report.totalIssues || 0}</div>
+                  <div className="text-3xl font-bold text-orange-900 antialiased">{report.totalIssues ?? 0}</div>
                 </div>
               </div>
 
@@ -127,36 +127,36 @@ export default function SEODashboard() {
                 <div className="p-4 border border-gray-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700">High Priority</span>
-                    <span className="text-lg font-bold text-orange-600">{report.highIssues || 0}</span>
+                    <span className="text-lg font-bold text-orange-600">{report.highIssues ?? 0}</span>
                   </div>
                   <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-orange-500 rounded-full"
-                      style={{ width: `${Math.min(100, ((report.highIssues || 0) / (report.totalIssues || 1)) * 100)}%` }}
+                      style={{ width: `${Math.min(100, ((report.highIssues ?? 0) / (report.totalIssues || 1)) * 100)}%` }}
                     />
                   </div>
                 </div>
                 <div className="p-4 border border-gray-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700">Medium Priority</span>
-                    <span className="text-lg font-bold text-yellow-600">{report.mediumIssues || 0}</span>
+                    <span className="text-lg font-bold text-yellow-600">{report.mediumIssues ?? 0}</span>
                   </div>
                   <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-yellow-500 rounded-full"
-                      style={{ width: `${Math.min(100, ((report.mediumIssues || 0) / (report.totalIssues || 1)) * 100)}%` }}
+                      style={{ width: `${Math.min(100, ((report.mediumIssues ?? 0) / (report.totalIssues || 1)) * 100)}%` }}
                     />
                   </div>
                 </div>
                 <div className="p-4 border border-gray-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700">Low Priority</span>
-                    <span className="text-lg font-bold text-blue-600">{report.lowIssues || 0}</span>
+                    <span className="text-lg font-bold text-blue-600">{report.lowIssues ?? 0}</span>
                   </div>
                   <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-blue-500 rounded-full"
-                      style={{ width: `${Math.min(100, ((report.lowIssues || 0) / (report.totalIssues || 1)) * 100)}%` }}
+                      style={{ width: `${Math.min(100, ((report.lowIssues ?? 0) / (report.totalIssues || 1)) * 100)}%` }}
                     />
                   </div>
                 </div>
