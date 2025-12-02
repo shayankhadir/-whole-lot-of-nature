@@ -54,9 +54,17 @@ export default function PremiumFeaturedShowcase() {
 
   async function fetchFeaturedProducts() {
     try {
-      const categories = ['soil', 'soil-mixes', 'herbal'];
+      // Curated list of best-selling slugs
+      const featuredSlugs = [
+        'organic-potting-mix',
+        'succulent-potting-mix-2',
+        'ayurvedic-hair-oil-200ml',
+        'miniature-cactus-succulents-set-of-10',
+        'succulent-desert-plante-4-succulents'
+      ];
+
       const responses = await Promise.all(
-        categories.map(cat => fetch(`/api/products?category=${cat}&limit=4`))
+        featuredSlugs.map(slug => fetch(`/api/products?slug=${slug}`))
       );
       
       const results = await Promise.all(responses.map(res => res.json()));
@@ -64,13 +72,14 @@ export default function PremiumFeaturedShowcase() {
       let allProducts: any[] = [];
       results.forEach(data => {
         if (data.success && data.data) {
-          allProducts = [...allProducts, ...data.data];
+          // API returns array for slug search too
+          const items = Array.isArray(data.data) ? data.data : [data.data];
+          allProducts = [...allProducts, ...items];
         }
       });
 
-      // Remove duplicates and shuffle
-      allProducts = Array.from(new Map(allProducts.map(item => [item.id, item])).values())
-        .sort(() => Math.random() - 0.5);
+      // Filter out any nulls and ensure unique
+      allProducts = Array.from(new Map(allProducts.filter(p => p).map(item => [item.id, item])).values());
 
       if (allProducts.length > 0) {
         const featured = allProducts.map((p: any) => ({
@@ -85,7 +94,7 @@ export default function PremiumFeaturedShowcase() {
           rating: parseFloat(p.average_rating || '4.5'),
           reviewCount: p.rating_count || 0
         }));
-        setProducts(featured.slice(0, 5)); // Take top 5
+        setProducts(featured.slice(0, 5)); 
       } else {
         setProducts(FALLBACK_FEATURED.slice(0, 5));
       }
