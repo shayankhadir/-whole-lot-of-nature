@@ -94,11 +94,11 @@ export default function AllProductsShowcase() {
             Our Collection
           </motion.span>
           
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-cream-50 mb-4 antialiased">
+          <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-cream-50 mb-3 antialiased">
             All <span className="text-emerald-400">Products</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
+          <p className="text-base text-white/80 max-w-xl mx-auto antialiased">
             Browse our complete selection of premium plants and gardening essentials
           </p>
         </motion.div>
@@ -145,19 +145,19 @@ export default function AllProductsShowcase() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-5">
-                    <h3 className="text-lg font-semibold font-montserrat text-white mb-2 line-clamp-2 group-hover:text-[#66BB6A] transition-colors antialiased">
+                  <div className="p-4">
+                    <h3 className="text-sm font-semibold font-montserrat text-white mb-1.5 line-clamp-2 group-hover:text-[#66BB6A] transition-colors antialiased">
                       {product.name}
                     </h3>
                     
                     {/* Price */}
-                    <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
+                    <div className="flex items-center justify-between pt-3 border-t border-[#2E7D32]/20">
                       <div>
-                        <span className="text-2xl font-bold text-[#66BB6A] antialiased">
+                        <span className="text-lg font-bold text-[#66BB6A] antialiased">
                           {getDisplayPrice(product)}
                         </span>
                         {getOriginalPrice(product) && (
-                          <span className="block text-sm text-white/70 line-through antialiased">
+                          <span className="block text-xs text-white/60 line-through antialiased">
                             {getOriginalPrice(product)}
                           </span>
                         )}

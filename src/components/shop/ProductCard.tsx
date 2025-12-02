@@ -175,27 +175,27 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Product Content */}
-        <Link href={`/shop/${product.slug}`} className="p-5 flex-1 flex flex-col">
+        <Link href={`/shop/${product.slug}`} className="p-4 flex-1 flex flex-col">
           {/* Product Name */}
-          <h3 className="font-montserrat text-[clamp(1rem,2.5vw,1.25rem)] font-bold text-white mb-2 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
+          <h3 className="font-montserrat text-sm font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
             {product.name}
           </h3>
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="text-[clamp(0.875rem,1.5vw,0.9375rem)] text-white/90 mb-4 line-clamp-2 antialiased flex-1">
+            <p className="text-xs text-white/70 mb-3 line-clamp-2 antialiased flex-1">
               {shortDesc}
             </p>
           )}
 
           {/* Price & CTA */}
-          <div className="flex items-center justify-between pt-4 border-t border-[#2E7D32]/20">
+          <div className="flex items-center justify-between pt-3 border-t border-[#2E7D32]/20">
             <div>
-              <span className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#66BB6A] antialiased">
+              <span className="text-lg font-bold text-[#66BB6A] antialiased">
                 {getDisplayPrice(product)}
               </span>
               {getOriginalPrice(product) && (
-                <span className="block text-sm text-white/85 line-through">
+                <span className="block text-xs text-white/60 line-through">
                   {getOriginalPrice(product)}
                 </span>
               )}

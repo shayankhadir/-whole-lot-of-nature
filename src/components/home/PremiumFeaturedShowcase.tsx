@@ -127,7 +127,7 @@ export default function PremiumFeaturedShowcase() {
                 <Sparkles className="w-4 h-4" />
                 <span>Curated Collection</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-[#E8F5E9] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#E8F5E9] leading-tight">
                 Premium Essentials for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66BB6A] to-[#A5D6A7]">
                   Thriving Gardens
@@ -171,15 +171,15 @@ export default function PremiumFeaturedShowcase() {
                     <span className="inline-block px-4 py-1.5 bg-[#2E7D32] text-white text-xs font-bold tracking-wider uppercase rounded-full mb-4">
                       Featured Choice
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-display text-white mb-3">
+                    <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-2">
                       {mainProduct.name}
                     </h3>
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="text-2xl font-medium text-[#66BB6A]">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-xl font-semibold text-[#66BB6A]">
                         ₹{mainProduct.price}
                       </span>
                       {mainProduct.regular_price && (
-                        <span className="text-lg text-white/85 line-through decoration-white/40">
+                        <span className="text-base text-white/70 line-through">
                           ₹{mainProduct.regular_price}
                         </span>
                       )}

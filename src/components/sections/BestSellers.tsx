@@ -58,13 +58,13 @@ export default function BestSellers() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-cream-50 mb-6 antialiased">
+          <h2 className="text-3xl md:text-4xl font-bold text-cream-50 mb-3 antialiased">
             Best Sellers
           </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto antialiased">
-            Our most loved plants, chosen by plant enthusiasts worldwide
+          <p className="text-base text-white/80 max-w-xl mx-auto antialiased">
+            Our most loved plants, chosen by enthusiasts worldwide
           </p>
         </motion.div>
 
@@ -80,7 +80,7 @@ export default function BestSellers() {
               <Link href="/shop" className="block">
                 <div className="relative bg-[var(--ink-700)]/40 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[var(--emerald-700)]/30 hover:border-emerald-400/50 backdrop-blur-md">
                   {/* Image Container */}
-                  <div className="relative h-80 bg-[var(--ink-700)] overflow-hidden">
+                  <div className="relative h-48 bg-[var(--ink-700)] overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -92,8 +92,8 @@ export default function BestSellers() {
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-cream-50 mb-2 group-hover:text-emerald-400 transition-colors antialiased">
+                  <div className="p-4">
+                    <h3 className="text-sm font-semibold text-cream-50 mb-1.5 group-hover:text-emerald-400 transition-colors antialiased">
                       {product.name}
                     </h3>
                     
@@ -109,7 +109,7 @@ export default function BestSellers() {
 
                     {/* Price */}
                     <div className="flex items-center justify-between">
-                      <span className="text-3xl font-bold text-[#2E7D32] antialiased">
+                      <span className="text-lg font-bold text-[#66BB6A] antialiased">
                         ${product.price}
                       </span>
                       <button 

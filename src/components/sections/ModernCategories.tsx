@@ -125,11 +125,11 @@ export default function ModernCategories() {
             </span>
           </div>
           
-          <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-cream-50 mb-4 antialiased">
+          <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-cream-50 mb-3 antialiased">
             Shop by <span className="text-emerald-400">Category</span>
           </h2>
           
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 max-w-2xl mx-auto antialiased">
+          <p className="text-base text-white/80 max-w-xl mx-auto antialiased">
             Discover curated collections for every gardening need
           </p>
         </motion.div>
@@ -167,11 +167,11 @@ export default function ModernCategories() {
 
                     {/* Content */}
                     <div className="relative">
-                      <h3 className="text-2xl font-bold text-cream-50 mb-3 group-hover:text-emerald-400 transition-colors antialiased">
+                      <h3 className="text-lg font-semibold text-cream-50 mb-2 group-hover:text-emerald-400 transition-colors antialiased">
                         {category.name}
                       </h3>
                       
-                      <p className="text-white/90 text-sm leading-relaxed mb-6 line-clamp-2 antialiased">
+                      <p className="text-white/70 text-xs leading-relaxed mb-4 line-clamp-2 antialiased">
                         {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 

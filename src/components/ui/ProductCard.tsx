@@ -161,32 +161,32 @@ export const ProductCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5">
         {/* Name */}
-        <h3 className={`font-montserrat font-bold text-base sm:text-lg mb-1.5 line-clamp-2 transition-colors duration-300 antialiased ${
-          isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-black group-hover:text-[#2E7D32]'
+        <h3 className={`font-montserrat font-semibold text-sm mb-1 line-clamp-2 transition-colors duration-300 antialiased ${
+          isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-gray-900 group-hover:text-[#2E7D32]'
         }`}>
           {name}
         </h3>
 
         {/* Description */}
         {description && (
-          <p className={`text-sm mb-3 line-clamp-2 ${
-            isGlass ? 'text-white/80' : 'text-[#66BB6A]'
+          <p className={`text-xs mb-2 line-clamp-2 ${
+            isGlass ? 'text-white/70' : 'text-gray-600'
           }`}>
             {description}
           </p>
         )}
 
         {/* Price Section */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-baseline gap-2">
-            <span className={`text-xl sm:text-2xl font-bold antialiased ${
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-baseline gap-1.5">
+            <span className={`text-base font-bold antialiased ${
               isGlass ? 'text-[#66BB6A]' : 'text-[#2E7D32]'
             }`}>
               ${price.toFixed(2)}
             </span>
             {originalPrice && originalPrice > price && (
-              <span className={`text-sm sm:text-base line-through antialiased ${
-                isGlass ? 'text-white/50' : 'text-gray-500'
+              <span className={`text-xs line-through antialiased ${
+                isGlass ? 'text-white/50' : 'text-gray-400'
               }`}>
                 ${originalPrice.toFixed(2)}
               </span>
