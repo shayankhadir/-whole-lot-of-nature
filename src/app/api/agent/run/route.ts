@@ -97,6 +97,11 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  // Validate API key
+  if (!validateAgentApiKey(request)) {
+    return createUnauthorizedResponse();
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');

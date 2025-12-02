@@ -6,17 +6,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function validateAgentApiKey(request: NextRequest): boolean {
-  // Allow requests without authentication in development
-  if (process.env.NODE_ENV === 'development') {
+  const apiSecret = process.env.AGENT_API_SECRET;
+  
+  // In development, allow access only if no API secret is configured
+  if (process.env.NODE_ENV === 'development' && !apiSecret) {
     return true;
   }
 
-  const apiSecret = process.env.AGENT_API_SECRET;
-  
-  // If no API secret is configured, allow the request (for backwards compatibility)
+  // In production, API secret is required
   if (!apiSecret) {
-    console.warn('AGENT_API_SECRET not configured. Agent endpoints are unprotected.');
-    return true;
+    console.error('AGENT_API_SECRET not configured. Agent endpoints require authentication in production.');
+    return false;
   }
 
   const authHeader = request.headers.get('authorization');

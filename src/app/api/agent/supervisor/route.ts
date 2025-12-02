@@ -12,7 +12,12 @@ export const maxDuration = 300;
 
 const supervisor = new AgentSupervisor();
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Validate API key
+  if (!validateAgentApiKey(request)) {
+    return createUnauthorizedResponse();
+  }
+
   return NextResponse.json({
     success: true,
     agents: supervisor.listAgents(),
