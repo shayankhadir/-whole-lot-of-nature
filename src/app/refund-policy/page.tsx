@@ -32,7 +32,7 @@ export default function RefundPolicyPage() {
 
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">1. Return Eligibility</h2>
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">For Live Plants:</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">For Live Plants:</h3>
             <ul className="list-disc pl-6 text-white/75 space-y-2 mb-4">
               <li>Returns must be reported within 24 hours of delivery</li>
               <li>Plants must show clear signs of damage or disease upon delivery</li>
@@ -41,7 +41,7 @@ export default function RefundPolicyPage() {
               <li>Returns due to customer negligence or improper care will not be accepted</li>
             </ul>
 
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">For Gardening Supplies & Accessories:</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">For Gardening Supplies & Accessories:</h3>
             <ul className="list-disc pl-6 text-white/75 space-y-2">
               <li>Returns accepted within 7 days of delivery</li>
               <li>Items must be unused and in original packaging</li>

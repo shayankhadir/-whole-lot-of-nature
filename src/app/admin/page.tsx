@@ -27,10 +27,10 @@ interface AgentStatus {
 
 export default function AdminDashboard() {
   const [agents, setAgents] = useState<AgentStatus[]>([
-    { id: 'growth', name: 'Business Growth Agent', status: 'idle' },
-    { id: 'trends', name: 'Trend Agent', status: 'idle' },
-    { id: 'inventory', name: 'Inventory Sync', status: 'idle' },
-    { id: 'plantsy', name: 'Plantsy (Lead Gen Bot)', status: 'idle' },
+    { id: 'growth', name: 'Growth Agent (Lead Gen & Sales)', status: 'idle' },
+    { id: 'trends', name: 'Trend Agent (Content & SEO)', status: 'idle' },
+    { id: 'inventory', name: 'Inventory Sync (WooCommerce)', status: 'idle' },
+    { id: 'plantsy', name: 'Plantsy (AI Plant Care Chatbot)', status: 'idle' },
   ]);
 
   const runAgent = async (agentId: string) => {
@@ -171,8 +171,8 @@ export default function AdminDashboard() {
                   <TrendingUp className="w-6 h-6 text-[#66BB6A]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white antialiased">Business Growth Agent</h3>
-                  <p className="text-white/60 text-sm">Lead generation & sales automation</p>
+                  <h3 className="text-lg font-semibold text-white antialiased">Business Growth Agent (Lead Gen)</h3>
+                  <p className="text-white/60 text-sm">Lead generation, sales automation & outreach</p>
                 </div>
               </div>
               <span className={`text-xs font-medium px-3 py-1 rounded-full ${getStatusBadge(agents.find(a => a.id === 'growth')?.status || 'idle')}`}>
@@ -280,7 +280,7 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          {/* Plantsy Lead Gen Bot */}
+          {/* Plantsy AI Chatbot */}
           <div className="bg-white/5 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-emerald-500/50 transition-colors">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -288,8 +288,8 @@ export default function AdminDashboard() {
                   <MessageCircle className="w-6 h-6 text-emerald-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white antialiased">Plantsy (Lead Gen Bot)</h3>
-                  <p className="text-white/60 text-sm">AI plant care assistant & sales</p>
+                  <h3 className="text-lg font-semibold text-white antialiased">Plantsy (AI Chatbot)</h3>
+                  <p className="text-white/60 text-sm">AI plant care assistant using website info</p>
                 </div>
               </div>
               <span className={`text-xs font-medium px-3 py-1 rounded-full ${getStatusBadge(agents.find(a => a.id === 'plantsy')?.status || 'idle')}`}>

@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">1. Information We Collect</h2>
             
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">Personal Information</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">Personal Information</h3>
             <p className="text-white/80 leading-relaxed mb-4">
               We collect personal information that you voluntarily provide to us when you:
             </p>
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
               <li>Participate in surveys or promotions</li>
             </ul>
 
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">Information Collected Includes:</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">Information Collected Includes:</h3>
             <ul className="list-disc pl-6 text-white/75 space-y-2">
               <li>Name and contact information (email, phone number, address)</li>
               <li>Billing and shipping addresses</li>
@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
               We may share your information with:
             </p>
             
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">Service Providers:</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">Service Providers:</h3>
             <ul className="list-disc pl-6 text-white/75 space-y-2 mb-4">
               <li>Payment processors</li>
               <li>Shipping and delivery partners</li>
@@ -102,7 +102,7 @@ export default function PrivacyPolicyPage() {
               <li>Website hosting and analytics services</li>
             </ul>
 
-            <h3 className="text-base md:text-lg font-semibold text-[#A8D5BA] mb-3 antialiased">Legal Requirements:</h3>
+            <h3 className="text-base md:text-lg font-semibold text-emerald-200 mb-3 antialiased">Legal Requirements:</h3>
             <p className="text-white/80 leading-relaxed mb-4">
               We may disclose your information if required by law or if we believe disclosure is necessary to:
             </p>

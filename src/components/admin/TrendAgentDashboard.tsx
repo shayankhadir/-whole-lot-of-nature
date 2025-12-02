@@ -148,7 +148,7 @@ export default function TrendAgentDashboard() {
 
             <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
               <p className="text-white/85 text-sm">Published</p>
-              <p className="text-3xl font-bold text-[#A8D5BA] antialiased">{stats.totalPublished}</p>
+              <p className="text-3xl font-bold text-emerald-300 antialiased">{stats.totalPublished}</p>
             </div>
 
             <div className="bg-[#1e3a28]/50 border border-[#2E7D32]/30 rounded-lg p-6 backdrop-blur-md">
@@ -213,7 +213,7 @@ export default function TrendAgentDashboard() {
               </div>
               <div>
                 <p className="text-white/85 text-sm">Published</p>
-                <p className="text-lg font-semibold text-[#A8D5BA] antialiased">{latestRun.postsPublished}</p>
+                <p className="text-lg font-semibold text-emerald-300 antialiased">{latestRun.postsPublished}</p>
               </div>
             </div>
 

@@ -109,7 +109,7 @@ export default function InteractiveHero() {
           </span>
         </motion.h1>
 
-        {/* Subheading - Brighter Green */}
+        {/* Subheading - Light/Bright for visibility */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
