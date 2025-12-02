@@ -311,17 +311,35 @@ export default function AdminDashboard() {
             </div>
           </Link>
 
+          {/* SEO Agent Card */}
+          <Link href="/admin/seo" className="block group">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 bg-blue-100 rounded-lg text-blue-600">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <span className="text-xs font-medium bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Active</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors antialiased">SEO Optimization</h3>
+              <p className="text-gray-500 mt-2 text-sm">
+                Automated SEO analysis, meta tag generation, and optimization recommendations.
+              </p>
+            </div>
+          </Link>
+
           {/* Inventory Card */}
           <Link href="/admin/inventory" className="block group">
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-3 bg-blue-100 rounded-lg text-blue-600">
+                <div className="p-3 bg-orange-100 rounded-lg text-orange-600">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors antialiased">Inventory Management</h3>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition-colors antialiased">Inventory Management</h3>
               <p className="text-gray-500 mt-2 text-sm">
                 Manage products, stock levels, and categories.
               </p>
