@@ -21,7 +21,7 @@ export default function SEODashboard() {
 
   const fetchReport = async () => {
     try {
-      const res = await fetch('/api/agents/seo/run');
+      const res = await fetch('/api/agents/seo/run');  // GET request
       if (res.ok) {
         const data = await res.json();
         if (data.report) {

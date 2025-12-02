@@ -40,13 +40,19 @@ export async function POST() {
 
 export async function GET() {
   try {
-    // Find the latest SEO report dynamically
+    // Find the latest SEO report dynamically in a dedicated directory
     const fs = await import('fs');
     const path = await import('path');
-    const reportsDir = process.cwd();
+    const reportsDir = path.join(process.cwd(), 'reports', 'seo');
+    
+    // Fallback to root directory if reports directory doesn't exist
+    let searchDir = reportsDir;
+    if (!fs.existsSync(reportsDir)) {
+      searchDir = process.cwd();
+    }
     
     // Get all SEO report files
-    const files = fs.readdirSync(reportsDir).filter(file => file.startsWith('seo-report-') && file.endsWith('.json'));
+    const files = fs.readdirSync(searchDir).filter(file => file.startsWith('seo-report-') && file.endsWith('.json'));
     
     if (files.length === 0) {
       return NextResponse.json({
@@ -57,7 +63,7 @@ export async function GET() {
 
     // Sort by date (filename format: seo-report-YYYY-MM-DD.json) and get the latest
     const latestReport = files.sort().reverse()[0];
-    const reportPath = path.join(reportsDir, latestReport);
+    const reportPath = path.join(searchDir, latestReport);
     
     const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
     return NextResponse.json({
