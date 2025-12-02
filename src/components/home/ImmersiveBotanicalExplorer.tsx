@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types/product';
 import { getDisplayPrice } from '@/lib/utils/pricing';
+import { useCartStore } from '@/stores/cartStore';
 
 interface BotanicalExplorerProps {
   products?: Product[];
@@ -14,6 +15,7 @@ interface BotanicalExplorerProps {
 export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplorerProps) {
   const [selectedId, setSelectedId] = useState(0);
   const [featuredPlants, setFeaturedPlants] = useState<Product[]>([]);
+  const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
     if (products && products.length > 0) {
@@ -115,7 +117,20 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
           </span>
           
           <div className="flex gap-4">
-            <button className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold bg-[var(--emerald-500)] text-white shadow-[0_20px_40px_rgba(6,38,24,0.45)] hover:bg-[var(--emerald-700)] transition-all duration-300 hover:shadow-[0_25px_50px_rgba(6,38,24,0.55)]">
+            <button 
+              onClick={() => addItem({
+                id: String(selectedPlant.id),
+                name: selectedPlant.name,
+                price: parseFloat(selectedPlant.price),
+                originalPrice: selectedPlant.regular_price ? parseFloat(selectedPlant.regular_price) : undefined,
+                image: selectedPlant.images[0]?.src || '',
+                quantity: 1,
+                type: 'product',
+                inStock: selectedPlant.in_stock,
+                category: selectedPlant.categories?.[0]?.name
+              })}
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold bg-[var(--emerald-500)] text-white shadow-[0_20px_40px_rgba(6,38,24,0.45)] hover:bg-[var(--emerald-700)] transition-all duration-300 hover:shadow-[0_25px_50px_rgba(6,38,24,0.55)]"
+            >
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
             </button>

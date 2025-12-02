@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { DEMO_PRODUCTS } from '@/data/demoCatalog';
 import { ProductCard } from '@/components/ui/ProductCard';
+import { useCartStore } from '@/stores/cartStore';
 
 interface FeaturedProduct {
   id: number;
@@ -37,6 +38,7 @@ const FALLBACK_FEATURED: FeaturedProduct[] = DEMO_PRODUCTS.filter((product) => p
 export default function PremiumFeaturedShowcase() {
   const [products, setProducts] = useState<FeaturedProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const addItem = useCartStore((state) => state.addItem);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -212,6 +214,17 @@ export default function PremiumFeaturedShowcase() {
                     rating={product.rating || 4.5}
                     reviewCount={product.reviewCount || 0}
                     variant="glass"
+                    onAddToCart={() => addItem({
+                      id: String(product.id),
+                      name: product.name,
+                      price: parseFloat(product.price),
+                      originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
+                      image: product.image,
+                      quantity: 1,
+                      type: 'product',
+                      inStock: true,
+                      category: product.category
+                    })}
                   />
                 </motion.div>
               ))}

@@ -1,44 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { Star } from 'lucide-react';
+import { useCartStore } from '@/stores/cartStore';
+
+const BEST_SELLERS = [
+  {
+    id: 1,
+    name: 'Monstera Deliciosa',
+    price: 45.99,
+    image: 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&h=400&fit=crop',
+    rating: 5,
+    sales: '500+ sold',
+    category: 'Plants'
+  },
+  {
+    id: 2,
+    name: 'Snake Plant',
+    price: 29.99,
+    image: 'https://images.unsplash.com/photo-1593482892290-63946a57515f?w=400&h=400&fit=crop',
+    rating: 5,
+    sales: '750+ sold',
+    category: 'Plants'
+  },
+  {
+    id: 3,
+    name: 'Fiddle Leaf Fig',
+    price: 65.99,
+    image: 'https://images.unsplash.com/photo-1614594895304-fe7116ac3b58?w=400&h=400&fit=crop',
+    rating: 5,
+    sales: '350+ sold',
+    category: 'Plants'
+  },
+  {
+    id: 4,
+    name: 'Pothos Golden',
+    price: 24.99,
+    image: 'https://images.unsplash.com/photo-1596145849602-d3f6f5f0bce2?w=400&h=400&fit=crop',
+    rating: 5,
+    sales: '600+ sold',
+    category: 'Plants'
+  },
+];
 
 export default function BestSellers() {
-  const bestSellers = [
-    {
-      id: 1,
-      name: 'Monstera Deliciosa',
-      price: 45.99,
-      image: 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&h=400&fit=crop',
-      rating: 5,
-      sales: '500+ sold',
-    },
-    {
-      id: 2,
-      name: 'Snake Plant',
-      price: 29.99,
-      image: 'https://images.unsplash.com/photo-1593482892290-63946a57515f?w=400&h=400&fit=crop',
-      rating: 5,
-      sales: '750+ sold',
-    },
-    {
-      id: 3,
-      name: 'Fiddle Leaf Fig',
-      price: 65.99,
-      image: 'https://images.unsplash.com/photo-1614594895304-fe7116ac3b58?w=400&h=400&fit=crop',
-      rating: 5,
-      sales: '350+ sold',
-    },
-    {
-      id: 4,
-      name: 'Pothos Golden',
-      price: 24.99,
-      image: 'https://images.unsplash.com/photo-1596145849602-d3f6f5f0bce2?w=400&h=400&fit=crop',
-      rating: 5,
-      sales: '600+ sold',
-    },
-  ];
+  const addItem = useCartStore((state) => state.addItem);
 
   return (
     <section className="py-24 bg-[var(--surface-onyx)] relative overflow-hidden">
@@ -61,7 +69,7 @@ export default function BestSellers() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {bestSellers.map((product, index) => (
+          {BEST_SELLERS.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 30 }}
@@ -104,7 +112,22 @@ export default function BestSellers() {
                       <span className="text-3xl font-bold text-[#2E7D32] antialiased">
                         ${product.price}
                       </span>
-                      <button className="px-6 py-3 bg-[#2E7D32] text-white rounded-xl font-semibold hover:bg-[#2E7D32] transition-colors">
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addItem({
+                            id: String(product.id),
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            quantity: 1,
+                            type: 'product',
+                            inStock: true,
+                            category: product.category
+                          });
+                        }}
+                        className="px-6 py-3 bg-[#2E7D32] text-white rounded-xl font-semibold hover:bg-[#2E7D32] transition-colors"
+                      >
                         Add to Cart
                       </button>
                     </div>

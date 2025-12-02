@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types/product';
+import { useCartStore } from '@/stores/cartStore';
 
 interface AddToCartButtonProps {
   product: Product;
@@ -11,12 +12,27 @@ interface AddToCartButtonProps {
 export default function AddToCartButton({ product }: AddToCartButtonProps) {
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
+  const addItem = useCartStore((state) => state.addItem);
 
   const handleAddToCart = async () => {
     setAdding(true);
-    // Add to cart logic here (integrate with your cart store/context)
-    await new Promise(resolve => setTimeout(resolve, 500));
-    setAdding(false);
+    try {
+      await addItem({
+        id: product.id.toString(),
+        name: product.name,
+        price: parseFloat(product.sale_price || product.price || '0'),
+        originalPrice: parseFloat(product.regular_price || product.price || '0'),
+        image: product.images?.[0]?.src || '',
+        quantity: quantity,
+        type: 'product',
+        inStock: product.in_stock,
+        category: product.categories?.[0]?.name,
+      });
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+    } finally {
+      setAdding(false);
+    }
   };
 
   if (!product.in_stock) {
