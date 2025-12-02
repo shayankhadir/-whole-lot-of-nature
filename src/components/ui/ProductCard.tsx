@@ -169,9 +169,7 @@ export const ProductCard = ({
 
         {/* Description */}
         {description && (
-          <p className={`text-xs mb-2 line-clamp-2 ${
-            isGlass ? 'text-white/70' : 'text-gray-600'
-          }`}>
+          <p className={`text-xs mb-2 line-clamp-2 ${isGlass ? '' : 'text-gray-600'}`} style={isGlass ? { color: '#86efac' } : undefined}>
             {description}
           </p>
         )}

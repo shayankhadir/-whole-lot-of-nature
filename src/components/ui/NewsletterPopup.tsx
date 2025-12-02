@@ -87,7 +87,7 @@ export default function NewsletterPopup() {
             {/* Content */}
             <div className="relative z-10">
               <div className="mb-2 inline-flex items-center rounded-full border border-[#2E7D32]/30 bg-[#2E7D32]/10 px-3 py-1 text-xs font-medium text-[#4ADE80]">
-                🌱 Join the Community
+                Join the Community
               </div>
               
               <h3 className="mt-3 text-xl font-bold text-white">
@@ -99,7 +99,7 @@ export default function NewsletterPopup() {
 
               {status === 'success' ? (
                 <div className="mt-6 flex items-center justify-center rounded-lg bg-[#2E7D32]/20 p-4 text-[#4ADE80]">
-                  <span className="font-medium">Welcome to the family! 🌿</span>
+                  <span className="font-medium">Welcome to the family!</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-3">

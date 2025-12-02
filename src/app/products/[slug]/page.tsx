@@ -42,22 +42,22 @@ interface HighlightCard {
 
 const PREMIUM_HIGHLIGHTS: HighlightCard[] = [
   {
-    icon: '🌿',
+    icon: '✓',
     title: 'Nursery-Grade Cultivation',
     description: 'Hand-raised by specialist horticulturists for resilient growth and lasting color.'
   },
   {
-    icon: '🛡️',
+    icon: '✓',
     title: '2-Year Wellness Guarantee',
     description: 'Complimentary replacement or concierge support if your plant struggles within 24 months.'
   },
   {
-    icon: '🧪',
+    icon: '✓',
     title: 'Soil Intelligence Kit',
     description: 'Each order ships with a premium soil mix, moisture indicator, and feeding calendar.'
   },
   {
-    icon: '🚚',
+    icon: '✓',
     title: 'Cold-Chain Delivery',
     description: 'Insulated, shock-proof packing keeps every specimen safe from nursery to doorstep.'
   }
@@ -507,7 +507,7 @@ export default function ProductDetailPage() {
                       : 'bg-neutral-300 cursor-not-allowed'
                   }`}
                 >
-                  🛒 Add {quantity} to Cart
+                  Add {quantity} to Cart
                 </button>
               </div>
               <p className="text-sm text-neutral-600 flex items-center gap-2">
@@ -986,7 +986,7 @@ export default function ProductDetailPage() {
                     : 'bg-neutral-300 cursor-not-allowed'
                 }`}
               >
-                🛒 Add to Cart
+                Add to Cart
               </button>
             </div>
           </div>

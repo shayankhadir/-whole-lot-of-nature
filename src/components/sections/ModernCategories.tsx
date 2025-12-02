@@ -171,7 +171,7 @@ export default function ModernCategories() {
                         {category.name}
                       </h3>
                       
-                      <p className="text-white/70 text-xs leading-relaxed mb-4 line-clamp-2 antialiased">
+                      <p className="text-xs leading-relaxed mb-4 line-clamp-2 antialiased" style={{ color: '#86efac' }}>
                         {category.description || `Explore our ${category.name.toLowerCase()} collection`}
                       </p>
 

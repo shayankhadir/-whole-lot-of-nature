@@ -79,7 +79,7 @@ export default function Footer() {
 						<p className="text-xs uppercase tracking-[0.4em] text-white/85">
 							Need help?
 						</p>
-						<p className="text-lg font-semibold text-white antialiased">
+						<p className="text-lg font-semibold antialiased" style={{ color: '#86efac' }}>
 							Our greenhouse support line is open daily 9am–9pm IST.
 						</p>
 					</div>
@@ -97,10 +97,10 @@ export default function Footer() {
 							<p className="text-sm uppercase tracking-[0.35em] text-white/90">
 								Whole Lot of Nature
 							</p>
-							<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)] text-white/90">
-								Regenerative plants, handcrafted soil, and mindful rituals from
-								our forest studio in Hyderabad.
-							</p>
+						<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)]" style={{ color: '#86efac' }}>
+							Regenerative plants, handcrafted soil, and mindful rituals from
+							our forest studio in Hyderabad.
+						</p>
 						</div>
 						<div className="flex gap-3">
 							{socialLinks.map((link) => (
@@ -201,7 +201,7 @@ export default function Footer() {
 
 					<div className="lg:col-span-3">
 						<p className="font-semibold text-white">Garden dispatch</p>
-						<p className="mt-3 text-sm text-white/85">
+						<p className="mt-3 text-sm" style={{ color: '#86efac' }}>
 							Weekly soil notes, limited drops, and invites to live demos.
 						</p>
 						<form className="mt-6 space-y-3">

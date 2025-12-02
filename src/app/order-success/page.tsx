@@ -81,7 +81,7 @@ export default function OrderSuccessPage() {
             className="text-center"
           >
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Thank You for Your Order! 🌿
+              Thank You for Your Order!
             </h1>
             <p className="text-lg text-gray-300 max-w-xl mx-auto">
               Your plants are being prepared with love and care. We&apos;ll notify you once they&apos;re on their way.

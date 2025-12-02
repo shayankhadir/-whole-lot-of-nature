@@ -234,7 +234,8 @@ export default function ProductPage() {
 
                 {/* Short Description */}
                 <div 
-                  className="prose prose-invert prose-lg text-white/80 leading-relaxed"
+                  className="prose prose-invert prose-lg leading-relaxed"
+                  style={{ color: '#86efac' }}
                   dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}
                 />
               </div>

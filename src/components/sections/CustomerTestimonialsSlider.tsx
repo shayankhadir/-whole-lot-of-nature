@@ -66,7 +66,7 @@ export default function CustomerTestimonialsSlider() {
           {/* Badge */}
           <div className="flex items-center justify-center">
             <div className="inline-flex items-center rounded-full border border-[#66BB6A]/30 bg-[#66BB6A]/10 px-4 py-1.5 text-xs font-medium text-[#66BB6A] backdrop-blur-sm">
-              ✨ Community Voices
+              Community Voices
             </div>
           </div>
 

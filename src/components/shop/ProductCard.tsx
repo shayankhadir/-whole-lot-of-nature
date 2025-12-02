@@ -183,7 +183,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Short Description */}
           {shortDesc && (
-            <p className="text-xs text-white/70 mb-3 line-clamp-2 antialiased flex-1">
+            <p className="text-xs mb-3 line-clamp-2 antialiased flex-1" style={{ color: '#86efac' }}>
               {shortDesc}
             </p>
           )}
