@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+666666666667#!/usr/bin/env node
 
 /**
  * Generates 5 trendy blog posts for Whole Lot of Nature
  * Uses the blog generation agents to create SEO-optimized content
  */
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://localhost:3000';za\666666666s-]=[ ]
 
 const trendingTopics = [
   {
