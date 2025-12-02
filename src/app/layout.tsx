@@ -192,6 +192,7 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-GTNKXBTF7P');
+            ${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ? `gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');` : ''}
           `}
         </Script>
 
