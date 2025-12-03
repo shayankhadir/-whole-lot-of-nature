@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import ScheduledTrendAgent, { AgentConfig } from '@/lib/agents/scheduledTrendAgent';
+import { validateAgentApiKey, createUnauthorizedResponse } from '@/lib/auth/agentApiAuth';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +46,11 @@ function getAgent(strategyOverride?: AgentConfig['publishStrategy']): ScheduledT
 }
 
 export async function POST(request: NextRequest) {
+  // Validate API key
+  if (!validateAgentApiKey(request)) {
+    return createUnauthorizedResponse();
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -91,6 +97,11 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  // Validate API key
+  if (!validateAgentApiKey(request)) {
+    return createUnauthorizedResponse();
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
