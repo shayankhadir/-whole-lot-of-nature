@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category');
     const search = searchParams.get('search');
     const slug = searchParams.get('slug');
+    const slugs = searchParams.get('slugs'); // New parameter for multiple slugs
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined;
     const perPage = searchParams.get('per_page') ? parseInt(searchParams.get('per_page')!) : undefined;
     const excludeId = searchParams.get('exclude') ? parseInt(searchParams.get('exclude')!) : undefined;
@@ -21,6 +22,15 @@ export async function GET(request: NextRequest) {
     if (relatedTo) {
       // Fetch related products using the dedicated service method
       products = await WooCommerceService.getRelatedProducts(relatedTo, productLimit || 4);
+    } else if (slugs) {
+      // Fetch multiple products by slugs
+      const slugList = slugs.split(',').map(s => s.trim());
+      // We'll fetch all products (or a large batch) and filter by slug because WC API doesn't support multiple slugs directly efficiently
+      // Alternatively, we can make parallel requests here on the server side which is faster than client side
+      const responses = await Promise.all(
+        slugList.map(s => WooCommerceService.getProductBySlug(s))
+      );
+      products = responses.filter(p => p !== null);
     } else if (slug) {
       // Fetch single product by slug directly to ensure we include unpublished/out-of-stock entries
       const product = await WooCommerceService.getProductBySlug(slug);

@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, ShoppingCart } from 'lucide-react';
 import { DEMO_PRODUCTS } from '@/data/demoCatalog';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { useCartStore } from '@/stores/cartStore';
@@ -63,20 +63,14 @@ export default function PremiumFeaturedShowcase() {
         'succulent-desert-plante-4-succulents'
       ];
 
-      const responses = await Promise.all(
-        featuredSlugs.map(slug => fetch(`/api/products?slug=${slug}`))
-      );
-      
-      const results = await Promise.all(responses.map(res => res.json()));
+      // Fetch all products in a single request
+      const response = await fetch(`/api/products?slugs=${featuredSlugs.join(',')}`);
+      const data = await response.json();
       
       let allProducts: any[] = [];
-      results.forEach(data => {
-        if (data.success && data.data) {
-          // API returns array for slug search too
-          const items = Array.isArray(data.data) ? data.data : [data.data];
-          allProducts = [...allProducts, ...items];
-        }
-      });
+      if (data.success && data.data) {
+        allProducts = data.data;
+      }
 
       // Filter out any nulls and ensure unique
       allProducts = Array.from(new Map(allProducts.filter(p => p).map(item => [item.id, item])).values());
@@ -94,7 +88,7 @@ export default function PremiumFeaturedShowcase() {
           rating: parseFloat(p.average_rating || '4.5'),
           reviewCount: p.rating_count || 0
         }));
-        setProducts(featured.slice(0, 5)); 
+        setProducts(featured); 
       } else {
         setProducts(FALLBACK_FEATURED.slice(0, 5));
       }
