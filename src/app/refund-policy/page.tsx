@@ -91,10 +91,10 @@ export default function RefundPolicyPage() {
                 <strong>Await Approval:</strong> Our team will review your request within 24-48 hours
               </li>
               <li>
-                <strong>Arrange Shipment:</strong> Once approved, we'll provide a prepaid return label or shipping instructions
+                <strong>Arrange Shipment:</strong> Once approved, we&apos;ll provide a prepaid return label or shipping instructions
               </li>
               <li>
-                <strong>Receive Refund:</strong> Upon receipt and inspection, we'll process your refund within 5-7 business days
+                <strong>Receive Refund:</strong> Upon receipt and inspection, we&apos;ll process your refund within 5-7 business days
               </li>
             </ol>
           </section>
@@ -112,7 +112,7 @@ export default function RefundPolicyPage() {
               Once we receive and inspect your return:
             </p>
             <ul className="list-disc pl-6 text-white/75 space-y-2">
-              <li>We'll send you confirmation of receipt within 24 hours</li>
+              <li>We&apos;ll send you confirmation of receipt within 24 hours</li>
               <li>Inspection typically takes 2-3 business days</li>
               <li>Approved refunds are processed within 5-7 business days</li>
               <li>Refunds are issued to the original payment method</li>
@@ -123,7 +123,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">6. Plant Quality Guarantee</h2>
             <p className="text-white/80 leading-relaxed">
-              All our plants are carefully selected and inspected before shipment. If you receive a plant that is dead or severely damaged, we'll replace it free of charge or issue a full refund at your option.
+              All our plants are carefully selected and inspected before shipment. If you receive a plant that is dead or severely damaged, we&apos;ll replace it free of charge or issue a full refund at your option.
             </p>
           </section>
 
@@ -145,7 +145,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">8. Contact Us for Returns</h2>
             <p className="text-white/80 leading-relaxed">
-              If you have questions about our return and refund policy, please reach out to us. We're here to help!
+              If you have questions about our return and refund policy, please reach out to us. We&apos;re here to help!
             </p>
             <div className="mt-4 p-4 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-lg border border-[#2E7D32]/30">
               <p className="text-white/90 text-sm">
@@ -159,7 +159,7 @@ export default function RefundPolicyPage() {
           <div className="mt-12 p-6 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-lg border border-[#2E7D32]/30">
             <h3 className="text-lg font-semibold text-[#66BB6A] mb-3 antialiased">Your Satisfaction is Our Priority</h3>
             <p className="text-sm text-white/80">
-              We stand behind the quality of our products. If you're not satisfied with your purchase, we'll work with you to make it right.
+              We stand behind the quality of our products. If you&apos;re not satisfied with your purchase, we&apos;ll work with you to make it right.
             </p>
           </div>
         </div>

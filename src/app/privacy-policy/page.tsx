@@ -183,7 +183,7 @@ export default function PrivacyPolicyPage() {
               <li>Updates about your orders and account</li>
             </ul>
             <p className="text-white/80 leading-relaxed mt-4">
-              You can opt-out of marketing communications at any time by clicking the "unsubscribe" link in our emails or contacting us directly.
+              You can opt-out of marketing communications at any time by clicking the &quot;unsubscribe&quot; link in our emails or contacting us directly.
             </p>
           </section>
 
@@ -195,7 +195,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">10. Children's Privacy</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">10. Children&apos;s Privacy</h2>
             <p className="text-white/80 leading-relaxed">
               Our website is not intended for children under 18 years of age. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
             </p>
@@ -211,7 +211,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">12. Changes to This Policy</h2>
             <p className="text-white/80 leading-relaxed">
-              We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the "Last updated" date. We encourage you to review this policy periodically.
+              We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the &quot;Last updated&quot; date. We encourage you to review this policy periodically.
             </p>
           </section>
 
@@ -225,7 +225,7 @@ export default function PrivacyPolicyPage() {
           <div className="mt-12 p-6 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-lg border border-[#2E7D32]/30">
             <h3 className="text-lg font-semibold text-[#66BB6A] mb-3 antialiased">Your Privacy Matters</h3>
             <p className="text-sm text-white/80">
-              We are committed to transparency and protecting your privacy. If you have any questions about how we handle your personal information, please don't hesitate to reach out to us.
+              We are committed to transparency and protecting your privacy. If you have any questions about how we handle your personal information, please don&apos;t hesitate to reach out to us.
             </p>
           </div>
         </div>

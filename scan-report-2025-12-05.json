@@ -1,14 +1,14 @@
 {
-  "scanDate": "2025-12-05T01:21:18.057Z",
+  "scanDate": "2025-12-05T18:57:53.471Z",
   "stats": {
-    "filesScanned": 202,
-    "totalIssues": 126,
-    "criticalIssues": 20,
+    "filesScanned": 204,
+    "totalIssues": 127,
+    "criticalIssues": 21,
     "highIssues": 11,
     "mediumIssues": 95,
     "lowIssues": 0,
-    "totalWarnings": 793,
-    "totalSuggestions": 4132
+    "totalWarnings": 805,
+    "totalSuggestions": 4180
   },
   "designSystem": {
     "colors": {
@@ -50,7 +50,7 @@
         {
           "type": "typography",
           "severity": "medium",
-          "line": 54,
+          "line": 56,
           "code": "<h1 className=\"font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight antialiased\">",
           "message": "Large heading should use clamp() for responsive scaling",
           "fix": "Use: text-[clamp(4rem,14vw,18rem)] for H1"
@@ -60,37 +60,72 @@
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 37
+          "line": 39
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 51
+          "line": 53
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 55
+          "line": 57
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 129
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 129
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 138
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 138
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 148
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 148
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#1b5e20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 154
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 176
+          "line": 238
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 179
+          "line": 241
         },
         {
           "type": "color",
           "message": "Custom color \"#0F1E11\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 193
+          "line": 255
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 223
+          "line": 285
         }
       ],
       "suggestions": [
@@ -163,6 +198,96 @@
           "type": "component",
           "message": "Using motion component - verify Framer Motion is imported",
           "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "spacing",
+          "message": "Vertical padding without horizontal - ensure intentional",
+          "improvement": "Consider symmetric padding: py-X px-X"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "spacing",
+          "message": "Vertical padding without horizontal - ensure intentional",
+          "improvement": "Consider symmetric padding: py-X px-X"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "component",
@@ -322,7 +447,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 140,
+          "line": 142,
           "code": ": 'bg-white/10 text-white/70'",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -332,57 +457,57 @@
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 93
+          "line": 95
         },
         {
           "type": "color",
           "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 93
+          "line": 95
         },
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 104
+          "line": 106
         },
         {
           "type": "color",
           "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 104
+          "line": 106
         },
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 117
+          "line": 119
         },
         {
           "type": "color",
           "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 117
+          "line": 119
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 147
+          "line": 149
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 158
+          "line": 160
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 178
+          "line": 180
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 188
+          "line": 190
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 198
+          "line": 200
         }
       ],
       "suggestions": [
@@ -640,77 +765,77 @@
         {
           "type": "color",
           "message": "Custom color \"#0F1E11\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 126
+          "line": 128
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 134
+          "line": 136
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 143
+          "line": 145
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 147
+          "line": 149
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 151
+          "line": 153
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 155
+          "line": 157
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 163
+          "line": 165
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 174
+          "line": 176
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 183
+          "line": 185
         },
         {
           "type": "color",
           "message": "Custom color \"#1a1a1a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 193
+          "line": 195
         },
         {
           "type": "color",
           "message": "Custom color \"#1a1a1a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 203
+          "line": 205
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 222
+          "line": 224
         },
         {
           "type": "color",
           "message": "Custom color \"#1a1a1a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 231
+          "line": 233
         },
         {
           "type": "color",
           "message": "Custom color \"#1a1a1a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 244
+          "line": 246
         },
         {
           "type": "color",
           "message": "Custom color \"#2C2C2C\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 280
+          "line": 282
         }
       ],
       "suggestions": [
@@ -982,7 +1107,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 144,
+          "line": 141,
           "code": "idle: 'bg-white/10 text-white/60',",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -992,102 +1117,102 @@
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 153
+          "line": 150
         },
         {
           "type": "color",
           "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 153
+          "line": 150
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 166
+          "line": 163
         },
         {
           "type": "color",
           "message": "Custom color \"#4CAF50\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 166
+          "line": 163
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 166
+          "line": 163
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 175
+          "line": 172
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 179
+          "line": 176
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 185
+          "line": 182
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 191
+          "line": 188
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 205
+          "line": 202
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 226
+          "line": 223
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 244
+          "line": 241
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 283
+          "line": 280
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 322
+          "line": 319
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 361
+          "line": 358
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 400
+          "line": 397
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 445
+          "line": 442
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 452
+          "line": 449
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 459
+          "line": 456
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 468
+          "line": 465
         }
       ],
       "suggestions": [
@@ -1495,22 +1620,22 @@
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 110
+          "line": 112
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 113
+          "line": 115
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 128
+          "line": 130
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 137
+          "line": 139
         }
       ],
       "suggestions": [
@@ -1666,7 +1791,7 @@
         {
           "type": "typography",
           "severity": "medium",
-          "line": 157,
+          "line": 158,
           "code": "className=\"font-montserrat text-7xl md:text-8xl lg:text-9xl font-bold text-white uppercase leading-[0.9] text-center antialiased\"",
           "message": "Large heading should use clamp() for responsive scaling",
           "fix": "Use: text-[clamp(4rem,14vw,18rem)] for H1"
@@ -1674,7 +1799,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 261,
+          "line": 263,
           "code": "className=\"w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent transition-all backdrop-blur-sm\"",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -1682,7 +1807,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 277,
+          "line": 279,
           "code": "className=\"w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-transparent transition-all backdrop-blur-sm pr-12\"",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -1692,57 +1817,57 @@
         {
           "type": "color",
           "message": "Custom color \"#010a05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 130
+          "line": 131
         },
         {
           "type": "color",
           "message": "Custom color \"#041107\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 130
+          "line": 131
         },
         {
           "type": "color",
           "message": "Custom color \"#010a05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 130
+          "line": 131
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 161
+          "line": 162
         },
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 187
+          "line": 188
         },
         {
           "type": "color",
           "message": "Custom color \"#0a1f0d\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 187
+          "line": 188
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 313
+          "line": 315
         },
         {
           "type": "color",
           "message": "Custom color \"#4285F4\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 351
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#34A853\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 352
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#FBBC05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
           "line": 353
         },
         {
           "type": "color",
-          "message": "Custom color \"#EA4335\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "message": "Custom color \"#34A853\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
           "line": 354
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#FBBC05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 355
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#EA4335\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 356
         }
       ],
       "suggestions": [
@@ -1792,11 +1917,6 @@
           "improvement": "Add \"use client\"; at top of file if not server component"
         },
         {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
@@ -1880,6 +2000,11 @@
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
           "type": "component",
@@ -2090,52 +2215,51 @@
     },
     {
       "file": "src\\app\\auth\\signup\\page.tsx",
-      "issues": [],
+      "issues": [
+        {
+          "type": "accessibility",
+          "severity": "critical",
+          "line": 333,
+          "code": "<span className=\"px-2 bg-white text-gray-500\">Or continue with</span>",
+          "message": "Insufficient color contrast: light text on light background",
+          "fix": "Use dark text on light backgrounds for WCAG AA compliance"
+        }
+      ],
       "warnings": [
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 137
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#daf2d0\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 150
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 331
+          "line": 139
         },
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 339
+          "line": 341
         },
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 339
+          "line": 341
         },
         {
           "type": "color",
           "message": "Custom color \"#4285F4\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 343
+          "line": 345
         },
         {
           "type": "color",
           "message": "Custom color \"#34A853\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 347
+          "line": 349
         },
         {
           "type": "color",
           "message": "Custom color \"#FBBC05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 351
+          "line": 353
         },
         {
           "type": "color",
           "message": "Custom color \"#EA4335\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 355
+          "line": 357
         }
       ],
       "suggestions": [
@@ -2904,222 +3028,222 @@
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 577
+          "line": 579
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 590
+          "line": 592
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 631
+          "line": 633
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 635
+          "line": 637
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 639
+          "line": 641
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 669
+          "line": 671
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 677
+          "line": 679
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 680
+          "line": 682
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 727
+          "line": 729
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 741
+          "line": 743
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 757
+          "line": 759
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 811
+          "line": 813
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 815
+          "line": 817
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 819
+          "line": 821
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 832
+          "line": 834
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 836
+          "line": 838
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 842
+          "line": 844
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 852
+          "line": 854
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 908
+          "line": 910
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 963
+          "line": 965
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 973
+          "line": 975
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 983
+          "line": 985
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 993
+          "line": 995
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1008
+          "line": 1010
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1032
+          "line": 1034
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1066
+          "line": 1068
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1081
+          "line": 1083
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1194
+          "line": 1196
         },
         {
           "type": "color",
           "message": "Custom color \"#1B5E20\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 1202
+          "line": 1204
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1208
+          "line": 1210
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1225
+          "line": 1227
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1239
+          "line": 1241
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1268
+          "line": 1270
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1357
+          "line": 1359
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1491
+          "line": 1493
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1517
+          "line": 1519
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1545
+          "line": 1547
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1549
+          "line": 1551
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1553
+          "line": 1555
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1557
+          "line": 1559
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1565
+          "line": 1567
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1580
+          "line": 1582
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1590
+          "line": 1592
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 1603
+          "line": 1605
         }
       ],
       "suggestions": [
@@ -4021,7 +4145,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 232,
+          "line": 231,
           "code": "<span className=\"px-4 py-2 text-sm font-medium bg-white/5 text-white\">",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -4031,42 +4155,42 @@
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 111
+          "line": 110
         },
         {
           "type": "color",
           "message": "Custom color \"#0a2810\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 111
+          "line": 110
         },
         {
           "type": "color",
           "message": "Custom color \"#061208\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 111
+          "line": 110
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 128
+          "line": 127
         },
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 149
+          "line": 148
         },
         {
           "type": "color",
           "message": "Custom color \"#0a2810\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 149
+          "line": 148
         },
         {
           "type": "color",
           "message": "Custom color \"#061208\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 149
+          "line": 148
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 333
+          "line": 332
         }
       ],
       "suggestions": [
@@ -5785,20 +5909,15 @@
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 43
+          "line": 46
         },
         {
           "type": "color",
           "message": "Custom color \"#daf2d0\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 43
+          "line": 46
         }
       ],
       "suggestions": [
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
         {
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
@@ -5813,27 +5932,27 @@
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 14
+          "line": 16
         },
         {
           "type": "color",
           "message": "Custom color \"#daf2d0\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 23
+          "line": 25
         },
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 32
+          "line": 34
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 32
+          "line": 34
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 32
+          "line": 34
         }
       ],
       "suggestions": [
@@ -6104,32 +6223,32 @@
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 383
+          "line": 386
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 448
+          "line": 451
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 596
+          "line": 609
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 733
+          "line": 746
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 788
+          "line": 801
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 877
+          "line": 890
         }
       ],
       "suggestions": [
@@ -10824,6 +10943,104 @@
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        }
+      ]
+    },
+    {
+      "file": "src\\app\\shipping-policy\\page.tsx",
+      "issues": [],
+      "warnings": [
+        {
+          "type": "color",
+          "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 18
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 35
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#0F1E11\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 35
+        }
+      ],
+      "suggestions": [
+        {
+          "type": "spacing",
+          "message": "Vertical padding without horizontal - ensure intentional",
+          "improvement": "Consider symmetric padding: py-X px-X"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "typography",
@@ -15936,23 +16153,28 @@
         },
         {
           "type": "color",
-          "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 103
+          "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 55
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 107
+          "line": 106
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 110
         },
         {
           "type": "color",
           "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 118
+          "line": 121
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 132
+          "line": 135
         }
       ],
       "suggestions": [
@@ -15970,6 +16192,11 @@
           "type": "component",
           "message": "Using motion component - verify Framer Motion is imported",
           "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "component",
@@ -16150,32 +16377,32 @@
         {
           "type": "color",
           "message": "Custom color \"#0A1F12\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 115
+          "line": 109
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 116
+          "line": 110
         },
         {
           "type": "color",
           "message": "Custom color \"rgba(\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 117
+          "line": 111
         },
         {
           "type": "color",
           "message": "Custom color \"#E8F5E9\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 139
+          "line": 133
         },
         {
           "type": "color",
           "message": "Custom color \"#A5D6A7\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 141
+          "line": 135
         },
         {
           "type": "color",
           "message": "Custom color \"#E8F5E9\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 156
+          "line": 150
         }
       ],
       "suggestions": [
@@ -16298,6 +16525,16 @@
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "typography",
@@ -16612,7 +16849,7 @@
         {
           "type": "accessibility",
           "severity": "critical",
-          "line": 211,
+          "line": 215,
           "code": "className=\"w-full rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/50 focus:border-[#66BB6A] focus:outline-none backdrop-blur-md\"",
           "message": "Insufficient color contrast: light text on light background",
           "fix": "Use dark text on light backgrounds for WCAG AA compliance"
@@ -16620,7 +16857,7 @@
         {
           "type": "typography",
           "severity": "high",
-          "line": 229,
+          "line": 233,
           "code": "text-[10px]",
           "message": "Hardcoded font size 10px doesn't follow golden ratio scale",
           "fix": "Use: text-base (16px), text-[26px] (H6), text-[42px] (H5), text-[68px] (H4), text-[110px] (H3), text-[178px] (H2), or clamp() for H1"
@@ -16655,27 +16892,27 @@
         {
           "type": "color",
           "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 100
+          "line": 104
         },
         {
           "type": "color",
           "message": "Custom color \"#4ADE80\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 168
+          "line": 172
         },
         {
           "type": "color",
           "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 204
+          "line": 208
         },
         {
           "type": "color",
           "message": "Custom color \"#0b1b12\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 215
+          "line": 219
         },
         {
           "type": "color",
           "message": "Custom color \"#52a258\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 215
+          "line": 219
         }
       ],
       "suggestions": [
@@ -16688,11 +16925,6 @@
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
           "type": "typography",
@@ -17338,16 +17570,7 @@
     },
     {
       "file": "src\\components\\layout\\MobileHeader.tsx",
-      "issues": [
-        {
-          "type": "typography",
-          "severity": "high",
-          "line": 57,
-          "code": "text-[10px]",
-          "message": "Hardcoded font size 10px doesn't follow golden ratio scale",
-          "fix": "Use: text-base (16px), text-[26px] (H6), text-[42px] (H5), text-[68px] (H4), text-[110px] (H3), text-[178px] (H2), or clamp() for H1"
-        }
-      ],
+      "issues": [],
       "warnings": [
         {
           "type": "color",
@@ -17357,27 +17580,27 @@
         {
           "type": "color",
           "message": "Custom color \"#0F1E11\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 101
+          "line": 78
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 133
+          "line": 110
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 177
+          "line": 154
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 188
+          "line": 165
         },
         {
           "type": "component",
           "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 197
+          "line": 174
         }
       ],
       "suggestions": [
@@ -17402,24 +17625,24 @@
           "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
+          "type": "component",
+          "message": "Component uses hooks - may need \"use client\" directive",
+          "improvement": "Add \"use client\"; at top of file if not server component"
+        },
+        {
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
-          "type": "component",
-          "message": "Using motion component - verify Framer Motion is imported",
-          "improvement": "Import: import { motion } from \"framer-motion\""
-        },
-        {
           "type": "typography",
           "message": "Consider adding antialiased class for better font rendering",
           "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "component",
-          "message": "Using motion component - verify Framer Motion is imported",
-          "improvement": "Import: import { motion } from \"framer-motion\""
         },
         {
           "type": "typography",
@@ -17430,26 +17653,6 @@
           "type": "component",
           "message": "Semi-transparent background without backdrop-blur",
           "improvement": "Add backdrop-blur-md for glassmorphism effect"
-        },
-        {
-          "type": "component",
-          "message": "Component uses hooks - may need \"use client\" directive",
-          "improvement": "Add \"use client\"; at top of file if not server component"
-        },
-        {
-          "type": "component",
-          "message": "Component uses hooks - may need \"use client\" directive",
-          "improvement": "Add \"use client\"; at top of file if not server component"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
-        },
-        {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
           "type": "typography",
@@ -17492,9 +17695,9 @@
           "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
-          "type": "typography",
-          "message": "Consider adding antialiased class for better font rendering",
-          "improvement": "Add \"antialiased\" to className for smoother text"
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "typography",
@@ -18715,17 +18918,7 @@
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 38
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#12501a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 43
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#12501a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 44
+          "line": 40
         },
         {
           "type": "color",
@@ -18734,63 +18927,73 @@
         },
         {
           "type": "color",
+          "message": "Custom color \"#12501a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 46
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#12501a\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 47
+        },
+        {
+          "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 55
+          "line": 57
         },
         {
           "type": "color",
           "message": "Custom color \"#010a05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 65
+          "line": 67
         },
         {
           "type": "color",
           "message": "Custom color \"#041107\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 65
+          "line": 67
         },
         {
           "type": "color",
           "message": "Custom color \"#010a05\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 65
+          "line": 67
         },
         {
           "type": "color",
           "message": "Custom color \"#010904\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 77
+          "line": 79
         },
         {
           "type": "color",
           "message": "Custom color \"#020f07\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 77
+          "line": 79
         },
         {
           "type": "color",
           "message": "Custom color \"#010904\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 77
+          "line": 79
         },
         {
           "type": "color",
           "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 101
+          "line": 103
         },
         {
           "type": "color",
           "message": "Custom color \"#1e3a28\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 119
+          "line": 121
         },
         {
           "type": "color",
           "message": "Custom color \"#0F1E11\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 119
+          "line": 121
         },
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 131
+          "line": 133
         },
         {
           "type": "color",
           "message": "Custom color \"#0D1B0F\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 137
+          "line": 139
         }
       ],
       "suggestions": [
@@ -19717,32 +19920,31 @@
     },
     {
       "file": "src\\components\\sections\\CustomerTestimonialsSlider.tsx",
-      "issues": [],
+      "issues": [
+        {
+          "type": "accessibility",
+          "severity": "high",
+          "line": 114,
+          "code": "<Image",
+          "message": "Image without alt text",
+          "fix": "Add alt=\"\" for decorative images or alt=\"description\" for meaningful images"
+        }
+      ],
       "warnings": [
         {
           "type": "color",
           "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 54
+          "line": 55
         },
         {
           "type": "typography",
           "message": "Custom font family detected - ensure it aligns with design system",
-          "line": 74
+          "line": 75
         },
         {
           "type": "color",
           "message": "Custom color \"#daf2d0\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 74
-        },
-        {
-          "type": "color",
-          "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
-          "line": 79
-        },
-        {
-          "type": "component",
-          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
-          "line": 142
+          "line": 75
         }
       ],
       "suggestions": [
@@ -19790,6 +19992,11 @@
           "type": "component",
           "message": "Using motion component - verify Framer Motion is imported",
           "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
         },
         {
           "type": "typography",
@@ -22926,6 +23133,124 @@
           "type": "component",
           "message": "Using motion component - verify Framer Motion is imported",
           "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        }
+      ]
+    },
+    {
+      "file": "src\\components\\sections\\YouTubeShowcase.tsx",
+      "issues": [],
+      "warnings": [
+        {
+          "type": "color",
+          "message": "Custom color \"#86efac\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 27
+        },
+        {
+          "type": "typography",
+          "message": "Custom font family detected - ensure it aligns with design system",
+          "line": 61
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 74
+        },
+        {
+          "type": "component",
+          "message": "Border radius larger than design system standard (6-8px / rounded-lg)",
+          "line": 84
+        },
+        {
+          "type": "color",
+          "message": "Custom color \"#0d3512\" - verify it aligns with design system (Emerald #2E7D32, Turquoise #66BB6A, Charcoal #0A0A0A)",
+          "line": 95
+        }
+      ],
+      "suggestions": [
+        {
+          "type": "spacing",
+          "message": "Vertical padding without horizontal - ensure intentional",
+          "improvement": "Consider symmetric padding: py-X px-X"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "component",
+          "message": "Using motion component - verify Framer Motion is imported",
+          "improvement": "Import: import { motion } from \"framer-motion\""
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
+        },
+        {
+          "type": "component",
+          "message": "Semi-transparent background without backdrop-blur",
+          "improvement": "Add backdrop-blur-md for glassmorphism effect"
+        },
+        {
+          "type": "typography",
+          "message": "Consider adding antialiased class for better font rendering",
+          "improvement": "Add \"antialiased\" to className for smoother text"
         },
         {
           "type": "typography",

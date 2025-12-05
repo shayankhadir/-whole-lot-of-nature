@@ -67,24 +67,38 @@ export default function PremiumFeaturedShowcase() {
       const response = await fetch(`/api/products?slugs=${featuredSlugs.join(',')}`);
       const data = await response.json();
       
-      let allProducts: any[] = [];
+      // Define a loose type for the API response to avoid 'any'
+      interface ApiProduct {
+        id: number;
+        name: string;
+        slug: string;
+        price: string;
+        sale_price?: string;
+        regular_price?: string;
+        images: { src: string }[];
+        categories: { name: string }[];
+        average_rating?: string;
+        rating_count?: number;
+      }
+
+      let allProducts: ApiProduct[] = [];
       if (data.success && data.data) {
         allProducts = data.data;
       }
 
       // Filter out any nulls and ensure unique
-      allProducts = Array.from(new Map(allProducts.filter(p => p).map(item => [item.id, item])).values());
+      const uniqueProducts = Array.from(new Map(allProducts.filter(p => p).map(item => [item.id, item])).values());
 
-      if (allProducts.length > 0) {
-        const featured = allProducts.map((p: any) => ({
+      if (uniqueProducts.length > 0) {
+        const featured = uniqueProducts.map((p) => ({
           id: p.id,
           name: p.name,
           slug: p.slug,
-          price: p.price,
+          price: p.price || '0',
           sale_price: p.sale_price,
           regular_price: p.regular_price,
-          image: p.images[0]?.src || '/placeholder.jpg',
-          category: p.categories[0]?.name || 'Shop',
+          image: p.images?.[0]?.src || '/placeholder.jpg',
+          category: p.categories?.[0]?.name || 'Shop',
           rating: parseFloat(p.average_rating || '4.5'),
           reviewCount: p.rating_count || 0
         }));
@@ -198,7 +212,7 @@ export default function PremiumFeaturedShowcase() {
                           addItem({
                             id: String(mainProduct.id),
                             name: mainProduct.name,
-                            price: parseFloat(mainProduct.price),
+                            price: parseFloat(mainProduct.price || '0'),
                             originalPrice: mainProduct.regular_price ? parseFloat(mainProduct.regular_price) : undefined,
                             image: mainProduct.image,
                             quantity: 1,
@@ -236,7 +250,7 @@ export default function PremiumFeaturedShowcase() {
                       id={String(product.id)}
                       name={product.name}
                       image={product.image}
-                      price={parseFloat(product.price)}
+                      price={parseFloat(product.price || '0')}
                       originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
                       rating={product.rating || 4.5}
                       reviewCount={product.reviewCount || 0}
@@ -244,7 +258,7 @@ export default function PremiumFeaturedShowcase() {
                       onAddToCart={() => addItem({
                         id: String(product.id),
                         name: product.name,
-                        price: parseFloat(product.price),
+                        price: parseFloat(product.price || '0'),
                         originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
                         image: product.image,
                         quantity: 1,

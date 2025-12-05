@@ -24,7 +24,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#66BB6A] mb-4 antialiased">1. Acceptance of Terms</h2>
             <p className="text-white/80 leading-relaxed">
-              By accessing and using Whole Lot of Nature's website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
+              By accessing and using Whole Lot of Nature&apos;s website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
             </p>
           </section>
 
@@ -140,7 +140,7 @@ export default function TermsPage() {
 
           <div className="mt-12 p-6 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-lg border border-[#2E7D32]/30">
             <p className="text-sm text-white/80">
-              By using Whole Lot of Nature's website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions.
+              By using Whole Lot of Nature&apos;s website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions.
             </p>
           </div>
         </div>

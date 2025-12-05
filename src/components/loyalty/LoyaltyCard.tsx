@@ -117,7 +117,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
           </p>
         )}
 
-        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold antialiased">🎉 You're at max tier!</p>}
+        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold antialiased">🎉 You&apos;re at max tier!</p>}
       </div>
 
       {/* Benefits */}
