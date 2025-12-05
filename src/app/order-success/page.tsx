@@ -6,6 +6,30 @@ import Link from 'next/link';
 import { CheckCircle, Package, Truck, MapPin, ArrowRight, Leaf } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Order Success | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Order Success | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/order-success',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Order Success | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/order-success',
+  },
+};
+
+
+
 interface OrderDetails {
   orderId: string;
   status: string;

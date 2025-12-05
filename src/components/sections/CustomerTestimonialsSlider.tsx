@@ -6,6 +6,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import Image from 'next/image';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 
@@ -15,28 +16,28 @@ const testimonials = [
     location: "Mumbai",
     rating: 5,
     text: "Amazing quality plants! My indoor garden has never looked better. The organic potting mix worked wonders for my succulents. Highly recommended!",
-    image: "👩‍🦱"
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Rajesh Kumar",
     location: "Delhi",
     rating: 5,
     text: "Fast delivery and excellent packaging. The plants arrived healthy and fresh. Great customer service too. Will definitely order again!",
-    image: "👨‍💼"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Anita Patel",
     location: "Bangalore",
     rating: 5,
     text: "Love the organic fertilizers! My vegetable garden is thriving. The gardening tips in their blog section are very helpful.",
-    image: "👩‍🌾"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Mohammed Ali",
     location: "Hyderabad",
     rating: 5,
     text: "Professional service and quality products. The customer support helped me choose the right plants for my balcony garden. Excellent experience!",
-    image: "👨‍🏫"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
   }
 ];
 
@@ -51,7 +52,7 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-20 bg-[#0d3512] overflow-hidden">
+    <section className="relative py-24 bg-[#0d3512] overflow-hidden">
       {/* Background Grid Effect */}
       <BackgroundGrid />
       
@@ -65,7 +66,7 @@ export default function CustomerTestimonialsSlider() {
         >
           {/* Badge */}
           <div className="flex items-center justify-center">
-            <div className="inline-flex items-center rounded-full border border-[#66BB6A]/30 bg-[#66BB6A]/10 px-4 py-1.5 text-xs font-medium text-[#66BB6A] backdrop-blur-sm">
+            <div className="inline-flex items-center rounded-full border border-[#66BB6A]/30 bg-[#66BB6A]/10 px-4 py-1.5 text-xs font-medium text-[#66BB6A] backdrop-blur-sm uppercase tracking-wider">
               Community Voices
             </div>
           </div>
@@ -76,7 +77,7 @@ export default function CustomerTestimonialsSlider() {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-lg max-w-2xl mx-auto antialiased font-light" style={{ color: '#86efac' }}>
+          <p className="text-lg max-w-2xl mx-auto antialiased font-light text-emerald-100/80">
             Don't just take our word for it. Here's what plant lovers across India say about us.
           </p>
 
@@ -98,25 +99,30 @@ export default function CustomerTestimonialsSlider() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <SpotlightCard className="h-full p-7 relative">
-                <Quote className="absolute top-5 right-5 w-7 h-7 text-emerald-400/40" />
-                <div className="flex items-center mb-4">
+              <SpotlightCard className="h-full p-8 relative bg-white/5 border-white/10">
+                <Quote className="absolute top-6 right-6 w-8 h-8 text-emerald-400/20" />
+                <div className="flex items-center mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-emerald-400 fill-current" />
+                    <Star key={i} className="w-4 h-4 text-emerald-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-white/90 mb-6 text-base leading-relaxed font-medium antialiased">
+                <p className="text-emerald-50/90 mb-8 text-base leading-relaxed font-light antialiased italic">
                   "{testimonial.text}"
                 </p>
-                <div className="flex items-center mt-auto">
-                  <div className="text-3xl mr-4 antialiased">
-                    {testimonial.image}
+                <div className="flex items-center mt-auto gap-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-400/30">
+                    <Image 
+                      src={testimonial.image} 
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-cream-50 text-base font-montserrat antialiased">
+                    <h4 className="font-semibold text-white text-sm font-montserrat antialiased tracking-wide">
                       {testimonial.name}
                     </h4>
-                    <p className="text-white/85 text-xs">
+                    <p className="text-emerald-400/60 text-xs uppercase tracking-wider">
                       {testimonial.location}
                     </p>
                   </div>
@@ -132,14 +138,14 @@ export default function CustomerTestimonialsSlider() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <p className="text-white font-semibold mb-4">
+          <p className="text-emerald-100/60 font-medium mb-6 text-sm tracking-wide uppercase">
             Join thousands of happy customers
           </p>
           <a
             href="/shop"
-            className="inline-flex items-center px-7 py-3 bg-[#2E7D32] text-white font-semibold rounded-xl shadow-lg hover:bg-[#66BB6A] transition-colors text-lg antialiased"
+            className="inline-flex items-center px-8 py-4 bg-[#2E7D32] text-white font-semibold rounded-full shadow-lg hover:bg-[#66BB6A] transition-all hover:scale-105 text-sm tracking-wider uppercase antialiased"
           >
             Start Your Garden Journey
           </a>

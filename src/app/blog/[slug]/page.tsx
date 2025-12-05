@@ -9,6 +9,32 @@ import { WooCommerceService, BlogPost } from '@/lib/services/woocommerceService'
 import SectionHeader from '@/components/content/SectionHeader';
 import { CTASection } from '@/components/content/CTAButton';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+  description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+  openGraph: {
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/blog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/blog',
+  },
+};
+*/
+
+
+
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params.slug as string;
@@ -39,7 +65,7 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <p className="text-2xl font-bold text-black antialiased">📖 Loading Article...</p>
       </div>
     );
@@ -47,7 +73,7 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <p className="text-2xl font-bold text-black mb-4 antialiased">Article Not Found</p>
           <Link href="/blog" className="px-6 py-3 bg-[#2E7D32] text-white rounded-lg font-semibold hover:bg-[#2E7D32]">

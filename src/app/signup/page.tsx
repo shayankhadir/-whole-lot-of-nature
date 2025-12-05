@@ -6,6 +6,30 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Signup | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Signup | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/signup',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Signup | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/signup',
+  },
+};
+
+
+
 interface SignupFormData {
   name: string;
   email: string;

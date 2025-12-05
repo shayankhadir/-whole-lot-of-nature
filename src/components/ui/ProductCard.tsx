@@ -196,7 +196,11 @@ export const ProductCard = ({
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={onAddToCart}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onAddToCart?.();
+          }}
           className="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
         >
           <ShoppingCart size={18} />

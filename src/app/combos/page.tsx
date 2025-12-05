@@ -5,6 +5,30 @@ import { motion } from 'framer-motion';
 import ComboProductsGrid from '@/components/shop/ComboProductsGrid';
 import { sampleCombos, type ComboProduct } from '@/data/combos';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Plant Combos & Bundles | Whole Lot of Nature',
+  description: 'Discover curated plant combos and bundles. Save on complete gardening solutions with our expert-selected plant combinations and accessories.',
+  openGraph: {
+    title: 'Plant Combos & Bundles | Whole Lot of Nature',
+    description: 'Discover curated plant combos and bundles. Save on complete gardening solutions with our expert-selected plant combinations and accessories.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/combos',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Plant Combos & Bundles | Whole Lot of Nature',
+    description: 'Discover curated plant combos and bundles. Save on complete gardening solutions with our expert-selected plant combinations and accessories.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/combos',
+  },
+};
+
+
+
 export default function CombosPage() {
   const [cartItems, setCartItems] = useState<string[]>([]);
   const [wishlistItems, setWishlistItems] = useState<string[]>([]);

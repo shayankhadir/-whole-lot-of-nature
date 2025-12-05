@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { 
+import type { Metadata } from 'next';
+import {
   TrendingUp, 
   Package, 
   BarChart3, 
@@ -14,8 +15,30 @@ import {
   AlertCircle,
   FileText,
   Settings,
-  RefreshCw
+  RefreshCw,
+  PenTool,
+  Search
 } from 'lucide-react';
+
+const metadata: Metadata = {
+  title: 'Admin | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Admin | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/admin',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Admin | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/admin',
+  },
+};
 
 interface AgentStatus {
   id: string;
@@ -29,6 +52,8 @@ export default function AdminDashboard() {
   const [agents, setAgents] = useState<AgentStatus[]>([
     { id: 'growth', name: 'Growth Agent (Lead Gen & Sales)', status: 'idle' },
     { id: 'trends', name: 'Trend Agent (Content & SEO)', status: 'idle' },
+    { id: 'content', name: 'Content Agent (Blog & Social)', status: 'idle' },
+    { id: 'seo', name: 'SEO Agent (Optimization)', status: 'idle' },
     { id: 'inventory', name: 'Inventory Sync (WooCommerce)', status: 'idle' },
     { id: 'plantsy', name: 'Plantsy (AI Plant Care Chatbot)', status: 'idle' },
   ]);
@@ -41,30 +66,37 @@ export default function AdminDashboard() {
     try {
       let endpoint = '';
       let method = 'POST';
+      let body = {};
 
       switch (agentId) {
         case 'growth':
-          endpoint = '/api/growth-agent/stats';
-          method = 'GET';
+          endpoint = '/api/admin/run-script';
+          body = { script: 'growth' };
           break;
         case 'trends':
           endpoint = '/api/agent/run?action=execute';
+          break;
+        case 'content':
+          endpoint = '/api/admin/run-script';
+          body = { script: 'content' };
+          break;
+        case 'seo':
+          endpoint = '/api/admin/run-script';
+          body = { script: 'seo' };
           break;
         case 'inventory':
           endpoint = '/api/inventory/sync';
           break;
         case 'plantsy':
           endpoint = '/api/agents/plantsy';
-          method = 'POST';
+          body = { question: 'System health check - respond if online' };
           break;
       }
 
       const res = await fetch(endpoint, { 
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: method === 'POST' && agentId === 'plantsy' 
-          ? JSON.stringify({ question: 'System health check - respond if online' })
-          : undefined
+        body: Object.keys(body).length > 0 ? JSON.stringify(body) : undefined
       });
       
       const data = await res.json();
@@ -233,6 +265,84 @@ export default function AdminDashboard() {
                 </button>
                 <Link
                   href="/admin/trends"
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Content Agent */}
+          <div className="bg-white/5 border border-pink-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-pink-500/50 transition-colors">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-pink-500/20 rounded-xl">
+                  <PenTool className="w-6 h-6 text-pink-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white antialiased">Content Agent</h3>
+                  <p className="text-white/60 text-sm">Blog & Social Media Automation</p>
+                </div>
+              </div>
+              <span className={`text-xs font-medium px-3 py-1 rounded-full ${getStatusBadge(agents.find(a => a.id === 'content')?.status || 'idle')}`}>
+                {agents.find(a => a.id === 'content')?.status || 'idle'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center gap-2 text-sm text-white/50">
+                {getStatusIcon(agents.find(a => a.id === 'content')?.status || 'idle')}
+                <span>{agents.find(a => a.id === 'content')?.message || 'Ready to run'}</span>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => runAgent('content')}
+                  disabled={agents.find(a => a.id === 'content')?.status === 'running'}
+                  className="flex items-center gap-1 px-4 py-2 bg-pink-600 hover:bg-pink-700 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition"
+                >
+                  <Play className="w-4 h-4" /> Run
+                </button>
+                <Link
+                  href="/admin/content"
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* SEO Agent */}
+          <div className="bg-white/5 border border-orange-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-orange-500/50 transition-colors">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-orange-500/20 rounded-xl">
+                  <Search className="w-6 h-6 text-orange-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white antialiased">SEO Agent</h3>
+                  <p className="text-white/60 text-sm">Search Engine Optimization</p>
+                </div>
+              </div>
+              <span className={`text-xs font-medium px-3 py-1 rounded-full ${getStatusBadge(agents.find(a => a.id === 'seo')?.status || 'idle')}`}>
+                {agents.find(a => a.id === 'seo')?.status || 'idle'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center gap-2 text-sm text-white/50">
+                {getStatusIcon(agents.find(a => a.id === 'seo')?.status || 'idle')}
+                <span>{agents.find(a => a.id === 'seo')?.message || 'Ready to run'}</span>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => runAgent('seo')}
+                  disabled={agents.find(a => a.id === 'seo')?.status === 'running'}
+                  className="flex items-center gap-1 px-4 py-2 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition"
+                >
+                  <Play className="w-4 h-4" /> Run
+                </button>
+                <Link
+                  href="/admin/seo"
                   className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition"
                 >
                   Dashboard

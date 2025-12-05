@@ -5,6 +5,30 @@ import { Calendar, User } from 'lucide-react';
 import { getPosts, Post } from '@/lib/api/wordpress';
 import Button from '@/components/ui/Button';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+  description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+  openGraph: {
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/blog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/blog',
+  },
+};
+
+
+
 export default async function BlogPage() {
   const posts: Post[] = await getPosts({ per_page: 12 });
 

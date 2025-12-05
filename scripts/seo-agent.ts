@@ -3,6 +3,8 @@
  * Scans entire website for SEO issues and auto-generates optimizations
  */
 
+console.log('SEO Agent script loaded');
+
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -754,9 +756,8 @@ Add this to your product page:
 // MAIN EXECUTION
 // ============================================================================
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  (async function main() {
-    const agent = new SEOAgent();
-    await agent.scan();
-  })().catch(console.error);
-}
+// Run if executed directly
+(async function main() {
+  const agent = new SEOAgent();
+  await agent.scan();
+})().catch(console.error);

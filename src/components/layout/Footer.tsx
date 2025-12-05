@@ -94,9 +94,13 @@ export default function Footer() {
 				<div className="grid gap-12 lg:grid-cols-12">
 					<div className="space-y-6 lg:col-span-4">
 						<div>
-							<p className="text-sm uppercase tracking-[0.35em] text-white/90">
-								Whole Lot of Nature
-							</p>
+							<Link href="/" className="inline-block">
+								<img
+									src="/logo.png"
+									alt="Whole Lot of Nature"
+									className="h-16 w-auto object-contain brightness-0 invert"
+								/>
+							</Link>
 						<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)]" style={{ color: '#86efac' }}>
 							Regenerative plants, handcrafted soil, and mindful rituals from
 							our forest studio in Hyderabad.

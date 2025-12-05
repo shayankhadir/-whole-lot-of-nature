@@ -2,6 +2,12 @@ import { Metadata } from 'next'
 import ContactForm from '@/components/forms/ContactForm'
 
 export const metadata: Metadata = {
+  openGraph: {
+    title: 'Contact | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/contact',
+  },
   title: 'Contact Us | Whole Lot of Nature',
   description: 'Get in touch with Whole Lot of Nature for product inquiries, orders, and support.',
 }

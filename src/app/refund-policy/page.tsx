@@ -3,6 +3,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  openGraph: {
+    title: 'Refund Policy | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/refund-policy',
+  },
   title: 'Refund Policy | Whole Lot of Nature',
   description: 'Learn about our refund and return policy for plants and gardening products.',
 }

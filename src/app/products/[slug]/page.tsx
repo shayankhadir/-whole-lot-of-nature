@@ -18,6 +18,32 @@ import { useCartStore } from '@/stores/cartStore';
 import { useDrag } from '@use-gesture/react';
 import { ChevronLeft, ChevronRight, ThumbsUp, ThumbsDown, Camera, Filter, CheckCircle, Sun, Droplet, Sprout, RotateCw } from 'lucide-react';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Products | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Products | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/products',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Products | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/products',
+  },
+};
+*/
+
+
+
 interface ProductReview {
   id: number;
   author: string;
@@ -153,6 +179,7 @@ export default function ProductDetailPage() {
   const [reviewFilter, setReviewFilter] = useState<ReviewFilter>('helpful');
   const [carouselIndex, setCarouselIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const { addItem } = useCartStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -501,6 +528,16 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   disabled={!product.in_stock}
+                  onClick={() => addItem({
+                    id: String(product.id),
+                    name: product.name,
+                    price: Number(product.price || product.regular_price || 0),
+                    originalPrice: product.regular_price ? Number(product.regular_price) : undefined,
+                    image: product.images?.[0]?.src || '',
+                    quantity: quantity,
+                    type: 'product',
+                    inStock: product.in_stock ?? true,
+                  })}
                   className={`flex-1 inline-flex items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-semibold text-white shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
                     product.in_stock
                       ? 'bg-emerald-700 hover:bg-emerald-800 shadow-emerald-200'

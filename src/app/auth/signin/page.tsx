@@ -8,6 +8,32 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, EyeOff, Leaf, CheckCircle2, Mail } from 'lucide-react';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Auth | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Auth | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/auth',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Auth | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/auth',
+  },
+};
+*/
+
+
+
 export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -159,7 +185,8 @@ export default function SignInPage() {
       </div>
 
       {/* Right Side - Sign In Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gradient-to-br from-[#0D1B0F] to-[#0a1f0d]">
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-[#0D1B0F] to-[#0a1f0d]">
+        <h1 className="text-4xl font-bold mb-6 text-white lg:hidden">Auth</h1>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}

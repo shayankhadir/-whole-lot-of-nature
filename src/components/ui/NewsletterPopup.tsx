@@ -98,7 +98,7 @@ export default function NewsletterPopup() {
               </p>
 
               {status === 'success' ? (
-                <div className="mt-6 flex items-center justify-center rounded-lg bg-[#2E7D32]/20 p-4 text-[#4ADE80]">
+                <div className="mt-6 flex items-center justify-center rounded-lg bg-[#2E7D32]/20 p-4 text-[#2E7D32]">
                   <span className="font-medium">Welcome to the family!</span>
                 </div>
               ) : (
@@ -112,7 +112,7 @@ export default function NewsletterPopup() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-[#2E7D32] focus:outline-none focus:ring-1 focus:ring-[#2E7D32] transition-all"
+                      className="w-full rounded-lg border border-white/10 bg-gray-900/50 px-4 py-3 text-gray-100 placeholder-gray-400 focus:border-[#2E7D32] focus:outline-none focus:ring-1 focus:ring-[#2E7D32] transition-all"
                     />
                   </div>
                   <button

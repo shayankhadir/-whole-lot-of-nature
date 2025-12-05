@@ -15,7 +15,7 @@ interface SEOIssue {
   file: string;
   type: 'meta' | 'heading' | 'image' | 'content' | 'schema' | 'sitemap';
   severity: 'critical' | 'high' | 'medium' | 'low';
-  issue: string;
+  message: string;
   suggestion?: string;
 }
 
@@ -104,10 +104,10 @@ class SEOAutoFix {
     const hasMetadataExport = content.includes('export const metadata');
     
     // Determine fixes needed
-    const needsTitle = issues.some(i => i.issue.includes('Missing page title'));
-    const needsDescription = issues.some(i => i.issue.includes('Missing meta description'));
-    const needsOG = issues.some(i => i.issue.includes('Missing OG'));
-    const needsH1 = issues.some(i => i.issue.includes('Missing H1 heading'));
+    const needsTitle = issues.some(i => i.message.includes('Missing page title'));
+    const needsDescription = issues.some(i => i.message.includes('Missing meta description'));
+    const needsOG = issues.some(i => i.message.includes('Missing OG'));
+    const needsH1 = issues.some(i => i.message.includes('Missing H1 heading'));
 
     if (hasMetadataExport) {
       // Update existing metadata

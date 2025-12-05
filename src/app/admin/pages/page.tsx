@@ -4,6 +4,32 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Globe, FileText, Layout, ShoppingBag, Users, BookOpen } from 'lucide-react';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Admin | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Admin | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/admin',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Admin | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/admin',
+  },
+};
+*/
+
+
+
 const siteMap = [
   {
     category: 'Main Pages',

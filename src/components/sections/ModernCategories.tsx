@@ -41,11 +41,11 @@ export default function ModernCategories() {
       .then(data => {
         if (data.success && data.data?.length) {
           const allCategories: WooCategory[] = data.data;
-          const topLevelCategories = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0);
+          const topLevelCategories = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0 && cat.name !== 'Uncategorized');
           const childMap: Record<number, WooCategory[]> = {};
 
           allCategories
-            .filter((cat) => cat.count > 0 && cat.parent !== 0)
+            .filter((cat) => cat.count > 0 && cat.parent !== 0 && cat.name !== 'Uncategorized')
             .forEach((child) => {
               if (!childMap[child.parent]) {
                 childMap[child.parent] = [];

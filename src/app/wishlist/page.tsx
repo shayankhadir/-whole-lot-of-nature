@@ -8,6 +8,30 @@ import { useCartStore } from '@/stores/cartStore';
 import Button from '@/components/ui/Button';
 import { formatPrice } from '@/lib/utils/pricing';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'My Wishlist | Whole Lot of Nature',
+  description: 'Save your favorite plants and gardening products. Easy access to your wishlist for future purchases at Whole Lot of Nature.',
+  openGraph: {
+    title: 'My Wishlist | Whole Lot of Nature',
+    description: 'Save your favorite plants and gardening products. Easy access to your wishlist for future purchases at Whole Lot of Nature.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/wishlist',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'My Wishlist | Whole Lot of Nature',
+    description: 'Save your favorite plants and gardening products. Easy access to your wishlist for future purchases at Whole Lot of Nature.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/wishlist',
+  },
+};
+
+
+
 export default function WishlistPage() {
   const { items, remove, clear } = useWishlistStore();
   const { addItem, openCart } = useCartStore();

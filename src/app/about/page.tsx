@@ -5,6 +5,32 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Leaf, Heart, Users, Sprout, Droplet, Recycle } from 'lucide-react';
 
+
+
+/*
+export const metadata: Metadata = {
+  title: 'About Us - Premium Plant Nursery | Whole Lot of Nature',
+  description: 'Learn about Whole Lot of Nature - your trusted plant nursery in Bangalore. Premium quality plants, expert gardening advice, and sustainable solutions for your green space.',
+  openGraph: {
+    title: 'About Us - Premium Plant Nursery | Whole Lot of Nature',
+    description: 'Learn about Whole Lot of Nature - your trusted plant nursery in Bangalore. Premium quality plants, expert gardening advice, and sustainable solutions for your green space.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/about',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us - Premium Plant Nursery | Whole Lot of Nature',
+    description: 'Learn about Whole Lot of Nature - your trusted plant nursery in Bangalore. Premium quality plants, expert gardening advice, and sustainable solutions for your green space.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/about',
+  },
+};
+*/
+
+
+
 // Note: This is a client component, so metadata export won't work here.
 // For proper SEO, consider converting to server component or using Route Handlers.
 
@@ -28,10 +54,10 @@ export default function AboutPage() {
               Since 2023
             </span>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight antialiased">
-              Stay Loyal to the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Soil</span>
+              Whole Lot of Nature: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Rooted in Love</span>
             </h1>
-            <p className="font-inter text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto antialiased">
-              We believe in organic, sustainable gardening that connects you back to nature.
+            <p className="font-inter text-lg md:text-xl text-emerald-100 leading-relaxed max-w-3xl mx-auto antialiased">
+              We believe in organic, sustainable gardening that connects you back to nature. Your trusted partner for premium plants and eco-friendly gardening essentials in India.
             </p>
           </motion.div>
         </div>
@@ -53,7 +79,7 @@ export default function AboutPage() {
                 Our Story
               </h2>
 
-              <div className="space-y-6 text-lg text-white/90 antialiased leading-relaxed">
+              <div className="space-y-6 text-lg text-emerald-100 antialiased leading-relaxed">
                 <p>
                   Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
                 </p>
@@ -72,6 +98,66 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-black/20"
+            >
+               <Image
+                src="/logo.png"
+                alt="Whole Lot of Nature Logo"
+                fill
+                className="object-contain p-12"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div id="contact" className="py-24 relative">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-4xl font-bold text-white mb-4">Get in Touch</h2>
+            <p className="text-emerald-100 text-lg">Have questions about your plants? We're here to help.</p>
+          </div>
+          
+          <form className="space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-emerald-200 mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-emerald-200 mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-emerald-200 mb-2">Message</label>
+              <textarea
+                id="message"
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                placeholder="How can we help you grow?"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full py-4 bg-[#2E7D32] hover:bg-[#1b5e20] text-white font-bold rounded-lg transition-colors shadow-lg shadow-green-900/20"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
             >
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                 <Image

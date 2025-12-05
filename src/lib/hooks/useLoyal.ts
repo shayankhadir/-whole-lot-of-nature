@@ -1,3 +1,4 @@
+﻿'use client';
 /**
  * useLoyal Hook
  * Custom hook for accessing loyalty functionality in components
@@ -94,3 +95,4 @@ export const useLoyaltyPoints = (orderTotal: number): number => {
   const { currentTier } = useLoyal();
   return LoyaltyService.calculatePointsFromPurchase(orderTotal, currentTier);
 };
+

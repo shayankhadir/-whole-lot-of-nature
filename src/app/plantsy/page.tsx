@@ -1,4 +1,12 @@
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  openGraph: {
+    title: 'Plantsy | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/plantsy',
+  },
   title: 'Plantsy | Plant Doctor & Chatbot',
   description: 'Chat with Plantsy to get instant plant care advice grounded in Whole Lot of Nature products and guides.',
 };

@@ -41,31 +41,8 @@ export default function MobileHeader() {
             />
           </Link>
 
-          <div className="flex items-center gap-2">
-            <Link
-              href="/wishlist"
-              className="relative p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors backdrop-blur-md"
-              aria-label="View wishlist"
-            >
-              <Heart className="w-5 h-5" />
-              <AnimatePresence>
-                {wishlistCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    className="absolute -top-0.5 -right-0.5 bg-[#2E7D32] text-white text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center"
-                  >
-                    {wishlistCount > 9 ? '9+' : wishlistCount}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </Link>
-            <CartIcon
-              className="h-5 w-5 text-white"
-              buttonClassName="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-            />
-          </div>
+          {/* Icons removed to avoid duplication with floating nav */}
+          <div className="w-10" /> 
         </div>
       </header>
 
@@ -130,7 +107,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
                   key={item.name}
                   href={item.href}
                   onClick={() => onClose(false)}
-                  className="flex items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-sm font-semibold tracking-wide uppercase"
+                  className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold tracking-wide uppercase hover:bg-white/10 transition-colors"
                 >
                   <span>{item.name}</span>
                   <ChevronRight className="w-4 h-4 text-white/85" />
@@ -139,28 +116,28 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
             </nav>
 
             <div className="space-y-4">
-              <p className="text-xs font-semibold tracking-wider text-white/85 uppercase">Shop categories</p>
-              <div className="space-y-3">
+              <p className="text-xs font-semibold tracking-wider text-[#66BB6A] uppercase pl-1">Collections</p>
+              <div className="grid grid-cols-1 gap-3">
                 {shopCollections.map((collection) => (
-                  <div key={collection.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 backdrop-blur-md">
+                  <div key={collection.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 backdrop-blur-md hover:border-[#66BB6A]/30 transition-colors">
                     <Link
                       href={collection.href}
                       onClick={() => onClose(false)}
-                      className="flex items-center justify-between"
+                      className="flex items-center justify-between mb-3"
                     >
-                      <span className="flex items-center gap-2 font-semibold">
+                      <span className="flex items-center gap-2 font-semibold text-white/90">
                         <collection.icon className="w-4 h-4 text-[#66BB6A]" />
                         {collection.title}
                       </span>
                       <ChevronRight className="w-4 h-4 text-white/60" />
                     </Link>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2">
                       {collection.items.map((item) => (
                         <Link
                           key={item.name}
                           href={item.href}
                           onClick={() => onClose(false)}
-                          className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/85 hover:border-[#66BB6A] hover:text-white"
+                          className="rounded-lg bg-white/5 px-3 py-1.5 text-xs text-white/70 hover:bg-[#66BB6A]/20 hover:text-[#66BB6A] transition-colors"
                         >
                           {item.name}
                         </Link>

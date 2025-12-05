@@ -9,6 +9,32 @@ import { EyeIcon, EyeSlashIcon, CheckIcon } from '@heroicons/react/24/outline';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Auth | Whole Lot of Nature',
+  description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+  openGraph: {
+    title: 'Auth | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/auth',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Auth | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/auth',
+  },
+};
+*/
+
+
+
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -110,7 +136,8 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0D1B0F] px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#0D1B0F] px-4 sm:px-6 lg:px-8 py-12">
+      <h1 className="text-4xl font-bold mb-6 text-white">Auth</h1>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,7 +149,7 @@ export default function SignUpPage() {
             <motion.h1 
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              className="text-3xl font-bold text-[#daf2d0] mb-2 antialiased"
+              className="text-3xl font-bold text-emerald-900 mb-2 antialiased"
             >
               Create Account
             </motion.h1>
@@ -303,7 +330,7 @@ export default function SignUpPage() {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-[#0D1B0F] text-emerald-200/60">Or continue with</span>
+                <span className="px-2 bg-white text-gray-500">Or continue with</span>
               </div>
             </div>
 

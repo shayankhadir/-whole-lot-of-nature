@@ -5,7 +5,7 @@ const WooCommerce = new WooCommerceRestApi({
   url: process.env.WORDPRESS_URL || 'https://wholelotofnature.com',
   consumerKey: process.env.WC_CONSUMER_KEY || '',
   consumerSecret: process.env.WC_CONSUMER_SECRET || '',
-  version: 'wc/v2', // Changed to Legacy API
+  version: 'wc/v3', // Updated to v3 for Reviews support
   queryStringAuth: true // For https
 });
 
@@ -412,11 +412,7 @@ export class WooCommerceService {
     author: number;
   }>> {
     try {
-      const response = await fetch(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}&status=publish`, {
-        headers: {
-          'Authorization': `Basic ${Buffer.from(`${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`).toString('base64')}`
-        }
-      });
+      const response = await fetch(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}&status=publish`);
 
       if (!response.ok) {
         console.error('Error fetching blog posts:', response.statusText);
@@ -447,12 +443,7 @@ export class WooCommerceService {
   static async getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
     try {
       const response = await fetch(
-        `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&slug=${slug}&status=publish`,
-        {
-          headers: {
-            'Authorization': `Basic ${Buffer.from(`${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`).toString('base64')}`
-          }
-        }
+        `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&slug=${slug}&status=publish`
       );
 
       if (!response.ok) return null;
@@ -488,12 +479,7 @@ export class WooCommerceService {
   static async getBlogPostsByCategory(categoryId: number, limit: number = 10): Promise<BlogPost[]> {
     try {
       const response = await fetch(
-        `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&categories=${categoryId}&per_page=${limit}&status=publish`,
-        {
-          headers: {
-            'Authorization': `Basic ${Buffer.from(`${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`).toString('base64')}`
-          }
-        }
+        `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&categories=${categoryId}&per_page=${limit}&status=publish`
       );
 
       if (!response.ok) return [];

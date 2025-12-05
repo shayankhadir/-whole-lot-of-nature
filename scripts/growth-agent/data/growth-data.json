@@ -1,8 +1,74 @@
 {
-  "lastRun": null,
-  "seoScore": 0,
-  "leads": [],
+  "lastRun": "2025-12-02T21:48:16.744Z",
+  "seoScore": 75,
+  "leads": [
+    {
+      "id": "L30",
+      "name": "Sarah Green",
+      "role": "Interior Designer",
+      "company": "Urban Spaces Design",
+      "source": "LinkedIn",
+      "niche": "Interior Design",
+      "contact": "sarah@urbanspaces.mock",
+      "status": "CONTACTED",
+      "score": 60,
+      "lastContacted": "2025-12-02T21:48:19.990Z"
+    },
+    {
+      "id": "L31",
+      "name": "Green Thumb Nursery",
+      "role": "Procurement Manager",
+      "company": "Green Thumb Local",
+      "source": "Directory",
+      "niche": "Gardening",
+      "contact": "orders@greenthumb.mock",
+      "status": "CONTACTED",
+      "score": 55,
+      "lastContacted": "2025-12-02T21:48:20.018Z"
+    },
+    {
+      "id": "L32",
+      "name": "AquaLife Enthusiast",
+      "role": "Influencer",
+      "company": "Instagram",
+      "source": "Instagram",
+      "niche": "Aquascaping",
+      "contact": "@aqualife_mock",
+      "status": "NEW",
+      "score": 30
+    }
+  ],
   "activities": [
+    {
+      "timestamp": "2025-12-02T21:48:20.024Z",
+      "type": "SUCCESS",
+      "message": "Growth cycle completed successfully"
+    },
+    {
+      "timestamp": "2025-12-02T21:48:20.019Z",
+      "type": "SUCCESS",
+      "message": "Drafted outreach for Green Thumb Nursery"
+    },
+    {
+      "timestamp": "2025-12-02T21:48:19.991Z",
+      "type": "SUCCESS",
+      "message": "Drafted outreach for Sarah Green"
+    },
+    {
+      "timestamp": "2025-12-02T21:48:19.852Z",
+      "type": "INFO",
+      "message": "Found 3 new leads"
+    },
+    {
+      "timestamp": "2025-12-02T21:48:18.798Z",
+      "type": "SUCCESS",
+      "message": "Completed SEO audit and content strategy"
+    },
+    {
+      "timestamp": "2025-12-02T21:48:16.746Z",
+      "type": "INFO",
+      "message": "Starting growth cycle"
+    },
     {
       "timestamp": "2025-11-21T01:55:23.204Z",
       "type": "INFO",

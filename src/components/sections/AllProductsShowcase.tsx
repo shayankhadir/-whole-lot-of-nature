@@ -8,12 +8,14 @@ import { ArrowRight, ShoppingCart, Heart, Eye } from 'lucide-react';
 import { Product } from '@/types/product';
 import { DEMO_PRODUCTS } from '@/data/demoCatalog';
 import { getDisplayPrice, getOriginalPrice, isOnSale } from '@/lib/utils/pricing';
+import { useCartStore } from '@/stores/cartStore';
 
 const FALLBACK_PRODUCTS = DEMO_PRODUCTS;
 
 export default function AllProductsShowcase() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addItem } = useCartStore();
 
   useEffect(() => {
     fetch('/api/products?limit=12')
@@ -167,6 +169,19 @@ export default function AllProductsShowcase() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          addItem({
+                            id: String(product.id),
+                            name: product.name,
+                            price: Number(product.price || 0),
+                            originalPrice: product.regular_price ? Number(product.regular_price) : undefined,
+                            image: product.images?.[0]?.src || '',
+                            type: 'product',
+                            inStock: product.in_stock ?? true,
+                          });
+                        }}
                         className="p-3 bg-[#2E7D32] text-white rounded-full hover:bg-[#66BB6A] transition-all"
                       >
                         <ShoppingCart className="w-5 h-5" />

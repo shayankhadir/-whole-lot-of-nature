@@ -53,6 +53,7 @@ export default function FAQPage() {
     <>
       <FAQSchema faqs={faqs} />
       <main className="min-h-screen bg-[#0D1B0F]">
+        <h1 className="text-4xl font-bold mb-6">Faq</h1>
         <FAQSection className="pt-24" />
       </main>
     </>

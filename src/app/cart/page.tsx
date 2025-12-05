@@ -8,7 +8,30 @@ import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils/pricing';
 import FreeShippingProgress from '@/components/cart/FreeShippingProgress';
 import CouponCode from '@/components/cart/CouponCode';
-import { 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Shopping Cart | Whole Lot of Nature',
+  description: 'Review your selected plants and gardening supplies. Fast checkout and secure payment for premium plants delivered to your doorstep in Bangalore.',
+  openGraph: {
+    title: 'Shopping Cart | Whole Lot of Nature',
+    description: 'Review your selected plants and gardening supplies. Fast checkout and secure payment for premium plants delivered to your doorstep in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/cart',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shopping Cart | Whole Lot of Nature',
+    description: 'Review your selected plants and gardening supplies. Fast checkout and secure payment for premium plants delivered to your doorstep in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/cart',
+  },
+};
+
+
+import {
   TrashIcon, 
   MinusIcon, 
   PlusIcon, 

@@ -9,6 +9,32 @@ import { WooCommerceService, BlogPost } from '@/lib/services/woocommerceService'
 import SectionHeader from '@/components/content/SectionHeader';
 import { CTASection } from '@/components/content/CTAButton';
 
+import type { Metadata } from 'next';
+
+/*
+export const metadata: Metadata = {
+  title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+  description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+  openGraph: {
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/blog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/blog',
+  },
+};
+*/
+
+
+
 export default function BlogCategoryPage() {
   const params = useParams();
   const categoryId = parseInt(params.id as string);
@@ -54,6 +80,7 @@ export default function BlogCategoryPage() {
 
   return (
     <div className="bg-white">
+      <h1 className="text-4xl font-bold mb-6">Plant Care Tips & Gardening Guides</h1>
       {/* Hero Section */}
       <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-white">
         <div className="max-w-4xl mx-auto">

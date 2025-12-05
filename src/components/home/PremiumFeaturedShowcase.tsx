@@ -196,8 +196,31 @@ export default function PremiumFeaturedShowcase() {
                     <p className="text-white/80 line-clamp-2 mb-8 max-w-md">
                       Experience premium quality with our top-rated selection, perfect for enhancing your green space.
                     </p>
-                    <div className="flex items-center gap-2 text-white font-medium group-hover:gap-4 transition-all">
-                      Shop Now <ArrowRight className="w-5 h-5" />
+                    <div className="flex flex-wrap items-center gap-4">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          addItem({
+                            id: String(mainProduct.id),
+                            name: mainProduct.name,
+                            price: parseFloat(mainProduct.price),
+                            originalPrice: mainProduct.regular_price ? parseFloat(mainProduct.regular_price) : undefined,
+                            image: mainProduct.image,
+                            quantity: 1,
+                            type: 'product',
+                            inStock: true,
+                            category: mainProduct.category
+                          });
+                        }}
+                        className="px-6 py-3 bg-[#2E7D32] hover:bg-[#66BB6A] text-white rounded-full font-medium transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2 z-20 relative"
+                      >
+                        <ShoppingCart className="w-5 h-5" />
+                        Add to Cart
+                      </button>
+                      <span className="flex items-center gap-2 text-white font-medium group-hover:gap-4 transition-all">
+                        View Details <ArrowRight className="w-5 h-5" />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -214,27 +237,29 @@ export default function PremiumFeaturedShowcase() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <ProductCard
-                    id={String(product.id)}
-                    name={product.name}
-                    image={product.image}
-                    price={parseFloat(product.price)}
-                    originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
-                    rating={product.rating || 4.5}
-                    reviewCount={product.reviewCount || 0}
-                    variant="glass"
-                    onAddToCart={() => addItem({
-                      id: String(product.id),
-                      name: product.name,
-                      price: parseFloat(product.price),
-                      originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
-                      image: product.image,
-                      quantity: 1,
-                      type: 'product',
-                      inStock: true,
-                      category: product.category
-                    })}
-                  />
+                  <Link href={`/shop/${product.slug}`} className="block h-full">
+                    <ProductCard
+                      id={String(product.id)}
+                      name={product.name}
+                      image={product.image}
+                      price={parseFloat(product.price)}
+                      originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
+                      rating={product.rating || 4.5}
+                      reviewCount={product.reviewCount || 0}
+                      variant="glass"
+                      onAddToCart={() => addItem({
+                        id: String(product.id),
+                        name: product.name,
+                        price: parseFloat(product.price),
+                        originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
+                        image: product.image,
+                        quantity: 1,
+                        type: 'product',
+                        inStock: true,
+                        category: product.category
+                      })}
+                    />
+                  </Link>
                 </motion.div>
               ))}
             </div>

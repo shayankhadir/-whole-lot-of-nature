@@ -7,6 +7,30 @@ import { Product } from '@/types/product';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, X, Search } from 'lucide-react';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Buy Premium Plants Online | Whole Lot of Nature',
+  description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+  openGraph: {
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/shop',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/shop',
+  },
+};
+
+
+
 // Separate component to handle search params
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -134,6 +158,7 @@ function ShopContent() {
 
   return (
     <div className="min-h-screen bg-[#030a06] text-white">
+      <h1 className="text-4xl font-bold mb-6">Shop Premium Plants Online</h1>
       {/* Header Section */}
       <div className="relative bg-[#05150a] border-b border-white/5 py-16 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">

@@ -87,11 +87,11 @@ h4 {
 }
 
 p {
-  color: var(--ink-700);
+  color: inherit;
 }
 
 strong {
-  color: var(--ink-900);
+  color: inherit;
 }
 
 ::selection {

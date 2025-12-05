@@ -92,8 +92,6 @@ class BusinessGrowthAgent {
 }
 
 // Run the agent
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const agent = new BusinessGrowthAgent();
-  agent.runGrowthCycle().catch(console.error);
-}
+const agent = new BusinessGrowthAgent();
+agent.runGrowthCycle().catch(console.error);
 

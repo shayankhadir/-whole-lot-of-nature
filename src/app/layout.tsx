@@ -85,9 +85,9 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
@@ -97,7 +97,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable} antialiased`}>
       <body className="font-sans">
         {/* Google Tag Manager (noscript) */}
         <noscript>

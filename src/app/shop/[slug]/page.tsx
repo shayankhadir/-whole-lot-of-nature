@@ -14,6 +14,30 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Lens } from '@/components/ui/lens';
 import { cleanProductDescription } from '@/lib/utils';
 
+import type { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Buy Premium Plants Online | Whole Lot of Nature',
+  description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+  openGraph: {
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/shop',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com/shop',
+  },
+};
+
+
+
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();

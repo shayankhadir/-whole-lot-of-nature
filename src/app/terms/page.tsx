@@ -1,6 +1,12 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  openGraph: {
+    title: 'Terms | Whole Lot of Nature',
+    description: 'Discover premium plants and gardening supplies at Whole Lot of Nature. Expert advice and quality products for your green space in Bangalore.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/terms',
+  },
   title: 'Terms & Conditions | Whole Lot of Nature',
   description: 'Read our terms and conditions for using Whole Lot of Nature services.',
 }

@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  openGraph: {
+    title: 'Plant Care Tips & Gardening Guides | Whole Lot of Nature Blog',
+    description: 'Discover expert plant care tips, gardening guides, and sustainable living advice. Learn how to grow and maintain healthy plants indoors and outdoors.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com/blog',
+  },
   title: 'Best Online Gardening Store in Bangalore (2025 Guide)',
   description:
     'Looking for the best online gardening store in Bangalore? Here’s a practical guide: what to look for, must-have products, and how to choose the right soil mixes and plants for your home.',

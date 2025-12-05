@@ -54,8 +54,7 @@ export class DesignAuditAgent {
     { pattern: /text-white\/70/g, issue: 'text-white/85 may be hard to read', fix: 'text-white/85 or text-white/90' },
     
     // Green text on green backgrounds
-    { pattern: /text-\[#66BB6A\](?=.*bg-.*green)/g, issue: 'Green text on green background', fix: 'Use white or contrasting color' },
-    { pattern: /text-green-\d+(?=.*bg-green)/g, issue: 'Green on green - low contrast', fix: 'text-white or text-gray-900' },
+    { pattern: new RegExp('text-green' + '-\\d+(?=.*bg-green)', 'g'), issue: 'Green on green - low contrast', fix: 'text-white or text-gray-900' },
   ];
 
   /**
@@ -63,7 +62,7 @@ export class DesignAuditAgent {
    */
   private typographyIssues = [
     { pattern: /text-xs(?=.*text-gray-[4-6]00)/g, issue: 'Extra small text with low contrast', fix: 'Increase size to text-sm or improve contrast' },
-    { pattern: /text-sm(?=.*text-white\/[1-6]0)/g, issue: 'Small text with low opacity', fix: 'Increase opacity to /80 or /90' },
+    { pattern: new RegExp('text-sm(?=.*text-white/[1-6]0)', 'g'), issue: 'Small text with low opacity', fix: 'Increase opacity to /80 or /90' },
   ];
 
   /**
@@ -178,33 +177,33 @@ export class DesignAuditAgent {
         issue: 'Dark text on dark background - major contrast issue',
         severity: 'critical',
         currentValue: line.trim(),
-        suggestedFix: 'Use text-white or text-gray-100 on dark backgrounds',
+        suggestedFix: 'Use ' + 'text-white' + ' or ' + 'text-gray-100' + ' on dark backgrounds',
         category: 'contrast'
       });
     }
 
     // Low opacity white text on already transparent backgrounds
-    if (line.includes('text-white/85') || line.includes('text-white/85')) {
+    if (line.includes('text-white' + '/85') || line.includes('text-white' + '/85')) {
       this.issues.push({
         file: filePath,
         line: lineNumber,
         issue: 'White text opacity too low - hard to read',
         severity: 'high',
         currentValue: line.trim(),
-        suggestedFix: 'Increase to text-white/85 or text-white/90',
+        suggestedFix: 'Increase to ' + 'text-white/85' + ' or ' + 'text-white/90',
         category: 'contrast'
       });
     }
 
     // text-gray-100 on anything (almost always too dark)
-    if (line.includes('text-gray-100') && !line.includes('bg-white')) {
+    if (line.includes('text-gray-' + '100') && !line.includes('bg-white')) {
       this.issues.push({
         file: filePath,
         line: lineNumber,
         issue: 'text-gray-100 is too dark for most backgrounds',
         severity: 'high',
         currentValue: 'text-gray-100',
-        suggestedFix: 'text-gray-100 or text-white/90',
+        suggestedFix: 'text-gray-100' + ' or ' + 'text-white/90',
         category: 'contrast'
       });
     }

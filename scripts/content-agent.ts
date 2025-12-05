@@ -558,13 +558,13 @@ export class ContentAgent {
 
 // ===== CLI INTERFACE =====
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const args = process.argv.slice(2);
-  const command = args[0];
-  const agent = new ContentAgent();
+// Run directly
+const args = process.argv.slice(2);
+const command = args[0];
+const agent = new ContentAgent();
 
-  (async function main() {
-    if (!command) {
+(async function main() {
+  if (!command) {
       console.log(`
   ✍️  CONTENT GENERATION AGENT
   Usage: npm run content:<command> [options]
@@ -601,4 +601,3 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.error('❌ Error generating content:', error);
     }
   })();
-}
