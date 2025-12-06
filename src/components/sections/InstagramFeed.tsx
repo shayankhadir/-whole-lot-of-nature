@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Instagram, Heart } from 'lucide-react';
 import { fetchInstagramFeed } from '@/lib/graphql';
 
@@ -137,10 +138,11 @@ export default function InstagramFeed() {
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden bg-[var(--ink-700)]">
-                <img
+                <Image
                   src={post.media_url}
                   alt={post.caption}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-md">

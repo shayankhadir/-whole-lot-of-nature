@@ -81,10 +81,11 @@ export default function BestSellers() {
                 <div className="relative bg-[var(--ink-700)]/40 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[var(--emerald-700)]/30 hover:border-emerald-400/50 backdrop-blur-md">
                   {/* Image Container */}
                   <div className="relative h-48 bg-[var(--ink-700)] overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                       {product.sales}

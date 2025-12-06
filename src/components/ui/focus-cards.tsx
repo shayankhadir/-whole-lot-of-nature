@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 type Card = {
@@ -30,9 +31,10 @@ export const Card = React.memo(
         hovered !== null && hovered !== index && "blur-sm scale-[0.98] opacity-60"
       )}
     >
-      <img
+      <Image
         src={card.src}
         alt={card.title}
+        fill
         className="object-cover absolute inset-0"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,10,6,0.95)] via-[rgba(2,10,6,0.65)] to-transparent" />

@@ -1,21 +1,23 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
 import PremiumFeaturedShowcase from '@/components/home/PremiumFeaturedShowcase';
 import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
-import AllProductsShowcase from '@/components/sections/AllProductsShowcase';
-import CustomerTestimonialsSlider from '@/components/sections/CustomerTestimonialsSlider';
-import Features from '@/components/sections/Features';
-import BlogPreview from '@/components/sections/BlogPreview';
-import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
-import FinalCTA from '@/components/sections/FinalCTA';
-import FAQSection from '@/components/sections/FAQSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
-import NewsletterPopup from '@/components/ui/NewsletterPopup';
 
 import type { Metadata } from 'next';
+
+const AllProductsShowcase = dynamic(() => import('@/components/sections/AllProductsShowcase'));
+const CustomerTestimonialsSlider = dynamic(() => import('@/components/sections/CustomerTestimonialsSlider'));
+const Features = dynamic(() => import('@/components/sections/Features'));
+const BlogPreview = dynamic(() => import('@/components/sections/BlogPreview'));
+const YouTubeShowcase = dynamic(() => import('@/components/sections/YouTubeShowcase'));
+const FinalCTA = dynamic(() => import('@/components/sections/FinalCTA'));
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
+const NewsletterPopup = dynamic(() => import('@/components/ui/NewsletterPopup'), { ssr: false });
 
 /*
 export const metadata: Metadata = {

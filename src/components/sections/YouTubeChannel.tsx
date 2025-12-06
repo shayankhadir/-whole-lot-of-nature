@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Youtube, Play, Users } from 'lucide-react';
 
 interface YouTubeVideo {
@@ -96,10 +97,11 @@ export default function YouTubeChannel() {
             >
               {/* Thumbnail */}
               <div className="relative h-40 overflow-hidden bg-gray-800">
-                <img
+                <Image
                   src={video.thumbnail}
                   alt={video.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {/* Play Button Overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center backdrop-blur-md">

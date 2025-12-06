@@ -8,6 +8,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export interface BlogPost {
   id: string | number;
@@ -50,9 +51,11 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
       >
         <div className="flex gap-4">
           {post.featured_image && (
-            <img
+            <Image
               src={post.featured_image}
               alt={post.title}
+              width={80}
+              height={80}
               className="w-20 h-20 object-cover rounded border border-black flex-shrink-0"
             />
           )}
@@ -76,10 +79,11 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
         {/* Image */}
         {post.featured_image && (
           <div className="relative h-64 overflow-hidden bg-gray-200 border-b-2 border-black">
-            <img
+            <Image
               src={post.featured_image}
               alt={post.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
         )}
@@ -149,10 +153,11 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
       {/* Image */}
       {post.featured_image && (
         <div className="relative h-48 overflow-hidden bg-gray-200 border-b-2 border-black">
-          <img
+          <Image
             src={post.featured_image}
             alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-300"
           />
         </div>
       )}

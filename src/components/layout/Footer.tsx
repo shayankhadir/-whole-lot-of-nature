@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const socialLinks = [
 	{
@@ -95,9 +96,11 @@ export default function Footer() {
 					<div className="space-y-6 lg:col-span-4">
 						<div>
 							<Link href="/" className="inline-block">
-								<img
+								<Image
 									src="/logo.png"
 									alt="Whole Lot of Nature"
+									width={150}
+									height={64}
 									className="h-16 w-auto object-contain brightness-0 invert"
 								/>
 							</Link>
