@@ -31,13 +31,13 @@ export default function NotFound() {
 
         {/* Description */}
         <p className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed antialiased">
-          Something went wrong, or the page you're looking for doesn't exist.
-          Let's get you back on track!
+          Something went wrong, or the page you&apos;re looking for doesn&apos;t exist.
+          Let&apos;s get you back on track!
         </p>
 
         {/* Additional Info */}
         <p className="text-lg text-gray-100 mb-10 italic antialiased">
-          It seems our digital garden has a gap. Let's plant you back to the right place! 🌱
+          It seems our digital garden has a gap. Let&apos;s plant you back to the right place! 🌱
         </p>
 
         {/* CTA Buttons */}

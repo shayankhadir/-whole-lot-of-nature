@@ -18,7 +18,7 @@ export async function GET() {
 
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch growth stats' }, { status: 500 });
   }
 }

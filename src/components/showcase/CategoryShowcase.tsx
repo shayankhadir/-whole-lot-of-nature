@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -108,7 +108,7 @@ export const CategoryShowcase = ({
 
 interface CategoryCardProps {
   category: Category;
-  variants?: any;
+  variants?: Variants;
 }
 
 const CategoryCard = ({ category, variants }: CategoryCardProps) => {

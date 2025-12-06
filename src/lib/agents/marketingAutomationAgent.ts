@@ -12,7 +12,7 @@ import LandingPageGenerator from '@/lib/agents/landingPageGenerator';
 
 export type AutomationStepStatus = 'pending' | 'completed' | 'failed';
 
-export interface AutomationStep<T = any> {
+export interface AutomationStep<T = unknown> {
   status: AutomationStepStatus;
   data: T | null;
   error?: string;
@@ -156,23 +156,25 @@ class MarketingAutomationAgent {
             pages: successfulPages.map((page) => ({ url: page.url, path: page.path })),
           },
         };
-      } catch (error: any) {
-        console.error('❌ Error generating landing pages:', error.message);
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('❌ Error generating landing pages:', message);
         results.step3 = {
           status: 'failed',
           data: null,
-          error: error.message,
+          error: message,
         };
-        results.errors.push(`Page generation failed: ${error.message}`);
+        results.errors.push(`Page generation failed: ${message}`);
       }
-    } catch (error: any) {
-      console.error('❌ Error generating SEO content:', error.message);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('❌ Error generating SEO content:', message);
       results.step2 = {
         status: 'failed',
         data: null,
-        error: error.message,
+        error: message,
       };
-      results.errors.push(`Content generation failed: ${error.message}`);
+      results.errors.push(`Content generation failed: ${message}`);
     }
 
     return this.buildResponse(results);
@@ -231,8 +233,8 @@ class MarketingAutomationAgent {
 
         competitorData.push(analysis);
         console.log(`  ✅ Analyzed ${competitor.name}`);
-      } catch (error: any) {
-        console.log(`  ⚠️ Error with ${competitor.name}: ${error.message}`);
+      } catch (error: unknown) {
+        console.log(`  ⚠️ Error with ${competitor.name}: ${error instanceof Error ? error.message : String(error)}`);
         competitorData.push(
           this.competitorAgent.generateMockData(competitor.name, competitor.url),
         );

@@ -21,7 +21,7 @@ export default function ProductCarousel() {
     const node = containerRef.current;
     if (!node) return;
     let raf = 0;
-    let speed = 0.4; // px per frame
+    const speed = 0.4; // px per frame
 
     const step = () => {
       node.scrollLeft += speed;

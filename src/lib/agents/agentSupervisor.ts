@@ -11,7 +11,7 @@ export interface AgentRunResult {
   name: SupervisableAgent;
   success: boolean;
   durationMs: number;
-  data?: any;
+  data?: unknown;
   error?: string;
 }
 
@@ -46,12 +46,12 @@ class AgentSupervisor {
       try {
         const data = await this.runAgent(name);
         results.push({ name, success: true, data, durationMs: Date.now() - start });
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Agent ${name} failed:`, error);
         results.push({
           name,
           success: false,
-          error: error.message,
+          error: error instanceof Error ? error.message : String(error),
           durationMs: Date.now() - start,
         });
       }

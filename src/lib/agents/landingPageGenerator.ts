@@ -33,7 +33,7 @@ class LandingPageGenerator {
         path: pagePath,
         url: `/seo-pages/${content.slug}`,
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error generating page for ${content.slug}:`, error);
       throw error;
     }

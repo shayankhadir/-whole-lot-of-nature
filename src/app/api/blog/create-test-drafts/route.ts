@@ -230,13 +230,17 @@ export async function POST(request: NextRequest) {
 
         // Small delay between posts
         await new Promise((resolve) => setTimeout(resolve, 500));
-      } catch (error: any) {
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const errorResponse = (error as any).response?.data?.message;
+        
         results.push({
           success: false,
           title: post.title,
-          error: error.response?.data?.message || error.message,
+          error: errorResponse || errorMessage,
         });
-        console.error(`❌ Failed to create: "${post.title}"`, error.response?.data || error.message);
+        console.error(`❌ Failed to create: "${post.title}"`, errorResponse || errorMessage);
       }
     }
 
@@ -248,13 +252,16 @@ export async function POST(request: NextRequest) {
       results,
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating test drafts:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const errorDetails = (error as any).response?.data;
     return NextResponse.json(
       {
         success: false,
-        error: error.message,
-        details: error.response?.data,
+        error: errorMessage,
+        details: errorDetails,
       },
       { status: 500 }
     );

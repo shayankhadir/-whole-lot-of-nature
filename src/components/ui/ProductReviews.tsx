@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useAddReview, useProductReviews } from '@/lib/hooks/useProducts';
+import { ProductReview } from '@/types/product';
 import Button from './Button';
 import Input from './Input';
 
@@ -60,7 +61,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
 
       {/* Review List */}
       <div className="mt-6 space-y-6">
-        {reviews?.map((review: any) => (
+        {reviews?.map((review: ProductReview) => (
           <div key={review.id} className="border-t border-gray-200 pt-6">
             <div className="flex items-center">
               <StarRating rating={review.rating} />

@@ -31,7 +31,7 @@ interface UseLoyaltyReturn {
 }
 
 export const useLoyal = (): UseLoyaltyReturn => {
-  const { userId, user, isLoading, error, addPoints, redeemPoints, clearError, fetchLoyaltyStatus } =
+  const { userId, user, isLoading, error, addPoints, redeemPoints, clearError, fetchLoyaltyStatus, getPointsToNextTier } =
     useLoyaltyStore();
 
   // Auto-refresh if user ID changes
@@ -48,7 +48,7 @@ export const useLoyal = (): UseLoyaltyReturn => {
     // State
     pointsBalance: user?.pointsBalance || 0,
     currentTier,
-    pointsToNextTier: user?.currentTier === 'platinum' ? 0 : useLoyaltyStore().getPointsToNextTier(),
+    pointsToNextTier: user?.currentTier === 'platinum' ? 0 : getPointsToNextTier(),
     tierProgress: user?.tierProgressToNext || 0,
     isLoading,
     error,

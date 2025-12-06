@@ -53,7 +53,7 @@ export default function PlantsyChatWidget() {
         id: crypto.randomUUID(),
         role: 'assistant',
         content: reply?.nextActions?.careAdvice || reply?.response || 'I was unable to load guidance just now.',
-        references: reply?.references?.map((ref: any) => ({ title: ref.title, url: ref.url })),
+        references: reply?.references?.map((ref: { title: string; url: string }) => ({ title: ref.title, url: ref.url })),
       };
 
       setMessages((prev) => [...prev, assistantMessage]);

@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Product } from '@/types/product';
+import { Product, ProductCategory } from '@/types/product';
 
 type ProductParams = {
   search?: string;
@@ -41,7 +41,7 @@ export function useProduct(idOrSlug: number | string) {
 }
 
 export function useProductCategories() {
-  return useQuery({
+  return useQuery<ProductCategory[]>({
     queryKey: ['productCategories'],
     queryFn: async () => {
       const response = await fetch('/api/categories');

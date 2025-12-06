@@ -42,7 +42,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       canonical: fullUrl,
     },
     openGraph: {
-      type: type as any,
+      type: type,
       url: fullUrl,
       title: fullTitle,
       description,
@@ -58,7 +58,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       locale: 'en_IN',
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
-    },
+    } as any,
     twitter: {
       card: 'summary_large_image',
       site: '@wholelotofnature',

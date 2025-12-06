@@ -36,6 +36,21 @@ export interface CouponApplicationResult {
   error?: string;
 }
 
+interface WooCommerceCoupon {
+  code: string;
+  discount_type: 'percent' | 'fixed_cart' | 'fixed_product' | 'free_shipping';
+  amount: string;
+  description: string;
+  date_expires: string | null;
+  usage_limit: number | null;
+  usage_count: number;
+  minimum_amount: string;
+  maximum_amount: string;
+  product_ids: number[];
+  excluded_product_ids: number[];
+  usage_limit_per_user: number | null;
+}
+
 export class CouponService {
   /**
    * Validate coupon code against WooCommerce
@@ -56,9 +71,9 @@ export class CouponService {
         status: 'publish',
       });
 
-      const coupons = Array.isArray(response.data) ? response.data : [];
+      const coupons = Array.isArray(response.data) ? (response.data as WooCommerceCoupon[]) : [];
       const coupon = coupons.find(
-        (c: any) => c.code.toLowerCase() === code.toLowerCase()
+        (c) => c.code.toLowerCase() === code.toLowerCase()
       );
 
       if (!coupon) {
@@ -96,16 +111,16 @@ export class CouponService {
       const couponDetails: CouponDetails = {
         code: coupon.code,
         discount_type: coupon.discount_type,
-        amount: parseFloat(coupon.amount || 0),
+        amount: parseFloat(coupon.amount || '0'),
         description: coupon.description,
-        expiry_date: coupon.date_expires,
-        usage_limit: coupon.usage_limit,
-        usage_count: coupon.usage_count,
+        expiry_date: coupon.date_expires ?? undefined,
+        usage_limit: coupon.usage_limit ?? undefined,
+        usage_count: coupon.usage_count ?? 0,
         minimum_amount: coupon.minimum_amount ? parseFloat(coupon.minimum_amount) : undefined,
         maximum_amount: coupon.maximum_amount ? parseFloat(coupon.maximum_amount) : undefined,
         product_ids: coupon.product_ids,
         excluded_product_ids: coupon.excluded_product_ids,
-        usage_limit_per_user: coupon.usage_limit_per_user,
+        usage_limit_per_user: coupon.usage_limit_per_user ?? undefined,
       };
 
       return {
@@ -208,10 +223,10 @@ export class CouponService {
         per_page: 50,
       });
 
-      const coupons = Array.isArray(response.data) ? response.data : [];
+      const coupons = Array.isArray(response.data) ? (response.data as WooCommerceCoupon[]) : [];
 
       return coupons
-        .filter((coupon: any) => {
+        .filter((coupon) => {
           // Filter out expired coupons
           if (coupon.date_expires && new Date(coupon.date_expires) < new Date()) {
             return false;
@@ -222,10 +237,10 @@ export class CouponService {
           }
           return true;
         })
-        .map((coupon: any) => ({
+        .map((coupon: WooCommerceCoupon) => ({
           code: coupon.code,
           discount_type: coupon.discount_type,
-          amount: parseFloat(coupon.amount || 0),
+          amount: parseFloat(coupon.amount || '0'),
           description: coupon.description,
         }));
     } catch (error) {

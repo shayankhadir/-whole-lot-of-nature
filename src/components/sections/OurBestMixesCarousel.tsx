@@ -48,9 +48,10 @@ export default function OurBestMixesCarousel() {
           setProducts(list);
           setLoading(false);
         }
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (mounted) {
-          setError(e.message || 'Error fetching products');
+          const message = e instanceof Error ? e.message : 'Error fetching products';
+          setError(message);
           setLoading(false);
         }
       }

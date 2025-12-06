@@ -43,13 +43,13 @@ export async function POST(request: NextRequest) {
               console.log(`  ⚠️ No data scraped, using mock data for ${competitor.name}`);
               analysis = agent.generateMockData(competitor.name, competitor.url);
             }
-          } catch (primaryError: any) {
+          } catch {
             // Try fallback URL if primary fails
             if (competitor.fallback) {
               console.log(`  ⚠️ Primary URL failed, trying fallback: ${competitor.fallback}`);
               try {
                 analysis = await agent.analyzeCompetitor(competitor.fallback, competitor.name);
-              } catch (fallbackError) {
+              } catch {
                 // If both fail, use mock data
                 console.log(`  ⚠️ Fallback failed, using mock data for ${competitor.name}`);
                 analysis = agent.generateMockData(competitor.name, competitor.url);
@@ -62,13 +62,14 @@ export async function POST(request: NextRequest) {
           }
           
           results.push(analysis);
-        } catch (error: any) {
-          console.error(`❌ Fatal error analyzing ${competitor.name}:`, error.message);
+        } catch (error: unknown) {
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          console.error(`❌ Fatal error analyzing ${competitor.name}:`, errorMessage);
           // Even on fatal error, add mock data to ensure we have something
           results.push(agent.generateMockData(competitor.name, competitor.url));
           errors.push({
             competitor: competitor.name,
-            error: error.message,
+            error: errorMessage,
           });
         }
       }
@@ -101,7 +102,7 @@ export async function POST(request: NextRequest) {
             productsFound: analysis.products.length,
             topKeywords: analysis.keywords.slice(0, 10).map((k) => k.keyword),
           });
-        } catch (error) {
+        } catch {
           console.error(`Error scanning ${competitor.name}`);
         }
       }
@@ -145,13 +146,15 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Marketing agent error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json(
       {
         success: false,
-        error: error.message,
-        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+        error: errorMessage,
+        stack: process.env.NODE_ENV === 'development' ? errorStack : undefined,
       },
       { status: 500 }
     );

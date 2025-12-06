@@ -11,13 +11,13 @@ interface IngestContactInput {
   tags?: string[];
   source?: EmailSource;
   sourceReference?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   totalSpend?: number;
   lastInteraction?: Date;
 }
 
 interface NewsletterSignupInput extends IngestContactInput {
-  preferences?: Record<string, any>;
+  preferences?: Record<string, unknown>;
 }
 
 interface OfferCampaignInput {
@@ -45,7 +45,7 @@ export default class EmailIntelligenceAgent {
         source: input.source ?? existing?.source ?? EmailSource.FORM,
         sourceReference: input.sourceReference ?? existing?.sourceReference ?? null,
         tags,
-        metadata: this.mergeMetadata(existing?.metadata as Record<string, any> | null, input.metadata),
+        metadata: this.mergeMetadata(existing?.metadata as Record<string, unknown> | null, input.metadata) as any,
         totalSpend: typeof input.totalSpend === 'number' ? input.totalSpend : existing?.totalSpend ?? 0,
         lastInteraction: input.lastInteraction ?? existing?.lastInteraction ?? new Date(),
       },
@@ -56,7 +56,7 @@ export default class EmailIntelligenceAgent {
         source: input.source ?? EmailSource.FORM,
         sourceReference: input.sourceReference,
         tags,
-        metadata: input.metadata ?? {},
+        metadata: (input.metadata ?? {}) as any,
         totalSpend: input.totalSpend ?? 0,
         lastInteraction: input.lastInteraction ?? new Date(),
       },
@@ -77,12 +77,12 @@ export default class EmailIntelligenceAgent {
       where: { contactId: contact.id },
       update: {
         status: NewsletterStatus.ACTIVE,
-        preferences: input.preferences ?? {},
+        preferences: (input.preferences ?? {}) as any,
       },
       create: {
         contactId: contact.id,
         status: NewsletterStatus.ACTIVE,
-        preferences: input.preferences ?? {},
+        preferences: (input.preferences ?? {}) as any,
       },
     });
 
@@ -265,12 +265,12 @@ export default class EmailIntelligenceAgent {
     });
   }
 
-  private async recordEvent(contactId: string, type: EmailEventType, metadata: Record<string, any> = {}) {
+  private async recordEvent(contactId: string, type: EmailEventType, metadata: Record<string, unknown> = {}) {
     await prisma.emailEvent.create({
       data: {
         contactId,
         type,
-        payload: metadata,
+        payload: metadata as any,
       },
     });
   }
@@ -283,14 +283,14 @@ export default class EmailIntelligenceAgent {
 
     await prisma.emailIntent.upsert({
       where: { contactId },
-      update: { intentType, score, signals, updatedAt: new Date() },
-      create: { contactId, intentType, score, signals },
+      update: { intentType, score, signals: signals as any, updatedAt: new Date() },
+      create: { contactId, intentType, score, signals: signals as any },
     });
   }
 
   private calculateIntentSignals(contact: { totalSpend: number; lastInteraction: Date | null; tags: unknown }) {
     let score = 50;
-    const signals: Record<string, any> = {};
+    const signals: Record<string, unknown> = {};
     const lastInteraction = contact.lastInteraction ? new Date(contact.lastInteraction) : null;
 
     if (contact.totalSpend > 5000) {
@@ -325,7 +325,7 @@ export default class EmailIntelligenceAgent {
     return { intentType, score: Math.max(10, Math.min(100, score)), signals };
   }
 
-  private mergeMetadata(existing?: Record<string, any> | null, incoming?: Record<string, any>) {
+  private mergeMetadata(existing?: Record<string, unknown> | null, incoming?: Record<string, unknown>) {
     if (!existing) return incoming ?? {};
     if (!incoming) return existing;
     return { ...existing, ...incoming };

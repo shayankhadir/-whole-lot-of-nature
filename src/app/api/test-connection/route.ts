@@ -25,12 +25,13 @@ export async function GET() {
         hasSecret: !!process.env.WC_CONSUMER_SECRET,
       }
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('WordPress connection error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
     return Response.json({
       success: false,
-      error: error.message,
+      error: errorMessage,
       config: {
         url: process.env.WORDPRESS_URL,
         hasKey: !!process.env.WC_CONSUMER_KEY,

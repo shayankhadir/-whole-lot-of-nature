@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FocusCards } from '@/components/ui/focus-cards';
 import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import Link from 'next/link';
 
 export default function WhyChooseUsFocus() {
   const reasons = [
@@ -80,7 +81,7 @@ export default function WhyChooseUsFocus() {
           <p className="text-white/85 text-[clamp(0.875rem,2vw,1.125rem)] mb-6 antialiased">
             Join thousands of plant lovers who trust us for their green sanctuary
           </p>
-          <a href="/shop">
+          <Link href="/shop">
             <HoverBorderGradient
               containerClassName="rounded-full"
               className="inline-flex items-center gap-3 text-white font-montserrat font-semibold"
@@ -96,7 +97,7 @@ export default function WhyChooseUsFocus() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </HoverBorderGradient>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -2,10 +2,10 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState, useMemo } from 'react';
 
-const buildKeyframes = (from: any, steps: any[]) => {
+const buildKeyframes = (from: Record<string, unknown>, steps: Record<string, unknown>[]) => {
   const keys = new Set([...Object.keys(from), ...steps.flatMap(s => Object.keys(s))]);
 
-  const keyframes: any = {};
+  const keyframes: Record<string, unknown[]> = {};
   keys.forEach(k => {
     keyframes[k] = [from[k], ...steps.map(s => s[k])];
   });
@@ -20,8 +20,8 @@ interface BlurTextProps {
   direction?: 'top' | 'bottom';
   threshold?: number;
   rootMargin?: string;
-  animationFrom?: any;
-  animationTo?: any;
+  animationFrom?: Record<string, unknown>;
+  animationTo?: Record<string, unknown>[];
   easing?: (t: number) => number;
   onAnimationComplete?: () => void;
   stepDuration?: number;
@@ -60,7 +60,7 @@ const BlurText = ({
     );
     observer.observe(ref.current);
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [threshold, rootMargin]);
 
   const defaultFrom = useMemo(
@@ -104,8 +104,8 @@ const BlurText = ({
           <motion.span
             className="inline-block will-change-[transform,filter,opacity]"
             key={index}
-            initial={fromSnapshot}
-            animate={inView ? animateKeyframes : fromSnapshot}
+            initial={fromSnapshot as any}
+            animate={inView ? (animateKeyframes as any) : (fromSnapshot as any)}
             transition={spanTransition}
             onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
           >

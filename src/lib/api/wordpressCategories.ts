@@ -16,8 +16,8 @@ export interface Category {
   slug: string;
   taxonomy: string;
   parent: number;
-  meta: Record<string, any>;
-  _links: Record<string, any>;
+  meta: Record<string, unknown>;
+  _links: Record<string, unknown>;
 }
 
 /**

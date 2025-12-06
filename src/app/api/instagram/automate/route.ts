@@ -125,8 +125,8 @@ export async function POST(request: NextRequest) {
         }
 
         // Convert posts to Instagram format
-        const instagramPosts = posts.map((post: any) => ({
-          caption: post.content || post.caption,
+        const instagramPosts = posts.map((post: { content?: string; caption?: string; hashtags?: string[]; imageUrl?: string; scheduledTime?: string }) => ({
+          caption: post.content || post.caption || '',
           hashtags: post.hashtags || [],
           imageUrl: post.imageUrl,
           scheduledTime: post.scheduledTime ? new Date(post.scheduledTime) : undefined,
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
         // Bulk schedule to Instagram
         const results = await instagramService.bulkSchedule(instagramPosts);
 
-        const successCount = results.filter(r => r.success).length;
+        const successCount = results.filter((r: any) => r.success).length;
 
         return NextResponse.json({
           success: true,
@@ -243,20 +243,22 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Instagram API Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Instagram automation failed';
+    const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json(
       {
         success: false,
-        error: error.message || 'Instagram automation failed',
-        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+        error: errorMessage,
+        stack: process.env.NODE_ENV === 'development' ? errorStack : undefined,
       },
       { status: 500 }
     );
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   return NextResponse.json({
     service: 'Instagram Automation API',
     status: 'active',

@@ -260,7 +260,7 @@ export default function TagFilterSection() {
                   className="group px-8 py-4 bg-[var(--emerald-500)] text-white font-semibold rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
                 >
                   <span className="flex items-center gap-2">
-                    View All "{tags.find(t => t.slug === selectedTag)?.name}" Products
+                    View All &quot;{tags.find(t => t.slug === selectedTag)?.name}&quot; Products
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </span>
                 </motion.button>

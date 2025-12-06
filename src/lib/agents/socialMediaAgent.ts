@@ -4,6 +4,8 @@
  * Integrates with competitor analysis for trending topics
  */
 
+import { CompetitorData } from '@/lib/agents/competitorAnalysisAgent';
+
 interface SocialPost {
   platform: 'instagram' | 'facebook' | 'twitter' | 'linkedin' | 'pinterest';
   content: string;
@@ -56,7 +58,7 @@ export default class SocialMediaAgent {
    */
   async generatePostsFromInsights(
     keywords: string[],
-    competitorData: any[],
+    competitorData: CompetitorData[],
     platforms: string[],
     postCount: number = 10
   ): Promise<SocialPost[]> {
@@ -122,7 +124,7 @@ export default class SocialMediaAgent {
   /**
    * Analyze trends and generate insights for social media strategy
    */
-  generateSocialInsights(competitorData: any[]): SocialMediaInsights {
+  generateSocialInsights(competitorData: CompetitorData[]): SocialMediaInsights {
     console.log('🔍 Analyzing social media trends...');
 
     const insights: SocialMediaInsights = {
@@ -292,15 +294,13 @@ export default class SocialMediaAgent {
   /**
    * Extract trending topics from competitor data
    */
-  private extractTrendingTopics(competitorData: any[]): string[] {
+  private extractTrendingTopics(competitorData: CompetitorData[]): string[] {
     const topics: Set<string> = new Set();
 
     competitorData.forEach(competitor => {
-      competitor.keywords?.slice(0, 5).forEach((kw: any) => {
+      competitor.keywords?.slice(0, 5).forEach((kw) => {
         if (typeof kw === 'string') {
           topics.add(kw);
-        } else if (kw.keyword) {
-          topics.add(kw.keyword);
         }
       });
     });
@@ -311,7 +311,7 @@ export default class SocialMediaAgent {
   /**
    * Generate hashtag recommendations
    */
-  private generateHashtags(competitorData: any[]): string[] {
+  private generateHashtags(competitorData: CompetitorData[]): string[] {
     const baseHashtags = [
       '#PlantParent', '#IndoorPlants', '#Houseplants', '#PlantCare',
       '#UrbanJungle', '#PlantLover', '#GreenThumb', '#PlantLife',
@@ -326,7 +326,7 @@ export default class SocialMediaAgent {
   /**
    * Generate content ideas from competitor insights
    */
-  private generateContentIdeas(competitorData: any[]): string[] {
+  private generateContentIdeas(competitorData: CompetitorData[]): string[] {
     return [
       '5 Easy-Care Plants for Beginners',
       'How to Propagate Your Favorite Plants',
@@ -426,7 +426,14 @@ export default class SocialMediaAgent {
   /**
    * Get posting schedule summary
    */
-  getScheduleSummary(calendar: ContentCalendar[]): any {
+  getScheduleSummary(calendar: ContentCalendar[]): { 
+    totalDays: number; 
+    totalPosts: number; 
+    platformBreakdown: Record<string, number>;
+    postsPerDay: string;
+    startDate?: Date;
+    endDate?: Date;
+  } {
     const totalPosts = calendar.reduce((sum, day) => sum + day.posts.length, 0);
     const platformBreakdown: Record<string, number> = {};
 

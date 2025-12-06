@@ -263,7 +263,7 @@ export default class BacklinkAgent {
   }
 
   private async fetchPosts(limit = 12): Promise<WPPost[]> {
-    const params: Record<string, any> = {
+    const params: Record<string, string | number> = {
       per_page: limit,
       status: 'publish',
       order: 'desc',
@@ -289,7 +289,7 @@ export default class BacklinkAgent {
       id: post.id,
       title: this.cleanText(typeof post.title === 'string' ? post.title : post.title.rendered),
       url: post.link,
-      slug: typeof post['slug'] === 'string' ? (post as any).slug : '',
+      slug: post.slug || '',
     }));
 
     const competitorSources = competitors.flatMap((competitor) => competitor.backlinkSources);
@@ -326,7 +326,7 @@ export default class BacklinkAgent {
 
     const cleanedPosts = posts.map((post) => ({
       id: post.id,
-      slug: (post as any).slug,
+      slug: post.slug,
       url: post.link,
       title: this.cleanText(typeof post.title === 'string' ? post.title : post.title.rendered),
       content: typeof post.content === 'string' ? post.content : post.content?.rendered || '',

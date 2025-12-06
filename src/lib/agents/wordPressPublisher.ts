@@ -38,10 +38,16 @@ export interface WordPressPost {
     _yoast_wpseo_metadesc?: string;
     _yoast_wpseo_focuskw?: string;
   };
-  yoast_head_json?: Record<string, any>;
+  yoast_head_json?: Record<string, unknown>;
 }
 
-class WordPressPublisher {
+interface WordPressResponse {
+  id: number;
+  link: string;
+  [key: string]: unknown;
+}
+
+export class WordPressPublisher {
   private config: WordPressConfig;
   private baseUrl: string;
   private authHeader: string;
@@ -99,7 +105,7 @@ class WordPressPublisher {
         },
       });
 
-      const data = response.data as any;
+      const data = response.data as WordPressResponse;
 
       return {
         success: true,
@@ -173,7 +179,7 @@ class WordPressPublisher {
         }
       );
 
-      const data = response.data as any;
+      const data = response.data as WordPressResponse;
 
       return {
         success: true,
@@ -316,7 +322,7 @@ class WordPressPublisher {
    */
   async updatePost(postId: number, post: Partial<GeneratedBlogPost>): Promise<WordPressPublishResult> {
     try {
-      const updateData: Record<string, any> = {};
+      const updateData: Record<string, unknown> = {};
 
       if (post.title) updateData.title = post.title;
       if (post.content) updateData.content = post.content;
@@ -337,7 +343,7 @@ class WordPressPublisher {
         },
       });
 
-      const data = response.data as any;
+      const data = response.data as WordPressResponse;
 
       return {
         success: true,

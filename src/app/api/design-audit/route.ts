@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { DesignAuditAgent } from '@/lib/agents/designAuditAgent';
+import { DesignAuditAgent, DesignIssue } from '@/lib/agents/designAuditAgent';
 import path from 'path';
 
 export const maxDuration = 60;
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
           }
           acc[fileName].push(issue);
           return acc;
-        }, {} as Record<string, any[]>);
+        }, {} as Record<string, DesignIssue[]>);
         
         return NextResponse.json({
           success: true,
@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   return NextResponse.json({
     success: true,
     message: 'Design Audit Agent API',

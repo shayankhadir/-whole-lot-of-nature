@@ -36,9 +36,10 @@ export default function Newsletter() {
       setIsSubmitted(true);
       setStatus('success');
       setEmail('');
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setError(err.message || 'Something went wrong.');
+      const message = err instanceof Error ? err.message : 'Something went wrong.';
+      setError(message);
     }
   };
 
@@ -133,7 +134,7 @@ export default function Newsletter() {
                   <CheckCircle className="w-12 h-12 text-[#4ADE80] mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2 antialiased">Thank You!</h3>
                   <p className="text-white/90">
-                    You've successfully joined our garden community. Check your email for a welcome gift!
+                    You&apos;ve successfully joined our garden community. Check your email for a welcome gift!
                   </p>
                 </motion.div>
               ) : (

@@ -46,9 +46,10 @@ export default function ContactForm() {
 
       setStatus('success');
       setFormState({ name: '', email: '', message: '', phone: '' });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setError(err.message || 'Something went wrong.');
+      const message = err instanceof Error ? err.message : 'Something went wrong.';
+      setError(message);
     }
   };
 

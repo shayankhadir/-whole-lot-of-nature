@@ -68,7 +68,7 @@ export const TestimonialCard = ({
     >
       {/* Quote Icon */}
       <div className="text-6xl text-[#66BB6A] mb-4 select-none antialiased">
-        "
+        &quot;
       </div>
 
       {/* Rating Stars */}
@@ -94,7 +94,7 @@ export const TestimonialCard = ({
 
       {/* Quote Text */}
       <blockquote className="text-lg italic text-gray-700 mb-6 leading-relaxed antialiased">
-        "{quote}"
+        &quot;{quote}&quot;
       </blockquote>
 
       {/* Author Section */}

@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/shop/ProductCard';
-import { Product } from '@/types/product';
+import { Product, ProductCategory } from '@/types/product';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, X, Search } from 'lucide-react';
 
@@ -36,8 +36,8 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  const [subcategoriesByParent, setSubcategoriesByParent] = useState<Record<number, any[]>>({});
+  const [categories, setCategories] = useState<ProductCategory[]>([]);
+  const [subcategoriesByParent, setSubcategoriesByParent] = useState<Record<number, ProductCategory[]>>({});
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set());
@@ -66,18 +66,19 @@ function ShopContent() {
       const result = await response.json();
       
       if (result.success && result.data) {
-        const allCategories = result.data;
+        const allCategories = result.data as ProductCategory[];
         // Get only top-level categories
-        const topLevel = allCategories.filter((cat: any) => cat.count > 0 && cat.parent === 0);
+        const topLevel = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0);
         // Get subcategories mapped by parent
-        const subMap: Record<number, any[]> = {};
+        const subMap: Record<number, ProductCategory[]> = {};
         allCategories
-          .filter((cat: any) => cat.count > 0 && cat.parent !== 0)
-          .forEach((child: any) => {
-            if (!subMap[child.parent]) {
-              subMap[child.parent] = [];
+          .filter((cat) => cat.count > 0 && cat.parent !== 0)
+          .forEach((child) => {
+            const parentId = child.parent || 0;
+            if (!subMap[parentId]) {
+              subMap[parentId] = [];
             }
-            subMap[child.parent].push(child);
+            subMap[parentId].push(child);
           });
         
         setCategories(topLevel);
@@ -237,7 +238,7 @@ function ShopContent() {
                         className="overflow-hidden"
                       >
                         <div className="space-y-1 mt-2 pl-4 border-l-2 border-emerald-500/20">
-                          {subcategoriesByParent[cat.id].map((subcat: any) => (
+                          {subcategoriesByParent[cat.id].map((subcat) => (
                             <button
                               key={subcat.id}
                               onClick={() => handleCategoryChange(subcat.slug)}
@@ -301,9 +302,9 @@ function ShopContent() {
                     {categories.map(cat => (
                       <button
                         key={cat.id}
-                        onClick={() => handleCategoryChange(cat.id)}
+                        onClick={() => handleCategoryChange(cat.slug)}
                         className={`block w-full text-left px-4 py-3 rounded-lg text-sm transition-all ${
-                          selectedCategory === cat.id
+                          selectedCategory === cat.slug
                             ? 'bg-emerald-500/20 text-emerald-300 font-medium border border-emerald-500/30'
                             : 'text-white/60 hover:text-white hover:bg-white/5'
                         }`}

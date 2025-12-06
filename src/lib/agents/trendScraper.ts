@@ -183,7 +183,13 @@ class TrendScraper {
           const data = JSON.parse(jsonStr);
 
           if (data.payload && data.payload.references && data.payload.references.Post) {
-            const posts = Object.values(data.payload.references.Post as Record<string, any>);
+            interface MediumPost {
+              title: string;
+              previewContent: { subtitle: string };
+              upvotes: number;
+              createdAt: number;
+            }
+            const posts = Object.values(data.payload.references.Post as Record<string, MediumPost>);
             
             for (const post of posts.slice(0, 5)) {
               trends.push({

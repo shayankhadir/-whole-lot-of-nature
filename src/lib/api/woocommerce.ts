@@ -32,7 +32,7 @@ export interface Product {
   total_sales: number;
   virtual: boolean;
   downloadable: boolean;
-  downloads: any[];
+  downloads: unknown[];
   download_limit: number;
   download_expiry: number;
   external_url: string;
@@ -92,14 +92,14 @@ export interface Product {
     variation: boolean;
     options: string[];
   }>;
-  default_attributes: any[];
+  default_attributes: unknown[];
   variations: number[];
   grouped_products: number[];
   menu_order: number;
   meta_data: Array<{
     id: number;
     key: string;
-    value: any;
+    value: unknown;
   }>;
 }
 
@@ -149,8 +149,8 @@ export interface Order {
   customer_ip_address: string;
   customer_user_agent: string;
   customer_note: string;
-  billing: any;
-  shipping: any;
+  billing: Record<string, unknown>;
+  shipping: Record<string, unknown>;
   payment_method: string;
   payment_method_title: string;
   transaction_id: string;
@@ -159,19 +159,19 @@ export interface Order {
   date_completed: string | null;
   date_completed_gmt: string | null;
   cart_hash: string;
-  meta_data: any[];
-  line_items: any[];
-  tax_lines: any[];
-  shipping_lines: any[];
-  fee_lines: any[];
-  coupon_lines: any[];
-  refunds: any[];
+  meta_data: Array<{ id: number; key: string; value: unknown }>;
+  line_items: unknown[];
+  tax_lines: unknown[];
+  shipping_lines: unknown[];
+  fee_lines: unknown[];
+  coupon_lines: unknown[];
+  refunds: unknown[];
 }
 
 /**
  * Build authenticated WooCommerce URL
  */
-function buildAuthenticatedURL(endpoint: string, params: Record<string, any> = {}): string {
+function buildAuthenticatedURL(endpoint: string, params: Record<string, string | number | boolean> = {}): string {
   const url = `${WC_URL}/wp-json/wc/v3${endpoint}`;
   
   const authParams: Record<string, string> = {
@@ -183,7 +183,7 @@ function buildAuthenticatedURL(endpoint: string, params: Record<string, any> = {
   const allParams = { ...authParams, ...params };
 
   const queryString = Object.keys(allParams)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(allParams[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(String(allParams[key]))}`)
     .join('&');
 
   return `${url}?${queryString}`;
@@ -208,7 +208,7 @@ export async function getProducts(params: {
   status?: 'any' | 'draft' | 'pending' | 'private' | 'publish';
 } = {}): Promise<Product[]> {
   try {
-    const queryParams: Record<string, any> = {
+    const queryParams: Record<string, string | number | boolean> = {
       per_page: params.per_page || 10,
       page: params.page || 1,
       status: params.status || 'publish',
@@ -282,7 +282,7 @@ export async function getCategories(params: {
   order?: 'asc' | 'desc';
 } = {}): Promise<Category[]> {
   try {
-    const queryParams: Record<string, any> = {
+    const queryParams: Record<string, string | number | boolean> = {
       per_page: params.per_page || 100,
       page: params.page || 1,
       hide_empty: params.hide_empty !== false,
@@ -434,7 +434,7 @@ export async function getRelatedProducts(productId: number, limit: number = 4): 
 /**
  * Create an order
  */
-export async function createOrder(orderData: any): Promise<Order | null> {
+export async function createOrder(orderData: Record<string, unknown>): Promise<Order | null> {
   try {
     const url = buildAuthenticatedURL('/orders');
     

@@ -98,7 +98,7 @@ export default function Error({
           variants={itemVariants}
           className="text-base md:text-lg text-gray-100 mb-8 max-w-md mx-auto antialiased"
         >
-          We encountered an unexpected error. Don't worry, our team has been notified and we're working on it.
+          We encountered an unexpected error. Don&apos;t worry, our team has been notified and we&apos;re working on it.
         </motion.p>
 
         {/* Error Details (for development) */}

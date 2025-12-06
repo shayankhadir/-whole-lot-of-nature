@@ -4,7 +4,7 @@ import { WooCommerceService } from '@/lib/services/woocommerceService';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Fetch all products from WooCommerce
     const products = await WooCommerceService.getProducts(100);

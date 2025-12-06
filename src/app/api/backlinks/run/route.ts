@@ -28,12 +28,13 @@ export async function POST(request: NextRequest) {
       report,
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Backlink agent error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to execute backlink agent';
     return NextResponse.json(
       {
         success: false,
-        error: error.message || 'Failed to execute backlink agent',
+        error: errorMessage,
       },
       { status: 500 }
     );

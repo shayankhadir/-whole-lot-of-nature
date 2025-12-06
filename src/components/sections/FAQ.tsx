@@ -102,7 +102,7 @@ export default function FAQ() {
 
         <div className="text-center mt-12">
           <p className="text-primary-900 mb-4 font-semibold text-lg antialiased">
-            Can't find what you're looking for?
+            Can&apos;t find what you&apos;re looking for?
           </p>
           <a
             href={`mailto:${BUSINESS_EMAIL}`}

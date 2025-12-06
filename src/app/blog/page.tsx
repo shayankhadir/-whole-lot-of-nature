@@ -35,14 +35,14 @@ export default async function BlogPage() {
   const fallbackPosts = [
     {
       id: 'sample-1',
-      title: 'Beginner’s Guide to Indoor Plants',
+      title: 'Beginner&apos;s Guide to Indoor Plants',
       excerpt: 'Start your green journey with low-maintenance indoor plants and essential care tips.',
       href: '/blog',
     },
     {
       id: 'sample-2',
       title: 'Soil 101: The Perfect Potting Mix',
-      excerpt: 'Learn how to choose or blend a potting mix tailored to your plant’s needs.',
+      excerpt: 'Learn how to choose or blend a potting mix tailored to your plant&apos;s needs.',
       href: '/blog',
     },
     {

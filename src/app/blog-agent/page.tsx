@@ -7,7 +7,17 @@
 
 import { useState, useEffect } from 'react';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
+import {
+  AgentRunResult,
+  PublishResult,
+  MarketingResult,
+  SocialResult,
+  DesignAuditResult,
+  BufferStatus,
+  // BacklinkReport,
+  AutomationResult
+} from './types';
 
 /*
 export const metadata: Metadata = {
@@ -46,33 +56,37 @@ interface BlogPost {
 
 export default function MarketingDashboard() {
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<AgentRunResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
-  const [publishResult, setPublishResult] = useState<any>(null);
+  const [publishResult, setPublishResult] = useState<PublishResult | null>(null);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
   const [activeTab, setActiveTab] = useState<'blog' | 'marketing' | 'social' | 'design'>('blog');
   const [marketingLoading, setMarketingLoading] = useState(false);
-  const [marketingResult, setMarketingResult] = useState<any>(null);
+  const [marketingResult, setMarketingResult] = useState<MarketingResult | null>(null);
   const [marketingError, setMarketingError] = useState<string | null>(null);
   const [automationLoading, setAutomationLoading] = useState(false);
-  const [automationResult, setAutomationResult] = useState<any>(null);
+  const [automationResult, setAutomationResult] = useState<AutomationResult | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [automationSummary, setAutomationSummary] = useState<any>(null);
   const [designAuditLoading, setDesignAuditLoading] = useState(false);
-  const [designAuditResult, setDesignAuditResult] = useState<any>(null);
+  const [designAuditResult, setDesignAuditResult] = useState<DesignAuditResult | null>(null);
   const [socialLoading, setSocialLoading] = useState(false);
-  const [socialResult, setSocialResult] = useState<any>(null);
+  const [socialResult, setSocialResult] = useState<SocialResult | null>(null);
   const [socialError, setSocialError] = useState<string | null>(null);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(['instagram', 'facebook', 'twitter']);
-  const [bufferStatus, setBufferStatus] = useState<any>(null);
+  const [bufferStatus, setBufferStatus] = useState<BufferStatus | null>(null);
   const [bufferLoading, setBufferLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [automationProgress, setAutomationProgress] = useState<any[]>([]);
-  const [backlinkLoading, setBacklinkLoading] = useState(false);
-  const [backlinkBuildLoading, setBacklinkBuildLoading] = useState(false);
-  const [backlinkReport, setBacklinkReport] = useState<any>(null);
-  const [backlinkAutomationResult, setBacklinkAutomationResult] = useState<any>(null);
-  const [backlinkError, setBacklinkError] = useState<string | null>(null);
+  
+  // Unused backlink state - commented out to fix lint errors
+  // const [backlinkLoading, setBacklinkLoading] = useState(false);
+  // const [backlinkBuildLoading, setBacklinkBuildLoading] = useState(false);
+  // const [backlinkReport, setBacklinkReport] = useState<BacklinkReport | null>(null);
+  // const [backlinkAutomationResult, setBacklinkAutomationResult] = useState<any>(null);
+  // const [backlinkError, setBacklinkError] = useState<string | null>(null);
 
   // Fetch blog posts
   const fetchBlogPosts = async () => {
@@ -110,8 +124,8 @@ export default function MarketingDashboard() {
       } else {
         setError(data.error || 'Failed to generate blogs');
       }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -130,8 +144,8 @@ export default function MarketingDashboard() {
       if (data.success) {
         fetchBlogPosts(); // Refresh posts
       }
-    } catch (err: any) {
-      setPublishResult({ success: false, error: err.message });
+    } catch (err: unknown) {
+      setPublishResult({ success: false, error: err instanceof Error ? err.message : String(err) });
     } finally {
       setPublishing(false);
     }
@@ -152,8 +166,8 @@ export default function MarketingDashboard() {
       } else {
         setMarketingError(data.error || 'Analysis failed');
       }
-    } catch (err: any) {
-      setMarketingError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setMarketingError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setMarketingLoading(false);
     }
@@ -183,8 +197,8 @@ export default function MarketingDashboard() {
       } else {
         setMarketingError(data.error || 'Automation failed');
       }
-    } catch (err: any) {
-      setMarketingError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setMarketingError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setAutomationLoading(false);
     }
@@ -202,7 +216,7 @@ export default function MarketingDashboard() {
       if (data.success) {
         setDesignAuditResult(data);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Design audit error:', err);
     } finally {
       setDesignAuditLoading(false);
@@ -222,7 +236,7 @@ export default function MarketingDashboard() {
         // Run audit again to see remaining issues
         setTimeout(() => runDesignAudit(), 1000);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Auto-fix error:', err);
     } finally {
       setDesignAuditLoading(false);
@@ -248,8 +262,8 @@ export default function MarketingDashboard() {
       } else {
         setSocialError(data.error || 'Social automation failed');
       }
-    } catch (err: any) {
-      setSocialError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setSocialError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setSocialLoading(false);
     }
@@ -275,8 +289,8 @@ export default function MarketingDashboard() {
       } else {
         setSocialError(data.error || 'Failed to generate posts');
       }
-    } catch (err: any) {
-      setSocialError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setSocialError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setSocialLoading(false);
     }
@@ -302,13 +316,14 @@ export default function MarketingDashboard() {
       } else {
         setSocialError(data.error || 'Failed to create calendar');
       }
-    } catch (err: any) {
-      setSocialError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setSocialError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setSocialLoading(false);
     }
   };
 
+  /*
   const runBacklinkAnalysis = async () => {
     setBacklinkLoading(true);
     setBacklinkError(null);
@@ -325,8 +340,8 @@ export default function MarketingDashboard() {
       } else {
         setBacklinkError(data.error || 'Backlink analysis failed');
       }
-    } catch (err: any) {
-      setBacklinkError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setBacklinkError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setBacklinkLoading(false);
     }
@@ -348,12 +363,13 @@ export default function MarketingDashboard() {
       } else {
         setBacklinkError(data.error || 'Unable to add backlinks');
       }
-    } catch (err: any) {
-      setBacklinkError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setBacklinkError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setBacklinkBuildLoading(false);
     }
   };
+  */
 
   // Check Instagram API connection status
   const checkInstagramStatus = async () => {
@@ -362,8 +378,8 @@ export default function MarketingDashboard() {
       const response = await fetch('/api/instagram/instagram-test');
       const data = await response.json();
       setBufferStatus(data);
-    } catch (err: any) {
-      setBufferStatus({ success: false, error: err.message });
+    } catch (err: unknown) {
+      setBufferStatus({ success: false, error: err instanceof Error ? err.message : String(err) });
     } finally {
       setBufferLoading(false);
     }
@@ -387,8 +403,8 @@ export default function MarketingDashboard() {
       } else {
         setSocialError(data.error || 'Test failed');
       }
-    } catch (err: any) {
-      setSocialError(err.message || 'An error occurred');
+    } catch (err: unknown) {
+      setSocialError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setBufferLoading(false);
     }
@@ -458,7 +474,9 @@ export default function MarketingDashboard() {
       ]);
 
       // Extract posts from calendar with scheduled times
-      const postsToSchedule = calendarData.calendar.flatMap((day: any) => 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const postsToSchedule = calendarData.calendar.flatMap((day: { posts: any[] }) => 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         day.posts.map((post: any) => ({
           content: post.content,
           caption: post.content,
@@ -493,11 +511,12 @@ export default function MarketingDashboard() {
         summary: calendarData.summary,
       });
 
-    } catch (err: any) {
-      setSocialError(err.message || 'Automation failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Automation failed';
+      setSocialError(errorMessage);
       setAutomationProgress(prev => [
         ...prev,
-        { step: 0, status: 'error', message: `❌ Error: ${err.message}` }
+        { step: 0, status: 'error', message: `❌ Error: ${errorMessage}` }
       ]);
     } finally {
       setSocialLoading(false);
@@ -792,6 +811,7 @@ export default function MarketingDashboard() {
                       </p>
                       {step3Data?.pages && step3Data.pages.length > 0 && (
                         <div className="mt-3 space-y-2">
+                          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                           {step3Data.pages.map((page: any, i: number) => (
                             <a 
                               key={i} 
@@ -837,7 +857,7 @@ export default function MarketingDashboard() {
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
                       <p className="text-3xl font-bold text-[#2E7D32] antialiased">
-                        {marketingResult.results?.reduce((sum: number, r: any) => sum + r.products.length, 0) || 0}
+                        {marketingResult.results?.reduce((sum: number, r) => sum + r.products.length, 0) || 0}
                       </p>
                       <p className="text-sm text-[#2E7D32] font-semibold">Products Scraped</p>
                     </div>
@@ -906,7 +926,7 @@ export default function MarketingDashboard() {
                   {/* Detailed Results */}
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-gray-800 antialiased">📊 Detailed Competitor Analysis</h3>
-                    {marketingResult.results?.map((comp: any, index: number) => (
+                    {marketingResult.results?.map((comp, index: number) => (
                       <div key={index} className="border border-gray-200 rounded-xl p-6">
                         <div className="flex justify-between items-start mb-4">
                           <div>
@@ -941,7 +961,7 @@ export default function MarketingDashboard() {
                           <div className="mt-4">
                             <h5 className="font-semibold text-gray-700 mb-2">🛍️ Sample Products:</h5>
                             <div className="space-y-2">
-                              {comp.products.slice(0, 3).map((product: any, i: number) => (
+                              {comp.products.slice(0, 3).map((product: { name: string; price: string; category: string }, i: number) => (
                                 <div key={i} className="bg-gray-50 rounded p-3">
                                   <p className="font-semibold text-sm">{product.name}</p>
                                   <div className="flex justify-between items-center mt-1">
@@ -1081,9 +1101,9 @@ export default function MarketingDashboard() {
 
               {/* Instagram API Integration Section */}
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 mb-6 border-2 border-purple-300">
-                <h3 className="text-xl font-bold text-purple-800 mb-3 antialiased">� Instagram Native Automation (FREE)</h3>
+                <h3 className="text-xl font-bold text-purple-800 mb-3 antialiased"> Instagram Native Automation (FREE)</h3>
                 <p className="text-gray-700 mb-4">
-                  Connect Instagram's official API to automatically schedule all generated posts directly to Instagram - completely FREE!
+                  Connect Instagram&apos;s official API to automatically schedule all generated posts directly to Instagram - completely FREE!
                 </p>
                 
                 <div className="space-y-4">
@@ -1276,7 +1296,7 @@ export default function MarketingDashboard() {
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-[#2E7D32] font-bold antialiased">2.</span>
-                            <span>View your scheduled posts by tapping the menu → "Scheduled Content"</span>
+                            <span>View your scheduled posts by tapping the menu → &quot;Scheduled Content&quot;</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-[#2E7D32] font-bold antialiased">3.</span>
@@ -1298,13 +1318,15 @@ export default function MarketingDashboard() {
                         <div className="mt-6">
                           <h4 className="font-bold text-indigo-800 mb-4 antialiased">📅 Your Content Calendar (Next 7 Days)</h4>
                           <div className="space-y-3">
-                            {socialResult.calendar.slice(0, 7).map((day: any, i: number) => (
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            {socialResult.calendar.slice(0, 7).map((day: { date: string; posts: any[] }, i: number) => (
                               <div key={i} className="bg-white rounded-lg p-4 border-2 border-indigo-200">
                                 <h5 className="font-bold text-gray-800 mb-2 antialiased">
                                   {new Date(day.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                                 </h5>
                                 <p className="text-sm text-gray-600 mb-2">{day.posts?.length || 0} posts scheduled</p>
                                 <div className="flex gap-2">
+                                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                   {day.posts?.slice(0, 3).map((post: any, j: number) => (
                                     <div key={j} className="flex items-center gap-1 text-xs bg-indigo-50 px-2 py-1 rounded">
                                       <span>📸</span>
@@ -1340,8 +1362,8 @@ export default function MarketingDashboard() {
                         <div className="bg-white rounded-lg p-4 border-l-4 border-[#2E7D32]">
                           <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">📱 Step 2: Posts Generated</h4>
                           <p className="text-gray-700">
-                            Created <span className="font-bold text-[#2E7D32] antialiased">{socialResult.results.step2?.data?.postsGenerated || 0}</span> social media posts
-                            {socialResult.results.step2?.data?.platforms && ` across ${socialResult.results.step2.data.platforms.length} platforms`}
+                            Created <span className="font-bold text-[#2E7D32] antialiased">{(socialResult as any).results.step2?.data?.postsGenerated || 0}</span> social media posts
+                            {(socialResult as any).results.step2?.data?.platforms && ` across ${(socialResult as any).results.step2.data.platforms.length} platforms`}
                           </p>
                         </div>
 
@@ -1359,7 +1381,7 @@ export default function MarketingDashboard() {
                         <div className="bg-white rounded-xl p-6">
                           <h4 className="font-bold text-gray-800 mb-4 antialiased">📝 Sample Posts (First 3)</h4>
                           <div className="space-y-4">
-                            {socialResult.results.step2.data.posts.slice(0, 3).map((post: any, i: number) => (
+                            {socialResult.results.step2.data.posts.slice(0, 3).map((post: { platform: string; content: string; hashtags?: string[] }, i: number) => (
                               <div key={i} className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200">
                                 <div className="flex items-center gap-2 mb-2">
                                   <span className="text-2xl antialiased">
@@ -1453,6 +1475,7 @@ export default function MarketingDashboard() {
                       </div>
 
                       {/* First Week Preview */}
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       {socialResult.calendar.slice(0, 7).map((day: any, i: number) => (
                         <div key={i} className="bg-white rounded-lg p-4 mb-3 border-2 border-orange-200">
                           <h4 className="font-bold text-gray-800 mb-2 antialiased">
@@ -1460,7 +1483,7 @@ export default function MarketingDashboard() {
                           </h4>
                           <p className="text-sm text-gray-600 mb-3">Theme: {day.theme}</p>
                           <div className="space-y-2">
-                            {day.posts.map((post: any, j: number) => (
+                            {day.posts.map((post: { platform: string; content: string; scheduledTime?: string }, j: number) => (
                               <div key={j} className="flex items-start gap-2 text-sm">
                                 <span>
                                   {post.platform === 'instagram' && '📸'}
@@ -1567,6 +1590,7 @@ export default function MarketingDashboard() {
                   <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-indigo-800 mb-4 antialiased">📊 Issues by Category</h3>
                     <div className="grid grid-cols-2 gap-4">
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       {Object.entries(designAuditResult.issuesByCategory).map(([category, count]: [string, any]) => (
                         <div key={category} className="bg-white rounded-lg p-4 border border-indigo-200">
                           <p className="text-sm font-semibold text-indigo-700 uppercase">{category}</p>

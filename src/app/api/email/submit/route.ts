@@ -25,16 +25,25 @@ export async function POST(request: NextRequest) {
     }
 
     return handleContact(payload);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Email submission error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unable to process request';
     return NextResponse.json(
-      { success: false, error: error.message || 'Unable to process request' },
+      { success: false, error: errorMessage },
       { status: 500 }
     );
   }
 }
 
-async function handleContact(payload: any) {
+interface ContactPayload {
+  name?: string;
+  email?: string;
+  message?: string;
+  phone?: string;
+  context?: Record<string, unknown>;
+}
+
+async function handleContact(payload: ContactPayload) {
   const name = String(payload.name || '').trim();
   const email = String(payload.email || '').trim();
   const message = String(payload.message || '').trim();
@@ -90,7 +99,13 @@ async function handleContact(payload: any) {
   return NextResponse.json({ success: true, contactId: contact.id });
 }
 
-async function handleNewsletter(payload: any) {
+interface NewsletterPayload {
+  email?: string;
+  firstName?: string;
+  preferences?: Record<string, unknown>;
+}
+
+async function handleNewsletter(payload: NewsletterPayload) {
   const email = String(payload.email || '').trim();
   const firstName = payload.firstName ? String(payload.firstName).trim() : undefined;
 

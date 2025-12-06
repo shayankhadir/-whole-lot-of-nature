@@ -93,16 +93,16 @@ export default function BrandStorySection() {
 
             <div className="mt-6 space-y-4 text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 antialiased">
               <p>
-                At Whole Lot of Nature, we believe that every plant has a story, and every garden is a sanctuary. We're on a mission to connect people with nature through thoughtfully curated plants, premium growing essentials, and sustainable practices.
+                At Whole Lot of Nature, we believe that every plant has a story, and every garden is a sanctuary. We&apos;re on a mission to connect people with nature through thoughtfully curated plants, premium growing essentials, and sustainable practices.
               </p>
               <p>
                 Our carefully selected collection includes vibrant indoor and outdoor plants, premium organic soil mixes, eco-friendly fertilizers, aquatic ecosystems, and handcrafted herbal products. Each item is chosen with care to ensure it meets our high standards for quality and sustainability.
               </p>
               <p>
-                We're committed to making plant parenthood accessible, enjoyable, and rewarding for everyone – whether you're starting your first green space or tending an entire garden. Our expert team is always here to guide you on your botanical journey.
+                We&apos;re committed to making plant parenthood accessible, enjoyable, and rewarding for everyone – whether you&apos;re starting your first green space or tending an entire garden. Our expert team is always here to guide you on your botanical journey.
               </p>
               <p>
-                When you shop with us, you're not just getting plants and products – you're joining a community dedicated to greener living, mindful consumption, and nurturing the Earth.
+                When you shop with us, you&apos;re not just getting plants and products – you&apos;re joining a community dedicated to greener living, mindful consumption, and nurturing the Earth.
               </p>
               <p className="font-medium text-[#66BB6A]">
                 Welcome to Whole Lot of Nature – where every root matters.

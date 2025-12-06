@@ -5,6 +5,13 @@
 
 import axios, { AxiosError } from 'axios';
 
+interface WordPressPost {
+  id: number;
+  status: string;
+  title: { rendered: string };
+  [key: string]: unknown;
+}
+
 export interface PublisherConfig {
   wordPressUrl: string;
   username: string;
@@ -40,7 +47,7 @@ class AutomaticDraftPublisher {
   /**
    * Get draft posts from WordPress
    */
-  async getDraftPosts(limit: number = 10): Promise<any[]> {
+  async getDraftPosts(limit: number = 10): Promise<WordPressPost[]> {
     try {
       const response = await axios.get(`${this.baseUrl}/posts`, {
         params: {
@@ -78,11 +85,11 @@ class AutomaticDraftPublisher {
         }
       );
 
-      const data = response.data as any;
+      const data = response.data as WordPressPost;
       const isPublished = data.status === 'publish';
 
       if (isPublished) {
-        console.log(`✅ Published post ID ${postId}: ${data.title}`);
+        console.log(`✅ Published post ID ${postId}: ${data.title.rendered}`);
       }
 
       return isPublished;

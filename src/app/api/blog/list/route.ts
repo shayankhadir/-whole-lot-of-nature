@@ -50,7 +50,23 @@ export async function GET(request: NextRequest) {
     });
 
     const posts = Array.isArray(response.data)
-      ? response.data.map((post: any) => ({
+      ? response.data.map((post: {
+          id: number;
+          title: { rendered: string };
+          slug: string;
+          excerpt: { rendered: string };
+          status: string;
+          date: string;
+          modified: string;
+          link: string;
+          categories: number[];
+          tags: number[];
+          featured_media: number;
+          _embedded?: {
+            'wp:featuredmedia'?: Array<{ source_url: string }>;
+            author?: Array<{ name: string }>;
+          };
+        }) => ({
           id: post.id,
           title: post.title?.rendered ?? '',
           slug: post.slug,
@@ -84,13 +100,16 @@ export async function GET(request: NextRequest) {
       },
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching posts:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const errorDetails = (error as any).response?.data;
     return NextResponse.json(
       {
         success: false,
-        error: error.message,
-        details: error.response?.data,
+        error: errorMessage,
+        details: errorDetails,
       },
       { status: 500 }
     );

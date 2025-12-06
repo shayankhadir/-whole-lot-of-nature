@@ -112,7 +112,7 @@ export const AuthForm = ({
       }
 
       if (onSubmit) {
-        await onSubmit(formData as any);
+        await onSubmit(formData as LoginData | SignupData);
       }
 
       // Handle redirect
@@ -354,7 +354,7 @@ export const AuthForm = ({
           <motion.p variants={itemVariants} className="text-center text-gray-100 mt-6">
             {mode === 'login' ? (
               <>
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
                   Sign up
                 </Link>

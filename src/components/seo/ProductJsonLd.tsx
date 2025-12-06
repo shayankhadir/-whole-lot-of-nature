@@ -29,7 +29,7 @@ export default function ProductJsonLd(props: {
     aggregateRating,
   } = props;
 
-  const data: any = {
+  const data = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name,
@@ -44,15 +44,14 @@ export default function ProductJsonLd(props: {
       availability: `https://schema.org/${availability}`,
       url,
     },
+    ...(aggregateRating && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: aggregateRating.ratingValue,
+        reviewCount: aggregateRating.reviewCount,
+      },
+    }),
   };
-
-  if (aggregateRating) {
-    data.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: aggregateRating.ratingValue,
-      reviewCount: aggregateRating.reviewCount,
-    };
-  }
 
   return (
     <Script id={`ld-product-${encodeURIComponent(name)}`} type="application/ld+json" strategy="afterInteractive">

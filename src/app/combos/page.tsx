@@ -189,7 +189,7 @@ export default function CombosPage() {
             className="max-w-2xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-white mb-4 antialiased">
-              Can't Find the Perfect Combo?
+              Can&apos;t Find the Perfect Combo?
             </h2>
             <p className="text-xl text-gray-300 mb-8 antialiased">
               Contact our plant experts to create a custom combo tailored to your specific needs and space.

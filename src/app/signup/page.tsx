@@ -178,7 +178,7 @@ export default function CustomSignupPage() {
           {/* Header */}
           <motion.div variants={itemVariants} className="mb-10">
             <h1 className="text-5xl font-bold text-white mb-3 antialiased">
-              Let's Get Started
+              Let&apos;s Get Started
             </h1>
             <p className="text-white/90 text-lg antialiased">
               Create your account to explore premium organic seeds and plants

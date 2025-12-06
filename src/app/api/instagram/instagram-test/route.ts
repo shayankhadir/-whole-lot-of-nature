@@ -46,7 +46,7 @@ export async function GET() {
     }
 
     // Get account details
-    const accountInfo = await instagramService.getAccountInfo();
+    const accountInfo = await instagramService.getAccountInfo() as any;
 
     return NextResponse.json({
       success: true,
@@ -61,11 +61,12 @@ export async function GET() {
       },
       message: `✅ Connected to @${accountInfo.username}! Ready for automated posting.`,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({
       success: false,
       configured: true,
-      error: error.message,
+      error: errorMessage,
       message: 'Failed to connect to Instagram. Check your credentials.',
     }, { status: 401 });
   }
@@ -112,7 +113,7 @@ export async function POST(request: NextRequest) {
     if (action === 'get-stats') {
       // Get account insights
       const insights = await instagramService.getAccountInsights();
-      const recentPosts = await instagramService.getRecentPosts(5);
+      const recentPosts = await instagramService.getRecentPosts(5) as any[];
 
       return NextResponse.json({
         success: true,
@@ -133,11 +134,12 @@ export async function POST(request: NextRequest) {
       error: 'Invalid action. Use: test-post or get-stats',
     }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Instagram test error:', error);
     return NextResponse.json({
       success: false,
-      error: error.message,
+      error: errorMessage,
     }, { status: 500 });
   }
 }

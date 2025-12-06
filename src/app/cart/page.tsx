@@ -118,7 +118,7 @@ export default function CartPage() {
               <ShoppingBagIcon className="mx-auto h-24 w-24 text-emerald-400 mb-6" />
               <h1 className="text-3xl font-bold text-white mb-4 antialiased">Your Cart is Empty</h1>
               <p className="text-lg text-gray-300 mb-8 antialiased">
-                Looks like you haven't added any plants to your cart yet. 
+                Looks like you haven&apos;t added any plants to your cart yet.  
                 Start shopping to build your perfect plant collection!
               </p>
               <div className="space-y-4">

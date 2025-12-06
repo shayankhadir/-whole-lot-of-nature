@@ -34,8 +34,9 @@ export async function POST(request: NextRequest) {
     const report = await supervisor.runAgents(agents);
 
     return NextResponse.json({ success: report.success, report });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Agent supervisor error:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
 }

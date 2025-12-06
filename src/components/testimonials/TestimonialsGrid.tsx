@@ -127,7 +127,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
               <label className="block text-xs font-bold text-black mb-2 antialiased">Sort By:</label>
               <select
                 value={sortBy}
-                onChange={e => setSortBy(e.target.value as any)}
+                onChange={e => setSortBy(e.target.value as 'recent' | 'rating' | 'helpful')}
                 className="px-3 py-2 border-2 border-black rounded bg-white text-black font-bold focus:outline-none focus:border-[#2E7D32] antialiased"
                 aria-label="Sort testimonials by"
               >

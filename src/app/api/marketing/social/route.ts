@@ -99,11 +99,11 @@ export async function POST(request: NextRequest) {
               if (analysis.products.length === 0 && analysis.keywords.length <= 3) {
                 analysis = analysisAgent.generateMockData(competitor.name, competitor.url);
               }
-            } catch (error) {
+            } catch {
               analysis = analysisAgent.generateMockData(competitor.name, competitor.url);
             }
             competitorData.push(analysis);
-          } catch (error) {
+          } catch {
             console.log(`  ⚠️  Error with ${competitor.name}, using mock data`);
             competitorData.push(analysisAgent.generateMockData(competitor.name, competitor.url));
           }
@@ -121,7 +121,12 @@ export async function POST(request: NextRequest) {
       case 'full-automation': {
         console.log('🚀 Running full social media automation...\n');
 
-        const results: any = {
+        const results: {
+          step1: { status: string; data: unknown };
+          step2: { status: string; data: unknown };
+          step3: { status: string; data: unknown };
+          errors: string[];
+        } = {
           step1: { status: 'pending', data: null },
           step2: { status: 'pending', data: null },
           step3: { status: 'pending', data: null },
@@ -143,14 +148,14 @@ export async function POST(request: NextRequest) {
                 if (analysis.products.length === 0 && analysis.keywords.length <= 3) {
                   analysis = analysisAgent.generateMockData(competitor.name, competitor.url);
                 }
-              } catch (primaryError) {
+              } catch {
                 if (competitor.fallback) {
                   try {
                     analysis = await analysisAgent.analyzeCompetitor(
                       competitor.fallback,
                       competitor.name
                     );
-                  } catch (fallbackError) {
+                  } catch {
                     analysis = analysisAgent.generateMockData(competitor.name, competitor.url);
                   }
                 } else {
@@ -159,8 +164,9 @@ export async function POST(request: NextRequest) {
               }
               competitorData.push(analysis);
               console.log(`  ✅ Analyzed ${competitor.name}`);
-            } catch (error: any) {
-              console.log(`  ⚠️  Error with ${competitor.name}: ${error.message}`);
+            } catch (error: unknown) {
+              const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+              console.log(`  ⚠️  Error with ${competitor.name}: ${errorMessage}`);
               competitorData.push(
                 analysisAgent.generateMockData(competitor.name, competitor.url)
               );
@@ -213,7 +219,7 @@ export async function POST(request: NextRequest) {
               console.log('📅 Step 3: Creating 30-day content calendar...');
 
               const calendar = socialAgent.createContentCalendar(posts, new Date());
-              const summary = socialAgent.getScheduleSummary(calendar);
+              const summary = socialAgent.getScheduleSummary(calendar) as any;
 
               results.step3 = {
                 status: 'completed',
@@ -228,37 +234,43 @@ export async function POST(request: NextRequest) {
               };
 
               console.log(`✅ Step 3 Complete: Created ${calendar.length}-day calendar\n`);
-            } catch (error: any) {
-              console.error('❌ Step 3 Error:', error.message);
+            } catch (error: unknown) {
+              const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+              console.error('❌ Step 3 Error:', errorMessage);
               results.step3 = {
                 status: 'failed',
-                error: error.message,
+                data: { error: errorMessage },
               };
               results.errors.push('Failed to create content calendar');
             }
-          } catch (error: any) {
-            console.error('❌ Step 2 Error:', error.message);
+          } catch (error: unknown) {
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            console.error('❌ Step 2 Error:', errorMessage);
             results.step2 = {
               status: 'failed',
-              error: error.message,
+              data: { error: errorMessage },
             };
             results.errors.push('Failed to generate posts');
           }
-        } catch (error: any) {
-          console.error('❌ Step 1 Error:', error.message);
+        } catch (error: unknown) {
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          console.error('❌ Step 1 Error:', errorMessage);
           results.step1 = {
             status: 'failed',
-            error: error.message,
+            data: { error: errorMessage },
           };
           results.errors.push('Failed to analyze competitors');
         }
+
+        const completedSteps = [results.step1, results.step2, results.step3].filter(
+          (s) => s.status === 'completed'
+        ).length;
 
         return NextResponse.json({
           success: true,
           message: 'Social media automation completed',
           results,
-          completedSteps: Object.values(results)
-            .filter((s: any) => s.status === 'completed').length,
+          completedSteps,
           totalSteps: 3,
         });
       }
@@ -273,13 +285,15 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Social Media API Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Social media automation failed';
+    const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json(
       {
         success: false,
-        error: error.message || 'Social media automation failed',
-        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+        error: errorMessage,
+        stack: process.env.NODE_ENV === 'development' ? errorStack : undefined,
       },
       { status: 500 }
     );

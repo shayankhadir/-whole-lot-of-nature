@@ -49,9 +49,37 @@ interface CartActions {
 
 type CartStore = CartState & CartActions;
 
+interface WCCartItem {
+  id: number;
+  key: string;
+  name: string;
+  prices: {
+    price: string;
+    regular_price: string;
+  };
+  images: Array<{ src: string }>;
+  categories?: Array<{ name: string }>;
+  quantity: number;
+  totals: {
+    line_total: string;
+  };
+}
+
+interface WCCart {
+  items: WCCartItem[];
+  items_count: number;
+  totals: {
+    total_items: string;
+    total_price: string;
+    total_tax: string;
+    total_shipping: string;
+    total_discount: string;
+  };
+}
+
 // Helper to map WC cart response to our store state
-const mapWCCartToState = (wcCart: any) => {
-  const items: CartItem[] = wcCart.items.map((item: any) => ({
+const mapWCCartToState = (wcCart: WCCart) => {
+  const items: CartItem[] = wcCart.items.map((item) => ({
     id: item.id.toString(),
     key: item.key,
     name: item.name,

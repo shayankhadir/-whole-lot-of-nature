@@ -14,7 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 
-interface DesignIssue {
+export interface DesignIssue {
   file: string;
   line: number;
   issue: string;

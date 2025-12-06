@@ -84,10 +84,10 @@ export default function AboutPage() {
                   Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
                 </p>
                 <p>
-                  From organic soil mixes crafted with care, to eco-friendly fertilizers, living indoor plants, aquatic greens, and handmade herbal products, we blend nature's purity with modern design and conscious living.
+                  From organic soil mixes crafted with care, to eco-friendly fertilizers, living indoor plants, aquatic greens, and handmade herbal products, we blend nature&apos;s purity with modern design and conscious living.
                 </p>
                 <p>
-                  Every product — whether it's a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives.
+                  Every product — whether it&apos;s a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives.
                 </p>
               </div>
             </motion.div>
@@ -116,7 +116,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="font-display text-4xl font-bold text-white mb-4">Get in Touch</h2>
-            <p className="text-emerald-100 text-lg">Have questions about your plants? We're here to help.</p>
+            <p className="text-emerald-100 text-lg">Have questions about your plants? We&apos;re here to help.</p>
           </div>
           
           <form className="space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
@@ -158,21 +158,7 @@ export default function AboutPage() {
           </form>
         </div>
       </div>
-            >
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80"
-                  alt="Hands holding rich soil and roots"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                  quality={90}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Mission & Values */}
       <div className="py-32 relative">
@@ -271,7 +257,7 @@ export default function AboutPage() {
             className="space-y-12"
           >
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Our goal isn't just to sell — it's to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
+              Our goal isn&apos;t just to sell — it&apos;s to build a community of nature lovers, to help people grow their own green spaces, and to create a world where every home breathes life again.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 text-left">

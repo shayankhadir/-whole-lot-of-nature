@@ -69,7 +69,7 @@ export default function FAQAccordion() {
             Frequently Asked Questions
           </h2>
           <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-white/90 antialiased">
-            Got questions? We've got answers!
+            Got questions? We&apos;ve got answers!
           </p>
         </motion.div>
 

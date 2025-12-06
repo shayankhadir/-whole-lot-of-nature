@@ -8,6 +8,14 @@ import { BufferService } from '@/lib/services/instagramService';
 
 export const dynamic = 'force-dynamic';
 
+interface BufferProfile {
+  id: string;
+  service: string;
+  formatted_username?: string;
+  service_username?: string;
+  timezone?: string;
+}
+
 export async function GET() {
   const bufferService = new BufferService();
 
@@ -27,7 +35,7 @@ export async function GET() {
 
   try {
     // Test connection by getting profiles
-    const profiles = await bufferService.getProfiles();
+    const profiles = await bufferService.getProfiles() as any[];
     const instagramProfiles = profiles.filter((p: any) => p.service === 'instagram');
 
     return NextResponse.json({
@@ -45,11 +53,12 @@ export async function GET() {
         ? '✅ Buffer connected! Instagram ready for scheduling'
         : '⚠️ Buffer connected but no Instagram profiles found. Connect Instagram in Buffer app.',
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({
       success: false,
       configured: true,
-      error: error.message,
+      error: errorMessage,
       message: 'Buffer token invalid or expired',
     }, { status: 401 });
   }
@@ -70,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     if (action === 'test-post') {
       // Send a test post to Buffer (won't publish immediately)
-      const profiles = await bufferService.getProfiles();
+      const profiles = await bufferService.getProfiles() as any[];
       const instagramProfile = profiles.find((p: any) => p.service === 'instagram');
 
       if (!instagramProfile) {
@@ -110,10 +119,11 @@ export async function POST(request: NextRequest) {
       error: 'Invalid action',
     }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({
       success: false,
-      error: error.message,
+      error: errorMessage,
     }, { status: 500 });
   }
 }

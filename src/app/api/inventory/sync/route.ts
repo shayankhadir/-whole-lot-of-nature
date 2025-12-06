@@ -4,7 +4,7 @@ import { WooCommerceService } from '@/lib/services/woocommerceService';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     console.log('Starting inventory sync from WordPress/WooCommerce...');
 

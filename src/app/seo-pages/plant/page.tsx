@@ -116,7 +116,7 @@ export default function PlantPage() {
                     Is plant suitable for Indian climate?
                   </h3>
                   <p className="text-gray-700">
-                    Yes, plant can thrive in Indian conditions when properly selected and cared for. Choose varieties that are specifically adapted to your region\'s climate.
+                    Yes, plant can thrive in Indian conditions when properly selected and cared for. Choose varieties that are specifically adapted to your region&apos;s climate.
                   </p>
                 </div>
                 <div className="border-b border-gray-200 pb-4">

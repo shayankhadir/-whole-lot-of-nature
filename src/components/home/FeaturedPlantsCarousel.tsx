@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Leaf, ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/utils/pricing';
 import { DEMO_PRODUCTS } from '@/data/demoCatalog';
+import { Product } from '@/types/product';
 
 interface FeaturedProduct {
   id: number;
@@ -50,7 +51,7 @@ export default function FeaturedPlantsCarousel() {
       
       const results = await Promise.all(responses.map(res => res.json()));
       
-      let allProducts: any[] = [];
+      let allProducts: Product[] = [];
       results.forEach(data => {
         if (data.success && data.data) {
           allProducts = [...allProducts, ...data.data];
@@ -61,7 +62,7 @@ export default function FeaturedPlantsCarousel() {
       allProducts = Array.from(new Map(allProducts.map(item => [item.id, item])).values());
 
       if (allProducts.length > 0) {
-        const featured = allProducts.map((p: any) => ({
+        const featured = allProducts.map((p) => ({
           id: p.id,
           name: p.name,
           slug: p.slug,

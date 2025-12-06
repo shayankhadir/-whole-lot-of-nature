@@ -129,6 +129,31 @@ export interface BlogPost {
   tags?: string[];
 }
 
+interface WordPressPost {
+  id: number;
+  title: { rendered: string };
+  slug: string;
+  excerpt: { rendered: string };
+  content: { rendered: string };
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string }>;
+    author?: Array<{ name: string; avatar_urls?: Record<string, string> }>;
+  };
+  date: string;
+  categories?: number[];
+  author: number;
+  tags?: Array<{ name: string }>;
+}
+
+interface WooCommerceReview {
+  id: number;
+  reviewer: string;
+  review: string;
+  rating: number;
+  date_created: string;
+  verified: boolean;
+}
+
 // Raw WooCommerce API types (subset we use)
 interface WCRawImage {
   id: number;
@@ -420,7 +445,7 @@ export class WooCommerceService {
       }
 
       const posts = await response.json();
-      return posts.map((post: any) => ({
+      return posts.map((post: WordPressPost) => ({
         id: post.id,
         title: post.title.rendered,
         slug: post.slug,
@@ -451,7 +476,7 @@ export class WooCommerceService {
       const posts = await response.json();
       if (posts.length === 0) return null;
 
-      const post = posts[0];
+      const post = posts[0] as WordPressPost;
       return {
         id: post.id,
         title: post.title.rendered,
@@ -465,7 +490,7 @@ export class WooCommerceService {
         author: post.author,
         author_name: post._embedded?.author?.[0]?.name,
         author_avatar: post._embedded?.author?.[0]?.avatar_urls?.['48'],
-        tags: post.tags?.map((t: any) => t.name) || []
+        tags: post.tags?.map((t) => t.name) || []
       };
     } catch (error) {
       console.error(`Error fetching blog post ${slug}:`, error);
@@ -485,7 +510,7 @@ export class WooCommerceService {
       if (!response.ok) return [];
 
       const posts = await response.json();
-      return posts.map((post: any) => ({
+      return posts.map((post: WordPressPost) => ({
         id: post.id,
         title: post.title.rendered,
         slug: post.slug,
@@ -498,7 +523,7 @@ export class WooCommerceService {
         author: post.author,
         author_name: post._embedded?.author?.[0]?.name,
         author_avatar: post._embedded?.author?.[0]?.avatar_urls?.['48'],
-        tags: post.tags?.map((t: any) => t.name) || []
+        tags: post.tags?.map((t) => t.name) || []
       }));
     } catch (error) {
       console.error(`Error fetching blog posts for category ${categoryId}:`, error);
@@ -526,7 +551,7 @@ export class WooCommerceService {
       const raw: unknown = response.data;
       const reviews = Array.isArray(raw) ? raw : [];
       
-      return reviews.map((review: any) => ({
+      return reviews.map((review: WooCommerceReview) => ({
         id: review.id,
         author: review.reviewer,
         review: review.review,

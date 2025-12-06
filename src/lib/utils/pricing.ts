@@ -1,3 +1,9 @@
+interface PricedProduct {
+  price?: string | number;
+  regular_price?: string | number;
+  sale_price?: string | number;
+}
+
 // Utility function to format price in Indian Rupees
 export function formatPrice(price: string | number): string {
   const numPrice = typeof price === 'string' ? parseFloat(price) : price;
@@ -15,15 +21,15 @@ export function formatPrice(price: string | number): string {
 }
 
 // Utility function to get sale price or regular price
-export function getDisplayPrice(product: any): string {
+export function getDisplayPrice(product: PricedProduct): string {
   const salePrice = product.sale_price;
   const regularPrice = product.regular_price;
   
-  if (salePrice && parseFloat(salePrice) > 0) {
+  if (salePrice && parseFloat(String(salePrice)) > 0) {
     return formatPrice(salePrice);
   }
   
-  if (regularPrice && parseFloat(regularPrice) > 0) {
+  if (regularPrice && parseFloat(String(regularPrice)) > 0) {
     return formatPrice(regularPrice);
   }
   
@@ -31,11 +37,11 @@ export function getDisplayPrice(product: any): string {
 }
 
 // Utility function to get original price for strikethrough
-export function getOriginalPrice(product: any): string | null {
+export function getOriginalPrice(product: PricedProduct): string | null {
   const salePrice = product.sale_price;
   const regularPrice = product.regular_price;
   
-  if (salePrice && parseFloat(salePrice) > 0 && regularPrice && parseFloat(regularPrice) > parseFloat(salePrice)) {
+  if (salePrice && parseFloat(String(salePrice)) > 0 && regularPrice && parseFloat(String(regularPrice)) > parseFloat(String(salePrice))) {
     return formatPrice(regularPrice);
   }
   
@@ -43,17 +49,17 @@ export function getOriginalPrice(product: any): string | null {
 }
 
 // Utility function to check if product is on sale
-export function isOnSale(product: any): boolean {
+export function isOnSale(product: PricedProduct): boolean {
   const salePrice = product.sale_price;
   const regularPrice = product.regular_price;
   
-  return salePrice && parseFloat(salePrice) > 0 && regularPrice && parseFloat(regularPrice) > parseFloat(salePrice);
+  return !!(salePrice && parseFloat(String(salePrice)) > 0 && regularPrice && parseFloat(String(regularPrice)) > parseFloat(String(salePrice)));
 }
 
 // Utility function to get discount percentage
-export function getDiscountPercentage(product: any): number {
-  const salePrice = parseFloat(product.sale_price || 0);
-  const regularPrice = parseFloat(product.regular_price || 0);
+export function getDiscountPercentage(product: PricedProduct): number {
+  const salePrice = parseFloat(String(product.sale_price || 0));
+  const regularPrice = parseFloat(String(product.regular_price || 0));
   
   if (salePrice > 0 && regularPrice > salePrice) {
     return Math.round(((regularPrice - salePrice) / regularPrice) * 100);

@@ -53,7 +53,7 @@ export default function QuickActions() {
             Ready to Start Your Garden Journey?
           </h2>
           <p className="text-lg text-[#daf2d0] max-w-2xl mx-auto antialiased">
-            Whether you're a beginner or expert gardener, we're here to help you every step of the way.
+            Whether you&apos;re a beginner or expert gardener, we&apos;re here to help you every step of the way.
           </p>
         </motion.div>
 

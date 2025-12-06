@@ -51,11 +51,12 @@ export async function POST(req: Request) {
       message: 'Agent executed successfully' 
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error executing script:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to execute script';
     return NextResponse.json({ 
       success: false, 
-      error: error.message || 'Failed to execute script' 
+      error: errorMessage 
     }, { status: 500 });
   }
 }

@@ -10,7 +10,7 @@ function renderPlanHtml(posts: SocialPostPlan[] = []) {
   }
 
   const rows = posts
-    .map((post: any) => {
+    .map((post: SocialPostPlan) => {
       return `
         <tr>
           <td style="padding:12px 16px;border-bottom:1px solid #e5f3ea;">

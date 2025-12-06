@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal } from 'lucide-react';
 import { useProducts, useProductCategories } from '@/lib/hooks/useProducts';
+import { ProductCategory } from '@/types/product';
 import ProductGrid from '@/components/shop/ProductGrid';
 import ProductListJsonLd from '@/components/seo/ProductListJsonLd';
 import FilterControls from '@/components/shop/FilterControls';
@@ -72,17 +73,17 @@ export default function ShopPageContent() {
     // Map ?category=slugOrId -> category id
     const slugOrId = params.get('category');
     if (slugOrId && Array.isArray(categories) && categories.length > 0) {
-      const match = (categories as any[]).find((c) => c.slug === slugOrId || String(c.id) === slugOrId);
+      const match = categories.find((c) => c.slug === slugOrId || String(c.id) === slugOrId);
       if (match && match.id !== selectedCategory) setSelectedCategory(match.id);
     }
-  }, [searchParams, categories]);
+  }, [searchParams, categories, search, sortBy, priceRange, availability, minRating, selectedCategory]);
 
   // Sync state to URL (shallow) when filters change
   useEffect(() => {
     const params = new URLSearchParams();
     if (search) params.set('q', search);
     if (selectedCategory) {
-      const cat = (categories as any[]).find((c) => c.id === selectedCategory);
+      const cat = categories.find((c) => c.id === selectedCategory);
       if (cat) params.set('category', cat.slug || String(cat.id));
     }
     if (sortBy && sortBy !== 'featured') params.set('sort', sortBy);
@@ -178,7 +179,7 @@ export default function ShopPageContent() {
 
   const currentCategory = useMemo(() => {
     if (!selectedCategory) return null;
-    return categories.find((cat: any) => cat.id === selectedCategory) || null;
+    return categories.find((cat) => cat.id === selectedCategory) || null;
   }, [categories, selectedCategory]);
 
   return (

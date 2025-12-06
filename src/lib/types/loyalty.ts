@@ -52,7 +52,7 @@ export interface LoyaltyTransaction {
   points: number; // Positive for earn, negative for redeem
   reason: string; // "Purchase", "Referral", "Birthday", "Redeem coupon", etc.
   orderId?: string | number;
-  relatedData?: any;
+  relatedData?: Record<string, unknown>;
   createdAt: Date;
   expiresAt?: Date; // Some points may expire after period
 }
@@ -234,7 +234,7 @@ export const REDEMPTION_OPTIONS: RedemptionOption[] = [
 /**
  * API Response Types
  */
-export interface LoyaltyAPIResponse<T = any> {
+export interface LoyaltyAPIResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;

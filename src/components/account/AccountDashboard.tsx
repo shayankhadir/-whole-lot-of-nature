@@ -1,5 +1,6 @@
 import type { AccountOverview } from '@/lib/services/accountService';
 import type { WooCommerceCustomer } from '@/lib/services/woocommerceService';
+import Link from 'next/link';
 
 interface AccountDashboardProps {
   email: string;
@@ -58,7 +59,7 @@ export default function AccountDashboard({ email, overview }: AccountDashboardPr
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-white">Recent orders</h2>
-              <a href="/shop" className="text-sm font-semibold text-emerald-400 hover:text-emerald-300">Continue shopping →</a>
+              <Link href="/shop" className="text-sm font-semibold text-emerald-400 hover:text-emerald-300">Continue shopping →</Link>
             </div>
 
             {orders.length === 0 ? (

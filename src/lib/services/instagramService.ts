@@ -56,9 +56,10 @@ export default class InstagramAutomationService {
 
       console.log('✅ Instagram post published:', publishResponse.id);
       return publishResponse;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Instagram publish error:', error);
-      throw new Error(`Failed to publish to Instagram: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to publish to Instagram: ${errorMessage}`);
     }
   }
 
@@ -110,16 +111,17 @@ export default class InstagramAutomationService {
         id: result.id,
         permalink: undefined, // Won't have permalink until published
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Instagram schedule error:', error);
-      throw new Error(`Failed to schedule post: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to schedule post: ${errorMessage}`);
     }
   }
 
   /**
    * Create media container (Step 1 of publishing)
    */
-  private async createMediaContainer(post: InstagramPost): Promise<any> {
+  private async createMediaContainer(post: InstagramPost): Promise<{ id: string }> {
     const caption = this.formatCaption(post.caption, post.hashtags);
     
     const params = new URLSearchParams({
@@ -186,7 +188,7 @@ export default class InstagramAutomationService {
   /**
    * Get Instagram account insights
    */
-  async getAccountInsights(): Promise<any> {
+  async getAccountInsights(): Promise<unknown> {
     if (!this.isConfigured()) {
       throw new Error('Instagram API not configured');
     }
@@ -212,7 +214,7 @@ export default class InstagramAutomationService {
   /**
    * Get recent posts
    */
-  async getRecentPosts(limit: number = 10): Promise<any[]> {
+  async getRecentPosts(limit: number = 10): Promise<unknown[]> {
     if (!this.isConfigured()) {
       throw new Error('Instagram API not configured');
     }
@@ -295,7 +297,7 @@ export default class InstagramAutomationService {
    * Bulk schedule multiple posts to Instagram
    * Handles rate limiting with delays between requests
    */
-  async bulkSchedule(posts: InstagramPost[]): Promise<any[]> {
+  async bulkSchedule(posts: InstagramPost[]): Promise<unknown[]> {
     if (!this.isConfigured()) {
       throw new Error('Instagram API not configured');
     }
@@ -323,14 +325,15 @@ export default class InstagramAutomationService {
         if (i < posts.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         results.push({ 
           success: false, 
-          error: error.message,
+          error: errorMessage,
           caption: post.caption.substring(0, 50) + '...'
         });
         failedCount++;
-        console.error(`❌ Failed to schedule post ${i + 1}:`, error.message);
+        console.error(`❌ Failed to schedule post ${i + 1}:`, errorMessage);
       }
     }
 
@@ -344,7 +347,7 @@ export default class InstagramAutomationService {
   /**
    * Get Instagram account info (username, profile picture, etc.)
    */
-  async getAccountInfo(): Promise<any> {
+  async getAccountInfo(): Promise<unknown> {
     if (!this.isConfigured()) {
       throw new Error('Instagram API not configured');
     }
@@ -365,7 +368,7 @@ export default class InstagramAutomationService {
       }
 
       return response.json();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Failed to get account info:', error);
       throw error;
     }
@@ -391,7 +394,7 @@ export class BufferService {
   /**
    * Get connected Instagram profiles
    */
-  async getProfiles(): Promise<any[]> {
+  async getProfiles(): Promise<unknown[]> {
     const response = await fetch(
       `${this.baseUrl}/profiles.json?access_token=${this.accessToken}`
     );
@@ -401,7 +404,7 @@ export class BufferService {
     }
 
     const profiles = await response.json();
-    return profiles.filter((p: any) => p.service === 'instagram');
+    return profiles.filter((p: { service: string }) => p.service === 'instagram');
   }
 
   /**
@@ -411,7 +414,7 @@ export class BufferService {
     profileId: string,
     post: InstagramPost,
     scheduledTime: Date
-  ): Promise<any> {
+  ): Promise<unknown> {
     const caption = `${post.caption}\n\n${post.hashtags.join(' ')}`;
 
     const body = {
@@ -443,7 +446,7 @@ export class BufferService {
   async bulkSchedule(
     profileId: string,
     posts: InstagramPost[]
-  ): Promise<any[]> {
+  ): Promise<unknown[]> {
     const results = [];
 
     for (const post of posts) {
@@ -457,8 +460,9 @@ export class BufferService {
         
         // Wait 1 second between requests to avoid rate limiting
         await new Promise(resolve => setTimeout(resolve, 1000));
-      } catch (error: any) {
-        results.push({ success: false, error: error.message });
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        results.push({ success: false, error: errorMessage });
       }
     }
 

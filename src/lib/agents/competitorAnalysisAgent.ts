@@ -113,8 +113,8 @@ class CompetitorAnalysisAgent {
             successCount++;
           }
           await this.delay(1000); // Be polite - 1 second delay
-        } catch (error: any) {
-          console.error(`    ❌ Error: ${error.message}`);
+        } catch (error: unknown) {
+          console.error(`    ❌ Error: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
 
@@ -135,8 +135,8 @@ class CompetitorAnalysisAgent {
       console.log(`  📊 SEO Score: ${competitorData.seoScore}/100\n`);
 
       return competitorData;
-    } catch (error: any) {
-      console.error(`❌ Critical error analyzing ${name}:`, error.message);
+    } catch (error: unknown) {
+      console.error(`❌ Critical error analyzing ${name}:`, error instanceof Error ? error.message : String(error));
       // Return partial data instead of throwing
       return competitorData;
     }
@@ -193,8 +193,8 @@ class CompetitorAnalysisAgent {
 
       console.log(`  ✅ Scraped: ${pageData.title} (${wordCount} words, ${pageData.images} images)`);
       return pageData;
-    } catch (error: any) {
-      console.error(`  ❌ Error scraping ${url}:`, error.message);
+    } catch (error: unknown) {
+      console.error(`  ❌ Error scraping ${url}:`, error instanceof Error ? error.message : String(error));
       // Return default data instead of failing
       return {
         url,
@@ -264,8 +264,8 @@ class CompetitorAnalysisAgent {
       const urls = Array.from(productUrls);
       console.log(`  ✅ Found ${urls.length} potential product URLs`);
       return urls.slice(0, 20); // Limit to 20 products
-    } catch (error: any) {
-      console.error(`  ❌ Error finding product pages:`, error.message);
+    } catch (error: unknown) {
+      console.error(`  ❌ Error finding product pages:`, error instanceof Error ? error.message : String(error));
       return [];
     }
   }
@@ -321,8 +321,8 @@ class CompetitorAnalysisAgent {
 
       console.log(`    ✅ Found: ${product.name} - ${product.price}`);
       return product;
-    } catch (error: any) {
-      console.log(`    ❌ Error scraping product: ${error.message}`);
+    } catch (error: unknown) {
+      console.log(`    ❌ Error scraping product: ${error instanceof Error ? error.message : String(error)}`);
       return null;
     }
   }
@@ -541,7 +541,7 @@ class CompetitorAnalysisAgent {
    */
   private generateRecommendations(
     competitors: CompetitorData[],
-    insights: { topKeywords: string[]; averageWordCount: number; priceRange: any }
+    insights: { topKeywords: string[]; averageWordCount: number; priceRange: { min: number; max: number } }
   ): string[] {
     const recommendations: string[] = [];
 

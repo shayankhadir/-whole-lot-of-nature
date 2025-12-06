@@ -71,7 +71,7 @@ const ParticleCard = ({
   const isHoveredRef = useRef(false);
   const memoizedParticles = useRef<HTMLDivElement[]>([]);
   const particlesInitialized = useRef(false);
-  const magnetismAnimationRef = useRef<any>(null);
+  const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null);
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;

@@ -284,7 +284,7 @@ export default function CustomLoginPage() {
 
           {/* Signup Link */}
           <motion.p variants={itemVariants} className="text-center text-emerald-200/80 mt-8">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/signup" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold">
               Sign up here
             </Link>

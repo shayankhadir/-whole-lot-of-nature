@@ -16,7 +16,7 @@ interface WooCategory {
   parent: number;
   count: number;
   description: string;
-  image: any;
+  image: { src: string } | null;
 }
 
 // Map category names to icons

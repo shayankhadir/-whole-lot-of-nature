@@ -1,4 +1,5 @@
 import { type Metadata } from 'next';
+import { WooCommerceProduct, WooCommerceCategory } from './services/woocommerceService';
 
 // Default metadata
 export const defaultMetadata: Metadata = {
@@ -25,7 +26,7 @@ export const defaultMetadata: Metadata = {
 };
 
 // Generate product metadata
-export function generateProductMetadata(product: any): Metadata {
+export function generateProductMetadata(product: WooCommerceProduct): Metadata {
   return {
     title: product.name,
     description: product.short_description?.replace(/(<([^>]+)>)/gi, '') || product.name,
@@ -33,17 +34,17 @@ export function generateProductMetadata(product: any): Metadata {
       title: product.name,
       description: product.short_description?.replace(/(<([^>]+)>)/gi, '') || product.name,
       images: product.images?.[0]?.src ? [{ url: product.images[0].src }] : [],
-      type: 'product',
+      type: 'website',
       ...(product.price && {
         priceAmount: product.price,
         priceCurrency: 'USD',
       }),
-    },
+    } as any,
   };
 }
 
 // Generate category metadata
-export function generateCategoryMetadata(category: any): Metadata {
+export function generateCategoryMetadata(category: WooCommerceCategory): Metadata {
   return {
     title: `${category.name} Products`,
     description: `Shop our collection of ${category.name.toLowerCase()} products. ${category.description?.replace(/(<([^>]+)>)/gi, '')}`,

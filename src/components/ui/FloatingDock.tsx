@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, MotionValue } from 'framer-motion';
 import { Home, ShoppingBag, Leaf, User, Heart, Search } from 'lucide-react';
 
 interface DockItem {
@@ -55,7 +55,7 @@ function DockIcon({
   onHover,
   onLeave,
 }: {
-  mouseX: any;
+  mouseX: MotionValue<number>;
   item: DockItem;
   isHovered: boolean;
   onHover: () => void;

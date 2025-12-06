@@ -25,6 +25,11 @@ export interface ProductCategory {
   name: string;
   slug: string;
   count: number;
+  parent?: number;
+  image?: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface ProductImage {
@@ -46,4 +51,16 @@ export interface ProductTag {
   id: number;
   name: string;
   slug: string;
+}
+export interface ProductReview {
+  id: number;
+  date_created: string;
+  date_created_gmt: string;
+  product_id: number;
+  status: string;
+  reviewer: string;
+  reviewer_email: string;
+  review: string;
+  rating: number;
+  verified: boolean;
 }

@@ -65,7 +65,7 @@ export default function AdminDashboard() {
 
     try {
       let endpoint = '';
-      let method = 'POST';
+      const method = 'POST';
       let body = {};
 
       switch (agentId) {

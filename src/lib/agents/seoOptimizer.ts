@@ -8,7 +8,7 @@ export interface SEOData {
   metaDescription: string;
   keywords: string[];
   slug: string;
-  schema: Record<string, any>;
+  schema: Record<string, unknown>;
   internalLinks: string[];
   readabilityScore: number;
 }
@@ -157,7 +157,7 @@ class SEOOptimizer {
     description: string,
     author: string = 'Whole Lot of Nature',
     image: string = 'https://whole-lot-of-nature.com/og-image.jpg'
-  ): Record<string, any> {
+  ): Record<string, unknown> {
     const now = new Date().toISOString();
     return {
       '@context': 'https://schema.org',
@@ -191,7 +191,7 @@ class SEOOptimizer {
   /**
    * Generate FAQ schema for article with common questions
    */
-  generateFAQSchema(faqs: Array<{ question: string; answer: string }>): Record<string, any> {
+  generateFAQSchema(faqs: Array<{ question: string; answer: string }>): Record<string, unknown> {
     return {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',

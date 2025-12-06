@@ -228,7 +228,7 @@ export default function Footer() {
 					<div className="flex flex-col gap-2">
 						<p>
 							&copy; {new Date().getFullYear()} Whole Lot of Nature. Crafted in
-							Hyderabad, India.
+							Bangalore, India.
 						</p>
 						<div className="flex gap-3 text-[10px] uppercase tracking-wider opacity-70">
 							<span>Visa</span>

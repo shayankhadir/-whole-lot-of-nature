@@ -52,9 +52,10 @@ export async function sendEmail({ to, subject, html, text, from, tags, replyTo }
 
     const data = await response.json();
     return { success: true, id: data.id };
-  } catch (error: any) {
-    console.error('Error sending email:', error.message);
-    return { success: false, error: error.message };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error sending email:', errorMessage);
+    return { success: false, error: errorMessage };
   }
 }
 

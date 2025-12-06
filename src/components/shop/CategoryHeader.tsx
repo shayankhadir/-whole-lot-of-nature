@@ -9,7 +9,7 @@ interface CategoryHeaderProps {
     name: string;
     slug?: string;
     description?: string;
-    image?: string;
+    image?: string | { src: string; alt?: string };
   } | null;
   productCount: number;
 }
@@ -49,7 +49,7 @@ export default function CategoryHeader({ category, productCount }: CategoryHeade
           transition={{ delay: 0.2 }}
         >
           <img
-            src={category.image}
+            src={typeof category.image === 'string' ? category.image : category.image.src}
             alt={category.name}
             className="w-full h-full object-cover"
           />

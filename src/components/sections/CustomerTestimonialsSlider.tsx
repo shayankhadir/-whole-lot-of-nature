@@ -7,6 +7,7 @@ import 'keen-slider/keen-slider.min.css';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 
@@ -78,7 +79,7 @@ export default function CustomerTestimonialsSlider() {
 
           {/* Subtitle */}
           <p className="text-lg max-w-2xl mx-auto antialiased font-light text-emerald-100/80">
-            Don't just take our word for it. Here's what plant lovers across India say about us.
+            Don&apos;t just take our word for it. Here&apos;s what plant lovers across India say about us.
           </p>
 
           {/* Decorative Line */}
@@ -107,7 +108,7 @@ export default function CustomerTestimonialsSlider() {
                   ))}
                 </div>
                 <p className="text-emerald-50/90 mb-8 text-base leading-relaxed font-light antialiased italic">
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </p>
                 <div className="flex items-center mt-auto gap-4">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-400/30">
@@ -143,12 +144,12 @@ export default function CustomerTestimonialsSlider() {
           <p className="text-emerald-100/60 font-medium mb-6 text-sm tracking-wide uppercase">
             Join thousands of happy customers
           </p>
-          <a
+          <Link
             href="/shop"
             className="inline-flex items-center px-8 py-4 bg-[#2E7D32] text-white font-semibold rounded-full shadow-lg hover:bg-[#66BB6A] transition-all hover:scale-105 text-sm tracking-wider uppercase antialiased"
           >
             Start Your Garden Journey
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

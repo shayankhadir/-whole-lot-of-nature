@@ -46,9 +46,10 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ success: false, error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Email intelligence POST error:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
 }
 
@@ -66,8 +67,9 @@ export async function GET(request: NextRequest) {
 
     const snapshot = await agent.getDashboardSnapshot();
     return NextResponse.json({ success: true, snapshot });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Email intelligence GET error:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
 }
