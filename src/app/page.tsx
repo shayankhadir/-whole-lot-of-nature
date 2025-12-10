@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
-import PlantsShowcase from '@/components/home/PlantsShowcase';
+// import PlantsShowcase from '@/components/home/PlantsShowcase';
 import SoilShowcase from '@/components/home/SoilShowcase';
 import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
