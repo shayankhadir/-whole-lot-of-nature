@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sprout } from 'lucide-react';
-import { ProductCard } from '@/components/ui/ProductCard';
+import { ArrowRight, Sprout, ShoppingBag, Star } from 'lucide-react';
+import { useCartStore } from '@/stores/cartStore';
 
 interface FeaturedProduct {
   id: number;
@@ -23,12 +23,26 @@ interface FeaturedProduct {
 export default function SoilShowcase() {
   const [products, setProducts] = useState<FeaturedProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addItem, openCart } = useCartStore();
+
+  const handleAddToCart = (e: React.MouseEvent, product: FeaturedProduct) => {
+    e.preventDefault();
+    addItem({
+      id: String(product.id),
+      name: product.name,
+      price: parseFloat(product.price),
+      image: product.image,
+      quantity: 1,
+      type: 'product',
+      inStock: true
+    });
+    openCart();
+  };
 
   useEffect(() => {
     async function fetchSoil() {
       try {
         // Fetch products from 'soil-and-growing-media' category
-        // Note: Adjust the category slug if it's different in your WooCommerce
         const response = await fetch('/api/products?category=soil-and-growing-media&limit=4');
         const data = await response.json();
         
@@ -73,13 +87,13 @@ export default function SoilShowcase() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8d6e63]/20 text-[#d7ccc8] text-xs font-bold uppercase tracking-wider mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E7D32]/20 text-[#81c784] text-xs font-bold uppercase tracking-wider mb-6">
                 <Sprout className="w-4 h-4" />
                 <span>Premium Growing Media</span>
               </div>
               
               <h2 className="text-4xl md:text-5xl font-bold text-[#efebe9] mb-6 antialiased leading-tight">
-                The Foundation of <span className="text-[#a1887f]">Growth</span>
+                The Foundation of <span className="text-[#4CAF50]">Growth</span>
               </h2>
               
               <p className="text-[#d7ccc8]/80 text-lg mb-8 leading-relaxed">
@@ -88,7 +102,7 @@ export default function SoilShowcase() {
               
               <Link 
                 href="/shop?category=soil-and-growing-media"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#5d4037] hover:bg-[#4e342e] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#3e2723]/30 hover:shadow-[#3e2723]/50 hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2E7D32] hover:bg-[#1b5e20] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#2E7D32]/30 hover:shadow-[#2E7D32]/50 hover:-translate-y-1"
               >
                 <span>Shop Soil Mixes</span>
                 <ArrowRight className="w-5 h-5" />
@@ -107,15 +121,72 @@ export default function SoilShowcase() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <ProductCard
-                    id={String(product.id)}
-                    name={product.name}
-                    image={product.image}
-                    price={typeof product.price === 'string' ? parseFloat(product.price) : product.price}
-                    originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
-                    rating={product.rating || 0}
-                    reviewCount={product.reviewCount || 0}
-                  />
+                  <Link href={`/products/${product.slug}`} className="group block h-full">
+                    <div className="relative h-full bg-[#251e19] rounded-2xl overflow-hidden border border-[#3e2723] transition-all duration-300 hover:border-[#2E7D32] hover:shadow-xl hover:shadow-[#2E7D32]/10 hover:-translate-y-2">
+                      {/* Image Container */}
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1510]/80 to-transparent opacity-60" />
+                        
+                        {/* Quick Add Button */}
+                        <button
+                          onClick={(e) => handleAddToCart(e, product)}
+                          className="absolute bottom-4 right-4 p-3 bg-[#2E7D32] text-white rounded-full opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-[#1b5e20] shadow-lg"
+                          aria-label="Add to cart"
+                        >
+                          <ShoppingBag className="w-5 h-5" />
+                        </button>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-5">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h3 className="text-lg font-bold text-[#efebe9] line-clamp-2 group-hover:text-[#4CAF50] transition-colors">
+                            {product.name}
+                          </h3>
+                        </div>
+
+                        {/* Rating */}
+                        <div className="flex items-center gap-1 mb-3">
+                          <div className="flex text-[#FFD700]">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-3.5 h-3.5 ${
+                                  i < Math.round(product.rating || 0)
+                                    ? 'fill-current'
+                                    : 'text-gray-600'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-xs text-[#a1887f]">({product.reviewCount})</span>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-auto">
+                          <div className="flex flex-col">
+                            {product.sale_price && (
+                              <span className="text-sm text-[#a1887f] line-through">
+                                ₹{product.regular_price}
+                              </span>
+                            )}
+                            <span className="text-xl font-bold text-[#4CAF50]">
+                              ₹{product.price}
+                            </span>
+                          </div>
+                          <span className="text-xs font-medium text-[#8d6e63] bg-[#3e2723]/30 px-2 py-1 rounded">
+                            {product.category}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

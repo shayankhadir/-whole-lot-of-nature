@@ -63,9 +63,6 @@ export default function Home() {
       {/* 3. Plants Showcase - REMOVED as per request */}
       {/* <PlantsShowcase /> */}
 
-      {/* 4. Soil Showcase */}
-      <SoilShowcase />
-
       {/* 5. Modern Categories Section */}
       <ModernCategories />
 
@@ -74,6 +71,9 @@ export default function Home() {
 
       {/* 7. All Products Showcase */}
       <AllProductsShowcase />
+
+      {/* 4. Soil Showcase */}
+      <SoilShowcase />
 
       {/* 8. Features Section */}
       <SeamlessSection 
