@@ -5,7 +5,8 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { WooCommerceService, BlogPost } from '@/lib/services/woocommerceService';
+import type { BlogPost } from '@/lib/services/woocommerceService';
+import { getPosts } from '@/lib/api/wordpress';
 import SectionHeader from '@/components/content/SectionHeader';
 import { CTASection } from '@/components/content/CTAButton';
 
@@ -47,8 +48,27 @@ export default function BlogCategoryPage() {
   useEffect(() => {
     const loadPosts = async () => {
       setLoading(true);
-      const categoryPosts = await WooCommerceService.getBlogPostsByCategory(categoryId, 50);
-      setPosts(categoryPosts);
+      try {
+        const rawPosts = await getPosts({ categories: categoryId.toString(), per_page: 50 });
+        const categoryPosts = rawPosts.map(p => ({
+            id: p.id,
+            title: p.title.rendered,
+            slug: p.slug,
+            excerpt: p.excerpt.rendered.replace(/<[^>]*>/g, ''),
+            content: p.content.rendered,
+            featured_image: p._embedded?.['wp:featuredmedia']?.[0]?.source_url,
+            date: p.date,
+            categories: p.categories || [],
+            category_id: p.categories?.[0],
+            author: p.author,
+            author_name: p._embedded?.author?.[0]?.name,
+            author_avatar: p._embedded?.author?.[0]?.avatar_urls?.['48'],
+            tags: p.tags?.map((t: any) => t.name) || []
+        } as BlogPost));
+        setPosts(categoryPosts);
+      } catch (error) {
+        console.error('Error loading category posts:', error);
+      }
       setLoading(false);
     };
     loadPosts();

@@ -5,7 +5,8 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { WooCommerceService, BlogPost } from '@/lib/services/woocommerceService';
+import type { BlogPost } from '@/lib/services/woocommerceService';
+import { getPostBySlug, getPosts } from '@/lib/api/wordpress';
 import SectionHeader from '@/components/content/SectionHeader';
 import { CTASection } from '@/components/content/CTAButton';
 
@@ -46,16 +47,53 @@ export default function BlogPostPage() {
   useEffect(() => {
     const loadPost = async () => {
       setLoading(true);
-      const blogPost = await WooCommerceService.getBlogPostBySlug(slug);
-      setPost(blogPost);
+      try {
+        const rawPost = await getPostBySlug(slug);
+        
+        if (rawPost) {
+          const blogPost: BlogPost = {
+            id: rawPost.id,
+            title: rawPost.title.rendered,
+            slug: rawPost.slug,
+            excerpt: rawPost.excerpt.rendered.replace(/<[^>]*>/g, ''),
+            content: rawPost.content.rendered,
+            featured_image: rawPost._embedded?.['wp:featuredmedia']?.[0]?.source_url,
+            date: rawPost.date,
+            categories: rawPost.categories || [],
+            category_id: rawPost.categories?.[0],
+            author: rawPost.author,
+            author_name: rawPost._embedded?.author?.[0]?.name,
+            author_avatar: rawPost._embedded?.author?.[0]?.avatar_urls?.['48'],
+            tags: rawPost.tags?.map((t: any) => t.name) || []
+          };
+          setPost(blogPost);
 
-      if (blogPost) {
-        // Load related posts from the same category
-        const related = await WooCommerceService.getBlogPostsByCategory(
-          blogPost.category_id || 1,
-          3
-        );
-        setRelatedPosts(related.filter((p) => p.id !== blogPost.id).slice(0, 3));
+          // Load related posts from the same category
+          const catId = blogPost.category_id || 1;
+          const relatedRaw = await getPosts({ categories: catId.toString(), per_page: 4 });
+          
+          const related = relatedRaw.map(p => ({
+            id: p.id,
+            title: p.title.rendered,
+            slug: p.slug,
+            excerpt: p.excerpt.rendered.replace(/<[^>]*>/g, ''),
+            content: p.content.rendered,
+            featured_image: p._embedded?.['wp:featuredmedia']?.[0]?.source_url,
+            date: p.date,
+            categories: p.categories || [],
+            category_id: p.categories?.[0],
+            author: p.author,
+            author_name: p._embedded?.author?.[0]?.name,
+            author_avatar: p._embedded?.author?.[0]?.avatar_urls?.['48'],
+            tags: p.tags?.map((t: any) => t.name) || []
+          } as BlogPost));
+
+          setRelatedPosts(related.filter((p) => p.id !== blogPost.id).slice(0, 3));
+        } else {
+          setPost(null);
+        }
+      } catch (error) {
+        console.error('Error loading blog post:', error);
       }
       setLoading(false);
     };

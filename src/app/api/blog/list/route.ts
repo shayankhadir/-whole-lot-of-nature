@@ -20,6 +20,7 @@ export async function GET(request: NextRequest) {
     const searchTerm = searchParams.get('search') ?? undefined;
     const category = searchParams.get('category');
     const tag = searchParams.get('tag');
+    const slug = searchParams.get('slug');
 
     const siteUrl = (process.env.WORDPRESS_SITE_URL || process.env.WORDPRESS_URL || DEFAULT_WORDPRESS_URL).replace(/\/$/, '');
     const baseUrl = `${siteUrl}/wp-json/wp/v2`;
@@ -36,7 +37,8 @@ export async function GET(request: NextRequest) {
       search: searchTerm,
       categories: category || undefined,
       tags: tag || undefined,
-  _embed: true,
+      slug: slug || undefined,
+      _embed: true,
   context: 'view',
     };
 
