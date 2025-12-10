@@ -14,6 +14,12 @@ export const maxDuration = 60;
  */
 export async function POST(request: NextRequest) {
   try {
+    // Security Check
+    const authHeader = request.headers.get('x-admin-key');
+    if (authHeader !== process.env.ADMIN_API_KEY) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action') || 'audit';
     

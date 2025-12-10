@@ -19,10 +19,13 @@ interface CheckoutForm {
 }
 
 export default function CheckoutPage() {
-  const { items, totalPrice: total, removeItem, updateQuantity } = useCartStore();
+  const { items, totalPrice: total, removeItem, updateQuantity, applyCoupon, removeCoupon, coupons, discount, shipping, subtotal } = useCartStore();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [cashfree, setCashfree] = useState<any>(null);
+  const [couponCode, setCouponCode] = useState('');
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponMessage, setCouponMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   
   const [formData, setFormData] = useState<CheckoutForm>({
     firstName: '',
@@ -45,6 +48,33 @@ export default function CheckoutPage() {
       }));
     }
   }, []);
+
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) return;
+    setCouponLoading(true);
+    setCouponMessage(null);
+    try {
+      await applyCoupon(couponCode);
+      setCouponMessage({ type: 'success', text: 'Coupon applied successfully!' });
+      setCouponCode('');
+    } catch (error: any) {
+      setCouponMessage({ type: 'error', text: error.message || 'Failed to apply coupon' });
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const handleRemoveCoupon = async (code: string) => {
+    setCouponLoading(true);
+    try {
+      await removeCoupon(code);
+      setCouponMessage({ type: 'success', text: 'Coupon removed' });
+    } catch (error: any) {
+      setCouponMessage({ type: 'error', text: 'Failed to remove coupon' });
+    } finally {
+      setCouponLoading(false);
+    }
+  };
 
   const validateForm = () => {
     const newErrors: Partial<CheckoutForm> = {};
@@ -257,6 +287,21 @@ export default function CheckoutPage() {
             <div className="bg-white/5 rounded-3xl p-8 border border-white/10">
               <h2 className="text-xl font-semibold text-white mb-6">Order Summary</h2>
               
+              {/* Free Shipping Progress */}
+              {subtotal < 999 && (
+                <div className="mb-6 bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-4">
+                  <p className="text-emerald-100 text-sm mb-2">
+                    Add <span className="font-bold text-emerald-400">₹{999 - subtotal}</span> more for <span className="font-bold text-emerald-400">Free Shipping</span>!
+                  </p>
+                  <div className="w-full bg-black/40 rounded-full h-2">
+                    <div 
+                      className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${(subtotal / 999) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+              
               <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-4 items-center bg-black/20 p-3 rounded-xl">
@@ -286,14 +331,67 @@ export default function CheckoutPage() {
               </div>
 
               <div className="border-t border-white/10 pt-4 space-y-2 mb-6">
+                {/* Coupon Section */}
+                <div className="mb-4">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
+                      placeholder="Enter coupon code"
+                      className="flex-1 bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-emerald-500"
+                    />
+                    <button
+                      onClick={handleApplyCoupon}
+                      disabled={couponLoading || !couponCode}
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+                    >
+                      {couponLoading ? '...' : 'Apply'}
+                    </button>
+                  </div>
+                  {couponMessage && (
+                    <p className={`text-xs mt-2 ${couponMessage.type === 'success' ? 'text-emerald-400' : 'text-red-400'}`}>
+                      {couponMessage.text}
+                    </p>
+                  )}
+                  
+                  {/* Applied Coupons List */}
+                  {coupons && coupons.length > 0 && (
+                    <div className="mt-3 space-y-2">
+                      {coupons.map((coupon) => (
+                        <div key={coupon.code} className="flex justify-between items-center bg-emerald-900/20 border border-emerald-500/20 rounded-lg px-3 py-2">
+                          <span className="text-emerald-400 text-sm font-medium">{coupon.code}</span>
+                          <button 
+                            onClick={() => handleRemoveCoupon(coupon.code)}
+                            className="text-white/40 hover:text-white transition-colors"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
                 <div className="flex justify-between text-emerald-100/60">
                   <span>Subtotal</span>
-                  <span>₹{total}</span>
+                  <span>₹{subtotal}</span>
                 </div>
+                
+                {discount > 0 && (
+                  <div className="flex justify-between text-emerald-400">
+                    <span>Discount</span>
+                    <span>-₹{discount}</span>
+                  </div>
+                )}
+
                 <div className="flex justify-between text-emerald-100/60">
                   <span>Shipping</span>
-                  <span className="text-emerald-400">Free</span>
+                  <span className={shipping === 0 ? "text-emerald-400" : ""}>
+                    {shipping === 0 ? 'Free' : `₹${shipping}`}
+                  </span>
                 </div>
+                
                 <div className="flex justify-between text-white font-bold text-lg pt-2 border-t border-white/10 mt-2">
                   <span>Total</span>
                   <span>₹{total}</span>

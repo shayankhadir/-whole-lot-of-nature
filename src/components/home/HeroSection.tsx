@@ -11,7 +11,7 @@ export default function HeroSection() {
       {/* Full-Bleed Leaf Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Lush green foliage background"
           fill
           className="object-cover object-center brightness-[0.25]"

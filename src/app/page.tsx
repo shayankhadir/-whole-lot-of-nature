@@ -60,7 +60,10 @@ export default function Home() {
         <TrustBanner />
       </SeamlessSection>
 
-      {/* 3. Plants Showcase - REMOVED as per request */}
+      {/* 3. All Products Showcase */}
+      <AllProductsShowcase />
+
+      {/* 4. Plants Showcase - REMOVED as per request */}
       {/* <PlantsShowcase /> */}
 
       {/* 5. Modern Categories Section */}
@@ -69,10 +72,7 @@ export default function Home() {
       {/* 6. Tag-Based Product Filter */}
       <TagFilterSection />
 
-      {/* 7. All Products Showcase */}
-      <AllProductsShowcase />
-
-      {/* 4. Soil Showcase */}
+      {/* 7. Soil Showcase */}
       <SoilShowcase />
 
       {/* 8. Features Section */}

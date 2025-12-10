@@ -38,10 +38,6 @@ export default function CartSidebar() {
 	} = useCartStore();
 
 	const isEmpty = items.length === 0;
-	const [couponCode, setCouponCode] = useState("");
-	const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
-	const [couponStatus, setCouponStatus] = useState<string | null>(null);
-	const [isApplying, setIsApplying] = useState(false);
 
 	const savings = useMemo(() => Math.max(discount, 0), [discount]);
 	const progressValue = useMemo(
@@ -49,53 +45,6 @@ export default function CartSidebar() {
 		[subtotal, savings]
 	);
 	const hasFreeShipping = progressValue >= FREE_SHIPPING_THRESHOLD;
-
-	const handleCouponAction = async () => {
-		const trimmed = couponCode.trim();
-
-		if (!trimmed && appliedCoupon) {
-			useCartStore.getState().applyDiscount(0);
-			setAppliedCoupon(null);
-			setCouponStatus("Coupon removed");
-			return;
-		}
-
-		if (!trimmed) {
-			setCouponStatus("Enter a code to apply");
-			return;
-		}
-
-		setIsApplying(true);
-		setCouponStatus(null);
-
-		try {
-			const response = await fetch("/api/coupons/validate", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ code: trimmed, subtotal }),
-			});
-			const data = await response.json();
-
-			if (data.valid) {
-				const discountValue = typeof data.discount === "number" ? data.discount : 0;
-				setAppliedCoupon(trimmed.toUpperCase());
-				useCartStore.getState().applyDiscount(discountValue);
-				setCouponStatus(`Coupon applied – saved ${formatPrice(discountValue)}`);
-				setCouponCode("");
-			} else {
-				setCouponStatus(data.message || "Invalid coupon");
-				useCartStore.getState().applyDiscount(0);
-			}
-		} catch (error) {
-			console.error("Failed to apply coupon", error);
-			setCouponStatus("Unable to apply coupon. Please try again.");
-		} finally {
-			setIsApplying(false);
-		}
-	};
-
-	const couponButtonDisabled =
-		isApplying || (!couponCode.trim() && !appliedCoupon);
 
 	return (
 		<Transition.Root show={isOpen} as={Fragment}>
@@ -135,15 +84,15 @@ export default function CartSidebar() {
 										<div className="border-b border-white/10 bg-gradient-to-br from-[#05150a] to-[#030a06] px-6 py-6">
 											<div className="flex items-start justify-between">
 												<div>
-													<p className="text-xs uppercase tracking-[0.4em] text-white/60">
+													<p className="text-[10px] uppercase tracking-[0.4em] text-white/60">
 														Your Cart
 													</p>
-													<Dialog.Title className="mt-2 text-2xl font-semibold antialiased">
+													<Dialog.Title className="mt-2 text-lg font-semibold antialiased">
 														{isEmpty
 															? "Your bag is waiting"
 															: `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
 													</Dialog.Title>
-													<p className="mt-1 text-sm text-white/80">
+													<p className="mt-1 text-xs text-white/80">
 														{isEmpty
 															? "Add something green to bring this space to life."
 															: "Delivers in 3-5 days"}
@@ -163,19 +112,19 @@ export default function CartSidebar() {
 													<div className="mt-6 grid grid-cols-3 gap-3 text-xs uppercase tracking-wide text-white/80">
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
 																	<p className="text-[10px] text-white/60">Subtotal</p>
-														<p className="mt-1 text-base font-semibold text-white">
+														<p className="mt-1 text-sm font-semibold text-white">
 															{formatPrice(subtotal)}
 														</p>
 													</div>
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
 																	<p className="text-[10px] text-white/60">Savings</p>
-														<p className="mt-1 text-base font-semibold text-emerald-300">
+														<p className="mt-1 text-sm font-semibold text-emerald-300">
 															{formatPrice(savings)}
 														</p>
 													</div>
 													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
 																	<p className="text-[10px] text-white/60">Delivery</p>
-														<p className="mt-1 text-base font-semibold text-white">
+														<p className="mt-1 text-sm font-semibold text-white">
 															{hasFreeShipping ? "Free" : "3-5 days"}
 														</p>
 													</div>
@@ -234,12 +183,12 @@ export default function CartSidebar() {
 																role="listitem"
 																className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_15px_45px_rgba(3,10,6,0.4)]"
 															>
-																<div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
+																<div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
 																	<Image
 																		src={item.image}
 																		alt={item.name}
 																		fill
-																		sizes="96px"
+																		sizes="64px"
 																		className="object-cover"
 																	/>
 																</div>
@@ -247,56 +196,56 @@ export default function CartSidebar() {
 																<div className="flex flex-1 flex-col">
 																	<div className="flex justify-between gap-4">
 																		<div>
-																			<h3 className="text-base font-semibold leading-snug">
+																			<h3 className="text-xs font-semibold leading-snug">
 																				<span className="line-clamp-2">{item.name}</span>
 																			</h3>
-																			<p className="mt-1 text-xs uppercase tracking-wide text-white/60">
+																			<p className="mt-1 text-[10px] uppercase tracking-wide text-white/60">
 																				{item.type} {item.category && `• ${item.category}`}
 																			</p>
 																		</div>
 																		<div className="text-right">
-																			<p className="text-base font-semibold">{formatPrice(item.price)}</p>
+																			<p className="text-xs font-semibold">{formatPrice(item.price)}</p>
 																			{item.originalPrice && item.originalPrice > item.price && (
-																				<p className="text-xs text-white/40 line-through">
+																				<p className="text-[10px] text-white/40 line-through">
 																					{formatPrice(item.originalPrice)}
 																				</p>
 																			)}
 																		</div>
 																	</div>
 
-																	<div className="mt-4 flex items-center justify-between">
+																	<div className="mt-3 flex items-center justify-between">
 																		<div className="flex items-center gap-3">
-																			<span className="text-xs uppercase tracking-wide text-white/40">
+																			<span className="text-[10px] uppercase tracking-wide text-white/40">
 																				Qty
 																			</span>
 																			<div className="flex items-center rounded-full border border-white/15 bg-white/5">
 																				<button
 																					onClick={() => updateQuantity(item.id, item.quantity - 1)}
-																					className="rounded-l-full p-2 hover:bg-white/10 disabled:opacity-40"
+																					className="rounded-l-full p-1.5 hover:bg-white/10 disabled:opacity-40"
 																					disabled={item.quantity <= 1}
 																					aria-label="Decrease quantity"
 																				>
-																					<Minus className="h-4 w-4" />
+																					<Minus className="h-3 w-3" />
 																				</button>
-																				<span className="px-3 text-sm font-semibold">
+																				<span className="px-2 text-xs font-semibold">
 																					{item.quantity}
 																				</span>
 																				<button
 																					onClick={() => updateQuantity(item.id, item.quantity + 1)}
-																					className="rounded-r-full p-2 hover:bg-white/10 disabled:opacity-40"
+																					className="rounded-r-full p-1.5 hover:bg-white/10 disabled:opacity-40"
 																					disabled={item.quantity >= (item.maxQuantity || 10)}
 																					aria-label="Increase quantity"
 																				>
-																					<Plus className="h-4 w-4" />
+																					<Plus className="h-3 w-3" />
 																				</button>
 																			</div>
 																		</div>
 																		<button
 																			type="button"
 																			onClick={() => removeItem(item.id)}
-																			className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70 hover:text-red-300"
+																			className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wide text-white/70 hover:text-red-300"
 																		>
-																			<Trash2 className="h-4 w-4" /> Remove
+																			<Trash2 className="h-3 w-3" /> Remove
 																		</button>
 																	</div>
 																</div>
@@ -308,48 +257,18 @@ export default function CartSidebar() {
 										</div>
 
 										<div className="border-t border-white/10 bg-black/30 px-6 py-6 space-y-6">
-											{!isEmpty && (
-												<div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-													<div className="flex items-center gap-2 text-sm text-white/80">
-														<ShieldCheck className="h-4 w-4 text-emerald-300" />
-														<span>Have a promo code?</span>
-													</div>
-													<div className="mt-3 flex gap-2">
-														<input
-															value={couponCode}
-															onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-															placeholder={appliedCoupon ?? "WELCOME10"}
-															className="flex-1 rounded-xl border border-white/15 bg-black/40 px-4 py-2 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-															disabled={isApplying}
-														/>
-														<button
-															onClick={handleCouponAction}
-															disabled={couponButtonDisabled}
-															className="rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 disabled:opacity-60"
-														>
-															{isApplying
-																? "Applying..."
-																: appliedCoupon
-																? "Update"
-																: "Apply"}
-														</button>
-													</div>
-													{couponStatus && (
-														<p className="mt-2 text-xs text-emerald-200">{couponStatus}</p>
-													)}
-												</div>
-											)}
+											{/* Coupon section removed as per request - moved to checkout */}
 
 											<div className="space-y-3">
 												<Link
 													href="/checkout"
 													onClick={closeCart}
-													className="flex w-full items-center justify-between rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-500/40 hover:brightness-110"
+													className="flex w-full items-center justify-between rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 hover:brightness-110"
 												>
 													<span>Secure Checkout</span>
 													<span>{formatPrice(totalPrice)}</span>
 												</Link>
-												<div className="flex gap-3 text-sm">
+												<div className="flex gap-3 text-xs">
 													<Link
 														href="/cart"
 														onClick={closeCart}

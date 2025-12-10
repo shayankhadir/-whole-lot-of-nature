@@ -130,7 +130,7 @@ export default function ProductPage() {
       {/* Subtle leaf background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
         <Image
-          src="/images/backgrounds/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Tropical foliage backdrop"
           fill
           className="object-cover"

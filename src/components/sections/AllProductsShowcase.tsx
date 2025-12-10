@@ -58,7 +58,7 @@ export default function AllProductsShowcase() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Tropical palm leaves background"
           fill
           className="object-cover opacity-15"
@@ -117,17 +117,17 @@ export default function AllProductsShowcase() {
             >
               <Link href={`/shop/${product.slug}`}>
                 <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative rounded-2xl bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 transition-all duration-300 hover:shadow-2xl hover:shadow-[#2E7D32]/20"
+                  whileHover={{ y: -8 }}
+                  className="group relative rounded-2xl bg-[#0a1f10] overflow-hidden border border-[#1b5e20] hover:border-[#4CAF50] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7D32]/10"
                 >
                   {/* Image */}
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden">
                     {product.images && product.images.length > 0 ? (
                       <Image
                         src={product.images[0].src}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-[#0d3512]">
@@ -136,33 +136,33 @@ export default function AllProductsShowcase() {
                     )}
                     
                     {/* Darker Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B0F]/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f10]/90 via-transparent to-transparent opacity-60"></div>
 
                     {/* Badge */}
                     {isOnSale(product) && (
-                      <div className="absolute top-3 left-3 px-3 py-1 bg-[#2E7D32] text-white text-xs font-semibold rounded-full">
+                      <div className="absolute top-3 left-3 px-3 py-1 bg-[#2E7D32] text-white text-xs font-semibold rounded-full shadow-lg">
                         SALE
                       </div>
                     )}
                   </div>
 
                   {/* Content */}
-                  <div className="p-4">
-                    <h3 className="text-sm font-semibold font-montserrat text-white mb-1.5 line-clamp-2 group-hover:text-[#66BB6A] transition-colors antialiased">
+                  <div className="p-5">
+                    <h3 className="text-sm font-bold font-montserrat text-[#efebe9] mb-2 line-clamp-2 group-hover:text-[#4CAF50] transition-colors antialiased">
                       {product.name}
                     </h3>
                     
                     {/* Price */}
-                    <div className="flex items-center justify-between pt-3 border-t border-[#2E7D32]/20">
-                      <div>
-                        <span className="text-lg font-bold text-[#66BB6A] antialiased">
-                          {getDisplayPrice(product)}
-                        </span>
+                    <div className="flex items-center justify-between mt-2">
+                      <div className="flex flex-col">
                         {getOriginalPrice(product) && (
-                          <span className="block text-xs text-white/60 line-through antialiased">
+                          <span className="text-xs text-[#a1887f] line-through antialiased">
                             {getOriginalPrice(product)}
                           </span>
                         )}
+                        <span className="text-lg font-bold text-[#4CAF50] antialiased">
+                          {getDisplayPrice(product)}
+                        </span>
                       </div>
 
                       {/* Add to Cart Button */}
@@ -182,7 +182,7 @@ export default function AllProductsShowcase() {
                             inStock: product.in_stock ?? true,
                           });
                         }}
-                        className="p-3 bg-[#2E7D32] text-white rounded-full hover:bg-[#66BB6A] transition-all"
+                        className="p-2.5 bg-[#2E7D32] text-white rounded-full hover:bg-[#1b5e20] transition-all shadow-lg shadow-[#2E7D32]/30"
                       >
                         <ShoppingCart className="w-5 h-5" />
                       </motion.button>

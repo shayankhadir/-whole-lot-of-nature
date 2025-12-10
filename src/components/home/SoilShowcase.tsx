@@ -74,7 +74,7 @@ export default function SoilShowcase() {
   if (loading) return null;
 
   return (
-    <section className="py-24 bg-[#1a1510] relative overflow-hidden">
+    <section className="py-24 bg-[#0d3512] relative overflow-hidden">
       {/* Earthy Background Texture */}
       <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("/images/noise.png")' }} />
       
@@ -122,7 +122,7 @@ export default function SoilShowcase() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Link href={`/products/${product.slug}`} className="group block h-full">
-                    <div className="relative h-full bg-[#251e19] rounded-2xl overflow-hidden border border-[#3e2723] transition-all duration-300 hover:border-[#2E7D32] hover:shadow-xl hover:shadow-[#2E7D32]/10 hover:-translate-y-2">
+                    <div className="relative h-full bg-[#0a1f10] rounded-2xl overflow-hidden border border-[#1b5e20] transition-all duration-300 hover:border-[#4CAF50] hover:shadow-xl hover:shadow-[#2E7D32]/10 hover:-translate-y-2">
                       {/* Image Container */}
                       <div className="relative aspect-[4/3] overflow-hidden">
                         <Image

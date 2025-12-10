@@ -1,5 +1,7 @@
 "use client";
 
+import Image from 'next/image';
+
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Button from '@/components/ui/Button';

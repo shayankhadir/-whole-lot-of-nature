@@ -48,7 +48,7 @@ export default function Newsletter() {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/backgrounds/bgleaf2.png"
+          src="/images/backgrounds/bgleaf2.webp"
           alt="Decorative leaf background"
           fill
           className="object-cover opacity-20"

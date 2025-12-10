@@ -132,7 +132,7 @@ export default function FeaturedSoilMixes() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/bgleaf3.png"
+          src="/images/backgrounds/bgleaf3.webp"
           alt="Tropical foliage background"
           fill
           className="object-cover opacity-12"

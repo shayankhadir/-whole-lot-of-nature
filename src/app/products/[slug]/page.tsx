@@ -329,10 +329,10 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#0d3512]">
         <div className="text-center space-y-2">
-          <p className="text-2xl font-semibold text-emerald-700 antialiased">Calibrating your botanical experience…</p>
-          <p className="text-neutral-600">Curating product insights and concierge perks.</p>
+          <p className="text-2xl font-semibold text-[#daf2d0] antialiased">Calibrating your botanical experience…</p>
+          <p className="text-[#daf2d0]/60">Curating product insights and concierge perks.</p>
         </div>
       </div>
     );
@@ -340,12 +340,12 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#0d3512]">
         <div className="text-center space-y-6">
-          <p className="text-3xl font-bold text-neutral-900 antialiased">We couldn&apos;t locate that product</p>
+          <p className="text-3xl font-bold text-[#daf2d0] antialiased">We couldn&apos;t locate that product</p>
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-200 hover:bg-emerald-800 transition"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#2E7D32] text-white font-semibold shadow-lg shadow-[#2E7D32]/30 hover:bg-[#1b5e20] transition"
           >
             Browse the full collection
           </Link>
@@ -368,7 +368,7 @@ export default function ProductDetailPage() {
       : null;
 
   return (
-    <div className="bg-gradient-to-b from-emerald-50 via-white to-white text-neutral-900">
+    <div className="bg-[#0d3512] text-[#daf2d0]">
       <Head>
         <title>{`${product.name} | Whole Lot of Nature`}</title>
         <meta name="description" content={seoDescription} />
@@ -386,15 +386,15 @@ export default function ProductDetailPage() {
       </Head>
 
       <section className="px-4 sm:px-6 lg:px-8 py-6">
-        <nav className="text-sm text-neutral-500 flex flex-wrap gap-2">
+        <nav className="text-sm text-[#daf2d0]/60 flex flex-wrap gap-2">
           {breadcrumbTrail.map((crumb, index) => (
             <div key={crumb.label} className="flex items-center gap-2">
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-emerald-700 transition">
+                <Link href={crumb.href} className="hover:text-[#4CAF50] transition">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-neutral-900 font-semibold">{crumb.label}</span>
+                <span className="text-[#daf2d0] font-semibold">{crumb.label}</span>
               )}
               {index < breadcrumbTrail.length - 1 && <span>/</span>}
             </div>
@@ -407,7 +407,7 @@ export default function ProductDetailPage() {
           <div className="space-y-4">
             <div 
               {...bind()}
-              className="relative bg-white rounded-3xl overflow-hidden shadow-2xl shadow-emerald-100 border border-emerald-100 cursor-zoom-in group touch-pan-y"
+              className="relative bg-[#0a1f10] rounded-3xl overflow-hidden shadow-2xl shadow-[#0d3512]/50 border border-[#1b5e20] cursor-zoom-in group touch-pan-y"
               onClick={() => setIsZoomed(true)}
             >
               {heroImage ? (
@@ -421,19 +421,19 @@ export default function ProductDetailPage() {
                     className="h-full w-full object-cover transition-transform group-hover:scale-105"
                     priority
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center backdrop-blur-md">
-                    <span className="opacity-0 group-hover:opacity-100 transition bg-white/95 rounded-full px-4 py-2 text-sm font-semibold text-neutral-900 shadow-lg backdrop-blur-md">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center backdrop-blur-sm">
+                    <span className="opacity-0 group-hover:opacity-100 transition bg-[#0d3512]/90 rounded-full px-4 py-2 text-sm font-semibold text-[#daf2d0] shadow-lg backdrop-blur-md border border-[#1b5e20]">
                       🔍 Click to zoom
                     </span>
                   </div>
                 </>
               ) : (
-                <div className="aspect-square bg-neutral-200" />
+                <div className="aspect-square bg-[#0a1f10]" />
               )}
               <div className="absolute top-4 left-4 flex gap-2 text-xs font-semibold">
-                {product.featured && <span className="px-3 py-1 rounded-full bg-white/90 text-emerald-800 backdrop-blur-md">Staff Pick</span>}
+                {product.featured && <span className="px-3 py-1 rounded-full bg-[#2E7D32] text-white backdrop-blur-md">Staff Pick</span>}
                 {savingsPercentage && (
-                  <span className="px-3 py-1 rounded-full bg-emerald-700 text-white">Save {savingsPercentage}%</span>
+                  <span className="px-3 py-1 rounded-full bg-[#4CAF50] text-[#0d3512]">Save {savingsPercentage}%</span>
                 )}
               </div>
               {/* Swipe indicator for mobile */}
@@ -472,18 +472,18 @@ export default function ProductDetailPage() {
             )}
           </div>
 
-          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-xl shadow-emerald-50 p-8 space-y-7">
+          <div className="bg-[#0a1f10]/80 backdrop-blur rounded-3xl border border-[#1b5e20] shadow-xl shadow-[#0d3512]/50 p-8 space-y-7">
             <div className="space-y-3">
-              <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">
+              <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-[#4CAF50]">
                 {product.categories.map((category) => (
-                  <span key={category.id} className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100">
+                  <span key={category.id} className="px-3 py-1 rounded-full bg-[#0d3512] border border-[#1b5e20]">
                     {category.name}
                   </span>
                 ))}
               </div>
-              <h1 className="text-4xl sm:text-5xl font-semibold text-neutral-900 leading-tight antialiased">{product.name}</h1>
+              <h1 className="text-4xl sm:text-5xl font-semibold text-[#daf2d0] leading-tight antialiased">{product.name}</h1>
               {product.average_rating && (
-                <div className="flex items-center gap-2 text-sm text-neutral-600">
+                <div className="flex items-center gap-2 text-sm text-[#daf2d0]/70">
                   <div className="flex gap-1 text-amber-500">
                     {Array.from({ length: 5 }).map((_, idx) => (
                       <span key={idx}>{idx < Math.round(product.average_rating || 0) ? '★' : '☆'}</span>
@@ -495,11 +495,11 @@ export default function ProductDetailPage() {
                 </div>
               )}
               {product.tags?.length ? (
-                <p className="text-sm text-neutral-500">Tagged in {product.tags.map((tag) => tag.name).join(', ')}</p>
+                <p className="text-sm text-[#daf2d0]/60">Tagged in {product.tags.map((tag) => tag.name).join(', ')}</p>
               ) : null}
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-700 to-emerald-500 text-white flex flex-col gap-4">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0d3512] to-[#1b5e20] border border-[#2E7D32] text-white flex flex-col gap-4">
               <div className="flex flex-wrap items-baseline gap-3">
                 <span className="text-4xl font-semibold antialiased">{formatPrice(effectivePrice || '0')}</span>
                 {product.regular_price && product.sale_price && (
@@ -507,11 +507,11 @@ export default function ProductDetailPage() {
                 )}
               </div>
               <div className="flex flex-wrap gap-3 text-sm font-medium">
-                <span className="inline-flex items-center gap-2 bg-white/15 px-4 py-1.5 rounded-full backdrop-blur-md">
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10">
                   {product.in_stock ? '✓ In Stock' : 'Out of Stock'}
                 </span>
                 {product.stock_quantity && (
-                  <span className="inline-flex items-center gap-2 bg-white/15 px-4 py-1.5 rounded-full backdrop-blur-md">
+                  <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10">
                     {product.stock_quantity} units ready
                   </span>
                 )}
@@ -523,11 +523,11 @@ export default function ProductDetailPage() {
 
             <div className="flex flex-col gap-5">
               <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center rounded-full border border-neutral-200">
+                <div className="flex items-center rounded-full border border-[#1b5e20] bg-[#0d3512] text-[#daf2d0]">
                   <button
                     type="button"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-4 py-2 text-lg antialiased"
+                    className="px-4 py-2 text-lg antialiased hover:text-white transition-colors"
                     aria-label="Decrease quantity"
                   >
                     −
@@ -537,13 +537,13 @@ export default function ProductDetailPage() {
                     min={1}
                     value={quantity}
                     onChange={(event) => setQuantity(Math.max(1, parseInt(event.target.value, 10) || 1))}
-                    className="w-14 text-center font-semibold border-x border-neutral-200"
+                    className="w-14 text-center font-semibold border-x border-[#1b5e20] bg-transparent focus:outline-none"
                     aria-label="Product quantity"
                   />
                   <button
                     type="button"
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-4 py-2 text-lg antialiased"
+                    className="px-4 py-2 text-lg antialiased hover:text-white transition-colors"
                     aria-label="Increase quantity"
                   >
                     +
@@ -562,16 +562,16 @@ export default function ProductDetailPage() {
                     type: 'product',
                     inStock: product.in_stock ?? true,
                   })}
-                  className={`flex-1 inline-flex items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-semibold text-white shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-semibold text-white shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2E7D32] ${
                     product.in_stock
-                      ? 'bg-emerald-700 hover:bg-emerald-800 shadow-emerald-200'
-                      : 'bg-neutral-300 cursor-not-allowed'
+                      ? 'bg-[#2E7D32] hover:bg-[#1b5e20] shadow-[#0d3512]/50'
+                      : 'bg-neutral-700 cursor-not-allowed'
                   }`}
                 >
                   Add {quantity} to Cart
                 </button>
               </div>
-              <p className="text-sm text-neutral-600 flex items-center gap-2">
+              <p className="text-sm text-[#daf2d0]/70 flex items-center gap-2">
                 <span>Secure checkout • Free 30-day returns • Exclusive care concierge</span>
               </p>
             </div>
@@ -579,14 +579,14 @@ export default function ProductDetailPage() {
             {attributeChips.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {attributeChips.map((chip) => (
-                  <span key={chip} className="px-3 py-1 rounded-full text-xs bg-neutral-100 border border-neutral-200">
+                  <span key={chip} className="px-3 py-1 rounded-full text-xs bg-[#0d3512] border border-[#1b5e20] text-[#daf2d0]">
                     {chip}
                   </span>
                 ))}
               </div>
             )}
 
-            <div className="space-y-2 text-base text-neutral-600 antialiased">
+            <div className="space-y-2 text-base text-[#daf2d0]/80 antialiased">
               <p className="leading-relaxed">
                 {stripHtml(product.short_description) || stripHtml(product.description).slice(0, 260)}
               </p>
@@ -595,7 +595,7 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="bg-emerald-700 text-white py-12">
+      <section className="bg-[#0d3512] text-white py-12 border-t border-[#1b5e20]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {PREMIUM_HIGHLIGHTS.map((highlight) => (
             <div key={highlight.title} className="p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur">
@@ -607,7 +607,7 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#0a1f10]">
         <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.4fr,0.6fr]">
           <div className="space-y-6">
             <div className="flex gap-3 text-sm font-medium overflow-x-auto pb-2">
@@ -618,8 +618,8 @@ export default function ProductDetailPage() {
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 rounded-full border transition whitespace-nowrap ${
                     activeTab === tab
-                      ? 'border-emerald-700 bg-emerald-50 text-emerald-700'
-                      : 'border-transparent text-neutral-500 hover:border-neutral-200'
+                      ? 'border-[#4CAF50] bg-[#0d3512] text-[#4CAF50]'
+                      : 'border-transparent text-[#daf2d0]/60 hover:border-[#1b5e20] hover:text-[#daf2d0]'
                   }`}
                 >
                   {tab === 'details' && 'Product Story'}
@@ -630,22 +630,22 @@ export default function ProductDetailPage() {
               ))}
             </div>
 
-            <div className="rounded-3xl border border-neutral-200 bg-white p-8 space-y-6">
+            <div className="rounded-3xl border border-[#1b5e20] bg-[#0d3512] p-8 space-y-6">
               {activeTab === 'details' && (
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold antialiased">Botanical narrative</h3>
-                  <p className="leading-relaxed text-neutral-600">
+                  <h3 className="text-2xl font-semibold antialiased text-[#daf2d0]">Botanical narrative</h3>
+                  <p className="leading-relaxed text-[#daf2d0]/80">
                     {stripHtml(product.description).slice(0, 900) ||
                       'Sourced from regenerative farms, each specimen is acclimatized in small-batch greenhouses, ensuring remarkable resilience in Indian climates.'}
                   </p>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
-                      <p className="text-sm font-medium text-emerald-700">Sustainability</p>
-                      <p className="text-base text-neutral-700 antialiased">Zero pesticide regime & reclaimed-water irrigation.</p>
+                    <div className="p-5 rounded-2xl bg-[#0a1f10] border border-[#1b5e20]">
+                      <p className="text-sm font-medium text-[#4CAF50]">Sustainability</p>
+                      <p className="text-base text-[#daf2d0] antialiased">Zero pesticide regime & reclaimed-water irrigation.</p>
                     </div>
-                    <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-100">
-                      <p className="text-sm font-medium text-emerald-700">Wellness boost</p>
-                      <p className="text-base text-neutral-700 antialiased">Purifies indoor air, uplifts circadian rhythm, and eases stress hormones.</p>
+                    <div className="p-5 rounded-2xl bg-[#0a1f10] border border-[#1b5e20]">
+                      <p className="text-sm font-medium text-[#4CAF50]">Wellness boost</p>
+                      <p className="text-base text-[#daf2d0] antialiased">Purifies indoor air, uplifts circadian rhythm, and eases stress hormones.</p>
                     </div>
                   </div>
                 </div>
@@ -653,11 +653,11 @@ export default function ProductDetailPage() {
 
               {activeTab === 'shipping' && (
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold antialiased">Logistics engineered for living things</h3>
-                  <ul className="space-y-2 text-neutral-600">
+                  <h3 className="text-2xl font-semibold antialiased text-[#daf2d0]">Logistics engineered for living things</h3>
+                  <ul className="space-y-2 text-[#daf2d0]/80">
                     {SHIPPING_ASSURANCES.map((item) => (
                       <li key={item} className="flex gap-3">
-                        <span className="text-emerald-600">●</span>
+                        <span className="text-[#4CAF50]">●</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -667,27 +667,27 @@ export default function ProductDetailPage() {
 
               {activeTab === 'care' && (
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold antialiased">Care ritual blueprint</h3>
-                  <p className="text-neutral-600 leading-relaxed">Follow these expert guidelines to ensure your plant thrives in its new environment.</p>
+                  <h3 className="text-2xl font-semibold antialiased text-[#daf2d0]">Care ritual blueprint</h3>
+                  <p className="text-[#daf2d0]/80 leading-relaxed">Follow these expert guidelines to ensure your plant thrives in its new environment.</p>
                   <div className="grid gap-4 sm:grid-cols-2">
                     {CARE_FRAMEWORK.map((item) => {
                       const IconComponent = item.icon;
                       return (
-                        <div key={item.label} className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 flex gap-4">
-                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+                        <div key={item.label} className="p-5 rounded-2xl bg-gradient-to-br from-[#0a1f10] to-[#0d3512] border border-[#1b5e20] flex gap-4">
+                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#1b5e20] flex items-center justify-center text-[#4CAF50]">
                             <IconComponent className="w-6 h-6" />
                           </div>
                           <div className="flex-1">
-                            <p className="text-base font-semibold text-neutral-900 mb-1 antialiased">{item.label}</p>
-                            <p className="text-sm text-neutral-600 leading-relaxed">{item.value}</p>
+                            <p className="text-base font-semibold text-[#daf2d0] mb-1 antialiased">{item.label}</p>
+                            <p className="text-sm text-[#daf2d0]/70 leading-relaxed">{item.value}</p>
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                  <div className="mt-6 p-6 rounded-2xl bg-amber-50 border border-amber-200">
-                    <p className="text-sm font-semibold text-amber-900 mb-2">💡 Pro Tip</p>
-                    <p className="text-sm text-amber-800 leading-relaxed">
+                  <div className="mt-6 p-6 rounded-2xl bg-amber-900/20 border border-amber-700/50">
+                    <p className="text-sm font-semibold text-amber-500 mb-2">💡 Pro Tip</p>
+                    <p className="text-sm text-amber-200/80 leading-relaxed">
                       Each plant comes with a detailed care card and access to our 24/7 plant care hotline. Our experts are here to help your green friend flourish.
                     </p>
                   </div>
@@ -697,13 +697,13 @@ export default function ProductDetailPage() {
               {activeTab === 'reviews' && (
                 <div className="space-y-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <h3 className="text-2xl font-semibold antialiased">Customer Reviews</h3>
+                    <h3 className="text-2xl font-semibold antialiased text-[#daf2d0]">Customer Reviews</h3>
                     <div className="flex items-center gap-2">
-                      <Filter className="w-4 h-4 text-neutral-500" />
+                      <Filter className="w-4 h-4 text-[#daf2d0]/60" />
                       <select
                         value={reviewFilter}
                         onChange={(e) => setReviewFilter(e.target.value as ReviewFilter)}
-                        className="px-4 py-2 rounded-full border border-neutral-200 text-sm bg-white focus:outline-none focus:border-emerald-700"
+                        className="px-4 py-2 rounded-full border border-[#1b5e20] text-sm bg-[#0d3512] text-[#daf2d0] focus:outline-none focus:border-[#4CAF50]"
                         aria-label="Filter reviews"
                       >
                         <option value="helpful">Most Helpful</option>
@@ -725,20 +725,20 @@ export default function ProductDetailPage() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="p-6 rounded-2xl border border-neutral-200 bg-white space-y-4"
+                          className="p-6 rounded-2xl border border-[#1b5e20] bg-[#0a1f10] space-y-4"
                         >
                           <div className="flex flex-wrap items-start justify-between gap-3">
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
-                                <p className="font-semibold text-neutral-900">{review.author}</p>
+                                <p className="font-semibold text-[#daf2d0]">{review.author}</p>
                                 {review.verified && (
-                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#1b5e20] text-[#4CAF50] text-xs font-medium">
                                     <CheckCircle className="w-3 h-3" />
                                     Verified Purchase
                                   </span>
                                 )}
                               </div>
-                              <p className="text-sm text-neutral-500">
+                              <p className="text-sm text-[#daf2d0]/60">
                                 {new Date(review.date).toLocaleDateString('en-IN', {
                                   year: 'numeric',
                                   month: 'long',
@@ -751,7 +751,7 @@ export default function ProductDetailPage() {
                                 <span
                                   key={idx}
                                   className={`text-lg ${
-                                    idx < review.rating ? 'text-amber-500' : 'text-neutral-300'
+                                    idx < review.rating ? 'text-amber-500' : 'text-[#1b5e20]'
                                   }`}
                                 >
                                   ★
@@ -760,14 +760,14 @@ export default function ProductDetailPage() {
                             </div>
                           </div>
 
-                          <p className="text-neutral-700 leading-relaxed">{review.review}</p>
+                          <p className="text-[#daf2d0]/80 leading-relaxed">{review.review}</p>
 
                           {review.photos && review.photos.length > 0 && (
                             <div className="flex gap-3 flex-wrap">
                               {review.photos.map((photo, idx) => (
                                 <div
                                   key={idx}
-                                  className="relative w-20 h-20 rounded-xl overflow-hidden border border-neutral-200 group cursor-pointer"
+                                  className="relative w-20 h-20 rounded-xl overflow-hidden border border-[#1b5e20] group cursor-pointer"
                                 >
                                   <Image
                                     src={photo}
@@ -783,19 +783,19 @@ export default function ProductDetailPage() {
                             </div>
                           )}
 
-                          <div className="flex items-center gap-4 pt-3 border-t border-neutral-100">
-                            <p className="text-sm text-neutral-500">Was this helpful?</p>
+                          <div className="flex items-center gap-4 pt-3 border-t border-[#1b5e20]">
+                            <p className="text-sm text-[#daf2d0]/60">Was this helpful?</p>
                             <div className="flex items-center gap-3">
                               <button
                                 type="button"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-emerald-600 hover:text-emerald-700 transition"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#1b5e20] text-sm text-[#daf2d0]/70 hover:border-[#4CAF50] hover:text-[#4CAF50] transition"
                               >
                                 <ThumbsUp className="w-4 h-4" />
                                 <span>{review.helpful || 0}</span>
                               </button>
                               <button
                                 type="button"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-red-600 hover:text-red-700 transition"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#1b5e20] text-sm text-[#daf2d0]/70 hover:border-red-600 hover:text-red-500 transition"
                               >
                                 <ThumbsDown className="w-4 h-4" />
                                 <span>{review.notHelpful || 0}</span>
@@ -807,14 +807,14 @@ export default function ProductDetailPage() {
                     </div>
                   ) : (
                     <div className="text-center py-12">
-                      <p className="text-neutral-500">No reviews match your filter criteria.</p>
+                      <p className="text-[#daf2d0]/60">No reviews match your filter criteria.</p>
                     </div>
                   )}
 
                   {reviews.length === 0 && (
-                    <div className="text-center py-12 rounded-2xl border border-neutral-200 bg-neutral-50">
-                      <p className="text-lg font-semibold text-neutral-900 mb-2 antialiased">No reviews yet</p>
-                      <p className="text-neutral-600">Be the first to share your experience with this product!</p>
+                    <div className="text-center py-12 rounded-2xl border border-[#1b5e20] bg-[#0a1f10]">
+                      <p className="text-lg font-semibold text-[#daf2d0] mb-2 antialiased">No reviews yet</p>
+                      <p className="text-[#daf2d0]/70">Be the first to share your experience with this product!</p>
                     </div>
                   )}
                 </div>
@@ -822,14 +822,14 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-emerald-100 bg-gradient-to-b from-emerald-50 to-white p-8 space-y-6">
+          <div className="rounded-3xl border border-[#1b5e20] bg-gradient-to-b from-[#0d3512] to-[#0a1f10] p-8 space-y-6">
             <div>
-              <p className="text-sm font-semibold text-emerald-800 uppercase tracking-wide">SEO snapshot</p>
-              <p className="text-lg font-semibold text-neutral-900 mt-2 antialiased">{product.name} — botanical luxury in India</p>
-              <p className="text-sm text-neutral-600 mt-3 leading-relaxed">{seoDescription}</p>
+              <p className="text-sm font-semibold text-[#4CAF50] uppercase tracking-wide">SEO snapshot</p>
+              <p className="text-lg font-semibold text-[#daf2d0] mt-2 antialiased">{product.name} — botanical luxury in India</p>
+              <p className="text-sm text-[#daf2d0]/70 mt-3 leading-relaxed">{seoDescription}</p>
             </div>
-            <div className="space-y-2 text-sm text-neutral-500">
-              <p className="font-semibold text-neutral-700">Suggested focus keywords</p>
+            <div className="space-y-2 text-sm text-[#daf2d0]/60">
+              <p className="font-semibold text-[#daf2d0]/80">Suggested focus keywords</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>{`${product.name} online India`}</li>
                 <li>{`${product.categories?.[0]?.name ?? 'organic plant'} delivery`}</li>
@@ -837,9 +837,9 @@ export default function ProductDetailPage() {
                 <li>Climate smart indoor plants</li>
               </ul>
             </div>
-            <div className="rounded-2xl bg-white border border-neutral-200 p-5">
-              <p className="text-sm font-semibold text-neutral-700">Meta preview</p>
-              <p className="text-sm text-neutral-500 truncate mt-1">
+            <div className="rounded-2xl bg-[#0a1f10] border border-[#1b5e20] p-5">
+              <p className="text-sm font-semibold text-[#daf2d0]/80">Meta preview</p>
+              <p className="text-sm text-[#daf2d0]/60 truncate mt-1">
                 {`${product.name} | Whole Lot of Nature — ${seoDescription}`}
               </p>
             </div>
@@ -848,10 +848,10 @@ export default function ProductDetailPage() {
       </section>
 
       {product.description && (
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#0a1f10]">
           <div className="max-w-5xl mx-auto">
-            <SectionHeader as="h2" title="In-depth product dossier" align="center" />
-            <div className="mt-8 prose prose-lg max-w-none text-neutral-700">
+            <SectionHeader as="h2" title="In-depth product dossier" align="center" className="text-[#daf2d0]" />
+            <div className="mt-8 prose prose-lg prose-invert max-w-none text-[#daf2d0]/80">
               <div dangerouslySetInnerHTML={{ __html: product.description }} />
             </div>
           </div>
@@ -859,9 +859,9 @@ export default function ProductDetailPage() {
       )}
 
       {relatedProducts.length > 0 && (
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#0d3512]">
           <div className="max-w-6xl mx-auto">
-            <SectionHeader as="h2" title="Curated complements" subtitle="Hand-picked by our stylists" align="center" />
+            <SectionHeader as="h2" title="Curated complements" subtitle="Hand-picked by our stylists" align="center" className="text-[#daf2d0]" />
             
             <div className="mt-10 relative">
               {/* Navigation Arrows */}
@@ -871,7 +871,7 @@ export default function ProductDetailPage() {
                     type="button"
                     onClick={prevCarousel}
                     disabled={carouselIndex === 0}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white border-2 border-emerald-700 text-emerald-700 flex items-center justify-center shadow-lg hover:bg-emerald-700 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-[#0a1f10] border-2 border-[#4CAF50] text-[#4CAF50] flex items-center justify-center shadow-lg hover:bg-[#4CAF50] hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Previous products"
                   >
                     <ChevronLeft className="w-6 h-6" />
@@ -880,7 +880,7 @@ export default function ProductDetailPage() {
                     type="button"
                     onClick={nextCarousel}
                     disabled={carouselIndex >= maxCarouselIndex}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white border-2 border-emerald-700 text-emerald-700 flex items-center justify-center shadow-lg hover:bg-emerald-700 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-[#0a1f10] border-2 border-[#4CAF50] text-[#4CAF50] flex items-center justify-center shadow-lg hover:bg-[#4CAF50] hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Next products"
                   >
                     <ChevronRight className="w-6 h-6" />
@@ -911,7 +911,7 @@ export default function ProductDetailPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4 }}
                     >
-                      <div className="rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-sm hover:shadow-xl transition h-full flex flex-col">
+                      <div className="rounded-3xl border border-[#1b5e20] bg-[#0a1f10] overflow-hidden shadow-sm hover:shadow-xl transition h-full flex flex-col">
                         {related.images[0] && (
                           <div className="relative h-48">
                             <Image
@@ -923,11 +923,11 @@ export default function ProductDetailPage() {
                           </div>
                         )}
                         <div className="p-5 space-y-3 flex-1 flex flex-col">
-                          <p className="font-semibold text-neutral-900 line-clamp-2 flex-1">{related.name}</p>
-                          <p className="text-emerald-700 font-semibold">{formatPrice(related.price)}</p>
+                          <p className="font-semibold text-[#daf2d0] line-clamp-2 flex-1">{related.name}</p>
+                          <p className="text-[#4CAF50] font-semibold">{formatPrice(related.price)}</p>
                           <Link
                             href={`/products/${related.slug}`}
-                            className="inline-flex items-center justify-center w-full rounded-full border border-neutral-200 py-2 text-sm font-semibold text-neutral-800 hover:border-emerald-700 hover:text-emerald-800 transition"
+                            className="inline-flex items-center justify-center w-full rounded-full border border-[#1b5e20] py-2 text-sm font-semibold text-[#daf2d0] hover:border-[#4CAF50] hover:text-[#4CAF50] transition"
                           >
                             View Details
                           </Link>
@@ -947,7 +947,7 @@ export default function ProductDetailPage() {
                       type="button"
                       onClick={() => setCarouselIndex(idx)}
                       className={`w-2 h-2 rounded-full transition ${
-                        carouselIndex === idx ? 'bg-emerald-700 w-6' : 'bg-neutral-300'
+                        carouselIndex === idx ? 'bg-[#4CAF50] w-6' : 'bg-[#1b5e20]'
                       }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
@@ -1000,7 +1000,7 @@ export default function ProductDetailPage() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-neutral-200 shadow-2xl"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-[#0a1f10] border-t border-[#1b5e20] shadow-2xl"
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4 justify-between">
             <div className="flex items-center gap-4">
@@ -1015,8 +1015,8 @@ export default function ProductDetailPage() {
                 </div>
               )}
               <div>
-                <p className="font-semibold text-neutral-900 line-clamp-1">{product.name}</p>
-                <p className="text-emerald-700 font-semibold">{displayPrice}</p>
+                <p className="font-semibold text-[#daf2d0] line-clamp-1">{product.name}</p>
+                <p className="text-[#4CAF50] font-semibold">{displayPrice}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -1025,15 +1025,15 @@ export default function ProductDetailPage() {
                   type="button"
                   disabled={quantity <= 1}
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-700 hover:border-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-8 h-8 rounded-full border border-[#1b5e20] flex items-center justify-center text-[#daf2d0] hover:border-[#4CAF50] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   −
                 </button>
-                <span className="w-12 text-center font-medium">{quantity}</span>
+                <span className="w-12 text-center font-medium text-[#daf2d0]">{quantity}</span>
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-700 hover:border-emerald-600"
+                  className="w-8 h-8 rounded-full border border-[#1b5e20] flex items-center justify-center text-[#daf2d0] hover:border-[#4CAF50]"
                 >
                   +
                 </button>
@@ -1043,8 +1043,8 @@ export default function ProductDetailPage() {
                 disabled={!product.in_stock}
                 className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition ${
                   product.in_stock
-                    ? 'bg-emerald-700 hover:bg-emerald-800'
-                    : 'bg-neutral-300 cursor-not-allowed'
+                    ? 'bg-[#2E7D32] hover:bg-[#1b5e20]'
+                    : 'bg-neutral-700 cursor-not-allowed'
                 }`}
               >
                 Add to Cart
@@ -1054,7 +1054,7 @@ export default function ProductDetailPage() {
         </motion.div>
       )}
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0d3512]">
         <div className="max-w-6xl mx-auto">
           <CTASection
             title="Design a signature botanical plan"

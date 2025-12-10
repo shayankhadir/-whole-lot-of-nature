@@ -36,7 +36,7 @@ export default function ImmersiveBotanicalExplorer({ products }: BotanicalExplor
         <motion.div
           className="absolute top-0 left-0 w-full h-full opacity-20"
           style={{ 
-            backgroundImage: 'url(/images/backgrounds/bgleaf1.png)',
+            backgroundImage: 'url(/images/backgrounds/bgleaf1.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}

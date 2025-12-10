@@ -120,7 +120,7 @@ export default function SignInPage() {
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         {/* Forest Background Image */}
         <Image
-          src="/images/backgrounds/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Lush forest background"
           fill
           className="object-cover"

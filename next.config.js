@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  compress: true,
+  poweredByHeader: false,
   // Treat build errors as warnings to allow Vercel deployment
   experimental: {
     missingSuspenseWithCSRBailout: false,
+    optimizeCss: true, // Enable CSS optimization
   },
   typescript: {
     ignoreBuildErrors: false,

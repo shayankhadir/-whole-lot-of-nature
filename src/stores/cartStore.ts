@@ -32,6 +32,7 @@ interface CartState {
   shipping: number;
   tax: number;
   isLoading: boolean;
+  coupons: Array<{ code: string; discount: string }>;
 }
 
 interface CartActions {
@@ -39,6 +40,8 @@ interface CartActions {
   addItem: (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => Promise<void>;
   removeItem: (id: string) => Promise<void>;
   updateQuantity: (id: string, quantity: number) => Promise<void>;
+  applyCoupon: (code: string) => Promise<void>;
+  removeCoupon: (code: string) => Promise<void>;
   clearCart: () => void;
   toggleCart: () => void;
   openCart: () => void;
@@ -68,6 +71,7 @@ interface WCCartItem {
 interface WCCart {
   items: WCCartItem[];
   items_count: number;
+  coupons: Array<{ code: string; totals: { total_discount: string } }>;
   totals: {
     total_items: string;
     total_price: string;
@@ -103,6 +107,10 @@ const mapWCCartToState = (wcCart: WCCart) => {
     shipping: wcCart.totals.total_shipping ? parseFloat(wcCart.totals.total_shipping) / divisor : 0,
     discount: parseFloat(wcCart.totals.total_discount) / divisor,
     totalItems: wcCart.items_count,
+    coupons: wcCart.coupons?.map(c => ({ 
+      code: c.code, 
+      discount: (parseFloat(c.totals.total_discount) / divisor).toString() 
+    })) || [],
   };
 
   return { items, ...totals };
@@ -121,6 +129,7 @@ export const useCartStore = create<CartStore>()(
       shipping: 0,
       tax: 0,
       isLoading: false,
+      coupons: [],
 
       // Actions
       fetchCart: async () => {
@@ -188,8 +197,31 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
+      applyCoupon: async (code: string) => {
+        set({ isLoading: true });
+        try {
+          const wcCart = await cartService.applyCoupon(code);
+          set({ ...mapWCCartToState(wcCart), isLoading: false });
+        } catch (error) {
+          console.error('Failed to apply coupon:', error);
+          set({ isLoading: false });
+          throw error;
+        }
+      },
+
+      removeCoupon: async (code: string) => {
+        set({ isLoading: true });
+        try {
+          const wcCart = await cartService.removeCoupon(code);
+          set({ ...mapWCCartToState(wcCart), isLoading: false });
+        } catch (error) {
+          console.error('Failed to remove coupon:', error);
+          set({ isLoading: false });
+        }
+      },
+
       clearCart: () => {
-        set({ items: [], totalItems: 0, totalPrice: 0, subtotal: 0 });
+        set({ items: [], totalItems: 0, totalPrice: 0, subtotal: 0, coupons: [] });
       },
 
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),

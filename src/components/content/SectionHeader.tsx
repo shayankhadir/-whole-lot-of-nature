@@ -20,6 +20,7 @@ interface SectionHeaderProps {
   backgroundColor?: 'green' | 'black' | 'white' | 'gray';
   seoKeywords?: string;
   as?: 'h1' | 'h2' | 'h3';
+  className?: string;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -34,6 +35,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   backgroundColor = 'white',
   seoKeywords,
   as: HeadingTag = 'h2',
+  className = '',
 }) => {
   const titleSizeClasses = {
     small: 'text-2xl md:text-3xl',
@@ -88,7 +90,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       viewport={{ once: true }}
       className={`flex flex-col ${variantClasses[variant]} ${
         withBackground ? `${backgroundClasses[backgroundColor]} ${borderClasses[variant]} py-8 md:py-12 px-6 md:px-8 rounded-lg` : ''
-      }`}
+      } ${className}`}
     >
       {/* Icon */}
       {icon && (

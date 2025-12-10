@@ -32,7 +32,7 @@ export default function ForestExperienceBanner() {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/backgrounds/bgleaf2.png"
+          src="/images/backgrounds/bgleaf2.webp"
           alt="Forest canopy pattern"
           fill
           priority

@@ -27,7 +27,7 @@ export default function InteractiveHero() {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="/images/backgrounds/bgleaf1.png"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Tropical leaves background"
           fill
           className="object-cover object-center"
