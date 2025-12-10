@@ -3,7 +3,8 @@
 import dynamic from 'next/dynamic';
 import InteractiveHero from '@/components/home/InteractiveHero';
 import TrustBanner from '@/components/sections/TrustBanner';
-import PremiumFeaturedShowcase from '@/components/home/PremiumFeaturedShowcase';
+import PlantsShowcase from '@/components/home/PlantsShowcase';
+import SoilShowcase from '@/components/home/SoilShowcase';
 import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
@@ -59,19 +60,22 @@ export default function Home() {
         <TrustBanner />
       </SeamlessSection>
 
-      {/* 3. Featured Products Section */}
-      <PremiumFeaturedShowcase />
+      {/* 3. Plants Showcase - REMOVED as per request */}
+      {/* <PlantsShowcase /> */}
 
-      {/* 4. Modern Categories Section */}
+      {/* 4. Soil Showcase */}
+      <SoilShowcase />
+
+      {/* 5. Modern Categories Section */}
       <ModernCategories />
 
-      {/* 5. Tag-Based Product Filter */}
+      {/* 6. Tag-Based Product Filter */}
       <TagFilterSection />
 
-      {/* 6. All Products Showcase */}
+      {/* 7. All Products Showcase */}
       <AllProductsShowcase />
 
-      {/* 7. Features Section */}
+      {/* 8. Features Section */}
       <SeamlessSection 
         tone="forest"
         paddingY="lg"

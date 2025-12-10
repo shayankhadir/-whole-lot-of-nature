@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Calendar, User } from 'lucide-react';
 import { getPosts, Post } from '@/lib/api/wordpress';
 import Button from '@/components/ui/Button';
+import BlogList from '@/components/blog/BlogList';
 
 import type { Metadata } from 'next';
 
@@ -79,57 +80,7 @@ export default async function BlogPage() {
           <p className="text-gray-300 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(posts && posts.length > 0 ? posts : []).map((post) => {
-            const featured = post._embedded?.['wp:featuredmedia']?.[0];
-            const author = post._embedded?.author?.[0];
-            return (
-              <article
-                key={post.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group"
-              >
-                {featured?.source_url && (
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={featured.source_url}
-                      alt={featured.alt_text || post.title.rendered}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
-
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors antialiased" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-
-                  <div
-                    className="text-gray-300 text-sm mb-4 line-clamp-3"
-                    dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                  />
-
-                  <div className="flex items-center gap-4 text-gray-400 text-sm">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    </div>
-                    {author?.name && (
-                      <div className="flex items-center gap-1">
-                        <User className="w-4 h-4" />
-                        <span>{author.name}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-4">
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button>Read More</Button>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+        <BlogList initialPosts={posts && posts.length > 0 ? posts : []} />
 
         {(!posts || posts.length === 0) && (
           <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">

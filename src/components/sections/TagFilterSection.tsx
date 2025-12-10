@@ -30,36 +30,29 @@ export default function TagFilterSection() {
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data?.length) {
-          // Filter to include only trendy tags and top tags
+          // Use all tags from WordPress, sorted by count (assuming API returns them sorted or we sort them)
           const allTags: ProductTag[] = data.data;
-          const trendyTags = allTags.filter(tag => 
-            TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
-          );
+          // Sort by count descending just in case
+          const sortedTags = allTags.sort((a, b) => b.count - a.count);
           
-          // If we have trendy tags, use them; otherwise use top 8
-          const tagsToUse = trendyTags.length > 0 ? trendyTags.slice(0, 8) : allTags.slice(0, 8);
+          // Use top 12 tags
+          const tagsToUse = sortedTags.slice(0, 12);
           
           setTags(tagsToUse);
           if (tagsToUse.length > 0) {
             setSelectedTag(tagsToUse[0].slug);
           }
         } else {
-          // Fallback to demo tags
-          const filteredDemo = DEMO_TAGS.filter(tag => 
-            TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
-          );
-          setTags(filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS);
-          setSelectedTag((filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS)[0]?.slug ?? null);
+          // Fallback to demo tags if API fails
+          setTags(DEMO_TAGS);
+          setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
         }
         setLoading(false);
       })
       .catch(err => {
         console.error('Failed to fetch tags:', err);
-        const filteredDemo = DEMO_TAGS.filter(tag => 
-          TRENDY_TAGS.some(trendy => tag.slug.toLowerCase().includes(trendy.toLowerCase()) || tag.name.toLowerCase().includes(trendy.toLowerCase()))
-        );
-        setTags(filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS);
-        setSelectedTag((filteredDemo.length > 0 ? filteredDemo : DEMO_TAGS)[0]?.slug ?? null);
+        setTags(DEMO_TAGS);
+        setSelectedTag(DEMO_TAGS[0]?.slug ?? null);
         setLoading(false);
       });
   }, []);

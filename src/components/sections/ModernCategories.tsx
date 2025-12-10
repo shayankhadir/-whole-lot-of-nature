@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package } from 'lucide-react';
+import { ArrowRight, Leaf, Droplet, Sparkles, Sprout, Gem, Package, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { DEMO_CATEGORIES, DEMO_CHILD_CATEGORIES } from '@/data/demoCatalog';
-import { cleanProductDescription } from '@/lib/utils';
+import { cleanProductDescription, cn } from '@/lib/utils';
 
 interface WooCategory {
   id: number;
@@ -19,7 +19,6 @@ interface WooCategory {
   image: { src: string } | null;
 }
 
-// Map category names to icons
 const getCategoryIcon = (name: string): LucideIcon => {
   const lowerName = name.toLowerCase();
   if (lowerName.includes('soil') || lowerName.includes('growing')) return Sprout;
@@ -41,7 +40,7 @@ export default function ModernCategories() {
       .then(data => {
         if (data.success && data.data?.length) {
           const allCategories: WooCategory[] = data.data;
-          const topLevelCategories = allCategories.filter((cat) => cat.count > 0 && cat.parent === 0 && cat.name !== 'Uncategorized');
+          const topLevelCategories = allCategories.filter((cat) => (cat.count > 0 || cat.slug === 'ebooks') && cat.parent === 0 && cat.name !== 'Uncategorized');
           const childMap: Record<number, WooCategory[]> = {};
 
           allCategories
@@ -71,13 +70,11 @@ export default function ModernCategories() {
 
   if (loading) {
     return (
-      <section id="categories" className="relative py-20 px-4">
+      <section className="py-24 px-4 bg-[#051F10]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="h-64 bg-emerald-900/20 rounded-2xl" />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-96 bg-white/5 rounded-3xl animate-pulse" />
             ))}
           </div>
         </div>
@@ -86,57 +83,54 @@ export default function ModernCategories() {
   }
 
   return (
-    <section id="categories" className="relative py-20 px-4 overflow-hidden bg-[var(--surface-onyx)]">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/backgrounds/bgleaf2.png"
-          alt="Tropical monstera leaves background"
-          fill
-          className="object-cover opacity-15"
-          quality={90}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
+    <section className="relative py-32 px-4 overflow-hidden bg-[#051F10]">
+      {/* Ambient Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-800/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02] mix-blend-overlay" />
       </div>
-
-      {/* Leaf Background Decorations */}
-      <div className="absolute top-10 left-0 w-64 h-64 text-[var(--emerald-700)]/5 pointer-events-none z-0">
-        <Leaf className="w-full h-full rotate-12" strokeWidth={0.5} />
-      </div>
-      <div className="absolute bottom-20 right-0 w-96 h-96 text-[var(--emerald-500)]/5 pointer-events-none z-0">
-        <Leaf className="w-full h-full -rotate-12" strokeWidth={0.5} />
-      </div>
-      
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#020f07]/70 to-[#010904]/85 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full px-4 py-2 mb-4 backdrop-blur-md">
-            <Package className="w-4 h-4 text-emerald-400" />
-            <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-emerald-400 font-semibold uppercase tracking-wider antialiased">
-              Explore Our Collections
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <span className="inline-block text-emerald-400 font-medium tracking-wider text-sm uppercase mb-4">
+              Curated Collections
             </span>
-          </div>
-          
-          <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-cream-50 mb-3 antialiased">
-            Shop by <span className="text-emerald-400">Category</span>
-          </h2>
-          
-          <p className="text-base max-w-xl mx-auto antialiased" style={{ color: '#86efac' }}>
-            Discover curated collections for every gardening need
-          </p>
-        </motion.div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight mb-6">
+              Essentials for Your <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                Green Sanctuary
+              </span>
+            </h2>
+            <p className="text-emerald-100/60 text-lg leading-relaxed max-w-lg">
+              Explore our handpicked categories designed to help you cultivate the perfect indoor and outdoor garden spaces.
+            </p>
+          </motion.div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <Link 
+              href="/shop"
+              className="group flex items-center gap-2 text-white font-medium hover:text-emerald-400 transition-colors"
+            >
+              View All Categories
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => {
             const Icon = getCategoryIcon(category.name);
             const childCategories = subcategoriesByParent[category.id] || [];
@@ -144,103 +138,65 @@ export default function ModernCategories() {
             return (
               <motion.div
                 key={category.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ delay: index * 0.1 }}
+                className={cn(
+                  "group relative rounded-[2rem] overflow-hidden border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500",
+                  // Optional: make first item span 2 cols if we have enough items
+                  // index === 0 ? "md:col-span-2 lg:col-span-2" : "" 
+                )}
               >
-                <Link href={`/shop?category=${category.slug}`}>
-                  <motion.div
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    className="group relative h-full p-8 rounded-[var(--radius-lg)] bg-[var(--ink-700)]/40 backdrop-blur-md border border-[var(--emerald-700)]/20 overflow-hidden transition-all duration-300 hover:border-[var(--emerald-500)]/40 hover:shadow-[var(--shadow-card)]"
-                  >
-                    {/* Hover Glow Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-[var(--emerald-500)]/0 via-[var(--emerald-700)]/0 to-[var(--emerald-900)]/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-                    />
-
-                    {/* Icon */}
-                    <div className="relative mb-6">
-                      <div className="w-16 h-16 rounded-[var(--radius-md)] bg-[var(--emerald-700)]/20 border border-[var(--emerald-500)]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <Icon className="w-8 h-8 text-emerald-400" strokeWidth={1.5} />
+                <Link href={`/shop?category=${category.slug}`} className="block h-full p-8 md:p-10">
+                  {/* Hover Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10 h-full flex flex-col">
+                    {/* Icon Header */}
+                    <div className="flex justify-between items-start mb-8">
+                      <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-emerald-500/20">
+                        <Icon className="w-7 h-7 text-emerald-400" />
+                      </div>
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-all duration-300">
+                        <ArrowRight className="w-5 h-5 text-white/50 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-all duration-300" />
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="relative">
-                      <h3 className="text-lg font-semibold text-cream-50 mb-2 group-hover:text-emerald-400 transition-colors antialiased">
+                    <div className="mt-auto">
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
                         {category.name}
                       </h3>
-                      
-                      <p className="text-xs leading-relaxed mb-4 line-clamp-2 antialiased" style={{ color: '#86efac' }}>
-                        {cleanProductDescription(category.description) || `Explore our ${category.name.toLowerCase()} collection`}
+                      <p className="text-emerald-100/50 text-sm leading-relaxed mb-6 line-clamp-2">
+                        {cleanProductDescription(category.description) || `Explore our premium collection of ${category.name.toLowerCase()}.`}
                       </p>
 
+                      {/* Subcategories Pills */}
                       {childCategories.length > 0 && (
-                        <div className="mb-6">
-                          <p className="text-xs uppercase tracking-wide text-emerald-300 mb-2 antialiased">Subcategories</p>
-                          <div className="flex flex-wrap gap-2">
-                            {childCategories.slice(0, 4).map((subcat) => (
-                              <span
-                                key={subcat.id}
-                                className="px-3 py-1 rounded-full bg-[var(--emerald-900)]/40 border border-[var(--emerald-700)]/30 text-emerald-200 text-xs antialiased"
-                              >
-                                {subcat.name}
-                              </span>
-                            ))}
-                            {childCategories.length > 4 && (
-                              <span className="px-3 py-1 rounded-full bg-[var(--emerald-900)]/40 border border-[var(--emerald-700)]/30 text-emerald-200 text-xs antialiased">
-                                +{childCategories.length - 4} more
-                              </span>
-                            )}
-                          </div>
+                        <div className="flex flex-wrap gap-2">
+                          {childCategories.slice(0, 3).map((sub) => (
+                            <span 
+                              key={sub.id}
+                              className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs text-emerald-100/70 group-hover:border-emerald-500/30 transition-colors"
+                            >
+                              {sub.name}
+                            </span>
+                          ))}
+                          {childCategories.length > 3 && (
+                            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs text-emerald-100/70">
+                              +{childCategories.length - 3}
+                            </span>
+                          )}
                         </div>
                       )}
-
-                      {/* Product Count Badge */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs px-3 py-1.5 bg-[var(--emerald-700)]/20 border border-[var(--emerald-700)]/30 rounded-full text-emerald-300 group-hover:bg-[var(--emerald-500)]/20 group-hover:border-[var(--emerald-500)]/40 transition-all antialiased">
-                          {category.count} {category.count === 1 ? 'Product' : 'Products'}
-                        </span>
-
-                        {/* Arrow */}
-                        <div className="flex items-center gap-2 text-emerald-400 font-medium text-sm antialiased">
-                          <span>Explore</span>
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                        </div>
-                      </div>
                     </div>
-
-                    {/* Corner Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[var(--emerald-500)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </motion.div>
+                  </div>
                 </Link>
               </motion.div>
             );
           })}
         </div>
-
-        {/* View All Categories Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <Link href="/shop">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group px-8 py-4 bg-[var(--emerald-500)] text-white font-semibold rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
-            >
-              <span className="flex items-center gap-2">
-                View All Categories
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </span>
-            </motion.button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

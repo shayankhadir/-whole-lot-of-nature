@@ -4,10 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Sparkles, ShoppingCart, Star } from 'lucide-react';
 import { DEMO_PRODUCTS } from '@/data/demoCatalog';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { useCartStore } from '@/stores/cartStore';
+import { cn } from '@/lib/utils';
 
 interface FeaturedProduct {
   id: number;
@@ -46,7 +47,6 @@ export default function PremiumFeaturedShowcase() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   useEffect(() => {
     fetchFeaturedProducts();
@@ -54,7 +54,6 @@ export default function PremiumFeaturedShowcase() {
 
   async function fetchFeaturedProducts() {
     try {
-      // Curated list of best-selling slugs
       const featuredSlugs = [
         'organic-potting-mix',
         'succulent-potting-mix-2',
@@ -63,11 +62,9 @@ export default function PremiumFeaturedShowcase() {
         'succulent-desert-plante-4-succulents'
       ];
 
-      // Fetch all products in a single request
       const response = await fetch(`/api/products?slugs=${featuredSlugs.join(',')}`);
       const data = await response.json();
       
-      // Define a loose type for the API response to avoid 'any'
       interface ApiProduct {
         id: number;
         name: string;
@@ -86,7 +83,6 @@ export default function PremiumFeaturedShowcase() {
         allProducts = data.data;
       }
 
-      // Filter out any nulls and ensure unique
       const uniqueProducts = Array.from(new Map(allProducts.filter(p => p).map(item => [item.id, item])).values());
 
       if (uniqueProducts.length > 0) {
@@ -117,163 +113,208 @@ export default function PremiumFeaturedShowcase() {
   const mainProduct = products[0];
   const sideProducts = products.slice(1, 5);
 
+  if (loading) {
+    return (
+      <section className="py-24 bg-[#051F10] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+      </section>
+    );
+  }
+
   return (
-    <section ref={containerRef} className="relative py-24 overflow-hidden">
-      {/* Premium Background - Mesh Gradient */}
-      <div className="absolute inset-0 bg-[#0A1F12]">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(46,125,50,0.2),transparent_70%)]" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(102,187,106,0.1),transparent_70%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+    <section ref={containerRef} className="relative py-32 overflow-hidden bg-[#051F10]">
+      {/* Ambient Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-800/10 rounded-full blur-[100px]" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02] mix-blend-overlay" />
       </div>
 
-      {loading ? (
-        <div className="h-[600px] w-full flex items-center justify-center relative z-10">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2E7D32]"></div>
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <div className="flex items-center gap-2 text-emerald-400 mb-4 font-medium tracking-wider text-sm uppercase">
+              <Sparkles className="w-4 h-4" />
+              <span>Curated Collection</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+              Premium Essentials for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                Thriving Gardens
+              </span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <Link 
+              href="/shop"
+              className="group flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full backdrop-blur-md transition-all duration-300"
+            >
+              <span className="text-white font-medium">View Full Collection</span>
+              <ArrowRight className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
-      ) : (
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl"
-            >
-              <div className="flex items-center gap-2 text-[#66BB6A] mb-4 font-medium tracking-wider text-sm uppercase">
-                <Sparkles className="w-4 h-4" />
-                <span>Curated Collection</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#E8F5E9] leading-tight">
-                Premium Essentials for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66BB6A] to-[#A5D6A7]">
-                  Thriving Gardens
-                </span>
-              </h2>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Link 
-                href="/shop"
-                className="group flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full backdrop-blur-md transition-all duration-300"
-              >
-                <span className="text-[#E8F5E9] font-medium">View Full Collection</span>
-                <ArrowRight className="w-5 h-5 text-[#66BB6A] group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Unique Layout - Asymmetric Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Main Highlight Product - Spans 5 columns */}
-            <motion.div 
-              style={{ y }}
-              className="lg:col-span-5 relative group"
-            >
-              <Link href={`/shop/${mainProduct.slug}`} className="block h-full">
-                <div className="relative h-[600px] lg:h-[700px] rounded-[2rem] overflow-hidden">
-                  <Image
-                    src={mainProduct.image}
-                    alt={mainProduct.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                    <span className="inline-block px-4 py-1.5 bg-[#2E7D32] text-white text-xs font-bold tracking-wider uppercase rounded-full mb-4">
+        {/* Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Highlight Product */}
+          <motion.div 
+            style={{ y }}
+            className="lg:col-span-5 relative group"
+          >
+            <Link href={`/shop/${mainProduct.slug}`} className="block h-full">
+              <div className="relative h-[600px] lg:h-[750px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-white/[0.02]">
+                <Image
+                  src={mainProduct.image}
+                  alt={mainProduct.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#051F10] via-[#051F10]/40 to-transparent opacity-90" />
+                
+                <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="px-4 py-1.5 bg-emerald-500 text-white text-xs font-bold tracking-wider uppercase rounded-full">
                       Featured Choice
                     </span>
-                    <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-2">
-                      {mainProduct.name}
-                    </h3>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xl font-semibold text-[#66BB6A]">
-                        ₹{mainProduct.price}
-                      </span>
-                      {mainProduct.regular_price && (
-                        <span className="text-base text-white/70 line-through">
-                          ₹{mainProduct.regular_price}
-                        </span>
-                      )}
+                    <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                      <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                      <span className="text-xs text-white font-medium">{mainProduct.rating}</span>
                     </div>
-                    <p className="text-white/80 line-clamp-2 mb-8 max-w-md">
-                      Experience premium quality with our top-rated selection, perfect for enhancing your green space.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-4">
+                  </div>
+
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 leading-tight">
+                    {mainProduct.name}
+                  </h3>
+                  
+                  <div className="flex items-baseline gap-4 mb-6">
+                    <span className="text-3xl font-bold text-emerald-400">
+                      ₹{mainProduct.price}
+                    </span>
+                    {mainProduct.regular_price && (
+                      <span className="text-lg text-white/40 line-through decoration-white/40">
+                        ₹{mainProduct.regular_price}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addItem({
+                          id: String(mainProduct.id),
+                          name: mainProduct.name,
+                          price: parseFloat(mainProduct.price || '0'),
+                          originalPrice: mainProduct.regular_price ? parseFloat(mainProduct.regular_price) : undefined,
+                          image: mainProduct.image,
+                          quantity: 1,
+                          type: 'product',
+                          inStock: true,
+                          category: mainProduct.category
+                        });
+                      }}
+                      className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold transition-all shadow-lg shadow-emerald-900/20 flex items-center gap-2 z-20 relative group/btn"
+                    >
+                      <ShoppingCart className="w-5 h-5" />
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Secondary Grid */}
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 content-center">
+            {sideProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="h-full"
+              >
+                <Link href={`/shop/${product.slug}`} className="block h-full group">
+                  <div className="relative h-full bg-white/[0.02] border border-white/5 rounded-[2rem] p-6 hover:bg-white/[0.04] transition-all duration-500 overflow-hidden">
+                    {/* Image Area */}
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Quick Add Button Overlay */}
                       <button
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                           addItem({
-                            id: String(mainProduct.id),
-                            name: mainProduct.name,
-                            price: parseFloat(mainProduct.price || '0'),
-                            originalPrice: mainProduct.regular_price ? parseFloat(mainProduct.regular_price) : undefined,
-                            image: mainProduct.image,
+                            id: String(product.id),
+                            name: product.name,
+                            price: parseFloat(product.price || '0'),
+                            originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
+                            image: product.image,
                             quantity: 1,
                             type: 'product',
                             inStock: true,
-                            category: mainProduct.category
+                            category: product.category
                           });
                         }}
-                        className="px-6 py-3 bg-[#2E7D32] hover:bg-[#66BB6A] text-white rounded-full font-medium transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2 z-20 relative"
+                        className="absolute bottom-4 right-4 w-10 h-10 bg-white text-emerald-900 rounded-full flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:bg-emerald-500 hover:text-white z-20"
                       >
-                        <ShoppingCart className="w-5 h-5" />
-                        Add to Cart
+                        <ShoppingCart className="w-4 h-4" />
                       </button>
-                      <span className="flex items-center gap-2 text-white font-medium group-hover:gap-4 transition-all">
-                        View Details <ArrowRight className="w-5 h-5" />
-                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <p className="text-xs text-emerald-400 font-medium uppercase tracking-wider">
+                          {product.category}
+                        </p>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                          <span className="text-xs text-white/60">{product.rating}</span>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-1 group-hover:text-emerald-300 transition-colors">
+                        {product.name}
+                      </h3>
+                      
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg font-bold text-white">
+                          ₹{product.price}
+                        </span>
+                        {product.regular_price && (
+                          <span className="text-sm text-white/40 line-through">
+                            ₹{product.regular_price}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* Secondary Grid - Spans 7 columns */}
-            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 content-center">
-              {sideProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link href={`/shop/${product.slug}`} className="block h-full">
-                    <ProductCard
-                      id={String(product.id)}
-                      name={product.name}
-                      image={product.image}
-                      price={parseFloat(product.price || '0')}
-                      originalPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
-                      rating={product.rating || 4.5}
-                      reviewCount={product.reviewCount || 0}
-                      variant="glass"
-                      onAddToCart={() => addItem({
-                        id: String(product.id),
-                        name: product.name,
-                        price: parseFloat(product.price || '0'),
-                        originalPrice: product.regular_price ? parseFloat(product.regular_price) : undefined,
-                        image: product.image,
-                        quantity: 1,
-                        type: 'product',
-                        inStock: true,
-                        category: product.category
-                      })}
-                    />
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }

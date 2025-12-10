@@ -24,15 +24,17 @@ export async function GET() {
 
     const raw: unknown = response.data;
     const list = Array.isArray(raw) ? (raw as WCCategory[]) : [];
-    const categories = list.map((cat) => ({
-      id: cat.id,
-      name: cat.name,
-      slug: cat.slug,
-      parent: cat.parent,
-      count: cat.count ?? 0,
-      description: cat.description ?? '',
-      image: cat.image ?? null,
-    }));
+    const categories = list
+      .filter(cat => cat.name !== 'Uncategorized' && cat.slug !== 'uncategorized')
+      .map((cat) => ({
+        id: cat.id,
+        name: cat.name,
+        slug: cat.slug,
+        parent: cat.parent,
+        count: cat.count ?? 0,
+        description: cat.description ?? '',
+        image: cat.image ?? null,
+      }));
 
     return NextResponse.json({
       success: true,

@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
+    const tag = searchParams.get('tag');
     const search = searchParams.get('search');
     const slug = searchParams.get('slug');
     const slugs = searchParams.get('slugs'); // New parameter for multiple slugs
@@ -37,6 +38,8 @@ export async function GET(request: NextRequest) {
       products = product ? [product] : [];
     } else if (search) {
       products = await WooCommerceService.searchProducts(search, productLimit);
+    } else if (tag) {
+      products = await WooCommerceService.getProductsByTag(tag, productLimit);
     } else if (category) {
       // Category can be either a slug or an ID
       const isNumeric = /^\d+$/.test(category);

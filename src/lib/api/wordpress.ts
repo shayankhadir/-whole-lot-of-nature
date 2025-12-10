@@ -1,5 +1,5 @@
 // WordPress REST API Service
-const API_URL = process.env.WORDPRESS_API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://wholelotofnature.com/wp-json';
+const API_URL = process.env.WORDPRESS_API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://admin.wholelotofnature.com/wp-json';
 
 export interface Post {
   id: number;

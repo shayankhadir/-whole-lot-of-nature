@@ -377,6 +377,38 @@ export class WooCommerceService {
   }
 
   /**
+   * Get products by tag
+   */
+  static async getProductsByTag(tagSlug: string, limit?: number): Promise<WooCommerceProduct[]> {
+    try {
+      // First get tag ID by slug
+      const tagResponse = await WooCommerce.get('products/tags', {
+        slug: tagSlug
+      });
+      
+      const tagRaw: unknown = tagResponse.data;
+      const tagList = Array.isArray(tagRaw) ? (tagRaw as WCRawTag[]) : [];
+      if (tagList.length === 0) {
+        return [];
+      }
+      const tagId = tagList[0].id;
+      
+      const response = await WooCommerce.get('products', {
+        tag: tagId,
+        per_page: limit || 20,
+        status: 'publish'
+      });
+
+      const raw: unknown = response.data;
+      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+      return list.map(this.transformWooCommerceProduct);
+    } catch (error) {
+      console.error(`Error fetching products for tag ${tagSlug}:`, error);
+      return [];
+    }
+  }
+
+  /**
    * Search products
    */
   static async searchProducts(searchTerm: string, limit?: number): Promise<WooCommerceProduct[]> {
@@ -562,6 +594,49 @@ export class WooCommerceService {
     } catch (error) {
       console.error(`Error fetching reviews for product ${productId}:`, error);
       return [];
+    }
+  }
+
+  /**
+   * Create a WooCommerce order
+   */
+  static async createOrder(orderData: any): Promise<WooCommerceOrder | null> {
+    try {
+      const response = await WooCommerce.post('orders', orderData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating WooCommerce order:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get order by ID
+   */
+  static async getOrder(orderId: number): Promise<WooCommerceOrder | null> {
+    try {
+      const response = await WooCommerce.get(`orders/${orderId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching order ${orderId}:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Update order status
+   */
+  static async updateOrderStatus(orderId: number, status: string, transactionId?: string): Promise<WooCommerceOrder | null> {
+    try {
+      const data: any = { status };
+      if (transactionId) {
+        data.transaction_id = transactionId;
+      }
+      const response = await WooCommerce.put(`orders/${orderId}`, data);
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating order ${orderId}:`, error);
+      return null;
     }
   }
 

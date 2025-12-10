@@ -159,7 +159,6 @@ function ShopContent() {
 
   return (
     <div className="min-h-screen bg-[#030a06] text-white">
-      <h1 className="text-4xl font-bold mb-6">Shop Premium Plants Online</h1>
       {/* Header Section */}
       <div className="relative bg-[#05150a] border-b border-white/5 py-16 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">

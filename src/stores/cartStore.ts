@@ -74,17 +74,21 @@ interface WCCart {
     total_tax: string;
     total_shipping: string;
     total_discount: string;
+    currency_minor_unit?: number;
   };
 }
 
 // Helper to map WC cart response to our store state
 const mapWCCartToState = (wcCart: WCCart) => {
+  const minorUnit = wcCart.totals.currency_minor_unit ?? 2;
+  const divisor = Math.pow(10, minorUnit);
+
   const items: CartItem[] = wcCart.items.map((item) => ({
     id: item.id.toString(),
     key: item.key,
     name: item.name,
-    price: parseFloat(item.prices.price) / 100, // WC Store API returns prices in minor units
-    originalPrice: parseFloat(item.prices.regular_price) / 100,
+    price: parseFloat(item.prices.price) / divisor,
+    originalPrice: parseFloat(item.prices.regular_price) / divisor,
     image: item.images[0]?.src || '',
     quantity: item.quantity,
     type: 'product',
@@ -93,11 +97,11 @@ const mapWCCartToState = (wcCart: WCCart) => {
   }));
 
   const totals = {
-    subtotal: parseFloat(wcCart.totals.total_items) / 100,
-    totalPrice: parseFloat(wcCart.totals.total_price) / 100,
-    tax: parseFloat(wcCart.totals.total_tax) / 100,
-    shipping: parseFloat(wcCart.totals.total_shipping) / 100,
-    discount: parseFloat(wcCart.totals.total_discount) / 100,
+    subtotal: parseFloat(wcCart.totals.total_items) / divisor,
+    totalPrice: parseFloat(wcCart.totals.total_price) / divisor,
+    tax: parseFloat(wcCart.totals.total_tax) / divisor,
+    shipping: wcCart.totals.total_shipping ? parseFloat(wcCart.totals.total_shipping) / divisor : 0,
+    discount: parseFloat(wcCart.totals.total_discount) / divisor,
     totalItems: wcCart.items_count,
   };
 

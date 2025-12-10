@@ -13,6 +13,13 @@ export default function NewsletterPopup() {
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if already seen in this session
+    const seen = sessionStorage.getItem('newsletter_seen');
+    if (seen) {
+      setHasSeen(true);
+      return;
+    }
+
     const handleScroll = () => {
       if (hasSeen) return;
 
@@ -23,6 +30,7 @@ export default function NewsletterPopup() {
       if (percentage > 60) {
         setIsVisible(true);
         setHasSeen(true);
+        sessionStorage.setItem('newsletter_seen', 'true');
       }
     };
 
@@ -77,8 +85,13 @@ export default function NewsletterPopup() {
           <div ref={popupRef} className="relative overflow-hidden rounded-2xl border border-[#2E7D32]/30 bg-[#0A0A0A]/90 p-6 backdrop-blur-xl shadow-2xl">
             {/* Close Button */}
             <button
-              onClick={() => setIsVisible(false)}
-              className="absolute right-4 top-4 text-white/40 hover:text-white transition-colors"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsVisible(false);
+              }}
+              className="absolute right-4 top-4 z-[100] text-white/60 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full cursor-pointer"
               aria-label="Close newsletter popup"
             >
               <XMarkIcon className="h-6 w-6" />

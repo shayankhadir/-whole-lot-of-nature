@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Leaf, Heart, Users, Sprout, Droplet, Recycle } from 'lucide-react';
+import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
+import InstagramFeed from '@/components/sections/InstagramFeed';
 
 
 
@@ -110,55 +112,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-
-      {/* Contact Section */}
-      <div id="contact" className="py-24 relative">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-4xl font-bold text-white mb-4">Get in Touch</h2>
-            <p className="text-emerald-100 text-lg">Have questions about your plants? We&apos;re here to help.</p>
-          </div>
-          
-          <form className="space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-emerald-200 mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-emerald-200 mb-2">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-emerald-200 mb-2">Message</label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
-                placeholder="How can we help you grow?"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#2E7D32] hover:bg-[#1b5e20] text-white font-bold rounded-lg transition-colors shadow-lg shadow-green-900/20"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-
 
       {/* Mission & Values */}
       <div className="py-32 relative">
@@ -280,6 +233,58 @@ export default function AboutPage() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Social Media & Community */}
+      <YouTubeShowcase />
+      <InstagramFeed />
+
+      {/* Contact Section */}
+      <div id="contact" className="py-24 relative bg-[#05150a]">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-4xl font-bold text-white mb-4">Get in Touch</h2>
+            <p className="text-emerald-100 text-lg">Have questions about your plants? We&apos;re here to help.</p>
+          </div>
+          
+          <form className="space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-emerald-200 mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-emerald-200 mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-emerald-200 mb-2">Message</label>
+              <textarea
+                id="message"
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white focus:border-[#4ADE80] focus:ring-1 focus:ring-[#4ADE80] outline-none transition-colors"
+                placeholder="How can we help you grow?"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full py-4 bg-[#2E7D32] hover:bg-[#1b5e20] text-white font-bold rounded-lg transition-colors shadow-lg shadow-green-900/20"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </div>

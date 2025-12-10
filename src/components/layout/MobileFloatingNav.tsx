@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Home, Search, ShoppingCart, User, Heart, ShoppingBag } from 'lucide-react';
+import { Home, Search, ShoppingCart, User, Heart, ShoppingBag, MessageCircle } from 'lucide-react';
 import { useWishlistStore } from '@/stores/wishlistStore';
 import { useCartStore } from '@/stores/cartStore';
 
@@ -12,6 +12,8 @@ interface NavItem {
   title: string;
   icon: React.ReactNode;
   href: string;
+  action?: () => void;
+  isAction?: boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export default function MobileFloatingNav() {
   const pathname = usePathname();
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const cartCount = useCartStore((s) => s.items.reduce((sum, item) => sum + item.quantity, 0));
+  const [plantsyOpen, setPlantsyOpen] = useState(false);
 
   const navItems: NavItem[] = [
     {
@@ -38,6 +41,13 @@ export default function MobileFloatingNav() {
       href: '/shop',
     },
     {
+      title: 'Chat',
+      icon: <MessageCircle className="w-6 h-6" strokeWidth={2} />,
+      href: '/plantsy',
+      action: () => setPlantsyOpen(!plantsyOpen),
+      isAction: true,
+    },
+    {
       title: 'Cart',
       icon: <ShoppingCart className="w-6 h-6" strokeWidth={2} />,
       href: '/cart',
@@ -46,11 +56,6 @@ export default function MobileFloatingNav() {
       title: 'Wishlist',
       icon: <Heart className="w-6 h-6" strokeWidth={2} />,
       href: '/wishlist',
-    },
-    {
-      title: 'Account',
-      icon: <User className="w-6 h-6" strokeWidth={2} />,
-      href: '/account',
     },
   ];
 
@@ -76,20 +81,17 @@ export default function MobileFloatingNav() {
       <div className="mx-4 mb-4 rounded-2xl backdrop-blur-xl bg-[#0D1B0F]/90 border border-[#2E7D32]/30 shadow-2xl">
         <div className="flex items-center justify-around px-2 py-3">
           {navItems.map((item) => {
-            const active = isActive(item.href);
+            const active = isActive(item.href) && !item.isAction;
             const badgeCount = getBadgeCount(item.href);
+            const isHighlighted = item.isAction && plantsyOpen;
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] group"
-              >
+            const itemContent = (
+              <>
                 {/* Icon Container */}
                 <motion.div
                   whileTap={{ scale: 0.9 }}
                   className={`relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
-                    active
+                    active || isHighlighted
                       ? 'bg-[#2E7D32] text-white scale-110'
                       : 'text-white/85 group-hover:bg-[#2E7D32]/20 group-hover:text-white'
                   }`}
@@ -107,20 +109,43 @@ export default function MobileFloatingNav() {
                 {/* Label */}
                 <span
                   className={`mt-1 text-xs font-medium transition-colors ${
-                    active ? 'text-[#66BB6A]' : 'text-white/85'
+                    active || isHighlighted ? 'text-[#66BB6A]' : 'text-white/85'
                   }`}
                 >
                   {item.title}
                 </span>
 
                 {/* Active Indicator */}
-                {active && (
+                {(active || isHighlighted) && (
                   <motion.div
                     layoutId="activeTab"
                     className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#66BB6A]"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
+              </>
+            );
+
+            if (item.isAction) {
+              return (
+                <button
+                  key={item.href}
+                  onClick={item.action}
+                  className="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] group"
+                  aria-label={item.title}
+                >
+                  {itemContent}
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] group"
+              >
+                {itemContent}
               </Link>
             );
           })}

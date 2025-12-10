@@ -255,7 +255,7 @@ export default function DesktopHeader() {
           {/* Center: Logo */}
           <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 flex-shrink-0 group">
             <Image
-              src="/Whole%20lot%20of%20nature%20logo.png"
+              src="/logo.png"
               alt="Whole Lot of Nature"
               width={180}
               height={60}

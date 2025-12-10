@@ -26,7 +26,7 @@ export default function PageLoadingScreen() {
               className="relative"
             >
               <Image
-                src="/Whole lot of nature logo.png"
+                src="/logo.png"
                 alt="Whole Lot of Nature"
                 width={100}
                 height={100}

@@ -63,11 +63,21 @@ export default function BlogPreview() {
   useEffect(() => {
     // Try to fetch blog posts from API
     setLoading(true);
-    fetch('/api/blog?limit=4')
+    fetch('/api/blog/list?limit=4')
       .then(res => res.json())
       .then(data => {
         if (data.success && data.posts && data.posts.length > 0) {
-          setPosts(data.posts);
+          // Map API response to component state
+          const mappedPosts = data.posts.map((post: any) => ({
+            id: post.id,
+            title: post.title,
+            excerpt: post.excerpt.replace(/<[^>]*>/g, '').slice(0, 100) + '...', // Strip HTML tags
+            image: post.featured_image_url || 'https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=800&q=80',
+            slug: post.slug,
+            date: new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+            category: 'Gardening Tips', // Default category as API returns IDs
+          }));
+          setPosts(mappedPosts);
         }
         setLoading(false);
       })

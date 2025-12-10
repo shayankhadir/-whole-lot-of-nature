@@ -9,6 +9,8 @@ interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
   references?: Array<{ title: string; url: string }>;
+  carePlan?: string[];
+  products?: Array<{ id: string; name: string; slug: string }>;
 }
 
 export default function PlantsyChatWidget() {
@@ -48,12 +50,26 @@ export default function PlantsyChatWidget() {
       }
 
       const data = await res.json();
-      const reply = data?.answer;
+      
+      if (!data?.success || !data?.answer) {
+        throw new Error('Invalid response from Plantsy API');
+      }
+
+      const answer = data.answer;
       const assistantMessage: ChatMessage = {
         id: crypto.randomUUID(),
         role: 'assistant',
-        content: reply?.nextActions?.careAdvice || reply?.response || 'I was unable to load guidance just now.',
-        references: reply?.references?.map((ref: { title: string; url: string }) => ({ title: ref.title, url: ref.url })),
+        content: answer?.answer || 'I was unable to load guidance just now.',
+        references: answer?.references?.map((ref: any) => ({ 
+          title: ref.title, 
+          url: ref.url 
+        })) || [],
+        carePlan: answer?.carePlan || [],
+        products: answer?.recommendedProducts?.map((prod: any) => ({
+          id: prod.id,
+          name: prod.name,
+          slug: prod.slug,
+        })) || [],
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -76,7 +92,7 @@ export default function PlantsyChatWidget() {
     <>
       <button
         aria-label="Chat with Plantsy"
-        className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-2xl hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="hidden md:inline-flex fixed bottom-6 right-6 z-50 h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-2xl hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
         onClick={toggle}
       >
         {isOpen ? <X className="h-5 w-5" /> : <MessageCircle className="h-6 w-6" />}
@@ -101,16 +117,51 @@ export default function PlantsyChatWidget() {
               {messages.map((message) => (
                 <div
                   key={message.id}
-                  className={`rounded-2xl px-4 py-3 ${message.role === 'user' ? 'self-end bg-white shadow' : 'bg-white/70 backdrop-blur'} `}
+                  className={`rounded-2xl px-4 py-3 ${message.role === 'user' ? 'self-end bg-white shadow max-w-xs' : 'bg-white/70 backdrop-blur'} `}
                 >
                   <p className="whitespace-pre-line leading-relaxed">{message.content}</p>
+                  
+                  {/* Care Plan */}
+                  {message.carePlan && message.carePlan.length > 0 && (
+                    <div className="mt-3 border-t border-emerald-200 pt-2">
+                      <p className="font-semibold text-emerald-600">Care Plan:</p>
+                      <ul className="mt-1 list-inside list-disc space-y-1 text-xs text-emerald-600">
+                        {message.carePlan.map((step, idx) => (
+                          <li key={idx}>{step}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {/* Recommended Products */}
+                  {message.products && message.products.length > 0 && (
+                    <div className="mt-3 border-t border-emerald-200 pt-2">
+                      <p className="font-semibold text-emerald-600">Recommended Products:</p>
+                      <ul className="mt-1 space-y-1">
+                        {message.products.map((prod) => (
+                          <li key={prod.id}>
+                            <a 
+                              href={`/shop/${prod.slug}`} 
+                              target="_blank" 
+                              rel="noreferrer"
+                              className="text-xs text-emerald-500 hover:text-emerald-700 underline"
+                            >
+                              {prod.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {/* References */}
                   {message.references && message.references.length > 0 && (
-                    <div className="mt-2 text-xs">
-                      <p className="font-semibold text-emerald-500">References</p>
-                      <ul className="list-inside list-disc text-emerald-400">
+                    <div className="mt-3 border-t border-emerald-200 pt-2">
+                      <p className="font-semibold text-emerald-600">Learn More:</p>
+                      <ul className="mt-1 list-inside list-disc text-xs text-emerald-500 space-y-1">
                         {message.references.map((ref) => (
                           <li key={ref.url}>
-                            <a href={ref.url} target="_blank" rel="noreferrer" className="underline">
+                            <a href={ref.url} target="_blank" rel="noreferrer" className="hover:text-emerald-700 underline">
                               {ref.title}
                             </a>
                           </li>
