@@ -13,32 +13,32 @@ import { BackgroundGrid } from '@/components/ui/BackgroundEffects';
 
 const testimonials = [
   {
-    name: "Priya Sharma",
-    location: "Mumbai",
+    name: "Aarav R.",
+    location: "Indiranagar, Bangalore",
     rating: 5,
-    text: "Amazing quality plants! My indoor garden has never looked better. The organic potting mix worked wonders for my succulents. Highly recommended!",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+    text: "Their balcony makeover kit plus the organic soil mix brought instant life to my space. Delivery was spotless and the team followed up with care tips.",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80"
   },
   {
-    name: "Rajesh Kumar",
-    location: "Delhi",
+    name: "Diya S.",
+    location: "Whitefield, Bangalore",
     rating: 5,
-    text: "Fast delivery and excellent packaging. The plants arrived healthy and fresh. Great customer service too. Will definitely order again!",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+    text: "I booked a pond consult—excited for their upcoming aquascaping services. Meanwhile the aquatic plants arrived lush and healthy.",
+    image: "https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=150&q=80"
   },
   {
-    name: "Anita Patel",
-    location: "Bangalore",
+    name: "Karthik P.",
+    location: "Koramangala, Bangalore",
     rating: 5,
-    text: "Love the organic fertilizers! My vegetable garden is thriving. The gardening tips in their blog section are very helpful.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
+    text: "Succulents, ceramic planters, and the fern fertilizer—everything felt premium. The blog guides actually saved my fiddle leaf fig.",
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80"
   },
   {
-    name: "Mohammed Ali",
-    location: "Hyderabad",
+    name: "Sahana M.",
+    location: "HSR Layout, Bangalore",
     rating: 5,
-    text: "Professional service and quality products. The customer support helped me choose the right plants for my balcony garden. Excellent experience!",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+    text: "Loved the gift wrapping and zero mess delivery. The team suggested low-light plants for my studio—every pick was perfect.",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80"
   }
 ];
 
@@ -54,7 +54,15 @@ export default function CustomerTestimonialsSlider() {
 
   return (
     <section className="relative py-24 bg-[#0d3512] overflow-hidden">
-      {/* Background Grid Effect */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/90 via-[#0d3512]/80 to-[#010904]/90" />
+      </div>
       <BackgroundGrid />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -74,12 +82,12 @@ export default function CustomerTestimonialsSlider() {
 
           {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#daf2d0] antialiased leading-tight">
-            What Our Customers Say
+            Bengaluru loves its greens
           </h2>
 
           {/* Subtitle */}
           <p className="text-lg max-w-2xl mx-auto antialiased font-light text-emerald-100/80">
-            Don&apos;t just take our word for it. Here&apos;s what plant lovers across India say about us.
+            Real notes from customers across Bangalore—from balcony gardens to future aquascaping builds.
           </p>
 
           {/* Decorative Line */}
@@ -101,15 +109,20 @@ export default function CustomerTestimonialsSlider() {
               viewport={{ once: true }}
             >
               <SpotlightCard className="h-full p-8 relative bg-white/5 border-white/10">
-                <Quote className="absolute top-6 right-6 w-8 h-8 text-emerald-400/20" />
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-emerald-300/25" />
                 <div className="flex items-center mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-emerald-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-emerald-50/90 mb-8 text-base leading-relaxed font-light antialiased italic">
+                <p className="text-emerald-50/90 mb-6 text-base leading-relaxed font-light antialiased italic">
                   &quot;{testimonial.text}&quot;
                 </p>
+                <div className="flex flex-wrap gap-2 mb-6 text-[11px] uppercase tracking-[0.2em] text-emerald-200/80">
+                  <span className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10">Fast delivery</span>
+                  <span className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10">Premium soil</span>
+                  <span className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10">Care support</span>
+                </div>
                 <div className="flex items-center mt-auto gap-4">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-400/30">
                     <Image 
@@ -141,8 +154,8 @@ export default function CustomerTestimonialsSlider() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-emerald-100/60 font-medium mb-6 text-sm tracking-wide uppercase">
-            Join thousands of happy customers
+          <p className="text-emerald-100/70 font-medium mb-6 text-sm tracking-wide uppercase">
+            Join thousands of happy gardeners across Bangalore
           </p>
           <Link
             href="/shop"

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Phone, 
   MessageCircle, 
@@ -40,8 +41,18 @@ const quickActions = [
 
 export default function QuickActions() {
   return (
-    <section className="py-16 bg-[#0d3512]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 bg-[#0d3512] overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#0d3512]/85 to-[#010904]/90" />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

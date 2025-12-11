@@ -73,8 +73,18 @@ export default async function BlogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0d3512] via-[#0a2810] to-[#061208]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#0d3512] via-[#0a2810] to-[#061208]">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leafy backdrop"
+          fill
+          className="object-cover opacity-15"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0b1c12]/75 to-[#010904]/85" />
+      </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">Our Blog</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto antialiased">Discover tips, guides, and inspiration for your gardening journey</p>

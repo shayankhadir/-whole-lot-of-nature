@@ -178,7 +178,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Product Content */}
         <Link href={`/shop/${product.slug}`} className="p-4 flex-1 flex flex-col">
           {/* Product Name */}
-          <h3 className="font-montserrat text-sm font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
+          <h3 className="font-montserrat text-[20px] leading-snug font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
             {product.name}
           </h3>
 

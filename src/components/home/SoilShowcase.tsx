@@ -75,8 +75,18 @@ export default function SoilShowcase() {
 
   return (
     <section className="py-24 bg-[#0d3512] relative overflow-hidden">
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0d3512]/85 to-[#010904]/90" />
+      </div>
       {/* Earthy Background Texture */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("/images/noise.png")' }} />
+      <div className="absolute inset-0 opacity-5 pointer-events-none -z-10" style={{ backgroundImage: 'url("/images/noise.png")' }} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">

@@ -3,11 +3,23 @@
 import { motion } from 'framer-motion';
 import { Youtube, ExternalLink, Play } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function YouTubeShowcase() {
   return (
-    <section className="relative py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 overflow-hidden bg-[#0d3512]">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#0d3512]/85 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

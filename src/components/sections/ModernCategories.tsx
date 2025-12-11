@@ -70,8 +70,19 @@ export default function ModernCategories() {
 
   if (loading) {
     return (
-      <section className="py-24 px-4 bg-[#051F10]">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-24 px-4 overflow-hidden bg-[#051F10]">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            alt="Leaf backdrop"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#051F10]/85 to-[#010904]/90" />
+          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="h-96 bg-white/5 rounded-3xl animate-pulse" />
@@ -85,10 +96,18 @@ export default function ModernCategories() {
   return (
     <section className="relative py-32 px-4 overflow-hidden bg-[#051F10]">
       {/* Ambient Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-800/10 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#051F10]/85 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">

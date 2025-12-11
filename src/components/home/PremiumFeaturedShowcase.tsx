@@ -115,7 +115,18 @@ export default function PremiumFeaturedShowcase() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-[#051F10] flex items-center justify-center">
+      <section className="relative py-24 bg-[#051F10] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            alt="Leaf backdrop"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#051F10]/85 to-[#010904]/90" />
+          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        </div>
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
       </section>
     );
@@ -124,10 +135,18 @@ export default function PremiumFeaturedShowcase() {
   return (
     <section ref={containerRef} className="relative py-32 overflow-hidden bg-[#051F10]">
       {/* Ambient Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-800/10 rounded-full blur-[100px]" />
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#051F10]/85 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
       </div>
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

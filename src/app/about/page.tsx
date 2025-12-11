@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { Leaf, Heart, Users, Sprout, Droplet, Recycle, Sun, Wind, Award } from 'lucide-react';
 import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
 import InstagramFeed from '@/components/sections/InstagramFeed';
+import FAQSection from '@/components/sections/FAQSection';
+import FAQSchema from '@/components/seo/FAQSchema';
 
 // Note: This is a client component, so metadata export won't work here.
 // For proper SEO, consider converting to server component or using Route Handlers.
@@ -40,9 +42,55 @@ const values = [
   }
 ];
 
+const legacyFaqs = [
+  {
+    question: 'What is your shipping policy?',
+    answer: 'We offer FREE shipping on orders above ₹150. Orders are typically delivered within 3-5 business days in Bangalore and 5-7 business days for other cities.',
+  },
+  {
+    question: 'Do you offer Cash on Delivery (COD)?',
+    answer: 'Yes, we offer Cash on Delivery for all orders. You can pay when you receive your plants at your doorstep.',
+  },
+  {
+    question: 'What if my plant arrives damaged?',
+    answer: 'We take utmost care in packaging. However, if your plant arrives damaged, please contact us within 24 hours with photos, and we will arrange a replacement or refund.',
+  },
+  {
+    question: 'Do you provide plant care instructions?',
+    answer: 'Yes! Each plant comes with detailed care instructions. You can also visit our Learn Gardening section for comprehensive care guides.',
+  },
+  {
+    question: 'Can I return a plant?',
+    answer: 'Plants can be returned within 7 days of delivery if they arrive in poor condition. We do not accept returns for plants that deteriorate due to improper care.',
+  },
+  {
+    question: 'How do I track my order?',
+    answer: 'Once your order is shipped, you will receive a tracking number via email and SMS. You can use this to track your order status.',
+  },
+  {
+    question: 'Are your plants organic?',
+    answer: 'Yes, we use organic growing methods and natural fertilizers. Our plants are grown without harmful chemicals.',
+  },
+  {
+    question: 'Do you offer bulk discounts?',
+    answer: 'Yes! We offer special pricing for bulk orders. Contact us at support@wholelotofnature.com for bulk order inquiries.',
+  },
+];
+
 export default function AboutPage() {
   return (
-    <div className="bg-[#0D1B0F] min-h-screen text-white overflow-hidden">
+    <div className="relative bg-[#0D1B0F] min-h-screen text-white overflow-hidden">
+      <FAQSchema faqs={legacyFaqs} />
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-15"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0D1B0F]/85 to-[#010904]/90" />
+      </div>
       {/* Hero Section */}
       <div className="relative py-32 lg:py-48">
         <div className="absolute inset-0 overflow-hidden">
@@ -61,10 +109,10 @@ export default function AboutPage() {
             </span>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight antialiased">
               Whole Lot of Nature: <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Rooted in Love</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Rooted in Bangalore</span>
             </h1>
             <p className="font-inter text-lg md:text-xl text-emerald-100 leading-relaxed max-w-3xl mx-auto antialiased">
-              More than just a nursery. We are a movement to bring life back to our urban spaces, one plant at a time.
+              Born in Bangalore, growing across Indiranagar, Whitefield, Koramangala, and HSR—helping balconies, villas, and offices turn into living sanctuaries.
             </p>
           </motion.div>
         </div>
@@ -109,10 +157,10 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-lg text-emerald-100 antialiased leading-relaxed">
                 <p>
-                  Whole Lot of Nature grew from a single spark — a deep love for plants that turned into a journey of reconnecting with the Earth. What started as a small collection of potted greens soon bloomed into a mission: to make nature accessible, beautiful, and sustainable for everyone.
+                  Whole Lot of Nature grew from a single spark in Bangalore—a balcony that needed more green. What started as a few pots in Indiranagar became a city-wide movement to make nature accessible, beautiful, and sustainable for every home.
                 </p>
                 <p>
-                  From organic soil mixes crafted with care, to eco-friendly fertilizers, living indoor plants, aquatic greens, and handmade herbal products, we blend nature&apos;s purity with modern design and conscious living.
+                  Today we handcraft organic soil mixes, eco fertilizers, indoor and aquatic plants, and herbal essentials—while designing lush balconies and courtyards tailored for Bengaluru light and weather.
                 </p>
                 <p className="border-l-4 border-[#4ADE80] pl-6 italic text-white/90">
                   "Every product — whether it&apos;s a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives."
@@ -135,6 +183,39 @@ export default function AboutPage() {
                   <p className="text-emerald-100/60">Nurtured by sunshine and passion</p>
                </div>
             </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Upcoming Services */}
+      <div className="py-24 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">What&apos;s arriving in Bangalore</h2>
+            <p className="text-emerald-100/70 max-w-2xl mx-auto">
+              Landscaping, pond builds, and aquascaping consultations are opening soon—built for Bengaluru&apos;s light, water, and apartment codes.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[{
+              title: 'Landscaping',
+              desc: 'Courtyard and villa makeovers with climate-smart planting palettes and drip-ready beds.'
+            }, {
+              title: 'Pond & Water Gardens',
+              desc: 'Balcony or backyard ponds with hardy aquatics, biofilters, and low-splash circulation.'
+            }, {
+              title: 'Aquascaping',
+              desc: 'Glass tanks styled with submerged greens, hardscape curation, and CO₂-friendly plant lists.'
+            }].map((item) => (
+              <div key={item.title} className="p-6 rounded-2xl bg-[#0a160c]/80 border border-white/10 shadow-lg shadow-[#0d3512]/40">
+                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-emerald-100/70 leading-relaxed text-sm">{item.desc}</p>
+                <div className="mt-4 inline-flex items-center gap-2 text-[#4ADE80] text-sm font-semibold">
+                  <span>Coming Soon</span>
+                  <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse" />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -167,6 +248,18 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* FAQ moved here */}
+      <div className="bg-[#0D1B0F] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FAQSection
+            faqs={legacyFaqs}
+            title="Customer FAQs"
+            subtitle="Quick answers on shipping, COD, returns, and plant care from our Bangalore team"
+            className="pb-8"
+          />
         </div>
       </div>
 

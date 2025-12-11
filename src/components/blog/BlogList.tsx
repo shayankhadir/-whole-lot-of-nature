@@ -16,6 +16,8 @@ export default function BlogList({ initialPosts }: BlogListProps) {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
+  const fallbackImage = '/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg';
+
   const loadMore = async () => {
     if (loading || !hasMore) return;
     setLoading(true);
@@ -42,21 +44,21 @@ export default function BlogList({ initialPosts }: BlogListProps) {
         {posts.map((post) => {
           const featured = post._embedded?.['wp:featuredmedia']?.[0];
           const author = post._embedded?.author?.[0];
+          const heroImage = featured?.source_url || fallbackImage;
           return (
             <article
               key={post.id}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group"
+              className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group shadow-lg shadow-black/30"
             >
-              {featured?.source_url && (
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={featured.source_url}
-                    alt={featured.alt_text || post.title.rendered}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              )}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={heroImage}
+                  alt={featured?.alt_text || post.title.rendered}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-transparent" />
+              </div>
               
               <div className="p-6">
                 <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">

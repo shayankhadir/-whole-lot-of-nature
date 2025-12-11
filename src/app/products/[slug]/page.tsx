@@ -13,7 +13,7 @@ import { StickyAddToCart } from '@/components/shop/StickyAddToCart';
 import type { WooCommerceProduct } from '@/lib/services/woocommerceService';
 import { useCartStore } from '@/stores/cartStore';
 import { useDrag } from '@use-gesture/react';
-import { ChevronLeft, ChevronRight, ThumbsUp, ThumbsDown, Camera, Filter, CheckCircle, Sun, Droplet, Sprout, RotateCw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ThumbsUp, ThumbsDown, Camera, Filter, CheckCircle, Sun, Droplet, Sprout, RotateCw, Truck, ShieldCheck, PhoneCall } from 'lucide-react';
 
 import type { Metadata } from 'next';
 
@@ -152,6 +152,47 @@ const buildStructuredData = (product: WooCommerceProduct, description: string) =
   return structuredData;
 };
 
+const SEO_BLURBS: Record<string, string> = {
+  'organic-potting-mix':
+    'Hand-blended organic potting mix tuned for Bangalore humidity—airy yet moisture-retentive with compost, coco chips, and bio-boosters. Perfect for houseplants, balcony greens, and easy repotting.',
+  'succulent-potting-mix-2':
+    'Fast-draining succulent and cactus mix with grit, sand, and perlite to prevent root rot in Indian climates. Ideal for haworthias, echeverias, and low-water desert plants.',
+  'miniature-cactus-succulents-set-of-10':
+    'Curated mini cactus and succulent set with low-water, high-light species—ready for desk or balcony trays. Packed with breathable wrap and labeled for easy care.',
+  'succulent-desert-plante-4-succulents':
+    'Desert-inspired succulent quartet, acclimatized for Indian sun and indoor bright light. Ships with care QR and repotting guidance.',
+  'ayurvedic-hair-oil-200ml':
+    'Ayurvedic hair oil crafted with cold-pressed base oils and botanicals—no mineral oil, no silicones. Small-batch steeped for scalp health and stronger strands.',
+};
+
+const buildBreadcrumbSchema = (product: WooCommerceProduct) => {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com';
+  const breadcrumbs = [
+    { name: 'Home', item: `${siteUrl}/` },
+    { name: 'Shop', item: `${siteUrl}/shop` },
+  ];
+
+  if (product?.categories?.[0]) {
+    breadcrumbs.push({
+      name: product.categories[0].name,
+      item: `${siteUrl}/shop?category=${product.categories[0].slug || ''}`,
+    });
+  }
+
+  breadcrumbs.push({ name: product?.name || 'Product', item: `${siteUrl}/products/${product?.slug}` });
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.item,
+    })),
+  };
+};
+
 const formatPrice = (priceStr: string): string => {
   const price = parseFloat(priceStr || '0');
   return `₹${price.toLocaleString('en-IN', {
@@ -245,6 +286,8 @@ export default function ProductDetailPage() {
     [product, seoDescription]
   );
 
+  const breadcrumbSchema = useMemo(() => (product ? buildBreadcrumbSchema(product) : null), [product]);
+
   const attributeChips = useMemo(() => {
     if (!product?.attributes?.length) return [];
     return product.attributes
@@ -329,8 +372,19 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0d3512]">
-        <div className="text-center space-y-2">
+      <div className="relative min-h-screen flex items-center justify-center bg-[#0d3512] overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            alt="Leaf backdrop"
+            fill
+            className="object-cover opacity-15"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0d3512]/85 to-[#010904]/90" />
+          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        </div>
+        <div className="text-center space-y-2 relative z-10">
           <p className="text-2xl font-semibold text-[#daf2d0] antialiased">Calibrating your botanical experience…</p>
           <p className="text-[#daf2d0]/60">Curating product insights and concierge perks.</p>
         </div>
@@ -340,8 +394,19 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0d3512]">
-        <div className="text-center space-y-6">
+      <div className="relative min-h-screen flex items-center justify-center bg-[#0d3512] overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            alt="Leaf backdrop"
+            fill
+            className="object-cover opacity-15"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0d3512]/85 to-[#010904]/90" />
+          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        </div>
+        <div className="text-center space-y-6 relative z-10">
           <p className="text-3xl font-bold text-[#daf2d0] antialiased">We couldn&apos;t locate that product</p>
           <Link
             href="/shop"
@@ -368,10 +433,39 @@ export default function ProductDetailPage() {
       : null;
 
   return (
-    <div className="bg-[#0d3512] text-[#daf2d0]">
+    <div className="relative min-h-screen overflow-hidden bg-[#0d3512] text-[#daf2d0]">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-12"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0d3512]/85 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
+      </div>
       <Head>
         <title>{`${product.name} | Whole Lot of Nature`}</title>
         <meta name="description" content={seoDescription} />
+        {product.categories?.length || product.tags?.length ? (
+          <meta
+            name="keywords"
+            content={[
+              product.categories?.map((c) => c.name).join(', '),
+              product.tags?.map((t) => t.name).join(', '),
+              product.name,
+              'Bangalore plants',
+              'organic soil mixes',
+              'aquascaping plants',
+            ]
+              .filter(Boolean)
+              .join(', ')}
+          />
+        ) : null}
+        <meta property="og:type" content="product" />
+        {effectivePrice && <meta property="product:price:amount" content={effectivePrice} />}
+        <meta property="product:price:currency" content="INR" />
         <link
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com'}/products/${product.slug}`}
@@ -382,6 +476,9 @@ export default function ProductDetailPage() {
         <meta name="twitter:card" content="summary_large_image" />
         {structuredData && (
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        )}
+        {breadcrumbSchema && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         )}
       </Head>
 
@@ -519,6 +616,34 @@ export default function ProductDetailPage() {
               <p className="text-sm text-white/80">
                 Includes concierge onboarding call, soil intelligence kit, and climate-smart packaging.
               </p>
+              {product.slug && SEO_BLURBS[product.slug] && (
+                <p className="text-sm text-white/80 leading-relaxed">
+                  SEO note: {SEO_BLURBS[product.slug]}
+                </p>
+              )}
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[{
+                  title: 'Bangalore Express',
+                  desc: 'Same-day dispatch on metro orders before 4 PM',
+                  Icon: Truck
+                }, {
+                  title: 'Cold-chain wrap',
+                  desc: 'Insulated, shock-proof, low-sweat packing',
+                  Icon: ShieldCheck
+                }, {
+                  title: 'Care hotline',
+                  desc: '24/7 WhatsApp support for settling in',
+                  Icon: PhoneCall
+                }].map((item) => (
+                  <div key={item.title} className="p-3 rounded-xl bg-white/5 border border-white/10 flex gap-3 items-start">
+                    <div className="mt-1 text-[#4CAF50]"><item.Icon className="w-4 h-4" /></div>
+                    <div>
+                      <p className="text-xs font-semibold text-white">{item.title}</p>
+                      <p className="text-[11px] text-white/70 leading-snug">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-col gap-5">
