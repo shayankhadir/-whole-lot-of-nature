@@ -50,8 +50,19 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-20 overflow-hidden bg-[#0d3512]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24 overflow-hidden bg-[#0d3512]">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/bgleaf1.webp"
+          alt="Leaf backdrop"
+          fill
+          className="object-cover opacity-20"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/88 via-[#0d3512]/88 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.05] mix-blend-overlay" />
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +86,7 @@ export default function CustomerTestimonialsSlider() {
               transition={{ duration: 0.6, delay: index * 0.08 }}
               viewport={{ once: true }}
             >
-              <div className="h-full rounded-2xl bg-[#0f1e11] border border-emerald-900/40 p-6 md:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.25)] flex flex-col gap-4">
+              <div className="h-full rounded-2xl bg-gradient-to-br from-[#0f1e11] via-[#0c1b12] to-[#0f1e11] border border-emerald-900/35 p-6 md:p-7 shadow-[0_12px_50px_rgba(0,0,0,0.28)] flex flex-col gap-4">
                 <div className="flex items-center gap-1 text-emerald-300">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />

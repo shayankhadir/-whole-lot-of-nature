@@ -114,6 +114,7 @@ export default function AboutPage() {
             <p className="font-inter text-lg md:text-xl text-emerald-100 leading-relaxed max-w-3xl mx-auto antialiased">
               Born in Bangalore, growing across Indiranagar, Whitefield, Koramangala, and HSR—helping balconies, villas, and offices turn into living sanctuaries.
             </p>
+            <p className="mt-4 text-sm md:text-base uppercase tracking-[0.18em] text-emerald-200/80">Stay loyal to the soil.</p>
           </motion.div>
         </div>
       </div>

@@ -178,7 +178,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Product Content */}
         <Link href={`/shop/${product.slug}`} className="p-4 flex-1 flex flex-col">
           {/* Product Name */}
-          <h3 className="font-montserrat text-[clamp(1.05rem,2.4vw,1.2rem)] leading-[1.2] font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
+          <h3 className="font-sans text-[clamp(0.95rem,2vw,1.05rem)] leading-[1.25] font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
             {product.name}
           </h3>
 
@@ -208,9 +208,9 @@ export default function ProductCard({ product }: ProductCardProps) {
               whileTap={{ scale: 0.95 }}
               className={`p-3 rounded-full transition-all ${
                 addedToCart
-                  ? 'bg-[#66BB6A] text-white'
+                  ? 'bg-gradient-to-r from-[#16a34a] to-[#0f3c24] text-white shadow-[0_0_20px_rgba(16,163,74,0.35)]'
                   : product.in_stock
-                  ? 'bg-[#2E7D32] text-white hover:bg-[#66BB6A]'
+                  ? 'bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white hover:brightness-110 border border-emerald-900/50'
                   : 'bg-gray-700 text-gray-400 cursor-not-allowed'
               }`}
               aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}

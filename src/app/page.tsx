@@ -128,7 +128,7 @@ export default function Home() {
 
       {/* 2. Trust Banner */}
       <SeamlessSection 
-        tone="onyx"
+        tone="forest"
         paddingY="sm"
         noShell
         className="-mt-16 pt-10 pb-14"

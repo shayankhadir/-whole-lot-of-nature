@@ -19,7 +19,7 @@ export default function InteractiveHero() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden"
     >
       {/* Parallax Background */}
       <motion.div 
@@ -52,7 +52,7 @@ export default function InteractiveHero() {
         />
         
         {/* Seamless transition gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0D1B0F] to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#0D1B0F] via-[#0d3512]/60 to-transparent z-10" />
       </motion.div>
 
       {/* Floating particles */}
@@ -118,6 +118,15 @@ export default function InteractiveHero() {
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-sm uppercase tracking-[0.18em] text-emerald-200/80 mb-8"
+        >
+          Stay loyal to the soil
+        </motion.p>
+
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -148,7 +157,7 @@ export default function InteractiveHero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-emerald-300/50 text-emerald-100 font-semibold rounded-full backdrop-blur-md hover:bg-emerald-500/10 hover:border-emerald-300 transition-all"
+              className="px-8 py-4 bg-gradient-to-r from-[#14532d] to-[#0f3c24] border border-emerald-800/60 text-white font-semibold rounded-full backdrop-blur-md hover:brightness-110 transition-all"
             >
               View All Products
             </motion.button>

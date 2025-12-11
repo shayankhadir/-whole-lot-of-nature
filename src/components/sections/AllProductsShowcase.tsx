@@ -64,7 +64,7 @@ export default function AllProductsShowcase() {
           className="object-cover opacity-15"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/98 via-[#041107]/94 to-[#010a05]/98" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/92 via-[#041107]/90 to-[#010a05]/94" />
       </div>
 
       {/* Leaf Background Decorations */}
@@ -78,7 +78,7 @@ export default function AllProductsShowcase() {
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/80 via-[#020f07]/70 to-[#010904]/85 pointer-events-none z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto rounded-[32px] border border-white/8 bg-white/5/20 backdrop-blur-[2px] px-4 sm:px-6 md:px-8 py-10 shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -148,7 +148,7 @@ export default function AllProductsShowcase() {
 
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] leading-[1.2] font-bold font-montserrat text-[#efebe9] mb-2 line-clamp-2 group-hover:text-[#4CAF50] transition-colors antialiased">
+                    <h3 className="text-[clamp(0.95rem,2vw,1.05rem)] leading-[1.25] font-semibold font-sans text-[#efebe9] mb-2 line-clamp-2 group-hover:text-[#4CAF50] transition-colors antialiased">
                       {product.name}
                     </h3>
                     
@@ -182,7 +182,7 @@ export default function AllProductsShowcase() {
                             inStock: product.in_stock ?? true,
                           });
                         }}
-                        className="p-2.5 bg-[#2E7D32] text-white rounded-full hover:bg-[#1b5e20] transition-all shadow-lg shadow-[#2E7D32]/30"
+                        className="p-2.5 bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white rounded-full hover:brightness-110 transition-all shadow-lg shadow-[#0f3c24]/35 border border-emerald-900/50"
                       >
                         <ShoppingCart className="w-5 h-5" />
                       </motion.button>
@@ -206,7 +206,7 @@ export default function AllProductsShowcase() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group px-10 py-4 bg-[var(--emerald-500)] text-white font-bold text-lg rounded-full shadow-[var(--shadow-card)] hover:bg-[var(--emerald-700)] transition-all antialiased"
+              className="group px-10 py-4 bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white font-bold text-lg rounded-full shadow-[var(--shadow-card)] transition-all antialiased border border-emerald-900/50 hover:brightness-110"
             >
               <span className="flex items-center gap-3">
                 View All Products

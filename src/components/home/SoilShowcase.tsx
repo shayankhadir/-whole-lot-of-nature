@@ -74,19 +74,12 @@ export default function SoilShowcase() {
   if (loading) return null;
 
   return (
-    <section className="py-24 bg-[#0d3512] relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 -z-20">
-        <Image
-          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
-          alt="Leaf backdrop"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/85 via-[#0d3512]/85 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0a08] via-[#0d3512]/92 to-[#0b0a08]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(62,44,28,0.35),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(32,24,16,0.35),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.06] mix-blend-overlay" />
       </div>
-      {/* Earthy Background Texture */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none -z-10" style={{ backgroundImage: 'url("/images/noise.png")' }} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -97,10 +90,11 @@ export default function SoilShowcase() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E7D32]/20 text-[#81c784] text-xs font-bold uppercase tracking-wider mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-[#c7f3d5] text-xs font-bold uppercase tracking-wider mb-3 border border-emerald-800/50">
                 <Sprout className="w-4 h-4" />
                 <span>Premium Growing Media</span>
               </div>
+              <p className="text-sm uppercase tracking-[0.18em] text-emerald-200/80 mb-6">Stay loyal to the soil</p>
               
               <h2 className="text-4xl md:text-5xl font-bold text-[#efebe9] mb-6 antialiased leading-tight">
                 The Foundation of <span className="text-[#4CAF50]">Growth</span>
@@ -112,7 +106,7 @@ export default function SoilShowcase() {
               
               <Link 
                 href="/shop?category=soil-and-growing-media"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2E7D32] hover:bg-[#1b5e20] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#2E7D32]/30 hover:shadow-[#2E7D32]/50 hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#0f3c24]/40 hover:shadow-[#14532d]/50 hover:-translate-y-1 border border-emerald-800/50"
               >
                 <span>Shop Soil Mixes</span>
                 <ArrowRight className="w-5 h-5" />
@@ -147,7 +141,7 @@ export default function SoilShowcase() {
                         {/* Quick Add Button */}
                         <button
                           onClick={(e) => handleAddToCart(e, product)}
-                          className="absolute bottom-4 right-4 p-3 bg-[#2E7D32] text-white rounded-full opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-[#1b5e20] shadow-lg"
+                          className="absolute bottom-4 right-4 p-3 bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white rounded-full opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:brightness-110 shadow-lg shadow-[#0f3c24]/40 border border-emerald-900/50"
                           aria-label="Add to cart"
                         >
                           <ShoppingBag className="w-5 h-5" />

@@ -112,7 +112,13 @@ export default function ModernCategories() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 relative">
+          <div className="pointer-events-none absolute -right-6 -top-10 hidden md:block opacity-30">
+            <svg width="220" height="240" viewBox="0 0 220 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M120 10c-6 18-4 38 10 58 14 20 40 38 52 64 12 26 10 60-10 82-16 18-44 28-73 24-29-4-56-22-69-45-13-23-12-51-6-76 6-24 18-44 31-60 13-16 27-29 38-42 12-13 22-26 27-41" stroke="#7ae2a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M84 86c10-6 24-6 36 0 12 6 22 18 28 32 6 14 8 30 4 44-4 14-14 26-28 30-14 4-32 0-44-10-12-10-18-26-18-40 0-14 6-26 12-38 6-12 12-24 10-36" stroke="#7ae2a2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
+            </svg>
+          </div>
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

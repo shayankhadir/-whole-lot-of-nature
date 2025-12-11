@@ -75,7 +75,7 @@ export default function Footer() {
 			</div>
 
 			<div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-12 space-y-12">
-				<div className="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5/50 px-6 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left backdrop-blur-md">
+				<div className="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5/50 px-6 py-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left backdrop-blur-md">
 					<div>
 						<p className="text-xs uppercase tracking-[0.4em] text-white/85">
 							Need help?
@@ -126,7 +126,7 @@ export default function Footer() {
 					</div>
 
 					<div className="grid grid-cols-2 gap-8 text-sm text-white/85 sm:grid-cols-3 lg:col-span-5">
-						<div>
+						<div className="text-center sm:text-left">
 							<p className="font-semibold text-white">Shop</p>
 							<ul className="mt-4 space-y-3">
 								<li>
@@ -151,7 +151,7 @@ export default function Footer() {
 								</li>
 							</ul>
 						</div>
-						<div>
+						<div className="text-center sm:text-left">
 							<p className="font-semibold text-white">Company</p>
 							<ul className="mt-4 space-y-3">
 								<li>
@@ -179,7 +179,7 @@ export default function Footer() {
 								</li>
 							</ul>
 						</div>
-						<div>
+						<div className="text-center sm:text-left">
 							<p className="font-semibold text-white">Legal</p>
 							<ul className="mt-4 space-y-3">
 								<li>
@@ -206,7 +206,7 @@ export default function Footer() {
 						</div>
 					</div>
 
-					<div className="lg:col-span-3">
+					<div className="lg:col-span-3 text-center sm:text-left">
 						<p className="font-semibold text-white">Garden dispatch</p>
 						<p className="mt-3 text-sm" style={{ color: '#86efac' }}>
 							Weekly soil notes, limited drops, and invites to live demos.
@@ -219,7 +219,7 @@ export default function Footer() {
 							/>
 							<button
 								type="submit"
-								className="w-full rounded-2xl bg-[#66BB6A] px-4 py-3 text-sm font-semibold text-[#0b1b12] transition-colors hover:bg-[#52a258]"
+								className="w-full rounded-2xl bg-gradient-to-r from-[#14532d] to-[#0f3c24] px-4 py-3 text-sm font-semibold text-[#e3f9ec] transition-colors hover:brightness-110 border border-emerald-800/60"
 							>
 								Subscribe
 							</button>
