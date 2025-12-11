@@ -130,6 +130,8 @@ export default function Home() {
       <SeamlessSection 
         tone="onyx"
         paddingY="sm"
+        noShell
+        className="-mt-10 pt-6 pb-12"
       >
         <TrustBanner />
       </SeamlessSection>

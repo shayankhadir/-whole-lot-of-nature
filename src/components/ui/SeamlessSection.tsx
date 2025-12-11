@@ -15,6 +15,7 @@ interface SeamlessSectionProps {
   rightDecoration?: 'monstera' | 'single' | 'palm' | 'fern' | 'none';
   tone?: 'forest' | 'onyx' | 'canvas' | 'ivory' | 'glass';
   className?: string;
+  noShell?: boolean;
 }
 
 export default function SeamlessSection({
@@ -26,7 +27,8 @@ export default function SeamlessSection({
   leftDecoration = 'none',
   rightDecoration = 'none',
   tone = 'forest',
-  className = ''
+  className = '',
+  noShell = false
 }: SeamlessSectionProps) {
   
   const paddingClasses = {
@@ -53,19 +55,24 @@ export default function SeamlessSection({
     ? `bg-gradient-to-b from-[${gradientFrom}] via-[${bgColor.replace('bg-[', '').replace(']', '')}] to-[${gradientTo}]`
     : '';
 
+  const shellClasses = noShell
+    ? ''
+    : 'relative z-10 mx-auto max-w-[min(1400px,96vw)] rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_20px_80px_rgba(13,53,18,0.25)] p-6 sm:p-8 lg:p-12';
+
   return (
     <section className={`relative w-full ${resolvedBackground} ${gradientOverlay} ${paddingClasses[paddingY]} px-4 sm:px-6 lg:px-12 overflow-hidden ${className}`}>
       {/* Background Image for dark tones */}
       {(tone === 'forest' || tone === 'onyx') && (
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+            src="/images/backgrounds/bgleaf1.webp"
             alt="Tropical leaves background"
             fill
-            className="object-cover opacity-15"
-            quality={90}
+            className="object-cover opacity-20"
+            quality={95}
+            priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/90 via-[#010904]/75 to-[#010a05]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/92 via-[#041107]/82 to-[#010a05]/92" />
         </div>
       )}
 
@@ -102,7 +109,7 @@ export default function SeamlessSection({
       )}
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className={shellClasses}>
         {children}
       </div>
     </section>

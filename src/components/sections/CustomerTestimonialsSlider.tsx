@@ -53,19 +53,20 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-24 bg-[#0d3512] overflow-hidden">
+    <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          src="/images/backgrounds/bgleaf1.webp"
           alt="Leaf backdrop"
           fill
           className="object-cover opacity-20"
+          priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/90 via-[#0d3512]/80 to-[#010904]/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010a05]/92 via-[#041107]/82 to-[#010a05]/92" />
       </div>
       <BackgroundGrid />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_20px_80px_rgba(13,53,18,0.25)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

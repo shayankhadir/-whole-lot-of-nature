@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 
 export default function InteractiveHero() {
@@ -88,10 +88,9 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
         >
-          <Sparkles className="w-3 h-3 text-emerald-400" />
-          <span className="text-emerald-100/80 text-xs font-medium tracking-[0.2em] uppercase">
+          <span className="text-emerald-100/90 text-sm font-semibold tracking-[0.14em] uppercase">
             Welcome to
           </span>
         </motion.div>
@@ -101,14 +100,10 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-montserrat text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.1] mb-6 antialiased"
+          className="font-montserrat text-[clamp(2.4rem,6vw,4.25rem)] font-bold leading-[1.05] mb-6 antialiased"
         >
-          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-            WHOLE LOT OF
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-green-300 via-emerald-200 to-teal-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-            NATURE
+          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] whitespace-nowrap">
+            WHOLE&nbsp;LOT&nbsp;OF&nbsp;NATURE
           </span>
         </motion.h1>
 
