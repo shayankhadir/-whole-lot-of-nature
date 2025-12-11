@@ -8,17 +8,15 @@ import {
 	Minus,
 	Plus,
 	Trash2,
-	ShieldCheck,
 	Truck,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import FreeShippingProgress from "./FreeShippingProgress";
 import { useCartStore } from "@/stores/cartStore";
 import { formatPrice } from "@/lib/utils/pricing";
 
-const FREE_SHIPPING_THRESHOLD = 150;
+const FREE_SHIPPING_THRESHOLD = 999;
 
 export default function CartSidebar() {
 	const {
@@ -63,7 +61,7 @@ export default function CartSidebar() {
 
 				<div className="fixed inset-0 overflow-hidden">
 					<div className="absolute inset-0 overflow-hidden">
-						<div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-6 sm:pl-10">
+						<div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-0 sm:pl-10">
 							<Transition.Child
 								as={Fragment}
 								enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -73,228 +71,177 @@ export default function CartSidebar() {
 								leaveFrom="translate-x-0"
 								leaveTo="translate-x-full"
 							>
-								<Dialog.Panel className="pointer-events-auto w-screen max-w-md sm:max-w-lg">
-									<div className="relative flex h-full flex-col bg-[#030a06] text-white shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+								<Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+									<div className="relative flex h-full flex-col bg-[#0d3512] text-white shadow-2xl border-l border-white/10">
 										{isLoading && (
 											<div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
 												<div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-emerald-300" />
 											</div>
 										)}
 
-										<div className="border-b border-white/10 bg-gradient-to-br from-[#05150a] to-[#030a06] px-6 py-6">
-											<div className="flex items-start justify-between">
+										<div className="border-b border-white/10 bg-[#0a2810] px-6 py-6">
+											<div className="flex items-center justify-between">
 												<div>
-													<p className="text-[10px] uppercase tracking-[0.4em] text-white/60">
-														Your Cart
-													</p>
-													<Dialog.Title className="mt-2 text-lg font-semibold antialiased">
-														{isEmpty
-															? "Your bag is waiting"
-															: `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
+													<Dialog.Title className="text-xl font-display font-semibold text-white">
+														Shopping Cart
 													</Dialog.Title>
-													<p className="mt-1 text-xs text-white/80">
+													<p className="text-sm text-emerald-100/60 mt-1">
 														{isEmpty
-															? "Add something green to bring this space to life."
-															: "Delivers in 3-5 days"}
+															? "Your cart is empty"
+															: `${totalItems} item${totalItems !== 1 ? "s" : ""}`}
 													</p>
 												</div>
 												<button
 													type="button"
+													className="rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white transition-colors"
 													onClick={closeCart}
-													className="rounded-full bg-white/10 p-2 hover:bg-white/20"
-													aria-label="Close cart"
 												>
-													<X className="h-5 w-5" />
+													<span className="sr-only">Close panel</span>
+													<X className="h-6 w-6" aria-hidden="true" />
 												</button>
 											</div>
-
+										</div>
+										<div className="flex-1 overflow-y-auto px-6 py-6">
 											{!isEmpty && (
-													<div className="mt-6 grid grid-cols-3 gap-3 text-xs uppercase tracking-wide text-white/80">
-													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-																	<p className="text-[10px] text-white/60">Subtotal</p>
-														<p className="mt-1 text-sm font-semibold text-white">
-															{formatPrice(subtotal)}
-														</p>
-													</div>
-													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-																	<p className="text-[10px] text-white/60">Savings</p>
-														<p className="mt-1 text-sm font-semibold text-emerald-300">
-															{formatPrice(savings)}
-														</p>
-													</div>
-													<div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-																	<p className="text-[10px] text-white/60">Delivery</p>
-														<p className="mt-1 text-sm font-semibold text-white">
-															{hasFreeShipping ? "Free" : "3-5 days"}
-														</p>
-													</div>
-												</div>
-											)}
-
-											{!isEmpty && (
-												<div className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4">
-													<div className="flex items-center gap-3 text-sm text-white/80">
-														<Truck className="h-5 w-5 text-emerald-300" />
+												<div className="mb-6">
+													<div className="flex items-center gap-2 text-sm text-emerald-100/80 mb-3">
+														<Truck className="h-4 w-4" />
 														<span>
 															{hasFreeShipping
-																? "Free express shipping unlocked"
-																: "Free express shipping over ₹150"}
+																? "You've unlocked free shipping!"
+																: `Add ${formatPrice(FREE_SHIPPING_THRESHOLD - progressValue)} for free shipping`}
 														</span>
 													</div>
 													<FreeShippingProgress
 														cartTotal={progressValue}
 														freeShippingThreshold={FREE_SHIPPING_THRESHOLD}
-														className="mt-4"
+														className="h-1.5"
 													/>
 												</div>
 											)}
-										</div>
 
-										<div className="flex-1 overflow-y-auto px-6 py-6">
 											{isEmpty ? (
-												<motion.div
-													initial={{ opacity: 0, y: 20 }}
-													animate={{ opacity: 1, y: 0 }}
-													className="text-center rounded-3xl border border-dashed border-white/20 bg-white/5 px-6 py-12"
-												>
-													<ShoppingBag className="mx-auto h-12 w-12 text-white/40" />
-													<h3 className="mt-4 text-lg font-semibold">Your cart is empty</h3>
-													<p className="mt-2 text-sm text-white/80">
-														Start adding plants, combos, or accessories to see them here.
-													</p>
+												<div className="flex h-full flex-col items-center justify-center text-center space-y-4">
+													<div className="h-16 w-16 rounded-full bg-white/5 flex items-center justify-center">
+														<ShoppingBag className="h-8 w-8 text-white/40" />
+													</div>
+													<div>
+														<h3 className="text-lg font-medium text-white">Your cart is empty</h3>
+														<p className="text-sm text-white/60 mt-1">
+															Looks like you haven't added anything yet.
+														</p>
+													</div>
 													<Link
 														href="/shop"
 														onClick={closeCart}
-														className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0a180e] shadow-lg shadow-emerald-500/30"
+														className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-3 text-sm font-semibold text-white hover:bg-emerald-500 transition-colors"
 													>
-														Browse collection
+														Start Shopping
 													</Link>
-												</motion.div>
+												</div>
 											) : (
-														<div className="space-y-4" role="list">
-															<AnimatePresence initial={false}>
-														{items.map((item, index) => (
-															<motion.div
-																key={item.id}
-																initial={{ opacity: 0, y: 20 }}
-																animate={{ opacity: 1, y: 0 }}
-																exit={{ opacity: 0, y: -20 }}
-																transition={{ delay: index * 0.05 }}
-																role="listitem"
-																className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_15px_45px_rgba(3,10,6,0.4)]"
-															>
-																<div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
-																	<Image
-																		src={item.image}
-																		alt={item.name}
-																		fill
-																		sizes="64px"
-																		className="object-cover"
-																	/>
+												<ul className="space-y-6">
+													{items.map((item) => (
+														<li key={item.id} className="flex gap-4">
+															<div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-white/5">
+																<Image
+																	src={item.image}
+																	alt={item.name}
+																	fill
+																	className="object-cover"
+																/>
+															</div>
+
+															<div className="flex flex-1 flex-col justify-between">
+																<div className="flex justify-between gap-4">
+																	<div>
+																		<h3 className="text-sm font-medium text-white">
+																			{item.name}
+																		</h3>
+																		<p className="mt-1 text-xs text-white/60">
+																			{item.type}
+																		</p>
+																	</div>
+																	<p className="text-sm font-medium text-white">
+																		{formatPrice(item.price)}
+																	</p>
 																</div>
 
-																<div className="flex flex-1 flex-col">
-																	<div className="flex justify-between gap-4">
-																		<div>
-																			<h3 className="text-xs font-semibold leading-snug">
-																				<span className="line-clamp-2">{item.name}</span>
-																			</h3>
-																			<p className="mt-1 text-[10px] uppercase tracking-wide text-white/60">
-																				{item.type} {item.category && `• ${item.category}`}
-																			</p>
-																		</div>
-																		<div className="text-right">
-																			<p className="text-xs font-semibold">{formatPrice(item.price)}</p>
-																			{item.originalPrice && item.originalPrice > item.price && (
-																				<p className="text-[10px] text-white/40 line-through">
-																					{formatPrice(item.originalPrice)}
-																				</p>
-																			)}
-																		</div>
-																	</div>
-
-																	<div className="mt-3 flex items-center justify-between">
-																		<div className="flex items-center gap-3">
-																			<span className="text-[10px] uppercase tracking-wide text-white/40">
-																				Qty
-																			</span>
-																			<div className="flex items-center rounded-full border border-white/15 bg-white/5">
-																				<button
-																					onClick={() => updateQuantity(item.id, item.quantity - 1)}
-																					className="rounded-l-full p-1.5 hover:bg-white/10 disabled:opacity-40"
-																					disabled={item.quantity <= 1}
-																					aria-label="Decrease quantity"
-																				>
-																					<Minus className="h-3 w-3" />
-																				</button>
-																				<span className="px-2 text-xs font-semibold">
-																					{item.quantity}
-																				</span>
-																				<button
-																					onClick={() => updateQuantity(item.id, item.quantity + 1)}
-																					className="rounded-r-full p-1.5 hover:bg-white/10 disabled:opacity-40"
-																					disabled={item.quantity >= (item.maxQuantity || 10)}
-																					aria-label="Increase quantity"
-																				>
-																					<Plus className="h-3 w-3" />
-																				</button>
-																			</div>
-																		</div>
+																<div className="flex items-center justify-between">
+																	<div className="flex items-center rounded-lg border border-white/10 bg-white/5">
 																		<button
-																			type="button"
-																			onClick={() => removeItem(item.id)}
-																			className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wide text-white/70 hover:text-red-300"
+																			onClick={() => updateQuantity(item.id, item.quantity - 1)}
+																			className="p-1.5 text-white/60 hover:text-white disabled:opacity-50"
+																			disabled={item.quantity <= 1}
 																		>
-																			<Trash2 className="h-3 w-3" /> Remove
+																			<Minus className="h-3 w-3" />
+																		</button>
+																		<span className="px-2 text-xs font-medium text-white">
+																			{item.quantity}
+																		</span>
+																		<button
+																			onClick={() => updateQuantity(item.id, item.quantity + 1)}
+																			className="p-1.5 text-white/60 hover:text-white disabled:opacity-50"
+																			disabled={item.quantity >= (item.maxQuantity || 10)}
+																		>
+																			<Plus className="h-3 w-3" />
 																		</button>
 																	</div>
+																	<button
+																		type="button"
+																		onClick={() => removeItem(item.id)}
+																		className="text-xs text-white/40 hover:text-red-400 transition-colors"
+																	>
+																		Remove
+																	</button>
 																</div>
-															</motion.div>
-														))}
-													</AnimatePresence>
-												</div>
+															</div>
+														</li>
+													))}
+												</ul>
 											)}
 										</div>
 
-										<div className="border-t border-white/10 bg-black/30 px-6 py-6 space-y-6">
-											{/* Coupon section removed as per request - moved to checkout */}
+										{!isEmpty && (
+											<div className="border-t border-white/10 bg-[#0a2810] px-6 py-6">
+												<div className="space-y-2 mb-4">
+													<div className="flex justify-between text-sm text-white/60">
+														<span>Subtotal</span>
+														<span>{formatPrice(subtotal)}</span>
+													</div>
+													{discount > 0 && (
+														<div className="flex justify-between text-sm text-emerald-400">
+															<span>Savings</span>
+															<span>-{formatPrice(discount)}</span>
+														</div>
+													)}
+													<div className="flex justify-between text-sm text-white/60">
+														<span>Shipping</span>
+														<span>{hasFreeShipping ? "Free" : "Calculated at checkout"}</span>
+													</div>
+													<div className="flex justify-between text-base font-medium text-white pt-2 border-t border-white/10">
+														<span>Total</span>
+														<span>{formatPrice(totalPrice)}</span>
+													</div>
+												</div>
 
-											<div className="space-y-3">
 												<Link
 													href="/checkout"
 													onClick={closeCart}
-													className="flex w-full items-center justify-between rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 hover:brightness-110"
+													className="flex w-full items-center justify-center rounded-full bg-emerald-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-900/20 hover:bg-emerald-500 transition-colors"
 												>
-													<span>Secure Checkout</span>
-													<span>{formatPrice(totalPrice)}</span>
+													Checkout
 												</Link>
-												<div className="flex gap-3 text-xs">
-													<Link
-														href="/cart"
-														onClick={closeCart}
-															className="flex-1 rounded-full border border-white/15 px-4 py-3 text-center font-semibold text-white/90 hover:text-white"
-													>
-														View Cart
-													</Link>
+												<div className="mt-3 text-center">
 													<button
 														onClick={clearCart}
-														className="flex-1 rounded-full border border-red-400/30 px-4 py-3 text-center font-semibold text-red-200 hover:bg-red-500/10"
+														className="text-xs text-white/40 hover:text-white transition-colors"
 													>
-														Clear All
+														Clear Cart
 													</button>
 												</div>
-												<p className="text-center text-xs text-white/40">
-													or
-													<Link
-														href="/shop"
-														onClick={closeCart}
-														className="ml-1 font-semibold text-emerald-300 hover:text-white"
-													>
-														continue shopping →
-													</Link>
-												</p>
 											</div>
-										</div>
+										)}
 									</div>
 								</Dialog.Panel>
 							</Transition.Child>

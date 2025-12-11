@@ -55,32 +55,50 @@ export default function AdminDashboard() {
     { id: 'growth', name: 'Growth Agent (Lead Gen & Sales)', status: 'idle' },
     { id: 'trends', name: 'Trend Agent (Content & SEO)', status: 'idle' },
     { id: 'content', name: 'Content Agent (Blog & Social)', status: 'idle' },
+    { id: 'design-audit', name: 'Design Bot (Audit)', status: 'idle' },
+    { id: 'design-fix', name: 'Design Bot (Auto-Fix)', status: 'idle' },
     { id: 'seo', name: 'SEO Agent (Optimization)', status: 'idle' },
     { id: 'inventory', name: 'Inventory Sync (WooCommerce)', status: 'idle' },
     { id: 'plantsy', name: 'Plantsy (AI Plant Care Chatbot)', status: 'idle' },
   ]);
 
-  const runAgent = async (agentId: string) => {
+  const [adminKey, setAdminKey] = useState('');
+  const [blogTopic, setBlogTopic] = useState('');
+  const [blogKeyword, setBlogKeyword] = useState('');
+  const [output, setOutput] = useState<string>('');
+
+  const runAgent = async (agentId: string, extraBody: any = {}) => {
+    if (!adminKey) {
+      setOutput('Please enter Admin Key');
+      return;
+    }
+
     setAgents(prev => prev.map(a => 
       a.id === agentId ? { ...a, status: 'running' as const, message: 'Starting...' } : a
     ));
+    setOutput(`Starting ${agentId}...`);
 
     try {
       let endpoint = '';
       const method = 'POST';
-      let body = {};
+      let body = { ...extraBody };
 
       switch (agentId) {
         case 'growth':
-          endpoint = '/api/admin/run-script';
-          body = { script: 'growth' };
+          endpoint = '/api/growth-agent/run';
           break;
         case 'trends':
           endpoint = '/api/agent/run?action=execute';
           break;
         case 'content':
-          endpoint = '/api/admin/run-script';
-          body = { script: 'content' };
+          endpoint = '/api/generate-blog-post';
+          body = { topic: blogTopic, keyword: blogKeyword };
+          break;
+        case 'design-audit':
+          endpoint = '/api/design-audit?action=audit';
+          break;
+        case 'design-fix':
+          endpoint = '/api/design-audit?action=auto-fix';
           break;
         case 'seo':
           endpoint = '/api/admin/run-script';
@@ -97,27 +115,28 @@ export default function AdminDashboard() {
 
       const res = await fetch(endpoint, { 
         method,
-        headers: { 'Content-Type': 'application/json' },
-        body: Object.keys(body).length > 0 ? JSON.stringify(body) : undefined
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey
+        },
+        body: JSON.stringify(body)
       });
       
       const data = await res.json();
-      
+      setOutput(JSON.stringify(data, null, 2));
+
+      if (res.ok) {
+        setAgents(prev => prev.map(a => 
+          a.id === agentId ? { ...a, status: 'success' as const, message: 'Completed successfully', lastRun: new Date().toLocaleTimeString() } : a
+        ));
+      } else {
+        throw new Error(data.message || 'Failed to run agent');
+      }
+    } catch (error: any) {
+      console.error(error);
+      setOutput('Error: ' + error.message);
       setAgents(prev => prev.map(a => 
-        a.id === agentId 
-          ? { 
-              ...a, 
-              status: (data.success || data.answer || data.agentStatus) ? 'success' : 'error',
-              lastRun: new Date().toLocaleTimeString(),
-              message: data.success ? 'Completed successfully' : (data.error || 'Check logs')
-            } 
-          : a
-      ));
-    } catch (error) {
-      setAgents(prev => prev.map(a => 
-        a.id === agentId 
-          ? { ...a, status: 'error', message: 'Failed to connect' } 
-          : a
+        a.id === agentId ? { ...a, status: 'error' as const, message: error.message } : a
       ));
     }
   };

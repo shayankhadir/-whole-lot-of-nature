@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle, Package, Truck, MapPin, ArrowRight, Leaf } from 'lucide-react';
+import { CheckCircle, Package, Truck, MapPin, ArrowRight, Leaf, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import type { Metadata } from 'next';
@@ -56,6 +56,17 @@ export default function OrderSuccessPage() {
       }
 
       try {
+        // Check Cashfree Payment Status first
+        const paymentRes = await fetch(`/api/payments/cashfree/status/${orderId}`);
+        const paymentData = await paymentRes.json();
+
+        if (paymentData.order_status !== 'PAID') {
+          setError('Payment not completed. Please try again.');
+          setLoading(false);
+          return;
+        }
+
+        // If paid, fetch order details
         const response = await fetch(`/api/checkout?orderId=${orderId}`);
         if (response.ok) {
           const data = await response.json();
@@ -73,6 +84,26 @@ export default function OrderSuccessPage() {
 
     fetchOrderDetails();
   }, [orderId]);
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#0d3512] flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <AlertCircle className="w-10 h-10 text-red-400" />
+          </div>
+          <h1 className="text-2xl font-bold text-white mb-4">Payment Failed or Cancelled</h1>
+          <p className="text-emerald-100/60 mb-8">{error}</p>
+          <Link 
+            href="/checkout"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-500 transition-colors"
+          >
+            Try Again
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const steps = [
     { icon: CheckCircle, label: 'Order Placed', active: true },

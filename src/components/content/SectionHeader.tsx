@@ -38,15 +38,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   const titleSizeClasses = {
-    small: 'text-2xl md:text-3xl',
-    medium: 'text-3xl md:text-4xl',
-    large: 'text-4xl md:text-5xl',
+    small: 'text-xl md:text-2xl',
+    medium: 'text-2xl md:text-3xl',
+    large: 'text-3xl md:text-4xl',
   };
 
   const subtitleSizeClasses = {
-    small: 'text-base md:text-lg',
-    medium: 'text-lg md:text-xl',
-    large: 'text-xl md:text-2xl',
+    small: 'text-sm md:text-base',
+    medium: 'text-base md:text-lg',
+    large: 'text-lg md:text-xl',
   };
 
   const alignClasses = {
