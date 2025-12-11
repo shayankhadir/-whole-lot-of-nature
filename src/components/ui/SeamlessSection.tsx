@@ -57,7 +57,9 @@ export default function SeamlessSection({
 
   const shellClasses = noShell
     ? ''
-    : 'relative z-10 mx-auto max-w-[min(1400px,96vw)] rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_20px_80px_rgba(13,53,18,0.25)] p-6 sm:p-8 lg:p-12';
+    : tone === 'glass'
+    ? 'relative z-10 mx-auto max-w-[min(1400px,96vw)] rounded-[28px] border border-white/10 bg-white/10 backdrop-blur-md shadow-[0_20px_80px_rgba(13,53,18,0.18)] p-6 sm:p-8 lg:p-12'
+    : 'relative z-10 mx-auto max-w-[min(1400px,96vw)] p-6 sm:p-8 lg:p-12';
 
   return (
     <section className={`relative w-full ${resolvedBackground} ${gradientOverlay} ${paddingClasses[paddingY]} px-4 sm:px-6 lg:px-12 overflow-hidden ${className}`}>

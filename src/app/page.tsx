@@ -131,7 +131,7 @@ export default function Home() {
         tone="onyx"
         paddingY="sm"
         noShell
-        className="-mt-10 pt-6 pb-12"
+        className="-mt-16 pt-10 pb-14"
       >
         <TrustBanner />
       </SeamlessSection>

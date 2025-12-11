@@ -19,7 +19,7 @@ export default function InteractiveHero() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-[85vh] md:h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden"
     >
       {/* Parallax Background */}
       <motion.div 
@@ -52,7 +52,7 @@ export default function InteractiveHero() {
         />
         
         {/* Seamless transition gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0D1B0F] to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0D1B0F] to-transparent z-10" />
       </motion.div>
 
       {/* Floating particles */}

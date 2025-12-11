@@ -148,7 +148,7 @@ export default function AllProductsShowcase() {
 
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-[20px] leading-snug font-bold font-montserrat text-[#efebe9] mb-2 line-clamp-2 group-hover:text-[#4CAF50] transition-colors antialiased">
+                    <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] leading-[1.2] font-bold font-montserrat text-[#efebe9] mb-2 line-clamp-2 group-hover:text-[#4CAF50] transition-colors antialiased">
                       {product.name}
                     </h3>
                     
