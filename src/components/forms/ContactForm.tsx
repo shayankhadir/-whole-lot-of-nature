@@ -7,14 +7,25 @@ interface FormState {
   email: string;
   message: string;
   phone?: string;
+  inquiryType: string;
+  orderNumber?: string;
+  gardenType?: string;
 }
 
 export default function ContactForm() {
-  const [formState, setFormState] = useState<FormState>({ name: '', email: '', message: '', phone: '' });
+  const [formState, setFormState] = useState<FormState>({ 
+    name: '', 
+    email: '', 
+    message: '', 
+    phone: '',
+    inquiryType: 'general',
+    orderNumber: '',
+    gardenType: ''
+  });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (key: keyof FormState) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (key: keyof FormState) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormState((prev) => ({ ...prev, [key]: event.target.value }));
   };
 
@@ -31,10 +42,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           type: 'contact',
-          name: formState.name,
-          email: formState.email,
-          phone: formState.phone,
-          message: formState.message,
+          ...formState,
         }),
       });
 
@@ -45,7 +53,15 @@ export default function ContactForm() {
       }
 
       setStatus('success');
-      setFormState({ name: '', email: '', message: '', phone: '' });
+      setFormState({ 
+        name: '', 
+        email: '', 
+        message: '', 
+        phone: '',
+        inquiryType: 'general',
+        orderNumber: '',
+        gardenType: ''
+      });
     } catch (err: unknown) {
       setStatus('error');
       const message = err instanceof Error ? err.message : 'Something went wrong.';
@@ -102,6 +118,54 @@ export default function ContactForm() {
           onChange={handleChange('phone')}
         />
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-white/90">Inquiry Type</label>
+          <select
+            className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all"
+            value={formState.inquiryType}
+            onChange={handleChange('inquiryType')}
+          >
+            <option value="general">General Inquiry</option>
+            <option value="order">Order Status</option>
+            <option value="product">Product Question</option>
+            <option value="garden_advice">Garden Advice</option>
+            <option value="partnership">Partnership</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white/90">Garden Space</label>
+          <select
+            className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all"
+            value={formState.gardenType}
+            onChange={handleChange('gardenType')}
+          >
+            <option value="">Select your space...</option>
+            <option value="balcony">Balcony Garden</option>
+            <option value="terrace">Terrace / Rooftop</option>
+            <option value="indoor">Indoor / Living Room</option>
+            <option value="backyard">Backyard / Lawn</option>
+            <option value="farmhouse">Farmhouse</option>
+            <option value="beginner">I'm just starting!</option>
+          </select>
+        </div>
+      </div>
+
+      {formState.inquiryType === 'order' && (
+        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+          <label className="block text-sm font-medium text-white/90">Order Number</label>
+          <input
+            type="text"
+            className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all"
+            placeholder="e.g. WLN-12345"
+            value={formState.orderNumber}
+            onChange={handleChange('orderNumber')}
+            required
+          />
+        </div>
+      )}
+
       <div>
         <label className="block text-sm font-medium text-white/90">Message</label>
         <textarea
