@@ -23,6 +23,26 @@ const NewsletterPopup = dynamic(() => import('@/components/ui/NewsletterPopup'),
 
 /*
 export const metadata: Metadata = {
+  title: 'Buy Premium Plants Online | Whole Lot of Nature',
+  description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
+  openGraph: {
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+    url: 'https://wholelotofnature.com',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Buy Premium Plants Online | Whole Lot of Nature',
+    description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
+    images: ['https://wholelotofnature.com/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://wholelotofnature.com',
+  },
+};
+*/
+
 const homeSeoFaqs = [
   {
     question: 'Does Whole Lot of Nature offer same-day or express plant delivery in Bangalore?',
@@ -95,26 +115,6 @@ const homeSeoFaqs = [
       'Unbox within 24 hours, share photos, and we replace or refund eligible items. Acclimate plants in bright, indirect light, remove yellow leaves, and follow the included care card. Our packaging plus concierge support keeps DOA rates extremely low.',
   },
 ];
-
-  title: 'Buy Premium Plants Online | Whole Lot of Nature',
-  description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
-  openGraph: {
-    title: 'Buy Premium Plants Online | Whole Lot of Nature',
-    description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
-    images: ['https://wholelotofnature.com/images/og-image.jpg'],
-    url: 'https://wholelotofnature.com',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Buy Premium Plants Online | Whole Lot of Nature',
-    description: 'Shop premium indoor and outdoor plants online in Bangalore. Expert plant care, fast delivery, and sustainable gardening solutions. Soil mixes, pots, and accessories available.',
-    images: ['https://wholelotofnature.com/images/og-image.jpg'],
-  },
-  alternates: {
-    canonical: 'https://wholelotofnature.com',
-  },
-};
-*/
 
 
 
