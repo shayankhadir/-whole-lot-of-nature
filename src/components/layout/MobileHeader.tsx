@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -12,21 +12,30 @@ import { navigation, shopCollections } from './navigationData';
 
 export default function MobileHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const cartCount = useCartStore((s) => s.items.reduce((sum, item) => sum + item.quantity, 0));
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-[#0D1B0F]/95 backdrop-blur border-b border-[#2E7D32]/20 shadow-sm lg:hidden">
         <div className="flex items-center justify-between px-4 py-3">
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors backdrop-blur-md"
-            aria-label="Open navigation menu"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+          {mounted ? (
+            <button
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors backdrop-blur-md"
+              aria-label="Open navigation menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          ) : (
+            <div className="w-10 h-10" aria-hidden="true" />
+          )}
 
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -75,7 +84,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
       <div className="fixed inset-0 bg-black/40 z-40 backdrop-blur-md" aria-hidden="true" />
       <Dialog.Panel className="fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm bg-[#0F1E11] text-white shadow-2xl">
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
-          <p className="text-base font-semibold tracking-wide antialiased">Menu</p>
+          <Dialog.Title className="text-base font-semibold tracking-wide antialiased">Menu</Dialog.Title>
           <button
             type="button"
             onClick={() => onClose(false)}

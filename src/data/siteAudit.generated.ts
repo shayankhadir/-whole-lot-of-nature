@@ -14,7 +14,7 @@ export type SiteAudit = {
 };
 
 export const siteAudit: SiteAudit = {
-  "generatedAt": "2025-12-12T20:13:43.055Z",
+  "generatedAt": "2025-12-12T23:17:28.997Z",
   "counts": {
     "totalRoutes": 109,
     "pageRoutes": 68,
