@@ -122,7 +122,7 @@ export default function CombosPage() {
               className="text-center p-6"
             >
               <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl antialiased">💰</span>
+                <span className="text-2xl antialiased">•</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2 antialiased">Save More Money</h3>
               <p className="text-gray-300">
@@ -138,7 +138,7 @@ export default function CombosPage() {
               className="text-center p-6"
             >
               <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl antialiased">🎯</span>
+                <span className="text-2xl antialiased">•</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2 antialiased">Expertly Curated</h3>
               <p className="text-gray-300">
@@ -154,7 +154,7 @@ export default function CombosPage() {
               className="text-center p-6"
             >
               <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl antialiased">📦</span>
+                <span className="text-2xl antialiased">•</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2 antialiased">Complete Solutions</h3>
               <p className="text-gray-300">

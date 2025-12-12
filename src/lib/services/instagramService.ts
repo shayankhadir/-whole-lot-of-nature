@@ -54,10 +54,10 @@ export default class InstagramAutomationService {
       // Step 2: Publish the container
       const publishResponse = await this.publishMediaContainer(containerId);
 
-      console.log('✅ Instagram post published:', publishResponse.id);
+      console.log('Instagram post published:', publishResponse.id);
       return publishResponse;
     } catch (error: unknown) {
-      console.error('❌ Instagram publish error:', error);
+      console.error('Instagram publish error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       throw new Error(`Failed to publish to Instagram: ${errorMessage}`);
     }
@@ -105,14 +105,14 @@ export default class InstagramAutomationService {
       }
 
       const result = await response.json();
-      console.log('📅 Instagram post scheduled for:', scheduledTime);
+      console.log('Instagram post scheduled for:', scheduledTime);
       
       return {
         id: result.id,
         permalink: undefined, // Won't have permalink until published
       };
     } catch (error: unknown) {
-      console.error('❌ Instagram schedule error:', error);
+      console.error('Instagram schedule error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       throw new Error(`Failed to schedule post: ${errorMessage}`);
     }
@@ -285,10 +285,10 @@ export default class InstagramAutomationService {
       }
 
       const data = await response.json();
-      console.log('✅ Instagram account validated:', data.username);
+      console.log('Instagram account validated:', data.username);
       return true;
     } catch (error) {
-      console.error('❌ Instagram validation error:', error);
+      console.error('Instagram validation error:', error);
       return false;
     }
   }
@@ -319,7 +319,7 @@ export default class InstagramAutomationService {
         });
         scheduledCount++;
         
-        console.log(`✅ Scheduled post ${i + 1}/${posts.length}`);
+        console.log(`Scheduled post ${i + 1}/${posts.length}`);
         
         // Wait 1 second between requests to avoid rate limiting
         if (i < posts.length - 1) {
@@ -333,13 +333,13 @@ export default class InstagramAutomationService {
           caption: post.caption.substring(0, 50) + '...'
         });
         failedCount++;
-        console.error(`❌ Failed to schedule post ${i + 1}:`, errorMessage);
+        console.error(`Failed to schedule post ${i + 1}:`, errorMessage);
       }
     }
 
-    console.log(`\n📊 Bulk Schedule Results:`);
-    console.log(`  ✅ Scheduled: ${scheduledCount}/${posts.length}`);
-    console.log(`  ❌ Failed: ${failedCount}/${posts.length}`);
+    console.log(`\nBulk Schedule Results:`);
+    console.log(`  Scheduled: ${scheduledCount}/${posts.length}`);
+    console.log(`  Failed: ${failedCount}/${posts.length}`);
 
     return results;
   }
@@ -369,7 +369,7 @@ export default class InstagramAutomationService {
 
       return response.json();
     } catch (error: unknown) {
-      console.error('❌ Failed to get account info:', error);
+      console.error('Failed to get account info:', error);
       throw error;
     }
   }

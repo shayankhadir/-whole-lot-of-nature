@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case 'full-automation': {
-        console.log('🚀 Starting full marketing automation...');
+        console.log('Starting full marketing automation...');
         const response = await automationAgent.runFullAutomation();
         return NextResponse.json({
           ...response,

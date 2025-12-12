@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case 'generate-posts': {
-        console.log('📱 Generating social media posts...');
+        console.log('Generating social media posts...');
 
         const {
           keywords = ['indoor plants', 'plant care', 'houseplants', 'gardening', 'succulents'],
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'create-calendar': {
-        console.log('📅 Creating content calendar...');
+        console.log('Creating content calendar...');
 
         const {
           keywords = ['indoor plants', 'plant care', 'houseplants', 'gardening'],
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'get-insights': {
-        console.log('🔍 Analyzing social media trends...');
+        console.log('Analyzing social media trends...');
 
         const analysisAgent = new CompetitorAnalysisAgent();
         const competitorData = [];
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
             }
             competitorData.push(analysis);
           } catch {
-            console.log(`  ⚠️  Error with ${competitor.name}, using mock data`);
+            console.log(`  Error with ${competitor.name}; using mock data`);
             competitorData.push(analysisAgent.generateMockData(competitor.name, competitor.url));
           }
         }
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'full-automation': {
-        console.log('🚀 Running full social media automation...\n');
+        console.log('Running full social media automation...\n');
 
         const results: {
           step1: { status: string; data: unknown };
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
 
         // STEP 1: Analyze Competitors
         try {
-          console.log('📊 Step 1: Analyzing competitors for social insights...');
+          console.log('Step 1: Analyzing competitors for social insights...');
           const analysisAgent = new CompetitorAnalysisAgent();
           const competitorData = [];
 
@@ -163,10 +163,10 @@ export async function POST(request: NextRequest) {
                 }
               }
               competitorData.push(analysis);
-              console.log(`  ✅ Analyzed ${competitor.name}`);
+              console.log(`  Analyzed ${competitor.name}`);
             } catch (error: unknown) {
               const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-              console.log(`  ⚠️  Error with ${competitor.name}: ${errorMessage}`);
+              console.log(`  Error with ${competitor.name}: ${errorMessage}`);
               competitorData.push(
                 analysisAgent.generateMockData(competitor.name, competitor.url)
               );
@@ -186,11 +186,11 @@ export async function POST(request: NextRequest) {
             },
           };
 
-          console.log(`✅ Step 1 Complete: Analyzed ${competitorData.length} competitors\n`);
+          console.log(`Step 1 Complete: Analyzed ${competitorData.length} competitors\n`);
 
           // STEP 2: Generate Social Media Posts
           try {
-            console.log('📱 Step 2: Generating social media content...');
+            console.log('Step 2: Generating social media content...');
 
             const keywords = marketingInsights.topKeywords.slice(0, 10);
             const platforms = ['instagram', 'facebook', 'twitter', 'linkedin'];
@@ -212,11 +212,11 @@ export async function POST(request: NextRequest) {
               },
             };
 
-            console.log(`✅ Step 2 Complete: Generated ${posts.length} posts\n`);
+            console.log(`Step 2 Complete: Generated ${posts.length} posts\n`);
 
             // STEP 3: Create Content Calendar
             try {
-              console.log('📅 Step 3: Creating 30-day content calendar...');
+              console.log('Step 3: Creating 30-day content calendar...');
 
               const calendar = socialAgent.createContentCalendar(posts, new Date());
               const summary = socialAgent.getScheduleSummary(calendar) as any;
@@ -233,10 +233,10 @@ export async function POST(request: NextRequest) {
                 },
               };
 
-              console.log(`✅ Step 3 Complete: Created ${calendar.length}-day calendar\n`);
+              console.log(`Step 3 Complete: Created ${calendar.length}-day calendar\n`);
             } catch (error: unknown) {
               const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-              console.error('❌ Step 3 Error:', errorMessage);
+              console.error('Step 3 Error:', errorMessage);
               results.step3 = {
                 status: 'failed',
                 data: { error: errorMessage },
@@ -245,7 +245,7 @@ export async function POST(request: NextRequest) {
             }
           } catch (error: unknown) {
             const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-            console.error('❌ Step 2 Error:', errorMessage);
+            console.error('Step 2 Error:', errorMessage);
             results.step2 = {
               status: 'failed',
               data: { error: errorMessage },
@@ -254,7 +254,7 @@ export async function POST(request: NextRequest) {
           }
         } catch (error: unknown) {
           const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-          console.error('❌ Step 1 Error:', errorMessage);
+          console.error('Step 1 Error:', errorMessage);
           results.step1 = {
             status: 'failed',
             data: { error: errorMessage },
@@ -286,7 +286,7 @@ export async function POST(request: NextRequest) {
         );
     }
   } catch (error: unknown) {
-    console.error('❌ Social Media API Error:', error);
+    console.error('Social Media API Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Social media automation failed';
     const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json(

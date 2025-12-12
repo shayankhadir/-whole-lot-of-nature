@@ -208,7 +208,7 @@ export default function ComboProductsGrid({
         </motion.div>
       ) : (
         <div className="text-center py-16">
-          <div className="text-6xl mb-4 antialiased">🌱</div>
+          <div className="text-6xl mb-4 antialiased">•</div>
           <h3 className="text-xl font-semibold text-white mb-2 antialiased">No combos found</h3>
           <p className="text-white/90">Try adjusting your filters or check back later for new combo deals.</p>
         </div>

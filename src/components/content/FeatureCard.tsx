@@ -142,7 +142,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             <ul className="space-y-1">
               {feature.benefits.map((benefit, bidx) => (
                 <li key={bidx} className="text-sm text-gray-100">
-                  ✓ {benefit}
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -161,19 +161,19 @@ export default FeatureCard;
 export const productFeatures = {
   organic: [
     {
-      icon: '🌾',
+      icon: '',
       title: '100% Organic',
       description: 'All seeds certified organic, completely pesticide-free',
       benefits: ['Laboratory tested', 'Certified by authorities', 'Non-GMO'],
     },
     {
-      icon: '📦',
+      icon: '',
       title: 'Quality Assured',
       description: 'Rigorous quality control from farm to doorstep',
       benefits: ['High germination rate', 'Freshness guaranteed', 'Protective packaging'],
     },
     {
-      icon: '🚚',
+      icon: '',
       title: 'Fast Delivery',
       description: 'Seeds delivered fresh to your door in 5-7 days',
       benefits: ['Free shipping on orders', 'Live tracking', 'Express options'],
@@ -182,19 +182,19 @@ export const productFeatures = {
 
   gardening: [
     {
-      icon: '🌱',
+      icon: '',
       title: 'Plant Varieties',
       description: '500+ varieties for every gardening need and region',
       benefits: ['Vegetables', 'Medicinal plants', 'Herbs and spices'],
     },
     {
-      icon: '📚',
+      icon: '',
       title: 'Expert Guidance',
       description: 'Free growing guides and gardening support',
       benefits: ['Growing tips', 'Seasonal recommendations', 'Community forum'],
     },
     {
-      icon: '💚',
+      icon: '',
       title: 'Sustainability',
       description: 'Eco-friendly practices throughout our operations',
       benefits: ['Carbon-neutral shipping', 'Recyclable packaging', 'Green initiatives'],
@@ -203,19 +203,19 @@ export const productFeatures = {
 
   community: [
     {
-      icon: '👨‍🌾',
+      icon: '',
       title: 'Farmer Partnerships',
       description: 'Direct partnerships supporting 50+ organic farmers',
       details: ['Fair pricing guaranteed', 'Long-term contracts', 'Farmer training'],
     },
     {
-      icon: '👥',
+      icon: '',
       title: 'Community Programs',
       description: 'Educational initiatives training 5,000+ gardeners',
       details: ['Free workshops', 'Online courses', 'Garden visits'],
     },
     {
-      icon: '🤝',
+      icon: '',
       title: 'Corporate Partnerships',
       description: 'B2B programs for companies and organizations',
       details: ['Bulk discounts', 'Employee wellness', 'CSR programs'],
@@ -224,25 +224,25 @@ export const productFeatures = {
 
   why_choose: [
     {
-      icon: '⭐',
+      icon: '',
       title: '95% Customer Satisfaction',
       description: '10,000+ happy customers trusting our seeds',
       benefits: ['Positive reviews', 'High repeat rate', 'Customer support'],
     },
     {
-      icon: '✓',
+      icon: '',
       title: 'Certified Organic',
       description: 'All products verified by authorized bodies',
       benefits: ['Third-party tested', 'Industry compliant', 'Transparent sourcing'],
     },
     {
-      icon: '🏆',
+      icon: '',
       title: 'Award Winning',
       description: 'Recognized for excellence in organic agriculture',
       benefits: ['Industry awards', 'Media recognition', 'Expert endorsements'],
     },
     {
-      icon: '💰',
+      icon: '',
       title: 'Best Value',
       description: 'Premium quality at competitive prices',
       benefits: ['No middlemen', 'Direct from farm', 'Affordable pricing'],

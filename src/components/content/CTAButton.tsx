@@ -176,55 +176,54 @@ export const ctaButtons = {
     text: 'Shop Now',
     href: '/shop',
     variant: 'primary' as const,
-    icon: '🛒',
+    icon: '',
   },
 
   learnMore: {
     text: 'Learn More',
     href: '/about',
     variant: 'secondary' as const,
-    icon: '📚',
+    icon: '',
   },
 
   contact: {
     text: 'Contact Us',
     href: '/contact',
     variant: 'outline' as const,
-    icon: '📧',
+    icon: '',
   },
 
   becomeFarmer: {
     text: 'Become a Partner',
-    href: '/partnerships',
+    href: '/contact?type=partnership',
     variant: 'primary' as const,
-    icon: '🤝',
+    icon: '',
   },
 
   viewTeam: {
     text: 'Meet Our Team',
-    href: '/team',
+    href: '/about',
     variant: 'outline' as const,
   },
 
   joinCommunity: {
-    text: 'Join Our Community',
-    href: '/community',
+    text: 'Browse Guides',
+    href: '/seo-pages',
     variant: 'primary' as const,
-    icon: '👥',
+    icon: '',
   },
 
   explorePlants: {
     text: 'Explore Plant Varieties',
-    href: '/plants',
+    href: '/shop',
     variant: 'secondary' as const,
-    icon: '🌱',
+    icon: '',
   },
 
   getStarted: {
     text: 'Get Started Today',
     href: '/signup',
     variant: 'primary' as const,
-    icon: '➜',
     iconPosition: 'right' as const,
   },
 };
@@ -242,7 +241,7 @@ export const ctaSections = {
     },
     secondaryButton: {
       text: 'Browse Categories',
-      href: '/categories',
+      href: '/shop',
     },
     variant: 'centered' as const,
     backgroundVariant: 'green' as const,
@@ -253,7 +252,7 @@ export const ctaSections = {
     description: 'Join our network of farmers, businesses, and communities making a difference in sustainable agriculture.',
     primaryButton: {
       text: 'Explore Partnership Opportunities',
-      href: '/partnerships',
+      href: '/contact?type=partnership',
     },
     secondaryButton: {
       text: 'Contact Partnership Team',
@@ -267,12 +266,12 @@ export const ctaSections = {
     title: 'Become Part of Our Growing Community',
     description: 'Get free gardening tips, connect with other gardeners, and learn sustainable farming practices.',
     primaryButton: {
-      text: 'Join Community',
-      href: '/community',
+      text: 'Browse Guides',
+      href: '/seo-pages',
     },
     secondaryButton: {
       text: 'Browse Guides',
-      href: '/guides',
+      href: '/seo-pages',
     },
     variant: 'centered' as const,
     backgroundVariant: 'green' as const,

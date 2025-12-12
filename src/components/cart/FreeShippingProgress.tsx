@@ -37,11 +37,11 @@ export default function FreeShippingProgress({
       <div className="text-sm text-center">
         {isEligible ? (
           <span className="text-[#2E7D32] font-semibold">
-            🎉 You&apos;ve qualified for FREE shipping!
+            You&apos;ve qualified for FREE shipping.
           </span>
         ) : (
           <span className="text-gray-600">
-            Spend <span className="font-semibold text-[#2E7D32]">₹{amountRemaining.toFixed(2)}</span> more for FREE shipping! 🌿
+            Spend <span className="font-semibold text-[#2E7D32]">₹{amountRemaining.toFixed(2)}</span> more for FREE shipping.
           </span>
         )}
       </div>

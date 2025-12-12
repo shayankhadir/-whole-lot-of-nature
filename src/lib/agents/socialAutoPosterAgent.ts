@@ -89,7 +89,7 @@ export class SocialMediaAutoPosterAgent {
     product.tags?.forEach((tag) => baseHashtags.add(`#${tag.slug.replace(/-/g, '')}`));
 
     const caption = [
-      `Say hello to **${product.name}** 🌿`,
+      `Say hello to **${product.name}**`,
       product.short_description?.replace(/<[^>]+>/g, '').slice(0, 180) ?? 'Handpicked for Indian homes, rooted in organic soil mix.',
       `\nTap to add it to your cart → ${product.price ? `₹${product.price}` : 'DM for price'}`,
     ].join('\n\n');

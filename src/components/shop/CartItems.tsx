@@ -132,7 +132,7 @@ export default function CartItems() {
               Shipping and taxes calculated at checkout.
             </p>
             <p className="mt-2 text-sm text-primary-600">
-              🌱 You&apos;re helping us plant trees! For orders over $50, we plant a tree.
+              You&apos;re helping us plant trees. For orders over $50, we plant a tree.
             </p>
           </motion.div>
         )}

@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Leaf, Heart, Users, Sprout, Droplet, Recycle, Sun, Wind, Award } from 'lucide-react';
 import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
 import InstagramFeed from '@/components/sections/InstagramFeed';
@@ -164,7 +165,7 @@ export default function AboutPage() {
                   Today we handcraft organic soil mixes, eco fertilizers, indoor and aquatic plants, and herbal essentials—while designing lush balconies and courtyards tailored for Bengaluru light and weather.
                 </p>
                 <p className="border-l-4 border-[#4ADE80] pl-6 italic text-white/90">
-                  "Every product — whether it&apos;s a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives."
+                  &ldquo;Every product — whether it&apos;s a premium potting mix, a succulent, or a bottle of our organic herbal hair oil — is made with the same belief: that healthy roots create healthy lives.&rdquo;
                 </p>
               </div>
             </motion.div>
@@ -226,7 +227,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Us?</h2>
-            <p className="text-emerald-100/60 max-w-2xl mx-auto">We don't just sell plants; we cultivate relationships with nature.</p>
+            <p className="text-emerald-100/60 max-w-2xl mx-auto">We do not just sell plants; we cultivate relationships with nature.</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -273,12 +274,12 @@ export default function AboutPage() {
             Join thousands of happy gardeners who have transformed their spaces with Whole Lot of Nature.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/shop" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#4ADE80] text-[#0D1B0F] font-bold hover:bg-[#2E7D32] hover:text-white transition-all transform hover:scale-105">
+            <Link href="/shop" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#4ADE80] text-[#0D1B0F] font-bold hover:bg-[#2E7D32] hover:text-white transition-all transform hover:scale-105">
               Shop Plants
-            </a>
-            <a href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition-all">
+            </Link>
+            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition-all">
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </div>

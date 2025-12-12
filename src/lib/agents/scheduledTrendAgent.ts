@@ -91,7 +91,7 @@ class ScheduledTrendAgent {
       console.log(`[${runId}] Step 1: Collecting trends...`);
       run.results.trends = await this.trendScraper.getAllTrends();
       run.trendsCollected = run.results.trends.length;
-      console.log(`[${runId}] ✓ Collected ${run.trendsCollected} trends`);
+      console.log(`[${runId}] Collected ${run.trendsCollected} trends`);
 
       // Filter out old trends
       const recentTrends = this.filterRecentTrends(run.results.trends);
@@ -105,16 +105,16 @@ class ScheduledTrendAgent {
         try {
           const post = await this.blogGenerator.generateFromTrend(trend);
           run.results.posts.push(post);
-          console.log(`[${runId}] ✓ Generated: "${post.title}"`);
+          console.log(`[${runId}] Generated: "${post.title}"`);
         } catch (error) {
           const err = error as Error;
           run.errors.push(`Failed to generate post from trend: ${err.message}`);
-          console.error(`[${runId}] ✗ Error generating post:`, err.message);
+          console.error(`[${runId}] Error generating post:`, err.message);
         }
       }
 
       run.postsGenerated = run.results.posts.length;
-      console.log(`[${runId}] ✓ Generated ${run.postsGenerated} posts`);
+      console.log(`[${runId}] Generated ${run.postsGenerated} posts`);
 
       // Step 3: Publish posts to WordPress
       if (this.publisher && this.config.publishStrategy !== 'draft') {
@@ -134,11 +134,11 @@ class ScheduledTrendAgent {
               // Schedule for next available slot
               const scheduleDate = this.getNextPublishSlot();
               result = await this.publisher.schedulePost(post, scheduleDate);
-              console.log(`[${runId}] ✓ Scheduled: "${post.title}" for ${scheduleDate.toLocaleDateString()}`);
+              console.log(`[${runId}] Scheduled: "${post.title}" for ${scheduleDate.toLocaleDateString()}`);
             } else {
               // Publish immediately
               result = await this.publisher.publishPost(post);
-              console.log(`[${runId}] ✓ Published: "${post.title}"`);
+              console.log(`[${runId}] Published: "${post.title}"`);
             }
 
             if (result.success) {
@@ -150,12 +150,12 @@ class ScheduledTrendAgent {
               run.postsPublished++;
             } else {
               run.errors.push(`Failed to publish "${post.title}": ${result.error}`);
-              console.error(`[${runId}] ✗ Publish error:`, result.error);
+              console.error(`[${runId}] Publish error:`, result.error);
             }
           } catch (error) {
             const err = error as Error;
             run.errors.push(`Error publishing post: ${err.message}`);
-            console.error(`[${runId}] ✗ Error publishing:`, err.message);
+            console.error(`[${runId}] Error publishing:`, err.message);
           }
         }
       } else {
@@ -163,12 +163,12 @@ class ScheduledTrendAgent {
       }
 
       run.status = 'completed';
-      console.log(`[${runId}] ✓ Run completed successfully`);
+      console.log(`[${runId}] Run completed successfully`);
     } catch (error) {
       const err = error as Error;
       run.status = 'failed';
       run.errors.push(`Agent run failed: ${err.message}`);
-      console.error(`[${runId}] ✗ Agent run failed:`, err.message);
+      console.error(`[${runId}] Agent run failed:`, err.message);
     }
 
     // Store run results

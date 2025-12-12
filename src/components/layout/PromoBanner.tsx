@@ -13,7 +13,7 @@ interface PromoBannerProps {
 }
 
 export default function PromoBanner({
-  message = "🎉 SPECIAL OFFER: Get 6% OFF + Free Gift on orders above ₹250! Use code: SAVE06",
+  message = "SPECIAL OFFER: Get 6% OFF + Free Gift on orders above ₹250. Use code: SAVE06",
   backgroundColor = "#2E7D32",
   textColor = "#FFFFFF",
   dismissible = true,

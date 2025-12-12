@@ -19,7 +19,7 @@ export class LeadGenerationAgent {
   }
 
   async findLeads(): Promise<Lead[]> {
-    console.log(`🔍 LEAD GEN: Scanning for leads in niches: ${this.nicheKeywords.join(', ')}...`);
+    console.log(`LEAD GEN: Scanning for leads in niches: ${this.nicheKeywords.join(', ')}...`);
     
     // Mock Data - In production, this would scrape/API call
     // We generate random IDs to simulate new leads coming in occasionally
@@ -61,7 +61,7 @@ export class LeadGenerationAgent {
     // Simulate processing delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    console.log(`✅ LEAD GEN: Found ${leads.length} potential leads.`);
+    console.log(`LEAD GEN: Found ${leads.length} potential leads.`);
     return leads;
   }
 }

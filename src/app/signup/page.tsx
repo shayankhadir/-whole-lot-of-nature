@@ -149,7 +149,7 @@ export default function CustomSignupPage() {
 
       // Simulate redirect
       setTimeout(() => {
-        window.location.href = '/dashboard';
+        window.location.href = '/account';
       }, 2000);
     } catch (error) {
       setErrors({
@@ -323,7 +323,7 @@ export default function CustomSignupPage() {
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/privacy" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
+                <Link href="/privacy-policy" className="text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                   Privacy Policy
                 </Link>
               </label>
@@ -414,20 +414,23 @@ export default function CustomSignupPage() {
 
             {/* Feature List */}
             <div className="space-y-4 text-left">
-              {['🌱 100% Organic Seeds', '🌍 Eco-Friendly Practices', '🤝 Community Support', '📚 Expert Guides'].map(
-                (feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-lg text-white/90 antialiased"
-                  >
-                    <span className="text-2xl antialiased">{feature.split(' ')[0]}</span>
-                    {feature.substring(2)}
-                  </motion.div>
-                )
-              )}
+              {[
+                '100% organic seeds',
+                'Eco-friendly practices',
+                'Community support',
+                'Expert guides',
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  className="flex items-center gap-3 text-lg text-white/90 antialiased"
+                >
+                  <span className="text-[#66BB6A] font-bold">•</span>
+                  <span>{feature}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

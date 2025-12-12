@@ -35,10 +35,11 @@ const quickLinks: QuickLink[] = [
     title: 'Company',
     links: [
       { name: 'About Us', href: '/about' },
-      { name: 'Our Team', href: '/team' },
-      { name: 'Partnerships', href: '/partnerships' },
+      { name: 'Our Story', href: '/about' },
+      { name: 'Partner With Us', href: '/contact?type=partnership' },
       { name: 'Blog', href: '/blog' },
       { name: 'Learn Gardening', href: '/learn-gardening' },
+      { name: 'Gardening Guides', href: '/seo-pages' },
     ],
   },
   {

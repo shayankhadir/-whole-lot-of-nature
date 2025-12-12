@@ -127,7 +127,7 @@ export default function CustomLoginPage() {
 
       // Simulate redirect
       setTimeout(() => {
-        window.location.href = '/dashboard';
+        window.location.href = '/account';
       }, 2000);
     } catch (error) {
       setErrors({
@@ -249,7 +249,7 @@ export default function CustomLoginPage() {
                 <span className="text-sm text-emerald-200/80">Remember me</span>
               </label>
               <Link
-                href="/forgot-password"
+                href="/auth/forgot-password"
                 className="text-sm text-[#2E7D32] hover:text-[#2E7D32] transition-colors font-semibold"
               >
                 Forgot password?
@@ -340,20 +340,23 @@ export default function CustomLoginPage() {
 
             {/* Benefit List */}
             <div className="space-y-4 text-left">
-              {['📦 Order History', '💚 Saved Favorites', '🎁 Exclusive Deals', '📞 Priority Support'].map(
-                (benefit, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-lg text-gray-200 antialiased"
-                  >
-                    <span className="text-2xl antialiased">{benefit.split(' ')[0]}</span>
-                    {benefit.substring(2)}
-                  </motion.div>
-                )
-              )}
+              {[
+                'Order history',
+                'Saved favorites',
+                'Exclusive deals',
+                'Priority support',
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  className="flex items-center gap-3 text-lg text-gray-200 antialiased"
+                >
+                  <span className="text-[#66BB6A] font-bold">•</span>
+                  <span>{benefit}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

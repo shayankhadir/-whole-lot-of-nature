@@ -116,7 +116,7 @@ export default function TrendAgentDashboard() {
             href="/admin/inventory"
             className="px-6 py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white rounded-lg font-semibold transition flex items-center gap-2"
           >
-            📦 Inventory
+            Inventory
           </a>
         </div>
 

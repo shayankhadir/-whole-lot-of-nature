@@ -116,49 +116,49 @@ export default TrustSignals;
  */
 export const trustSignals: TrustSignal[] = [
   {
-    icon: '✓',
+    icon: 'OK',
     title: 'Certified Organic',
     description: 'All products certified organic by authorized bodies',
     details: ['100% pesticide-free', 'Laboratory tested', 'Safe for families'],
   },
   {
-    icon: '🏆',
+    icon: 'Top',
     title: 'Award Winning',
     description: 'Recognized for excellence in organic agriculture',
     details: ['Multiple industry awards', 'Media recognition', 'Customer choice'],
   },
   {
-    icon: '⭐',
+    icon: '95%',
     title: '95% Satisfaction',
     description: '10,000+ happy customers nationwide',
     details: ['Positive reviews', 'High repeat rate', 'Customer testimonials'],
   },
   {
-    icon: '🌱',
+    icon: 'OK',
     title: 'Expert Team',
     description: 'Led by horticulturists with 50+ years experience',
     details: ['Continuous training', 'Research backed', 'Industry leaders'],
   },
   {
-    icon: '📦',
+    icon: 'OK',
     title: 'Safe Packaging',
     description: 'Eco-friendly, protective packaging',
     details: ['100% recyclable', 'Seeds arrive fresh', 'Sustainable materials'],
   },
   {
-    icon: '🚚',
+    icon: 'OK',
     title: 'Fast Delivery',
     description: 'Nationwide shipping in 5-7 days',
     details: ['Live tracking', 'Free shipping on orders', 'Money-back guarantee'],
   },
   {
-    icon: '📚',
+    icon: 'OK',
     title: 'Free Guidance',
     description: 'Expert tips and gardening support',
     details: ['Growing guides', 'Community forum', 'Email support'],
   },
   {
-    icon: '🌍',
+    icon: 'OK',
     title: 'Eco-Conscious',
     description: 'Carbon-neutral operations and sustainable practices',
     details: ['Zero waste goal', 'Community programs', 'Environmental stewardship'],

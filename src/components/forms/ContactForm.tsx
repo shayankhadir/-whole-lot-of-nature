@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import { useState } from 'react';
 
 interface FormState {
@@ -72,7 +71,7 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <div className="space-y-3 bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 rounded-lg p-6 text-white/90">
-        <h3 className="text-xl font-semibold">We received your message 🌿</h3>
+        <h3 className="text-xl font-semibold">We received your message</h3>
         <p>Our support team will reply from store@wholelotofnature.com soon.</p>
         <button
           type="button"
@@ -123,6 +122,7 @@ export default function ContactForm() {
         <div>
           <label className="block text-sm font-medium text-white/90">Inquiry Type</label>
           <select
+            aria-label="Inquiry Type"
             className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all"
             value={formState.inquiryType}
             onChange={handleChange('inquiryType')}
@@ -137,6 +137,7 @@ export default function ContactForm() {
         <div>
           <label className="block text-sm font-medium text-white/90">Garden Space</label>
           <select
+            aria-label="Garden Space"
             className="mt-2 w-full rounded-lg border border-[#2E7D32]/50 bg-[#0D1B0F] px-4 py-2.5 text-white/90 focus:outline-none focus:ring-2 focus:ring-[#66BB6A] focus:border-transparent transition-all"
             value={formState.gardenType}
             onChange={handleChange('gardenType')}
@@ -147,7 +148,7 @@ export default function ContactForm() {
             <option value="indoor">Indoor / Living Room</option>
             <option value="backyard">Backyard / Lawn</option>
             <option value="farmhouse">Farmhouse</option>
-            <option value="beginner">I'm just starting!</option>
+            <option value="beginner">I am just starting!</option>
           </select>
         </div>
       </div>

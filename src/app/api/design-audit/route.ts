@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case 'audit': {
-        console.log('🎨 Running design audit...');
+        console.log('Running design audit...');
         const result = await agent.auditFrontend(projectRoot);
         
         return NextResponse.json({
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'auto-fix': {
-        console.log('🔧 Auto-fixing design issues...');
+        console.log('Auto-fixing design issues...');
         
         // First run audit
         const auditResult = await agent.auditFrontend(projectRoot);
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'report': {
-        console.log('📊 Generating design report...');
+        console.log('Generating design report...');
         const result = await agent.auditFrontend(projectRoot);
         
         // Group issues by file

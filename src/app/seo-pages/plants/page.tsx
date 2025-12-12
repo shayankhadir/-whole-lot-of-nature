@@ -148,7 +148,7 @@ export default function PlantsPage() {
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
-                href="/shop/plants"
+                href="/shop"
                 className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
               >
                 Browse Products
@@ -172,17 +172,17 @@ export default function PlantsPage() {
               <ul className="space-y-3">
                 
                 <li>
-                  <Link href="/shop/plants" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop" className="text-green-600 hover:text-green-700 hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/seeds" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/seeds" className="text-green-600 hover:text-green-700 hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
@@ -192,7 +192,7 @@ export default function PlantsPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/care-guides" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/guides" className="text-green-600 hover:text-green-700 hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>

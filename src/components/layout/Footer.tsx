@@ -135,7 +135,7 @@ export default function Footer() {
 									</Link>
 								</li>
 								<li>
-									<Link href="/shop/categories" className="hover:text-white">
+									<Link href="/shop" className="hover:text-white">
 										Categories
 									</Link>
 								</li>
@@ -242,10 +242,10 @@ export default function Footer() {
 						</div>
 					</div>
 					<div className="flex flex-wrap gap-6 font-medium">
-						<Link href="/sitemap" className="hover:text-white transition-colors">
+						<Link href="/sitemap.xml" className="hover:text-white transition-colors">
 							Sitemap
 						</Link>
-						<Link href="/shipping" className="hover:text-white transition-colors">
+						<Link href="/shipping-policy" className="hover:text-white transition-colors">
 							Shipping Policy
 						</Link>
 						<Link href="/careers" className="hover:text-white transition-colors">

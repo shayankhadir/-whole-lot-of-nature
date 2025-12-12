@@ -125,7 +125,7 @@ async function handleOrderCompleted(order: WooCommerceOrderWebhook) {
     ).join('');
 
     const html = buildBrandedEmail({
-      title: '🌿 Your Order is On Its Way!',
+      title: 'Your Order is On Its Way',
       intro: `Great news! Your order #${order.id} has been shipped.`,
       body: `
         <p>Hi ${order.billing.first_name},</p>
@@ -158,12 +158,12 @@ async function handleOrderCompleted(order: WooCommerceOrderWebhook) {
       `,
       buttonText: 'Track Your Order',
       buttonUrl: trackingUrl,
-      footer: 'Thank you for shopping with Whole Lot of Nature! 🌱 Your plants are ready to bring life to your space.',
+      footer: 'Thank you for shopping with Whole Lot of Nature. Your plants are ready to bring life to your space.',
     });
 
     await sendEmail({
       to: order.billing.email,
-      subject: `🌿 Your Order #${order.id} is on its way!`,
+      subject: `Your Order #${order.id} is on its way`,
       html,
       text: `Your order #${order.id} has been shipped! Tracking number: ${trackingNumber}`,
     });

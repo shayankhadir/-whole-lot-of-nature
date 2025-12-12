@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { calculateShippingThreshold, formatPrice } from '@/lib/utils/priceUtils';
+import { Check } from 'lucide-react';
 
 interface ShippingIndicatorProps {
   cartTotal: number;
@@ -47,7 +48,7 @@ export default function ShippingIndicator({
       <div className="flex items-center justify-between mb-3">
         <div>
           <p className="text-sm font-semibold text-primary-900">
-            {isFreeShipping ? '🎉 Free Shipping Unlocked!' : '📦 Free Shipping'}
+            {isFreeShipping ? 'Free Shipping Unlocked' : 'Free Shipping'}
           </p>
           <p className="text-xs text-primary-600 mt-1">
             {isFreeShipping
@@ -55,9 +56,7 @@ export default function ShippingIndicator({
               : `Spend ${formatPrice(threshold)} for free delivery`}
           </p>
         </div>
-        {isFreeShipping && (
-          <div className="text-2xl antialiased">✅</div>
-        )}
+        {isFreeShipping && <Check className="h-7 w-7 text-[#2E7D32]" aria-hidden />}
       </div>
 
       {/* Progress Bar */}
@@ -104,7 +103,7 @@ export default function ShippingIndicator({
           className="mt-3 p-2 bg-white rounded-lg border border-[#2E7D32]"
         >
           <p className="text-xs text-[#2E7D32] font-medium">
-            🌿 Enjoy your order with free delivery to your doorstep!
+            Enjoy your order with free delivery to your doorstep.
           </p>
         </motion.div>
       )}

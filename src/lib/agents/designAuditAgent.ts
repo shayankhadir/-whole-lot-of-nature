@@ -69,7 +69,7 @@ export class DesignAuditAgent {
    * Main audit function - scans all frontend files
    */
   async auditFrontend(projectRoot: string): Promise<DesignAuditResult> {
-    console.log('🎨 Starting Design Audit Agent...\n');
+    console.log('Starting Design Audit Agent...\n');
     
     this.issues = [];
     this.filesScanned = 0;
@@ -309,7 +309,7 @@ export class DesignAuditAgent {
         // Write back if modified
         if (modified) {
           fs.writeFileSync(filePath, content, 'utf-8');
-          console.log(`✅ Fixed ${fileIssues.length} issues in ${path.basename(filePath)}`);
+          console.log(`Fixed ${fileIssues.length} issues in ${path.basename(filePath)}`);
         }
       } catch (error) {
         errors.push(`Failed to fix ${filePath}: ${error}`);

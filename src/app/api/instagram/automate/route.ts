@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case 'validate-account': {
-        console.log('🔍 Validating Instagram account...');
+        console.log('Validating Instagram account...');
 
         const isValid = await instagramService.validateAccount();
 
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'generate-and-export': {
-        console.log('📱 Generating Instagram content and exporting to CSV...');
+        console.log('Generating Instagram content and exporting to CSV...');
 
         const {
           postCount = 30,
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'publish-now': {
-        console.log('📤 Publishing to Instagram now...');
+        console.log('Publishing to Instagram now...');
 
         if (!instagramService.isConfigured()) {
           return NextResponse.json({
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'schedule-instagram': {
-        console.log('📅 Scheduling posts to Instagram...');
+        console.log('Scheduling posts to Instagram...');
 
         if (!instagramService.isConfigured()) {
           return NextResponse.json({
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'get-insights': {
-        console.log('📊 Fetching Instagram insights...');
+        console.log('Fetching Instagram insights...');
 
         if (!instagramService.isConfigured()) {
           return NextResponse.json({
@@ -166,7 +166,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'get-recent-posts': {
-        console.log('📸 Fetching recent Instagram posts...');
+        console.log('Fetching recent Instagram posts...');
 
         if (!instagramService.isConfigured()) {
           return NextResponse.json({
@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
       }
 
       case 'auto-post-daily': {
-        console.log('🤖 Running daily auto-post...');
+        console.log('Running daily auto-post...');
 
         // Generate 2 posts for today
         const socialAgent = new SocialMediaAgent();
@@ -244,7 +244,7 @@ export async function POST(request: NextRequest) {
         );
     }
   } catch (error: unknown) {
-    console.error('❌ Instagram API Error:', error);
+    console.error('Instagram API Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Instagram automation failed';
     const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json(

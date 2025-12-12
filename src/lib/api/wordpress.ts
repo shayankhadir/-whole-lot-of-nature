@@ -387,14 +387,14 @@ export async function testConnection(): Promise<boolean> {
     });
 
     if (res.ok) {
-      console.log('✅ WordPress REST API is working!');
+      console.log('WordPress REST API is working');
       return true;
     } else {
-      console.error('❌ WordPress REST API connection failed:', res.status, res.statusText);
+      console.error('WordPress REST API connection failed:', res.status, res.statusText);
       return false;
     }
   } catch (error) {
-    console.error('❌ WordPress REST API connection error:', error);
+    console.error('WordPress REST API connection error:', error);
     return false;
   }
 }

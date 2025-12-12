@@ -118,7 +118,7 @@ export default function BlogCategoryPage() {
         <div className="max-w-6xl mx-auto">
           {loading ? (
             <div className="text-center py-20">
-              <p className="text-2xl font-bold text-black antialiased">📚 Loading Articles...</p>
+              <p className="text-2xl font-bold text-black antialiased">Loading Articles...</p>
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-20">
@@ -262,9 +262,9 @@ export default function BlogCategoryPage() {
           <SectionHeader as="h2" title="Other Categories" subtitle="Explore more topics" align="center" />
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { id: 1, name: 'Growing Tips', icon: '🌱' },
-              { id: 2, name: 'Organic Gardening', icon: '🌿' },
-              { id: 3, name: 'Sustainability', icon: '♻️' },
+              { id: 1, name: 'Growing Tips', icon: '' },
+              { id: 2, name: 'Organic Gardening', icon: '' },
+              { id: 3, name: 'Sustainability', icon: '' },
               { id: 4, name: 'Community Stories', icon: '👥' }
             ]
               .filter((cat) => cat.id !== categoryId)

@@ -240,7 +240,7 @@ export default function FilterControls({
                         className={`h-4 w-4 ${i < r ? 'fill-primary-600 text-primary-600' : 'text-primary-300'}`}
                       />
                     ))}
-                    <span className="ml-2">{r}★+</span>
+                    <span className="ml-2">{r}+</span>
                   </span>
                 )}
               </span>

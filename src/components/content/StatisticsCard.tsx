@@ -106,25 +106,25 @@ export default StatisticsCard;
 export const wholelotStats = {
   overview: [
     {
-      icon: '👥',
+      icon: '',
       number: '10,000+',
       label: 'Happy Customers',
       description: 'Across India trusting our seeds',
     },
     {
-      icon: '🌱',
+      icon: '',
       number: '500+',
       label: 'Plant Varieties',
       description: 'Seeds for every gardener',
     },
     {
-      icon: '🌾',
+      icon: '',
       number: '50+',
       label: 'Farmer Partners',
       description: 'Supporting sustainable farming',
     },
     {
-      icon: '⭐',
+      icon: '',
       number: '95%',
       label: 'Satisfaction Rate',
       description: 'Customer approval rating',
@@ -133,25 +133,25 @@ export const wholelotStats = {
 
   impact: [
     {
-      icon: '🌍',
+      icon: '',
       number: '500+',
       label: 'Families Supported',
       description: 'Through fair trade farming',
     },
     {
-      icon: '📚',
+      icon: '',
       number: '5,000+',
       label: 'Gardeners Trained',
       description: 'In sustainable practices',
     },
     {
-      icon: '💚',
+      icon: '',
       number: '100%',
       label: 'Organic Certified',
       description: 'Zero pesticides, pure seeds',
     },
     {
-      icon: '🏪',
+      icon: '',
       number: '100+',
       label: 'Retail Locations',
       description: 'Nationwide availability',
@@ -160,25 +160,25 @@ export const wholelotStats = {
 
   community: [
     {
-      icon: '👨‍🌾',
+      icon: '',
       number: '50+',
       label: 'Farmer Partners',
       description: 'Direct partnerships for quality',
     },
     {
-      icon: '🤝',
+      icon: '',
       number: '25+',
       label: 'Corporate Partners',
       description: 'Corporate wellness programs',
     },
     {
-      icon: '🌳',
+      icon: '',
       number: '15',
       label: 'Community Gardens',
       description: 'Urban gardening initiatives',
     },
     {
-      icon: '🎓',
+      icon: '',
       number: '50+',
       label: 'Years Experience',
       description: 'Expert team leadership',

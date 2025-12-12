@@ -50,8 +50,8 @@ export async function GET() {
         timezone: p.timezone,
       })),
       message: instagramProfiles.length > 0
-        ? '✅ Buffer connected! Instagram ready for scheduling'
-        : '⚠️ Buffer connected but no Instagram profiles found. Connect Instagram in Buffer app.',
+        ? 'Buffer connected. Instagram ready for scheduling'
+        : 'Buffer connected but no Instagram profiles found. Connect Instagram in Buffer app.',
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       }
 
       const testPost = {
-        caption: '🌿 Test post from your plant automation system! If you see this in Buffer, everything is working perfectly! ✅',
+        caption: 'Test post from your plant automation system. If you see this in Buffer, everything is working.',
         hashtags: ['#PlantCare', '#Automation', '#Test'],
         scheduledTime: new Date(Date.now() + 3600000), // 1 hour from now
       };

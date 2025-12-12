@@ -65,7 +65,7 @@ export default function EnhancedNavigation() {
               className="flex items-center gap-2"
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center">
-                <span className="text-white font-bold text-sm antialiased">🌱</span>
+                <span className="text-white font-bold text-sm antialiased">W</span>
               </div>
               <span className="font-bold text-lg hidden sm:inline bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent antialiased">
                 Whole Lot of Nature

@@ -242,7 +242,7 @@ export default class EmailIntelligenceAgent {
 
   private async sendWelcomeEmail(email: string, firstName?: string | null) {
     const html = buildBrandedEmail({
-      title: 'Welcome to Whole Lot of Nature 🌿',
+      title: 'Welcome to Whole Lot of Nature',
       intro: 'Thank you for joining our community',
       body: `
         <p>Hi ${firstName ?? 'there'},</p>
@@ -255,12 +255,12 @@ export default class EmailIntelligenceAgent {
       `,
       buttonText: 'Browse New Arrivals',
       buttonUrl: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com'}/shop/new`,
-      footer: 'Saved us to contacts yet? Emails land better when you do 👍',
+      footer: 'Saved us to contacts yet? Emails land better when you do.',
     });
 
     await sendEmail({
       to: email,
-      subject: 'You’re in! Welcome to the Whole Lot of Nature family 🌱',
+      subject: 'You’re in! Welcome to the Whole Lot of Nature family',
       html,
     });
   }

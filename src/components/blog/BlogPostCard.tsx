@@ -62,7 +62,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           <div className="flex-1 min-w-0">
             <h3 className="font-bold text-black line-clamp-2 mb-1 antialiased">{post.title}</h3>
             <p className="text-xs text-gray-100">{formatDate(post.date)}</p>
-            {post.readTime && <p className="text-xs text-[#2E7D32] font-bold antialiased">📖 {post.readTime} min read</p>}
+            {post.readTime && <p className="text-xs text-[#2E7D32] font-bold antialiased">{post.readTime} min read</p>}
           </div>
         </div>
       </motion.div>
@@ -111,7 +111,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
           <div className="flex flex-wrap items-center gap-4 text-xs text-gray-100 font-medium mb-4">
             {post.author && <span>By {post.author}</span>}
             <span>{formatDate(post.date)}</span>
-            {post.readTime && <span>📖 {post.readTime} min read</span>}
+            {post.readTime && <span>{post.readTime} min read</span>}
           </div>
 
           {/* Tags */}
@@ -134,7 +134,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
               liked ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40' : 'border-black text-black hover:border-[#2E7D32]'
             }`}
           >
-            <span>❤️</span>
+            <span>Like</span>
             <span>{post.likes || 0}</span>
           </motion.button>
         </div>
@@ -184,7 +184,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
         {/* Meta */}
         <div className="flex items-center justify-between text-xs text-gray-100 font-medium mb-3 border-t border-gray-200 pt-3">
           <span>{formatDate(post.date)}</span>
-          {post.readTime && <span>📖 {post.readTime} min</span>}
+          {post.readTime && <span>{post.readTime} min</span>}
         </div>
 
         {/* Like button */}
@@ -199,7 +199,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, variant = 'card', onL
             liked ? 'border-[#2E7D32] bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40' : 'border-black text-black hover:border-[#2E7D32]'
           }`}
         >
-          <span>❤️</span>
+          <span>Like</span>
           <span>{post.likes || 0}</span>
         </motion.button>
       </div>

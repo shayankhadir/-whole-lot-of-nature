@@ -99,7 +99,7 @@ export const TIER_CONFIG: Record<LoyaltyTier, TierBenefits> = {
     freeshippingAbove: 150,
     pointsMultiplier: 1.0,
     exclusivePerks: ['Access to sales', 'Email updates'],
-    badges: ['🥉 Bronze Member'],
+    badges: ['Bronze Member'],
   },
   silver: {
     tier: 'silver',
@@ -109,7 +109,7 @@ export const TIER_CONFIG: Record<LoyaltyTier, TierBenefits> = {
     freeshippingAbove: 100,
     pointsMultiplier: 1.25,
     exclusivePerks: ['5% discount on all purchases', 'Free shipping above ₹100', 'Early sale access'],
-    badges: ['🥈 Silver Member', 'Trusted Buyer'],
+    badges: ['Silver Member', 'Trusted Buyer'],
   },
   gold: {
     tier: 'gold',
@@ -125,7 +125,7 @@ export const TIER_CONFIG: Record<LoyaltyTier, TierBenefits> = {
       'Priority customer support',
       'Birthday gift',
     ],
-    badges: ['🏅 Gold Member', 'VIP'],
+    badges: ['Gold Member', 'VIP'],
   },
   platinum: {
     tier: 'platinum',
@@ -143,7 +143,7 @@ export const TIER_CONFIG: Record<LoyaltyTier, TierBenefits> = {
       'Quarterly rewards',
       'Personal shopping assistant',
     ],
-    badges: ['💎 Platinum Member', 'VIP Elite', 'Exclusive'],
+    badges: ['Platinum Member', 'VIP Elite', 'Exclusive'],
     birthday_discount_percentage: 20,
   },
 };

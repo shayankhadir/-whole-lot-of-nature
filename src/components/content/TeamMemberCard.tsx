@@ -40,7 +40,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
         {/* Image Section */}
         {member.image && (
           <div className="h-64 bg-gradient-to-b from-green-100 to-green-50 flex items-center justify-center">
-            <div className="text-6xl antialiased">👤</div>
+            <div className="text-6xl antialiased">{member.name?.slice(0, 1)}</div>
           </div>
         )}
 
@@ -70,7 +70,6 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
               <ul className="space-y-2">
                 {member.achievements.map((achievement, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-gray-700">
-                    <span className="text-[#2E7D32] mt-1">✓</span>
                     <span>{achievement}</span>
                   </li>
                 ))}
@@ -93,7 +92,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, variant = 'card
     >
       {/* Avatar */}
       <div className="h-48 bg-gradient-to-b from-green-100 to-green-50 flex items-center justify-center border-b-2 border-black">
-        <div className="text-6xl antialiased">👤</div>
+        <div className="text-6xl antialiased">{member.name?.slice(0, 1)}</div>
       </div>
 
       {/* Content */}

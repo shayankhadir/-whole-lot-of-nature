@@ -35,7 +35,7 @@ export default function InstagramFeed() {
         setInstagramPosts([
           {
             id: '1',
-            caption: 'Beautiful garden setup 🌿',
+            caption: 'Beautiful garden setup',
             media_type: 'IMAGE',
             media_url: 'https://via.placeholder.com/300x300?text=Instagram+Post+1',
             permalink: 'https://instagram.com',
@@ -44,7 +44,7 @@ export default function InstagramFeed() {
           },
           {
             id: '2',
-            caption: 'Indoor plant collection 🪴',
+            caption: 'Indoor plant collection',
             media_type: 'IMAGE',
             media_url: 'https://via.placeholder.com/300x300?text=Instagram+Post+2',
             permalink: 'https://instagram.com',
@@ -53,7 +53,7 @@ export default function InstagramFeed() {
           },
           {
             id: '3',
-            caption: 'Fresh green vibes ✨',
+            caption: 'Fresh green vibes',
             media_type: 'IMAGE',
             media_url: 'https://via.placeholder.com/300x300?text=Instagram+Post+3',
             permalink: 'https://instagram.com',

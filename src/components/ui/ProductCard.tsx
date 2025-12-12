@@ -56,9 +56,9 @@ export const ProductCard = ({
 
   // Variant styles
   const variantStyles = {
-    default: 'bg-white',
-    minimal: 'bg-transparent border border-gray-200',
-    featured: 'bg-gradient-to-br from-green-50 to-white',
+    default: 'bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 text-white hover:border-[#2E7D32]/60',
+    minimal: 'bg-white/[0.02] border border-white/10 text-white hover:bg-white/[0.04]',
+    featured: 'bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] border border-[#2E7D32]/30 text-white hover:border-[#2E7D32]/60',
     glass: 'bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/10',
   };
 
@@ -84,7 +84,7 @@ export const ProductCard = ({
       className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer ${variantStyles[variant]} ${className}`}
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
+      <div className="relative w-full aspect-square overflow-hidden bg-[#0F1E11]">
         <motion.div
           variants={imageVariants}
           transition={{ duration: 0.5 }}
@@ -108,9 +108,9 @@ export const ProductCard = ({
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 text-white text-sm flex items-center gap-1 font-semibold"
+          className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 text-white text-sm flex items-center gap-1 font-semibold border border-white/10"
         >
-          <span className="text-yellow-400">⭐</span>
+          <span className="text-yellow-400">\u2022</span>
           <span>{rating.toFixed(1)}</span>
           {reviewCount > 0 && (
             <span className="text-xs text-white/80">({reviewCount})</span>
@@ -145,14 +145,14 @@ export const ProductCard = ({
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={onToggleFavorite}
-          className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2.5 shadow-md transition-all duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm hover:bg-white/15 rounded-full p-2.5 shadow-md transition-all duration-300 opacity-0 group-hover:opacity-100 border border-white/10"
         >
           <Heart
             size={18}
             className={`transition-colors duration-300 ${
               isFavorite
                 ? 'fill-red-500 text-red-500'
-                : 'text-gray-700 hover:text-red-500'
+                : 'text-white/80 hover:text-red-500'
             }`}
           />
         </motion.button>
@@ -161,15 +161,15 @@ export const ProductCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5">
         {/* Name */}
-        <h3 className={`font-montserrat font-semibold text-[20px] leading-snug mb-1 line-clamp-2 transition-colors duration-300 antialiased ${
-          isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-gray-900 group-hover:text-[#2E7D32]'
+        <h3 className={`font-sans font-semibold text-[clamp(0.95rem,2vw,1.05rem)] leading-[1.25] mb-1 line-clamp-2 transition-colors duration-300 antialiased ${
+          isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-white group-hover:text-[#66BB6A]'
         }`}>
           {name}
         </h3>
 
         {/* Description */}
         {description && (
-          <p className={`text-xs mb-2 line-clamp-2 ${isGlass ? '' : 'text-gray-600'}`} style={isGlass ? { color: '#86efac' } : undefined}>
+          <p className="text-xs mb-2 line-clamp-2 text-[#86efac]">
             {description}
           </p>
         )}
@@ -178,15 +178,15 @@ export const ProductCard = ({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-baseline gap-1.5">
             <span className={`text-base font-bold antialiased ${
-              isGlass ? 'text-[#66BB6A]' : 'text-[#2E7D32]'
+              isGlass ? 'text-[#66BB6A]' : 'text-[#66BB6A]'
             }`}>
-              ${price.toFixed(2)}
+              ₹{price.toFixed(2)}
             </span>
             {originalPrice && originalPrice > price && (
               <span className={`text-xs line-through antialiased ${
-                isGlass ? 'text-white/50' : 'text-gray-400'
+                isGlass ? 'text-white/50' : 'text-white/50'
               }`}>
-                ${originalPrice.toFixed(2)}
+                ₹{originalPrice.toFixed(2)}
               </span>
             )}
           </div>

@@ -70,7 +70,7 @@ export default function ComboProductCard({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-[#1e3a28] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32] hover:shadow-[#2E7D32]/20"
+      className="group relative bg-gradient-to-br from-[#1e3a28] to-[#0F1E11] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#2E7D32]/30 hover:border-[#2E7D32]/60 hover:shadow-[#2E7D32]/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -78,7 +78,7 @@ export default function ComboProductCard({
       {combo.popularCombo && (
         <div className="absolute top-4 left-4 z-10">
           <span className="bg-gradient-to-r from-[#2E7D32] to-[#66BB6A] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg antialiased">
-            🏆 POPULAR
+            POPULAR
           </span>
         </div>
       )}
@@ -133,12 +133,12 @@ export default function ComboProductCard({
         </span>
 
         {/* Title */}
-        <h3 className="mt-2 text-lg font-bold text-[#E8F5E9] line-clamp-2 group-hover:text-[#86efbe] transition-colors antialiased">
+        <h3 className="mt-2 font-sans text-[clamp(0.95rem,2vw,1.1rem)] leading-[1.25] font-semibold text-white line-clamp-2 group-hover:text-[#66BB6A] transition-colors antialiased">
           {combo.name}
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-sm text-[#daf2d0] line-clamp-2">
+        <p className="mt-2 text-sm text-[#86efac] line-clamp-2">
           {combo.description}
         </p>
 
@@ -168,22 +168,22 @@ export default function ComboProductCard({
         <div className="mt-6 flex items-center justify-between">
           <div>
             <span className="text-lg font-bold text-[#66BB6A] antialiased">
-              ${combo.comboPrice.toFixed(2)}
+              ₹{combo.comboPrice.toFixed(2)}
             </span>
             {combo.originalTotalPrice && (
               <span className="ml-2 text-sm text-[#daf2d0]/50 line-through antialiased">
-                ${combo.originalTotalPrice.toFixed(2)}
+                ₹{combo.originalTotalPrice.toFixed(2)}
               </span>
             )}
           </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => onAddToCart?.(combo)}
+            onClick={handleAddToCart}
             disabled={!combo.inStock}
             className={
               combo.inStock
-                ? 'bg-[#2E7D32] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#66BB6A] transition-colors shadow-md hover:shadow-lg'
+                ? 'bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white px-4 py-2 rounded-lg font-semibold hover:brightness-110 transition-all shadow-md border border-emerald-900/50'
                 : 'bg-white/10 text-white/50 cursor-not-allowed'
             }
           >

@@ -164,7 +164,7 @@ export const sectionHeaders = {
     subtitle: 'A Journey Towards Sustainable Gardening',
     description:
       'From humble beginnings to becoming India\'s trusted organic seed provider, our mission has remained unchanged: empowering gardeners with quality, organic seeds.',
-    icon: '🌱',
+    icon: '',
     variant: 'hero' as const,
     size: 'large' as const,
     seoKeywords: 'organic seeds India, sustainable gardening company, organic agriculture',
@@ -174,7 +174,7 @@ export const sectionHeaders = {
     title: 'Our Mission & Values',
     description:
       'We believe in making organic gardening accessible to everyone while supporting sustainable farming practices and building a thriving gardening community.',
-    icon: '🎯',
+    icon: '',
     variant: 'featured' as const,
     size: 'medium' as const,
     withBackground: true,
@@ -187,7 +187,7 @@ export const sectionHeaders = {
     subtitle: 'Experts Dedicated to Your Gardening Success',
     description:
       'Our diverse team brings over 50 years of combined experience in horticulture, sustainability, and customer success.',
-    icon: '👥',
+    icon: '',
     variant: 'centered' as const,
     size: 'large' as const,
     seoKeywords: 'agricultural experts, horticulture team',
@@ -197,7 +197,7 @@ export const sectionHeaders = {
     title: 'Building Partnerships for Impact',
     description:
       'We collaborate with farmers, businesses, and communities to create sustainable solutions for organic agriculture.',
-    icon: '🤝',
+    icon: '',
     variant: 'featured' as const,
     size: 'large' as const,
     withBackground: true,
@@ -209,7 +209,7 @@ export const sectionHeaders = {
     title: 'Why Choose Whole Lot of Nature',
     description:
       'We combine decades of expertise, 100% organic certification, and a commitment to community sustainability.',
-    icon: '✓',
+    icon: '',
     variant: 'default' as const,
     size: 'medium' as const,
     seoKeywords: 'best organic seeds, certified organic provider, organic seeds online',
@@ -219,7 +219,7 @@ export const sectionHeaders = {
     title: 'Our Community Impact',
     description:
       'Through farmer partnerships and educational programs, we\'ve trained over 5,000 gardeners and supported 500+ families.',
-    icon: '💚',
+    icon: '',
     variant: 'featured' as const,
     size: 'medium' as const,
     withBackground: true,

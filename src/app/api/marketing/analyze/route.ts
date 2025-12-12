@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const agent = new CompetitorAnalysisAgent();
 
     if (action === 'analyze-competitors') {
-      console.log('🚀 Starting competitor analysis...');
+      console.log('Starting competitor analysis...');
 
       const results = [];
       const errors = [];
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       // Analyze each competitor
       for (const competitor of COMPETITORS) {
         try {
-          console.log(`\n📊 Analyzing ${competitor.name}...`);
+          console.log(`\nAnalyzing ${competitor.name}...`);
           let analysis;
           
           try {
@@ -40,23 +40,23 @@ export async function POST(request: NextRequest) {
             
             // If scraping returned no useful data, use mock data
             if (analysis.products.length === 0 && analysis.keywords.length <= 3) {
-              console.log(`  ⚠️ No data scraped, using mock data for ${competitor.name}`);
+              console.log(`  No data scraped; using mock data for ${competitor.name}`);
               analysis = agent.generateMockData(competitor.name, competitor.url);
             }
           } catch {
             // Try fallback URL if primary fails
             if (competitor.fallback) {
-              console.log(`  ⚠️ Primary URL failed, trying fallback: ${competitor.fallback}`);
+              console.log(`  Primary URL failed; trying fallback: ${competitor.fallback}`);
               try {
                 analysis = await agent.analyzeCompetitor(competitor.fallback, competitor.name);
               } catch {
                 // If both fail, use mock data
-                console.log(`  ⚠️ Fallback failed, using mock data for ${competitor.name}`);
+                console.log(`  Fallback failed; using mock data for ${competitor.name}`);
                 analysis = agent.generateMockData(competitor.name, competitor.url);
               }
             } else {
               // No fallback available, use mock data
-              console.log(`  ⚠️ Scraping failed, using mock data for ${competitor.name}`);
+              console.log(`  Scraping failed; using mock data for ${competitor.name}`);
               analysis = agent.generateMockData(competitor.name, competitor.url);
             }
           }
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
           results.push(analysis);
         } catch (error: unknown) {
           const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-          console.error(`❌ Fatal error analyzing ${competitor.name}:`, errorMessage);
+          console.error(`Fatal error analyzing ${competitor.name}:`, errorMessage);
           // Even on fatal error, add mock data to ensure we have something
           results.push(agent.generateMockData(competitor.name, competitor.url));
           errors.push({
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       });
     } else if (action === 'quick-scan') {
       // Quick scan - just homepage analysis
-      console.log('⚡ Starting quick scan...');
+      console.log('Starting quick scan...');
 
       const results = [];
 

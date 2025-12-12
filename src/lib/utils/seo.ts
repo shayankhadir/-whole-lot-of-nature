@@ -81,7 +81,7 @@ export function generateProductSEO(product: {
   return generateSEOMetadata({
     title: `${product.name} | Organic Seeds | Whole Lot of Nature`,
     description,
-    slug: `/products/${product.slug}`,
+    slug: `/shop/${product.slug}`,
     keywords: keywords as string[],
     image: product.image,
     type: 'product'

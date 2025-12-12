@@ -1,10 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowLeft, Globe, FileText, Layout, ShoppingBag, Users, BookOpen } from 'lucide-react';
-
-import type { Metadata } from 'next';
+import { SEO_PAGES } from '@/lib/seo/seoPages';
+import { siteAudit } from '@/data/siteAudit.generated';
 
 /*
 export const metadata: Metadata = {
@@ -30,7 +27,9 @@ export const metadata: Metadata = {
 
 
 
-const siteMap = [
+type PageLink = { name: string; path: string; status: 'Live' | 'Protected' };
+
+const siteMap: Array<{ category: string; icon: typeof Globe; links: PageLink[] }> = [
   {
     category: 'Main Pages',
     icon: Globe,
@@ -40,7 +39,7 @@ const siteMap = [
       { name: 'About Us', path: '/about', status: 'Live' },
       { name: 'Contact', path: '/contact', status: 'Live' },
       { name: 'Blog', path: '/blog', status: 'Live' },
-    ]
+    ],
   },
   {
     category: 'Shop Pages',
@@ -51,17 +50,29 @@ const siteMap = [
       { name: 'Cart', path: '/cart', status: 'Live' },
       { name: 'Checkout', path: '/checkout', status: 'Live' },
       { name: 'Wishlist', path: '/wishlist', status: 'Live' },
-    ]
+      { name: 'Track Order', path: '/track-order', status: 'Live' },
+    ],
+  },
+  {
+    category: 'Guides (SEO)',
+    icon: BookOpen,
+    links: [
+      { name: 'Guides Hub', path: '/seo-pages', status: 'Live' },
+      ...SEO_PAGES.map((p) => ({
+        name: p.title,
+        path: `/seo-pages/${p.slug}`,
+        status: 'Live' as const,
+      })),
+    ],
   },
   {
     category: 'User Pages',
     icon: Users,
     links: [
-      { name: 'My Account', path: '/account', status: 'Live' },
+      { name: 'My Account (WooCommerce)', path: '/account', status: 'Live' },
       { name: 'Login', path: '/login', status: 'Live' },
       { name: 'Sign Up', path: '/signup', status: 'Live' },
-      { name: 'Track Order', path: '/track-order', status: 'Live' },
-    ]
+    ],
   },
   {
     category: 'Legal & Support',
@@ -70,19 +81,40 @@ const siteMap = [
       { name: 'Privacy Policy', path: '/privacy-policy', status: 'Live' },
       { name: 'Terms & Conditions', path: '/terms', status: 'Live' },
       { name: 'Refund Policy', path: '/refund-policy', status: 'Live' },
+      { name: 'Shipping Policy', path: '/shipping-policy', status: 'Live' },
       { name: 'FAQ', path: '/faq', status: 'Live' },
-    ]
+    ],
   },
   {
     category: 'Admin & Agents',
     icon: Layout,
     links: [
       { name: 'Admin Dashboard', path: '/admin', status: 'Protected' },
+      { name: 'Content', path: '/admin/content', status: 'Protected' },
+      { name: 'SEO', path: '/admin/seo', status: 'Protected' },
       { name: 'Growth Agent', path: '/admin/growth', status: 'Protected' },
+      { name: 'Trend Agent', path: '/admin/trends', status: 'Protected' },
+      { name: 'Inventory Agent', path: '/admin/inventory', status: 'Protected' },
       { name: 'Blog Agent', path: '/blog-agent', status: 'Protected' },
       { name: 'Site Map (This Page)', path: '/admin/pages', status: 'Protected' },
-    ]
-  }
+    ],
+  },
+  {
+    category: 'Other Pages',
+    icon: Globe,
+    links: [
+      { name: 'Community', path: '/community', status: 'Live' },
+      { name: 'Gift Cards', path: '/gift-cards', status: 'Live' },
+      { name: 'Partnerships', path: '/partnerships', status: 'Live' },
+      { name: 'Learn Gardening', path: '/learn-gardening', status: 'Live' },
+      { name: 'Plants', path: '/plants', status: 'Live' },
+      { name: 'Order Success', path: '/order-success', status: 'Live' },
+      { name: 'Legacy Products Redirect', path: '/products', status: 'Live' },
+      { name: 'Legacy Categories Redirect', path: '/categories', status: 'Live' },
+      { name: 'Legacy Team Redirect', path: '/team', status: 'Live' },
+      { name: 'Legacy Terms Redirect', path: '/terms-and-conditions', status: 'Live' },
+    ],
+  },
 ];
 
 export default function AdminPagesView() {
@@ -102,13 +134,76 @@ export default function AdminPagesView() {
           </div>
         </div>
 
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h2 className="text-lg font-semibold mb-2">Sitemap</h2>
+            <Link href="/sitemap.xml" target="_blank" className="text-sm text-[#4ADE80] hover:underline">
+              /sitemap.xml
+            </Link>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h2 className="text-lg font-semibold mb-2">Robots</h2>
+            <Link href="/robots.txt" target="_blank" className="text-sm text-[#4ADE80] hover:underline">
+              /robots.txt
+            </Link>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h2 className="text-lg font-semibold mb-2">Automated Audit</h2>
+            <div className="text-sm text-white/80 space-y-1">
+              <div>Routes: {siteAudit.counts.totalRoutes}</div>
+              <div>Broken links: {siteAudit.counts.brokenLinks}</div>
+              <div>Orphan pages: {siteAudit.counts.orphanRoutes}</div>
+              <div className="text-xs text-white/40 font-mono">Generated: {new Date(siteAudit.generatedAt).toLocaleString()}</div>
+            </div>
+          </div>
+        </div>
+
+        {(siteAudit.brokenLinks.length > 0 || siteAudit.orphanRoutes.length > 0) && (
+          <div className="grid lg:grid-cols-2 gap-6 mb-10">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <h2 className="text-xl font-semibold mb-4">Broken Internal Links</h2>
+              {siteAudit.brokenLinks.length === 0 ? (
+                <p className="text-sm text-white/70">None</p>
+              ) : (
+                <div className="space-y-2 max-h-72 overflow-auto pr-2">
+                  {siteAudit.brokenLinks.slice(0, 200).map((b) => (
+                    <div key={`${b.source}:${b.line}:${b.href}`} className="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div className="text-sm font-mono text-white/90">{b.href}</div>
+                      <div className="text-xs text-white/50">{b.source}:{b.line}</div>
+                    </div>
+                  ))}
+                  {siteAudit.brokenLinks.length > 200 && (
+                    <p className="text-xs text-white/50">Showing first 200 entries. See SITE_AUDIT_REPORT.md for full list.</p>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <h2 className="text-xl font-semibold mb-4">Orphan Page Routes</h2>
+              {siteAudit.orphanRoutes.length === 0 ? (
+                <p className="text-sm text-white/70">None</p>
+              ) : (
+                <div className="space-y-2 max-h-72 overflow-auto pr-2">
+                  {siteAudit.orphanRoutes.slice(0, 200).map((o) => (
+                    <div key={`${o.source}:${o.path}`} className="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div className="text-sm font-mono text-white/90">{o.path}</div>
+                      <div className="text-xs text-white/50">{o.source}</div>
+                    </div>
+                  ))}
+                  {siteAudit.orphanRoutes.length > 200 && (
+                    <p className="text-xs text-white/50">Showing first 200 entries. See SITE_AUDIT_REPORT.md for full list.</p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {siteMap.map((section, idx) => (
-            <motion.div
+          {siteMap.map((section) => (
+            <div
               key={section.category}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
               className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm"
             >
               <div className="flex items-center gap-3 mb-6">
@@ -144,7 +239,7 @@ export default function AdminPagesView() {
                   </Link>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -19,7 +19,7 @@ export default function InteractiveHero() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[calc(100svh-7rem)] sm:min-h-[95vh] flex items-center justify-center overflow-hidden pt-16 pb-28"
     >
       {/* Parallax Background */}
       <motion.div 
@@ -102,7 +102,7 @@ export default function InteractiveHero() {
           transition={{ duration: 1, delay: 0.4 }}
           className="font-montserrat text-[clamp(2.4rem,6vw,4.25rem)] font-bold leading-[1.05] mb-6 antialiased"
         >
-          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] whitespace-nowrap">
+          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] whitespace-normal sm:whitespace-nowrap">
             WHOLE&nbsp;LOT&nbsp;OF&nbsp;NATURE
           </span>
         </motion.h1>
@@ -112,8 +112,7 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg"
-          style={{ color: '#86efac' }}
+          className="text-[clamp(1rem,2vw,1.25rem)] font-light leading-relaxed max-w-3xl mx-auto mb-10 drop-shadow-lg text-[#86efac]"
         >
           Your ultimate destination for premium plants, handcrafted soil mixes, aquatic life, and sustainable gardening essentials
         </motion.p>

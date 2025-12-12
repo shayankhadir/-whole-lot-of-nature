@@ -67,7 +67,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
               : 'border-black bg-white text-black hover:border-[#2E7D32]'
           }`}
         >
-          <p className="text-2xl mb-2 antialiased">📚</p>
+          <p className="text-2xl mb-2 antialiased">•</p>
           <p className="font-bold antialiased">All Posts</p>
           <p className="text-xs mt-1 opacity-75">
             {categoryStats.reduce((sum, cat) => sum + (cat.postCount || 0), 0)} posts
@@ -90,7 +90,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
                 : 'border-black bg-white text-black hover:border-[#2E7D32]'
             }`}
           >
-            <p className="text-2xl mb-2 antialiased">{category.icon || '📝'}</p>
+            <p className="text-2xl mb-2 antialiased">•</p>
             <p className="font-bold text-sm antialiased">{category.name}</p>
             <p className="text-xs mt-1 opacity-75">{category.postCount} posts</p>
           </motion.button>
@@ -139,7 +139,7 @@ const BlogCategoryFilter: React.FC<BlogCategoryFilterProps> = ({
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span>{category.icon || '📝'}</span>
+                  <span>•</span>
                   <span>{category.name}</span>
                 </div>
                 <span className="text-xs bg-gray-200 text-black px-2 py-1 rounded">

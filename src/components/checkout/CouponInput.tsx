@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CouponService, CouponValidationResult } from '@/lib/services/couponService';
 import { formatPrice } from '@/lib/utils/priceUtils';
+import { X } from 'lucide-react';
 
 interface CouponInputProps {
   onCouponApplied?: (couponCode: string, discountAmount: number) => void;
@@ -128,7 +129,7 @@ export default function CouponInput({
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
                 <p className="text-sm font-semibold text-[#2E7D32]">
-                  ✅ {result.message}
+                  {result.message}
                 </p>
                 <p className="text-xs text-[#2E7D32] mt-1">
                   Code: <span className="font-mono font-bold antialiased">{result.coupon.code}</span>
@@ -143,8 +144,9 @@ export default function CouponInput({
                 onClick={handleRemove}
                 className="text-[#2E7D32] hover:text-[#2E7D32] text-xl antialiased"
                 title="Remove coupon"
+                aria-label="Remove coupon"
               >
-                ✕
+                <X className="h-5 w-5" aria-hidden />
               </button>
             </div>
           </motion.div>
@@ -160,7 +162,7 @@ export default function CouponInput({
             className="bg-red-50 border-2 border-red-200 rounded-lg p-3"
           >
             <p className="text-sm font-semibold text-red-700">
-              ❌ {result.message}
+              {result.message}
             </p>
             <button
               onClick={() => {

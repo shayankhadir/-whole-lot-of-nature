@@ -245,11 +245,11 @@ export async function getProducts(params: {
     }
 
     const products = await res.json();
-    console.log(`✅ Successfully fetched ${products.length} products from WooCommerce`);
+    console.log(`Successfully fetched ${products.length} products from WooCommerce`);
     
     return products;
   } catch (error) {
-    console.error('❌ Error fetching products:', error);
+    console.error('Error fetching products:', error);
     return [];
   }
 }
@@ -309,7 +309,7 @@ export async function getCategories(params: {
     }
 
     const categories = await res.json();
-    console.log(`✅ Successfully fetched ${categories.length} categories`);
+    console.log(`Successfully fetched ${categories.length} categories`);
     
     return categories;
   } catch (error) {
@@ -456,7 +456,7 @@ export async function createOrder(orderData: Record<string, unknown>): Promise<O
     }
 
     const order = await res.json();
-    console.log('✅ Successfully created order:', order.id);
+    console.log('Successfully created order:', order.id);
     
     return order;
   } catch (error) {
@@ -483,17 +483,17 @@ export async function testConnection(): Promise<boolean> {
 
     if (res.ok) {
       const products = await res.json();
-      console.log('✅ WooCommerce REST API is working!');
+      console.log('WooCommerce REST API is working');
       console.log(`Found ${products.length} product(s)`);
       return true;
     } else {
-      console.error('❌ WooCommerce REST API connection failed:', res.status, res.statusText);
+      console.error('WooCommerce REST API connection failed:', res.status, res.statusText);
       const errorText = await res.text();
       console.error('Error response:', errorText);
       return false;
     }
   } catch (error) {
-    console.error('❌ WooCommerce REST API connection error:', error);
+    console.error('WooCommerce REST API connection error:', error);
     return false;
   }
 }

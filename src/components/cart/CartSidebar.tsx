@@ -128,7 +128,7 @@ export default function CartSidebar() {
 													<div>
 														<h3 className="text-lg font-medium text-white">Your cart is empty</h3>
 														<p className="text-sm text-white/60 mt-1">
-															Looks like you haven't added anything yet.
+															Looks like you have not added anything yet.
 														</p>
 													</div>
 													<Link

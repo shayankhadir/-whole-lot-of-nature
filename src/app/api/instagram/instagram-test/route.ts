@@ -59,7 +59,7 @@ export async function GET() {
         posts: accountInfo.media_count,
         profilePicture: accountInfo.profile_picture_url,
       },
-      message: `✅ Connected to @${accountInfo.username}! Ready for automated posting.`,
+      message: `Connected to @${accountInfo.username}. Ready for automated posting.`,
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       const testPostTime = new Date(Date.now() + 60 * 60 * 1000); // 1 hour ahead
       
       const testPost = {
-        caption: '🌿 Test post from Whole Lot of Nature automation system!\n\nIf you see this, your Instagram automation is working perfectly! 🎉',
+        caption: 'Test post from Whole Lot of Nature automation system.\n\nIf you see this, your Instagram automation is working.',
         hashtags: ['#WholeLotsOfNature', '#PlantsOfInstagram', '#AutomationTest'],
         scheduledTime: testPostTime,
       };
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
         success: true,
         postId: result.id,
         scheduledTime: testPostTime.toISOString(),
-        message: '✅ Test post scheduled successfully!',
+        message: 'Test post scheduled successfully.',
         nextSteps: [
           '1. Check Instagram to verify the post is scheduled',
           '2. If it worked, your automation is ready!',

@@ -19,56 +19,56 @@
 export const backgroundImages = {
   // Authentication Pages
   signup: {
-    path: '/images/backgrounds/monstera-dark.jpg',
+    path: '/images/backgrounds/bgleaf1.webp',
     alt: 'Decorative dark tropical monstera leaves',
     description: 'Tropical monstera leaves background for signup page'
   },
   login: {
-    path: '/images/backgrounds/botanical-flowers.jpg',
+    path: '/images/backgrounds/bgleaf2.webp',
     alt: 'Decorative botanical illustration with white flowers',
     description: 'Botanical flowers background for login page'
   },
 
   // Home/Hero Sections
   hero: {
-    primary: '/images/backgrounds/lilypond.jpg',
-    secondary: '/images/backgrounds/pond-aerial.jpg',
+    primary: '/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg',
+    secondary: '/images/backgrounds/bgleaf3.webp',
     alt: 'Beautiful pond with lily pads and water lilies',
     description: 'Hero section background with nature imagery'
   },
 
   // Product & Category Pages
   products: {
-    monstera: '/images/backgrounds/monstera-close.jpg',
-    botanical: '/images/backgrounds/botanical-flowers.jpg',
-    foliage: '/images/backgrounds/foliage-vibrant.jpg',
-    canopy: '/images/backgrounds/foliage-canopy.jpg'
+    monstera: '/images/backgrounds/mi7i15y9qikqun.jpeg',
+    botanical: '/images/backgrounds/bgleaf2.webp',
+    foliage: '/images/backgrounds/bgleaf3.webp',
+    canopy: '/images/backgrounds/mi7i1cq07eymwk.jpeg'
   },
 
   // Feature/Services Section
   features: {
-    path: '/images/backgrounds/foliage-variegated.jpg',
+    path: '/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg',
     alt: 'Illustrated variegated foliage background',
     description: 'Features section background'
   },
 
   // Testimonials Section
   testimonials: {
-    path: '/images/backgrounds/foliage-canopy.jpg',
+    path: '/images/backgrounds/mi7i1cq07eymwk.jpeg',
     alt: 'Lush green leaf canopy background',
     description: 'Testimonials section background'
   },
 
   // Statistics/About Section
   stats: {
-    path: '/images/backgrounds/lilypond.jpg',
+    path: '/images/backgrounds/bgleaf3.webp',
     alt: 'Pond with lily pads background',
     description: 'Statistics section background'
   },
 
   // Footer Area
   footer: {
-    path: '/images/backgrounds/foliage-vibrant.jpg',
+    path: '/images/backgrounds/bgleaf3.webp',
     alt: 'Vibrant green foliage background',
     description: 'Footer section background'
   }

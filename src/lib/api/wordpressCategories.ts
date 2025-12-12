@@ -69,11 +69,11 @@ export async function getCategories(
     }
 
     const categories = await res.json();
-    console.log(`✅ Successfully fetched ${categories.length} categories`);
+    console.log(`Successfully fetched ${categories.length} categories`);
     
     return categories;
   } catch (error) {
-    console.error('❌ Error fetching categories:', error);
+    console.error('Error fetching categories:', error);
     return [];
   }
 }
@@ -102,14 +102,14 @@ export async function getCategoryBySlug(slug: string, taxonomy: string = 'catego
     const category = categories[0] || null;
     
     if (category) {
-      console.log('✅ Found category:', category.name);
+      console.log('Found category:', category.name);
     } else {
-      console.log('❌ No category found with slug:', slug);
+      console.log('No category found with slug:', slug);
     }
     
     return category;
   } catch (error) {
-    console.error('❌ Error fetching category by slug:', error);
+    console.error('Error fetching category by slug:', error);
     return null;
   }
 }
@@ -157,11 +157,11 @@ export async function createCategory(
     }
 
     const category = await res.json();
-    console.log('✅ Successfully created category:', category.name);
+    console.log('Successfully created category:', category.name);
     
     return category;
   } catch (error) {
-    console.error('❌ Error creating category:', error);
+    console.error('Error creating category:', error);
     return null;
   }
 }
@@ -204,11 +204,11 @@ export async function updateCategory(
     }
 
     const category = await res.json();
-    console.log('✅ Successfully updated category:', category.name);
+    console.log('Successfully updated category:', category.name);
     
     return category;
   } catch (error) {
-    console.error('❌ Error updating category:', error);
+    console.error('Error updating category:', error);
     return null;
   }
 }
@@ -240,11 +240,11 @@ export async function deleteCategory(categoryId: number, force: boolean = false,
       throw new Error(`Failed to delete category: ${errorData.message || res.statusText}`);
     }
 
-    console.log('✅ Successfully deleted category ID:', categoryId);
+    console.log('Successfully deleted category ID:', categoryId);
     
     return true;
   } catch (error) {
-    console.error('❌ Error deleting category:', error);
+    console.error('Error deleting category:', error);
     return false;
   }
 }
@@ -270,6 +270,6 @@ export async function createCategories(
     }
   }
 
-  console.log(`✅ Created ${results.length} out of ${categoriesData.length} categories`);
+  console.log(`Created ${results.length} out of ${categoriesData.length} categories`);
   return results;
 }

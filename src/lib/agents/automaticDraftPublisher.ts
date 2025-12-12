@@ -89,7 +89,7 @@ class AutomaticDraftPublisher {
       const isPublished = data.status === 'publish';
 
       if (isPublished) {
-        console.log(`✅ Published post ID ${postId}: ${data.title.rendered}`);
+        console.log(`Published post ID ${postId}: ${data.title.rendered}`);
       }
 
       return isPublished;
@@ -164,7 +164,7 @@ class AutomaticDraftPublisher {
       return;
     }
 
-    console.log(`🚀 Starting automatic draft publisher (every ${this.config.publishInterval} minutes)`);
+    console.log(`Starting automatic draft publisher (every ${this.config.publishInterval} minutes)`);
 
     // Initial publish immediately
     this.publishNextDrafts().catch(console.error);
@@ -182,7 +182,7 @@ class AutomaticDraftPublisher {
     if (this.publishingSchedule) {
       clearInterval(this.publishingSchedule);
       this.publishingSchedule = null;
-      console.log('⏸️ Stopped automatic draft publisher');
+      console.log('Stopped automatic draft publisher');
     }
   }
 

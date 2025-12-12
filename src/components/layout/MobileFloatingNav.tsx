@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Home, Search, ShoppingCart, User, Heart, ShoppingBag, MessageCircle } from 'lucide-react';
-import { useWishlistStore } from '@/stores/wishlistStore';
+import { Home, ShoppingCart, User, ShoppingBag, MessageCircle } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 
 interface NavItem {
@@ -25,9 +24,20 @@ interface NavItem {
  */
 export default function MobileFloatingNav() {
   const pathname = usePathname();
-  const wishlistCount = useWishlistStore((s) => s.items.length);
   const cartCount = useCartStore((s) => s.items.reduce((sum, item) => sum + item.quantity, 0));
   const [plantsyOpen, setPlantsyOpen] = useState(false);
+
+  useEffect(() => {
+    const handlePlantsyState = (event: Event) => {
+      const custom = event as CustomEvent<{ isOpen?: boolean }>;
+      if (typeof custom.detail?.isOpen === 'boolean') {
+        setPlantsyOpen(custom.detail.isOpen);
+      }
+    };
+
+    window.addEventListener('plantsy:state', handlePlantsyState);
+    return () => window.removeEventListener('plantsy:state', handlePlantsyState);
+  }, []);
 
   const navItems: NavItem[] = [
     {
@@ -44,7 +54,10 @@ export default function MobileFloatingNav() {
       title: 'Chat',
       icon: <MessageCircle className="w-6 h-6" strokeWidth={2} />,
       href: '/plantsy',
-      action: () => setPlantsyOpen(!plantsyOpen),
+      action: () => {
+        window.dispatchEvent(new CustomEvent('plantsy:toggle'));
+        setPlantsyOpen((prev) => !prev);
+      },
       isAction: true,
     },
     {
@@ -53,9 +66,9 @@ export default function MobileFloatingNav() {
       href: '/cart',
     },
     {
-      title: 'Wishlist',
-      icon: <Heart className="w-6 h-6" strokeWidth={2} />,
-      href: '/wishlist',
+      title: 'Account',
+      icon: <User className="w-6 h-6" strokeWidth={2} />,
+      href: '/account',
     },
   ];
 
@@ -66,7 +79,6 @@ export default function MobileFloatingNav() {
 
   const getBadgeCount = (href: string) => {
     if (href === '/cart') return cartCount;
-    if (href === '/wishlist') return wishlistCount;
     return 0;
   };
 
@@ -75,7 +87,7 @@ export default function MobileFloatingNav() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
+      className="fixed bottom-0 left-0 right-0 z-50 pb-[env(safe-area-inset-bottom)] lg:hidden"
     >
       {/* Glass-morphism background */}
       <div className="mx-4 mb-4 rounded-2xl backdrop-blur-xl bg-[#0D1B0F]/90 border border-[#2E7D32]/30 shadow-2xl">

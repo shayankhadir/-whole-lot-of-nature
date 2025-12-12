@@ -7,6 +7,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 
 interface TestimonialFormProps {
   productId?: string | number;
@@ -105,7 +106,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
             animate={{ opacity: 1, y: 0 }}
             className="bg-[#66BB6A]/10 border-2 border-[#66BB6A] rounded-lg p-4 text-[#66BB6A] font-medium"
           >
-            ✓ {successMessage}
+            {successMessage}
           </motion.div>
         )}
 
@@ -116,7 +117,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
             animate={{ opacity: 1, y: 0 }}
             className="bg-red-50 border-2 border-red-600 rounded-lg p-4 text-red-900 font-medium"
           >
-            ✕ {errorMessage}
+            {errorMessage}
           </motion.div>
         )}
 
@@ -155,9 +156,9 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setRating(star)}
-                className={`text-4xl transition-all ${star <= rating ? 'text-[#66BB6A]' : 'text-white/40'}`}
+                className={`transition-all ${star <= rating ? 'text-[#66BB6A]' : 'text-white/40'}`}
               >
-                ★
+                <Star size={32} fill={star <= rating ? 'currentColor' : 'none'} />
               </motion.button>
             ))}
           </div>

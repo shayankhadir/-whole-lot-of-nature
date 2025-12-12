@@ -26,7 +26,7 @@ class LandingPageGenerator {
       await fs.mkdir(path.dirname(pagePath), { recursive: true });
       await fs.writeFile(pagePath, pageContent, 'utf-8');
 
-      console.log(`✅ Generated landing page: /seo-pages/${content.slug}`);
+      console.log(`Generated landing page: /seo-pages/${content.slug}`);
 
       return {
         success: true,
@@ -34,7 +34,7 @@ class LandingPageGenerator {
         url: `/seo-pages/${content.slug}`,
       };
     } catch (error: unknown) {
-      console.error(`❌ Error generating page for ${content.slug}:`, error);
+      console.error(`Error generating page for ${content.slug}:`, error);
       throw error;
     }
   }
@@ -176,7 +176,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
-                href="/shop/plants"
+                href="/shop"
                 className="block w-full bg-white text-[#66BB6A] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
               >
                 Browse Products
@@ -269,11 +269,11 @@ export default function ${this.generateComponentName(content.slug)}Page() {
    */
   private getLinkText(url: string): string {
     const linkTexts: { [key: string]: string } = {
-      '/shop/plants': 'Browse All Plants',
-      '/shop/seeds': 'Shop Seeds',
-      '/shop/fertilizers': 'Organic Fertilizers',
+      '/shop': 'Browse All Products',
+      '/shop/category/seeds': 'Shop Seeds',
+      '/shop/category/fertilizers': 'Organic Fertilizers',
       '/blog': 'Gardening Blog',
-      '/care-guides': 'Plant Care Guides',
+      '/guides': 'Plant Care Guides',
       '/about': 'About Us',
     };
 

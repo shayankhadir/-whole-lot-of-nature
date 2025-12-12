@@ -75,7 +75,7 @@ class CompetitorAnalysisAgent {
    * Scrape and analyze a competitor website
    */
   async analyzeCompetitor(url: string, name: string): Promise<CompetitorData> {
-    console.log(`\n🔍 Analyzing competitor: ${name} (${url})`);
+    console.log(`\nAnalyzing competitor: ${name} (${url})`);
 
     const competitorData: CompetitorData = {
       name,
@@ -89,17 +89,17 @@ class CompetitorAnalysisAgent {
 
     try {
       // Scrape homepage
-      console.log(`  1️⃣ Scraping homepage...`);
+      console.log(`  1) Scraping homepage...`);
       const homepage = await this.scrapePage(url);
       competitorData.pages.push(homepage);
 
       // Extract product URLs
-      console.log(`  2️⃣ Finding product pages...`);
+      console.log(`  2) Finding product pages...`);
       const productUrls = await this.findProductPages(url);
-      console.log(`  ✅ Found ${productUrls.length} product pages`);
+      console.log(`  Found ${productUrls.length} product pages`);
 
       // Scrape products (limit to 10 for performance)
-      console.log(`  3️⃣ Scraping products...`);
+      console.log(`  3) Scraping products...`);
       const productsToScrape = productUrls.slice(0, 10);
       let successCount = 0;
       
@@ -114,29 +114,29 @@ class CompetitorAnalysisAgent {
           }
           await this.delay(1000); // Be polite - 1 second delay
         } catch (error: unknown) {
-          console.error(`    ❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+          console.error(`    Error: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
 
-      console.log(`  ✅ Successfully scraped ${successCount}/${productsToScrape.length} products`);
+      console.log(`  Successfully scraped ${successCount}/${productsToScrape.length} products`);
 
       // Extract keywords from all scraped content
-      console.log(`  4️⃣ Extracting keywords...`);
+      console.log(`  4) Extracting keywords...`);
       competitorData.keywords = this.extractKeywords(competitorData);
-      console.log(`  ✅ Extracted ${competitorData.keywords.length} keywords`);
+      console.log(`  Extracted ${competitorData.keywords.length} keywords`);
 
       // Calculate SEO score
       competitorData.seoScore = this.calculateSEOScore(competitorData);
 
-      console.log(`\n✅ Analysis complete for ${name}:`);
-      console.log(`  📄 Pages analyzed: ${competitorData.pages.length}`);
-      console.log(`  🛍️ Products found: ${competitorData.products.length}`);
-      console.log(`  🔑 Keywords extracted: ${competitorData.keywords.length}`);
-      console.log(`  📊 SEO Score: ${competitorData.seoScore}/100\n`);
+      console.log(`\nAnalysis complete for ${name}:`);
+      console.log(`  Pages analyzed: ${competitorData.pages.length}`);
+      console.log(`  Products found: ${competitorData.products.length}`);
+      console.log(`  Keywords extracted: ${competitorData.keywords.length}`);
+      console.log(`  SEO Score: ${competitorData.seoScore}/100\n`);
 
       return competitorData;
     } catch (error: unknown) {
-      console.error(`❌ Critical error analyzing ${name}:`, error instanceof Error ? error.message : String(error));
+      console.error(`Critical error analyzing ${name}:`, error instanceof Error ? error.message : String(error));
       // Return partial data instead of throwing
       return competitorData;
     }
@@ -147,7 +147,7 @@ class CompetitorAnalysisAgent {
    */
   private async scrapePage(url: string): Promise<PageAnalysis> {
     try {
-      console.log(`  📄 Scraping page: ${url}`);
+      console.log(`  Scraping page: ${url}`);
       
       const response = await axiosInstance.get(url, {
         headers: { 
@@ -162,7 +162,7 @@ class CompetitorAnalysisAgent {
       });
 
       if (response.status !== 200) {
-        console.warn(`  ⚠️ Warning: Page returned status ${response.status}`);
+        console.warn(`  Warning: Page returned status ${response.status}`);
       }
 
       const $ = cheerio.load(response.data);
@@ -191,10 +191,10 @@ class CompetitorAnalysisAgent {
         schemaMarkup: $('script[type="application/ld+json"]').length > 0,
       };
 
-      console.log(`  ✅ Scraped: ${pageData.title} (${wordCount} words, ${pageData.images} images)`);
+      console.log(`  Scraped: ${pageData.title} (${wordCount} words, ${pageData.images} images)`);
       return pageData;
     } catch (error: unknown) {
-      console.error(`  ❌ Error scraping ${url}:`, error instanceof Error ? error.message : String(error));
+      console.error(`  Error scraping ${url}:`, error instanceof Error ? error.message : String(error));
       // Return default data instead of failing
       return {
         url,
@@ -216,7 +216,7 @@ class CompetitorAnalysisAgent {
    */
   private async findProductPages(baseUrl: string): Promise<string[]> {
     try {
-      console.log(`  🔎 Finding product pages on ${baseUrl}`);
+      console.log(`  Finding product pages on ${baseUrl}`);
       
       const response = await axiosInstance.get(baseUrl, {
         headers: { 
@@ -262,10 +262,10 @@ class CompetitorAnalysisAgent {
       });
 
       const urls = Array.from(productUrls);
-      console.log(`  ✅ Found ${urls.length} potential product URLs`);
+      console.log(`  Found ${urls.length} potential product URLs`);
       return urls.slice(0, 20); // Limit to 20 products
     } catch (error: unknown) {
-      console.error(`  ❌ Error finding product pages:`, error instanceof Error ? error.message : String(error));
+      console.error(`  Error finding product pages:`, error instanceof Error ? error.message : String(error));
       return [];
     }
   }
@@ -275,7 +275,7 @@ class CompetitorAnalysisAgent {
    */
   private async scrapeProduct(url: string): Promise<ProductData | null> {
     try {
-      console.log(`    🛍️ Scraping product: ${url}`);
+      console.log(`    Scraping product: ${url}`);
       
       const response = await axiosInstance.get(url, {
         headers: { 
@@ -307,7 +307,7 @@ class CompetitorAnalysisAgent {
         '';
 
       if (!name) {
-        console.log(`    ⚠️ No product name found`);
+        console.log(`    No product name found`);
         return null;
       }
 
@@ -319,10 +319,10 @@ class CompetitorAnalysisAgent {
         description: description.substring(0, 500),
       };
 
-      console.log(`    ✅ Found: ${product.name} - ${product.price}`);
+      console.log(`    Found: ${product.name} - ${product.price}`);
       return product;
     } catch (error: unknown) {
-      console.log(`    ❌ Error scraping product: ${error instanceof Error ? error.message : String(error)}`);
+      console.log(`    Error scraping product: ${error instanceof Error ? error.message : String(error)}`);
       return null;
     }
   }

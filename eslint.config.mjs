@@ -17,8 +17,23 @@ const eslintConfig = [
       ".next/**",
       "out/**",
       "build/**",
+      "coverage/**",
       "next-env.d.ts",
+      "scripts/**",
+      "prisma/**",
+      "server.js",
+      "generate-trending-blogs.mjs",
+      "test-*.js",
+      "test-*.ts",
+      "test-*.mjs",
     ],
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/ban-ts-comment": "warn",
+      "@typescript-eslint/no-require-imports": "warn",
+    },
   },
 ];
 

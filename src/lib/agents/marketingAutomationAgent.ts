@@ -89,7 +89,7 @@ class MarketingAutomationAgent {
   }
 
   async runFullAutomation(): Promise<FullAutomationResponse> {
-    console.log('🚀 Starting full marketing automation run...');
+    console.log('Starting full marketing automation run...');
 
     const results: FullAutomationResults = {
       step1: { status: 'pending', data: null },
@@ -124,7 +124,7 @@ class MarketingAutomationAgent {
 
     // STEP 2: Generate SEO content
     try {
-      console.log('✍️  Generating SEO content from insights...');
+      console.log('Generating SEO content from insights...');
       const generatedContent = await this.contentGenerator.generateContentFromInsights(
         analysis.insights,
         analysis.data,
@@ -145,7 +145,7 @@ class MarketingAutomationAgent {
 
       // STEP 3: Generate landing pages
       try {
-        console.log('🏗️  Generating landing pages...');
+        console.log('Generating landing pages...');
         const pageResults = await this.landingGenerator.generatePages(generatedContent);
         const successfulPages = pageResults.filter((page) => page.success);
 
@@ -158,7 +158,7 @@ class MarketingAutomationAgent {
         };
       } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error);
-        console.error('❌ Error generating landing pages:', message);
+        console.error('Error generating landing pages:', message);
         results.step3 = {
           status: 'failed',
           data: null,
@@ -168,7 +168,7 @@ class MarketingAutomationAgent {
       }
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
-      console.error('❌ Error generating SEO content:', message);
+      console.error('Error generating SEO content:', message);
       results.step2 = {
         status: 'failed',
         data: null,
@@ -181,7 +181,7 @@ class MarketingAutomationAgent {
   }
 
   async generateContentOnly(competitorLimit: number = 2): Promise<GenerateContentResponse> {
-    console.log('✍️  Generating SEO content (content only mode)...');
+    console.log('Generating SEO content (content only mode)...');
 
     const competitorSubset = this.competitors.slice(0, competitorLimit);
     const analysis = await this.collectCompetitorData(competitorSubset);
@@ -227,14 +227,14 @@ class MarketingAutomationAgent {
         let analysis = await this.competitorAgent.analyzeCompetitor(competitor.url, competitor.name);
 
         if (this.isAnalysisEmpty(analysis)) {
-          console.log(`  ⚠️ Limited data for ${competitor.name}, checking fallback...`);
+          console.log(`  Limited data for ${competitor.name}, checking fallback...`);
           analysis = await this.tryFallbackOrMock(competitor, analysis);
         }
 
         competitorData.push(analysis);
-        console.log(`  ✅ Analyzed ${competitor.name}`);
+        console.log(`  Analyzed ${competitor.name}`);
       } catch (error: unknown) {
-        console.log(`  ⚠️ Error with ${competitor.name}: ${error instanceof Error ? error.message : String(error)}`);
+        console.log(`  Error with ${competitor.name}: ${error instanceof Error ? error.message : String(error)}`);
         competitorData.push(
           this.competitorAgent.generateMockData(competitor.name, competitor.url),
         );
@@ -259,12 +259,12 @@ class MarketingAutomationAgent {
     currentAnalysis: CompetitorData,
   ): Promise<CompetitorData> {
     if (!competitor.fallback) {
-      console.log(`  ⚠️ No fallback for ${competitor.name}, using mock data.`);
+      console.log(`  No fallback for ${competitor.name}, using mock data.`);
       return this.competitorAgent.generateMockData(competitor.name, competitor.url);
     }
 
     try {
-      console.log(`  🔁 Trying fallback URL for ${competitor.name}...`);
+      console.log(`  Trying fallback URL for ${competitor.name}...`);
       const fallbackAnalysis = await this.competitorAgent.analyzeCompetitor(
         competitor.fallback,
         competitor.name,
@@ -274,7 +274,7 @@ class MarketingAutomationAgent {
       }
       return fallbackAnalysis;
     } catch (error) {
-      console.log(`  ⚠️ Fallback failed for ${competitor.name}, using mock data.`);
+      console.log(`  Fallback failed for ${competitor.name}, using mock data.`);
       return this.competitorAgent.generateMockData(competitor.name, competitor.url);
     }
   }

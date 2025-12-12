@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 
 export interface Testimonial {
   id: string;
@@ -39,9 +40,12 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map(star => (
-          <span key={star} className={star <= rating ? 'text-[#66BB6A] text-lg' : 'text-white/40 text-lg'}>
-            ★
-          </span>
+          <Star
+            key={star}
+            className={star <= rating ? 'text-[#66BB6A]' : 'text-white/40'}
+            size={18}
+            fill={star <= rating ? 'currentColor' : 'none'}
+          />
         ))}
       </div>
     );
@@ -69,7 +73,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             <p className="font-bold text-black antialiased">{testimonial.authorName}</p>
             {testimonial.productName && <p className="text-sm text-gray-600">{testimonial.productName}</p>}
           </div>
-          {testimonial.verifiedPurchase && <span className="text-xs bg-[#66BB6A]/10 text-[#66BB6A] px-2 py-1 rounded font-bold antialiased">✓ Verified</span>}
+          {testimonial.verifiedPurchase && <span className="text-xs bg-[#66BB6A]/10 text-[#66BB6A] px-2 py-1 rounded font-bold antialiased">Verified</span>}
         </div>
         <p className="text-black text-sm mb-3 line-clamp-2">{testimonial.content}</p>
         <div className="flex items-center justify-between">
@@ -88,7 +92,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="bg-gradient-to-br from-green-50 to-white border-2 border-black rounded-lg p-6 md:p-8"
       >
         {/* Quote icon */}
-        <div className="text-4xl text-[#66BB6A] mb-4 opacity-50 antialiased">❝</div>
+        <div className="text-4xl text-[#66BB6A] mb-4 opacity-50 antialiased">&ldquo;</div>
 
         {/* Stars */}
         <div className="mb-4">{renderStars(testimonial.rating)}</div>
@@ -104,7 +108,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           </div>
           <div className="text-right">
             {testimonial.verifiedPurchase && (
-              <p className="text-xs text-[#2E7D32] font-bold mb-1 antialiased">✓ Verified Purchase</p>
+              <p className="text-xs text-[#2E7D32] font-bold mb-1 antialiased">Verified Purchase</p>
             )}
             <p className="text-xs text-gray-500">{formatDate(testimonial.createdAt)}</p>
           </div>
@@ -127,7 +131,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div className="flex items-center gap-2 mb-2">
             {renderStars(testimonial.rating)}
             {testimonial.verifiedPurchase && (
-              <span className="text-xs bg-[#2E7D32] text-white px-2 py-0.5 rounded font-bold antialiased">✓ Verified</span>
+              <span className="text-xs bg-[#2E7D32] text-white px-2 py-0.5 rounded font-bold antialiased">Verified</span>
             )}
           </div>
         </div>
@@ -152,7 +156,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           liked ? 'border-[#66BB6A] bg-[#66BB6A]/10 text-[#66BB6A]' : 'border-black text-black hover:border-[#66BB6A]'
         }`}
       >
-        <span>👍</span>
         <span>{testimonial.likes || 0} Helpful</span>
       </motion.button>
     </motion.div>

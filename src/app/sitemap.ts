@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { woocommerceClient as woocommerce } from '@/lib/services/woocommerceService';
+import { SEO_PAGES } from '@/lib/seo/seoPages';
 
 type WCProductLite = { slug: string; date_modified?: string };
 type WCCategoryLite = { slug: string };
@@ -15,11 +16,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/contact',
     '/cart',
     '/blog',
+    '/seo-pages',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,
     priority: 1,
+  }));
+
+  const seoPageRoutes: MetadataRoute.Sitemap = SEO_PAGES.map((p) => ({
+    url: `${baseUrl}/seo-pages/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }));
 
   let productRoutes: MetadataRoute.Sitemap = [];
@@ -65,5 +74,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Sitemap: Failed to fetch categories', error);
   }
 
-  return [...routes, ...productRoutes, ...categoryRoutes];
+  return [...routes, ...seoPageRoutes, ...productRoutes, ...categoryRoutes];
 }

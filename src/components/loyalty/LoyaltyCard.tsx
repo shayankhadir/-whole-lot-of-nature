@@ -28,13 +28,6 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
     );
   }
 
-  const tierEmoji = {
-    bronze: '🥉',
-    silver: '🥈',
-    gold: '🏅',
-    platinum: '💎',
-  }[currentTier];
-
   if (compact) {
     return (
       <motion.div
@@ -44,7 +37,6 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl antialiased">{tierEmoji}</span>
             <div>
               <p className="text-sm text-black font-medium capitalize">{currentTier} Member</p>
               <p className="text-2xl font-bold text-[#2E7D32] antialiased">{pointsBalance.toLocaleString()} pts</p>
@@ -117,7 +109,7 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
           </p>
         )}
 
-        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold antialiased">🎉 You&apos;re at max tier!</p>}
+        {currentTier === 'platinum' && <p className="text-black text-xs mt-2 font-bold antialiased">You&apos;re at max tier.</p>}
       </div>
 
       {/* Benefits */}
@@ -132,7 +124,6 @@ const LoyaltyCard: React.FC<LoyaltyCardProps> = ({ compact = false, onRedeemClic
               transition={{ delay: idx * 0.1 }}
               className="flex items-start gap-2"
             >
-              <span className="text-[#2E7D32] mt-1">✓</span>
               <p className="text-black text-sm">{perk}</p>
             </motion.div>
           ))}

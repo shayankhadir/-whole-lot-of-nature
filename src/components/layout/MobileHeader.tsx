@@ -5,9 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Dialog } from '@headlessui/react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Heart, Search, User, ChevronRight } from 'lucide-react';
-import CartIcon from '../cart/CartIcon';
+import { Menu, X, Search, User, ChevronRight } from 'lucide-react';
 import { useWishlistStore } from '@/stores/wishlistStore';
 import { useCartStore } from '@/stores/cartStore';
 import { navigation, shopCollections } from './navigationData';
@@ -32,7 +30,7 @@ export default function MobileHeader() {
 
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/Whole%20lot%20of%20nature%20logo.png"
+              src="/logo.png"
               alt="Whole Lot of Nature"
               width={140}
               height={44}

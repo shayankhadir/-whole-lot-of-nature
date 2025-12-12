@@ -62,7 +62,7 @@ export default class SocialMediaAgent {
     platforms: string[],
     postCount: number = 10
   ): Promise<SocialPost[]> {
-    console.log(`📱 Generating ${postCount} social media posts for ${platforms.length} platforms...`);
+    console.log(`Generating ${postCount} social media posts for ${platforms.length} platforms...`);
 
     const posts: SocialPost[] = [];
     const contentTemplates = this.getContentTemplates();
@@ -77,7 +77,7 @@ export default class SocialMediaAgent {
       posts.push(post);
     }
 
-    console.log(`✅ Generated ${posts.length} social media posts`);
+    console.log(`Generated ${posts.length} social media posts`);
     return posts;
   }
 
@@ -85,7 +85,7 @@ export default class SocialMediaAgent {
    * Create a content calendar for the next 30 days
    */
   createContentCalendar(posts: SocialPost[], startDate: Date = new Date()): ContentCalendar[] {
-    console.log('📅 Creating 30-day content calendar...');
+    console.log('Creating 30-day content calendar...');
 
     const calendar: ContentCalendar[] = [];
     const postsPerDay = 2; // Minimum 2 posts per day
@@ -117,7 +117,7 @@ export default class SocialMediaAgent {
       });
     }
 
-    console.log(`✅ Created calendar with ${calendar.length} days and ${postIndex} posts`);
+    console.log(`Created calendar with ${calendar.length} days and ${postIndex} posts`);
     return calendar;
   }
 
@@ -125,7 +125,7 @@ export default class SocialMediaAgent {
    * Analyze trends and generate insights for social media strategy
    */
   generateSocialInsights(competitorData: CompetitorData[]): SocialMediaInsights {
-    console.log('🔍 Analyzing social media trends...');
+    console.log('Analyzing social media trends...');
 
     const insights: SocialMediaInsights = {
       trendingTopics: this.extractTrendingTopics(competitorData),
@@ -141,7 +141,7 @@ export default class SocialMediaAgent {
       platformSpecificTips: this.getPlatformTips(),
     };
 
-    console.log('✅ Generated social media insights');
+    console.log('Generated social media insights');
     return insights;
   }
 
@@ -151,7 +151,6 @@ export default class SocialMediaAgent {
   private createPost(platform: SocialPost['platform'], keyword: string, template: string): SocialPost {
     const content = template
       .replace('{keyword}', keyword)
-      .replace('{emoji}', this.getRandomEmoji())
       .replace('{tip}', this.getRandomPlantTip());
 
     // Truncate to platform limits
@@ -175,16 +174,16 @@ export default class SocialMediaAgent {
    */
   private getContentTemplates(): string[] {
     return [
-      '🌿 Did you know? {tip} Perfect for your {keyword}! #PlantCare #GreenThumb',
-      '{emoji} Transform your space with {keyword}! Here\'s what you need to know... {tip} 🌱',
-      'Monday motivation: {tip} Your {keyword} will thank you! 💚',
-      'Plant tip of the day: {emoji} {tip} Perfect timing for {keyword} care!',
-      '✨ Level up your plant game! {tip} Works amazing for {keyword} 🪴',
-      '{emoji} Weekend project: Give your {keyword} some love! {tip}',
-      'Stop scrolling! Here\'s a quick tip for your {keyword}: {tip} 🌿',
-      '{emoji} Your {keyword} deserves the best! {tip} Tag a plant friend! 👇',
-      'Plant parent hack: {tip} Game-changer for {keyword}! 🎯',
-      '{emoji} Is your {keyword} thriving? Here\'s how to make sure: {tip}',
+      'Did you know? {tip} Perfect for your {keyword}. #PlantCare #GreenThumb',
+      'Transform your space with {keyword}. Here\'s what you need to know: {tip}',
+      'Monday motivation: {tip} Your {keyword} will thank you.',
+      'Plant tip of the day: {tip} Perfect timing for {keyword} care.',
+      'Level up your plant care: {tip} Works well for {keyword}.',
+      'Weekend project: Give your {keyword} some love. {tip}',
+      'Quick tip for your {keyword}: {tip}',
+      'Your {keyword} deserves the best. {tip} Tag a plant friend.',
+      'Plant parent hack: {tip} A game-changer for {keyword}.',
+      'Is your {keyword} thriving? Here\'s how to make sure: {tip}',
     ];
   }
 
@@ -230,11 +229,11 @@ export default class SocialMediaAgent {
    */
   private getCallToAction(platform: string): string {
     const ctas: Record<string, string[]> = {
-      instagram: ['Link in bio! 🔗', 'DM us for more! 📩', 'Save this for later! 🔖', 'Tag a friend! 👥'],
-      facebook: ['Shop now! 🛒', 'Learn more here!', 'Comment below! 💬', 'Share with friends!'],
-      twitter: ['Thread below 🧵', 'Retweet to save! 🔄', 'Reply with your thoughts!', 'Check our profile!'],
+      instagram: ['Link in bio', 'Message us for more', 'Save this for later', 'Tag a friend'],
+      facebook: ['Shop now', 'Learn more', 'Comment below', 'Share with friends'],
+      twitter: ['Thread below', 'Retweet to save', 'Reply with your thoughts', 'Check our profile'],
       linkedin: ['Read the full article', 'Connect with us!', 'Share your experience', 'Join the conversation'],
-      pinterest: ['Pin this! 📌', 'Click to shop', 'Save for later', 'Explore more ideas'],
+      pinterest: ['Pin this', 'Click to shop', 'Save for later', 'Explore more ideas'],
     };
 
     const platformCtas = ctas[platform] || ['Learn more!'];
@@ -387,14 +386,6 @@ export default class SocialMediaAgent {
         'Create infographics for plant care',
       ],
     };
-  }
-
-  /**
-   * Get random emoji for posts
-   */
-  private getRandomEmoji(): string {
-    const emojis = ['🌿', '🪴', '🌱', '🍃', '🌾', '🌵', '🌴', '🎋', '🌳', '🌲', '🍀', '💚', '✨', '🌟'];
-    return emojis[Math.floor(Math.random() * emojis.length)];
   }
 
   /**

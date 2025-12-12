@@ -21,7 +21,7 @@ export async function POST() {
       );
     }
 
-    console.log(`✅ Synced ${products.length} products from WooCommerce`);
+    console.log(`Synced ${products.length} products from WooCommerce`);
 
     // Calculate statistics
     const stats = {

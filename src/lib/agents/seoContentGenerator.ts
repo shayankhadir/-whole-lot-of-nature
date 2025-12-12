@@ -375,11 +375,11 @@ class SEOContentGenerator {
    */
   private generateInternalLinks(keyword: string): string[] {
     return [
-      '/shop/plants',
-      '/shop/seeds',
-      '/shop/fertilizers',
+      '/shop',
+      '/shop/category/seeds',
+      '/shop/category/fertilizers',
       '/blog',
-      '/care-guides',
+      '/guides',
       '/about',
     ];
   }

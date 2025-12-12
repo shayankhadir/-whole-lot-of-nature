@@ -440,7 +440,7 @@ export default function MarketingDashboard() {
 
       setAutomationProgress(prev => [
         ...prev,
-        { step: 1, status: 'complete', message: `✅ Generated ${generateData.posts.length} posts` }
+        { step: 1, status: 'complete', message: `Generated ${generateData.posts.length} posts` }
       ]);
 
       // Step 2: Create calendar with scheduling
@@ -466,7 +466,7 @@ export default function MarketingDashboard() {
 
       setAutomationProgress(prev => [
         ...prev,
-        { step: 2, status: 'complete', message: `✅ Created ${calendarData.summary.totalDays}-day calendar` }
+        { step: 2, status: 'complete', message: `Created ${calendarData.summary.totalDays}-day calendar` }
       ]);
 
       // Step 3: Schedule to Instagram
@@ -501,7 +501,7 @@ export default function MarketingDashboard() {
 
       setAutomationProgress(prev => [
         ...prev,
-        { step: 3, status: 'complete', message: `✅ Scheduled ${scheduleData.scheduled}/${scheduleData.total} posts to Instagram` }
+        { step: 3, status: 'complete', message: `Scheduled ${scheduleData.scheduled}/${scheduleData.total} posts to Instagram` }
       ]);
 
       setSocialResult({
@@ -518,7 +518,7 @@ export default function MarketingDashboard() {
       setSocialError(errorMessage);
       setAutomationProgress(prev => [
         ...prev,
-        { step: 0, status: 'error', message: `❌ Error: ${errorMessage}` }
+        { step: 0, status: 'error', message: `Error: ${errorMessage}` }
       ]);
     } finally {
       setSocialLoading(false);
@@ -535,7 +535,7 @@ export default function MarketingDashboard() {
         {/* Header */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
           <h1 className="text-4xl font-bold text-[#2E7D32] mb-2 antialiased">
-            🌿 Marketing & Content Dashboard
+            Marketing & Content Dashboard
           </h1>
           <p className="text-gray-100">
             Manage automated content generation, view blog posts, and run marketing automation
@@ -553,7 +553,7 @@ export default function MarketingDashboard() {
                   : 'bg-white text-gray-100 hover:bg-gray-50'
               }`}
             >
-              🌿 Blog Studio ({blogPosts.length})
+              Blog Studio ({blogPosts.length})
             </button>
             <button
               onClick={() => setActiveTab('marketing')}
@@ -563,7 +563,7 @@ export default function MarketingDashboard() {
                   : 'bg-white text-gray-100 hover:bg-gray-50'
               }`}
             >
-              🚀 Marketing
+              Marketing
             </button>
             <button
               onClick={() => setActiveTab('social')}
@@ -573,7 +573,7 @@ export default function MarketingDashboard() {
                   : 'bg-white text-gray-100 hover:bg-gray-50'
               }`}
             >
-              📱 Social Media
+              Social Media
             </button>
             <button
               onClick={() => setActiveTab('design')}
@@ -583,7 +583,7 @@ export default function MarketingDashboard() {
                   : 'bg-white text-gray-100 hover:bg-gray-50'
               }`}
             >
-              🎨 Design Audit
+              Design Audit
             </button>
           </div>
         </div>
@@ -599,7 +599,7 @@ export default function MarketingDashboard() {
                     disabled={loading}
                     className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 antialiased"
                   >
-                    {loading ? '⏳ Generating...' : '🚀 Generate New Blog Posts from Trends'}
+                    {loading ? 'Generating...' : 'Generate New Blog Posts from Trends'}
                   </button>
                   <p className="text-sm text-gray-500 mt-2">
                     Scrapes trending topics and generates 5 comprehensive blog posts
@@ -612,7 +612,7 @@ export default function MarketingDashboard() {
                     disabled={publishing}
                     className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 antialiased"
                   >
-                    {publishing ? '⏳ Publishing...' : '📤 Publish Draft Posts Now'}
+                    {publishing ? 'Publishing...' : 'Publish Draft Posts Now'}
                   </button>
                   <p className="text-sm text-gray-500 mt-2">Publishes one draft post from WordPress</p>
                 </div>
@@ -621,7 +621,7 @@ export default function MarketingDashboard() {
 
             {publishResult && (
               <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 antialiased">📤 Publishing Results</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 antialiased">Publishing Results</h3>
                 <div
                   className={`p-4 rounded-lg ${
                     publishResult.success
@@ -631,10 +631,10 @@ export default function MarketingDashboard() {
                 >
                   {publishResult.success ? (
                     <p className="text-[#2E7D32] font-semibold">
-                      ✅ Published {publishResult.result?.postsPublished || 0} post(s)!
+                      Published {publishResult.result?.postsPublished || 0} post(s).
                     </p>
                   ) : (
-                    <p className="text-red-800 font-semibold">❌ {publishResult.error}</p>
+                    <p className="text-red-800 font-semibold">{publishResult.error}</p>
                   )}
                 </div>
               </div>
@@ -642,14 +642,14 @@ export default function MarketingDashboard() {
 
             {error && (
               <div className="bg-red-100 border border-red-300 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-red-800 mb-2 antialiased">❌ Error</h3>
+                <h3 className="text-xl font-bold text-red-800 mb-2 antialiased">Error</h3>
                 <p className="text-red-700">{error}</p>
               </div>
             )}
 
             {result && (
               <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h3 className="text-2xl font-bold text-[#2E7D32] mb-6 antialiased">✅ Generation Complete!</h3>
+                <h3 className="text-2xl font-bold text-[#2E7D32] mb-6 antialiased">Generation Complete</h3>
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
                     <p className="text-3xl font-bold text-blue-600 antialiased">{result.trendsCollected}</p>
@@ -672,14 +672,14 @@ export default function MarketingDashboard() {
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <p className="text-sm uppercase tracking-wide text-gray-400 font-semibold">WordPress Feed</p>
-                  <h2 className="text-2xl font-bold text-gray-800 antialiased">📝 Blog Posts</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 antialiased">Blog Posts</h2>
                 </div>
                 <button
                   onClick={fetchBlogPosts}
                   disabled={loadingPosts}
                   className="bg-[#2E7D32] hover:bg-[#2E7D32] text-white font-semibold py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
                 >
-                  {loadingPosts ? '⏳ Loading...' : '🔄 Refresh'}
+                  {loadingPosts ? 'Loading...' : 'Refresh'}
                 </button>
               </div>
 
@@ -710,7 +710,7 @@ export default function MarketingDashboard() {
                               : 'bg-amber-50 text-amber-800 border border-amber-200'
                           }`}
                         >
-                          {post.status === 'publish' ? '✅ Published' : '📝 Draft'}
+                          {post.status === 'publish' ? 'Published' : 'Draft'}
                         </span>
                       </div>
                       <div
@@ -744,11 +744,11 @@ export default function MarketingDashboard() {
         {activeTab === 'marketing' && (
           <div className="space-y-8">
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">🚀 Marketing Automation Agent</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">Marketing Automation Agent</h2>
               
               {/* Full Automation */}
               <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 mb-6 border-2 border-indigo-200">
-                <h3 className="text-xl font-bold text-indigo-800 mb-3 antialiased">⚡ Full Marketing Automation</h3>
+                <h3 className="text-xl font-bold text-indigo-800 mb-3 antialiased">Full Marketing Automation</h3>
                 <p className="text-gray-700 mb-4">
                   Complete end-to-end automation: Analyze competitors → Extract keywords → Generate SEO content → Create landing pages automatically!
                 </p>
@@ -757,12 +757,12 @@ export default function MarketingDashboard() {
                   disabled={automationLoading}
                   className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg antialiased"
                 >
-                  {automationLoading ? '⏳ Running Full Automation (2-5 min)...' : '⚡ Run Full Automation'}
+                  {automationLoading ? 'Running Full Automation (2-5 min)...' : 'Run Full Automation'}
                 </button>
               </div>
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 mb-6">
-                <h3 className="text-lg font-bold text-purple-800 mb-3 antialiased">🎯 Competitor Analysis Only</h3>
+                <h3 className="text-lg font-bold text-purple-800 mb-3 antialiased">Competitor Analysis Only</h3>
                 <p className="text-gray-700 mb-4">
                   Scan competitor websites (Urvann, Nurserylive, Plantopiaa), analyze their SEO strategies, extract keywords and products.
                 </p>
@@ -771,14 +771,14 @@ export default function MarketingDashboard() {
                   disabled={marketingLoading}
                   className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed antialiased"
                 >
-                  {marketingLoading ? '⏳ Analyzing Competitors...' : '🔍 Start Competitor Analysis'}
+                  {marketingLoading ? 'Analyzing Competitors...' : 'Start Competitor Analysis'}
                 </button>
               </div>
 
               {/* Analysis Results */}
               {marketingError && (
                 <div className="bg-red-100 border border-red-300 rounded-xl p-6 mb-6">
-                  <h3 className="text-lg font-bold text-red-800 mb-2 antialiased">❌ Error</h3>
+                  <h3 className="text-lg font-bold text-red-800 mb-2 antialiased">Error</h3>
                   <p className="text-red-700">{marketingError}</p>
                 </div>
               )}
@@ -786,12 +786,12 @@ export default function MarketingDashboard() {
               {/* Full Automation Results */}
               {automationResult && (
                 <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 mb-6 border-2 border-indigo-300">
-                  <h3 className="text-2xl font-bold text-indigo-800 mb-6 antialiased">✅ Full Automation Complete!</h3>
+                  <h3 className="text-2xl font-bold text-indigo-800 mb-6 antialiased">Full Automation Complete</h3>
                   
                   {/* Step-by-Step Results */}
                   <div className="space-y-4 mb-6">
                     <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
-                      <h4 className="font-bold text-blue-800 mb-2 antialiased">📊 Step 1: Competitor Analysis</h4>
+                      <h4 className="font-bold text-blue-800 mb-2 antialiased">Step 1: Competitor Analysis</h4>
                       <p className="text-gray-700">
                         Analyzed <span className="font-bold text-blue-600 antialiased">{step1Data?.competitorsAnalyzed || 0}</span> competitors
                         {step1Data?.topKeywords && ` • Found ${step1Data.topKeywords.length} keywords`}
@@ -799,7 +799,7 @@ export default function MarketingDashboard() {
                     </div>
                     
                     <div className="bg-white rounded-lg p-4 border-l-4 border-[#2E7D32]">
-                      <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">✍️ Step 2: Content Generation</h4>
+                      <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">Step 2: Content Generation</h4>
                       <p className="text-gray-700">
                         Generated <span className="font-bold text-[#2E7D32] antialiased">{step2Data?.contentGenerated || 0}</span> SEO-optimized articles
                         (avg. {step2Data?.avgWordCount || '1200+'} words each)
@@ -807,7 +807,7 @@ export default function MarketingDashboard() {
                     </div>
                     
                     <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
-                      <h4 className="font-bold text-purple-800 mb-2 antialiased">🚀 Step 3: Landing Pages Created</h4>
+                      <h4 className="font-bold text-purple-800 mb-2 antialiased">Step 3: Landing Pages Created</h4>
                       <p className="text-gray-700">
                         Created <span className="font-bold text-purple-600 antialiased">{step3Data?.pagesCreated || 0}</span> landing pages
                       </p>
@@ -874,11 +874,11 @@ export default function MarketingDashboard() {
                   {/* Insights */}
                   {marketingResult.insights && (
                     <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-[#2E7D32] mb-4 antialiased">💡 Key Insights</h3>
+                      <h3 className="text-xl font-bold text-[#2E7D32] mb-4 antialiased">Key Insights</h3>
                       
                       {/* Top Keywords */}
                       <div className="mb-4">
-                        <h4 className="font-semibold text-gray-800 mb-2">🔑 Top Keywords to Target:</h4>
+                        <h4 className="font-semibold text-gray-800 mb-2">Top Keywords to Target:</h4>
                         <div className="flex flex-wrap gap-2">
                           {marketingResult.insights.topKeywords.slice(0, 15).map((keyword: string, i: number) => (
                             <span key={i} className="bg-[#2E7D32]/20 text-white border border-[#2E7D32]/40 px-3 py-1 rounded-full text-sm font-semibold">
@@ -890,11 +890,11 @@ export default function MarketingDashboard() {
 
                       {/* Recommendations */}
                       <div className="mb-4">
-                        <h4 className="font-semibold text-gray-800 mb-2">🎯 Actionable Recommendations:</h4>
+                        <h4 className="font-semibold text-gray-800 mb-2">Actionable Recommendations:</h4>
                         <ul className="space-y-2">
                           {marketingResult.insights.recommendations.map((rec: string, i: number) => (
                             <li key={i} className="flex items-start">
-                              <span className="text-[#2E7D32] mr-2">✓</span>
+                              <span className="text-[#2E7D32] mr-2">•</span>
                               <span className="text-gray-700">{rec}</span>
                             </li>
                           ))}
@@ -904,7 +904,7 @@ export default function MarketingDashboard() {
                       {/* Price Range */}
                       {marketingResult.insights.priceRange && (
                         <div className="mb-4">
-                          <h4 className="font-semibold text-gray-800 mb-2">💰 Competitor Price Range:</h4>
+                          <h4 className="font-semibold text-gray-800 mb-2">Competitor Price Range:</h4>
                           <p className="text-gray-700">
                             ₹{marketingResult.insights.priceRange.min} - ₹{marketingResult.insights.priceRange.max}
                           </p>
@@ -913,7 +913,7 @@ export default function MarketingDashboard() {
 
                       {/* Common Categories */}
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">📦 Popular Categories:</h4>
+                        <h4 className="font-semibold text-gray-800 mb-2">Popular Categories:</h4>
                         <div className="flex flex-wrap gap-2">
                           {marketingResult.insights.commonCategories?.map((cat: string, i: number) => (
                             <span key={i} className="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">
@@ -927,7 +927,7 @@ export default function MarketingDashboard() {
 
                   {/* Detailed Results */}
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-800 antialiased">📊 Detailed Competitor Analysis</h3>
+                    <h3 className="text-xl font-bold text-gray-800 antialiased">Detailed Competitor Analysis</h3>
                     {marketingResult.results?.map((comp, index: number) => (
                       <div key={index} className="border border-gray-200 rounded-xl p-6">
                         <div className="flex justify-between items-start mb-4">
@@ -961,7 +961,7 @@ export default function MarketingDashboard() {
                         {/* Top Products */}
                         {comp.products.length > 0 && (
                           <div className="mt-4">
-                            <h5 className="font-semibold text-gray-700 mb-2">🛍️ Sample Products:</h5>
+                            <h5 className="font-semibold text-gray-700 mb-2">Sample Products:</h5>
                             <div className="space-y-2">
                               {comp.products.slice(0, 3).map((product: { name: string; price: string; category: string }, i: number) => (
                                 <div key={i} className="bg-gray-50 rounded p-3">
@@ -985,7 +985,7 @@ export default function MarketingDashboard() {
               {!marketingResult && !marketingLoading && (
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
-                    <h3 className="text-lg font-bold text-blue-800 mb-3 antialiased">📊 Keyword Research</h3>
+                    <h3 className="text-lg font-bold text-blue-800 mb-3 antialiased">Keyword Research</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Discover high-ranking keywords your competitors are using and generate content around them.
                   </p>
@@ -995,7 +995,7 @@ export default function MarketingDashboard() {
                 </div>
 
                 <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-[#2E7D32] mb-3 antialiased">🏆 Ranking Pages</h3>
+                  <h3 className="text-lg font-bold text-[#2E7D32] mb-3 antialiased">Ranking Pages</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Create SEO-optimized pages designed to outrank your competition on search engines.
                   </p>
@@ -1005,7 +1005,7 @@ export default function MarketingDashboard() {
                 </div>
 
                 <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-orange-800 mb-3 antialiased">🔗 Backlink Analysis</h3>
+                  <h3 className="text-lg font-bold text-orange-800 mb-3 antialiased">Backlink Analysis</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Analyze competitor backlinks and discover link-building opportunities for your site.
                   </p>
@@ -1015,7 +1015,7 @@ export default function MarketingDashboard() {
                 </div>
 
                 <div className="bg-gradient-to-br from-red-50 to-rose-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-red-800 mb-3 antialiased">📱 Social Media</h3>
+                  <h3 className="text-lg font-bold text-red-800 mb-3 antialiased">Social Media</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Monitor competitor social media and automate your content calendar.
                   </p>
@@ -1030,7 +1030,7 @@ export default function MarketingDashboard() {
               )}
 
               <div className="mt-8 bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-yellow-800 mb-2 antialiased">⚡ Coming Soon</h3>
+                <h3 className="text-lg font-bold text-yellow-800 mb-2 antialiased">Coming Soon</h3>
                 <p className="text-gray-700">
                   The marketing automation agent is currently in development. It will automatically:
                 </p>
@@ -1050,11 +1050,11 @@ export default function MarketingDashboard() {
         {activeTab === 'social' && (
           <div className="space-y-8">
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">📱 Social Media Automation</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">Social Media Automation</h2>
               
               {/* Platform Selector */}
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 mb-6 border-2 border-blue-200">
-                <h3 className="text-lg font-bold text-blue-800 mb-3 antialiased">🎯 Select Platforms</h3>
+                  <h3 className="text-lg font-bold text-blue-800 mb-3 antialiased">Select Platforms</h3>
                 <div className="flex flex-wrap gap-3">
                   {['instagram', 'facebook', 'twitter', 'linkedin', 'pinterest'].map(platform => (
                     <button
@@ -1072,11 +1072,7 @@ export default function MarketingDashboard() {
                           : 'bg-white text-gray-700 border-2 border-gray-300 hover:border-blue-400'
                       }`}
                     >
-                      {platform === 'instagram' && '📸'} 
-                      {platform === 'facebook' && '📘'} 
-                      {platform === 'twitter' && '🐦'} 
-                      {platform === 'linkedin' && '💼'} 
-                      {platform === 'pinterest' && '📌'} {' '}
+                      {' '}
                       {platform.charAt(0).toUpperCase() + platform.slice(1)}
                     </button>
                   ))}
@@ -1088,7 +1084,7 @@ export default function MarketingDashboard() {
 
               {/* Full Automation */}
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 mb-6 border-2 border-purple-200">
-                <h3 className="text-xl font-bold text-purple-800 mb-3 antialiased">⚡ Full Social Media Automation</h3>
+                <h3 className="text-xl font-bold text-purple-800 mb-3 antialiased">Full Social Media Automation</h3>
                 <p className="text-gray-700 mb-4">
                   Analyze competitors → Generate 30 posts → Create 30-day content calendar with optimal posting times!
                 </p>
@@ -1097,7 +1093,7 @@ export default function MarketingDashboard() {
                   disabled={socialLoading || selectedPlatforms.length === 0}
                   className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg antialiased"
                 >
-                  {socialLoading ? '⏳ Running Automation...' : '⚡ Run Full Automation'}
+                  {socialLoading ? 'Running Automation...' : 'Run Full Automation'}
                 </button>
               </div>
 
@@ -1118,22 +1114,22 @@ export default function MarketingDashboard() {
                     }`}>
                       {bufferStatus.success ? (
                         <div>
-                          <p className="font-bold text-[#2E7D32] mb-2 antialiased">✅ Instagram Connected!</p>
+                          <p className="font-bold text-[#2E7D32] mb-2 antialiased">Instagram Connected</p>
                           {bufferStatus.account && (
                             <>
                               <p className="text-sm text-[#2E7D32]">
                                 @{bufferStatus.account.username}
                               </p>
                               <div className="mt-2 text-xs text-[#2E7D32] space-y-1">
-                                <div>👥 {bufferStatus.account.followers?.toLocaleString()} followers</div>
-                                <div>📸 {bufferStatus.account.posts} posts</div>
+                                <div>{bufferStatus.account.followers?.toLocaleString()} followers</div>
+                                <div>{bufferStatus.account.posts} posts</div>
                               </div>
                             </>
                           )}
                         </div>
                       ) : (
                         <div>
-                          <p className="font-bold text-yellow-800 mb-2 antialiased">⚠️ Instagram Not Connected</p>
+                          <p className="font-bold text-yellow-800 mb-2 antialiased">Instagram Not Connected</p>
                           <p className="text-sm text-yellow-700 mb-2">
                             {bufferStatus.error || 'Set up Instagram API to enable auto-scheduling'}
                           </p>
@@ -1154,7 +1150,7 @@ export default function MarketingDashboard() {
                       disabled={bufferLoading}
                       className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
                     >
-                      {bufferLoading ? '⏳ Checking...' : '🔍 Check Instagram Connection'}
+                      {bufferLoading ? 'Checking...' : 'Check Instagram Connection'}
                     </button>
 
                     {bufferStatus?.success && (
@@ -1164,7 +1160,7 @@ export default function MarketingDashboard() {
                           disabled={bufferLoading}
                           className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
                         >
-                          {bufferLoading ? '⏳ Testing...' : '🧪 Send Test Post'}
+                          {bufferLoading ? 'Testing...' : 'Send Test Post'}
                         </button>
 
                         <button 
@@ -1172,7 +1168,7 @@ export default function MarketingDashboard() {
                           disabled={socialLoading}
                           className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 shadow-lg antialiased"
                         >
-                          {socialLoading ? '⏳ Automating...' : '🚀 Generate & Auto-Schedule to Instagram'}
+                          {socialLoading ? 'Automating...' : 'Generate & Auto-Schedule to Instagram'}
                         </button>
                       </>
                     )}
@@ -1182,21 +1178,21 @@ export default function MarketingDashboard() {
                       target="_blank"
                       className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                     >
-                      📖 Setup Instructions
+                      Setup Instructions
                     </a>
                   </div>
 
                   {/* Progress Tracker */}
                   {automationProgress.length > 0 && (
                     <div className="bg-white rounded-lg p-4 border-2 border-indigo-200">
-                      <h4 className="font-bold text-indigo-800 mb-3 antialiased">📊 Automation Progress</h4>
+                      <h4 className="font-bold text-indigo-800 mb-3 antialiased">Automation Progress</h4>
                       <div className="space-y-2">
                         {automationProgress.map((progress, i) => (
                           <div key={i} className="flex items-center gap-3">
                             <span className="text-2xl antialiased">
                               {progress.status === 'running' && '⏳'}
-                              {progress.status === 'complete' && '✅'}
-                              {progress.status === 'error' && '❌'}
+                              {progress.status === 'complete' && 'Done'}
+                              {progress.status === 'error' && 'Error'}
                             </span>
                             <span className={`text-sm ${
                               progress.status === 'complete' ? 'text-[#2E7D32]' :
@@ -1216,7 +1212,7 @@ export default function MarketingDashboard() {
               {/* Quick Actions */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-[#2E7D32] mb-3 antialiased">✍️ Generate Posts Only</h3>
+                  <h3 className="text-lg font-bold text-[#2E7D32] mb-3 antialiased">Generate Posts Only</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Create 10 ready-to-post social media posts for selected platforms
                   </p>
@@ -1230,7 +1226,7 @@ export default function MarketingDashboard() {
                 </div>
 
                 <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-orange-800 mb-3 antialiased">📅 Create Calendar</h3>
+                  <h3 className="text-lg font-bold text-orange-800 mb-3 antialiased">Create Calendar</h3>
                   <p className="text-gray-700 mb-4 text-sm">
                     Build a 30-day content calendar with scheduling
                   </p>
@@ -1247,7 +1243,7 @@ export default function MarketingDashboard() {
               {/* Error Display */}
               {socialError && (
                 <div className="bg-red-100 border border-red-300 rounded-xl p-6 mb-6">
-                  <h3 className="text-lg font-bold text-red-800 mb-2 antialiased">❌ Error</h3>
+                  <h3 className="text-lg font-bold text-red-800 mb-2 antialiased">Error</h3>
                   <p className="text-red-700">{socialError}</p>
                 </div>
               )}
@@ -1258,11 +1254,11 @@ export default function MarketingDashboard() {
                   {/* Instagram Automation Success */}
                   {socialResult.instagramScheduled && (
                     <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-400">
-                      <h3 className="text-3xl font-bold text-purple-800 mb-6 antialiased">🎉 Instagram Automation Complete!</h3>
+                      <h3 className="text-3xl font-bold text-purple-800 mb-6 antialiased">Instagram Automation Complete</h3>
                       
                       <div className="bg-white rounded-xl p-6 mb-6 border-2 border-purple-200">
                         <div className="flex items-center gap-4 mb-4">
-                          <span className="text-5xl antialiased">✅</span>
+                          <span className="text-5xl antialiased">Done</span>
                           <div>
                             <h4 className="text-2xl font-bold text-purple-800 antialiased">
                               {socialResult.postsScheduled} Posts Scheduled to Instagram!
@@ -1290,7 +1286,7 @@ export default function MarketingDashboard() {
                       </div>
 
                       <div className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-xl p-6">
-                        <h4 className="font-bold text-[#2E7D32] mb-3 text-lg antialiased">✅ What Happens Next?</h4>
+                        <h4 className="font-bold text-[#2E7D32] mb-3 text-lg antialiased">What Happens Next?</h4>
                         <ul className="space-y-2 text-[#2E7D32]">
                           <li className="flex items-start gap-2">
                             <span className="text-[#2E7D32] font-bold antialiased">1.</span>
@@ -1318,7 +1314,7 @@ export default function MarketingDashboard() {
                       {/* Calendar Preview */}
                       {socialResult.calendar && socialResult.calendar.length > 0 && (
                         <div className="mt-6">
-                          <h4 className="font-bold text-indigo-800 mb-4 antialiased">📅 Your Content Calendar (Next 7 Days)</h4>
+                          <h4 className="font-bold text-indigo-800 mb-4 antialiased">Your Content Calendar (Next 7 Days)</h4>
                           <div className="space-y-3">
                             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {socialResult.calendar.slice(0, 7).map((day: { date: string; posts: any[] }, i: number) => (
@@ -1331,7 +1327,7 @@ export default function MarketingDashboard() {
                                   {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                   {day.posts?.slice(0, 3).map((post: any, j: number) => (
                                     <div key={j} className="flex items-center gap-1 text-xs bg-indigo-50 px-2 py-1 rounded">
-                                      <span>📸</span>
+                                      <span></span>
                                       <span className="text-indigo-700">
                                         {post.scheduledTime && new Date(post.scheduledTime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
                                       </span>
@@ -1349,12 +1345,12 @@ export default function MarketingDashboard() {
                   {/* Full Automation Results */}
                   {socialResult.results && (
                     <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-300">
-                      <h3 className="text-2xl font-bold text-purple-800 mb-6 antialiased">✅ Social Automation Complete!</h3>
+                      <h3 className="text-2xl font-bold text-purple-800 mb-6 antialiased">Social Automation Complete</h3>
                       
                       {/* Steps */}
                       <div className="space-y-4 mb-6">
                         <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
-                          <h4 className="font-bold text-blue-800 mb-2 antialiased">📊 Step 1: Competitor Analysis</h4>
+                          <h4 className="font-bold text-blue-800 mb-2 antialiased">Step 1: Competitor Analysis</h4>
                           <p className="text-gray-700">
                             Analyzed <span className="font-bold text-blue-600 antialiased">{socialResult.results.step1?.data?.competitorsAnalyzed || 0}</span> competitors
                             {socialResult.results.step1?.data?.trendingTopics && ` • Found ${socialResult.results.step1.data.trendingTopics.length} trending topics`}
@@ -1362,7 +1358,7 @@ export default function MarketingDashboard() {
                         </div>
 
                         <div className="bg-white rounded-lg p-4 border-l-4 border-[#2E7D32]">
-                          <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">📱 Step 2: Posts Generated</h4>
+                          <h4 className="font-bold text-[#2E7D32] mb-2 antialiased">Step 2: Posts Generated</h4>
                           <p className="text-gray-700">
                             Created <span className="font-bold text-[#2E7D32] antialiased">{(socialResult as any).results.step2?.data?.postsGenerated || 0}</span> social media posts
                             {(socialResult as any).results.step2?.data?.platforms && ` across ${(socialResult as any).results.step2.data.platforms.length} platforms`}
@@ -1370,7 +1366,7 @@ export default function MarketingDashboard() {
                         </div>
 
                         <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
-                          <h4 className="font-bold text-purple-800 mb-2 antialiased">📅 Step 3: Content Calendar</h4>
+                          <h4 className="font-bold text-purple-800 mb-2 antialiased">Step 3: Content Calendar</h4>
                           <p className="text-gray-700">
                             Built <span className="font-bold text-purple-600 antialiased">{socialResult.results.step3?.data?.totalDays || 0}</span>-day calendar
                             {socialResult.results.step3?.data?.postsPerDay && ` with ${socialResult.results.step3.data.postsPerDay} posts/day`}
@@ -1381,17 +1377,13 @@ export default function MarketingDashboard() {
                       {/* Sample Posts */}
                       {socialResult.results.step2?.data?.posts && socialResult.results.step2.data.posts.length > 0 && (
                         <div className="bg-white rounded-xl p-6">
-                          <h4 className="font-bold text-gray-800 mb-4 antialiased">📝 Sample Posts (First 3)</h4>
+                          <h4 className="font-bold text-gray-800 mb-4 antialiased">Sample Posts (First 3)</h4>
                           <div className="space-y-4">
                             {socialResult.results.step2.data.posts.slice(0, 3).map((post: { platform: string; content: string; hashtags?: string[] }, i: number) => (
                               <div key={i} className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200">
                                 <div className="flex items-center gap-2 mb-2">
                                   <span className="text-2xl antialiased">
-                                    {post.platform === 'instagram' && '📸'}
-                                    {post.platform === 'facebook' && '📘'}
-                                    {post.platform === 'twitter' && '🐦'}
-                                    {post.platform === 'linkedin' && '💼'}
-                                    {post.platform === 'pinterest' && '📌'}
+                                    {''}
                                   </span>
                                   <span className="font-semibold text-gray-800 capitalize">{post.platform}</span>
                                 </div>
@@ -1414,7 +1406,7 @@ export default function MarketingDashboard() {
                   {/* Posts Only Results */}
                   {socialResult.posts && (
                     <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-[#2E7D32]">
-                      <h3 className="text-2xl font-bold text-[#2E7D32] mb-6 antialiased">✅ Posts Generated!</h3>
+                      <h3 className="text-2xl font-bold text-[#2E7D32] mb-6 antialiased">Posts Generated</h3>
                       <p className="text-gray-700 mb-6">
                         Created <strong>{socialResult.posts.length}</strong> posts across <strong>{socialResult.summary?.platforms?.length || 0}</strong> platforms
                       </p>
@@ -1424,11 +1416,7 @@ export default function MarketingDashboard() {
                           <div key={i} className="bg-white rounded-lg p-4 border-2 border-gray-200">
                             <div className="flex items-center gap-2 mb-2">
                               <span className="text-2xl antialiased">
-                                {post.platform === 'instagram' && '📸'}
-                                {post.platform === 'facebook' && '📘'}
-                                {post.platform === 'twitter' && '🐦'}
-                                {post.platform === 'linkedin' && '💼'}
-                                {post.platform === 'pinterest' && '📌'}
+                                {''}
                               </span>
                               <span className="font-semibold text-gray-800 capitalize">{post.platform}</span>
                             </div>
@@ -1452,7 +1440,7 @@ export default function MarketingDashboard() {
                   {/* Calendar Results */}
                   {socialResult.calendar && (
                     <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-8 border-2 border-orange-300">
-                      <h3 className="text-2xl font-bold text-orange-800 mb-6 antialiased">📅 30-Day Content Calendar</h3>
+                      <h3 className="text-2xl font-bold text-orange-800 mb-6 antialiased">30-Day Content Calendar</h3>
                       
                       {/* Summary Stats */}
                       <div className="grid grid-cols-4 gap-4 mb-6">
@@ -1481,18 +1469,14 @@ export default function MarketingDashboard() {
                       {socialResult.calendar.slice(0, 7).map((day: any, i: number) => (
                         <div key={i} className="bg-white rounded-lg p-4 mb-3 border-2 border-orange-200">
                           <h4 className="font-bold text-gray-800 mb-2 antialiased">
-                            📅 {new Date(day.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+                            {new Date(day.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                           </h4>
                           <p className="text-sm text-gray-600 mb-3">Theme: {day.theme}</p>
                           <div className="space-y-2">
                             {day.posts.map((post: { platform: string; content: string; scheduledTime?: string }, j: number) => (
                               <div key={j} className="flex items-start gap-2 text-sm">
                                 <span>
-                                  {post.platform === 'instagram' && '📸'}
-                                  {post.platform === 'facebook' && '📘'}
-                                  {post.platform === 'twitter' && '🐦'}
-                                  {post.platform === 'linkedin' && '💼'}
-                                  {post.platform === 'pinterest' && '📌'}
+                                  {''}
                                 </span>
                                 <div>
                                   <span className="font-semibold capitalize">{post.platform}</span>
@@ -1516,7 +1500,7 @@ export default function MarketingDashboard() {
               {/* Info Panel */}
               {!socialResult && !socialLoading && (
                 <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-blue-800 mb-2 antialiased">ℹ️ What Can This Do?</h3>
+                  <h3 className="text-lg font-bold text-blue-800 mb-2 antialiased">What Can This Do?</h3>
                   <p className="text-gray-700 mb-3">
                     The Social Media Agent creates content for your selected platforms:
                   </p>
@@ -1539,10 +1523,10 @@ export default function MarketingDashboard() {
         {/* Design Audit Tab */}
         {activeTab === 'design' && (
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">🎨 Design Audit Agent</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 antialiased">Design Audit Agent</h2>
             
             <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 mb-6 border-2 border-pink-200">
-              <h3 className="text-xl font-bold text-pink-800 mb-3 antialiased">🔍 Scan Frontend for Design Issues</h3>
+              <h3 className="text-xl font-bold text-pink-800 mb-3 antialiased">Scan Frontend for Design Issues</h3>
               <p className="text-gray-700 mb-4">
                 Automatically scan all components and pages for contrast issues, hard-to-read fonts, accessibility problems, and color issues.
               </p>
@@ -1552,14 +1536,14 @@ export default function MarketingDashboard() {
                   disabled={designAuditLoading}
                   className="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg antialiased"
                 >
-                  {designAuditLoading ? '⏳ Scanning...' : '🔍 Run Design Audit'}
+                  {designAuditLoading ? 'Scanning...' : 'Run Design Audit'}
                 </button>
                 <button 
                   onClick={autoFixDesign}
                   disabled={designAuditLoading || !designAuditResult}
                   className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg antialiased"
                 >
-                  {designAuditLoading ? '⏳ Fixing...' : '🔧 Auto-Fix Issues'}
+                  {designAuditLoading ? 'Fixing...' : 'Auto-Fix Issues'}
                 </button>
               </div>
             </div>
@@ -1590,7 +1574,7 @@ export default function MarketingDashboard() {
                 {/* Issues by Category */}
                 {designAuditResult.issuesByCategory && (
                   <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6">
-                    <h3 className="text-xl font-bold text-indigo-800 mb-4 antialiased">📊 Issues by Category</h3>
+                    <h3 className="text-xl font-bold text-indigo-800 mb-4 antialiased">Issues by Category</h3>
                     <div className="grid grid-cols-2 gap-4">
                       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       {Object.entries(designAuditResult.issuesByCategory).map(([category, count]: [string, any]) => (
@@ -1606,7 +1590,7 @@ export default function MarketingDashboard() {
                 {/* Summary */}
                 {designAuditResult.summary && (
                   <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
-                    <h3 className="text-lg font-bold text-gray-800 mb-3 antialiased">📋 Summary</h3>
+                    <h3 className="text-lg font-bold text-gray-800 mb-3 antialiased">Summary</h3>
                     <pre className="text-gray-700 whitespace-pre-wrap font-mono text-sm">
                       {designAuditResult.summary}
                     </pre>
@@ -1616,7 +1600,7 @@ export default function MarketingDashboard() {
                 {/* Success Message */}
                 {designAuditResult.issuesFixed > 0 && (
                   <div className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-xl p-6">
-                    <h3 className="text-lg font-bold text-[#2E7D32] mb-2 antialiased">✅ Auto-Fix Complete!</h3>
+                    <h3 className="text-lg font-bold text-[#2E7D32] mb-2 antialiased">Auto-Fix Complete</h3>
                     <p className="text-[#2E7D32]">
                       Successfully fixed <span className="font-bold antialiased">{designAuditResult.issuesFixed}</span> high-priority design issues across your frontend.
                       All text contrast and readability problems have been improved!
@@ -1629,7 +1613,7 @@ export default function MarketingDashboard() {
             {/* Info Panel */}
             {!designAuditResult && (
               <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-blue-800 mb-2 antialiased">ℹ️ What Does This Do?</h3>
+                <h3 className="text-lg font-bold text-blue-800 mb-2 antialiased">What Does This Do?</h3>
                 <p className="text-gray-700 mb-3">
                   The Design Audit Agent scans your entire frontend codebase for common design issues:
                 </p>

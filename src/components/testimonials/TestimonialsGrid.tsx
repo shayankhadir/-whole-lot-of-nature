@@ -104,7 +104,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <p className="text-sm font-bold text-[#66BB6A] mb-3 antialiased">⭐ FEATURED TESTIMONIAL</p>
+          <p className="text-sm font-bold text-[#66BB6A] mb-3 antialiased">FEATURED TESTIMONIAL</p>
           <TestimonialCard
             testimonial={featured}
             variant="featured"

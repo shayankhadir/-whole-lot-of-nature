@@ -301,7 +301,7 @@ export const AuthForm = ({
                 {mode === 'login' ? (
                   <>
                     Remember me
-                    <Link href="/forgot-password" className="ml-auto text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
+                    <Link href="/auth/forgot-password" className="ml-auto text-[#2E7D32] hover:text-[#2E7D32] transition-colors">
                       Forgot password?
                     </Link>
                   </>

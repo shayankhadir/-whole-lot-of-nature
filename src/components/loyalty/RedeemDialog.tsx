@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLoyal } from '@/lib/hooks/useLoyal';
 import { LoyaltyService } from '@/lib/services/loyaltyService';
 import { RedemptionOption } from '@/lib/types/loyalty';
+import { X } from 'lucide-react';
 
 interface RedeemDialogProps {
   isOpen: boolean;
@@ -49,15 +50,15 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'discount':
-        return '💰';
+        return '$';
       case 'product':
-        return '📦';
+        return 'P';
       case 'shipping':
-        return '🚚';
+        return 'S';
       case 'experience':
-        return '✨';
+        return 'E';
       default:
-        return '🎁';
+        return 'R';
     }
   };
 
@@ -88,8 +89,9 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                 <button
                   onClick={handleClose}
                   className="text-black text-2xl font-bold hover:text-[#2E7D32] transition-colors antialiased"
+                  aria-label="Close"
                 >
-                  ✕
+                  <X className="h-6 w-6" aria-hidden />
                 </button>
               </div>
 
@@ -102,7 +104,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-[#2E7D32] border-2 border-[#2E7D32] rounded-lg p-4 mb-4 text-[#2E7D32] font-medium"
                   >
-                    ✓ {successMessage}
+                    {successMessage}
                   </motion.div>
                 )}
 
@@ -113,7 +115,7 @@ const RedeemDialog: React.FC<RedeemDialogProps> = ({ isOpen, onClose, onSuccess 
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-red-50 border-2 border-red-600 rounded-lg p-4 mb-4 text-red-900 font-medium"
                   >
-                    ✕ {error}
+                    {error}
                   </motion.div>
                 )}
 

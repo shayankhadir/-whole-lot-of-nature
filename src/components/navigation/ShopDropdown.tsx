@@ -8,25 +8,21 @@ import BotanicalCategoryBento from '@/components/BotanicalCategoryBento';
 const shopCategories = [
   {
     name: 'Indoor Plants',
-    icon: '🌱',
     description: 'Trending green companions',
     href: '/shop?category=indoor-plants'
   },
   {
     name: 'Rare Plants',
-    icon: '✨',
     description: 'Exclusive collections',
     href: '/shop?category=rare-plants'
   },
   {
     name: 'Plant Care',
-    icon: '🪴',
     description: 'Care essentials',
     href: '/shop?category=plant-care'
   },
   {
     name: 'Soil & Amendments',
-    icon: '🌍',
     description: 'Premium mediums',
     href: '/shop?category=soil'
   }

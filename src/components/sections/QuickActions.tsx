@@ -29,11 +29,11 @@ const quickActions = [
     color: "bg-primary-600 hover:bg-primary-700",
     textColor: "text-white"
   },
-  {
-    icon: Gift,
-    title: "Gift Cards",
-    description: "Perfect for plant lovers",
-    href: "/gift-cards",
+    {
+      icon: Gift,
+      title: "Combos & Gifts",
+      description: "Curated bundles for plant lovers",
+      href: "/combos",
     color: "bg-primary-700 hover:bg-primary-800",
     textColor: "text-white"
   }
@@ -107,18 +107,17 @@ export default function QuickActions() {
             <MessageCircle className="w-8 h-8 text-[#86efbe]" />
           </div>
           <h3 className="text-2xl font-bold text-[#E8F5E9] mb-4 antialiased">
-            Join Our Plant Community
+              Learn, Plan, and Grow Better
           </h3>
           <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            Connect with fellow gardening enthusiasts, share your plant journey, 
-            and get personalized advice from our experts.
+              Get practical guides and tips, then head back to the shop to pick the right plants and supplies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/community">
-              <button className="px-6 py-3 bg-[#2E7D32] text-white font-medium rounded-lg hover:bg-[#2E7D32] transition-colors">
-                Join Community
-              </button>
-            </Link>
+              <Link href="/seo-pages">
+                <button className="px-6 py-3 bg-[#2E7D32] text-white font-medium rounded-lg hover:bg-[#2E7D32] transition-colors">
+                  Browse Guides
+                </button>
+              </Link>
             <Link href="https://wa.me/911234567890">
               <button className="px-6 py-3 bg-white text-[#2E7D32] border-2 border-[#2E7D32] font-medium rounded-lg hover:bg-[#2E7D32] transition-colors">
                 WhatsApp Support

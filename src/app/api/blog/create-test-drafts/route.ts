@@ -226,7 +226,7 @@ export async function POST(request: NextRequest) {
           editUrl: response.data.link?.replace(/\/$/, '') + '/wp-admin/post.php?post=' + response.data.id + '&action=edit',
         });
 
-        console.log(`✅ Created draft: "${post.title}" (ID: ${response.data.id})`);
+        console.log(`Created draft: "${post.title}" (ID: ${response.data.id})`);
 
         // Small delay between posts
         await new Promise((resolve) => setTimeout(resolve, 500));
@@ -240,7 +240,7 @@ export async function POST(request: NextRequest) {
           title: post.title,
           error: errorResponse || errorMessage,
         });
-        console.error(`❌ Failed to create: "${post.title}"`, errorResponse || errorMessage);
+        console.error(`Failed to create: "${post.title}"`, errorResponse || errorMessage);
       }
     }
 

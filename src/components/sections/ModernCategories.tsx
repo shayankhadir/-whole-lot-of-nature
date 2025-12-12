@@ -129,7 +129,7 @@ export default function ModernCategories() {
               Curated Collections
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight mb-6">
-              Essentials for Your <br />
+              Essentials for Your{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
                 Green Sanctuary
               </span>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Youtube, ExternalLink, Play } from 'lucide-react';
+import { Youtube, Play } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -102,11 +102,12 @@ export default function YouTubeShowcase() {
 
             <div className="pt-8 border-t border-white/10">
               <div className="flex items-center gap-4 text-sm text-emerald-100/60">
-                <div className="flex -space-x-2">
+                <div className="flex -space-x-2" aria-hidden="true">
                   {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-emerald-800 border-2 border-[#0d3512] flex items-center justify-center text-xs font-bold text-emerald-200">
-                      {String.fromCharCode(64 + i)}
-                    </div>
+                    <div
+                      key={i}
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-700/60 to-emerald-900/60 border-2 border-[#0d3512] shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+                    />
                   ))}
                 </div>
                 <p>Join our growing community of plant lovers</p>

@@ -28,7 +28,7 @@ export default function Layout({ children }: LayoutProps) {
           <TopBanner />
           <ResponsiveHeader />
         </div>
-        <main className="flex-grow">
+        <main className="flex-grow pb-28 lg:pb-0">
           {children}
         </main>
         <Footer />

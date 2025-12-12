@@ -142,7 +142,7 @@ export default function IndoorPlantsCarePage() {
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
-                href="/shop/plants"
+                href="/shop"
                 className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
               >
                 Browse Products
@@ -166,17 +166,17 @@ export default function IndoorPlantsCarePage() {
               <ul className="space-y-3">
                 
                 <li>
-                  <Link href="/shop/plants" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/seeds" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop/category/seeds" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/fertilizers" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/shop/category/fertilizers" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
@@ -186,7 +186,7 @@ export default function IndoorPlantsCarePage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/care-guides" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
+                  <Link href="/guides" className="text-[#2E7D32] hover:text-[#2E7D32] hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>

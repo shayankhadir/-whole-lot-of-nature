@@ -160,9 +160,9 @@ function ShopContent() {
   });
 
   return (
-    <div className="min-h-screen bg-[#030a06] text-white">
+    <div className="min-h-screen bg-[var(--brand-bg1)] text-white">
       {/* Header Section */}
-      <div className="relative bg-[#05150a] border-b border-white/5 py-16 px-6 overflow-hidden">
+      <div className="relative border-b border-white/5 py-12 sm:py-16 px-4 sm:px-6 overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.0))]">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(102,187,106,0.2),transparent_50%)]" />
         </div>
@@ -170,7 +170,7 @@ function ShopContent() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased tracking-tight"
+            className="text-[clamp(2rem,6vw,3rem)] font-bold text-white mb-3 antialiased tracking-tight"
           >
             Our Collection
           </motion.h1>
@@ -178,7 +178,7 @@ function ShopContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-white/60 max-w-2xl mx-auto"
+            className="text-[clamp(0.95rem,2.2vw,1.125rem)] text-white/70 max-w-2xl mx-auto"
           >
             Curated plants, sustainable essentials, and handcrafted goods for your green sanctuary.
           </motion.p>
@@ -201,7 +201,7 @@ function ShopContent() {
                       : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
                   }`}
                 >
-                  ✦ All Products
+                  All Products
                 </button>
 
                 {/* Categories with Subcategories */}

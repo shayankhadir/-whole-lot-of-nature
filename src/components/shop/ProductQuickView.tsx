@@ -222,7 +222,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                       }`}
                     >
                       {addedToCart ? (
-                        <>✓ Added to Cart!</>
+                        <>Added to Cart</>
                       ) : (
                         <>
                           <ShoppingCart className="w-5 h-5" />
@@ -247,7 +247,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
 
                   {/* Full Details Link */}
                   <Link
-                    href={`/products/${product.slug}`}
+                    href={`/shop/${product.slug}`}
                     className="inline-flex items-center justify-center w-full px-6 py-3 rounded-full border-2 border-neutral-300 text-neutral-800 font-semibold hover:border-emerald-700 hover:text-emerald-800 transition"
                   >
                     View Full Details →
@@ -255,7 +255,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
 
                   {/* Stock Status */}
                   {product.in_stock ? (
-                    <p className="text-sm text-emerald-600 font-medium">✓ In Stock - Ships within 2-3 days</p>
+                    <p className="text-sm text-emerald-600 font-medium">In Stock - Ships within 2-3 days</p>
                   ) : (
                     <p className="text-sm text-red-600 font-medium">Out of Stock</p>
                   )}

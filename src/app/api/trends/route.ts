@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import TrendScraper from '@/lib/agents/trendScraper';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
   try {

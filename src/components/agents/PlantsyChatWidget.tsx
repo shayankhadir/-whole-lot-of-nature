@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent, useCallback, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -25,8 +25,34 @@ export default function PlantsyChatWidget() {
   const [pending, setPending] = useState(false);
   const [input, setInput] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const toggle = () => setIsOpen((prev) => !prev);
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
+
+  useEffect(() => {
+    const handleOpen = () => open();
+    const handleClose = () => close();
+    const handleToggle = () => toggle();
+
+    window.addEventListener('plantsy:open', handleOpen);
+    window.addEventListener('plantsy:close', handleClose);
+    window.addEventListener('plantsy:toggle', handleToggle);
+
+    return () => {
+      window.removeEventListener('plantsy:open', handleOpen);
+      window.removeEventListener('plantsy:close', handleClose);
+      window.removeEventListener('plantsy:toggle', handleToggle);
+    };
+  }, [open, close, toggle]);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('plantsy:state', { detail: { isOpen } }));
+    if (!isOpen) return;
+    const timer = window.setTimeout(() => inputRef.current?.focus(), 60);
+    return () => window.clearTimeout(timer);
+  }, [isOpen]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -105,7 +131,7 @@ export default function PlantsyChatWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 flex w-full max-w-sm flex-col overflow-hidden rounded-3xl border border-emerald-100 bg-white shadow-[0_20px_70px_-30px_rgba(16,185,129,0.8)]"
+            className="fixed bottom-24 left-4 right-4 z-50 flex w-auto max-w-none flex-col overflow-hidden rounded-3xl border border-emerald-100 bg-white shadow-[0_20px_70px_-30px_rgba(16,185,129,0.8)] md:left-auto md:right-6 md:w-full md:max-w-sm"
           >
             <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 px-4 py-4 text-white">
               <p className="text-sm uppercase tracking-wide text-emerald-50">Plantsy</p>
@@ -181,6 +207,7 @@ export default function PlantsyChatWidget() {
 
             <form ref={formRef} onSubmit={handleSubmit} className="flex items-center gap-2 border-t border-emerald-100 bg-white px-3 py-2">
               <input
+                ref={inputRef}
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 className="flex-1 rounded-full border border-emerald-100 px-3 py-2 text-sm text-emerald-700 placeholder:text-emerald-400 focus:border-emerald-400 focus:outline-none"

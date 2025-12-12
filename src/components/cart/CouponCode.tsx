@@ -105,7 +105,7 @@ export default function CouponCode({
       {/* Popular Coupons Hint */}
       {!appliedCoupon && (
         <p className="text-xs text-gray-500">
-          💡 Try: SAVE06 (6% OFF) | WELCOME10 (10% OFF on first order)
+          Try: SAVE06 (6% OFF) | WELCOME10 (10% OFF on first order)
         </p>
       )}
     </div>

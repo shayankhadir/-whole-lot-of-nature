@@ -58,7 +58,7 @@ export default function ProductGrid({ products, isLoading = false }: ProductGrid
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col items-center justify-center py-24 px-4 text-center max-w-[600px] mx-auto"
       >
-        <div className="text-7xl mb-6 opacity-40 antialiased">🌿</div>
+        <div className="text-7xl mb-6 opacity-40 antialiased">•</div>
         <h3 className="font-montserrat text-3xl font-bold text-white mb-3 tracking-wide antialiased">
           No Products Found
         </h3>

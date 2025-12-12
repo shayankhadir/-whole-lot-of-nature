@@ -87,13 +87,13 @@ export default function InventoryPage() {
 
       if (data.success) {
         fetchInventory();
-        alert('✅ Inventory synced successfully!');
+        alert('Inventory synced successfully.');
       } else {
-        alert('❌ Sync failed: ' + data.error);
+        alert('Sync failed: ' + data.error);
       }
     } catch (error) {
       console.error('Error syncing inventory:', error);
-      alert('❌ Sync failed');
+      alert('Sync failed');
     } finally {
       setSync(false);
     }
@@ -130,7 +130,7 @@ export default function InventoryPage() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-4xl font-bold text-[#2E7D32] antialiased">📦 Inventory Management</h1>
+            <h1 className="text-4xl font-bold text-[#2E7D32] antialiased">Inventory Management</h1>
             <Link
               href="/admin/trends"
               className="px-4 py-2 bg-[#2E7D32] text-white rounded-lg hover:bg-[#1B5E20] transition"
@@ -175,7 +175,7 @@ export default function InventoryPage() {
                 disabled={syncing}
                 className="px-6 py-3 bg-[#2E7D32] text-white rounded-lg hover:bg-[#1B5E20] disabled:opacity-50 transition flex items-center gap-2"
               >
-                {syncing ? '🔄 Syncing...' : '🔄 Sync from WordPress'}
+                {syncing ? 'Syncing...' : 'Sync from WordPress'}
               </button>
             </div>
           </div>

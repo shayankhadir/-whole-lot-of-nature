@@ -37,7 +37,7 @@ export default function NotFound() {
 
         {/* Additional Info */}
         <p className="text-lg text-gray-100 mb-10 italic antialiased">
-          It seems our digital garden has a gap. Let&apos;s plant you back to the right place! 🌱
+          It seems our digital garden has a gap. Let&apos;s get you back to the right place.
         </p>
 
         {/* CTA Buttons */}
@@ -70,10 +70,10 @@ export default function NotFound() {
               Contact Us
             </Link>
             <Link
-              href="/help"
+              href="/faq"
               className="text-[#2E7D32] hover:text-[#66BB6A] transition-colors duration-300 underline"
             >
-              Help Center
+              FAQ
             </Link>
             <Link
               href="/faq"

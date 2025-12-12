@@ -5,6 +5,23 @@
 
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import googleTrends from 'google-trends-api';
+
+type CachedTrends = { expiresAt: number; data: TrendData[] };
+
+const googleTrendsCache: Record<string, CachedTrends | undefined> = {};
+
+function parseFormattedTraffic(input?: string): number {
+  if (!input) return 0;
+  const normalized = input.replace(/\+/g, '').trim();
+  const match = normalized.match(/([\d.]+)\s*([KMB])?/i);
+  if (!match) return 0;
+  const value = Number(match[1]);
+  if (Number.isNaN(value)) return 0;
+  const suffix = (match[2] || '').toUpperCase();
+  const mult = suffix === 'K' ? 1_000 : suffix === 'M' ? 1_000_000 : suffix === 'B' ? 1_000_000_000 : 1;
+  return Math.round(value * mult);
+}
 
 export interface TrendData {
   title: string;
@@ -85,46 +102,78 @@ class TrendScraper {
    * Scrape Google Trends for gardening/plant topics
    */
   async scrapeGoogleTrends(): Promise<TrendData[]> {
+    const geo = (this.config.googleTrendsRegion || 'IN').toUpperCase();
+    const cacheKey = `daily:${geo}`;
+    const now = Date.now();
+    const cached = googleTrendsCache[cacheKey];
+
+    if (cached && cached.expiresAt > now) {
+      return cached.data;
+    }
+
     const trends: TrendData[] = [];
-
     try {
-      // Using Google Trends API via unofficial endpoint
-      const searchTerms = ['indoor plants', 'gardening tips', 'sustainable gardening', 'plant propagation'];
-      
-      for (const term of searchTerms) {
-        try {
-          const response = await axios.get(
-            `https://trends.google.com/trends/api/explore?hl=en-US&tz=-330&req=${JSON.stringify({
-              comparisonItem: [{ keyword: term, geo: this.config.googleTrendsRegion || 'IN', time: 'today 1-m' }],
-              category: 0,
-              property: '',
-            })}`,
-            {
-              headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-              },
-            }
-          );
+      const raw = await googleTrends.dailyTrends({ geo });
+      const parsed = JSON.parse(raw);
 
-          const keywords = this.extractKeywords(term);
+      const days: Array<any> = parsed?.default?.trendingSearchesDays || [];
+      const allowKeywords = [
+        'plant',
+        'plants',
+        'gardening',
+        'garden',
+        'soil',
+        'compost',
+        'fertilizer',
+        'manure',
+        'pest',
+        'indoor plant',
+        'outdoor plant',
+        'terrace garden',
+        'balcony garden',
+      ];
+
+      for (const day of days) {
+        const searches: Array<any> = day?.trendingSearches || [];
+        for (const s of searches) {
+          const query: string | undefined = s?.title?.query;
+          if (!query) continue;
+
+          const lower = query.toLowerCase();
+          const isRelevant = allowKeywords.some((k) => lower.includes(k));
+          if (!isRelevant) continue;
+
+          const traffic = parseFormattedTraffic(s?.formattedTraffic);
+          const articleUrl: string | undefined = s?.articles?.[0]?.url;
+          const articleTitle: string | undefined = s?.articles?.[0]?.title;
+
           trends.push({
-            title: `${term} - Trending on Google`,
+            title: query,
             source: 'google-trends',
-            engagement: Math.random() * 1000, // Placeholder
-            timestamp: new Date(),
-            category: this.categorizeContent(term),
-            keywords: keywords.length > 0 ? keywords : [term],
-            description: `Google Trends for ${term}`,
+            url: articleUrl,
+            engagement: traffic || 0,
+            timestamp: new Date(Number(day?.date) ? Number(day?.date) * 1000 : Date.now()),
+            category: this.categorizeContent(query),
+            keywords: this.extractKeywords(query),
+            description: articleTitle || `Trending in ${geo}`,
           });
-        } catch (e) {
-          // Continue to next term
         }
       }
     } catch (error) {
       console.error('Error scraping Google Trends:', error);
     }
 
-    return trends;
+    const deduped = trends
+      .sort((a, b) => b.engagement - a.engagement)
+      .filter((trend, index, self) => index === self.findIndex((t) => t.title.toLowerCase() === trend.title.toLowerCase()))
+      .slice(0, Math.min(20, this.config.maxResults || 50));
+
+    googleTrendsCache[cacheKey] = {
+      expiresAt: now + 6 * 60 * 60 * 1000,
+      data: deduped,
+    };
+
+    return deduped;
   }
 
   /**

@@ -45,7 +45,11 @@ export default function IndoorPage() {
             How to Master Indoor - Comprehensive Guide
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Discover everything about indoor with our comprehensive guide. Expert tips, best practices, and actionable advice for indoor. Shop now!
+				Learn indoor best practices and explore our curated picks in the{' '}
+				<Link href="/shop" className="text-[#2E7D32] hover:text-[#1B5E20] hover:underline">
+					shop
+				</Link>
+				.
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
             <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor</span>
@@ -148,7 +152,7 @@ export default function IndoorPage() {
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
-                href="/shop/plants"
+                href="/shop"
                 className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
               >
                 Browse Products
@@ -172,17 +176,17 @@ export default function IndoorPage() {
               <ul className="space-y-3">
                 
                 <li>
-                  <Link href="/shop/plants" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop" className="text-green-600 hover:text-green-700 hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/seeds" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/seeds" className="text-green-600 hover:text-green-700 hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
@@ -192,7 +196,7 @@ export default function IndoorPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/care-guides" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/guides" className="text-green-600 hover:text-green-700 hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>

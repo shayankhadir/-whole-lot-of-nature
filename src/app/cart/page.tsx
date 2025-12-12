@@ -335,8 +335,8 @@ export default function CartPage() {
                 </Link>
                 
                 <div className="text-center text-sm text-gray-400">
-                  <p>🔒 Secure checkout with SSL encryption</p>
-                  <p>✓ Cash on Delivery available</p>
+                  <p>Secure checkout with SSL encryption</p>
+                  <p>Cash on Delivery available</p>
                 </div>
               </div>
             </div>

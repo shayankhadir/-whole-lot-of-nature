@@ -73,15 +73,15 @@ const LoyaltyHistory: React.FC<LoyaltyHistoryProps> = ({
   const getTransactionIcon = (type: string) => {
     switch (type) {
       case 'earn':
-        return '⬆️';
+        return '↑';
       case 'redeem':
-        return '⬇️';
+        return '↓';
       case 'tier-upgrade':
-        return '🎉';
+        return '↑';
       case 'adjustment':
-        return '🔧';
+        return '•';
       case 'expiry':
-        return '⏰';
+        return '•';
       default:
         return '•';
     }

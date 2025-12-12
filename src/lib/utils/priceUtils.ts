@@ -77,9 +77,9 @@ export function calculateShippingThreshold(
 
   let message = '';
   if (isFreeShipping) {
-    message = '🎉 You qualify for FREE shipping!';
+    message = 'You qualify for FREE shipping.';
   } else if (remaining === 0) {
-    message = '✅ Free shipping unlocked!';
+    message = 'Free shipping unlocked.';
   } else {
     message = `Add ${formatPrice(remaining)} more for FREE shipping`;
   }
