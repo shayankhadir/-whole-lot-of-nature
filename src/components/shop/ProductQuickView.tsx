@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingCart, Heart } from 'lucide-react';
 import { Product } from '@/types/product';
 import { getDisplayPrice, isOnSale, getDiscountPercentage } from '@/lib/utils/pricing';
+import { cleanProductDescription } from '@/lib/utils';
 import { useCartStore } from '@/stores/cartStore';
 import { useWishlistStore } from '@/stores/wishlistStore';
 
@@ -180,7 +181,7 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
                   {/* Short Description */}
                   {product.short_description && (
                     <div className="text-neutral-600 leading-relaxed">
-                      <div dangerouslySetInnerHTML={{ __html: product.short_description }} />
+                      <div dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.short_description) }} />
                     </div>
                   )}
 

@@ -26,7 +26,19 @@ async function getJson(url) {
 
     console.log(`\nGET ${prodUrl}`);
     const product = await getJson(prodUrl);
-    console.log('Product:', product.status, product.data?.name || product.data);
+    const payload = product?.data;
+    const p = payload?.data && typeof payload.data === 'object' ? payload.data : payload;
+    if (p && typeof p === 'object') {
+      console.log('Product:', product.status, {
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        price: p.price,
+        in_stock: p.in_stock,
+      });
+    } else {
+      console.log('Product:', product.status, p);
+    }
 
     process.exit(0);
   } catch (err) {
