@@ -258,4 +258,434 @@ enum EmailEventType {
   MANUAL_NOTE
 }
 
+// Agent Activity Logging
+model AgentLog {
+  id        String      @id @default(cuid())
+  agent     String      // growth, trends, content, email, seo, inventory, etc.
+  action    String      // run, complete, error, etc.
+  status    AgentStatus @default(RUNNING)
+  message   String?     @db.Text
+  metadata  Json?       // Store additional data
+  duration  Int?        // Duration in ms
+  createdAt DateTime    @default(now())
+
+  @@index([agent])
+  @@index([createdAt])
+  @@index([status])
+}
+
+enum AgentStatus {
+  RUNNING
+  SUCCESS
+  ERROR
+  SKIPPED
+}
+
+// Abandoned Cart Tracking
+model AbandonedCart {
+  id               String    @id @default(cuid())
+  email            String
+  customerName     String?
+  items            Json      // Cart items
+  token            String    @unique @default(cuid())
+  cartTotal        Float     @default(0)
+  recovered        Boolean   @default(false)
+  reminderCount    Int       @default(0)
+  lastReminderSent DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([email])
+  @@index([recovered])
+  @@index([createdAt])
+}
+
+// ==========================================
+// MARKETING AUTOMATION SYSTEM
+// ==========================================
+
+// Marketing Automation Workflow
+model AutomationWorkflow {
+  id          String             @id @default(cuid())
+  name        String
+  description String?            @db.Text
+  trigger     AutomationTrigger
+  status      WorkflowStatus     @default(DRAFT)
+  config      Json               // Trigger configuration (conditions, delays, etc.)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  steps       AutomationStep[]
+  executions  WorkflowExecution[]
+
+  @@index([status])
+  @@index([trigger])
+}
+
+// Individual steps in a workflow
+model AutomationStep {
+  id         String         @id @default(cuid())
+  workflowId String
+  order      Int            @default(0)
+  type       StepType
+  config     Json           // Step-specific configuration
+  delayMins  Int            @default(0) // Delay before executing this step
+  createdAt  DateTime       @default(now())
+
+  workflow   AutomationWorkflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@index([workflowId])
+}
+
+// Track workflow executions
+model WorkflowExecution {
+  id          String          @id @default(cuid())
+  workflowId  String
+  contactId   String?         // Email contact if applicable
+  customerId  String?         // WooCommerce customer if applicable
+  status      ExecutionStatus @default(PENDING)
+  currentStep Int             @default(0)
+  data        Json?           // Context data for this execution
+  startedAt   DateTime        @default(now())
+  completedAt DateTime?
+  error       String?         @db.Text
+
+  workflow    AutomationWorkflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@index([workflowId])
+  @@index([status])
+  @@index([startedAt])
+}
+
+// Scheduled Social Media Posts
+model ScheduledPost {
+  id          String       @id @default(cuid())
+  platform    SocialPlatform
+  content     String       @db.Text
+  mediaUrls   Json?        // Array of image/video URLs
+  hashtags    Json?        // Array of hashtags
+  scheduledAt DateTime
+  status      PostStatus   @default(SCHEDULED)
+  publishedAt DateTime?
+  postId      String?      // External post ID after publishing
+  error       String?      @db.Text
+  metadata    Json?        // Platform-specific metadata
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([platform])
+  @@index([status])
+  @@index([scheduledAt])
+}
+
+// Promotional Campaigns
+model PromoCampaign {
+  id              String         @id @default(cuid())
+  name            String
+  description     String?        @db.Text
+  type            CampaignType
+  discountCode    String?        @unique
+  discountPercent Float?
+  discountAmount  Float?
+  minOrderValue   Float?
+  maxUses         Int?
+  usedCount       Int            @default(0)
+  targetAudience  Json?          // Audience segmentation rules
+  channels        Json           // Array of channels: email, sms, social, push
+  startDate       DateTime
+  endDate         DateTime
+  status          PromoCampaignStatus @default(DRAFT)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  analytics       CampaignAnalytics[]
+
+  @@index([status])
+  @@index([startDate, endDate])
+  @@index([discountCode])
+}
+
+// Campaign Performance Analytics
+model CampaignAnalytics {
+  id           String   @id @default(cuid())
+  campaignId   String
+  date         DateTime @db.Date
+  impressions  Int      @default(0)
+  clicks       Int      @default(0)
+  conversions  Int      @default(0)
+  revenue      Float    @default(0)
+  emailsSent   Int      @default(0)
+  emailsOpened Int      @default(0)
+  emailClicks  Int      @default(0)
+  socialReach  Int      @default(0)
+  socialEngage Int      @default(0)
+
+  campaign     PromoCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, date])
+  @@index([campaignId])
+  @@index([date])
+}
+
+// Customer Segments for targeting
+model CustomerSegment {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  rules       Json     // Segmentation rules (purchase history, behavior, etc.)
+  isActive    Boolean  @default(true)
+  memberCount Int      @default(0)
+  lastUpdated DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([isActive])
+}
+
+// Enums for Marketing Automation
+enum AutomationTrigger {
+  NEW_SUBSCRIBER
+  ABANDONED_CART
+  FIRST_PURCHASE
+  REPEAT_PURCHASE
+  INACTIVE_CUSTOMER
+  BIRTHDAY
+  PRODUCT_RESTOCK
+  PRICE_DROP
+  CUSTOM_EVENT
+  SCHEDULE
+}
+
+enum WorkflowStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum StepType {
+  SEND_EMAIL
+  SEND_SMS
+  WAIT
+  CONDITION
+  UPDATE_CONTACT
+  ADD_TAG
+  REMOVE_TAG
+  WEBHOOK
+  SOCIAL_POST
+  INTERNAL_NOTE
+}
+
+enum ExecutionStatus {
+  PENDING
+  RUNNING
+  WAITING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum SocialPlatform {
+  INSTAGRAM
+  FACEBOOK
+  TWITTER
+  PINTEREST
+  LINKEDIN
+}
+
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHING
+  PUBLISHED
+  FAILED
+}
+
+enum CampaignType {
+  FLASH_SALE
+  SEASONAL
+  LOYALTY_REWARD
+  WIN_BACK
+  PRODUCT_LAUNCH
+  CLEARANCE
+  HOLIDAY
+  CUSTOM
+}
+
+enum PromoCampaignStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+// ==========================================
+// CUSTOMER LOYALTY PROGRAM MODELS
+// ==========================================
+
+// Customer Loyalty Account
+model LoyaltyAccount {
+  id              String   @id @default(cuid())
+  customerId      String   @unique // WooCommerce customer ID
+  email           String   @unique
+  firstName       String?
+  lastName        String?
+  pointsBalance   Int      @default(0)
+  lifetimePoints  Int      @default(0)
+  lifetimeSpent   Float    @default(0)
+  tierId          String?
+  referralCode    String   @unique
+  referredBy      String?  // referralCode of referrer
+  referralCount   Int      @default(0)
+  lastActivityAt  DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  tier            LoyaltyTier?        @relation(fields: [tierId], references: [id])
+  transactions    LoyaltyTransaction[]
+  redemptions     LoyaltyRedemption[]
+
+  @@index([email])
+  @@index([customerId])
+  @@index([tierId])
+  @@index([referralCode])
+}
+
+// Points Transaction History
+model LoyaltyTransaction {
+  id          String            @id @default(cuid())
+  accountId   String
+  type        TransactionType
+  points      Int               // Positive for earned, negative for spent
+  description String
+  orderId     String?           // WooCommerce order ID if applicable
+  metadata    Json?
+  expiresAt   DateTime?         // Points expiration date
+  createdAt   DateTime          @default(now())
+
+  account     LoyaltyAccount    @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId])
+  @@index([type])
+  @@index([orderId])
+  @@index([createdAt])
+}
+
+// Loyalty Tiers (Bronze, Silver, Gold, Platinum)
+model LoyaltyTier {
+  id                String   @id @default(cuid())
+  name              String   @unique
+  slug              String   @unique
+  minPoints         Int      // Minimum lifetime points to reach this tier
+  pointsMultiplier  Float    @default(1.0)  // 1.5x means 50% bonus points
+  discountPercent   Float    @default(0)    // Tier-specific discount
+  freeShipping      Boolean  @default(false)
+  earlyAccess       Boolean  @default(false) // Early access to sales
+  birthdayBonus     Int      @default(0)    // Extra birthday points
+  color             String   @default("#888888") // For UI display
+  icon              String?  // Icon name or URL
+  benefits          Json?    // Additional benefits as JSON
+  order             Int      @default(0)    // Display order
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  accounts          LoyaltyAccount[]
+
+  @@index([minPoints])
+}
+
+// Available Rewards for Redemption
+model LoyaltyReward {
+  id            String       @id @default(cuid())
+  name          String
+  description   String?      @db.Text
+  pointsCost    Int
+  type          RewardType
+  value         Float?       // Discount amount or percentage
+  discountCode  String?      // Auto-generated WooCommerce coupon
+  productId     String?      // For free product rewards
+  minOrderValue Float?       // Minimum order to use reward
+  maxUses       Int?         // Total available redemptions
+  usedCount     Int          @default(0)
+  isActive      Boolean      @default(true)
+  validDays     Int          @default(30) // Days until reward expires after redemption
+  imageUrl      String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  redemptions   LoyaltyRedemption[]
+
+  @@index([type])
+  @@index([isActive])
+  @@index([pointsCost])
+}
+
+// Redemption Records
+model LoyaltyRedemption {
+  id          String           @id @default(cuid())
+  accountId   String
+  rewardId    String
+  pointsSpent Int
+  status      RedemptionStatus @default(PENDING)
+  couponCode  String?          // Generated coupon code
+  usedAt      DateTime?
+  expiresAt   DateTime
+  createdAt   DateTime         @default(now())
+
+  account     LoyaltyAccount   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  reward      LoyaltyReward    @relation(fields: [rewardId], references: [id])
+
+  @@index([accountId])
+  @@index([rewardId])
+  @@index([status])
+  @@index([couponCode])
+}
+
+// Loyalty Program Settings
+model LoyaltySettings {
+  id                    String   @id @default("default")
+  pointsPerDollar       Int      @default(10)   // Points earned per dollar spent
+  signupBonus           Int      @default(100)  // Points for new signup
+  referralBonusReferrer Int      @default(500)  // Points for referrer
+  referralBonusReferred Int      @default(250)  // Points for referred friend
+  reviewBonus           Int      @default(50)   // Points for leaving a review
+  birthdayBonus         Int      @default(100)  // Birthday bonus points
+  pointsExpireMonths    Int      @default(12)   // Points expire after X months (0 = never)
+  minRedemptionPoints   Int      @default(100)  // Minimum points to redeem
+  isActive              Boolean  @default(true)
+  updatedAt             DateTime @updatedAt
+}
+
+// Enums for Loyalty
+enum TransactionType {
+  PURCHASE        // Points from order
+  SIGNUP          // Welcome bonus
+  REFERRAL_MADE   // Referred someone
+  REFERRAL_BONUS  // Signed up via referral
+  REVIEW          // Left a product review
+  BIRTHDAY        // Birthday bonus
+  BONUS           // Manual bonus from admin
+  REDEMPTION      // Points spent on reward
+  EXPIRED         // Points expired
+  ADJUSTMENT      // Admin adjustment
+  TIER_BONUS      // Bonus for reaching tier
+}
+
+enum RewardType {
+  FIXED_DISCOUNT      // $X off order
+  PERCENT_DISCOUNT    // X% off order
+  FREE_SHIPPING       // Free shipping
+  FREE_PRODUCT        // Free product
+  GIFT_CARD           // Store credit
+  EXCLUSIVE_ACCESS    // Early access to products
+}
+
+enum RedemptionStatus {
+  PENDING   // Redeemed but not used
+  USED      // Coupon has been used
+  EXPIRED   // Reward expired
+  CANCELLED // Manually cancelled
+}
+
 // Note: WordPress integration will be added once database connection is resolved

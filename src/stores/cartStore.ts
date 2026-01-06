@@ -180,6 +180,9 @@ export const useCartStore = create<CartStore>()(
       },
 
       updateQuantity: async (id, quantity) => {
+        // Validate quantity bounds
+        const validQuantity = Math.max(1, Math.min(quantity, 99));
+        
         set({ isLoading: true });
         try {
           const { items } = get();
@@ -189,7 +192,11 @@ export const useCartStore = create<CartStore>()(
             return;
           }
 
-          const wcCart = await cartService.updateItem(item.key, quantity);
+          // Check max quantity if specified
+          const maxQty = item.maxQuantity || 99;
+          const finalQuantity = Math.min(validQuantity, maxQty);
+
+          const wcCart = await cartService.updateItem(item.key, finalQuantity);
           set({ ...mapWCCartToState(wcCart), isLoading: false });
         } catch (error) {
           console.error('Failed to update quantity:', error);

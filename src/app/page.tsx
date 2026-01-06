@@ -9,16 +9,57 @@ import ModernCategories from '@/components/sections/ModernCategories';
 import TagFilterSection from '@/components/sections/TagFilterSection';
 import SeamlessSection from '@/components/ui/SeamlessSection';
 import FAQSchema from '@/components/seo/FAQSchema';
+import ProductRecommendations from '@/components/shop/ProductRecommendations';
+import Skeleton from '@/components/ui/Skeleton';
 
 import type { Metadata } from 'next';
 
-const AllProductsShowcase = dynamic(() => import('@/components/sections/AllProductsShowcase'));
-const CustomerTestimonialsSlider = dynamic(() => import('@/components/sections/CustomerTestimonialsSlider'));
-const Features = dynamic(() => import('@/components/sections/Features'));
-const BlogPreview = dynamic(() => import('@/components/sections/BlogPreview'));
-const YouTubeShowcase = dynamic(() => import('@/components/sections/YouTubeShowcase'));
-const FinalCTA = dynamic(() => import('@/components/sections/FinalCTA'));
-const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
+// Loading skeleton for product sections
+const ProductSectionSkeleton = () => (
+  <div className="py-12 px-4">
+    <Skeleton className="h-8 w-48 mx-auto mb-8" />
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+      {[...Array(4)].map((_, i) => (
+        <Skeleton key={i} className="h-64 w-full" />
+      ))}
+    </div>
+  </div>
+);
+
+// Loading skeleton for text-based sections
+const TextSectionSkeleton = () => (
+  <div className="py-12 px-4 max-w-4xl mx-auto">
+    <Skeleton className="h-8 w-64 mx-auto mb-6" />
+    <div className="space-y-4">
+      {[...Array(3)].map((_, i) => (
+        <Skeleton key={i} className="h-16 w-full" />
+      ))}
+    </div>
+  </div>
+);
+
+// Dynamic imports with loading states
+const AllProductsShowcase = dynamic(() => import('@/components/sections/AllProductsShowcase'), {
+  loading: () => <ProductSectionSkeleton />,
+});
+const CustomerTestimonialsSlider = dynamic(() => import('@/components/sections/CustomerTestimonialsSlider'), {
+  loading: () => <TextSectionSkeleton />,
+});
+const Features = dynamic(() => import('@/components/sections/Features'), {
+  loading: () => <TextSectionSkeleton />,
+});
+const BlogPreview = dynamic(() => import('@/components/sections/BlogPreview'), {
+  loading: () => <ProductSectionSkeleton />,
+});
+const YouTubeShowcase = dynamic(() => import('@/components/sections/YouTubeShowcase'), {
+  loading: () => <ProductSectionSkeleton />,
+});
+const FinalCTA = dynamic(() => import('@/components/sections/FinalCTA'), {
+  loading: () => <TextSectionSkeleton />,
+});
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
+  loading: () => <TextSectionSkeleton />,
+});
 const NewsletterPopup = dynamic(() => import('@/components/ui/NewsletterPopup'), { ssr: false });
 
 /*
@@ -138,6 +179,13 @@ export default function Home() {
 
       {/* 3. All Products Showcase */}
       <AllProductsShowcase />
+
+      {/* 3.5 AI-Powered Recommendations */}
+      <ProductRecommendations 
+        title="Picked Just For You"
+        subtitle="Personalized recommendations based on your interests"
+        limit={4}
+      />
 
       {/* 4. Plants Showcase - REMOVED as per request */}
       {/* <PlantsShowcase /> */}

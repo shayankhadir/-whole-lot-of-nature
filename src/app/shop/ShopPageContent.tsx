@@ -130,7 +130,8 @@ export default function ShopPageContent() {
 
     // Rating filter
     filtered = filtered.filter(product => {
-      const r = product.average_rating ?? 0;
+      const rating = product.average_rating;
+      const r = typeof rating === 'number' ? rating : (rating ? parseFloat(rating) : 0);
       return r >= minRating;
     });
 
@@ -172,7 +173,9 @@ export default function ShopPageContent() {
         case 'newest':
           return new Date(b.date_created || 0).getTime() - new Date(a.date_created || 0).getTime();
         case 'best-rating':
-          return (b.average_rating || 0) - (a.average_rating || 0);
+          const ratingA = typeof a.average_rating === 'number' ? a.average_rating : parseFloat(String(a.average_rating || 0));
+          const ratingB = typeof b.average_rating === 'number' ? b.average_rating : parseFloat(String(b.average_rating || 0));
+          return ratingB - ratingA;
         default:
           return 0;
       }

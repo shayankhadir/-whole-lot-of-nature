@@ -13,29 +13,8 @@ import { ShieldCheckIcon, TruckIcon, ArrowPathIcon } from '@heroicons/react/24/o
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Lens } from '@/components/ui/lens';
 import { cleanProductDescription } from '@/lib/utils';
-
-import type { Metadata } from 'next';
-
-const metadata: Metadata = {
-  title: 'Buy Premium Plants Online | Whole Lot of Nature',
-  description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
-  openGraph: {
-    title: 'Buy Premium Plants Online | Whole Lot of Nature',
-    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
-    images: ['https://wholelotofnature.com/images/og-image.jpg'],
-    url: 'https://wholelotofnature.com/shop',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Buy Premium Plants Online | Whole Lot of Nature',
-    description: 'Shop premium indoor and outdoor plants online. Expert plant care, fast delivery across Bangalore. Soil mixes, pots, and gardening supplies available.',
-    images: ['https://wholelotofnature.com/images/og-image.jpg'],
-  },
-  alternates: {
-    canonical: 'https://wholelotofnature.com/shop',
-  },
-};
-
+import ProductRecommendations from '@/components/shop/ProductRecommendations';
+import ProductJsonLd from '@/components/seo/ProductJsonLd';
 
 
 export default function ProductPage() {
@@ -125,6 +104,23 @@ export default function ProductPage() {
 
   return (
     <div className="min-h-screen bg-[#030a06] relative overflow-hidden">
+      {/* SEO Structured Data */}
+      <ProductJsonLd
+        name={product.name}
+        description={product.short_description || product.description}
+        sku={product.sku || String(product.id)}
+        images={product.images}
+        price={parseFloat(product.price) || 0}
+        regularPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
+        availability={product.stock_status === 'instock' ? 'InStock' : 'OutOfStock'}
+        slug={product.slug}
+        category={product.categories?.[0]?.name}
+        aggregateRating={product.average_rating && parseFloat(String(product.average_rating)) > 0 ? {
+          ratingValue: parseFloat(String(product.average_rating)),
+          reviewCount: product.rating_count || 1
+        } : undefined}
+      />
+      
       <AnimatedBackground />
       
       {/* Subtle leaf background */}
@@ -389,6 +385,13 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+
+        {/* AI-Powered Recommendations */}
+        <ProductRecommendations 
+          currentProductId={String(product.id)}
+          title="Perfect For You"
+          subtitle="Personalized picks based on your browsing"
+        />
       </div>
     </div>
   );

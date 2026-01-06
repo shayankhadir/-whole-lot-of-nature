@@ -4,18 +4,30 @@ const nextConfig = {
   swcMinify: true,
   compress: true,
   poweredByHeader: false,
-  // Treat build errors as warnings to allow Vercel deployment
+  
+  // Performance optimizations
   experimental: {
     missingSuspenseWithCSRBailout: false,
-    optimizeCss: true, // Enable CSS optimization
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react', '@heroicons/react', 'framer-motion'],
+    instrumentationHook: true,
   },
+  
   typescript: {
     ignoreBuildErrors: false,
   },
   eslint: {
     ignoreDuringBuilds: false,
   },
+  
   images: {
+    // Modern image formats
+    formats: ['image/avif', 'image/webp'],
+    // Device sizes for responsive images
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Minimize layout shift
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     remotePatterns: [
       {
         protocol: 'https',
@@ -32,6 +44,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
         port: '',
         pathname: '/**',
       },

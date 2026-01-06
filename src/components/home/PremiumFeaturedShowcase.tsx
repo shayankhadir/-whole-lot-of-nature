@@ -32,7 +32,9 @@ const FALLBACK_FEATURED: FeaturedProduct[] = DEMO_PRODUCTS.filter((product) => p
   regular_price: product.regular_price,
   image: product.images[0]?.src || '/images/placeholder.jpg',
   category: product.categories[0]?.name || 'Plants',
-  rating: product.average_rating,
+  rating: typeof product.average_rating === 'number' 
+    ? product.average_rating 
+    : (product.average_rating ? parseFloat(product.average_rating) : undefined),
   reviewCount: product.rating_count
 }));
 

@@ -2,6 +2,7 @@ export interface Product {
   id: number;
   name: string;
   slug: string;
+  sku?: string;
   price: string;
   regular_price: string;
   sale_price: string;
@@ -12,8 +13,9 @@ export interface Product {
   attributes: ProductAttribute[];
   variations: number[];
   in_stock: boolean;
+  stock_status?: string;
   stock_quantity: number;
-  average_rating?: number;
+  average_rating?: number | string;
   rating_count?: number;
   tags?: ProductTag[];
   date_created?: string;

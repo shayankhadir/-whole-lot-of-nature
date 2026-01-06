@@ -4,8 +4,15 @@ import { useState, useEffect } from 'react';
 import { useCartStore } from '@/stores/cartStore';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Trash2, Plus, Minus, Lock, ShieldCheck, Truck } from 'lucide-react';
+import { Trash2, Plus, Minus, Lock, ShieldCheck, Truck, AlertCircle, RefreshCw } from 'lucide-react';
 import Script from 'next/script';
+import TrustBadges, { PaymentLogos, SecurityBadge } from '@/components/checkout/TrustBadges';
+import { 
+  logCheckoutEvent, 
+  logCheckoutSuccess, 
+  logCheckoutError, 
+  getErrorMessage 
+} from '@/lib/utils/checkoutLogger';
 
 interface CheckoutForm {
   firstName: string;
@@ -26,6 +33,7 @@ export default function CheckoutPage() {
   const [couponCode, setCouponCode] = useState('');
   const [couponLoading, setCouponLoading] = useState(false);
   const [couponMessage, setCouponMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState<CheckoutForm>({
     firstName: '',
@@ -82,18 +90,38 @@ export default function CheckoutPage() {
     if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Valid email is required';
     if (!formData.phone || !/^[6-9]\d{9}$/.test(formData.phone)) newErrors.phone = 'Valid 10-digit phone number required';
     if (!formData.address) newErrors.address = 'Address is required';
+    if (!formData.city) newErrors.city = 'City is required';
+    if (!formData.state) newErrors.state = 'State is required';
     if (!formData.pincode || !/^\d{6}$/.test(formData.pincode)) newErrors.pincode = 'Valid 6-digit pincode required';
     
     setErrors(newErrors);
+    
+    if (Object.keys(newErrors).length > 0) {
+      logCheckoutError('FORM_VALIDATION', 'Validation failed', { fields: Object.keys(newErrors) });
+    }
+    
     return Object.keys(newErrors).length === 0;
   };
 
   const handlePayment = async () => {
-    if (!validateForm()) return;
+    // Log checkout started
+    logCheckoutEvent('CHECKOUT_STARTED', true, { itemCount: items.length, total });
+    
+    if (!validateForm()) {
+      setPaymentError('Please fill in all required fields correctly.');
+      return;
+    }
+    
+    logCheckoutSuccess('FORM_VALIDATION', { email: formData.email });
     
     setLoading(true);
+    setPaymentError(null);
+    const startTime = Date.now();
+    
     try {
       // 1. Create Order
+      logCheckoutEvent('ORDER_CREATION', true, { itemCount: items.length });
+      
       const response = await fetch('/api/payments/cashfree/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -132,10 +160,15 @@ export default function CheckoutPage() {
       const data = await response.json();
 
       if (!data.success) {
+        logCheckoutError('ORDER_CREATION', data.message || 'Order creation failed', { response: data });
         throw new Error(data.message || 'Failed to create order');
       }
+      
+      logCheckoutSuccess('ORDER_CREATION', { orderId: data.order_id }, startTime);
 
       // 2. Initialize Payment
+      logCheckoutEvent('PAYMENT_INITIATED', true, { orderId: data.order_id });
+      
       if (cashfree) {
         const checkoutOptions = {
           paymentSessionId: data.payment_session_id,
@@ -143,13 +176,16 @@ export default function CheckoutPage() {
         };
         cashfree.checkout(checkoutOptions);
       } else {
-        console.error('Cashfree SDK not initialized');
-        alert('Payment system loading. Please try again in a moment.');
+        logCheckoutError('PAYMENT_INITIATED', 'Cashfree SDK not loaded');
+        setPaymentError('Payment system is loading. Please wait a moment and try again.');
       }
 
     } catch (error: any) {
-      console.error('Payment Error:', error);
-      alert(error.message || 'Something went wrong. Please try again.');
+      logCheckoutError('PAYMENT_INITIATED', error, { total, itemCount: items.length });
+      
+      // User-friendly error message
+      const userMessage = getErrorMessage(error?.code, error.message);
+      setPaymentError(userMessage);
     } finally {
       setLoading(false);
     }
@@ -184,7 +220,12 @@ export default function CheckoutPage() {
       />
       
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-display text-white mb-8 text-center">Secure Checkout</h1>
+        <h1 className="text-3xl md:text-4xl font-display text-white mb-4 text-center">Secure Checkout</h1>
+        
+        {/* Trust Badges Row */}
+        <div className="mb-8">
+          <TrustBadges variant="compact" className="mb-4" />
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column: Form */}
@@ -197,32 +238,38 @@ export default function CheckoutPage() {
               
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm text-emerald-100/60 mb-1">First Name</label>
+                  <label htmlFor="firstName" className="block text-sm text-emerald-100/60 mb-1">First Name</label>
                   <input
+                    id="firstName"
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    placeholder="Enter first name"
                     className={`w-full bg-black/20 border ${errors.firstName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                   />
                   {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm text-emerald-100/60 mb-1">Last Name</label>
+                  <label htmlFor="lastName" className="block text-sm text-emerald-100/60 mb-1">Last Name</label>
                   <input
+                    id="lastName"
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    placeholder="Enter last name"
                     className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm text-emerald-100/60 mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm text-emerald-100/60 mb-1">Email</label>
                 <input
+                  id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  placeholder="you@example.com"
                   className={`w-full bg-black/20 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                 />
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -248,11 +295,13 @@ export default function CheckoutPage() {
               </h2>
               
               <div className="mb-4">
-                <label className="block text-sm text-emerald-100/60 mb-1">Address</label>
+                <label htmlFor="address" className="block text-sm text-emerald-100/60 mb-1">Address</label>
                 <textarea
+                  id="address"
                   value={formData.address}
                   onChange={(e) => setFormData({...formData, address: e.target.value})}
                   rows={3}
+                  placeholder="Enter your full address"
                   className={`w-full bg-black/20 border ${errors.address ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                 />
                 {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
@@ -260,20 +309,24 @@ export default function CheckoutPage() {
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm text-emerald-100/60 mb-1">City</label>
+                  <label htmlFor="city" className="block text-sm text-emerald-100/60 mb-1">City</label>
                   <input
+                    id="city"
                     type="text"
                     value={formData.city}
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
+                    placeholder="Your city"
                     className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-emerald-100/60 mb-1">Pincode</label>
+                  <label htmlFor="pincode" className="block text-sm text-emerald-100/60 mb-1">Pincode</label>
                   <input
+                    id="pincode"
                     type="text"
                     value={formData.pincode}
                     onChange={(e) => setFormData({...formData, pincode: e.target.value})}
+                    placeholder="560001"
                     className={`w-full bg-black/20 border ${errors.pincode ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                   />
                   {errors.pincode && <p className="text-red-500 text-xs mt-1">{errors.pincode}</p>}
@@ -314,15 +367,15 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-2 py-1">
-                        <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} className="text-white/60 hover:text-white">
+                        <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} className="text-white/60 hover:text-white" aria-label={`Decrease quantity of ${item.name}`}>
                           <Minus className="w-3 h-3" />
                         </button>
                         <span className="text-white text-sm w-4 text-center">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="text-white/60 hover:text-white">
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="text-white/60 hover:text-white" aria-label={`Increase quantity of ${item.name}`}>
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-                      <button onClick={() => removeItem(item.id)} className="text-red-400 hover:text-red-300">
+                      <button onClick={() => removeItem(item.id)} className="text-red-400 hover:text-red-300" aria-label={`Remove ${item.name} from cart`}>
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
@@ -364,6 +417,7 @@ export default function CheckoutPage() {
                           <button 
                             onClick={() => handleRemoveCoupon(coupon.code)}
                             className="text-white/40 hover:text-white transition-colors"
+                            aria-label={`Remove coupon ${coupon.code}`}
                           >
                             <Trash2 className="w-3 h-3" />
                           </button>
@@ -398,6 +452,23 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
+              {/* Payment Error Display */}
+              {paymentError && (
+                <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="text-red-400 text-sm">{paymentError}</p>
+                    <button 
+                      onClick={() => setPaymentError(null)}
+                      className="text-red-300 text-xs mt-2 flex items-center gap-1 hover:text-white transition-colors"
+                    >
+                      <RefreshCw className="w-3 h-3" />
+                      Dismiss and try again
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <button
                 onClick={handlePayment}
                 disabled={loading}
@@ -413,12 +484,20 @@ export default function CheckoutPage() {
                 )}
               </button>
               
-              <p className="text-center text-xs text-emerald-100/40 mt-4 flex items-center justify-center gap-1">
-                <ShieldCheck className="w-3 h-3" />
-                Secured by Cashfree Payments
-              </p>
+              <div className="mt-4 space-y-3">
+                <p className="text-center text-xs text-emerald-100/40 flex items-center justify-center gap-1">
+                  <ShieldCheck className="w-3 h-3" />
+                  Secured by Cashfree Payments
+                </p>
+                <PaymentLogos />
+              </div>
             </div>
           </div>
+        </div>
+        
+        {/* Bottom Trust Badges */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <TrustBadges variant="grid" className="max-w-2xl mx-auto" />
         </div>
       </div>
     </div>

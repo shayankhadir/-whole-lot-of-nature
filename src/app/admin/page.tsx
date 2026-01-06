@@ -19,7 +19,8 @@ import {
   Settings,
   RefreshCw,
   PenTool,
-  Search
+  Search,
+  Mail
 } from 'lucide-react';
 
 const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default function AdminDashboard() {
     { id: 'growth', name: 'Growth Agent (Lead Gen & Sales)', status: 'idle' },
     { id: 'trends', name: 'Trend Agent (Content & SEO)', status: 'idle' },
     { id: 'content', name: 'Content Agent (Blog & Social)', status: 'idle' },
+    { id: 'email', name: 'Email Marketing (Automation)', status: 'idle' },
     { id: 'design-audit', name: 'Design Bot (Audit)', status: 'idle' },
     { id: 'design-fix', name: 'Design Bot (Auto-Fix)', status: 'idle' },
     { id: 'seo', name: 'SEO Agent (Optimization)', status: 'idle' },
@@ -93,6 +95,9 @@ export default function AdminDashboard() {
         case 'content':
           endpoint = '/api/generate-blog-post';
           body = { topic: blogTopic, keyword: blogKeyword };
+          break;
+        case 'email':
+          endpoint = '/api/cron/abandoned-cart';
           break;
         case 'design-audit':
           endpoint = '/api/design-audit?action=audit';
@@ -333,6 +338,75 @@ export default function AdminDashboard() {
             </div>
           </div>
 
+          {/* Email Marketing */}
+          <div className="bg-white/5 border border-cyan-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-cyan-500/50 transition-colors">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-cyan-500/20 rounded-xl">
+                  <Mail className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white antialiased">Email Marketing</h3>
+                  <p className="text-white/60 text-sm">Automated email campaigns & recovery</p>
+                </div>
+              </div>
+              <span className={`text-xs font-medium px-3 py-1 rounded-full ${getStatusBadge(agents.find(a => a.id === 'email')?.status || 'idle')}`}>
+                {agents.find(a => a.id === 'email')?.status || 'idle'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center gap-2 text-sm text-white/50">
+                {getStatusIcon(agents.find(a => a.id === 'email')?.status || 'idle')}
+                <span>{agents.find(a => a.id === 'email')?.message || 'Ready to run'}</span>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => runAgent('email')}
+                  disabled={agents.find(a => a.id === 'email')?.status === 'running'}
+                  className="flex items-center gap-1 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition"
+                >
+                  <Play className="w-4 h-4" /> Run
+                </button>
+                <Link
+                  href="/admin/email"
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Marketing Automation */}
+          <div className="bg-white/5 border border-purple-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-purple-500/50 transition-colors">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-purple-500/20 rounded-xl">
+                  <Zap className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white antialiased">Marketing Automation</h3>
+                  <p className="text-white/60 text-sm">Workflows, campaigns & social scheduling</p>
+                </div>
+              </div>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-400">
+                Active
+              </span>
+            </div>
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center gap-2 text-sm text-white/50">
+                <CheckCircle className="w-4 h-4 text-purple-400" />
+                <span>Automation system ready</span>
+              </div>
+              <Link
+                href="/admin/marketing"
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition"
+              >
+                Dashboard
+              </Link>
+            </div>
+          </div>
+
           {/* SEO Agent */}
           <div className="bg-white/5 border border-orange-500/30 rounded-2xl p-6 backdrop-blur-sm hover:border-orange-500/50 transition-colors">
             <div className="flex items-start justify-between mb-4">
@@ -457,13 +531,34 @@ export default function AdminDashboard() {
             <FileText className="w-5 h-5 text-[#66BB6A]" />
             Quick Actions
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <Link
               href="/admin/pages"
               className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition group"
             >
               <FileText className="w-5 h-5 text-white/60 group-hover:text-[#66BB6A]" />
               <span className="text-white/80 group-hover:text-white">Site Map</span>
+            </Link>
+            <Link
+              href="/admin/email"
+              className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition group"
+            >
+              <Mail className="w-5 h-5 text-white/60 group-hover:text-cyan-400" />
+              <span className="text-white/80 group-hover:text-white">Emails</span>
+            </Link>
+            <Link
+              href="/admin/logs"
+              className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition group"
+            >
+              <BarChart3 className="w-5 h-5 text-white/60 group-hover:text-purple-400" />
+              <span className="text-white/80 group-hover:text-white">Logs</span>
+            </Link>
+            <Link
+              href="/admin/marketing"
+              className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition group"
+            >
+              <Zap className="w-5 h-5 text-white/60 group-hover:text-purple-400" />
+              <span className="text-white/80 group-hover:text-white">Marketing</span>
             </Link>
             <Link
               href="/shop"

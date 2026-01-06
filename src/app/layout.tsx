@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import QueryProvider from "@/components/providers/QueryClientProvider";
@@ -12,6 +12,16 @@ import { LoadingProvider } from "@/contexts/LoadingContext";
 import PageLoadingScreen from "@/components/loading/PageLoadingScreen";
 import { RouteTransitionProvider } from "@/components/loading/RouteTransitionProvider";
 import { Suspense } from "react";
+import PlantsyChatWidget from "@/components/agents/PlantsyChatWidget";
+import WebVitalsReporter from "@/components/analytics/WebVitalsReporter";
+
+// Viewport configuration for better mobile UX
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0d3512',
+};
 
 // Load brand typography: Inter (body), Montserrat (headings), and Playfair Display (display)
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -100,6 +110,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable} antialiased`}>
+      <head>
+        {/* Preconnect to critical external domains for faster resource loading */}
+        <link rel="preconnect" href="https://wholelotofnature.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+      </head>
       <body className="font-sans">
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -253,9 +273,11 @@ export default function RootLayout({
                   </Layout>
                 </RouteTransitionProvider>
               </Suspense>
+              <PlantsyChatWidget />
             </LoadingProvider>
           </QueryProvider>
         </NextAuthProvider>
+        <WebVitalsReporter />
       </body>
     </html>
   );

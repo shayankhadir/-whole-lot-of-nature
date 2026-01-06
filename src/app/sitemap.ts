@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { woocommerceClient as woocommerce } from '@/lib/services/woocommerceService';
 import { SEO_PAGES } from '@/lib/seo/seoPages';
+import { getPosts } from '@/lib/api/wordpress';
 
 type WCProductLite = { slug: string; date_modified?: string };
 type WCCategoryLite = { slug: string };
@@ -10,18 +11,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   // Static routes - always include these
   const routes = [
-    '',
-    '/shop',
-    '/about',
-    '/contact',
-    '/cart',
-    '/blog',
-    '/seo-pages',
+    { path: '', priority: 1.0, changeFreq: 'daily' as const },
+    { path: '/shop', priority: 0.9, changeFreq: 'daily' as const },
+    { path: '/about', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/contact', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/blog', priority: 0.8, changeFreq: 'daily' as const },
+    { path: '/cart', priority: 0.5, changeFreq: 'weekly' as const },
+    { path: '/seo-pages', priority: 0.6, changeFreq: 'weekly' as const },
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: `${baseUrl}${route.path}`,
     lastModified: new Date(),
-    changeFrequency: 'daily' as const,
-    priority: 1,
+    changeFrequency: route.changeFreq,
+    priority: route.priority,
   }));
 
   const seoPageRoutes: MetadataRoute.Sitemap = SEO_PAGES.map((p) => ({
@@ -33,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let productRoutes: MetadataRoute.Sitemap = [];
   let categoryRoutes: MetadataRoute.Sitemap = [];
+  let blogRoutes: MetadataRoute.Sitemap = [];
 
   try {
     // Get all products
@@ -74,5 +76,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Sitemap: Failed to fetch categories', error);
   }
 
-  return [...routes, ...seoPageRoutes, ...productRoutes, ...categoryRoutes];
+  // Fetch blog posts
+  try {
+    const posts = await getPosts({ per_page: 50 });
+    blogRoutes = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.modified ? new Date(post.modified) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch blog posts', error);
+  }
+
+  return [...routes, ...seoPageRoutes, ...productRoutes, ...categoryRoutes, ...blogRoutes];
 }

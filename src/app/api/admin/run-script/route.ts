@@ -2,11 +2,32 @@ import { NextResponse } from 'next/server';
 import { exec } from 'child_process';
 import path from 'path';
 import { promisify } from 'util';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth/authOptions';
 
 const execAsync = promisify(exec);
 
+// List of authorized admin emails
+const ADMIN_EMAILS = [
+  process.env.ADMIN_EMAIL,
+  'admin@wholelotofnature.com',
+].filter(Boolean);
+
 export async function POST(req: Request) {
   try {
+    // CRITICAL: Verify admin authentication
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.email) {
+      console.warn('Unauthorized script execution attempt: No session');
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+    }
+
+    if (!ADMIN_EMAILS.includes(session.user.email)) {
+      console.warn(`Unauthorized script execution attempt by: ${session.user.email}`);
+      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+    }
+
     const { script } = await req.json();
     let scriptPath = '';
     let args = '';

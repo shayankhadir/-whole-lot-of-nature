@@ -9,6 +9,7 @@ import type { BlogPost } from '@/lib/services/woocommerceService';
 import { getPostBySlug, getPosts } from '@/lib/api/wordpress';
 import SectionHeader from '@/components/content/SectionHeader';
 import { CTASection } from '@/components/content/CTAButton';
+import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
 
 import type { Metadata } from 'next';
 
@@ -124,6 +125,17 @@ export default function BlogPostPage() {
 
   return (
     <div className="bg-[#0d3512]">
+      {/* SEO Structured Data */}
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt}
+        slug={post.slug}
+        publishedTime={post.date}
+        authorName={post.author_name}
+        featuredImage={post.featured_image}
+        tags={post.tags}
+      />
+      
       {/* Article Hero */}
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">

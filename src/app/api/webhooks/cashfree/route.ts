@@ -5,13 +5,13 @@ import { WooCommerceService } from '@/lib/services/woocommerceService';
 export async function POST(req: Request) {
   try {
     // 1. Get the raw body and signature
-    const body = await req.json();
+    const rawBody = await req.text();
+    const body = JSON.parse(rawBody);
     const signature = req.headers.get('x-webhook-signature');
+    const timestamp = req.headers.get('x-webhook-timestamp') || '';
 
     // 2. Verify Signature (Important for security)
-    // Note: cashfreeService.verifySignature currently returns true (placeholder)
-    // You should implement actual verification in production
-    if (!signature || !cashfreeService.verifySignature(body, signature)) {
+    if (!signature || !cashfreeService.verifySignature(rawBody, signature, timestamp)) {
       return NextResponse.json(
         { success: false, message: 'Invalid signature' },
         { status: 401 }

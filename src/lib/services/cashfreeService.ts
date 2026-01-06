@@ -97,20 +97,56 @@ export class CashfreeService {
     }
   }
 
-  verifySignature(payload: any, signature: string): boolean {
+  verifySignature(rawBody: string, signature: string, timestamp: string): boolean {
     // Cashfree webhook signature verification
-    // The signature is usually in the x-webhook-signature header
-    // And the payload is the raw body
+    // Uses HMAC-SHA256 with the raw body and timestamp
     
-    // Note: For simplicity in this implementation, we're trusting the webhook
-    // In a real production app, you MUST verify the signature using the secret key
-    // const generatedSignature = crypto
-    //   .createHmac('sha256', this.config.secretKey)
-    //   .update(JSON.stringify(payload))
-    //   .digest('base64');
+    if (!signature || !timestamp) {
+      console.error('Missing signature or timestamp for webhook verification');
+      return false;
+    }
+
+    try {
+      // Cashfree signature format: timestamp + rawBody
+      const signedPayload = timestamp + rawBody;
+      
+      const generatedSignature = crypto
+        .createHmac('sha256', this.config.secretKey)
+        .update(signedPayload)
+        .digest('base64');
+      
+      // Constant-time comparison to prevent timing attacks
+      const isValid = crypto.timingSafeEqual(
+        Buffer.from(generatedSignature),
+        Buffer.from(signature)
+      );
+      
+      if (!isValid) {
+        console.error('Webhook signature verification failed');
+      }
+      
+      return isValid;
+    } catch (error) {
+      console.error('Signature verification error:', error);
+      return false;
+    }
+  }
+
+  // Fallback for legacy signature format (if needed)
+  verifySignatureLegacy(payload: any, signature: string): boolean {
+    if (!signature) return false;
     
-    // return generatedSignature === signature;
-    return true; 
+    try {
+      const generatedSignature = crypto
+        .createHmac('sha256', this.config.secretKey)
+        .update(JSON.stringify(payload))
+        .digest('base64');
+      
+      return generatedSignature === signature;
+    } catch (error) {
+      console.error('Legacy signature verification error:', error);
+      return false;
+    }
   }
 }
 

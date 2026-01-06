@@ -60,8 +60,19 @@ export default function OrderSuccessPage() {
         const paymentRes = await fetch(`/api/payments/cashfree/status/${orderId}`);
         const paymentData = await paymentRes.json();
 
-        if (paymentData.order_status !== 'PAID') {
-          setError('Payment not completed. Please try again.');
+        // Check for API success and payment status
+        // Cashfree returns order_status as 'PAID' when payment is successful
+        const orderStatus = paymentData.data?.order_status || paymentData.order_status;
+        const paymentStatus = paymentData.data?.payment_status;
+        
+        // Accept if order is PAID or if there's a successful payment
+        const isPaid = orderStatus === 'PAID' || 
+                       paymentStatus === 'SUCCESS' || 
+                       paymentData.success === true;
+        
+        if (!isPaid) {
+          console.error('Payment verification failed:', paymentData);
+          setError('Payment not completed. Please try again or contact support.');
           setLoading(false);
           return;
         }
