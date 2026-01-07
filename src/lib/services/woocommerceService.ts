@@ -1,16 +1,35 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
 
-// Initialize WooCommerce API with Legacy API (v2)
+// Check if WooCommerce credentials are properly set
+const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://wholelotofnature.com';
+const WC_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || '';
+const WC_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || '';
+
+// Log configuration status (for debugging)
+if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+  console.log('[WooCommerce Config]', {
+    url: WORDPRESS_URL,
+    hasKey: !!WC_CONSUMER_KEY,
+    hasSecret: !!WC_CONSUMER_SECRET,
+  });
+}
+
+// Initialize WooCommerce API with REST API v3
 const WooCommerce = new WooCommerceRestApi({
-  url: process.env.WORDPRESS_URL || 'https://wholelotofnature.com',
-  consumerKey: process.env.WC_CONSUMER_KEY || '',
-  consumerSecret: process.env.WC_CONSUMER_SECRET || '',
+  url: WORDPRESS_URL,
+  consumerKey: WC_CONSUMER_KEY,
+  consumerSecret: WC_CONSUMER_SECRET,
   version: 'wc/v3', // Updated to v3 for Reviews support
   queryStringAuth: true // For https
 });
 
 // Export singleton client to unify usage across the codebase
 export const woocommerceClient = WooCommerce;
+
+// Check if credentials are missing
+const hasValidCredentials = () => {
+  return !!WC_CONSUMER_KEY && !!WC_CONSUMER_SECRET;
+};
 
 export interface WooCommerceProduct {
   id: number;
@@ -294,6 +313,12 @@ export class WooCommerceService {
    */
   static async getProducts(limit?: number): Promise<WooCommerceProduct[]> {
     try {
+      // Check credentials first
+      if (!hasValidCredentials()) {
+        console.warn('[WooCommerce] Missing credentials - using fallback products');
+        return this.getSampleProducts();
+      }
+
       console.log('Attempting to fetch products from WooCommerce API...');
       
       const response = await WooCommerce.get('products', {
@@ -313,11 +338,17 @@ export class WooCommerceService {
       // Check if it's a connection error or API error
       const e = error as { response?: { status?: number; data?: unknown }; request?: unknown; message?: string };
       if (e.response) {
-        console.error('WooCommerce API Error:', e.response.status, e.response.data);
+        console.error('WooCommerce API Error:', {
+          status: e.response.status,
+          hasCredentials: hasValidCredentials(),
+          url: WORDPRESS_URL
+        });
       } else if (e.request) {
         console.error('WooCommerce Connection Error:', e.message);
       }
-      // Return sample products as fallback
+      
+      // Return sample products as fallback with a warning
+      console.warn('[WooCommerce] Falling back to sample products - check API credentials');
       return this.getSampleProducts();
     }
   }
@@ -327,6 +358,12 @@ export class WooCommerceService {
    */
   static async getProductBySlug(slug: string): Promise<WooCommerceProduct | null> {
     try {
+      // Check credentials first
+      if (!hasValidCredentials()) {
+        console.warn(`[WooCommerce] Missing credentials - cannot fetch product by slug: ${slug}`);
+        return null;
+      }
+
       const response = await WooCommerce.get('products', {
         slug: slug,
         per_page: 1
@@ -340,6 +377,10 @@ export class WooCommerceService {
       return null;
     } catch (error) {
       console.error(`Error fetching product by slug ${slug}:`, error);
+      const e = error as { response?: { status?: number }; message?: string };
+      if (e.response?.status === 401) {
+        console.error('[WooCommerce] Authentication failed - check WC_CONSUMER_KEY and WC_CONSUMER_SECRET');
+      }
       return null;
     }
   }

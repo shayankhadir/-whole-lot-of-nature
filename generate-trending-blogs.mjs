@@ -11,7 +11,7 @@ const trendingTopics = [
   {
     title: 'Indoor Plant Styling: How to Create a Green Wall in Your Living Room',
     keywords: ['indoor plants', 'plant styling', 'green wall', 'home decor'],
-    targetAudience: 'Home decorators and plant enthusiasts'
+    targetAudience: 'Home decorators and plant enthusiasts'YYYYYY              
   },
   {
     title: 'Winter Plant Care Guide: Keeping Your Plants Alive During Cold Months',

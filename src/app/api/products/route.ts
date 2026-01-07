@@ -20,6 +20,14 @@ export async function GET(request: NextRequest) {
     let products;
     const productLimit = perPage || limit;
 
+    // Log the request
+    console.log('[Products API] Request:', {
+      slug,
+      category,
+      search,
+      hasWooCommerceConfig: !!(process.env.WC_CONSUMER_KEY && process.env.WC_CONSUMER_SECRET)
+    });
+
     if (relatedTo) {
       // Fetch related products using the dedicated service method
       products = await WooCommerceService.getRelatedProducts(relatedTo, productLimit || 4);
@@ -69,11 +77,18 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error('Products API error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
     return NextResponse.json(
       { 
         success: false, 
         error: 'Failed to fetch products',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: errorMessage,
+        debug: process.env.NODE_ENV === 'development' ? {
+          hasWooCommerceKey: !!process.env.WC_CONSUMER_KEY,
+          hasWooCommerceSecret: !!process.env.WC_CONSUMER_SECRET,
+          wordPressUrl: process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL
+        } : undefined
       },
       { status: 500 }
     );
