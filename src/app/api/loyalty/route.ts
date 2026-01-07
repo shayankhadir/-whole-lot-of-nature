@@ -244,16 +244,36 @@ export async function POST(request: NextRequest) {
         }
 
         const settings = await loyaltyEngine.getSettings();
-        // Check if code exists (without revealing account details)
-        const tiers = await loyaltyEngine.getTiers();
         
-        return NextResponse.json({ 
-          success: true, 
-          data: {
-            valid: true,
-            bonusPoints: settings.referralBonusReferred
+        // Actually check if the referral code exists in the database
+        const { PrismaClient } = await import('@prisma/client');
+        const prisma = new PrismaClient();
+        
+        try {
+          const referrer = await prisma.loyaltyAccount.findUnique({
+            where: { referralCode: referralCode.toUpperCase().trim() }
+          });
+          
+          if (!referrer) {
+            return NextResponse.json({ 
+              success: true, 
+              data: {
+                valid: false,
+                message: 'Invalid referral code'
+              }
+            });
           }
-        });
+          
+          return NextResponse.json({ 
+            success: true, 
+            data: {
+              valid: true,
+              bonusPoints: settings.referralBonusReferred
+            }
+          });
+        } finally {
+          await prisma.$disconnect();
+        }
       }
 
       case 'earn-review': {

@@ -14,7 +14,7 @@ function verifyAdmin(request: NextRequest): boolean {
   const cronSecret = request.headers.get('x-cron-secret');
   
   return (
-    adminKey === process.env.ADMIN_API_KEY ||
+    adminKey === process.env.ADMIN_SECRET_KEY ||
     cronSecret === process.env.CRON_SECRET
   );
 }

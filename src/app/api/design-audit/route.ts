@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
   try {
     // Security Check
     const authHeader = request.headers.get('x-admin-key');
-    if (authHeader !== process.env.ADMIN_API_KEY) {
+    if (authHeader !== process.env.ADMIN_SECRET_KEY) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
