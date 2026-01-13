@@ -294,7 +294,7 @@ export default function AdminContentPage() {
               <h3 className="text-sm font-semibold text-white mb-3">💡 Tips for Great Content</h3>
               <ul className="space-y-2 text-sm text-white/60">
                 <li>• Use specific, long-tail keywords</li>
-                <li>• Include local terms like "Bangalore"</li>
+                <li>• Include local terms like &ldquo;Bangalore&rdquo;</li>
                 <li>• Focus on plant care problems</li>
                 <li>• Target seasonal gardening topics</li>
               </ul>
