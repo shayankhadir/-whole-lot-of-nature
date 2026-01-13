@@ -1,7 +1,7 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
 
 // Check if WooCommerce credentials are properly set
-const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://wholelotofnature.com';
+const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://admin.wholelotofnature.com';
 const WC_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || '';
 const WC_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || '';
 

@@ -4,8 +4,22 @@ import { WooCommerceService } from '@/lib/services/woocommerceService';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-export async function POST() {
+// Verify admin access
+function verifyAdmin(request: NextRequest): boolean {
+  const adminKey = request.headers.get('x-admin-key');
+  return adminKey === process.env.ADMIN_SECRET_KEY;
+}
+
+export async function POST(request: NextRequest) {
   try {
+    // Security check
+    if (!verifyAdmin(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     console.log('Starting inventory sync from WordPress/WooCommerce...');
 
     // Fetch all products from WooCommerce

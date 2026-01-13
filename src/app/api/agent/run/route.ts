@@ -44,8 +44,22 @@ function getAgent(strategyOverride?: AgentConfig['publishStrategy']): ScheduledT
   return agent;
 }
 
+// Verify admin access
+function verifyAdmin(request: NextRequest): boolean {
+  const adminKey = request.headers.get('x-admin-key');
+  return adminKey === process.env.ADMIN_SECRET_KEY;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Security check - only admin can execute agent runs
+    if (!verifyAdmin(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
 

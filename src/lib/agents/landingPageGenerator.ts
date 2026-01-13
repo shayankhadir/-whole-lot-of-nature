@@ -98,20 +98,20 @@ export const metadata: Metadata = {
 
 export default function ${this.generateComponentName(content.slug)}Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="min-h-screen">
       {/* Breadcrumbs */}
-      <div className="bg-white border-b">
+      <div className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#66BB6A] hover:text-[#43A047]">
+            <Link href="/" className="text-[#66BB6A] hover:text-[#81C784]">
               Home
             </Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#43A047]">
+            <span className="text-white/40">/</span>
+            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#81C784]">
               Guides
             </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">${this.escapeString(content.title)}</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white/60">${this.escapeString(content.title)}</span>
           </nav>
         </div>
       </div>
@@ -119,10 +119,10 @@ export default function ${this.generateComponentName(content.slug)}Page() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">
             ${this.escapeString(content.h1)}
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-white/70 leading-relaxed">
             ${this.escapeString(content.metaDescription)}
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
@@ -130,7 +130,7 @@ export default function ${this.generateComponentName(content.slug)}Page() {
               .slice(0, 5)
               .map(
                 (kw) =>
-                  `<span className="bg-[#66BB6A]/10 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold">${kw}</span>`
+                  `<span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">${kw}</span>`
               )
               .join('\n            ')}
           </div>
@@ -140,24 +140,24 @@ export default function ${this.generateComponentName(content.slug)}Page() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Content Column */}
           <div className="lg:col-span-2">
-            <article className="bg-white rounded-2xl shadow-lg p-8 prose prose-lg max-w-none">
+            <article className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 prose prose-lg prose-invert max-w-none">
               <div dangerouslySetInnerHTML={{ __html: \`${this.escapeBackticks(content.content)}\` }} />
             </article>
 
             {/* FAQs */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mt-8">
+              <h2 className="text-2xl font-bold text-white mb-6 antialiased">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
                 ${content.faqs
                   .map(
                     (faq) => `
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     ${this.escapeString(faq.question)}
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     ${this.escapeString(faq.answer)}
                   </p>
                 </div>`
@@ -170,22 +170,22 @@ export default function ${this.generateComponentName(content.slug)}Page() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-[#66BB6A] to-[#43A047] rounded-2xl shadow-lg p-6 text-white sticky top-4">
-              <h3 className="text-2xl font-bold mb-4">Shop Now</h3>
-              <p className="mb-6">
+            <div className="bg-gradient-to-br from-[#2E7D32] to-[#1B5E20] rounded-2xl p-6 text-white sticky top-4 border border-[#66BB6A]/30">
+              <h3 className="text-2xl font-bold mb-4 antialiased">Shop Now</h3>
+              <p className="mb-6 text-white/90">
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
                 href="/shop"
-                className="block w-full bg-white text-[#66BB6A] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
+                className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-white/90 transition-colors"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-[#66BB6A]">
-                <p className="text-sm mb-4">Need expert advice?</p>
+              <div className="mt-6 pt-6 border-t border-white/20">
+                <p className="text-sm mb-4 text-white/80">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-[#43A047] hover:bg-[#2E7D32] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors border border-white/20"
                 >
                   Contact Us
                 </Link>
@@ -193,8 +193,8 @@ export default function ${this.generateComponentName(content.slug)}Page() {
             </div>
 
             {/* Related Links */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Related Guides
               </h3>
               <ul className="space-y-3">
@@ -212,21 +212,21 @@ export default function ${this.generateComponentName(content.slug)}Page() {
             </div>
 
             {/* Stats */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Quick Facts
               </h3>
               <div className="space-y-4">
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Article Length</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/60">Article Length</span>
                   <span className="font-bold text-[#66BB6A]">${content.wordCount} words</span>
                 </div>
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Read Time</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/60">Read Time</span>
                   <span className="font-bold text-[#66BB6A]">${Math.ceil(content.wordCount / 200)} min</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Target Keywords</span>
+                  <span className="text-white/60">Target Keywords</span>
                   <span className="font-bold text-[#66BB6A]">${content.keywords.length}</span>
                 </div>
               </div>

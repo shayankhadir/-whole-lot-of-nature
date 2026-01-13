@@ -294,7 +294,7 @@ export default function DesktopHeader() {
             </Link>
 
             {/* Account */}
-            <Link href="/account">
+            <Link href="/login">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

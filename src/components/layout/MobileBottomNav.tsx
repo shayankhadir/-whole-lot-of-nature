@@ -27,7 +27,7 @@ export default function MobileBottomNav() {
           </Link>
         </li>
         <li>
-          <Link href="/account" className="flex flex-col items-center justify-center py-2.5 text-gray-700 hover:text-primary-700">
+          <Link href="/login" className="flex flex-col items-center justify-center py-2.5 text-gray-700 hover:text-primary-700">
             <User className="h-6 w-6" />
             <span>Account</span>
           </Link>

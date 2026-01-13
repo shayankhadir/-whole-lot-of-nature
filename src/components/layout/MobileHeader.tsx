@@ -176,7 +176,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
               </button>
             </div>
             <Link
-              href="/account"
+              href="/login"
               onClick={() => onClose(false)}
               className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#2E7D32] py-3 text-sm font-semibold"
             >

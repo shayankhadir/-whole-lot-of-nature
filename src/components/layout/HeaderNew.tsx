@@ -272,7 +272,7 @@ export default function Header() {
               >
                 <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-black/5">
                   <div className="p-2">
-                    <Link href="/account" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50">
+                    <Link href="/login" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50">
                       <UserCircle className="h-4 w-4 text-primary-900" />
                       <span className="text-sm font-medium text-primary-900">Sign in / My account</span>
                     </Link>
@@ -386,7 +386,7 @@ export default function Header() {
                   <Link href="/wishlist" className="group">
                     <Heart className="h-6 w-6 text-primary-600" />
                   </Link>
-                  <Link href="/account" className="group">
+                  <Link href="/login" className="group">
                     <User className="h-6 w-6 text-primary-600" />
                   </Link>
                   <CartIcon />

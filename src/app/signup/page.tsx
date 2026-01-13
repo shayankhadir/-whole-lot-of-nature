@@ -377,11 +377,11 @@ export default function CustomSignupPage() {
       >
         {/* Background Image */}
         <Image
-          src="/images/backgrounds/monstera-dark.jpg"
-          alt="Decorative dark tropical monstera leaves"
+          src="/images/backgrounds/ai-generated-lush-tropical-green-leaves-background-photo.jpg"
+          alt="Lush tropical green leaves"
           fill
           priority
-          className="object-cover opacity-80"
+          className="object-cover opacity-70"
           sizes="(max-width: 1024px) 0vw, 50vw"
         />
 

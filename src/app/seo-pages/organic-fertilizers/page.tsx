@@ -20,20 +20,20 @@ export const metadata: Metadata = {
 
 export default function OrganicFertilizersPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="min-h-screen">
       {/* Breadcrumbs */}
-      <div className="bg-white border-b">
+      <div className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <Link href="/" className="text-[#66BB6A] hover:text-[#81C784]">
               Home
             </Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <span className="text-white/40">/</span>
+            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#81C784]">
               Guides
             </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">Complete Guide to Organic fertilizers in India</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white/70">Complete Guide to Organic fertilizers in India</span>
           </nav>
         </div>
       </div>
@@ -41,18 +41,18 @@ export default function OrganicFertilizersPage() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">
             Complete Guide to Organic fertilizers in India
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-white/70 leading-relaxed antialiased">
             Discover everything about organic fertilizers with our comprehensive guide. Expert tips, best practices, and actionable advice for organic fertilizers. Shop now!
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">organic fertilizers</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">organic fertilizers online</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">organic fertilizers india</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy organic fertilizers</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best organic fertilizers</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">organic fertilizers</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">organic fertilizers online</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">organic fertilizers india</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">buy organic fertilizers</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">best organic fertilizers</span>
           </div>
         </header>
 
@@ -60,72 +60,71 @@ export default function OrganicFertilizersPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Content Column */}
           <div className="lg:col-span-2">
-            <article className="bg-white rounded-2xl shadow-lg p-8 prose prose-lg max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: `<h2>What is organic fertilizers?</h2>
-<p>Organic fertilizers has become increasingly popular among Indian gardening enthusiasts. Whether you're a beginner or an experienced gardener, understanding organic fertilizers is essential for creating a thriving garden. In this comprehensive guide, we'll explore everything you need to know about organic fertilizers, from selection to care and maintenance.</p>
+            <article className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 prose prose-lg prose-invert max-w-none">
+              <div dangerouslySetInnerHTML={{ __html: `<h2 class="text-white antialiased">What is organic fertilizers?</h2>
+<p class="text-white/80">Organic fertilizers has become increasingly popular among Indian gardening enthusiasts. Whether you're a beginner or an experienced gardener, understanding organic fertilizers is essential for creating a thriving garden. In this comprehensive guide, we'll explore everything you need to know about organic fertilizers, from selection to care and maintenance.</p>
 
-<h2>Benefits of organic fertilizers</h2>
-<p>The benefits of organic fertilizers extend beyond aesthetics. It improves environmental quality, enhances well-being, and can even provide economic value. Understanding these benefits motivates better practices and helps you maximize results from your gardening efforts.</p>
+<h2 class="text-white antialiased">Benefits of organic fertilizers</h2>
+<p class="text-white/80">The benefits of organic fertilizers extend beyond aesthetics. It improves environmental quality, enhances well-being, and can even provide economic value. Understanding these benefits motivates better practices and helps you maximize results from your gardening efforts.</p>
 
-<h2>How to Get Started with organic fertilizers</h2>
-<p>Getting started with organic fertilizers is easier than you might think. Follow these step-by-step instructions to ensure success from the beginning. Whether you're setting up for the first time or improving your existing setup, these guidelines will help you achieve optimal results.</p>
+<h2 class="text-white antialiased">How to Get Started with organic fertilizers</h2>
+<p class="text-white/80">Getting started with organic fertilizers is easier than you might think. Follow these step-by-step instructions to ensure success from the beginning. Whether you're setting up for the first time or improving your existing setup, these guidelines will help you achieve optimal results.</p>
 
-<h2>Best Practices for organic fertilizers</h2>
-<p>Following proven best practices for organic fertilizers significantly improves your chances of success. These recommendations are based on years of experience and scientific research. Implement these practices consistently for the best outcomes in your gardening journey.</p>
+<h2 class="text-white antialiased">Best Practices for organic fertilizers</h2>
+<p class="text-white/80">Following proven best practices for organic fertilizers significantly improves your chances of success. These recommendations are based on years of experience and scientific research. Implement these practices consistently for the best outcomes in your gardening journey.</p>
 
-<h2>Common Mistakes to Avoid</h2>
-<p>Avoid these common mistakes when working with organic fertilizers. Learning from others' experiences saves time, money, and frustration. Understanding what not to do is just as important as knowing the right approaches.</p>
+<h2 class="text-white antialiased">Common Mistakes to Avoid</h2>
+<p class="text-white/80">Avoid these common mistakes when working with organic fertilizers. Learning from others' experiences saves time, money, and frustration. Understanding what not to do is just as important as knowing the right approaches.</p>
 
-<h2>Expert Tips for organic fertilizers</h2>
-<p>Our gardening experts share insider tips for mastering organic fertilizers. These advanced techniques and insights go beyond basic knowledge to help you achieve professional-level results. Apply these expert recommendations to take your gardening to the next level.</p>
+<h2 class="text-white antialiased">Expert Tips for organic fertilizers</h2>
+<p class="text-white/80">Our gardening experts share insider tips for mastering organic fertilizers. These advanced techniques and insights go beyond basic knowledge to help you achieve professional-level results. Apply these expert recommendations to take your gardening to the next level.</p>
 
 ` }} />
             </article>
 
             {/* FAQs */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mt-8">
+              <h2 className="text-2xl font-bold text-white mb-6 antialiased">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
-                
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     What is the best organic fertilizers for beginners?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     For beginners, we recommend starting with low-maintenance options that are forgiving of mistakes. Look for organic fertilizers that requires minimal care and is well-suited to your local climate.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     How much does organic fertilizers cost in India?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Prices vary based on quality, variety, and size. You can find options ranging from budget-friendly to premium. At Whole Lot of Nature, we offer competitive prices with excellent quality.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     Is organic fertilizers suitable for Indian climate?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Yes, organic fertilizers can thrive in Indian conditions when properly selected and cared for. Choose varieties that are specifically adapted to your region&apos;s climate.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     How do I maintain organic fertilizers?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Regular care including proper watering, fertilization, and monitoring is essential. Follow our detailed care guide above for specific maintenance instructions.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     Where can I buy quality organic fertilizers online?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Whole Lot of Nature offers premium organic fertilizers with nationwide delivery. We guarantee quality and provide expert support to ensure your success.
                   </p>
                 </div>
@@ -136,22 +135,22 @@ export default function OrganicFertilizersPage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg p-6 text-white sticky top-4">
-              <h3 className="text-2xl font-bold mb-4">Shop Now</h3>
-              <p className="mb-6">
+            <div className="bg-gradient-to-br from-[#2E7D32] to-[#1B5E20] rounded-2xl p-6 text-white sticky top-4 border border-[#66BB6A]/30">
+              <h3 className="text-2xl font-bold mb-4 antialiased">Shop Now</h3>
+              <p className="mb-6 text-white/90">
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
                 href="/shop"
-                className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
+                className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-green-500">
-                <p className="text-sm mb-4">Need expert advice?</p>
+              <div className="mt-6 pt-6 border-t border-[#66BB6A]/30">
+                <p className="text-sm mb-4 text-white/90">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-[#1B5E20] hover:bg-[#145218] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -159,39 +158,38 @@ export default function OrganicFertilizersPage() {
             </div>
 
             {/* Related Links */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Related Guides
               </h3>
               <ul className="space-y-3">
-                
                 <li>
-                  <Link href="/shop" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/category/seeds" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/seeds" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/category/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/fertilizers" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/blog" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Gardening Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/guides" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/guides" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/about" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     About Us
                   </Link>
                 </li>
@@ -199,22 +197,22 @@ export default function OrganicFertilizersPage() {
             </div>
 
             {/* Stats */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Quick Facts
               </h3>
               <div className="space-y-4">
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Article Length</span>
-                  <span className="font-bold text-green-600">248 words</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/70">Article Length</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">261 words</span>
                 </div>
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Read Time</span>
-                  <span className="font-bold text-green-600">2 min</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/70">Read Time</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">2 min</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Target Keywords</span>
-                  <span className="font-bold text-green-600">8</span>
+                  <span className="text-white/70">Target Keywords</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">8</span>
                 </div>
               </div>
             </div>

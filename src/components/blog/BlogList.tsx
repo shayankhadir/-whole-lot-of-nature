@@ -6,12 +6,25 @@ import Link from 'next/link';
 import { Calendar, User, Loader2 } from 'lucide-react';
 import { Post } from '@/lib/api/wordpress';
 
+// Extended type to handle both WordPress API and our custom API response
+interface ExtendedPost {
+  id: number;
+  date: string;
+  slug: string;
+  title: { rendered: string } | string;
+  excerpt: { rendered: string } | string;
+  featured_image_url?: string | null;
+  featured_media?: number;
+  author?: number | string;
+  _embedded?: Post['_embedded'];
+}
+
 interface BlogListProps {
   initialPosts: Post[];
 }
 
 export default function BlogList({ initialPosts }: BlogListProps) {
-  const [posts, setPosts] = useState<Post[]>(initialPosts);
+  const [posts, setPosts] = useState<ExtendedPost[]>(initialPosts as ExtendedPost[]);
   const [page, setPage] = useState(2);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -23,16 +36,24 @@ export default function BlogList({ initialPosts }: BlogListProps) {
     setLoading(true);
     try {
       const res = await fetch(`/api/blog/list?page=${page}&per_page=12`);
-      const newPosts = await res.json();
+      const data = await res.json();
+      
+      // Handle both array response and object response with posts property
+      const newPosts = Array.isArray(data) ? data : (data.posts || []);
       
       if (newPosts && newPosts.length > 0) {
         setPosts([...posts, ...newPosts]);
         setPage(page + 1);
+        // Check if we've reached the end based on pagination
+        if (data.pagination && data.pagination.page >= data.pagination.totalPages) {
+          setHasMore(false);
+        }
       } else {
         setHasMore(false);
       }
     } catch (error) {
       console.error('Failed to load more posts:', error);
+      setHasMore(false);
     } finally {
       setLoading(false);
     }
@@ -42,9 +63,12 @@ export default function BlogList({ initialPosts }: BlogListProps) {
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => {
+          // Handle both embedded media and direct featured_image_url from API
           const featured = post._embedded?.['wp:featuredmedia']?.[0];
           const author = post._embedded?.author?.[0];
-          const heroImage = featured?.source_url || fallbackImage;
+          const heroImage = featured?.source_url || post.featured_image_url || fallbackImage;
+          const postTitle = typeof post.title === 'string' ? post.title : (post.title?.rendered || 'Untitled');
+          const postExcerpt = typeof post.excerpt === 'string' ? post.excerpt : (post.excerpt?.rendered || '');
           return (
             <article
               key={post.id}
@@ -53,9 +77,13 @@ export default function BlogList({ initialPosts }: BlogListProps) {
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={heroImage}
-                  alt={featured?.alt_text || post.title.rendered}
+                  alt={featured?.alt_text || postTitle}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    // Fallback on image load error
+                    (e.target as HTMLImageElement).src = fallbackImage;
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-transparent" />
               </div>
@@ -66,21 +94,21 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                     <Calendar className="w-4 h-4" />
                     <span>{new Date(post.date).toLocaleDateString()}</span>
                   </div>
-                  {author && (
+                  {(author || post.author) && (
                     <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
-                      <span>{author.name}</span>
+                      <span>{author?.name || post.author}</span>
                     </div>
                   )}
                 </div>
 
-                <h2 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-emerald-400 transition-colors"
-                  dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                <h2 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-emerald-400 transition-colors antialiased"
+                  dangerouslySetInnerHTML={{ __html: postTitle }}
                 />
                 
                 <div 
                   className="text-gray-300 mb-4 line-clamp-3 text-sm"
-                  dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                  dangerouslySetInnerHTML={{ __html: postExcerpt }}
                 />
 
                 <Link 

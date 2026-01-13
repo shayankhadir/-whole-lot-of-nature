@@ -20,20 +20,20 @@ export const metadata: Metadata = {
 
 export default function IndoorPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="min-h-screen">
       {/* Breadcrumbs */}
-      <div className="bg-white border-b">
+      <div className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <Link href="/" className="text-[#66BB6A] hover:text-[#81C784]">
               Home
             </Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/seo-pages" className="text-[#2E7D32] hover:text-[#1B5E20]">
+            <span className="text-white/40">/</span>
+            <Link href="/seo-pages" className="text-[#66BB6A] hover:text-[#81C784]">
               Guides
             </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">How to Master Indoor - Comprehensive Guide</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white/70">How to Master Indoor - Comprehensive Guide</span>
           </nav>
         </div>
       </div>
@@ -41,22 +41,22 @@ export default function IndoorPage() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased">
             How to Master Indoor - Comprehensive Guide
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-white/70 leading-relaxed antialiased">
 				Learn indoor best practices and explore our curated picks in the{' '}
-				<Link href="/shop" className="text-[#2E7D32] hover:text-[#1B5E20] hover:underline">
+				<Link href="/shop" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
 					shop
 				</Link>
 				.
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor online</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">indoor india</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">buy indoor</span>
-            <span className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-sm font-semibold">best indoor</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">indoor</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">indoor online</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">indoor india</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">buy indoor</span>
+            <span className="bg-[#2E7D32]/30 text-[#66BB6A] px-3 py-1 rounded-full text-sm font-semibold border border-[#66BB6A]/30">best indoor</span>
           </div>
         </header>
 
@@ -64,78 +64,77 @@ export default function IndoorPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Content Column */}
           <div className="lg:col-span-2">
-            <article className="bg-white rounded-2xl shadow-lg p-8 prose prose-lg max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: `<h2>Introduction to Indoor</h2>
-<p>Indoor has become increasingly popular among Indian gardening enthusiasts. Whether you're a beginner or an experienced gardener, understanding indoor is essential for creating a thriving garden. In this comprehensive guide, we'll explore everything you need to know about indoor, from selection to care and maintenance.</p>
+            <article className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 prose prose-lg prose-invert max-w-none">
+              <div dangerouslySetInnerHTML={{ __html: `<h2 class="text-white antialiased">Introduction to Indoor</h2>
+<p class="text-white/80">Indoor has become increasingly popular among Indian gardening enthusiasts. Whether you're a beginner or an experienced gardener, understanding indoor is essential for creating a thriving garden. In this comprehensive guide, we'll explore everything you need to know about indoor, from selection to care and maintenance.</p>
 
-<h2>Why Indoor Matters</h2>
-<p>Indoor plays a crucial role in successful gardening. It helps improve plant health, increases yield, and creates a more sustainable garden ecosystem. For Indian gardeners, indoor is especially important due to our diverse climate conditions ranging from tropical to temperate zones.</p>
+<h2 class="text-white antialiased">Why Indoor Matters</h2>
+<p class="text-white/80">Indoor plays a crucial role in successful gardening. It helps improve plant health, increases yield, and creates a more sustainable garden ecosystem. For Indian gardeners, indoor is especially important due to our diverse climate conditions ranging from tropical to temperate zones.</p>
 
-<h2>Types of Indoor</h2>
-<p>There are several types of indoor available in the Indian market. Each type has its own advantages and is suited for different purposes. Understanding these varieties will help you make an informed decision based on your specific needs, climate, and gardening goals.</p>
+<h2 class="text-white antialiased">Types of Indoor</h2>
+<p class="text-white/80">There are several types of indoor available in the Indian market. Each type has its own advantages and is suited for different purposes. Understanding these varieties will help you make an informed decision based on your specific needs, climate, and gardening goals.</p>
 
-<h2>How to Choose the Right Indoor</h2>
-<p>Choosing the right indoor depends on several factors including your location, climate zone, available space, and gardening experience. Consider your specific requirements, budget, and long-term goals when making your selection. Quality should always be prioritized over price for best results.</p>
+<h2 class="text-white antialiased">How to Choose the Right Indoor</h2>
+<p class="text-white/80">Choosing the right indoor depends on several factors including your location, climate zone, available space, and gardening experience. Consider your specific requirements, budget, and long-term goals when making your selection. Quality should always be prioritized over price for best results.</p>
 
-<h2>Best Indoor for Indian Climate</h2>
-<p>India's diverse climate presents unique challenges and opportunities for indoor. We've researched and tested various options to bring you the best indoor specifically suited for Indian conditions. These recommendations consider factors like heat tolerance, water requirements, and pest resistance.</p>
+<h2 class="text-white antialiased">Best Indoor for Indian Climate</h2>
+<p class="text-white/80">India's diverse climate presents unique challenges and opportunities for indoor. We've researched and tested various options to bring you the best indoor specifically suited for Indian conditions. These recommendations consider factors like heat tolerance, water requirements, and pest resistance.</p>
 
-<h2>Care and Maintenance Tips</h2>
-<p>Proper care and maintenance of indoor ensures longevity and optimal performance. Regular monitoring, timely intervention, and following best practices are key to success. Here are essential care tips that every gardener should follow for indoor.</p>
+<h2 class="text-white antialiased">Care and Maintenance Tips</h2>
+<p class="text-white/80">Proper care and maintenance of indoor ensures longevity and optimal performance. Regular monitoring, timely intervention, and following best practices are key to success. Here are essential care tips that every gardener should follow for indoor.</p>
 
-<h2>Common Problems and Solutions</h2>
-<p>Like any aspect of gardening, indoor can present challenges. Understanding common problems and their solutions helps you troubleshoot effectively. From pest issues to environmental factors, we'll cover the most frequent problems and provide practical solutions.</p>
+<h2 class="text-white antialiased">Common Problems and Solutions</h2>
+<p class="text-white/80">Like any aspect of gardening, indoor can present challenges. Understanding common problems and their solutions helps you troubleshoot effectively. From pest issues to environmental factors, we'll cover the most frequent problems and provide practical solutions.</p>
 
-<h2>Where to Buy Indoor Online</h2>
-<p>At Whole Lot of Nature, we offer premium quality indoor delivered across India. Prices typically range from ₹179 to ₹129922491299. We source directly from trusted growers and ensure quality through rigorous checks. Shop our collection of indoor with confidence, backed by expert support and hassle-free returns.</p>
+<h2 class="text-white antialiased">Where to Buy Indoor Online</h2>
+<p class="text-white/80">At Whole Lot of Nature, we offer premium quality indoor delivered across India. Prices typically range from ₹179 to ₹12999. We source directly from trusted growers and ensure quality through rigorous checks. Shop our collection of indoor with confidence, backed by expert support and hassle-free returns.</p>
 
 ` }} />
             </article>
 
             {/* FAQs */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mt-8">
+              <h2 className="text-2xl font-bold text-white mb-6 antialiased">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
-                
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     What is the best indoor for beginners?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     For beginners, we recommend starting with low-maintenance options that are forgiving of mistakes. Look for indoor that requires minimal care and is well-suited to your local climate.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     How much does indoor cost in India?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Prices vary based on quality, variety, and size. You can find options ranging from budget-friendly to premium. At Whole Lot of Nature, we offer competitive prices with excellent quality.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     Is indoor suitable for Indian climate?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Yes, indoor can thrive in Indian conditions when properly selected and cared for. Choose varieties that are specifically adapted to your region&apos;s climate.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     How do I maintain indoor?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Regular care including proper watering, fertilization, and monitoring is essential. Follow our detailed care guide above for specific maintenance instructions.
                   </p>
                 </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="border-b border-white/10 pb-4">
+                  <h3 className="text-lg font-semibold text-white mb-2 antialiased">
                     Where can I buy quality indoor online?
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-white/70">
                     Whole Lot of Nature offers premium indoor with nationwide delivery. We guarantee quality and provide expert support to ensure your success.
                   </p>
                 </div>
@@ -146,22 +145,22 @@ export default function IndoorPage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl shadow-lg p-6 text-white sticky top-4">
-              <h3 className="text-2xl font-bold mb-4">Shop Now</h3>
-              <p className="mb-6">
+            <div className="bg-gradient-to-br from-[#2E7D32] to-[#1B5E20] rounded-2xl p-6 text-white sticky top-4 border border-[#66BB6A]/30">
+              <h3 className="text-2xl font-bold mb-4 antialiased">Shop Now</h3>
+              <p className="mb-6 text-white/90">
                 Explore our collection of premium plants, seeds, and gardening supplies.
               </p>
               <Link
                 href="/shop"
-                className="block w-full bg-white text-green-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors"
+                className="block w-full bg-white text-[#2E7D32] font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition-colors antialiased"
               >
                 Browse Products
               </Link>
-              <div className="mt-6 pt-6 border-t border-green-500">
-                <p className="text-sm mb-4">Need expert advice?</p>
+              <div className="mt-6 pt-6 border-t border-[#66BB6A]/30">
+                <p className="text-sm mb-4 text-white/90">Need expert advice?</p>
                 <Link
                   href="/contact"
-                  className="block w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                  className="block w-full bg-[#1B5E20] hover:bg-[#145218] text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -169,39 +168,38 @@ export default function IndoorPage() {
             </div>
 
             {/* Related Links */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Related Guides
               </h3>
               <ul className="space-y-3">
-                
                 <li>
-                  <Link href="/shop" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Browse All Plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/category/seeds" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/seeds" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Shop Seeds
                   </Link>
                 </li>
                 <li>
-                  <Link href="/shop/category/fertilizers" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/shop/category/fertilizers" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Organic Fertilizers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/blog" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Gardening Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/guides" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/guides" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     Plant Care Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-green-600 hover:text-green-700 hover:underline">
+                  <Link href="/about" className="text-[#66BB6A] hover:text-[#81C784] hover:underline">
                     About Us
                   </Link>
                 </li>
@@ -209,22 +207,22 @@ export default function IndoorPage() {
             </div>
 
             {/* Stats */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mt-6">
+              <h3 className="text-lg font-bold text-white mb-4 antialiased">
                 Quick Facts
               </h3>
               <div className="space-y-4">
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Article Length</span>
-                  <span className="font-bold text-green-600">341 words</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/70">Article Length</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">341 words</span>
                 </div>
-                <div className="flex justify-between items-center pb-3 border-b">
-                  <span className="text-gray-600">Read Time</span>
-                  <span className="font-bold text-green-600">2 min</span>
+                <div className="flex justify-between items-center pb-3 border-b border-white/10">
+                  <span className="text-white/70">Read Time</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">2 min</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Target Keywords</span>
-                  <span className="font-bold text-green-600">8</span>
+                  <span className="text-white/70">Target Keywords</span>
+                  <span className="font-bold text-[#66BB6A] antialiased">8</span>
                 </div>
               </div>
             </div>

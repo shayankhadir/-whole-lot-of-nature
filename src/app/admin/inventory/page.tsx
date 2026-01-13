@@ -82,14 +82,22 @@ export default function InventoryPage() {
   const syncInventory = async () => {
     try {
       setSync(true);
-      const response = await fetch('/api/inventory/sync', { method: 'POST' });
+      // Get admin key from localStorage
+      const adminKey = localStorage.getItem('wln_admin_key') || '';
+      const response = await fetch('/api/inventory/sync', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey
+        }
+      });
       const data = await response.json();
 
       if (data.success) {
         fetchInventory();
         alert('Inventory synced successfully.');
       } else {
-        alert('Sync failed: ' + data.error);
+        alert('Sync failed: ' + (data.error || 'Unknown error'));
       }
     } catch (error) {
       console.error('Error syncing inventory:', error);
