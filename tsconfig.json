@@ -27,6 +27,11 @@
     "node_modules",
     "scripts",
     "-whole-lot-of-nature",
-    "src/components/layout/Header.tsx"
+    "src/components/layout/Header.tsx",
+    "debug-*.ts",
+    "test-*.ts",
+    "test-*.js",
+    "*.spec.ts",
+    "tests"
   ]
 }

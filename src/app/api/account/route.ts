@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 const WC_URL = process.env.WORDPRESS_URL || 'https://admin.wholelotofnature.com';
 const WC_KEY = process.env.WC_CONSUMER_KEY;
 const WC_SECRET = process.env.WC_CONSUMER_SECRET;
@@ -13,7 +15,7 @@ async function wooFetch(endpoint: string) {
       'Authorization': `Basic ${auth}`,
       'Content-Type': 'application/json',
     },
-    next: { revalidate: 60 }, // Cache for 1 minute
+    cache: 'no-store',
   });
   
   if (!res.ok) {

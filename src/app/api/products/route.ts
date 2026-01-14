@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Products API error:', error);
+    console.error('[Products API] Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
     return NextResponse.json(
@@ -84,10 +84,11 @@ export async function GET(request: NextRequest) {
         success: false, 
         error: 'Failed to fetch products',
         message: errorMessage,
-        debug: process.env.NODE_ENV === 'development' ? {
+        details: process.env.NODE_ENV === 'development' ? {
           hasWooCommerceKey: !!process.env.WC_CONSUMER_KEY,
           hasWooCommerceSecret: !!process.env.WC_CONSUMER_SECRET,
-          wordPressUrl: process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL
+          wordPressUrl: process.env.WORDPRESS_URL,
+          nodeEnv: process.env.NODE_ENV
         } : undefined
       },
       { status: 500 }

@@ -7,7 +7,7 @@ console.log('WORDPRESS_URL:', process.env.WORDPRESS_URL || 'NOT SET');
 console.log('WC_CONSUMER_KEY:', process.env.WC_CONSUMER_KEY ? '***' + process.env.WC_CONSUMER_KEY.slice(-4) : 'NOT SET');
 console.log('WC_CONSUMER_SECRET:', process.env.WC_CONSUMER_SECRET ? '***' + process.env.WC_CONSUMER_SECRET.slice(-4) : 'NOT SET');
 
-const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://wholelotofnature.com';
+const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://admin.wholelotofnature.com';
 const WC_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || '';
 const WC_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || '';
 

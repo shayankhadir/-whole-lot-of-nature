@@ -313,43 +313,52 @@ export class WooCommerceService {
    */
   static async getProducts(limit?: number): Promise<WooCommerceProduct[]> {
     try {
-      // Check credentials first
-      if (!hasValidCredentials()) {
-        console.warn('[WooCommerce] Missing credentials - using fallback products');
-        return this.getSampleProducts();
+      // Check credentials first - THIS IS CRITICAL
+      if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
+        const errorMsg = '[CRITICAL] WooCommerce credentials missing!';
+        console.error(errorMsg, {
+          hasKey: !!WC_CONSUMER_KEY,
+          hasSecret: !!WC_CONSUMER_SECRET,
+          url: WORDPRESS_URL,
+          env: process.env.NODE_ENV
+        });
+        throw new Error(errorMsg);
       }
 
-      console.log('Attempting to fetch products from WooCommerce API...');
+      console.log('[WooCommerce] Attempting to fetch products...', {
+        url: WORDPRESS_URL,
+        hasKey: !!WC_CONSUMER_KEY,
+        hasSecret: !!WC_CONSUMER_SECRET,
+        per_page: limit || 100
+      });
       
       const response = await WooCommerce.get('products', {
-        per_page: limit || 100, // Changed from 20 to 100 to fetch more products
+        per_page: limit || 100,
         status: 'publish',
         stock_status: 'instock'
       });
 
       const raw: unknown = response.data;
       const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      console.log(`Successfully fetched ${list.length} products from WooCommerce`);
+      console.log(`[WooCommerce SUCCESS] Fetched ${list.length} products`);
       
       return list.map(this.transformWooCommerceProduct);
     } catch (error: unknown) {
-      console.error('Error fetching WooCommerce products:', error);
-      
-      // Check if it's a connection error or API error
       const e = error as { response?: { status?: number; data?: unknown }; request?: unknown; message?: string };
-      if (e.response) {
-        console.error('WooCommerce API Error:', {
-          status: e.response.status,
-          hasCredentials: hasValidCredentials(),
-          url: WORDPRESS_URL
-        });
-      } else if (e.request) {
-        console.error('WooCommerce Connection Error:', e.message);
+      
+      console.error('[WooCommerce ERROR] Product fetch failed:', {
+        message: e.message,
+        status: e.response?.status,
+        hasRequest: !!e.request,
+        credentialsSet: !!(WC_CONSUMER_KEY && WC_CONSUMER_SECRET),
+        url: WORDPRESS_URL
+      });
+
+      if (e.response?.status === 401) {
+        console.error('[WooCommerce AUTH ERROR] 401 - Invalid credentials. Check WC_CONSUMER_KEY and WC_CONSUMER_SECRET in Vercel environment variables');
       }
       
-      // Return sample products as fallback with a warning
-      console.warn('[WooCommerce] Falling back to sample products - check API credentials');
-      return this.getSampleProducts();
+      throw error;
     }
   }
 
