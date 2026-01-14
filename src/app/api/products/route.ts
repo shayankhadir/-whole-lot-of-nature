@@ -76,20 +76,31 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('[Products API] Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const hasKey = !!process.env.WC_CONSUMER_KEY;
+    const hasSecret = !!process.env.WC_CONSUMER_SECRET;
+    const wpUrl = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL;
+    
+    console.error('[Products API] Error:', {
+      error: errorMessage,
+      hasWooCommerceKey: hasKey,
+      hasWooCommerceSecret: hasSecret,
+      wordPressUrl: wpUrl,
+      nodeEnv: process.env.NODE_ENV,
+      timestamp: new Date().toISOString()
+    });
     
     return NextResponse.json(
       { 
         success: false, 
         error: 'Failed to fetch products',
         message: errorMessage,
-        details: process.env.NODE_ENV === 'development' ? {
-          hasWooCommerceKey: !!process.env.WC_CONSUMER_KEY,
-          hasWooCommerceSecret: !!process.env.WC_CONSUMER_SECRET,
-          wordPressUrl: process.env.WORDPRESS_URL,
+        details: {
+          hasWooCommerceKey: hasKey,
+          hasWooCommerceSecret: hasSecret,
+          wordPressUrl: wpUrl,
           nodeEnv: process.env.NODE_ENV
-        } : undefined
+        }
       },
       { status: 500 }
     );
