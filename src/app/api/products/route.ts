@@ -81,8 +81,17 @@ export async function GET(request: NextRequest) {
     const hasSecret = !!process.env.WC_CONSUMER_SECRET;
     const wpUrl = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL;
     
+    // Determine error type for better frontend handling
+    let errorType = 'UNKNOWN_ERROR';
+    if (errorMessage.includes('401')) errorType = 'AUTHENTICATION_ERROR';
+    else if (errorMessage.includes('403')) errorType = 'PERMISSION_ERROR';
+    else if (errorMessage.includes('404')) errorType = 'NOT_FOUND_ERROR';
+    else if (errorMessage.includes('timeout')) errorType = 'TIMEOUT_ERROR';
+    else if (errorMessage.includes('ECONNREFUSED')) errorType = 'CONNECTION_ERROR';
+    
     console.error('[Products API] Error:', {
       error: errorMessage,
+      errorType: errorType,
       hasWooCommerceKey: hasKey,
       hasWooCommerceSecret: hasSecret,
       wordPressUrl: wpUrl,
@@ -93,7 +102,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       { 
         success: false, 
-        error: 'Failed to fetch products',
+        error: errorType,
         message: errorMessage,
         details: {
           hasWooCommerceKey: hasKey,

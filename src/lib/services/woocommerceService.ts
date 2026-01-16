@@ -709,8 +709,8 @@ export class WooCommerceService {
       const response = await WooCommerce.get('products', {
         featured: true,
         per_page: limit,
-        status: 'publish',
-        stock_status: 'instock'
+        status: 'publish'
+        // REMOVED: stock_status filter - featured products should show even if temporarily out of stock
       });
 
       const raw: unknown = response.data;
