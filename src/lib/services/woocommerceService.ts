@@ -6,13 +6,24 @@ const WC_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || '';
 const WC_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || '';
 
 // Log configuration status (always log in production for debugging)
-console.log('[WooCommerce Service Init]', {
+const credentialsStatus = {
   url: WORDPRESS_URL,
   hasKey: !!WC_CONSUMER_KEY,
   hasSecret: !!WC_CONSUMER_SECRET,
   nodeEnv: process.env.NODE_ENV,
   timestamp: new Date().toISOString()
-});
+};
+
+console.log('[WooCommerce Service Init]', credentialsStatus);
+
+// IMPORTANT: If credentials are missing, log a clear warning
+if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
+  console.warn('[⚠️  CRITICAL] WooCommerce credentials are missing!');
+  console.warn('   WC_CONSUMER_KEY:', WC_CONSUMER_KEY ? '✓ SET' : '✗ MISSING');
+  console.warn('   WC_CONSUMER_SECRET:', WC_CONSUMER_SECRET ? '✓ SET' : '✗ MISSING');
+  console.warn('   Please set these in your Vercel environment variables');
+  console.warn('   URL:', WORDPRESS_URL);
+}
 
 // Initialize WooCommerce API with REST API v3
 const WooCommerce = new WooCommerceRestApi({
@@ -334,8 +345,8 @@ export class WooCommerceService {
       
       const response = await WooCommerce.get('products', {
         per_page: limit || 100,
-        status: 'publish',
-        stock_status: 'instock'
+        status: 'publish'
+        // Removed stock_status filter - we want all published products regardless of stock status
       });
 
       const raw: unknown = response.data;
