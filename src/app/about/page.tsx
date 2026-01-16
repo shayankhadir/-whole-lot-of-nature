@@ -1,10 +1,9 @@
 'use client';
 
-import type { Metadata } from "next";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Leaf, Heart, Users, Sprout, Droplet, Recycle, Sun, Wind, Award } from 'lucide-react';
+import { Leaf, Heart, Users, Sprout, Recycle, Sun } from 'lucide-react';
 import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
 import InstagramFeed from '@/components/sections/InstagramFeed';
 import FAQSection from '@/components/sections/FAQSection';
@@ -129,7 +128,7 @@ export default function AboutPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#2E7D32]">Rooted in Purpose</span>
             </h1>
             <p className="font-inter text-lg md:text-xl text-emerald-100 leading-relaxed max-w-3xl mx-auto antialiased">
-              From a simple promise to the soil, we've grown into a movement bringing premium plants, sustainable essentials, and botanical wisdom to plant lovers across India. Every plant. Every mix. Every promise to the earth.
+              From a simple promise to the soil, we&apos;ve grown into a movement bringing premium plants, sustainable essentials, and botanical wisdom to plant lovers across India. Every plant. Every mix. Every promise to the earth.
             </p>
             <p className="mt-4 text-sm md:text-base uppercase tracking-[0.18em] text-emerald-200/80">Stay loyal to the soil.</p>
           </motion.div>
@@ -184,7 +183,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-[#4ADE80] mb-3">The Problem: Nature Deserves Better</h3>
                   <p>
-                    We found a gap in the market—most plant retailers focused on volume over vitality. Plants arrived weak. Soil mixes were chemically laden. Expert guidance was scarce. The earth's wisdom was being lost to convenience. We knew there had to be a better way.
+                    We found a gap in the market—most plant retailers focused on volume over vitality. Plants arrived weak. Soil mixes were chemically laden. Expert guidance was scarce. The earth&apos;s wisdom was being lost to convenience. We knew there had to be a better way.
                   </p>
                 </div>
 
@@ -205,20 +204,20 @@ export default function AboutPage() {
                     <li><strong>Handcrafted Soil Mixes:</strong> Organic blends enriched with forest-floor nutrients and beneficial microbes</li>
                     <li><strong>Sustainable Essentials:</strong> Natural fertilizers, organic pest controls, and eco-friendly gardening tools</li>
                     <li><strong>Expert Guidance:</strong> Care guides, AI-powered plant advice, and personalized support from our growing team</li>
-                    <li><strong>Aquatic & Terrarium Ecosystems:</strong> Complete setups for water gardens and miniature worlds</li>
+                    <li><strong>Aquatic &amp; Terrarium Ecosystems:</strong> Complete setups for water gardens and miniature worlds</li>
                   </ul>
                 </div>
 
                 <div className="border-l-4 border-[#4ADE80] pl-6 italic text-white/90 bg-[#2E7D32]/10 p-4 rounded">
                   <p>
-                    &ldquo;Every plant you nurture is a promise to the planet. Every mix we craft honors the earth beneath. This is not just business—it's a movement back to nature's wisdom.&rdquo;
+                    &ldquo;Every plant you nurture is a promise to the planet. Every mix we craft honors the earth beneath. This is not just business&mdash;it&apos;s a movement back to nature&apos;s wisdom.&rdquo;
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-[#4ADE80] mb-3">The Vision: What's Growing Next</h3>
+                  <h3 className="text-xl font-semibold text-[#4ADE80] mb-3">The Vision: What&apos;s Growing Next</h3>
                   <p>
-                    We're expanding services nationwide with landscaping consultations, pond builds, aquascaping workshops, and terrarium design experiences. Our goal: help every home, office, and garden become a thriving ecosystem. We're building a movement where plants become family, gardens turn into sanctuaries, and soil stays forever loyal.
+                    We&apos;re expanding services nationwide with landscaping consultations, pond builds, aquascaping workshops, and terrarium design experiences. Our goal: help every home, office, and garden become a thriving ecosystem. We&apos;re building a movement where plants become family, gardens turn into sanctuaries, and soil stays forever loyal.
                   </p>
                 </div>
               </div>
@@ -249,7 +248,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">What&apos;s arriving in Bangalore</h2>
             <p className="text-emerald-100/70 max-w-2xl mx-auto">
-              Landscaping, pond builds, and aquascaping consultations are opening soon—built for Bengaluru&apos;s light, water, and apartment codes.
+              Landscaping, pond builds, and aquascaping consultations are opening soon&mdash;built for Bengaluru&apos;s light, water, and apartment codes.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -317,7 +316,7 @@ export default function AboutPage() {
             className="pb-8"
           />
           <div className="py-8 border-t border-white/5 text-center">
-            <p className="text-emerald-100/70 mb-4">Didn't find your answer?</p>
+            <p className="text-emerald-100/70 mb-4">Didn&apos;t find your answer?</p>
             <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-[#4ADE80] text-[#4ADE80] font-semibold hover:bg-[#4ADE80]/10 transition-all">
               Contact Our Team
             </Link>
@@ -342,7 +341,7 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className="mt-12 pt-12 border-t border-white/10">
-            <p className="text-emerald-100/70 mb-4">Have questions? We're here to help.</p>
+            <p className="text-emerald-100/70 mb-4">Have questions? We&apos;re here to help.</p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center text-center sm:text-left">
               <div>
                 <p className="text-sm text-emerald-100/60 uppercase tracking-wider mb-1">Email</p>
