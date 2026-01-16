@@ -4,39 +4,52 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
-  const results = {
-    timestamp: new Date().toISOString(),
-    environment: {
-      WORDPRESS_URL: process.env.WORDPRESS_URL,
-      WORDPRESS_API_URL: process.env.WORDPRESS_API_URL,
-      WC_CONSUMER_KEY: process.env.WC_CONSUMER_KEY ? '***' + process.env.WC_CONSUMER_KEY.slice(-4) : 'MISSING',
-      WC_CONSUMER_SECRET: process.env.WC_CONSUMER_SECRET ? '***' + process.env.WC_CONSUMER_SECRET.slice(-4) : 'MISSING',
-    },
-    tests: {} as Record<string, any>
-  };
-
   try {
-    // Test 1: Direct WooCommerce API call
-    console.log('[TEST 1] Attempting direct WooCommerce API call...');
-    
-    const wpUrl = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://admin.wholelotofnature.com';
+    const results: any = {
+      timestamp: new Date().toISOString(),
+      environment: {
+        WORDPRESS_URL: process.env.WORDPRESS_URL || 'NOT SET',
+        WORDPRESS_API_URL: process.env.WORDPRESS_API_URL || 'NOT SET',
+        WC_CONSUMER_KEY: process.env.WC_CONSUMER_KEY ? '***SET***' : 'NOT SET',
+        WC_CONSUMER_SECRET: process.env.WC_CONSUMER_SECRET ? '***SET***' : 'NOT SET',
+        NODE_ENV: process.env.NODE_ENV
+      },
+      tests: {} as Record<string, any>
+    };
+
+    // Get environment variables
+    const wpUrl = process.env.WORDPRESS_URL || 'https://admin.wholelotofnature.com';
     const consumerKey = process.env.WC_CONSUMER_KEY || '';
     const consumerSecret = process.env.WC_CONSUMER_SECRET || '';
+
+    results.environment.WORDPRESS_URL = wpUrl;
     
     if (!consumerKey || !consumerSecret) {
       results.tests.credentials_check = {
         status: 'FAILED',
-        message: 'Missing WooCommerce credentials'
+        message: 'Missing WooCommerce credentials',
+        hasKey: !!consumerKey,
+        hasSecret: !!consumerSecret
       };
-    } else {
-      // Build OAuth signature
+      return NextResponse.json(results);
+    }
+
+    results.tests.credentials_check = {
+      status: 'OK',
+      message: 'Credentials present',
+      hasKey: true,
+      hasSecret: true
+    };
+
+    try {
+      // Test 1: Direct WooCommerce API call
+      console.log('[TEST 1] Attempting to fetch products...');
+      
       const auth = Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64');
-      
       const productsUrl = `${wpUrl}/wp-json/wc/v3/products?per_page=5&status=publish`;
-      
+
       console.log(`Calling: ${productsUrl}`);
-      console.log(`Auth header: Basic ${auth.slice(0, 20)}...`);
-      
+
       const response = await fetch(productsUrl, {
         method: 'GET',
         headers: {
@@ -45,10 +58,12 @@ export async function GET(request: NextRequest) {
         }
       });
 
+      console.log(`Response status: ${response.status}`);
+
       results.tests.direct_api_call = {
         status: response.status,
         statusText: response.statusText,
-        url: productsUrl,
+        ok: response.ok,
         headers: {
           'content-type': response.headers.get('content-type'),
           'x-wp-total': response.headers.get('x-wp-total'),
@@ -59,71 +74,63 @@ export async function GET(request: NextRequest) {
       
       if (!response.ok) {
         results.tests.direct_api_call.error = data;
-        console.error('[TEST 1] ERROR:', data);
+        results.tests.direct_api_call.message = 'API returned error';
       } else {
-        results.tests.direct_api_call.productsCount = Array.isArray(data) ? data.length : 0;
-        results.tests.direct_api_call.firstProduct = Array.isArray(data) && data.length > 0 ? {
-          id: data[0].id,
-          name: data[0].name,
-          slug: data[0].slug,
-          sku: data[0].sku,
-          price: data[0].price,
-          stock_status: data[0].stock_status,
-          status: data[0].status
-        } : null;
+        const productsArray = Array.isArray(data) ? data : [];
+        results.tests.direct_api_call.productsCount = productsArray.length;
+        
+        if (productsArray.length > 0) {
+          results.tests.direct_api_call.firstProduct = {
+            id: productsArray[0].id,
+            name: productsArray[0].name,
+            slug: productsArray[0].slug,
+            sku: productsArray[0].sku,
+            price: productsArray[0].price,
+            stock_status: productsArray[0].stock_status,
+            status: productsArray[0].status,
+            image: productsArray[0].images?.[0]?.src
+          };
+        } else {
+          results.tests.direct_api_call.message = 'No products found in WooCommerce';
+        }
       }
+
+    } catch (fetchError: unknown) {
+      console.error('[TEST 1] Fetch error:', fetchError);
+      results.tests.direct_api_call = {
+        status: 'ERROR',
+        message: fetchError instanceof Error ? fetchError.message : String(fetchError)
+      };
     }
 
-    // Test 2: Check WooCommerce REST API availability
-    console.log('[TEST 2] Checking WooCommerce REST API...');
+    // Test 2: Check if WordPress is responding
     try {
-      const wpUrl = process.env.WORDPRESS_URL || 'https://admin.wholelotofnature.com';
-      const apiCheck = await fetch(`${wpUrl}/wp-json/wc/v3`, {
-        headers: {
-          'Authorization': `Basic ${Buffer.from(`${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`).toString('base64')}`
-        }
-      });
+      console.log('[TEST 2] Checking WordPress availability...');
+      const wpResponse = await fetch(`${wpUrl}/wp-json/`);
       
-      results.tests.api_availability = {
-        status: apiCheck.status,
-        statusText: apiCheck.statusText
+      results.tests.wordpress_check = {
+        status: wpResponse.status,
+        reachable: wpResponse.ok
       };
-    } catch (e) {
-      results.tests.api_availability = {
-        error: e instanceof Error ? e.message : String(e)
+    } catch (e: unknown) {
+      results.tests.wordpress_check = {
+        error: e instanceof Error ? e.message : 'Unknown error',
+        reachable: false
       };
     }
 
-    // Test 3: Check categories
-    console.log('[TEST 3] Fetching categories...');
-    try {
-      const wpUrl = process.env.WORDPRESS_URL || 'https://admin.wholelotofnature.com';
-      const auth = Buffer.from(`${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`).toString('base64');
-      
-      const catResponse = await fetch(`${wpUrl}/wp-json/wc/v3/products/categories?per_page=5`, {
-        headers: {
-          'Authorization': `Basic ${auth}`
-        }
-      });
-      
-      const catData = await catResponse.json();
-      results.tests.categories = {
-        status: catResponse.status,
-        count: Array.isArray(catData) ? catData.length : 0,
-        categories: Array.isArray(catData) ? catData.map((c: any) => ({ id: c.id, name: c.name, slug: c.slug })) : []
-      };
-    } catch (e) {
-      results.tests.categories = {
-        error: e instanceof Error ? e.message : String(e)
-      };
-    }
+    return NextResponse.json(results);
 
-  } catch (error) {
-    results.tests.overall_error = {
-      message: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined
-    };
+  } catch (error: unknown) {
+    console.error('[ENDPOINT ERROR]', error);
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: 'Endpoint error',
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined
+      },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json(results, { status: 200 });
 }
