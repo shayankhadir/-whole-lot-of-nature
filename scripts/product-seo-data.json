@@ -1,0 +1,361 @@
+{
+  "seoStrategy": {
+    "categories": {
+      "indoor-plants": {
+        "focusKeywords": [
+          "buy indoor plants online",
+          "indoor plants Bangalore",
+          "best indoor plants for apartments",
+          "low light indoor plants",
+          "air purifying plants online",
+          "lucky plants for home",
+          "indoor flowering plants",
+          "small indoor plants",
+          "money plant online",
+          "snake plant online",
+          "pothos plants Bangalore",
+          "areca palm online",
+          "rubber plant India",
+          "peace lily plants online",
+          "fiddle leaf fig India"
+        ],
+        "metaDescriptionTemplate": "Buy premium indoor plants online in Bangalore. Wide selection of air-purifying and low-light plants. Fast delivery, expert care tips. | {brand}",
+        "h1Template": "Premium Indoor Plants Online | Buy Best Plants for Your Home | Bangalore",
+        "h2Examples": [
+          "Indoor Plants for Low Light Conditions",
+          "Air Purifying Plants for Healthy Home",
+          "Easy Care Indoor Plants for Beginners",
+          "Best Flowering Indoor Plants",
+          "Indoor Plants for Every Room",
+          "Lucky & Feng Shui Indoor Plants"
+        ],
+        "contentAngles": [
+          "Plant care & maintenance guide",
+          "Health benefits of specific plants",
+          "Interior design & decoration",
+          "Beginner-friendly selections",
+          "Seasonal plant recommendations",
+          "Pet-safe plant options",
+          "Budget-friendly collections",
+          "Premium luxury varieties"
+        ],
+        "longFormBlogTopics": [
+          "Ultimate Guide to Indoor Plants for Apartments",
+          "Best Air Purifying Plants Scientific Study",
+          "How to Care for Indoor Plants in Bangalore Climate",
+          "Lucky Plants in Indian Homes - Complete Guide",
+          "Beginner's Guide to Growing Indoor Plants",
+          "Indoor Plants for Pet-Friendly Homes",
+          "Growing Herbs Indoors - Kitchen Garden Ideas",
+          "Indoor Plant Feng Shui Guide for Better Energy"
+        ],
+        "semanticTags": ["air-purifying", "low-light", "beginner-friendly", "pet-safe", "flowering", "lucky", "lucky-plants", "feng-shui"]
+      },
+      "outdoor-plants": {
+        "focusKeywords": [
+          "buy outdoor plants online",
+          "garden plants Bangalore",
+          "flowering plants for gardens",
+          "shade-loving outdoor plants",
+          "ornamental plants India",
+          "landscaping plants online",
+          "monsoon plants India",
+          "flowering shrubs online",
+          "climbers and creepers",
+          "ground cover plants",
+          "tropical plants Bangalore",
+          "herb garden plants",
+          "vegetable plants online",
+          "fruit-bearing plants India",
+          "seasonal garden plants"
+        ],
+        "metaDescriptionTemplate": "Buy outdoor garden plants online in Bangalore. Landscaping plants, flowering shrubs, climbers & more. Expert guidance | {brand}",
+        "h1Template": "Outdoor Garden Plants | Buy Landscaping Plants Online | Expert Selection",
+        "h2Examples": [
+          "Flowering Plants for Indian Gardens",
+          "Shade-Loving Outdoor Plants",
+          "Monsoon Garden Plants Collection",
+          "Ground Cover & Border Plants",
+          "Climbing Plants for Walls & Fences",
+          "Ornamental Shrubs for Landscaping"
+        ],
+        "contentAngles": [
+          "Garden design & layout",
+          "Seasonal planting guide",
+          "Climate-specific selections",
+          "Monsoon/summer/winter care",
+          "Landscaping ideas",
+          "Vegetable gardening",
+          "Pest management natural",
+          "Garden transformation stories"
+        ],
+        "longFormBlogTopics": [
+          "Complete Garden Design Guide for Bangalore Villas",
+          "Monsoon Gardening Tips for Indian Climate",
+          "Best Flowering Plants for Indian Summer",
+          "Creating Herb Gardens at Home",
+          "Organic Vegetable Gardening at Home",
+          "Guide to Climbing Plants & Creepers",
+          "Winter Garden Planning for South India",
+          "Sustainable Gardening Practices"
+        ],
+        "semanticTags": ["flowering", "shade-loving", "monsoon", "landscaping", "ornamental", "climbing", "herbs", "vegetables", "seasonal"]
+      },
+      "soil-amendments": {
+        "focusKeywords": [
+          "potting soil online",
+          "garden soil Bangalore",
+          "fertilizer online India",
+          "compost online",
+          "soil mix for plants",
+          "organic fertilizer",
+          "peat moss substitute",
+          "coconut coir online",
+          "neem cake fertilizer",
+          "bone meal for plants",
+          "plant nutrient mix",
+          "soil conditioner",
+          "mulch online",
+          "garden amendments online",
+          "best soil for pot plants"
+        ],
+        "metaDescriptionTemplate": "Premium potting soil & amendments online. Organic fertilizers, compost & mixes for healthy plants | {brand}",
+        "h1Template": "Potting Soil & Garden Amendments | Premium Mix Online | Expert Selection",
+        "h2Examples": [
+          "Best Potting Mixes for Indoor Plants",
+          "Organic Fertilizers for Healthy Growth",
+          "Soil Amendments for Indian Soils",
+          "Composting Guide & Products",
+          "Nutrient-Rich Garden Soils",
+          "Specialized Mixes for Different Plants"
+        ],
+        "contentAngles": [
+          "Soil science basics",
+          "DIY soil mix recipes",
+          "Plant-specific soil needs",
+          "Organic vs chemical comparison",
+          "Soil health improvement",
+          "Pest prevention through soil",
+          "Seasonal soil care",
+          "Sustainability focus"
+        ],
+        "longFormBlogTopics": [
+          "Complete Guide to Soil pH & Plant Health",
+          "DIY Potting Mix Recipes for Different Plants",
+          "Understanding Plant Nutrients (NPK)",
+          "Organic Fertilizers vs Chemical Fertilizers",
+          "Composting at Home - Beginners Guide",
+          "Soil Health Testing & Improvement",
+          "Seasonal Soil Care Calendar",
+          "Sustainable Gardening with Amendments"
+        ],
+        "semanticTags": ["organic", "potting-mix", "fertilizer", "compost", "soil-health", "sustainable", "nutrients", "diy"]
+      },
+      "tools-accessories": {
+        "focusKeywords": [
+          "gardening tools online",
+          "garden tool kit",
+          "watering cans online",
+          "garden pots India",
+          "plant pots online",
+          "potting soil containers",
+          "garden gloves Bangalore",
+          "pruning shears online",
+          "garden spades India",
+          "plant stands online",
+          "gardening accessories kit",
+          "indoor plant pots",
+          "decorative plant pots",
+          "terracotta pots online",
+          "hanging plant holders"
+        ],
+        "metaDescriptionTemplate": "Quality gardening tools & accessories online. Pots, tools, stands & more for perfect garden | {brand}",
+        "h1Template": "Gardening Tools & Accessories | Premium Garden Kit | Shop Online",
+        "h2Examples": [
+          "Essential Gardening Tools for Beginners",
+          "Decorative Plant Pots & Planters",
+          "Ergonomic Garden Tools",
+          "Indoor Plant Display Solutions",
+          "Complete Garden Tool Kits",
+          "Watering Systems & Accessories"
+        ],
+        "contentAngles": [
+          "Tool selection guide",
+          "Garden maintenance",
+          "Pot/planter styling",
+          "DIY projects",
+          "Tool care tips",
+          "Space-saving solutions",
+          "Gift guides",
+          "Seasonal essentials"
+        ],
+        "longFormBlogTopics": [
+          "Complete Garden Tool Kit Buyers Guide",
+          "How to Choose Right Garden Pots",
+          "Essential Tools for Urban Gardening",
+          "DIY Garden Projects with Basic Tools",
+          "Maintaining & Sharpening Garden Tools",
+          "Indoor Plant Display Ideas",
+          "Water Conservation with Right Tools",
+          "Gift Ideas for Garden Enthusiasts"
+        ],
+        "semanticTags": ["tools", "pots", "accessories", "watering", "decorative", "beginner-friendly", "gift-ideas", "diy"]
+      },
+      "plant-care": {
+        "focusKeywords": [
+          "plant fertilizer online",
+          "pest control spray",
+          "plant growth booster",
+          "plant disease treatment",
+          "neem oil spray",
+          "plant vitamins online",
+          "fungicide for plants",
+          "insecticide organic",
+          "leaf shine spray",
+          "plant tonic online",
+          "micronutrient mix",
+          "plant food for flowering",
+          "growth hormone spray",
+          "chlorophytum plant food",
+          "organic pest management"
+        ],
+        "metaDescriptionTemplate": "Premium plant care products online. Fertilizers, pesticides & treatments for healthy plants | {brand}",
+        "h1Template": "Plant Care Products | Premium Fertilizers & Treatments | Healthy Growth",
+        "h2Examples": [
+          "Complete Plant Nutrition Guide",
+          "Organic Pest Control Solutions",
+          "Plant Disease Prevention & Treatment",
+          "Seasonal Plant Care Products",
+          "Growth Boosters for Flowering Plants",
+          "Specialized Care for Different Plant Types"
+        ],
+        "contentAngles": [
+          "Plant health assessment",
+          "Problem diagnosis guides",
+          "Organic solutions focus",
+          "Product recommendations",
+          "Safety & application tips",
+          "Results & testimonials",
+          "Video tutorials",
+          "Expert advice"
+        ],
+        "longFormBlogTopics": [
+          "Complete Plant Care Calendar by Season",
+          "Diagnosing Common Plant Problems",
+          "Organic Pest Control Methods",
+          "Plant Nutrition Complete Guide",
+          "Reviving Dying Plants - Step by Step",
+          "Safe Plant Care Around Pets",
+          "Indoor Plant Health Monitoring",
+          "Plant Care Tips from Experts"
+        ],
+        "semanticTags": ["pest-control", "fertilizer", "organic", "disease-treatment", "nutrition", "growth", "health", "seasonal"]
+      },
+      "combo-packs": {
+        "focusKeywords": [
+          "plant combo packs",
+          "indoor plants bundle",
+          "starter plant kit",
+          "gift plants Bangalore",
+          "plant combo set",
+          "desktop plants set",
+          "office plants bundle",
+          "bedroom plants set",
+          "living room plants combo",
+          "herb garden kit",
+          "succulent combo",
+          "air purifying plant set",
+          "beginner plant bundle",
+          "premium plants gift set",
+          "complete plant kit online"
+        ],
+        "metaDescriptionTemplate": "Curated plant combo packs & bundles. Perfect starter kits & gifts for plant lovers | {brand}",
+        "h1Template": "Plant Combo Packs & Bundles | Curated Collections | Best Value",
+        "h2Examples": [
+          "Beginner Starter Plant Kits",
+          "Office Plants Combo Sets",
+          "Bedroom Plants for Better Sleep",
+          "Air Purifying Plant Bundles",
+          "Gift-Perfect Plant Combinations",
+          "Complete Gardening Starter Kits"
+        ],
+        "contentAngles": [
+          "Value proposition",
+          "Gift giving guides",
+          "Room-specific combos",
+          "Beginner selection",
+          "Styling suggestions",
+          "Care simplification",
+          "Budget options",
+          "Premium selections"
+        ],
+        "longFormBlogTopics": [
+          "Best Plant Combinations for Rooms",
+          "Gift Guide - Plants for Different Occasions",
+          "Office Plant Combo Guide",
+          "Complete Starter Kit for Beginners",
+          "Bedroom Plants for Health & Sleep",
+          "Kitchen Window Herb Garden Setup",
+          "Living Room Plant Styling Ideas",
+          "Gifting Plants - A Complete Guide"
+        ],
+        "semanticTags": ["combo", "bundle", "gift", "starter-kit", "beginner", "value", "curated", "savings"]
+      }
+    }
+  },
+  "productOptimizationGuide": {
+    "onPageSEO": {
+      "title": "Optimize within 60 characters. Format: [Keyword] | Buy Online | {Brand}",
+      "metaDescription": "Optimize within 155-160 chars. Include main keyword, benefit, CTA, location where relevant",
+      "heading": "Use target keyword naturally in H1. One H1 per page.",
+      "content": "Aim for 300+ words for product description. Use semantic variations of keywords.",
+      "schema": "Implement Product schema with price, rating, availability, description"
+    },
+    "technicalSEO": [
+      "Ensure fast page load (< 3 seconds target)",
+      "Mobile responsive design",
+      "Clean URL structure with keywords",
+      "Internal linking strategy",
+      "XML sitemap updated",
+      "robots.txt configured"
+    ],
+    "offPageSEO": [
+      "Build quality backlinks",
+      "Social media promotion",
+      "Customer reviews & ratings",
+      "Brand mentions",
+      "Local business listings"
+    ]
+  },
+  "implementationChecklist": {
+    "phase1": [
+      "Update product titles with keywords",
+      "Rewrite meta descriptions",
+      "Enhance product descriptions (min 300 words)",
+      "Add appropriate product categories & tags",
+      "Implement product schema markup"
+    ],
+    "phase2": [
+      "Create category landing pages",
+      "Set up internal linking structure",
+      "Create supporting blog content",
+      "Set up structured data",
+      "Optimize images with alt text"
+    ],
+    "phase3": [
+      "Local SEO optimization",
+      "Review management setup",
+      "Analytics & tracking",
+      "Competitive analysis",
+      "Monthly optimization cycle"
+    ]
+  },
+  "contentCalendar": {
+    "month1": {
+      "week1": ["Create indoor plants category content", "Set up blog structure"],
+      "week2": ["Publish outdoor plants guide", "Create seasonal guide"],
+      "week3": ["Soil amendment guide", "Tool buying guide"],
+      "week4": ["Plant care calendar", "Begin link building"]
+    }
+  }
+}

@@ -97,9 +97,9 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/images/Whole lot of nature logo (1).png",
+    shortcut: "/images/Whole lot of nature logo (1).png",
+    apple: "/images/Whole lot of nature logo (1).png",
   },
 };
 

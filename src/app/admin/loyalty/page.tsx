@@ -323,6 +323,8 @@ export default function AdminLoyaltyPage() {
             </div>
             <button
               onClick={fetchAll}
+              title="Refresh loyalty program data"
+              aria-label="Refresh data"
               className="p-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
             >
               <RefreshCw className="w-5 h-5 text-gray-300" />
@@ -469,6 +471,8 @@ export default function AdminLoyaltyPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by email or name..."
+                title="Search accounts by email or name"
+                aria-label="Search accounts"
                 className="w-full pl-12 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50"
               />
             </div>
@@ -542,12 +546,16 @@ export default function AdminLoyaltyPage() {
                             <button
                               onClick={() => awardPoints(account.id)}
                               disabled={saving || !awardAmount || !awardReason}
+                              title="Confirm points award"
+                              aria-label="Confirm award"
                               className="p-1 bg-green-600 rounded hover:bg-green-500 disabled:opacity-50"
                             >
                               <Check className="w-4 h-4 text-white" />
                             </button>
                             <button
                               onClick={() => setAwardingPoints(null)}
+                              title="Cancel points award"
+                              aria-label="Cancel award"
                               className="p-1 bg-gray-600 rounded hover:bg-gray-500"
                             >
                               <X className="w-4 h-4 text-white" />
@@ -604,12 +612,16 @@ export default function AdminLoyaltyPage() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setEditingReward(reward)}
+                        title="Edit reward"
+                        aria-label={`Edit ${reward.name}`}
                         className="p-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
                       >
                         <Edit2 className="w-4 h-4 text-gray-300" />
                       </button>
                       <button
                         onClick={() => deleteReward(reward.id)}
+                        title="Delete reward"
+                        aria-label={`Delete ${reward.name}`}
                         className="p-2 bg-gray-700 rounded-lg hover:bg-red-600 transition-colors"
                       >
                         <Trash2 className="w-4 h-4 text-gray-300" />
@@ -680,6 +692,8 @@ export default function AdminLoyaltyPage() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setEditingTier(tier)}
+                        title="Edit tier"
+                        aria-label={`Edit ${tier.name} tier`}
                         className="p-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
                       >
                         <Edit2 className="w-4 h-4 text-gray-300" />
@@ -687,6 +701,8 @@ export default function AdminLoyaltyPage() {
                       {tier._count?.accounts === 0 && (
                         <button
                           onClick={() => deleteTier(tier.id)}
+                          title="Delete tier"
+                          aria-label={`Delete ${tier.name} tier`}
                           className="p-2 bg-gray-700 rounded-lg hover:bg-red-600 transition-colors"
                         >
                           <Trash2 className="w-4 h-4 text-gray-300" />
@@ -738,6 +754,7 @@ export default function AdminLoyaltyPage() {
                       type="checkbox"
                       checked={settings.programActive}
                       onChange={(e) => setSettings({ ...settings, programActive: e.target.checked })}
+                      aria-label="Enable or disable the loyalty program"
                       className="sr-only peer"
                     />
                     <div className="w-11 h-6 bg-gray-700 peer-focus:ring-2 peer-focus:ring-green-500/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
@@ -750,6 +767,7 @@ export default function AdminLoyaltyPage() {
                     type="number"
                     value={settings.pointsPerDollar}
                     onChange={(e) => setSettings({ ...settings, pointsPerDollar: parseInt(e.target.value) || 0 })}
+                    title="Points earned per rupee spent"
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                   />
                 </div>
@@ -760,6 +778,7 @@ export default function AdminLoyaltyPage() {
                     type="number"
                     value={settings.signupBonus}
                     onChange={(e) => setSettings({ ...settings, signupBonus: parseInt(e.target.value) || 0 })}
+                    title="Points awarded when customer signs up"
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                   />
                 </div>
@@ -771,6 +790,7 @@ export default function AdminLoyaltyPage() {
                       type="number"
                       value={settings.referralBonusReferrer}
                       onChange={(e) => setSettings({ ...settings, referralBonusReferrer: parseInt(e.target.value) || 0 })}
+                      title="Points awarded to customer who refers"
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                     />
                   </div>
@@ -780,6 +800,7 @@ export default function AdminLoyaltyPage() {
                       type="number"
                       value={settings.referralBonusReferred}
                       onChange={(e) => setSettings({ ...settings, referralBonusReferred: parseInt(e.target.value) || 0 })}
+                      title="Points awarded to new referred customer"
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                     />
                   </div>
@@ -792,6 +813,7 @@ export default function AdminLoyaltyPage() {
                       type="number"
                       value={settings.reviewBonus}
                       onChange={(e) => setSettings({ ...settings, reviewBonus: parseInt(e.target.value) || 0 })}
+                      title="Points awarded when customer submits a product review"
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                     />
                   </div>
@@ -801,6 +823,7 @@ export default function AdminLoyaltyPage() {
                       type="number"
                       value={settings.birthdayBonus}
                       onChange={(e) => setSettings({ ...settings, birthdayBonus: parseInt(e.target.value) || 0 })}
+                      title="Points awarded on customer's birthday"
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                     />
                   </div>
@@ -812,6 +835,7 @@ export default function AdminLoyaltyPage() {
                     type="number"
                     value={settings.pointsExpirationMonths}
                     onChange={(e) => setSettings({ ...settings, pointsExpirationMonths: parseInt(e.target.value) || 0 })}
+                    title="Number of months before points expire"
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                   />
                   <p className="text-gray-500 text-sm mt-1">Set to 0 for no expiration</p>
@@ -864,7 +888,12 @@ function RewardModal({
           <h3 className="text-lg font-semibold text-white">
             {reward ? 'Edit Reward' : 'New Reward'}
           </h3>
-          <button onClick={onClose} className="p-2 hover:bg-gray-700 rounded-lg">
+          <button 
+            onClick={onClose} 
+            title="Close dialog"
+            aria-label="Close reward editor"
+            className="p-2 hover:bg-gray-700 rounded-lg"
+          >
             <X className="w-5 h-5 text-gray-400" />
           </button>
         </div>
@@ -876,6 +905,7 @@ function RewardModal({
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
+              title="Name of the reward"
               className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
             />
           </div>
@@ -885,6 +915,7 @@ function RewardModal({
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
+              title="Description of the reward"
               className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white resize-none"
               rows={2}
             />
@@ -897,6 +928,7 @@ function RewardModal({
                 type="number"
                 value={form.pointsCost}
                 onChange={(e) => setForm({ ...form, pointsCost: parseInt(e.target.value) || 0 })}
+                title="Number of points required for this reward"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -905,6 +937,7 @@ function RewardModal({
               <select
                 value={form.type}
                 onChange={(e) => setForm({ ...form, type: e.target.value })}
+                title="Type of discount or reward"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               >
                 <option value="FIXED_DISCOUNT">Fixed Discount (₹)</option>
@@ -922,6 +955,7 @@ function RewardModal({
                 type="number"
                 value={form.value}
                 onChange={(e) => setForm({ ...form, value: parseInt(e.target.value) || 0 })}
+                title="Discount value or amount"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -931,6 +965,7 @@ function RewardModal({
                 type="number"
                 value={form.minOrderValue}
                 onChange={(e) => setForm({ ...form, minOrderValue: parseInt(e.target.value) || 0 })}
+                title="Minimum order value required for this reward"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -1009,7 +1044,12 @@ function TierModal({
           <h3 className="text-lg font-semibold text-white">
             {tier ? 'Edit Tier' : 'New Tier'}
           </h3>
-          <button onClick={onClose} className="p-2 hover:bg-gray-700 rounded-lg">
+          <button 
+            onClick={onClose} 
+            title="Close dialog"
+            aria-label="Close tier editor"
+            className="p-2 hover:bg-gray-700 rounded-lg"
+          >
             <X className="w-5 h-5 text-gray-400" />
           </button>
         </div>
@@ -1022,6 +1062,7 @@ function TierModal({
                 type="text"
                 value={form.name}
                 onChange={(e) => handleNameChange(e.target.value)}
+                title="Name of the loyalty tier"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -1032,12 +1073,14 @@ function TierModal({
                   type="color"
                   value={form.color}
                   onChange={(e) => setForm({ ...form, color: e.target.value })}
+                  title="Choose tier color"
                   className="w-12 h-10 rounded cursor-pointer bg-transparent"
                 />
                 <input
                   type="text"
                   value={form.color}
                   onChange={(e) => setForm({ ...form, color: e.target.value })}
+                  title="Hex color code for the tier"
                   className="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                 />
               </div>
@@ -1051,6 +1094,7 @@ function TierModal({
                 type="number"
                 value={form.minPoints}
                 onChange={(e) => setForm({ ...form, minPoints: parseInt(e.target.value) || 0 })}
+                title="Minimum points required to reach this tier"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -1061,6 +1105,7 @@ function TierModal({
                 step="0.1"
                 value={form.pointsMultiplier}
                 onChange={(e) => setForm({ ...form, pointsMultiplier: parseFloat(e.target.value) || 1 })}
+                title="Multiplier for points earned at this tier"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -1073,6 +1118,7 @@ function TierModal({
                 type="number"
                 value={form.discountPercent}
                 onChange={(e) => setForm({ ...form, discountPercent: parseInt(e.target.value) || 0 })}
+                title="Discount percentage for this tier"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>
@@ -1082,6 +1128,7 @@ function TierModal({
                 type="number"
                 value={form.birthdayBonus}
                 onChange={(e) => setForm({ ...form, birthdayBonus: parseInt(e.target.value) || 0 })}
+                title="Additional bonus points on customer's birthday at this tier"
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
               />
             </div>

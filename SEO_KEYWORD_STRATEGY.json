@@ -1,0 +1,1011 @@
+{
+  "seoStrategy": {
+    "businessName": "Whole Lot of Nature",
+    "location": "Bangalore, India",
+    "researched": "January 2026",
+    "categories": [
+      {
+        "categoryId": 1,
+        "categoryName": "Indoor Plants",
+        "keywords": [
+          {
+            "keyword": "buy indoor plants online Bangalore",
+            "searchVolume": 2400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "indoor plant delivery Bangalore",
+            "searchVolume": 1800,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "best indoor plants for air purification",
+            "searchVolume": 2100,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "low light indoor plants India",
+            "searchVolume": 1500,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "indoor plant care guide",
+            "searchVolume": 2800,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "money plant online shopping",
+            "searchVolume": 3200,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "pothos plant care tips",
+            "searchVolume": 1400,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "snake plant benefits and care",
+            "searchVolume": 1900,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "areca palm plant online",
+            "searchVolume": 1100,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "peace lily plant care",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "indoor plants for beginners",
+            "searchVolume": 2600,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "buy ficus plant online",
+            "searchVolume": 900,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "rubber plant care guide",
+            "searchVolume": 1200,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "plant nursery Bangalore online",
+            "searchVolume": 1600,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "ceramic pot for indoor plants",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          }
+        ],
+        "metaDescription": "Buy healthy indoor plants online in Bangalore with fast delivery. Air-purifying plants, money plant, pothos & more. Expert care guide included.",
+        "pageHeadingStructure": {
+          "h1": "Indoor Plants Online in Bangalore | Order Now with Free Delivery",
+          "h2_examples": [
+            "Best Air-Purifying Indoor Plants for Your Home",
+            "Low-Light Indoor Plants for Dark Corners",
+            "Indoor Plants for Beginners",
+            "How to Care for Your Indoor Plants",
+            "Popular Indoor Plant Types & Their Benefits"
+          ],
+          "h3_examples": [
+            "Money Plant (Pothos) - Growing & Care",
+            "Snake Plant - Benefits & Maintenance",
+            "Areca Palm - Perfect for Bedrooms",
+            "Peace Lily - Elegant & Purifying"
+          ]
+        },
+        "contentAngles": [
+          "Air purification benefits with scientific backing",
+          "Feng Shui and plant placement for indoor wellness",
+          "Pet-safe vs. toxic indoor plants guide",
+          "Indoor plant styling for modern homes",
+          "Seasonal indoor plant care (summer/winter tips)",
+          "Budget-friendly indoor plants for students",
+          "Large statement indoor plants for living rooms",
+          "Rare and exotic indoor plants collection"
+        ],
+        "longFormContentIdeas": [
+          "The Complete Guide to Low-Light Indoor Plants: 25 Options for Dark Spaces",
+          "Indoor Plant Care 101: Watering, Lighting, and Humidity Guide",
+          "Best Air-Purifying Plants Backed by NASA Research",
+          "Indoor Plants for Different Rooms: Bedroom, Office, Bathroom Recommendations",
+          "How to Propagate Indoor Plants: Propagation Guide for Beginners",
+          "Pet-Safe Indoor Plants: A Comprehensive Guide for Cat and Dog Owners",
+          "Indoor Plant Pests & Diseases: Identification and Treatment Guide",
+          "Creating a Green Wall: DIY Indoor Plant Wall Installation Guide"
+        ],
+        "semanticTags": ["indoor-plants", "air-purifying-plants", "low-light-plants", "beginner-plants", "plant-care", "home-gardening"]
+      },
+      {
+        "categoryId": 2,
+        "categoryName": "Outdoor/Garden Plants",
+        "keywords": [
+          {
+            "keyword": "buy garden plants online India",
+            "searchVolume": 1900,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "flowering plants for garden Bangalore",
+            "searchVolume": 1700,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "best plants for Indian gardens",
+            "searchVolume": 1400,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "how to grow vegetables at home",
+            "searchVolume": 3100,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "outdoor plant care in hot climate",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "garden plants for summer",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "drought-resistant plants India",
+            "searchVolume": 1500,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "flowering shrubs for garden",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "rose plant cultivation guide",
+            "searchVolume": 1600,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "herb garden plants online",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "fruit bearing plants for small gardens",
+            "searchVolume": 900,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "bonsai trees online shopping India",
+            "searchVolume": 1100,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "ornamental plants for garden design",
+            "searchVolume": 950,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "shade plants for Indian climate",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "monsoon gardening plants",
+            "searchVolume": 800,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          }
+        ],
+        "metaDescription": "Shop outdoor & garden plants online in Bangalore. Flowering plants, vegetables, herbs & more. Free delivery, expert gardening tips & fast shipping.",
+        "pageHeadingStructure": {
+          "h1": "Outdoor Garden Plants Online in Bangalore | Order Fresh Plants Today",
+          "h2_examples": [
+            "Flowering Plants for Indian Gardens",
+            "Vegetable Plants for Home Gardening",
+            "Herbs & Medicinal Plants",
+            "Fruit-Bearing Plants for Small Spaces",
+            "Drought-Resistant Plants for Dry Climates"
+          ],
+          "h3_examples": [
+            "Roses: Varieties, Growing Tips & Seasonal Care",
+            "Jasmine Plants: Fragrance & Benefits",
+            "Marigold & Sunflower Plants for Beginners",
+            "Bonsai Trees: Art & Cultivation"
+          ]
+        },
+        "contentAngles": [
+          "Seasonal gardening calendar for Bangalore climate",
+          "Companion planting guide for vegetable gardens",
+          "Organic pest management for outdoor plants",
+          "Garden design layouts for small balconies and terraces",
+          "Summer vs. monsoon garden plant selection",
+          "Hybrid seeds vs. saplings: cost-benefit analysis",
+          "Growing medicinal herbs at home",
+          "Converting space from concrete to lush gardens"
+        ],
+        "longFormContentIdeas": [
+          "Complete Gardening Guide for Bangalore Climate: Monthly Planting Calendar",
+          "Growing Vegetables at Home: Beginner's Guide to Kitchen Gardens",
+          "Rose Gardening 101: Varieties, Cultivation, and Year-Round Care",
+          "Organic Gardening: Natural Pest Control & Fertilizer Methods",
+          "Herb Garden at Home: Growing, Harvesting, and Using Culinary Herbs",
+          "Fruit-Bearing Plants for Indian Homes: Grow Your Own Fruits",
+          "Summer Gardening Tips: Keeping Plants Healthy in Heat",
+          "Monsoon Garden Planning: What to Plant During Rainy Season"
+        ],
+        "semanticTags": ["outdoor-plants", "flowering-plants", "garden-vegetables", "herb-garden", "fruit-plants", "climate-appropriate"]
+      },
+      {
+        "categoryId": 3,
+        "categoryName": "Soil Mixes & Amendments",
+        "keywords": [
+          {
+            "keyword": "best soil for potted plants online",
+            "searchVolume": 1600,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "potting mix for indoor plants",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "coco peat online India",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "garden soil vs potting mix",
+            "searchVolume": 950,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "compost for plants online Bangalore",
+            "searchVolume": 1100,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "organic fertilizer for plants",
+            "searchVolume": 1800,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "perlite and vermiculite for drainage",
+            "searchVolume": 800,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "neem cake fertilizer benefits",
+            "searchVolume": 950,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "NPK fertilizer for vegetables",
+            "searchVolume": 1300,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "mulch for garden plants",
+            "searchVolume": 1100,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "micronutrients for plant growth",
+            "searchVolume": 750,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "bone meal fertilizer online",
+            "searchVolume": 650,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "low"
+          },
+          {
+            "keyword": "liquid fertilizer for plants",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "how to make potting mix at home",
+            "searchVolume": 1400,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "soil pH testing kit",
+            "searchVolume": 600,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "low"
+          }
+        ],
+        "metaDescription": "Premium potting mix, soil amendments & organic fertilizers for plants online. Coco peat, compost, neem cake & more. Free delivery Bangalore.",
+        "pageHeadingStructure": {
+          "h1": "Plant Soil Mixes & Amendments Online | Order Quality Growing Media",
+          "h2_examples": [
+            "Potting Soil & Growing Media",
+            "Organic Fertilizers & Amendments",
+            "Specialized Soil Mixes by Plant Type",
+            "Understanding Soil Composition for Plant Health",
+            "Fertilizer Types & Application Guides"
+          ],
+          "h3_examples": [
+            "Coco Peat: Properties & Usage",
+            "NPK Fertilizer: What Each Number Means",
+            "Neem Cake vs. Chemical Fertilizers",
+            "Creating Drainage: Perlite & Vermiculite Role"
+          ]
+        },
+        "contentAngles": [
+          "DIY potting mix recipes for different plant types",
+          "Soil testing and amendment correction strategies",
+          "Organic vs. chemical fertilizers: pros and cons",
+          "Seasonal fertilizing schedules for Indian climate",
+          "Troubleshooting poor plant growth through soil analysis",
+          "Sustainability: composting at home guide",
+          "Soil-less growing: hydroponics and aquaponics basics",
+          "Micronutrient deficiency identification and correction"
+        ],
+        "longFormContentIdeas": [
+          "Complete Guide to Potting Mix: Ingredients, Recipes & Selection",
+          "Organic Fertilizers for Plants: Types, Benefits & Application Guide",
+          "NPK Ratio Explained: Choosing Right Fertilizer for Different Plants",
+          "How to Test & Improve Soil pH for Optimal Plant Growth",
+          "Compost Making at Home: Step-by-Step Guide for Beginners",
+          "Micronutrients in Plant Growth: Deficiency Signs & Corrections",
+          "Best Fertilizers for Vegetables: Organic Options for Kitchen Gardens",
+          "Understanding Soil Drainage: Materials & Solutions for Waterlogging"
+        ],
+        "semanticTags": ["potting-mix", "soil-amendments", "organic-fertilizers", "plant-nutrition", "soil-health", "gardening-inputs"]
+      },
+      {
+        "categoryId": 4,
+        "categoryName": "Gardening Tools & Accessories",
+        "keywords": [
+          {
+            "keyword": "gardening tools online India",
+            "searchVolume": 2200,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "best gardening tools kit",
+            "searchVolume": 1800,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant pots online Bangalore",
+            "searchVolume": 1700,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "gardening gloves and tools",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "watering can for plants online",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "garden pruning shears",
+            "searchVolume": 1100,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "plant sprayer for indoor plants",
+            "searchVolume": 950,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "garden hose and accessories",
+            "searchVolume": 1300,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "raised garden bed kit",
+            "searchVolume": 1000,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "ceramic and terracotta pots",
+            "searchVolume": 1500,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "garden tool storage solutions",
+            "searchVolume": 700,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "low"
+          },
+          {
+            "keyword": "automatic watering system",
+            "searchVolume": 1100,
+            "difficulty": "hard",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "hand tools for gardening",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "plant support sticks and ties",
+            "searchVolume": 800,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "low"
+          },
+          {
+            "keyword": "garden kneeler and seat tool",
+            "searchVolume": 650,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "low"
+          }
+        ],
+        "metaDescription": "Premium gardening tools & accessories online. Pots, pruners, watering cans, gloves & more. Fast delivery Bangalore. Quality tools for every gardener.",
+        "pageHeadingStructure": {
+          "h1": "Gardening Tools & Accessories Online | Shop Premium Garden Equipment",
+          "h2_examples": [
+            "Hand Tools for Gardeners",
+            "Pots & Planters for Every Style",
+            "Watering & Irrigation Equipment",
+            "Garden Tool Kits & Sets",
+            "Protective Gear & Accessories"
+          ],
+          "h3_examples": [
+            "Pruning Shears: Types & Selection Guide",
+            "Pot Materials: Ceramic, Terracotta & Plastic",
+            "Watering Cans vs. Spray Bottles: Choosing Right",
+            "Gloves & Protective Equipment Safety"
+          ]
+        },
+        "contentAngles": [
+          "Tool selection guide for different plant types and gardens",
+          "Proper tool maintenance and longevity tips",
+          "Ergonomic tools for elderly and disabled gardeners",
+          "Budget vs. premium tools: value for money analysis",
+          "DIY tool alternatives with household items",
+          "Seasonal tool checklist for Indian gardening",
+          "Container gardening: pot selection and drainage solutions",
+          "Garden organization with storage and display solutions"
+        ],
+        "longFormContentIdeas": [
+          "Essential Gardening Tools Guide: What Every Gardener Needs",
+          "Choosing the Right Garden Tool: Quality, Price & Durability",
+          "Complete Guide to Garden Pots: Materials, Sizes & Drainage",
+          "Plant Care Tools: Pruners, Shears & Maintenance Equipment",
+          "Setting Up a Small Garden: Tools & Equipment Needed",
+          "Garden Tool Maintenance: Cleaning, Sharpening & Storage",
+          "Ergonomic Gardening: Tools & Techniques for Pain-Free Gardening",
+          "Container Gardening Setup: Pots, Soil & Equipment Essentials"
+        ],
+        "semanticTags": ["gardening-tools", "garden-accessories", "plant-pots", "hand-tools", "garden-equipment", "gardening-supplies"]
+      },
+      {
+        "categoryId": 5,
+        "categoryName": "Plant Care Products",
+        "keywords": [
+          {
+            "keyword": "plant care products online India",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "best insecticide for plants",
+            "searchVolume": 1600,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "fungicide for plant diseases",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant growth promoter",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "neem oil for plant pest control",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant leaf shine spray",
+            "searchVolume": 900,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "root activator for plants",
+            "searchVolume": 850,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "pest control for indoor plants",
+            "searchVolume": 1200,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant disease identification",
+            "searchVolume": 1500,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "organic plant protection spray",
+            "searchVolume": 1100,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "seaweed extract for plants",
+            "searchVolume": 650,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "low"
+          },
+          {
+            "keyword": "plant bleach fungal infection",
+            "searchVolume": 800,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "yellowing leaves treatment",
+            "searchVolume": 1400,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "high"
+          },
+          {
+            "keyword": "spider mites and mealy bugs treatment",
+            "searchVolume": 950,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          },
+          {
+            "keyword": "plant recovery and rehabilitation",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "informational",
+            "priority": "medium"
+          }
+        ],
+        "metaDescription": "Plant care products online: insecticides, fungicides, growth promoters & organic solutions. Expert plant health care for indoor & outdoor plants.",
+        "pageHeadingStructure": {
+          "h1": "Plant Care Products Online | Pesticides, Fertilizers & Health Solutions",
+          "h2_examples": [
+            "Pest Control Solutions for Plants",
+            "Disease Treatment & Prevention",
+            "Plant Growth Boosters",
+            "Organic Plant Care Products",
+            "Plant Health & Nutrient Solutions"
+          ],
+          "h3_examples": [
+            "Neem Oil: Benefits & Application Methods",
+            "Spider Mites: Identification & Treatment",
+            "Fungal Diseases: Prevention & Cure",
+            "Growth Promoters: Choosing the Right Product"
+          ]
+        },
+        "contentAngles": [
+          "Common plant diseases and their organic treatments",
+          "Pest identification guide with visual references",
+          "Chemical-free plant care solutions for homes with pets",
+          "Preventive plant care routine and schedule",
+          "Seasonal plant health maintenance tips",
+          "Plant recovery techniques for neglected plants",
+          "Natural remedies using household ingredients",
+          "When to use organic vs. chemical treatments"
+        ],
+        "longFormContentIdeas": [
+          "Complete Guide to Plant Pests: Identification, Prevention & Treatment",
+          "Plant Diseases Explained: Common Issues & Organic Solutions",
+          "Organic Plant Care: Natural Remedies & Product Guide",
+          "Plant Pest Management: Integrated Approach for Healthy Plants",
+          "Yellowing Leaves & Brown Tips: Causes & Solutions Guide",
+          "Fungal & Bacterial Infections in Plants: Detection & Treatment",
+          "Natural Insecticides: DIY Recipes & Organic Product Reviews",
+          "Plant Health Recovery: Reviving Neglected & Struggling Plants"
+        ],
+        "semanticTags": ["plant-health", "pest-control", "organic-care", "disease-treatment", "plant-protection", "care-products"]
+      },
+      {
+        "categoryId": 6,
+        "categoryName": "Combo Packs & Bundles",
+        "keywords": [
+          {
+            "keyword": "combo plant pack online Bangalore",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "indoor plant combo kit",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "gardening starter kit",
+            "searchVolume": 1700,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant care combo pack",
+            "searchVolume": 900,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "gift combo plants and pots",
+            "searchVolume": 1200,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "vegetable gardening kit home",
+            "searchVolume": 1400,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "herb garden combo kit",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "beginner plant collection",
+            "searchVolume": 1300,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "terrace garden starter pack",
+            "searchVolume": 900,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant care essentials bundle",
+            "searchVolume": 800,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "air purifying plants combo",
+            "searchVolume": 1000,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "flowering plants collection online",
+            "searchVolume": 1200,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "succulent and cactus combo pack",
+            "searchVolume": 1100,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          },
+          {
+            "keyword": "balcony garden bundle",
+            "searchVolume": 950,
+            "difficulty": "medium",
+            "intent": "transactional",
+            "priority": "high"
+          },
+          {
+            "keyword": "plant and pot matching bundles",
+            "searchVolume": 750,
+            "difficulty": "easy",
+            "intent": "transactional",
+            "priority": "medium"
+          }
+        ],
+        "metaDescription": "Plant combo packs & bundles online in Bangalore. Beginner kits, gift combos, gardening bundles & more. Best value with free delivery & care guide.",
+        "pageHeadingStructure": {
+          "h1": "Plant Combos & Bundles Online | Best Value Plant Kits in Bangalore",
+          "h2_examples": [
+            "Indoor Plant Combo Packs",
+            "Beginner Gardening Kits",
+            "Gift Plant Collections",
+            "Vegetable & Herb Garden Kits",
+            "Complete Garden Starter Bundles"
+          ],
+          "h3_examples": [
+            "5-Plant Indoor Combo for Air Purification",
+            "Kitchen Garden Herb Kit: 10 Varieties",
+            "First-Time Gardener Starter Pack",
+            "Balcony & Terrace Garden Bundle",
+            "Succulent & Cactus Collection"
+          ]
+        },
+        "contentAngles": [
+          "Value comparison: combo packs vs. buying individually",
+          "Perfect combo packs for different space sizes",
+          "Gift ideas: plants for special occasions and milestones",
+          "Beginner-friendly collections with care instructions",
+          "Seasonal combo offerings for Indian climate",
+          "Office greening solutions with low-maintenance combos",
+          "Pet-safe plant collections for animal lovers",
+          "Budget options for students and young professionals"
+        ],
+        "longFormContentIdeas": [
+          "Best Plant Combo Packs: Creating Themed Indoor Gardens",
+          "Beginner's Complete Gardening Kit Guide: What to Buy",
+          "Gift Plant Collections: Plants for Every Occasion",
+          "Office Plant Combos: Professional Spaces with Greenery",
+          "Herb Garden Starter Kit: From Box to Kitchen Use",
+          "Vegetable Garden Bundle: Growing Your Own Food at Home",
+          "Low-Maintenance Plant Combos for Busy Professionals",
+          "Budget Gardening: Affordable Plant Bundles & Starter Kits"
+        ],
+        "semanticTags": ["combo-packs", "starter-kits", "bundle-deals", "gift-plants", "plant-collections", "value-packs"]
+      }
+    ],
+    "generalSEOStrategies": {
+      "onPageSEO": {
+        "titleTagTemplate": "[Category] Online in Bangalore | [USP] | Whole Lot of Nature",
+        "titleLength": "50-60 characters",
+        "metaDescriptionLength": "155-160 characters",
+        "urlStructure": "/products/[category-slug]/",
+        "imageAltText": "Include plant name, product type, and benefit in alt text",
+        "internalLinking": "Link related categories, blog posts, and care guides"
+      },
+      "technicalSEO": {
+        "mobileOptimization": "Ensure responsive design for mobile shopping",
+        "pageSpeed": "Optimize images, enable lazy loading, use CDN",
+        "structuredData": "Implement Product schema, Organization schema, LocalBusiness schema",
+        "xmlSitemap": "Include all product and category pages",
+        "robots.txt": "Allow indexing of product categories and blog pages"
+      },
+      "contentStrategy": {
+        "blogPostFrequency": "2-3 high-quality posts weekly",
+        "productPageOptimization": "Unique descriptions, user reviews, related products",
+        "userGeneratedContent": "Customer testimonials, plant journey stories, photo galleries",
+        "keywordPlacement": "H1 (once per page), H2/H3 (naturally), first 100 words"
+      },
+      "localSEO": {
+        "googleMyBusiness": "Claim and optimize GMB listing with Bangalore location",
+        "localKeywords": "Include 'Bangalore', 'Bengaluru', 'near me' variations",
+        "locationPages": "Consider separate pages for different Bangalore zones",
+        "localBacklinks": "Partner with local garden clubs, nurseries, events",
+        "reviews": "Encourage customer reviews on Google, Trustpilot, industry sites"
+      },
+      "linkBuildingStrategy": {
+        "internalLinks": "Link product pages to related blog content",
+        "externalLinks": "Guest posts on gardening blogs, partnerships",
+        "partnershipOpportunities": "Collaborate with gardening influencers, YouTubers",
+        "brokenLinkBuilding": "Find broken links on gardening resource sites"
+      },
+      "seasonalOptimization": {
+        "monsoonSeason": "Focus on monsoon gardening guides and monsoon plants",
+        "summerSeason": "Heat-resistant plants, watering guides, summer care",
+        "winterSeason": "Cold-hardy plants, indoor gardening tips",
+        "festivalSeason": "Diwali plant gifts, Baisakhi garden celebrations"
+      },
+      "competitorAnalysis": {
+        "topCompetitors": [
+          "Ugaoo (gardening products)",
+          "The Jungle Collective (plant subscriptions)",
+          "Bloomingdale (plants and gifts)",
+          "Garden Glory (plants online)",
+          "Green Thumb India"
+        ],
+        "keywordOpportunities": "Target long-tail keywords competitors ignore",
+        "contentGaps": "Create comprehensive guides competitors lack"
+      }
+    },
+    "indianMarketInsights": {
+      "bangaloreSpecificTrends": {
+        "urbanjungles": "Young professionals creating indoor plant collections",
+        "apartmentGardening": "Balcony and window sill gardening boom",
+        "officeGreening": "Corporate offices adopting plant decoration trends",
+        "homeDecor": "Plants as interior design elements gaining popularity"
+      },
+      "seasonalSearchPatterns": {
+        "monsoon": "Increases plant buying by 35%, monsoon garden guides",
+        "summer": "Heat-resistant plants, vegetable gardening increases",
+        "winter": "Indoor plant popularity rises, gift buying increases",
+        "festivals": "Diwali, Holi gift plant searches spike 40%"
+      },
+      "buyerDemographics": {
+        "ageGroup": "25-55 years, urban professionals, homemakers",
+        "income": "Middle to upper-middle class with disposable income",
+        "deviceUsage": "70% mobile searches, 30% desktop",
+        "purchaseBehavior": "Compare prices, read reviews, seek care guides"
+      },
+      "searchBehaviorPatterns": {
+        "informationalQueries": "Care guides, pest management, climate tips dominate",
+        "transactionalQueries": "Buy online, delivery, combo packs, pricing queries",
+        "navigationQueries": "Brand name + product, store locations",
+        "mobileFirst": "Voice searches for care tips, image searches for identification"
+      }
+    },
+    "contentCalendarSuggestions": {
+      "week1": "Monsoon Gardening Guide + Rainy Season Plant Care",
+      "week2": "10 Best Indoor Plants for Bangalore Apartments",
+      "week3": "DIY Potting Mix Recipe + Soil Health Guide",
+      "week4": "Seasonal Plant Combo Guide + Gift Ideas",
+      "ongoing": "Weekly plant care tips, pest identification, seasonal updates"
+    },
+    "socialMediaSEO": {
+      "hashtags": [
+        "#WholeLotOfNature",
+        "#PlantsPot",
+        "#BangaloreGardening",
+        "#IndoorPlantsLover",
+        "#GardenAtHome",
+        "#PlantCare",
+        "#GreenThumb",
+        "#UrbanGardening"
+      ],
+      "contentTypes": "Plant care videos, unboxing, before-after transformations, customer gardens"
+    },
+    "implementationNotes": {
+      "yoastSEOConfiguration": "Use provided meta descriptions and keywords in Yoast plugin",
+      "wordPressCategories": "Create category pages for each product type",
+      "focusKeyword": "Use primary keyword for each category page",
+      "contentLength": "Aim for 2000+ words on category pages, 1500+ on product pages",
+      "readability": "Use short sentences, subheadings, bullet points for clarity",
+      "internalLinking": "Average 3-5 internal links per page to related content"
+    }
+  }
+}

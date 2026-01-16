@@ -135,7 +135,7 @@ export default function Header() {
           >
             <Link href="/" className="-m-1.5 p-1.5 group">
               <div className="flex items-center gap-3">
-                <Image src="/logo.png" alt="Whole Lot of Nature" width={180} height={60} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" priority />
+                <Image src="/logo-new.svg" alt="Whole Lot of Nature" width={180} height={60} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" priority />
               </div>
             </Link>
           </motion.div>
@@ -175,28 +175,28 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="fixed inset-x-0 top-[72px] z-[999] border-t border-black/10 bg-white shadow-2xl"
+                      className="absolute top-full left-1/2 -translate-x-1/2 z-[999] w-screen max-w-7xl mt-1 border border-emerald-900/20 bg-gradient-to-b from-[#0a0a0a] to-[#0a0a0a] backdrop-blur-xl shadow-2xl rounded-b-3xl"
                       onMouseEnter={() => setShopDropdownOpen(true)}
                       onMouseLeave={() => setShopDropdownOpen(false)}
                     >
-                      <div className="mx-auto w-full max-w-7xl p-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+                      <div className="p-6 md:p-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
                           {Array.isArray(item.dropdown) &&
                             item.dropdown.map((collection) => (
                               <Link
                                 key={collection.title}
                                 href={collection.href}
                                 onClick={() => setShopDropdownOpen(false)}
-                                className="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary-200"
+                                className="group flex flex-col gap-4 rounded-2xl border border-emerald-900/30 bg-gradient-to-br from-[#0f1e11]/60 to-[#0c1b12]/60 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-emerald-700/50 hover:bg-gradient-to-br hover:from-[#0f1e11]/80 hover:to-[#0c1b12]/80"
                               >
-                                <div className="relative overflow-hidden rounded-full bg-primary-50 p-4 ring-1 ring-primary-100 w-14 h-14 flex items-center justify-center">
-                                  <collection.icon className="h-7 w-7 text-primary-700" aria-hidden="true" strokeWidth={1.75} />
+                                <div className="relative overflow-hidden rounded-full bg-emerald-900/30 p-4 ring-1 ring-emerald-700/40 w-14 h-14 flex items-center justify-center group-hover:bg-emerald-900/50 transition-all">
+                                  <collection.icon className="h-7 w-7 text-emerald-400 group-hover:text-emerald-300 transition-colors" aria-hidden="true" strokeWidth={1.75} />
                                 </div>
                                 <div>
-                                  <h3 className="text-lg font-semibold text-black group-hover:text-primary-700 transition-colors antialiased">
+                                  <h3 className="text-lg font-semibold text-emerald-50 group-hover:text-emerald-300 transition-colors antialiased">
                                     {collection.title}
                                   </h3>
-                                  <p className="mt-2 text-sm text-black">{collection.description}</p>
+                                  <p className="mt-2 text-sm text-emerald-200/70">{collection.description}</p>
                                 </div>
                                 <div className="flex flex-wrap gap-2">
                                   {collection.items.map((sub) => (
@@ -204,7 +204,7 @@ export default function Header() {
                                       key={sub.name}
                                       href={sub.href}
                                       onClick={() => setShopDropdownOpen(false)}
-                                      className="inline-flex items-center rounded-none border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-black hover:border-primary-300 hover:text-primary-700"
+                                      className="inline-flex items-center rounded-lg border border-emerald-800/40 bg-emerald-950/30 px-3 py-1 text-xs font-medium text-emerald-300 hover:border-emerald-700/60 hover:bg-emerald-900/50 hover:text-emerald-200 transition-all"
                                     >
                                       {sub.name}
                                     </Link>
@@ -213,10 +213,11 @@ export default function Header() {
                               </Link>
                             ))}
                         </div>
-                        <div className="mt-4 flex items-center justify-between rounded-2xl border border-dashed border-gray-200 bg-white p-4 text-sm text-gray-100 shadow-sm">
-                          <span>Looking for bundles or limited editions?</span>
-                          <Link href="/shop?tag=gift-bundles" className="font-medium text-[#2E7D32] hover:text-[#2E7D32]">
-                            Explore curated sets →
+                        <div className="mt-6 flex items-center justify-between rounded-2xl border border-dashed border-emerald-800/40 bg-gradient-to-r from-emerald-950/40 to-emerald-900/20 p-4 text-sm text-emerald-200/90 shadow-md hover:shadow-lg transition-all">
+                          <span className="text-emerald-100">Looking for bundles or limited editions?</span>
+                          <Link href="/shop?tag=gift-bundles" className="font-semibold text-emerald-300 hover:text-emerald-200 transition-colors flex items-center gap-2">
+                            Explore curated sets
+                            <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
                           </Link>
                         </div>
                       </div>
@@ -255,7 +256,7 @@ export default function Header() {
               <button
                 className="p-2 rounded-full text-white hover:bg-primary-400/20 transition-colors"
                 aria-haspopup="true"
-                aria-expanded={accountOpen}
+                aria-expanded={accountOpen ? "true" : "false"}
                 aria-label="Account menu"
                 onClick={() => setAccountOpen((v) => !v)}
               >

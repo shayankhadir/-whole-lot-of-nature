@@ -164,25 +164,8 @@ export default function InteractiveHero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ 
-          opacity: { delay: 1.5, duration: 0.5 },
-          y: { duration: 2, repeat: Infinity }
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-      >
-        <span className="text-emerald-200 text-sm tracking-wider">Scroll to explore</span>
-        <div className="w-6 h-10 border-2 border-emerald-300/50 rounded-full flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-emerald-300 rounded-full"
-          />
-        </div>
-      </motion.div>
+      {/* Scroll Indicator - REMOVED */}
+      {/* Seamless transition is now handled via gradient overlap */}
 
       {/* Corner Glow Effects */}
       <motion.div

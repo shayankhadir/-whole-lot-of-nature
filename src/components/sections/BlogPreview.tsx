@@ -105,7 +105,7 @@ export default function BlogPreview() {
           <h2 className="font-montserrat text-[clamp(2rem,5vw,2.5rem)] font-bold text-emerald-400 mb-4 antialiased">
             Latest from Our Blog
           </h2>
-          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] max-w-2xl mx-auto antialiased" style={{ color: '#86efac' }}>
+          <p className="text-[clamp(0.9375rem,2vw,1.125rem)] max-w-2xl mx-auto antialiased text-[#86efac]">
             Expert tips, plant care guides, and sustainable gardening insights
           </p>
         </motion.div>

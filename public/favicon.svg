@@ -1,0 +1,41 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#0D1B0F" stroke="#4ADE80" stroke-width="2"/>
+  
+  <!-- Leaves (Decorative Branch) -->
+  <g id="leaves" transform="translate(60, 40)">
+    <!-- Leaf 1 -->
+    <ellipse cx="0" cy="0" rx="12" ry="8" fill="none" stroke="#E8F5E9" stroke-width="1.5" transform="rotate(-45)"/>
+    <path d="M-5,-3 L5,3" stroke="#E8F5E9" stroke-width="0.5" fill="none"/>
+    
+    <!-- Leaf 2 -->
+    <ellipse cx="15" cy="-8" rx="12" ry="8" fill="none" stroke="#E8F5E9" stroke-width="1.5" transform="rotate(-20)"/>
+    <path d="M10,-10 L20,-6" stroke="#E8F5E9" stroke-width="0.5" fill="none"/>
+    
+    <!-- Leaf 3 -->
+    <ellipse cx="25" cy="5" rx="12" ry="8" fill="none" stroke="#E8F5E9" stroke-width="1.5" transform="rotate(15)"/>
+    <path d="M20,3 L30,7" stroke="#E8F5E9" stroke-width="0.5" fill="none"/>
+    
+    <!-- Leaf 4 -->
+    <ellipse cx="30" cy="20" rx="12" ry="8" fill="none" stroke="#E8F5E9" stroke-width="1.5" transform="rotate(40)"/>
+    <path d="M25,15 L35,25" stroke="#E8F5E9" stroke-width="0.5" fill="none"/>
+    
+    <!-- Leaf 5 -->
+    <ellipse cx="20" cy="35" rx="12" ry="8" fill="none" stroke="#E8F5E9" stroke-width="1.5" transform="rotate(60)"/>
+    <path d="M15,30 L25,40" stroke="#E8F5E9" stroke-width="0.5" fill="none"/>
+  </g>
+  
+  <!-- Main Branch Line -->
+  <line x1="65" y1="50" x2="95" y2="120" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Checkmark -->
+  <g id="checkmark" transform="translate(100, 100)">
+    <!-- Checkmark path (large, clean) -->
+    <path d="M -25 -5 L -5 15 L 25 -15" 
+          stroke="#4ADE80" 
+          stroke-width="8" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -5,14 +5,14 @@ const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDP
 const WC_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || '';
 const WC_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || '';
 
-// Log configuration status (for debugging)
-if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
-  console.log('[WooCommerce Config]', {
-    url: WORDPRESS_URL,
-    hasKey: !!WC_CONSUMER_KEY,
-    hasSecret: !!WC_CONSUMER_SECRET,
-  });
-}
+// Log configuration status (always log in production for debugging)
+console.log('[WooCommerce Service Init]', {
+  url: WORDPRESS_URL,
+  hasKey: !!WC_CONSUMER_KEY,
+  hasSecret: !!WC_CONSUMER_SECRET,
+  nodeEnv: process.env.NODE_ENV,
+  timestamp: new Date().toISOString()
+});
 
 // Initialize WooCommerce API with REST API v3
 const WooCommerce = new WooCommerceRestApi({

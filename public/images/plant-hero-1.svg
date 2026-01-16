@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark green background -->
+  <rect width="1200" height="800" fill="#0D1B0F"/>
+  
+  <!-- Gradient overlay for depth -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1B0F;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f2e12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#08140a;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="800" fill="url(#bgGradient)"/>
+  
+  <!-- Left plant silhouette -->
+  <g transform="translate(150, 300)">
+    <!-- Pot -->
+    <path d="M 0 150 L 20 200 L 80 200 L 100 150 Z" fill="#8b6f47" stroke="#6b5436" stroke-width="2"/>
+    <ellipse cx="50" cy="150" rx="50" ry="15" fill="#a0826d"/>
+    
+    <!-- Soil -->
+    <ellipse cx="50" cy="155" rx="48" ry="8" fill="#6b5436"/>
+    
+    <!-- Plant stems and leaves -->
+    <path d="M 50 155 Q 40 100 35 40" stroke="#4ADE80" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 50 155 Q 60 110 70 50" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 50 155 Q 50 80 50 20" stroke="#2ea650" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Leaves -->
+    <ellipse cx="30" cy="50" rx="15" ry="25" fill="url(#leafGradient)" transform="rotate(-35 30 50)"/>
+    <ellipse cx="70" cy="35" rx="15" ry="25" fill="url(#leafGradient)" transform="rotate(35 70 35)"/>
+    <ellipse cx="50" cy="15" rx="12" ry="20" fill="#4ADE80" transform="rotate(0 50 15)"/>
+  </g>
+  
+  <!-- Center decorative leaves -->
+  <g transform="translate(600, 100)">
+    <ellipse cx="0" cy="0" rx="30" ry="45" fill="#4ADE80" opacity="0.8" transform="rotate(-25)"/>
+    <ellipse cx="50" cy="20" rx="28" ry="42" fill="#22c55e" opacity="0.8" transform="rotate(25)"/>
+    <ellipse cx="25" cy="60" rx="26" ry="40" fill="#2ea650" opacity="0.8" transform="rotate(0)"/>
+  </g>
+  
+  <!-- Right plant silhouette -->
+  <g transform="translate(950, 300)">
+    <!-- Pot -->
+    <path d="M 0 150 L 20 200 L 80 200 L 100 150 Z" fill="#8b6f47" stroke="#6b5436" stroke-width="2"/>
+    <ellipse cx="50" cy="150" rx="50" ry="15" fill="#a0826d"/>
+    
+    <!-- Soil -->
+    <ellipse cx="50" cy="155" rx="48" ry="8" fill="#6b5436"/>
+    
+    <!-- Plant stems -->
+    <path d="M 50 155 Q 35 110 30 45" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 50 155 Q 65 100 75 40" stroke="#4ADE80" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 50 155 Q 50 80 45 15" stroke="#2ea650" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Leaves -->
+    <ellipse cx="25" cy="50" rx="14" ry="24" fill="url(#leafGradient)" transform="rotate(-40 25 50)"/>
+    <ellipse cx="75" cy="35" rx="16" ry="26" fill="url(#leafGradient)" transform="rotate(40 75 35)"/>
+    <ellipse cx="45" cy="20" rx="13" ry="22" fill="#22c55e" transform="rotate(-5 45 20)"/>
+  </g>
+  
+  <!-- Bottom decorative vines -->
+  <g opacity="0.6">
+    <path d="M 100 700 Q 200 600 300 650 T 500 700" stroke="#4ADE80" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 900 680 Q 1000 600 1100 670" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text: "Whole Lot of Nature" -->
+  <text x="600" y="750" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#4ADE80">
+    Whole Lot of Nature
+  </text>
+</svg>

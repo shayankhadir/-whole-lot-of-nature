@@ -80,15 +80,18 @@ export function ProductQuickView({ isOpen, onClose, product }: ProductQuickViewP
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 overflow-y-auto backdrop-blur-md"
+          className="fixed inset-0 z-[9999] bg-black/80 flex items-center justify-center p-4 overflow-hidden backdrop-blur-md"
           onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Product quick view"
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative"
+            className="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

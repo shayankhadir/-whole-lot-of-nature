@@ -3,7 +3,7 @@ import { WooCommerceProduct, WooCommerceCategory } from './services/woocommerceS
 
 // Default metadata
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://wholelotofnature.com'),
   title: {
     default: 'Whole Lot of Nature - Premium Eco-Friendly Products',
     template: '%s | Whole Lot of Nature',

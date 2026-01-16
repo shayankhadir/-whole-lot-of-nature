@@ -56,14 +56,17 @@ const nextConfig = {
     ],
   },
   // Required for WooCommerce REST API
+  // ⚠️  CORS is configured in middleware.ts for better control
+  // Setting to your domain only (not wildcard)
   async headers() {
     return [
       {
         source: '/api/:path*',
         headers: [
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT' },
-          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
+          // CORS handled by middleware.ts - removed wildcard origin
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
         ],
       },
       {
