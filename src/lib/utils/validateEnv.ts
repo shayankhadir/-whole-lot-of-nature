@@ -17,29 +17,24 @@ const REQUIRED_VARS = [
   'NEXTAUTH_URL',
 ];
 
-// Required for WooCommerce integration
+// Required for WooCommerce integration (products display)
 const WOOCOMMERCE_VARS = [
   'NEXT_PUBLIC_WORDPRESS_URL',
   'WC_CONSUMER_KEY',
   'WC_CONSUMER_SECRET',
 ];
 
-// Required for payment processing
-const PAYMENT_VARS = [
+// Optional - Cashfree payment processing (not needed for products to display)
+const OPTIONAL_PAYMENT_VARS = [
   'CASHFREE_APP_ID',
   'CASHFREE_SECRET_KEY',
+  'CASHFREE_WEBHOOK_SECRET',
 ];
 
 // Optional but recommended
 const RECOMMENDED_VARS = [
   'NEXT_PUBLIC_GA_MEASUREMENT_ID',
-  'CASHFREE_WEBHOOK_SECRET',
   'ADMIN_EMAIL',
-];
-
-// Production-only requirements
-const PRODUCTION_REQUIRED = [
-  'CASHFREE_WEBHOOK_SECRET',
 ];
 
 /**
@@ -63,19 +58,10 @@ export function validateEnv(): EnvValidationResult {
     }
   }
 
-  // Check payment vars
-  for (const varName of PAYMENT_VARS) {
+  // Check payment vars (now optional)
+  for (const varName of OPTIONAL_PAYMENT_VARS) {
     if (!process.env[varName]) {
-      missing.push(varName);
-    }
-  }
-
-  // Check production-specific requirements
-  if (process.env.NODE_ENV === 'production') {
-    for (const varName of PRODUCTION_REQUIRED) {
-      if (!process.env[varName]) {
-        missing.push(`${varName} (required in production)`);
-      }
+      warnings.push(`${varName} is not set (optional - Cashfree payments disabled)`);
     }
   }
 
