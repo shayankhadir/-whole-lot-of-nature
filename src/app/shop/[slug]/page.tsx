@@ -219,96 +219,136 @@ export default function ProductPage() {
           {/* Product Details - Right Side (Sticky) */}
           <div className="lg:col-span-5">
             <div className="sticky top-24 space-y-8">
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-4">
+              {/* Badges & Category */}
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-center gap-2">
                   {product.categories.map(cat => (
-                    <span key={cat.id} className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wide uppercase border border-emerald-500/20">
+                    <span key={cat.id} className="px-3 py-1.5 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold tracking-widest uppercase border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors">
                       {cat.name}
                     </span>
                   ))}
-                  {product.stock_quantity && product.stock_quantity < 5 && (
-                    <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-semibold tracking-wide uppercase border border-red-500/20 animate-pulse">
-                      Only {product.stock_quantity} left
+                  {product.stock_status === 'instock' && (
+                    <span className="px-3 py-1.5 rounded-full bg-green-500/15 text-green-300 text-xs font-bold tracking-widest uppercase border border-green-500/30">
+                      ✓ In Stock
+                    </span>
+                  )}
+                  {product.stock_status !== 'instock' && (
+                    <span className="px-3 py-1.5 rounded-full bg-red-500/15 text-red-300 text-xs font-bold tracking-widest uppercase border border-red-500/30 animate-pulse">
+                      Out of Stock
                     </span>
                   )}
                 </div>
-                
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 antialiased leading-tight">{product.name}</h1>
-                
-                <div className="flex items-center gap-6 mb-6 pb-6 border-b border-white/10">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-4xl font-bold text-white antialiased">{displayPrice}</span>
-                    {originalPrice && (
-                      <span className="text-xl text-white/40 line-through antialiased">{originalPrice}</span>
-                    )}
-                  </div>
-                  <div className="h-8 w-px bg-white/10" />
-                  <div className="flex items-center gap-2">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} className="h-5 w-5" />
-                      ))}
-                    </div>
-                    <span className="text-white/85 text-sm font-medium">(4.8)</span>
-                  </div>
-                </div>
-
-                {/* Short Description */}
-                <div 
-                  className="prose prose-invert prose-lg leading-relaxed"
-                  style={{ color: '#86efac' }}
-                  dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.short_description || product.description) }}
-                />
               </div>
 
-              <div className="space-y-6 pt-6">
+              {/* Product Title */}
+              <div className="space-y-3">
+                <h1 className="text-5xl md:text-6xl font-black text-white antialiased leading-tight tracking-tight">
+                  {product.name}
+                </h1>
+              </div>
+
+              {/* Price & Rating Section */}
+              <div className="bg-gradient-to-r from-emerald-900/20 to-emerald-800/10 rounded-2xl p-6 border border-emerald-500/20 backdrop-blur-sm space-y-4">
+                {/* Price */}
+                <div className="flex items-baseline gap-4">
+                  <span className="text-5xl font-black text-emerald-300 antialiased">
+                    {displayPrice}
+                  </span>
+                  {originalPrice && (
+                    <span className="text-2xl text-white/35 line-through antialiased font-semibold">
+                      {originalPrice}
+                    </span>
+                  )}
+                  {originalPrice && (
+                    <span className="px-3 py-1 rounded-lg bg-red-500/20 text-red-300 text-sm font-bold border border-red-500/30">
+                      Save {Math.round(((parseFloat(product.regular_price || '0') - parseFloat(product.price || '0')) / parseFloat(product.regular_price || '1')) * 100)}%
+                    </span>
+                  )}
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="text-white/85 font-semibold">4.8/5</span>
+                  <span className="text-white/50 text-sm">({product.rating_count || 0} reviews)</span>
+                </div>
+              </div>
+
+              {/* Short Description */}
+              <div 
+                className="text-lg text-white/90 leading-relaxed font-light space-y-3"
+                dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.short_description || product.description) }}
+              />
+
+              <div className="space-y-6 pt-8 border-t border-white/10">
+                {/* Add to Cart Button */}
                 <AddToCartButton product={product} />
                 
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                {/* Trust Signals */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-center">
                     <ShieldCheckIcon className="h-6 w-6 text-emerald-400 mx-auto mb-2" />
-                    <span className="text-xs font-medium text-white/80 block">Quality<br/>Guaranteed</span>
+                    <span className="text-xs font-semibold text-white/90 block leading-snug">100% Quality<br/>Guaranteed</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-center">
                     <TruckIcon className="h-6 w-6 text-emerald-400 mx-auto mb-2" />
-                    <span className="text-xs font-medium text-white/80 block">Secure<br/>Shipping</span>
+                    <span className="text-xs font-semibold text-white/90 block leading-snug">Free Secure<br/>Shipping</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-center">
                     <ArrowPathIcon className="h-6 w-6 text-emerald-400 mx-auto mb-2" />
-                    <span className="text-xs font-medium text-white/80 block">Easy<br/>Returns</span>
+                    <span className="text-xs font-semibold text-white/90 block leading-snug">30-Day<br/>Easy Returns</span>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Combos / Frequently Bought Together */}
-            {relatedProducts.length > 0 && (
-              <div className="pt-8 border-t border-white/10">
-                <h3 className="text-lg font-semibold text-white mb-4 antialiased">Frequently Bought Together</h3>
-                <div className="space-y-4">
-                  {relatedProducts.slice(0, 2).map(related => (
-                    <div key={related.id} className="flex items-center gap-4 bg-white/5 p-3 rounded-lg border border-white/10 hover:border-[#2E7D32]/50 transition-colors cursor-pointer backdrop-blur-md" onClick={() => router.push(`/shop/${related.slug}`)}>
-                      <div className="relative w-16 h-16 rounded-md overflow-hidden bg-black/20 backdrop-blur-md">
-                        <Image 
-                          src={related.images[0]?.src || '/images/placeholder.jpg'} 
-                          alt={related.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm font-medium text-white">{related.name}</h4>
-                        <p className="text-xs text-white">{getDisplayPrice(related)}</p>
-                      </div>
-                      <button className="p-2 rounded-full bg-[#2E7D32]/20 text-white hover:bg-[#2E7D32] hover:text-white transition-colors backdrop-blur-md">
-                        <span className="sr-only">View</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                      </button>
+                {/* Product Features */}
+                {product.attributes && product.attributes.length > 0 && (
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm space-y-4">
+                    <h4 className="text-sm font-bold text-white uppercase tracking-wider">Specifications</h4>
+                    <div className="space-y-3">
+                      {product.attributes.slice(0, 4).map((attr, idx) => (
+                        <div key={idx} className="flex justify-between items-start gap-4">
+                          <span className="text-xs font-semibold text-white/60 uppercase tracking-wide">{attr.name}</span>
+                          <span className="text-sm text-white/90 font-medium text-right">{attr.options.join(', ')}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
-            )}
+
+              {/* Combos / Frequently Bought Together */}
+              {relatedProducts.length > 0 && (
+                <div className="pt-8 border-t border-white/10 mt-8">
+                  <h3 className="text-lg font-semibold text-white mb-4 antialiased">Frequently Bought Together</h3>
+                  <div className="space-y-4">
+                    {relatedProducts.slice(0, 2).map(related => (
+                      <div key={related.id} className="flex items-center gap-4 bg-white/5 p-3 rounded-lg border border-white/10 hover:border-[#2E7D32]/50 transition-colors cursor-pointer backdrop-blur-md" onClick={() => router.push(`/shop/${related.slug}`)}>
+                        <div className="relative w-16 h-16 rounded-md overflow-hidden bg-black/20 backdrop-blur-md">
+                          <Image 
+                            src={related.images[0]?.src || '/images/placeholder.jpg'} 
+                            alt={related.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-sm font-medium text-white">{related.name}</h4>
+                          <p className="text-xs text-white">{getDisplayPrice(related)}</p>
+                        </div>
+                        <button className="p-2 rounded-full bg-[#2E7D32]/20 text-white hover:bg-[#2E7D32] hover:text-white transition-colors backdrop-blur-md">
+                          <span className="sr-only">View</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </motion.div>
 
