@@ -35,11 +35,10 @@ if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
   
   console.error(errorMsg);
   
-  // In development, continue with warning
-  // In production, we want hard failure so it's obvious
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error(`WooCommerce API not configured. Missing: ${missingVars}`);
-  }
+  // In development and production we log the problem here.
+  // Do NOT throw at module import time because that will crash serverless functions
+  // during build or import in environments where env vars may not yet be available.
+  // Individual service methods perform credential checks and will throw when called.
 }
 
 // Initialize WooCommerce API with REST API v3
