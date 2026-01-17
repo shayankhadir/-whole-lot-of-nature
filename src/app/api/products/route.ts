@@ -81,37 +81,67 @@ export async function GET(request: NextRequest) {
     const hasSecret = !!process.env.WC_CONSUMER_SECRET;
     const wpUrl = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL;
     
-    // Determine error type for better frontend handling
+    // Determine error type and status code for better frontend handling
     let errorType = 'UNKNOWN_ERROR';
-    if (errorMessage.includes('401')) errorType = 'AUTHENTICATION_ERROR';
-    else if (errorMessage.includes('403')) errorType = 'PERMISSION_ERROR';
-    else if (errorMessage.includes('404')) errorType = 'NOT_FOUND_ERROR';
-    else if (errorMessage.includes('timeout')) errorType = 'TIMEOUT_ERROR';
-    else if (errorMessage.includes('ECONNREFUSED')) errorType = 'CONNECTION_ERROR';
+    let statusCode = 500;
     
+    if (errorMessage.includes('401') || errorMessage.includes('Unauthorized')) {
+      errorType = 'AUTHENTICATION_ERROR';
+      statusCode = 401;
+    } else if (errorMessage.includes('403') || errorMessage.includes('Permission')) {
+      errorType = 'PERMISSION_ERROR';
+      statusCode = 403;
+    } else if (errorMessage.includes('404') || errorMessage.includes('not found')) {
+      errorType = 'NOT_FOUND_ERROR';
+      statusCode = 404;
+    } else if (errorMessage.includes('timeout') || errorMessage.includes('ECONNREFUSED')) {
+      errorType = 'CONNECTION_ERROR';
+      statusCode = 503;
+    } else if (errorMessage.includes('ENOTFOUND') || errorMessage.includes('getaddrinfo')) {
+      errorType = 'DNS_ERROR';
+      statusCode = 503;
+    }
+    
+    // Log detailed error for debugging
     console.error('[Products API] Error:', {
-      error: errorMessage,
-      errorType: errorType,
-      hasWooCommerceKey: hasKey,
-      hasWooCommerceSecret: hasSecret,
-      wordPressUrl: wpUrl,
+      type: errorType,
+      message: errorMessage,
+      statusCode,
+      credentials: {
+        hasKey,
+        hasSecret,
+        url: wpUrl
+      },
       nodeEnv: process.env.NODE_ENV,
       timestamp: new Date().toISOString()
     });
+    
+    // User-friendly error message
+    const userMessages: Record<string, string> = {
+      'AUTHENTICATION_ERROR': 'WooCommerce API authentication failed. Check server credentials.',
+      'CONNECTION_ERROR': 'Cannot connect to WooCommerce API. Check WordPress URL and network.',
+      'DNS_ERROR': 'Cannot resolve WordPress domain. Check URL configuration.',
+      'PERMISSION_ERROR': 'No permission to access WooCommerce products.',
+      'NOT_FOUND_ERROR': 'WooCommerce API endpoint not found.',
+      'UNKNOWN_ERROR': 'Failed to fetch products. Check server logs.'
+    };
     
     return NextResponse.json(
       { 
         success: false, 
         error: errorType,
-        message: errorMessage,
-        details: {
-          hasWooCommerceKey: hasKey,
-          hasWooCommerceSecret: hasSecret,
-          wordPressUrl: wpUrl,
-          nodeEnv: process.env.NODE_ENV
-        }
+        message: userMessages[errorType] || userMessages['UNKNOWN_ERROR'],
+        debug: process.env.NODE_ENV === 'development' ? {
+          fullError: errorMessage,
+          credentials: {
+            hasWooCommerceKey: hasKey,
+            hasWooCommerceSecret: hasSecret,
+            wordPressUrl: wpUrl,
+            nodeEnv: process.env.NODE_ENV
+          }
+        } : undefined
       },
-      { status: 500 }
+      { status: statusCode }
     );
   }
 }

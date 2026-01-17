@@ -41,6 +41,7 @@ const FALLBACK_FEATURED: FeaturedProduct[] = DEMO_PRODUCTS.filter((product) => p
 export default function PremiumFeaturedShowcase() {
   const [products, setProducts] = useState<FeaturedProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const addItem = useCartStore((state) => state.addItem);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -55,6 +56,9 @@ export default function PremiumFeaturedShowcase() {
   }, []);
 
   async function fetchFeaturedProducts() {
+    setError(null);
+    setLoading(true);
+    
     try {
       const featuredSlugs = [
         'organic-potting-mix',
@@ -80,8 +84,17 @@ export default function PremiumFeaturedShowcase() {
         rating_count?: number;
       }
 
+      // Check for API errors
+      if (!data.success) {
+        const errorMsg = data.message || 'Failed to load featured products';
+        setError(`⚠️ ${errorMsg}. Showing sample products.`);
+        console.error('[PremiumFeaturedShowcase] API Error:', data);
+        setProducts(FALLBACK_FEATURED.slice(0, 5));
+        return;
+      }
+
       let allProducts: ApiProduct[] = [];
-      if (data.success && data.data) {
+      if (data.data && Array.isArray(data.data)) {
         allProducts = data.data;
       }
 
@@ -102,10 +115,13 @@ export default function PremiumFeaturedShowcase() {
         }));
         setProducts(featured); 
       } else {
+        setError('No featured products available. Showing sample products.');
         setProducts(FALLBACK_FEATURED.slice(0, 5));
       }
     } catch (error) {
-      console.error('Failed to fetch featured products:', error);
+      const errorMsg = error instanceof Error ? error.message : 'Network error';
+      setError(`⚠️ Failed to load featured products: ${errorMsg}. Showing sample products.`);
+      console.error('[PremiumFeaturedShowcase] Fetch Error:', error);
       setProducts(FALLBACK_FEATURED.slice(0, 5));
     } finally {
       setLoading(false);
@@ -152,6 +168,17 @@ export default function PremiumFeaturedShowcase() {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Error Banner */}
+        {error && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8 p-4 bg-amber-900/30 border border-amber-700/50 rounded-lg text-amber-200 text-sm"
+          >
+            {error}
+          </motion.div>
+        )}
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <motion.div 

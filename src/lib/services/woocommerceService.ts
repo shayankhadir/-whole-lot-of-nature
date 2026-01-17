@@ -16,13 +16,30 @@ const credentialsStatus = {
 
 console.log('[WooCommerce Service Init]', credentialsStatus);
 
-// IMPORTANT: If credentials are missing, log a clear warning
+// CRITICAL: Throw error if credentials are missing - don't continue
 if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
-  console.warn('[⚠️  CRITICAL] WooCommerce credentials are missing!');
-  console.warn('   WC_CONSUMER_KEY:', WC_CONSUMER_KEY ? '✓ SET' : '✗ MISSING');
-  console.warn('   WC_CONSUMER_SECRET:', WC_CONSUMER_SECRET ? '✓ SET' : '✗ MISSING');
-  console.warn('   Please set these in your Vercel environment variables');
-  console.warn('   URL:', WORDPRESS_URL);
+  const missingVars = [
+    !WC_CONSUMER_KEY && 'WC_CONSUMER_KEY',
+    !WC_CONSUMER_SECRET && 'WC_CONSUMER_SECRET'
+  ].filter(Boolean).join(', ');
+  
+  const errorMsg = `[CRITICAL] WooCommerce credentials missing: ${missingVars}
+  
+  To fix:
+  1. Local development: Add to .env file
+  2. Production (Vercel): Add to Environment Variables
+     - WC_CONSUMER_KEY=ck_...
+     - WC_CONSUMER_SECRET=cs_...
+  3. WordPress URL: ${WORDPRESS_URL}
+  4. NODE_ENV: ${process.env.NODE_ENV}`;
+  
+  console.error(errorMsg);
+  
+  // In development, continue with warning
+  // In production, we want hard failure so it's obvious
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(`WooCommerce API not configured. Missing: ${missingVars}`);
+  }
 }
 
 // Initialize WooCommerce API with REST API v3
