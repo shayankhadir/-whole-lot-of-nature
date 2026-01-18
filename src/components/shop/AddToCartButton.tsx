@@ -14,10 +14,22 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
   const [adding, setAdding] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
 
+  // Check if product is actually out of stock
+  // Only return false if explicitly set to false (not undefined or true)
+  const isOutOfStock = product?.in_stock === false;
+
   const handleAddToCart = async () => {
+    if (isOutOfStock) {
+      alert('This product is out of stock');
+      return;
+    }
+
     setAdding(true);
     try {
-      // Add item to cart store - properly structured
+      const productId = parseInt(product.id.toString());
+      
+      // Call cart store's addItem with just the item object
+      // The store will handle the WooCommerce API call
       await addItem({
         id: product.id.toString(),
         name: product.name,
@@ -26,34 +38,31 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
         image: product.images?.[0]?.src || '',
         quantity: quantity,
         type: 'product',
-        inStock: true, // Products in shop are in stock
+        inStock: true,
         maxQuantity: product.stock_quantity || 999,
         category: product.categories?.[0]?.name,
       });
       
       // Show success message
-      console.log(`Added ${quantity} x ${product.name} to cart`);
+      console.log(`✓ Added ${quantity} x ${product.name} to cart`);
     } catch (error) {
       console.error('Failed to add to cart:', error);
-      alert('Failed to add to cart. Please try again.');
+      alert(`Failed to add to cart: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setAdding(false);
     }
   };
 
-  if (!product || product.in_stock === false) {
-    // Only show out of stock if explicitly set to false
-    // Don't block if in_stock is undefined (treat as in stock)
-    if (product?.in_stock === false) {
-      return (
-        <button
-          disabled
-          className="w-full px-8 py-4 bg-gray-600 text-white rounded-lg font-semibold cursor-not-allowed opacity-50"
-        >
-          Out of Stock
-        </button>
-      );
-    }
+  // If product is out of stock, show disabled button
+  if (isOutOfStock) {
+    return (
+      <button
+        disabled
+        className="w-full px-8 py-4 bg-gray-600 text-white rounded-lg font-semibold cursor-not-allowed opacity-50"
+      >
+        Out of Stock
+      </button>
+    );
   }
 
   return (
