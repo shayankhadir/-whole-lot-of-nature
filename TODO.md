@@ -6,7 +6,7 @@ The WooCommerce connection is failing because the `WORDPRESS_URL` environment va
 ## Solution Required
 Update the `WORDPRESS_URL` environment variable in your `.env.local` file from:
 ```
-WORDPRESS_URL=https://www.admin.wholelotofnature.com
+WORDPRESS_URL=https://admin.wholelotofnature.com
 ```
 
 To:

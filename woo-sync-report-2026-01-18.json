@@ -1,0 +1,79 @@
+{
+  "total_products": 27,
+  "synced": 17,
+  "updated": 0,
+  "skipped": 10,
+  "errors": 0,
+  "issues": [
+    {
+      "product_id": 2224,
+      "product_name": "Mexican Sword Plant | Echinodorus palifolius | Easy Aquarium Sword Plant for Beginners",
+      "type": "data",
+      "severity": "medium",
+      "message": "Missing or zero price, No product images"
+    },
+    {
+      "product_id": 2049,
+      "product_name": "Succulent Desert Plate (4 Succulents)",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 2048,
+      "product_name": "Miniature Cactus & Succulents (Set of 10)",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 2047,
+      "product_name": "Miniature Cactus (Set of 8)",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 2045,
+      "product_name": "Gasteria Gracilis | Gasteria Succulent Plant (Bare Rooted)",
+      "type": "data",
+      "severity": "medium",
+      "message": "Missing or zero price, No product images"
+    },
+    {
+      "product_id": 2032,
+      "product_name": "Miniature Cactus (Set of 4)",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 1922,
+      "product_name": "Miniature Cactus (Set of 6)",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 1917,
+      "product_name": "Malaysian Trumpet Snail",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 1916,
+      "product_name": "Ramshorn Snails",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    },
+    {
+      "product_id": 1907,
+      "product_name": "Dwarf Sagittaria",
+      "type": "data",
+      "severity": "medium",
+      "message": "No product images"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #0d3512;
+  color: #daf2d0;
+  padding: 12px 24px;
+  z-index: 1000;
+  border-radius: 0 0 8px 8px;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+}
+.skip-to-content:focus {
+  transform: translateY(0);
+}

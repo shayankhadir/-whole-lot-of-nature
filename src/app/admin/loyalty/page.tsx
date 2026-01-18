@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import styles from './loyalty.module.css';
 import {
   Star,
   Gift,
@@ -415,13 +416,14 @@ export default function AdminLoyaltyPage() {
                   return (
                     <div key={tier.id} className="flex items-center gap-4">
                       <div 
-                        className="w-4 h-4 rounded-full"
+                        className={styles.tierDot}
                         style={{ backgroundColor: tier.color }}
+                        aria-hidden="true"
                       />
                       <span className="text-gray-300 w-32">{tier.name}</span>
                       <div className="flex-1 bg-gray-700 rounded-full h-2 overflow-hidden">
                         <div 
-                          className="h-full rounded-full transition-all"
+                          className={styles.tierBar}
                           style={{ width: `${percentage}%`, backgroundColor: tier.color }}
                         />
                       </div>
@@ -509,12 +511,9 @@ export default function AdminLoyaltyPage() {
                       <td className="px-6 py-4">
                         <span 
                           className="px-3 py-1 rounded-full text-sm font-medium"
-                          style={{ 
-                            backgroundColor: (account.tier?.color || '#666') + '20',
-                            color: account.tier?.color || '#666'
-                          }}
-                        >
-                          {account.tier?.name || 'Seedling'}
+                          style={{ backgroundColor: (account.tier?.color || '#666') + '20', color: account.tier?.color || '#666' }}
+                          >
+                            {account.tier?.name || 'Seedling'}
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right text-green-400 font-semibold">
@@ -679,15 +678,15 @@ export default function AdminLoyaltyPage() {
               {tiers.map((tier) => (
                 <div 
                   key={tier.id} 
-                  className="bg-gray-800/50 rounded-xl p-6 border-2"
+                  className={`bg-gray-800/50 rounded-xl p-6 border-2 ${styles.tierColor}`}
                   style={{ borderColor: tier.color }}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${styles.tierBg}`}
                       style={{ backgroundColor: tier.color + '30' }}
                     >
-                      <Trophy className="w-6 h-6" style={{ color: tier.color }} />
+                        <Trophy className={`w-6 h-6 ${styles.tierIcon}`} style={{ color: tier.color }} />
                     </div>
                     <div className="flex items-center gap-2">
                       <button

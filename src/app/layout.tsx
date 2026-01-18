@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import SkipToContent from '@/components/ui/SkipToContent';
 
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
@@ -121,6 +122,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
       </head>
       <body className="font-sans">
+        {/* Skip to Content Accessibility Link */}
+        <SkipToContent />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J8K5Q8"

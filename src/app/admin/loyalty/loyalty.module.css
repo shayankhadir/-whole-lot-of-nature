@@ -1,0 +1,20 @@
+.tierColor {
+  border-width: 2px;
+}
+.tierBg {
+  opacity: 0.18;
+}
+.tierIcon {
+  /* color will be set via style prop for dynamic color */
+}
+.tierDot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+.tierBar {
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: width 0.3s;
+}

@@ -1,4 +1,4 @@
-# Buffer Setup Instructions for Instagram Automation
+# Buffer Setup Instructions for Instagram 
 
 ## Step 1: Sign Up for Buffer
 

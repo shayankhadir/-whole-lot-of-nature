@@ -86,20 +86,30 @@ export default function CheckoutPage() {
 
   const validateForm = () => {
     const newErrors: Partial<CheckoutForm> = {};
-    if (!formData.firstName) newErrors.firstName = 'First name is required';
-    if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Valid email is required';
-    if (!formData.phone || !/^[6-9]\d{9}$/.test(formData.phone)) newErrors.phone = 'Valid 10-digit phone number required';
-    if (!formData.address) newErrors.address = 'Address is required';
-    if (!formData.city) newErrors.city = 'City is required';
-    if (!formData.state) newErrors.state = 'State is required';
-    if (!formData.pincode || !/^\d{6}$/.test(formData.pincode)) newErrors.pincode = 'Valid 6-digit pincode required';
-    
+    // Trim all fields before validation
+    const firstName = formData.firstName.trim();
+    const lastName = formData.lastName.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.replace(/\D/g, '').trim();
+    const address = formData.address.trim();
+    const city = formData.city.trim();
+    const state = formData.state.trim();
+    const pincode = formData.pincode.replace(/\D/g, '').trim();
+
+    if (!firstName) newErrors.firstName = 'First name is required';
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) newErrors.email = 'Valid email is required';
+    if (!phone || !/^[6-9]\d{9}$/.test(phone)) newErrors.phone = 'Valid 10-digit phone number required';
+    if (!address) newErrors.address = 'Address is required';
+    if (!city) newErrors.city = 'City is required';
+    if (!state) newErrors.state = 'State is required';
+    if (!pincode || !/^\d{6}$/.test(pincode)) newErrors.pincode = 'Valid 6-digit pincode required';
+
     setErrors(newErrors);
-    
+
     if (Object.keys(newErrors).length > 0) {
       logCheckoutError('FORM_VALIDATION', 'Validation failed', { fields: Object.keys(newErrors) });
     }
-    
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -341,7 +351,7 @@ export default function CheckoutPage() {
               <h2 className="text-xl font-semibold text-white mb-6">Order Summary</h2>
               
               {/* Free Shipping Progress */}
-              {subtotal < 999 && (
+              {subtotal < 999 ? (
                 <div className="mb-6 bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-4">
                   <p className="text-emerald-100 text-sm mb-2">
                     Add <span className="font-bold text-emerald-400">₹{999 - subtotal}</span> more for <span className="font-bold text-emerald-400">Free Shipping</span>!
@@ -350,6 +360,18 @@ export default function CheckoutPage() {
                     <div 
                       className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${(subtotal / 999) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="mb-6 bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-4">
+                  <p className="text-emerald-100 text-sm mb-2">
+                    <span className="font-bold text-emerald-400">Free Shipping Unlocked!</span>
+                  </p>
+                  <div className="w-full bg-black/40 rounded-full h-2">
+                    <div 
+                      className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `100%` }}
                     />
                   </div>
                 </div>
@@ -442,7 +464,10 @@ export default function CheckoutPage() {
                 <div className="flex justify-between text-emerald-100/60">
                   <span>Shipping</span>
                   <span className={shipping === 0 ? "text-emerald-400" : ""}>
-                    {shipping === 0 ? 'Free' : `₹${shipping}`}
+                    {/* Only show shipping cost if address, city, state, and pincode are filled */}
+                    {formData.address && formData.city && formData.state && formData.pincode
+                      ? (subtotal >= 999 ? 'Free' : `₹${shipping || 99}`)
+                      : '--'}
                   </span>
                 </div>
                 
