@@ -17,33 +17,43 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
   const handleAddToCart = async () => {
     setAdding(true);
     try {
+      // Add item to cart store - properly structured
       await addItem({
         id: product.id.toString(),
         name: product.name,
-        price: parseFloat(product.sale_price || product.price || '0'),
+        price: parseFloat(product.price || product.sale_price || '0'),
         originalPrice: parseFloat(product.regular_price || product.price || '0'),
         image: product.images?.[0]?.src || '',
         quantity: quantity,
         type: 'product',
-        inStock: product.in_stock,
+        inStock: true, // Products in shop are in stock
+        maxQuantity: product.stock_quantity || 999,
         category: product.categories?.[0]?.name,
       });
+      
+      // Show success message
+      console.log(`Added ${quantity} x ${product.name} to cart`);
     } catch (error) {
       console.error('Failed to add to cart:', error);
+      alert('Failed to add to cart. Please try again.');
     } finally {
       setAdding(false);
     }
   };
 
-  if (!product.in_stock) {
-    return (
-      <button
-        disabled
-        className="w-full px-8 py-4 bg-gray-600 text-white rounded-lg font-semibold cursor-not-allowed opacity-50"
-      >
-        Out of Stock
-      </button>
-    );
+  if (!product || product.in_stock === false) {
+    // Only show out of stock if explicitly set to false
+    // Don't block if in_stock is undefined (treat as in stock)
+    if (product?.in_stock === false) {
+      return (
+        <button
+          disabled
+          className="w-full px-8 py-4 bg-gray-600 text-white rounded-lg font-semibold cursor-not-allowed opacity-50"
+        >
+          Out of Stock
+        </button>
+      );
+    }
   }
 
   return (
