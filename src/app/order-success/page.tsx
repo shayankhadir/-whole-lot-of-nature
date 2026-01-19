@@ -65,6 +65,10 @@ export default function OrderSuccessPage() {
         const orderStatus = paymentData.data?.order_status || paymentData.order_status;
         const paymentStatus = paymentData.data?.payment_status;
         
+        // Check for cancelled or failed payments
+        const isCancelled = orderStatus === 'CANCELLED' || orderStatus === 'USER_DROPPED';
+        const isFailed = orderStatus === 'FAILED' || paymentStatus === 'FAILED';
+        
         // Accept if order is PAID or if there's a successful payment
         const isPaid = orderStatus === 'PAID' || 
                        paymentStatus === 'SUCCESS' || 
@@ -72,7 +76,13 @@ export default function OrderSuccessPage() {
         
         if (!isPaid) {
           console.error('Payment verification failed:', paymentData);
-          setError('Payment not completed. Please try again or contact support.');
+          if (isCancelled) {
+            setError('Payment was cancelled. Your order has not been placed. Please try again.');
+          } else if (isFailed) {
+            setError('Payment failed. Please check your payment details and try again.');
+          } else {
+            setError('Payment not completed. Please try again or contact support.');
+          }
           setLoading(false);
           return;
         }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Leaf, Waves, GraduationCap, TreePine, Flower2, Bug, Sprout } from 'lucide-react';
+import CountdownTimer from '@/components/ui/CountdownTimer';
 
 export const metadata: Metadata = {
   title: 'Services | Whole Lot of Nature',
@@ -95,6 +96,9 @@ export default function ServicesPage() {
                 <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-4">
                   Service Bookings Opening Soon!
                 </h2>
+
+                {/* Countdown Timer */}
+                <CountdownTimer targetDate="2026-02-02T00:00:00" />
                 
                 <p className="text-emerald-100/80 text-lg max-w-2xl mx-auto mb-6">
                   We're preparing to bring our professional services to your doorstep. 

@@ -15,16 +15,20 @@ import { Lens } from '@/components/ui/lens';
 import { cleanProductDescription } from '@/lib/utils';
 import ProductRecommendations from '@/components/shop/ProductRecommendations';
 import ProductJsonLd from '@/components/seo/ProductJsonLd';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();
+  const { data: session } = useSession();
   const slug = params.slug as string;
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [showReviewModal, setShowReviewModal] = useState(false);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -229,7 +233,7 @@ export default function ProductPage() {
                   ))}
                   {product.stock_status === 'instock' && (
                     <span className="px-3 py-1.5 rounded-full bg-green-500/15 text-green-300 text-xs font-bold tracking-widest uppercase border border-green-500/30">
-                      ✓ In Stock
+                      In Stock
                     </span>
                   )}
                   {product.stock_status !== 'instock' && (
@@ -319,35 +323,6 @@ export default function ProductPage() {
                   </div>
                 )}
               </div>
-
-              {/* Combos / Frequently Bought Together */}
-              {relatedProducts.length > 0 && (
-                <div className="pt-8 border-t border-white/10 mt-8">
-                  <h3 className="text-lg font-semibold text-white mb-4 antialiased">Frequently Bought Together</h3>
-                  <div className="space-y-4">
-                    {relatedProducts.slice(0, 2).map(related => (
-                      <div key={related.id} className="flex items-center gap-4 bg-white/5 p-3 rounded-lg border border-white/10 hover:border-[#2E7D32]/50 transition-colors cursor-pointer backdrop-blur-md" onClick={() => router.push(`/shop/${related.slug}`)}>
-                        <div className="relative w-16 h-16 rounded-md overflow-hidden bg-black/20 backdrop-blur-md">
-                          <Image 
-                            src={related.images[0]?.src || '/images/placeholder.jpg'} 
-                            alt={related.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-sm font-medium text-white">{related.name}</h4>
-                          <p className="text-xs text-white">{getDisplayPrice(related)}</p>
-                        </div>
-                        <button className="p-2 rounded-full bg-[#2E7D32]/20 text-white hover:bg-[#2E7D32] hover:text-white transition-colors backdrop-blur-md">
-                          <span className="sr-only">View</span>
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </motion.div>
@@ -368,9 +343,21 @@ export default function ProductPage() {
               <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-md">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-white antialiased">Customer Reviews</h3>
-                  <button className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors">
-                    Write a Review
-                  </button>
+                  {session ? (
+                    <button 
+                      onClick={() => setShowReviewModal(true)}
+                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors"
+                    >
+                      Write a Review
+                    </button>
+                  ) : (
+                    <Link 
+                      href={`/auth/signin?callbackUrl=/shop/${slug}`}
+                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors"
+                    >
+                      Sign in to Review
+                    </Link>
+                  )}
                 </div>
                 <div className="space-y-6">
                   {[
@@ -469,6 +456,58 @@ export default function ProductPage() {
           title="Perfect For You"
           subtitle="Personalized picks based on your browsing"
         />
+
+        {/* Review Modal */}
+        {showReviewModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-[#0d1f0f] border border-emerald-500/30 rounded-2xl p-6 max-w-md w-full"
+            >
+              <h3 className="text-xl font-bold text-white mb-4">Write a Review</h3>
+              <p className="text-emerald-200/70 text-sm mb-4">
+                Share your experience with {product.name}
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">Rating</label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button 
+                        key={star} 
+                        className="text-yellow-400 hover:scale-110 transition-transform"
+                        aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
+                        title={`${star} star${star > 1 ? 's' : ''}`}
+                      >
+                        <StarIcon className="h-8 w-8" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">Your Review</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-emerald-500/50"
+                    placeholder="Tell us what you think about this product..."
+                  />
+                </div>
+                <div className="flex gap-3 pt-2">
+                  <button 
+                    onClick={() => setShowReviewModal(false)}
+                    className="flex-1 px-4 py-2 border border-white/20 text-white rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+                    Submit Review
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     </div>
   );

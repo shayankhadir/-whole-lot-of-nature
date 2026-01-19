@@ -350,7 +350,7 @@ function ShopContent() {
                       id="sort-select"
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/15 transition-all cursor-pointer"
+                      className="px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/15 transition-all cursor-pointer [&>option]:bg-[#1a2e1a] [&>option]:text-white"
                     >
                       <option value="name">Sort by Name</option>
                       <option value="price-asc">Price: Low to High</option>
