@@ -69,6 +69,7 @@ interface MobileMenuProps {
 function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps) {
   const router = useRouter();
   const [search, setSearch] = useState('');
+  const openCart = useCartStore((s) => s.openCart);
 
   const submitSearch = (event: FormEvent) => {
     event.preventDefault();
