@@ -100,10 +100,10 @@ export default function InteractiveHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-montserrat text-[clamp(2.4rem,6vw,4.25rem)] font-bold leading-[1.05] mb-6 antialiased"
+          className="font-montserrat text-[clamp(2rem,6vw,4.25rem)] font-bold leading-[1.05] mb-6 antialiased"
         >
-          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] whitespace-normal sm:whitespace-nowrap">
-            WHOLE&nbsp;LOT&nbsp;OF&nbsp;NATURE
+          <span className="bg-gradient-to-r from-emerald-200 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] break-words hyphens-auto">
+            WHOLE LOT OF NATURE
           </span>
         </motion.h1>
 

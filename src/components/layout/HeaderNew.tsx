@@ -20,10 +20,12 @@ import {
   LogIn,
   Search,
   ShoppingCart,
+  Truck,
   UserCircle,
 } from "lucide-react";
 import CartIcon from "../cart/CartIcon";
 import { useWishlistStore } from "@/stores/wishlistStore";
+import { useCartStore } from "@/stores/cartStore";
 
 const shopCollections = [
   {
@@ -94,8 +96,8 @@ const shopCollections = [
 const navigation = [
   { name: "Shop", href: "/shop", dropdown: shopCollections },
   { name: "Blog", href: "/blog" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  // Contact removed from header; moved to footer CTA per request
 ];
 
 export default function Header() {
@@ -105,6 +107,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const wishlistCount = useWishlistStore((s) => s.items.length);
+  const openCart = useCartStore((s) => s.openCart);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
@@ -135,7 +138,7 @@ export default function Header() {
           >
             <Link href="/" className="-m-1.5 p-1.5 group">
               <div className="flex items-center gap-3">
-                <Image src="/logo-new.svg" alt="Whole Lot of Nature" width={180} height={60} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" priority />
+                <Image src="/images/logo-removebg-preview.png" alt="Whole Lot of Nature" width={180} height={60} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" priority unoptimized />
               </div>
             </Link>
           </motion.div>
@@ -256,7 +259,6 @@ export default function Header() {
               <button
                 className="p-2 rounded-full text-white hover:bg-primary-400/20 transition-colors"
                 aria-haspopup="true"
-                aria-expanded={accountOpen ? "true" : "false"}
                 aria-label="Account menu"
                 onClick={() => setAccountOpen((v) => !v)}
               >
@@ -271,7 +273,7 @@ export default function Header() {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 -translate-y-1"
               >
-                <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-black/5">
+                <div id="account-menu" className="absolute right-0 mt-2 w-64 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-black/5">
                   <div className="p-2">
                     <Link href="/login" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50">
                       <UserCircle className="h-4 w-4 text-primary-900" />
@@ -281,6 +283,10 @@ export default function Header() {
                       <Heart className="h-4 w-4 text-primary-900" />
                       <span className="text-sm font-medium text-primary-900">Wishlist</span>
                     </Link>
+                    <Link href="/track-order" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50">
+                      <Truck className="h-4 w-4 text-primary-900" />
+                      <span className="text-sm font-medium text-primary-900">Track order</span>
+                    </Link>
                   </div>
                 </div>
               </Transition>
@@ -288,10 +294,7 @@ export default function Header() {
             
             {/* Cart Icon */}
             <button
-              onClick={() => {
-                const event = new CustomEvent('open-cart');
-                window.dispatchEvent(event);
-              }}
+              onClick={openCart}
               className="relative p-2 rounded-full text-white hover:bg-primary-400/20 transition-colors"
               aria-label="Open shopping cart"
             >
@@ -320,7 +323,7 @@ export default function Header() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-xl font-bold text-[#2E7D32] antialiased">Whole Lot of Nature</span>
+              <Image src="/images/logo-removebg-preview.png" alt="Whole Lot of Nature" width={140} height={50} className="h-10 w-auto" unoptimized />
             </Link>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-primary-600" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">Close menu</span>
@@ -338,16 +341,16 @@ export default function Header() {
                         {Array.isArray(item.dropdown) &&
                           item.dropdown.map((collection) => (
                             <div key={collection.title} className="rounded-xl border border-gray-100 bg-gray-50/60 p-3">
-                              <Link href={collection.href} className="flex items-center justify-between text-sm font-semibold text-gray-900">
+                              <Link href={collection.href} className="flex items-center justify-between text-sm font-semibold text-gray-900" onClick={() => setMobileMenuOpen(false)}>
                                 <span className="inline-flex items-center gap-2">
                                   <collection.icon className="h-4 w-4 text-primary-600" aria-hidden="true" />
                                   {collection.title}
                                 </span>
-                                <ChevronDown className="h-4 w-4 rotate-[-90deg] text-gray-100" />
+                                <ChevronDown className="h-4 w-4 rotate-[-90deg] text-gray-400" />
                               </Link>
                               <div className="mt-2 flex flex-wrap gap-2">
                                 {collection.items.map((sub) => (
-                                  <Link key={sub.name} href={sub.href} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-100 hover:border-[#2E7D32] hover:text-[#2E7D32]">
+                                  <Link key={sub.name} href={sub.href} onClick={() => setMobileMenuOpen(false)} className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1.5 min-h-[36px] text-xs text-gray-700 hover:border-[#2E7D32] hover:text-[#2E7D32] transition-colors touch-manipulation">
                                     {sub.name}
                                   </Link>
                                 ))}

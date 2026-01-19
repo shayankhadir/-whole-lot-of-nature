@@ -130,10 +130,10 @@ export default function CartPage() {
                 </Link>
                 <div className="text-center">
                   <Link
-                    href="/combos"
+                    href="/wishlist"
                     className="text-emerald-400 hover:text-emerald-300 font-medium"
                   >
-                    Or check out our combo deals →
+                    Or view your wishlist →
                   </Link>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-medium text-white mb-1 antialiased">
+                        <h3 className="text-base font-medium text-white mb-1 antialiased">
                           {item.name}
                         </h3>
                         <p className="text-sm text-gray-400 mb-2 capitalize">
@@ -206,7 +206,7 @@ export default function CartPage() {
                         </p>
                         
                         <div className="flex items-center space-x-2 mb-4">
-                          <span className="text-lg font-bold text-white antialiased">
+                          <span className="text-base font-bold text-white antialiased">
                             {formatPrice(item.price)}
                           </span>
                           {item.originalPrice && item.originalPrice > item.price && (
@@ -262,7 +262,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex-shrink-0 text-right">
-                        <p className="text-lg font-bold text-white antialiased">
+                        <p className="text-base font-bold text-white antialiased">
                           {formatPrice(item.price * item.quantity)}
                         </p>
                       </div>

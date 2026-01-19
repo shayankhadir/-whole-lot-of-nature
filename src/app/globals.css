@@ -53,6 +53,17 @@ body {
   color: var(--brand-text);
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow on mobile */
+html {
+  overflow-x: hidden;
+}
+
+#__next,
+main {
+  overflow-x: hidden;
 }
 
 h1,
@@ -101,6 +112,53 @@ strong {
 :focus-visible {
   outline: 2px solid var(--emerald-500);
   outline-offset: 4px;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand-accent);
+  color: var(--brand-bg1);
+  padding: 8px 16px;
+  z-index: 100;
+  font-weight: 600;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Touch-friendly targets for mobile */
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 24px;
+    min-width: 24px;
+  }
+}
+
+/* Utility class for touch targets */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Better focus for dark backgrounds */
+.focus-ring-light:focus-visible {
+  outline-color: #86efbe;
 }
 
 ::-webkit-scrollbar {

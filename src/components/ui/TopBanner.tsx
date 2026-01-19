@@ -12,6 +12,7 @@ export default function TopBanner() {
 
   const messages = [
     "Free Delivery on all orders above ₹999",
+    "Use code SAVE6 for 6% OFF on your plant haul",
     "Get 10% OFF on orders above ₹1699 — grow more, save more!",
     "Join the Whole Lot of Nature Family — earn loyalty points with every purchase!",
     "100% Organic, Handcrafted Soil Mixes & Plants",

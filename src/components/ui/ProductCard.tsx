@@ -161,7 +161,7 @@ export const ProductCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5">
         {/* Name */}
-        <h3 className={`font-sans font-semibold text-[clamp(0.95rem,2vw,1.05rem)] leading-[1.25] mb-1 line-clamp-2 transition-colors duration-300 antialiased ${
+        <h3 className={`font-sans font-semibold text-[clamp(0.85rem,1.6vw,0.98rem)] leading-[1.2] mb-1 line-clamp-2 transition-colors duration-300 antialiased ${
           isGlass ? 'text-white group-hover:text-[#66BB6A]' : 'text-white group-hover:text-[#66BB6A]'
         }`}>
           {name}

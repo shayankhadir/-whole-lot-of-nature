@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -43,6 +44,37 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+	const [newsletterEmail, setNewsletterEmail] = useState('');
+	const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+	const [newsletterMessage, setNewsletterMessage] = useState('');
+
+	const handleNewsletterSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		if (!newsletterEmail) return;
+		setNewsletterStatus('loading');
+		setNewsletterMessage('');
+
+		try {
+			const response = await fetch('/api/email/submit', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ type: 'newsletter', email: newsletterEmail }),
+			});
+
+			const data = await response.json().catch(() => ({}));
+			if (!response.ok || !data.success) {
+				throw new Error(data.error || 'Unable to subscribe right now.');
+			}
+
+			setNewsletterStatus('success');
+			setNewsletterMessage('Thanks for joining the garden!');
+			setNewsletterEmail('');
+		} catch (error) {
+			setNewsletterStatus('error');
+			setNewsletterMessage('Could not subscribe. Please try again.');
+		}
+	};
+
 	return (
 		<footer className="relative overflow-hidden border-t border-white/10 bg-[#030a06] text-white">
 			<div
@@ -80,7 +112,7 @@ export default function Footer() {
 						<p className="text-xs uppercase tracking-[0.4em] text-white/85">
 							Need help?
 						</p>
-						<p className="text-lg font-semibold antialiased" style={{ color: '#86efac' }}>
+							<p className="text-lg font-semibold antialiased text-emerald-200">
 							Our greenhouse support line is open daily 9am–9pm IST.
 						</p>
 					</div>
@@ -97,14 +129,14 @@ export default function Footer() {
 						<div>
 							<Link href="/" className="inline-block">
 								<Image
-									src="/logo.png"
+										src="/images/logo-removebg-preview.png"
 									alt="Whole Lot of Nature"
 									width={150}
 									height={64}
-									className="h-16 w-auto object-contain brightness-0 invert"
+										className="h-16 w-auto object-contain"
 								/>
 							</Link>
-						<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)]" style={{ color: '#86efac' }}>
+							<p className="mt-3 text-[clamp(1rem,2vw,1.1rem)] text-emerald-200">
 							Regenerative plants, handcrafted soil, and mindful rituals from
 							our forest studio in Hyderabad.
 						</p>
@@ -140,8 +172,8 @@ export default function Footer() {
 									</Link>
 								</li>
 								<li>
-									<Link href="/combos" className="hover:text-white">
-										Combos
+									<Link href="/services" className="hover:text-white">
+										Services
 									</Link>
 								</li>
 								<li>
@@ -208,21 +240,30 @@ export default function Footer() {
 
 					<div className="lg:col-span-3 text-center sm:text-left">
 						<p className="font-semibold text-white">Garden dispatch</p>
-						<p className="mt-3 text-sm" style={{ color: '#86efac' }}>
+						<p className="mt-3 text-sm text-emerald-200">
 							Weekly soil notes, limited drops, and invites to live demos.
 						</p>
-						<form className="mt-6 space-y-3">
+						<form className="mt-6 space-y-3" onSubmit={handleNewsletterSubmit}>
 							<input
 								type="email"
 								placeholder="you@example.com"
+								value={newsletterEmail}
+								onChange={(event) => setNewsletterEmail(event.target.value)}
+								disabled={newsletterStatus === 'loading'}
 								className="w-full rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/50 focus:border-[#66BB6A] focus:outline-none backdrop-blur-md"
 							/>
 							<button
 								type="submit"
-								className="w-full rounded-2xl bg-gradient-to-r from-[#14532d] to-[#0f3c24] px-4 py-3 text-sm font-semibold text-[#e3f9ec] transition-colors hover:brightness-110 border border-emerald-800/60"
+								disabled={newsletterStatus === 'loading'}
+								className="w-full rounded-2xl bg-gradient-to-r from-[#14532d] to-[#0f3c24] px-4 py-3 text-sm font-semibold text-[#e3f9ec] transition-colors hover:brightness-110 border border-emerald-800/60 disabled:opacity-60"
 							>
-								Subscribe
+								{newsletterStatus === 'loading' ? 'Subscribing…' : 'Subscribe'}
 							</button>
+							{newsletterMessage && (
+								<p className={`text-xs ${newsletterStatus === 'success' ? 'text-emerald-300' : 'text-red-300'}`}>
+									{newsletterMessage}
+								</p>
+							)}
 						</form>
 					</div>
 				</div>

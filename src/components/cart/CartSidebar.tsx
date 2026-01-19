@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Dialog, Transition } from "@headlessui/react";
 import {
 	X,
@@ -64,15 +65,15 @@ export default function CartSidebar() {
 						<div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-0 sm:pl-10">
 							<Transition.Child
 								as={Fragment}
-								enter="transform transition ease-in-out duration-500 sm:duration-700"
-								enterFrom="translate-x-full"
-								enterTo="translate-x-0"
-								leave="transform transition ease-in-out duration-500 sm:duration-700"
-								leaveFrom="translate-x-0"
-								leaveTo="translate-x-full"
+								enter="transform transition ease-out duration-300 sm:duration-500"
+								enterFrom="translate-x-full opacity-0"
+								enterTo="translate-x-0 opacity-100"
+								leave="transform transition ease-in duration-250 sm:duration-400"
+								leaveFrom="translate-x-0 opacity-100"
+								leaveTo="translate-x-full opacity-0"
 							>
 								<Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-									<div className="relative flex h-full flex-col bg-[#0d3512] text-white shadow-2xl border-l border-white/10">
+									<div className="relative flex h-full flex-col bg-[#0d3512] text-white shadow-2xl border-l border-white/10 will-change-transform">
 										{isLoading && (
 											<div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
 												<div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-emerald-300" />
@@ -140,9 +141,21 @@ export default function CartSidebar() {
 													</Link>
 												</div>
 											) : (
-												<ul className="space-y-6">
+												<motion.ul
+													initial={{ opacity: 0 }}
+													animate={{ opacity: 1 }}
+													transition={{ duration: 0.2 }}
+													className="space-y-6"
+												>
 													{items.map((item) => (
-														<li key={item.id} className="flex gap-4">
+														<motion.li
+															key={item.id}
+															layout
+															initial={{ opacity: 0, y: 8 }}
+															animate={{ opacity: 1, y: 0 }}
+															transition={{ duration: 0.2 }}
+															className="flex gap-4"
+														>
 															<div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-white/5">
 																<Image
 																	src={item.image}
@@ -155,7 +168,7 @@ export default function CartSidebar() {
 															<div className="flex flex-1 flex-col justify-between">
 																<div className="flex justify-between gap-4">
 																	<div>
-																		<h3 className="text-sm font-medium text-white">
+																		<h3 className="text-xs font-medium text-white">
 																			{item.name}
 																		</h3>
 																		<p className="mt-1 text-xs text-white/60">
@@ -172,6 +185,7 @@ export default function CartSidebar() {
 																		<button
 																			onClick={() => updateQuantity(item.id, item.quantity - 1)}
 																			className="p-1.5 text-white/60 hover:text-white disabled:opacity-50"
+																			aria-label={`Decrease quantity of ${item.name}`}
 																			disabled={item.quantity <= 1}
 																		>
 																			<Minus className="h-3 w-3" />
@@ -182,6 +196,7 @@ export default function CartSidebar() {
 																		<button
 																			onClick={() => updateQuantity(item.id, item.quantity + 1)}
 																			className="p-1.5 text-white/60 hover:text-white disabled:opacity-50"
+																			aria-label={`Increase quantity of ${item.name}`}
 																			disabled={item.quantity >= (item.maxQuantity || 10)}
 																		>
 																			<Plus className="h-3 w-3" />
@@ -196,9 +211,9 @@ export default function CartSidebar() {
 																	</button>
 																</div>
 															</div>
-														</li>
+														</motion.li>
 													))}
-												</ul>
+											</motion.ul>
 											)}
 										</div>
 

@@ -65,10 +65,15 @@ export default function PlantsyChatWidget() {
     setPending(true);
 
     try {
+      const history = [...messages, userMessage].slice(-6).map((msg) => ({
+        role: msg.role,
+        content: msg.content,
+      }));
+
       const res = await fetch('/api/agents/plantsy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, context: { conversationHistory: history } }),
       });
 
       if (!res.ok) {

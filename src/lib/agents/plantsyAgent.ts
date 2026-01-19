@@ -1,17 +1,21 @@
 /**
- * Plantsy - Plant Doctor & Care Companion Agent
+ * Plantsy - AI-Powered Plant Doctor & Care Companion
  * ------------------------------------------------
- * Provides contextual plant-care responses using WooCommerce product data
- * and recent blog content as the knowledge base (simple RAG-lite approach).
+ * Provides intelligent, contextual plant-care responses using:
+ * - AI language models (Groq/Together/OpenAI - free tiers available)
+ * - WooCommerce product data for recommendations
+ * - Blog content for additional tips
  */
 
 import { WooCommerceService, type WooCommerceProduct } from '@/lib/services/woocommerceService';
 import { getPosts, type Post } from '@/lib/api/wordpress';
+import { aiService } from '@/lib/ai/aiService';
 
 export interface PlantsyQuestionContext {
   preferredCategory?: string;
   environment?: 'indoor' | 'outdoor' | 'balcony' | 'terrarium';
   experienceLevel?: 'beginner' | 'intermediate' | 'pro';
+  conversationHistory?: Array<{ role: 'user' | 'assistant'; content: string }>;
 }
 
 export interface PlantsyReference {
@@ -32,6 +36,11 @@ export interface PlantsyResponse {
 
 const CACHE_TTL_MS = 1000 * 60 * 10; // 10 minutes
 
+// Plant care knowledge base
+const PLANT_KNOWLEDGE = {
+  bangalore_climate: 'Bangalore has pleasant year-round temperatures (15-35°C). Most plants thrive with protection from harsh afternoon sun.',
+};
+
 export class PlantDoctorAgent {
   private cachedProducts: WooCommerceProduct[] = [];
   private cachedArticles: Post[] = [];
@@ -43,14 +52,27 @@ export class PlantDoctorAgent {
       return;
     }
 
-    const [products, posts] = await Promise.all([
-      WooCommerceService.getProducts(60),
-      getPosts({ per_page: 6 }).catch(() => [] as Post[]),
-    ]);
+    try {
+      const [products, posts] = await Promise.all([
+        WooCommerceService.getProducts(60).catch(() => []),
+        getPosts({ per_page: 6 }).catch(() => [] as Post[]),
+      ]);
 
-    this.cachedProducts = products;
-    this.cachedArticles = posts;
-    this.lastSync = now;
+      this.cachedProducts = products || [];
+      this.cachedArticles = posts || [];
+      this.lastSync = now;
+    } catch (error) {
+      console.error('Failed to sync knowledge base:', error);
+    }
+  }
+
+  private buildProductContext(): string {
+    if (this.cachedProducts.length === 0) return '';
+    const productList = this.cachedProducts
+      .slice(0, 15)
+      .map((p) => `- ${p.name} (₹${p.price})`)
+      .join('\n');
+    return `\nAvailable Products:\n${productList}`;
   }
 
   private scoreProduct(product: WooCommerceProduct, question: string, context?: PlantsyQuestionContext) {
@@ -63,12 +85,13 @@ export class PlantDoctorAgent {
         .toLowerCase()
         .split(/[^a-z0-9]+/)
         .forEach((token) => {
-          if (token && normalizedQuestion.includes(token)) {
+          if (token && token.length > 2 && normalizedQuestion.includes(token)) {
             score += weight;
           }
         });
     };
 
+    applyMatch(product.name, 3);
     applyMatch(product.short_description, 1.5);
     applyMatch(product.description, 1);
     product.categories?.forEach((cat) => applyMatch(cat.name, 2));
@@ -139,57 +162,102 @@ Pair it with our ${product.categories?.[0]?.name ?? 'signature'} soil mix for be
       title: post.title.rendered.replace(/<[^>]+>/g, ''),
       url: post.link,
       snippet: post.excerpt.rendered.replace(/<[^>]+>/g, '').slice(0, 140) + '…',
-    })).filter((ref) => normalized.split(' ').some((token) => ref.snippet.toLowerCase().includes(token)));
+    })).filter((ref) => normalized.split(' ').some((token) => token.length > 3 && ref.snippet.toLowerCase().includes(token)));
+  }
+
+  private extractCarePlan(aiResponse: string): string[] {
+    const lines = aiResponse.split('\n');
+    const carePlan: string[] = [];
+    
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (/^[-*•]\s+/.test(trimmed) || /^\d+\.\s+/.test(trimmed)) {
+        const cleanLine = trimmed.replace(/^[-*•]\s+/, '').replace(/^\d+\.\s+/, '');
+        if (cleanLine.length > 10 && cleanLine.length < 200) {
+          carePlan.push(cleanLine);
+        }
+      }
+    }
+    return carePlan.slice(0, 5);
+  }
+
+  private generateFollowUpQuestions(question: string): string[] {
+    const lowerQ = question.toLowerCase();
+    const followUps: string[] = [];
+
+    if (!lowerQ.includes('water')) followUps.push('How often should I water this plant?');
+    if (!lowerQ.includes('light')) followUps.push('What light conditions does it need?');
+    if (!lowerQ.includes('soil')) followUps.push('What soil mix should I use?');
+    if (!lowerQ.includes('fertiliz')) followUps.push('When should I fertilize?');
+    
+    followUps.push('Can you recommend similar plants?');
+    return followUps.slice(0, 3);
   }
 
   public async answerQuestion(question: string, context?: PlantsyQuestionContext): Promise<PlantsyResponse> {
     await this.ensureKnowledgeBase();
 
+    // Score products for recommendations
     const scored = this.cachedProducts
       .map((product) => ({ product, score: this.scoreProduct(product, question, context) }))
+      .filter(({ score }) => score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 3);
 
-    const top = scored[0]?.product;
-    if (!top) {
-      return {
-        answer: "I couldn't find a matching plant in the catalog yet, but I can still help if you mention the plant name or environment.",
-        carePlan: [],
-        confidence: 'low',
-        followUpQuestions: [
-          'Is this plant kept indoors or outdoors?',
-          'Do you notice any discoloration or pests?',
-          'How often are you watering it right now?'
-        ],
-        references: [],
-        recommendedProducts: [],
-      };
+    // Build AI prompt with context
+    const systemPrompt = `You are Plantsy, a friendly plant care assistant for "Whole Lot of Nature" - a premium Indian plant store in Bangalore.
+
+BRAND: "Stay Loyal to the Soil" - eco-friendly, sustainable gardening
+TONE: Warm, helpful, expert but accessible
+FORMAT: Keep responses 100-200 words, use bullet points for tips
+CLIMATE: Bangalore (15-35°C year-round)
+${this.buildProductContext()}
+
+Answer the customer's plant question helpfully. Include 2-4 specific care tips.`;
+
+    let aiAnswer: string;
+    let confidence: 'low' | 'medium' | 'high' = 'medium';
+
+    try {
+      aiAnswer = await aiService.complete(question, {
+        systemPrompt,
+        temperature: 0.7,
+        maxTokens: 600,
+      });
+      confidence = 'high';
+    } catch (error) {
+      console.error('AI completion failed:', error);
+      // Fallback to rule-based response
+      const top = scored[0]?.product;
+      if (top) {
+        const carePlan = this.buildCarePlan(top, question);
+        aiAnswer = this.formatAnswer(top, carePlan, question);
+        confidence = 'medium';
+      } else {
+        aiAnswer = "I'm here to help with your plant questions! Please tell me more about your plant or what you'd like to know - watering, light requirements, soil mix, or troubleshooting issues.";
+        confidence = 'low';
+      }
     }
 
-    const carePlan = this.buildCarePlan(top, question);
-    const answer = this.formatAnswer(top, carePlan, question);
-
+    // Extract care plan from AI response
+    const carePlan = this.extractCarePlan(aiAnswer);
+    
+    // Build references
     const references: PlantsyReference[] = [
-      {
-        type: 'product',
-        title: top.name,
-        url: `/shop/${top.slug}`,
-        snippet: top.short_description ? top.short_description.replace(/<[^>]+>/g, '').slice(0, 140) + '…' : '',
-      },
-      ...this.selectArticles(question),
+      ...scored.slice(0, 2).map(({ product }) => ({
+        type: 'product' as const,
+        title: product.name,
+        url: `/shop/${product.slug}`,
+        snippet: product.short_description?.replace(/<[^>]+>/g, '').slice(0, 100) || `Premium ${product.name}`,
+      })),
+      ...this.selectArticles(question).slice(0, 2),
     ];
 
-    const confidence = scored[0].score >= 8 ? 'high' : scored[0].score >= 4 ? 'medium' : 'low';
-
     return {
-      answer,
-      carePlan,
+      answer: aiAnswer,
+      carePlan: carePlan.length > 0 ? carePlan : (scored[0]?.product ? this.buildCarePlan(scored[0].product, question) : []),
       confidence,
-      followUpQuestions: [
-        'Would you like watering reminders via WhatsApp/email?',
-        'Should I suggest companion plants for the same light conditions?',
-        'Need help picking soil or fertilizer for this plant?'
-      ],
+      followUpQuestions: this.generateFollowUpQuestions(question),
       references,
       recommendedProducts: scored.map(({ product }) => ({
         id: product.id,

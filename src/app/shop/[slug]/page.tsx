@@ -400,6 +400,43 @@ export default function ProductPage() {
                   ))}
                 </div>
               </div>
+
+              {/* FAQ Section for SEO */}
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-md">
+                <h3 className="text-xl font-bold text-white mb-6 antialiased">Frequently Asked Questions</h3>
+                <div className="space-y-4">
+                  {[
+                    {
+                      question: `How do I care for ${product.name}?`,
+                      answer: "Water when the top inch of soil feels dry. Place in bright, indirect light for best results. Avoid direct sunlight which can burn the leaves. Fertilize monthly during the growing season."
+                    },
+                    {
+                      question: "What is the delivery time?",
+                      answer: "We deliver within 3-5 business days across India. Express delivery (1-2 days) is available for Bangalore metro area. All plants are carefully packed to ensure they arrive fresh and healthy."
+                    },
+                    {
+                      question: "Do you offer a guarantee on plants?",
+                      answer: "Yes! We offer a 7-day health guarantee on all live plants. If your plant arrives damaged or shows signs of stress within 7 days, we'll replace it free of charge."
+                    },
+                    {
+                      question: "Is this product pet-safe?",
+                      answer: "Please check the product description for pet safety information. Some plants may be toxic to pets if ingested. We recommend keeping plants out of reach of curious pets and children."
+                    }
+                  ].map((faq, index) => (
+                    <details key={index} className="group bg-white/5 rounded-xl border border-white/10">
+                      <summary className="flex items-center justify-between p-4 cursor-pointer list-none text-white font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span className="pr-4">{faq.question}</span>
+                        <svg className="w-5 h-5 text-emerald-400 transform transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </summary>
+                      <p className="px-4 pb-4 text-white/80 text-sm leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Sidebar / Similar Products */}

@@ -15,6 +15,7 @@ export default function MobileHeader() {
   const [mounted, setMounted] = useState(false);
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const cartCount = useCartStore((s) => s.items.reduce((sum, item) => sum + item.quantity, 0));
+  const openCart = useCartStore((s) => s.openCart);
 
   useEffect(() => {
     setMounted(true);
@@ -165,8 +166,7 @@ function MobileMenu({ open, onClose, cartCount, wishlistCount }: MobileMenuProps
               <button
                 type="button"
                 onClick={() => {
-                  const event = new CustomEvent('open-cart');
-                  window.dispatchEvent(event);
+                  openCart();
                   onClose(false);
                 }}
                 className="rounded-xl border border-white/15 px-3 py-2"

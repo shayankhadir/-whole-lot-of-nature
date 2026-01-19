@@ -4,8 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, ShoppingCart, Star } from 'lucide-react';
-import { DEMO_PRODUCTS } from '@/data/demoCatalog';
+import { ArrowRight, Sparkles, ShoppingCart, Star, RefreshCw } from 'lucide-react';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { useCartStore } from '@/stores/cartStore';
 import { cn } from '@/lib/utils';
@@ -22,21 +21,6 @@ interface FeaturedProduct {
   rating?: number;
   reviewCount?: number;
 }
-
-const FALLBACK_FEATURED: FeaturedProduct[] = DEMO_PRODUCTS.filter((product) => product.featured).map((product) => ({
-  id: typeof product.id === 'string' ? parseInt(product.id) : product.id,
-  name: product.name,
-  slug: product.slug,
-  price: product.price,
-  sale_price: product.sale_price,
-  regular_price: product.regular_price,
-  image: product.images[0]?.src || '/images/placeholder.jpg',
-  category: product.categories[0]?.name || 'Plants',
-  rating: typeof product.average_rating === 'number' 
-    ? product.average_rating 
-    : (product.average_rating ? parseFloat(product.average_rating) : undefined),
-  reviewCount: product.rating_count
-}));
 
 export default function PremiumFeaturedShowcase() {
   const [products, setProducts] = useState<FeaturedProduct[]>([]);
@@ -87,9 +71,9 @@ export default function PremiumFeaturedShowcase() {
       // Check for API errors
       if (!data.success) {
         const errorMsg = data.message || 'Failed to load featured products';
-        setError(`⚠️ ${errorMsg}. Showing sample products.`);
         console.error('[PremiumFeaturedShowcase] API Error:', data);
-        setProducts(FALLBACK_FEATURED.slice(0, 5));
+        setProducts([]);
+        setError(`Unable to load products. Please try again later.`);
         return;
       }
 
@@ -115,14 +99,14 @@ export default function PremiumFeaturedShowcase() {
         }));
         setProducts(featured); 
       } else {
-        setError('No featured products available. Showing sample products.');
-        setProducts(FALLBACK_FEATURED.slice(0, 5));
+        setProducts([]);
+        setError('No featured products available at the moment.');
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Network error';
-      setError(`⚠️ Failed to load featured products: ${errorMsg}. Showing sample products.`);
       console.error('[PremiumFeaturedShowcase] Fetch Error:', error);
-      setProducts(FALLBACK_FEATURED.slice(0, 5));
+      setProducts([]);
+      setError(`Unable to load products. Please try again later.`);
     } finally {
       setLoading(false);
     }
@@ -323,9 +307,12 @@ export default function PremiumFeaturedShowcase() {
                             category: product.category
                           });
                         }}
-                        className="absolute bottom-4 right-4 w-10 h-10 bg-white text-emerald-900 rounded-full flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:bg-emerald-500 hover:text-white z-20"
+                        aria-label={`Add ${product.name} to cart`}
+                        title={`Add ${product.name} to cart`}
+                        className="absolute bottom-4 right-4 w-11 h-11 min-w-[44px] min-h-[44px] bg-white text-emerald-900 rounded-full flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:bg-emerald-500 hover:text-white z-20 focus-visible:opacity-100 focus-visible:translate-y-0"
                       >
-                        <ShoppingCart className="w-4 h-4" />
+                        <ShoppingCart className="w-5 h-5" />
+                        <span className="sr-only">Add to cart</span>
                       </button>
                     </div>
 

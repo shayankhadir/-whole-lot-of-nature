@@ -178,7 +178,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Product Content */}
         <Link href={`/shop/${product.slug}`} className="p-4 flex-1 flex flex-col">
           {/* Product Name */}
-          <h3 className="font-sans text-[clamp(0.95rem,2vw,1.05rem)] leading-[1.25] font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
+          <h3 className="font-sans text-[clamp(0.85rem,1.6vw,0.98rem)] leading-[1.2] font-semibold text-white mb-1.5 group-hover:text-[#66BB6A] transition-colors duration-300 antialiased line-clamp-2">
             {product.name}
           </h3>
 
@@ -206,14 +206,15 @@ export default function ProductCard({ product }: ProductCardProps) {
               disabled={!product.in_stock}
               whileHover={{ scale: product.in_stock ? 1.05 : 1 }}
               whileTap={{ scale: 0.95 }}
-              className={`p-3 rounded-full transition-all ${
+              className={`min-w-[44px] min-h-[44px] p-3 rounded-full transition-all touch-manipulation ${
                 addedToCart
                   ? 'bg-gradient-to-r from-[#16a34a] to-[#0f3c24] text-white shadow-[0_0_20px_rgba(16,163,74,0.35)]'
                   : product.in_stock
                   ? 'bg-gradient-to-r from-[#14532d] to-[#0f3c24] text-white hover:brightness-110 border border-emerald-900/50'
                   : 'bg-gray-700 text-gray-400 cursor-not-allowed'
               }`}
-              aria-label={addedToCart ? 'Added to cart' : 'Add to cart'}
+              aria-label={addedToCart ? 'Added to cart' : `Add ${product.name} to cart`}
+              title={addedToCart ? 'Added!' : 'Add to cart'}
             >
               {addedToCart ? (
                 <Check className="w-5 h-5" />

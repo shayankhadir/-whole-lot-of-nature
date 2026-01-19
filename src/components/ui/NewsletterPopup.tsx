@@ -26,11 +26,15 @@ export default function NewsletterPopup() {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
       const percentage = (scrolled / scrollHeight) * 100;
+      const distanceToBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      const nearFooter = distanceToBottom < 240;
 
-      if (percentage > 60) {
+      if (percentage > 60 && !nearFooter) {
         setIsVisible(true);
         setHasSeen(true);
         sessionStorage.setItem('newsletter_seen', 'true');
+      } else if (nearFooter) {
+        setIsVisible(false);
       }
     };
 
@@ -54,12 +58,25 @@ export default function NewsletterPopup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('/api/email/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'newsletter', email }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to subscribe right now.');
+      }
+
       setStatus('success');
       setTimeout(() => setIsVisible(false), 2000);
-    }, 1500);
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -113,6 +130,10 @@ export default function NewsletterPopup() {
               {status === 'success' ? (
                 <div className="mt-6 flex items-center justify-center rounded-lg bg-[#2E7D32]/20 p-4 text-[#2E7D32]">
                   <span className="font-medium">Welcome to the family!</span>
+                </div>
+              ) : status === 'error' ? (
+                <div className="mt-6 rounded-lg bg-red-500/10 p-4 text-red-300 text-sm">
+                  We couldn&apos;t subscribe you right now. Please try again.
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-3">

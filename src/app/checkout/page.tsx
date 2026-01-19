@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import { useCartStore } from '@/stores/cartStore';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Trash2, Plus, Minus, Lock, ShieldCheck, Truck, AlertCircle, RefreshCw } from 'lucide-react';
+import { Trash2, Plus, Minus, Lock, ShieldCheck, Truck, AlertCircle, RefreshCw, User, CheckCircle2 } from 'lucide-react';
 import Script from 'next/script';
 import TrustBadges, { PaymentLogos, SecurityBadge } from '@/components/checkout/TrustBadges';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { 
   logCheckoutEvent, 
   logCheckoutSuccess, 
@@ -15,35 +17,82 @@ import {
 } from '@/lib/utils/checkoutLogger';
 
 interface CheckoutForm {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
+  contactEmail: string;
+  contactPhone: string;
+  shippingFirstName: string;
+  shippingLastName: string;
+  shippingCompany: string;
+  shippingCountry: string;
+  shippingAddress1: string;
+  shippingAddress2: string;
+  shippingCity: string;
+  shippingState: string;
+  shippingPincode: string;
+  billingFirstName: string;
+  billingLastName: string;
+  billingCompany: string;
+  billingCountry: string;
+  billingAddress1: string;
+  billingAddress2: string;
+  billingCity: string;
+  billingState: string;
+  billingPincode: string;
+  billingEmail: string;
+  billingPhone: string;
+  orderNotes: string;
+}
+
+interface SavedAddress {
+  id: string;
+  fullName: string;
+  addressLine: string;
   city: string;
   state: string;
   pincode: string;
+  phone?: string;
+  isDefault: boolean;
 }
 
 export default function CheckoutPage() {
   const { items, totalPrice: total, removeItem, updateQuantity, applyCoupon, removeCoupon, coupons, discount, shipping, subtotal } = useCartStore();
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const [cashfree, setCashfree] = useState<any>(null);
   const [couponCode, setCouponCode] = useState('');
   const [couponLoading, setCouponLoading] = useState(false);
   const [couponMessage, setCouponMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [savedAddresses, setSavedAddresses] = useState<SavedAddress[]>([]);
+  const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
+  const [saveAddress, setSaveAddress] = useState(false);
+  const [addressLoading, setAddressLoading] = useState(false);
+  const [billingSameAsShipping, setBillingSameAsShipping] = useState(true);
   
   const [formData, setFormData] = useState<CheckoutForm>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    pincode: ''
+    contactEmail: '',
+    contactPhone: '',
+    shippingFirstName: '',
+    shippingLastName: '',
+    shippingCompany: '',
+    shippingCountry: 'IN',
+    shippingAddress1: '',
+    shippingAddress2: '',
+    shippingCity: '',
+    shippingState: '',
+    shippingPincode: '',
+    billingFirstName: '',
+    billingLastName: '',
+    billingCompany: '',
+    billingCountry: 'IN',
+    billingAddress1: '',
+    billingAddress2: '',
+    billingCity: '',
+    billingState: '',
+    billingPincode: '',
+    billingEmail: '',
+    billingPhone: '',
+    orderNotes: '',
   });
 
   const [errors, setErrors] = useState<Partial<CheckoutForm>>({});
@@ -56,6 +105,113 @@ export default function CheckoutPage() {
       }));
     }
   }, []);
+
+  // Fetch user's saved addresses if logged in
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (session?.user?.email) {
+        setAddressLoading(true);
+        try {
+          // Pre-fill email from session
+          setFormData(prev => ({
+            ...prev,
+            contactEmail: session.user?.email || '',
+            billingEmail: session.user?.email || prev.billingEmail,
+          }));
+
+          // Fetch saved addresses
+          const response = await fetch('/api/account/addresses');
+          if (response.ok) {
+            const data = await response.json();
+            if (data.addresses && data.addresses.length > 0) {
+              setSavedAddresses(data.addresses);
+              // Auto-select default address
+              const defaultAddress = data.addresses.find((addr: SavedAddress) => addr.isDefault) || data.addresses[0];
+              if (defaultAddress) {
+                selectAddress(defaultAddress);
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Failed to fetch user data:', error);
+        } finally {
+          setAddressLoading(false);
+        }
+      }
+    };
+
+    if (status === 'authenticated') {
+      fetchUserData();
+    }
+  }, [session, status]);
+
+  useEffect(() => {
+    if (!billingSameAsShipping) return;
+
+    setFormData((prev) => {
+      const next = {
+        ...prev,
+        billingFirstName: prev.shippingFirstName,
+        billingLastName: prev.shippingLastName,
+        billingCompany: prev.shippingCompany,
+        billingCountry: prev.shippingCountry,
+        billingAddress1: prev.shippingAddress1,
+        billingAddress2: prev.shippingAddress2,
+        billingCity: prev.shippingCity,
+        billingState: prev.shippingState,
+        billingPincode: prev.shippingPincode,
+        billingEmail: prev.contactEmail,
+        billingPhone: prev.contactPhone,
+      };
+
+      if (
+        prev.billingFirstName === next.billingFirstName &&
+        prev.billingLastName === next.billingLastName &&
+        prev.billingCompany === next.billingCompany &&
+        prev.billingCountry === next.billingCountry &&
+        prev.billingAddress1 === next.billingAddress1 &&
+        prev.billingAddress2 === next.billingAddress2 &&
+        prev.billingCity === next.billingCity &&
+        prev.billingState === next.billingState &&
+        prev.billingPincode === next.billingPincode &&
+        prev.billingEmail === next.billingEmail &&
+        prev.billingPhone === next.billingPhone
+      ) {
+        return prev;
+      }
+
+      return next;
+    });
+  }, [
+    billingSameAsShipping,
+    formData.shippingFirstName,
+    formData.shippingLastName,
+    formData.shippingCompany,
+    formData.shippingCountry,
+    formData.shippingAddress1,
+    formData.shippingAddress2,
+    formData.shippingCity,
+    formData.shippingState,
+    formData.shippingPincode,
+    formData.contactEmail,
+    formData.contactPhone,
+  ]);
+
+  const selectAddress = (address: SavedAddress) => {
+    setSelectedAddressId(address.id);
+    const nameParts = address.fullName.split(' ');
+    setFormData(prev => ({
+      ...prev,
+      shippingFirstName: nameParts[0] || '',
+      shippingLastName: nameParts.slice(1).join(' ') || '',
+      shippingAddress1: address.addressLine,
+      shippingCity: address.city,
+      shippingState: address.state,
+      shippingPincode: address.pincode,
+      contactPhone: address.phone || prev.contactPhone,
+    }));
+    setErrors({});
+  };
 
   const handleApplyCoupon = async () => {
     if (!couponCode.trim()) return;
@@ -86,23 +242,50 @@ export default function CheckoutPage() {
 
   const validateForm = () => {
     const newErrors: Partial<CheckoutForm> = {};
-    // Trim all fields before validation
-    const firstName = formData.firstName.trim();
-    const lastName = formData.lastName.trim();
-    const email = formData.email.trim();
-    const phone = formData.phone.replace(/\D/g, '').trim();
-    const address = formData.address.trim();
-    const city = formData.city.trim();
-    const state = formData.state.trim();
-    const pincode = formData.pincode.replace(/\D/g, '').trim();
 
-    if (!firstName) newErrors.firstName = 'First name is required';
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) newErrors.email = 'Valid email is required';
-    if (!phone || !/^[6-9]\d{9}$/.test(phone)) newErrors.phone = 'Valid 10-digit phone number required';
-    if (!address) newErrors.address = 'Address is required';
-    if (!city) newErrors.city = 'City is required';
-    if (!state) newErrors.state = 'State is required';
-    if (!pincode || !/^\d{6}$/.test(pincode)) newErrors.pincode = 'Valid 6-digit pincode required';
+    const contactEmail = formData.contactEmail.trim();
+    const contactPhone = formData.contactPhone.replace(/\D/g, '').trim();
+
+    const shippingFirstName = formData.shippingFirstName.trim();
+    const shippingLastName = formData.shippingLastName.trim();
+    const shippingAddress1 = formData.shippingAddress1.trim();
+    const shippingCity = formData.shippingCity.trim();
+    const shippingState = formData.shippingState.trim();
+    const shippingPincode = formData.shippingPincode.replace(/\D/g, '').trim();
+    const shippingCountry = formData.shippingCountry.trim();
+
+    if (!contactEmail || !/^\S+@\S+\.\S+$/.test(contactEmail)) newErrors.contactEmail = 'Valid email is required';
+    if (!contactPhone || !/^[6-9]\d{9}$/.test(contactPhone)) newErrors.contactPhone = 'Valid 10-digit phone number required';
+
+    if (!shippingFirstName) newErrors.shippingFirstName = 'First name is required';
+    if (!shippingLastName) newErrors.shippingLastName = 'Last name is required';
+    if (!shippingAddress1) newErrors.shippingAddress1 = 'Address is required';
+    if (!shippingCity) newErrors.shippingCity = 'City is required';
+    if (!shippingState) newErrors.shippingState = 'State is required';
+    if (!shippingCountry) newErrors.shippingCountry = 'Country is required';
+    if (!shippingPincode || !/^\d{6}$/.test(shippingPincode)) newErrors.shippingPincode = 'Valid 6-digit pincode required';
+
+    if (!billingSameAsShipping) {
+      const billingFirstName = formData.billingFirstName.trim();
+      const billingLastName = formData.billingLastName.trim();
+      const billingAddress1 = formData.billingAddress1.trim();
+      const billingCity = formData.billingCity.trim();
+      const billingState = formData.billingState.trim();
+      const billingPincode = formData.billingPincode.replace(/\D/g, '').trim();
+      const billingCountry = formData.billingCountry.trim();
+      const billingEmail = formData.billingEmail.trim();
+      const billingPhone = formData.billingPhone.replace(/\D/g, '').trim();
+
+      if (!billingFirstName) newErrors.billingFirstName = 'First name is required';
+      if (!billingLastName) newErrors.billingLastName = 'Last name is required';
+      if (!billingAddress1) newErrors.billingAddress1 = 'Address is required';
+      if (!billingCity) newErrors.billingCity = 'City is required';
+      if (!billingState) newErrors.billingState = 'State is required';
+      if (!billingCountry) newErrors.billingCountry = 'Country is required';
+      if (!billingPincode || !/^\d{6}$/.test(billingPincode)) newErrors.billingPincode = 'Valid 6-digit pincode required';
+      if (!billingEmail || !/^\S+@\S+\.\S+$/.test(billingEmail)) newErrors.billingEmail = 'Valid email is required';
+      if (!billingPhone || !/^[6-9]\d{9}$/.test(billingPhone)) newErrors.billingPhone = 'Valid 10-digit phone number required';
+    }
 
     setErrors(newErrors);
 
@@ -122,44 +305,86 @@ export default function CheckoutPage() {
       return;
     }
     
-    logCheckoutSuccess('FORM_VALIDATION', { email: formData.email });
+    logCheckoutSuccess('FORM_VALIDATION', { email: formData.contactEmail });
     
     setLoading(true);
     setPaymentError(null);
     const startTime = Date.now();
     
     try {
+      // Save address if user opted to save it
+      if (saveAddress && status === 'authenticated' && !selectedAddressId) {
+        try {
+          await fetch('/api/account/addresses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fullName: `${formData.shippingFirstName} ${formData.shippingLastName}`.trim(),
+              addressLine: formData.shippingAddress1,
+              city: formData.shippingCity,
+              state: formData.shippingState,
+              pincode: formData.shippingPincode,
+              phone: formData.contactPhone,
+              isDefault: savedAddresses.length === 0, // Set as default if first address
+              type: 'shipping'
+            })
+          });
+        } catch (e) {
+          // Don't block checkout if address save fails
+          console.error('Failed to save address:', e);
+        }
+      }
+
       // 1. Create Order
       logCheckoutEvent('ORDER_CREATION', true, { itemCount: items.length });
       
+      const billing = billingSameAsShipping
+        ? {
+            first_name: formData.shippingFirstName,
+            last_name: formData.shippingLastName,
+            address_1: formData.shippingAddress1,
+            address_2: formData.shippingAddress2,
+            city: formData.shippingCity,
+            state: formData.shippingState,
+            postcode: formData.shippingPincode,
+            country: formData.shippingCountry || 'IN',
+            email: formData.contactEmail,
+            phone: formData.contactPhone,
+          }
+        : {
+            first_name: formData.billingFirstName,
+            last_name: formData.billingLastName,
+            address_1: formData.billingAddress1,
+            address_2: formData.billingAddress2,
+            city: formData.billingCity,
+            state: formData.billingState,
+            postcode: formData.billingPincode,
+            country: formData.billingCountry || 'IN',
+            email: formData.billingEmail,
+            phone: formData.billingPhone,
+          };
+
+      const shipping = {
+        first_name: formData.shippingFirstName,
+        last_name: formData.shippingLastName,
+        address_1: formData.shippingAddress1,
+        address_2: formData.shippingAddress2,
+        city: formData.shippingCity,
+        state: formData.shippingState,
+        postcode: formData.shippingPincode,
+        country: formData.shippingCountry || 'IN',
+      };
+
       const response = await fetch('/api/payments/cashfree/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           amount: total,
-          customerName: `${formData.firstName} ${formData.lastName}`,
-          customerPhone: formData.phone,
-          customerEmail: formData.email,
-          billing: {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            address_1: formData.address,
-            city: formData.city,
-            state: formData.state,
-            postcode: formData.pincode,
-            country: 'IN',
-            email: formData.email,
-            phone: formData.phone
-          },
-          shipping: {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            address_1: formData.address,
-            city: formData.city,
-            state: formData.state,
-            postcode: formData.pincode,
-            country: 'IN'
-          },
+          customerName: `${billing.first_name} ${billing.last_name}`,
+          customerPhone: billing.phone,
+          customerEmail: billing.email,
+          billing,
+          shipping,
           items: items.map(item => ({
             product_id: Number(item.id),
             quantity: item.quantity
@@ -246,55 +471,31 @@ export default function CheckoutPage() {
                 Contact Information
               </h2>
               
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm text-emerald-100/60 mb-1">First Name</label>
+                  <label htmlFor="contactEmail" className="block text-sm text-emerald-100/60 mb-1">Email</label>
                   <input
-                    id="firstName"
-                    type="text"
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    placeholder="Enter first name"
-                    className={`w-full bg-black/20 border ${errors.firstName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                    id="contactEmail"
+                    type="email"
+                    value={formData.contactEmail}
+                    onChange={(e) => setFormData({...formData, contactEmail: e.target.value})}
+                    placeholder="you@example.com"
+                    className={`w-full bg-black/20 border ${errors.contactEmail ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                   />
-                  {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                  {errors.contactEmail && <p className="text-red-500 text-xs mt-1">{errors.contactEmail}</p>}
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm text-emerald-100/60 mb-1">Last Name</label>
+                  <label htmlFor="contactPhone" className="block text-sm text-emerald-100/60 mb-1">Phone Number</label>
                   <input
-                    id="lastName"
-                    type="text"
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    placeholder="Enter last name"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                    id="contactPhone"
+                    type="tel"
+                    value={formData.contactPhone}
+                    onChange={(e) => setFormData({...formData, contactPhone: e.target.value})}
+                    placeholder="9876543210"
+                    className={`w-full bg-black/20 border ${errors.contactPhone ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                   />
+                  {errors.contactPhone && <p className="text-red-500 text-xs mt-1">{errors.contactPhone}</p>}
                 </div>
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm text-emerald-100/60 mb-1">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  placeholder="you@example.com"
-                  className={`w-full bg-black/20 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
-                />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-sm text-emerald-100/60 mb-1">Phone Number</label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  placeholder="9876543210"
-                  className={`w-full bg-black/20 border ${errors.phone ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
-                />
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
               </div>
             </div>
 
@@ -303,44 +504,478 @@ export default function CheckoutPage() {
                 <Truck className="w-5 h-5 text-emerald-400" />
                 Shipping Address
               </h2>
-              
-              <div className="mb-4">
-                <label htmlFor="address" className="block text-sm text-emerald-100/60 mb-1">Address</label>
-                <textarea
-                  id="address"
-                  value={formData.address}
-                  onChange={(e) => setFormData({...formData, address: e.target.value})}
-                  rows={3}
-                  placeholder="Enter your full address"
-                  className={`w-full bg-black/20 border ${errors.address ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
-                />
-                {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
+
+              {/* Login prompt for guests */}
+              {status === 'unauthenticated' && (
+                <div className="mb-6 bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-4">
+                  <div className="flex items-start gap-3">
+                    <User className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-emerald-100 text-sm">
+                        <Link href="/login?callbackUrl=/checkout" className="text-emerald-400 font-semibold hover:underline">
+                          Sign in
+                        </Link>
+                        {' '}to use saved addresses and speed up checkout
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Saved Addresses Selector */}
+              {status === 'authenticated' && savedAddresses.length > 0 && (
+                <div className="mb-6">
+                  <label className="block text-sm text-emerald-100/60 mb-3">Saved Addresses</label>
+                  <div className="space-y-3">
+                    {savedAddresses.map((address) => (
+                      <button
+                        key={address.id}
+                        type="button"
+                        onClick={() => selectAddress(address)}
+                        className={`w-full text-left p-4 rounded-xl border transition-all ${
+                          selectedAddressId === address.id
+                            ? 'border-emerald-500 bg-emerald-500/10'
+                            : 'border-white/10 bg-black/20 hover:border-white/30'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <p className="text-white font-medium">{address.fullName}</p>
+                            <p className="text-emerald-100/60 text-sm mt-1">{address.addressLine}</p>
+                            <p className="text-emerald-100/60 text-sm">{address.city}, {address.state} - {address.pincode}</p>
+                            {address.phone && <p className="text-emerald-100/60 text-sm">Phone: {address.phone}</p>}
+                          </div>
+                          {selectedAddressId === address.id && (
+                            <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                          )}
+                        </div>
+                        {address.isDefault && (
+                          <span className="inline-block mt-2 text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">
+                            Default
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedAddressId(null);
+                        setFormData(prev => ({
+                          ...prev,
+                          shippingFirstName: '',
+                          shippingLastName: '',
+                          shippingCompany: '',
+                          shippingAddress1: '',
+                          shippingAddress2: '',
+                          shippingCity: '',
+                          shippingState: '',
+                          shippingPincode: '',
+                          contactPhone: ''
+                        }));
+                      }}
+                      className={`w-full text-left p-4 rounded-xl border transition-all ${
+                        selectedAddressId === null
+                          ? 'border-emerald-500 bg-emerald-500/10'
+                          : 'border-white/10 bg-black/20 hover:border-white/30'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Plus className="w-4 h-4 text-emerald-400" />
+                        <span className="text-white">Use a new address</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {addressLoading && (
+                <div className="mb-6 flex items-center justify-center py-4">
+                  <RefreshCw className="w-5 h-5 text-emerald-400 animate-spin" />
+                  <span className="ml-2 text-emerald-100/60 text-sm">Loading saved addresses...</span>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label htmlFor="shippingFirstName" className="block text-sm text-emerald-100/60 mb-1">First Name</label>
+                  <input
+                    id="shippingFirstName"
+                    type="text"
+                    value={formData.shippingFirstName}
+                    onChange={(e) => setFormData({...formData, shippingFirstName: e.target.value})}
+                    placeholder="Enter first name"
+                    className={`w-full bg-black/20 border ${errors.shippingFirstName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                  />
+                  {errors.shippingFirstName && <p className="text-red-500 text-xs mt-1">{errors.shippingFirstName}</p>}
+                </div>
+                <div>
+                  <label htmlFor="shippingLastName" className="block text-sm text-emerald-100/60 mb-1">Last Name</label>
+                  <input
+                    id="shippingLastName"
+                    type="text"
+                    value={formData.shippingLastName}
+                    onChange={(e) => setFormData({...formData, shippingLastName: e.target.value})}
+                    placeholder="Enter last name"
+                    className={`w-full bg-black/20 border ${errors.shippingLastName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                  />
+                  {errors.shippingLastName && <p className="text-red-500 text-xs mt-1">{errors.shippingLastName}</p>}
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="mb-4">
+                <label htmlFor="shippingCompany" className="block text-sm text-emerald-100/60 mb-1">Company (optional)</label>
+                <input
+                  id="shippingCompany"
+                  type="text"
+                  value={formData.shippingCompany}
+                  onChange={(e) => setFormData({...formData, shippingCompany: e.target.value})}
+                  placeholder="Company name"
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="shippingCountry" className="block text-sm text-emerald-100/60 mb-1">Country</label>
+                <select
+                  id="shippingCountry"
+                  value={formData.shippingCountry}
+                  onChange={(e) => setFormData({...formData, shippingCountry: e.target.value})}
+                  className={`w-full bg-black/20 border ${errors.shippingCountry ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                >
+                  <option value="IN" className="bg-[#0A1F12]">India</option>
+                </select>
+                {errors.shippingCountry && <p className="text-red-500 text-xs mt-1">{errors.shippingCountry}</p>}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="shippingAddress1" className="block text-sm text-emerald-100/60 mb-1">Address line 1</label>
+                <input
+                  id="shippingAddress1"
+                  type="text"
+                  value={formData.shippingAddress1}
+                  onChange={(e) => setFormData({...formData, shippingAddress1: e.target.value})}
+                  placeholder="Street address, house number"
+                  className={`w-full bg-black/20 border ${errors.shippingAddress1 ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                />
+                {errors.shippingAddress1 && <p className="text-red-500 text-xs mt-1">{errors.shippingAddress1}</p>}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="shippingAddress2" className="block text-sm text-emerald-100/60 mb-1">Address line 2 (optional)</label>
+                <input
+                  id="shippingAddress2"
+                  type="text"
+                  value={formData.shippingAddress2}
+                  onChange={(e) => setFormData({...formData, shippingAddress2: e.target.value})}
+                  placeholder="Apartment, suite, landmark"
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label htmlFor="city" className="block text-sm text-emerald-100/60 mb-1">City</label>
+                  <label htmlFor="shippingCity" className="block text-sm text-emerald-100/60 mb-1">City</label>
                   <input
-                    id="city"
+                    id="shippingCity"
                     type="text"
-                    value={formData.city}
-                    onChange={(e) => setFormData({...formData, city: e.target.value})}
+                    value={formData.shippingCity}
+                    onChange={(e) => setFormData({...formData, shippingCity: e.target.value})}
                     placeholder="Your city"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                    className={`w-full bg-black/20 border ${errors.shippingCity ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
                   />
+                  {errors.shippingCity && <p className="text-red-500 text-xs mt-1">{errors.shippingCity}</p>}
                 </div>
                 <div>
-                  <label htmlFor="pincode" className="block text-sm text-emerald-100/60 mb-1">Pincode</label>
-                  <input
-                    id="pincode"
-                    type="text"
-                    value={formData.pincode}
-                    onChange={(e) => setFormData({...formData, pincode: e.target.value})}
-                    placeholder="560001"
-                    className={`w-full bg-black/20 border ${errors.pincode ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
-                  />
-                  {errors.pincode && <p className="text-red-500 text-xs mt-1">{errors.pincode}</p>}
+                  <label htmlFor="shippingState" className="block text-sm text-emerald-100/60 mb-1">State</label>
+                  <select
+                    id="shippingState"
+                    value={formData.shippingState}
+                    onChange={(e) => setFormData({...formData, shippingState: e.target.value})}
+                    className={`w-full bg-black/20 border ${errors.shippingState ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                  >
+                    <option value="" className="bg-[#0A1F12]">Select State</option>
+                    <option value="Andhra Pradesh" className="bg-[#0A1F12]">Andhra Pradesh</option>
+                    <option value="Karnataka" className="bg-[#0A1F12]">Karnataka</option>
+                    <option value="Kerala" className="bg-[#0A1F12]">Kerala</option>
+                    <option value="Maharashtra" className="bg-[#0A1F12]">Maharashtra</option>
+                    <option value="Tamil Nadu" className="bg-[#0A1F12]">Tamil Nadu</option>
+                    <option value="Telangana" className="bg-[#0A1F12]">Telangana</option>
+                    <option value="Delhi" className="bg-[#0A1F12]">Delhi</option>
+                    <option value="Gujarat" className="bg-[#0A1F12]">Gujarat</option>
+                    <option value="Rajasthan" className="bg-[#0A1F12]">Rajasthan</option>
+                    <option value="Uttar Pradesh" className="bg-[#0A1F12]">Uttar Pradesh</option>
+                    <option value="West Bengal" className="bg-[#0A1F12]">West Bengal</option>
+                    <option value="Bihar" className="bg-[#0A1F12]">Bihar</option>
+                    <option value="Punjab" className="bg-[#0A1F12]">Punjab</option>
+                    <option value="Haryana" className="bg-[#0A1F12]">Haryana</option>
+                    <option value="Madhya Pradesh" className="bg-[#0A1F12]">Madhya Pradesh</option>
+                    <option value="Odisha" className="bg-[#0A1F12]">Odisha</option>
+                    <option value="Jharkhand" className="bg-[#0A1F12]">Jharkhand</option>
+                    <option value="Chhattisgarh" className="bg-[#0A1F12]">Chhattisgarh</option>
+                    <option value="Assam" className="bg-[#0A1F12]">Assam</option>
+                    <option value="Uttarakhand" className="bg-[#0A1F12]">Uttarakhand</option>
+                    <option value="Goa" className="bg-[#0A1F12]">Goa</option>
+                    <option value="Himachal Pradesh" className="bg-[#0A1F12]">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir" className="bg-[#0A1F12]">Jammu and Kashmir</option>
+                    <option value="Tripura" className="bg-[#0A1F12]">Tripura</option>
+                    <option value="Meghalaya" className="bg-[#0A1F12]">Meghalaya</option>
+                    <option value="Manipur" className="bg-[#0A1F12]">Manipur</option>
+                    <option value="Nagaland" className="bg-[#0A1F12]">Nagaland</option>
+                    <option value="Arunachal Pradesh" className="bg-[#0A1F12]">Arunachal Pradesh</option>
+                    <option value="Mizoram" className="bg-[#0A1F12]">Mizoram</option>
+                    <option value="Sikkim" className="bg-[#0A1F12]">Sikkim</option>
+                    <option value="Puducherry" className="bg-[#0A1F12]">Puducherry</option>
+                    <option value="Chandigarh" className="bg-[#0A1F12]">Chandigarh</option>
+                    <option value="Ladakh" className="bg-[#0A1F12]">Ladakh</option>
+                    <option value="Lakshadweep" className="bg-[#0A1F12]">Lakshadweep</option>
+                    <option value="Andaman and Nicobar" className="bg-[#0A1F12]">Andaman and Nicobar</option>
+                    <option value="Dadra Nagar Haveli" className="bg-[#0A1F12]">Dadra Nagar Haveli</option>
+                  </select>
+                  {errors.shippingState && <p className="text-red-500 text-xs mt-1">{errors.shippingState}</p>}
                 </div>
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="shippingPincode" className="block text-sm text-emerald-100/60 mb-1">Pincode</label>
+                <input
+                  id="shippingPincode"
+                  type="text"
+                  value={formData.shippingPincode}
+                  onChange={(e) => setFormData({...formData, shippingPincode: e.target.value})}
+                  placeholder="560001"
+                  className={`w-full bg-black/20 border ${errors.shippingPincode ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                />
+                {errors.shippingPincode && <p className="text-red-500 text-xs mt-1">{errors.shippingPincode}</p>}
+              </div>
+
+              {/* Save Address Option for logged-in users */}
+              {status === 'authenticated' && !selectedAddressId && (
+                <div className="mt-4">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={saveAddress}
+                      onChange={(e) => setSaveAddress(e.target.checked)}
+                      className="w-4 h-4 accent-emerald-500 cursor-pointer"
+                    />
+                    <span className="text-sm text-emerald-100/80">Save this address for future orders</span>
+                  </label>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white/5 rounded-3xl p-8 border border-white/10">
+              <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                Billing Address
+              </h2>
+
+              <div className="mb-6">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={billingSameAsShipping}
+                    onChange={(e) => setBillingSameAsShipping(e.target.checked)}
+                    className="w-4 h-4 accent-emerald-500 cursor-pointer"
+                  />
+                  <span className="text-sm text-emerald-100/80">Billing address is the same as shipping</span>
+                </label>
+              </div>
+
+              {!billingSameAsShipping && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="billingFirstName" className="block text-sm text-emerald-100/60 mb-1">First Name</label>
+                      <input
+                        id="billingFirstName"
+                        type="text"
+                        value={formData.billingFirstName}
+                        onChange={(e) => setFormData({...formData, billingFirstName: e.target.value})}
+                        placeholder="Enter first name"
+                        className={`w-full bg-black/20 border ${errors.billingFirstName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      />
+                      {errors.billingFirstName && <p className="text-red-500 text-xs mt-1">{errors.billingFirstName}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="billingLastName" className="block text-sm text-emerald-100/60 mb-1">Last Name</label>
+                      <input
+                        id="billingLastName"
+                        type="text"
+                        value={formData.billingLastName}
+                        onChange={(e) => setFormData({...formData, billingLastName: e.target.value})}
+                        placeholder="Enter last name"
+                        className={`w-full bg-black/20 border ${errors.billingLastName ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      />
+                      {errors.billingLastName && <p className="text-red-500 text-xs mt-1">{errors.billingLastName}</p>}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="billingCompany" className="block text-sm text-emerald-100/60 mb-1">Company (optional)</label>
+                    <input
+                      id="billingCompany"
+                      type="text"
+                      value={formData.billingCompany}
+                      onChange={(e) => setFormData({...formData, billingCompany: e.target.value})}
+                      placeholder="Company name"
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="billingCountry" className="block text-sm text-emerald-100/60 mb-1">Country</label>
+                    <select
+                      id="billingCountry"
+                      value={formData.billingCountry}
+                      onChange={(e) => setFormData({...formData, billingCountry: e.target.value})}
+                      className={`w-full bg-black/20 border ${errors.billingCountry ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                    >
+                      <option value="IN" className="bg-[#0A1F12]">India</option>
+                    </select>
+                    {errors.billingCountry && <p className="text-red-500 text-xs mt-1">{errors.billingCountry}</p>}
+                  </div>
+
+                  <div>
+                    <label htmlFor="billingAddress1" className="block text-sm text-emerald-100/60 mb-1">Address line 1</label>
+                    <input
+                      id="billingAddress1"
+                      type="text"
+                      value={formData.billingAddress1}
+                      onChange={(e) => setFormData({...formData, billingAddress1: e.target.value})}
+                      placeholder="Street address, house number"
+                      className={`w-full bg-black/20 border ${errors.billingAddress1 ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                    />
+                    {errors.billingAddress1 && <p className="text-red-500 text-xs mt-1">{errors.billingAddress1}</p>}
+                  </div>
+
+                  <div>
+                    <label htmlFor="billingAddress2" className="block text-sm text-emerald-100/60 mb-1">Address line 2 (optional)</label>
+                    <input
+                      id="billingAddress2"
+                      type="text"
+                      value={formData.billingAddress2}
+                      onChange={(e) => setFormData({...formData, billingAddress2: e.target.value})}
+                      placeholder="Apartment, suite, landmark"
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="billingCity" className="block text-sm text-emerald-100/60 mb-1">City</label>
+                      <input
+                        id="billingCity"
+                        type="text"
+                        value={formData.billingCity}
+                        onChange={(e) => setFormData({...formData, billingCity: e.target.value})}
+                        placeholder="Your city"
+                        className={`w-full bg-black/20 border ${errors.billingCity ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      />
+                      {errors.billingCity && <p className="text-red-500 text-xs mt-1">{errors.billingCity}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="billingState" className="block text-sm text-emerald-100/60 mb-1">State</label>
+                      <select
+                        id="billingState"
+                        value={formData.billingState}
+                        onChange={(e) => setFormData({...formData, billingState: e.target.value})}
+                        className={`w-full bg-black/20 border ${errors.billingState ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      >
+                        <option value="" className="bg-[#0A1F12]">Select State</option>
+                        <option value="Andhra Pradesh" className="bg-[#0A1F12]">Andhra Pradesh</option>
+                        <option value="Karnataka" className="bg-[#0A1F12]">Karnataka</option>
+                        <option value="Kerala" className="bg-[#0A1F12]">Kerala</option>
+                        <option value="Maharashtra" className="bg-[#0A1F12]">Maharashtra</option>
+                        <option value="Tamil Nadu" className="bg-[#0A1F12]">Tamil Nadu</option>
+                        <option value="Telangana" className="bg-[#0A1F12]">Telangana</option>
+                        <option value="Delhi" className="bg-[#0A1F12]">Delhi</option>
+                        <option value="Gujarat" className="bg-[#0A1F12]">Gujarat</option>
+                        <option value="Rajasthan" className="bg-[#0A1F12]">Rajasthan</option>
+                        <option value="Uttar Pradesh" className="bg-[#0A1F12]">Uttar Pradesh</option>
+                        <option value="West Bengal" className="bg-[#0A1F12]">West Bengal</option>
+                        <option value="Bihar" className="bg-[#0A1F12]">Bihar</option>
+                        <option value="Punjab" className="bg-[#0A1F12]">Punjab</option>
+                        <option value="Haryana" className="bg-[#0A1F12]">Haryana</option>
+                        <option value="Madhya Pradesh" className="bg-[#0A1F12]">Madhya Pradesh</option>
+                        <option value="Odisha" className="bg-[#0A1F12]">Odisha</option>
+                        <option value="Jharkhand" className="bg-[#0A1F12]">Jharkhand</option>
+                        <option value="Chhattisgarh" className="bg-[#0A1F12]">Chhattisgarh</option>
+                        <option value="Assam" className="bg-[#0A1F12]">Assam</option>
+                        <option value="Uttarakhand" className="bg-[#0A1F12]">Uttarakhand</option>
+                        <option value="Goa" className="bg-[#0A1F12]">Goa</option>
+                        <option value="Himachal Pradesh" className="bg-[#0A1F12]">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir" className="bg-[#0A1F12]">Jammu and Kashmir</option>
+                        <option value="Tripura" className="bg-[#0A1F12]">Tripura</option>
+                        <option value="Meghalaya" className="bg-[#0A1F12]">Meghalaya</option>
+                        <option value="Manipur" className="bg-[#0A1F12]">Manipur</option>
+                        <option value="Nagaland" className="bg-[#0A1F12]">Nagaland</option>
+                        <option value="Arunachal Pradesh" className="bg-[#0A1F12]">Arunachal Pradesh</option>
+                        <option value="Mizoram" className="bg-[#0A1F12]">Mizoram</option>
+                        <option value="Sikkim" className="bg-[#0A1F12]">Sikkim</option>
+                        <option value="Puducherry" className="bg-[#0A1F12]">Puducherry</option>
+                        <option value="Chandigarh" className="bg-[#0A1F12]">Chandigarh</option>
+                        <option value="Ladakh" className="bg-[#0A1F12]">Ladakh</option>
+                        <option value="Lakshadweep" className="bg-[#0A1F12]">Lakshadweep</option>
+                        <option value="Andaman and Nicobar" className="bg-[#0A1F12]">Andaman and Nicobar</option>
+                        <option value="Dadra Nagar Haveli" className="bg-[#0A1F12]">Dadra Nagar Haveli</option>
+                      </select>
+                      {errors.billingState && <p className="text-red-500 text-xs mt-1">{errors.billingState}</p>}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="billingPincode" className="block text-sm text-emerald-100/60 mb-1">Pincode</label>
+                    <input
+                      id="billingPincode"
+                      type="text"
+                      value={formData.billingPincode}
+                      onChange={(e) => setFormData({...formData, billingPincode: e.target.value})}
+                      placeholder="560001"
+                      className={`w-full bg-black/20 border ${errors.billingPincode ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                    />
+                    {errors.billingPincode && <p className="text-red-500 text-xs mt-1">{errors.billingPincode}</p>}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="billingEmail" className="block text-sm text-emerald-100/60 mb-1">Billing Email</label>
+                      <input
+                        id="billingEmail"
+                        type="email"
+                        value={formData.billingEmail}
+                        onChange={(e) => setFormData({...formData, billingEmail: e.target.value})}
+                        placeholder="billing@example.com"
+                        className={`w-full bg-black/20 border ${errors.billingEmail ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      />
+                      {errors.billingEmail && <p className="text-red-500 text-xs mt-1">{errors.billingEmail}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="billingPhone" className="block text-sm text-emerald-100/60 mb-1">Billing Phone</label>
+                      <input
+                        id="billingPhone"
+                        type="tel"
+                        value={formData.billingPhone}
+                        onChange={(e) => setFormData({...formData, billingPhone: e.target.value})}
+                        placeholder="9876543210"
+                        className={`w-full bg-black/20 border ${errors.billingPhone ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+                      />
+                      {errors.billingPhone && <p className="text-red-500 text-xs mt-1">{errors.billingPhone}</p>}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6">
+                <label htmlFor="orderNotes" className="block text-sm text-emerald-100/60 mb-1">Order Notes (optional)</label>
+                <textarea
+                  id="orderNotes"
+                  value={formData.orderNotes}
+                  onChange={(e) => setFormData({...formData, orderNotes: e.target.value})}
+                  rows={3}
+                  placeholder="Delivery instructions, gift note, preferred time..."
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                />
               </div>
             </div>
           </div>
@@ -356,24 +991,22 @@ export default function CheckoutPage() {
                   <p className="text-emerald-100 text-sm mb-2">
                     Add <span className="font-bold text-emerald-400">₹{999 - subtotal}</span> more for <span className="font-bold text-emerald-400">Free Shipping</span>!
                   </p>
-                  <div className="w-full bg-black/40 rounded-full h-2">
-                    <div 
-                      className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${(subtotal / 999) * 100}%` }}
-                    />
-                  </div>
+                  <progress
+                    value={Math.min(subtotal, 999)}
+                    max={999}
+                    className="h-2 w-full overflow-hidden rounded-full bg-black/40 [&::-webkit-progress-bar]:bg-black/40 [&::-webkit-progress-value]:bg-emerald-500 [&::-moz-progress-bar]:bg-emerald-500"
+                  />
                 </div>
               ) : (
                 <div className="mb-6 bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-4">
                   <p className="text-emerald-100 text-sm mb-2">
                     <span className="font-bold text-emerald-400">Free Shipping Unlocked!</span>
                   </p>
-                  <div className="w-full bg-black/40 rounded-full h-2">
-                    <div 
-                      className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `100%` }}
-                    />
-                  </div>
+                  <progress
+                    value={999}
+                    max={999}
+                    className="h-2 w-full overflow-hidden rounded-full bg-black/40 [&::-webkit-progress-bar]:bg-black/40 [&::-webkit-progress-value]:bg-emerald-500 [&::-moz-progress-bar]:bg-emerald-500"
+                  />
                 </div>
               )}
               
@@ -384,20 +1017,20 @@ export default function CheckoutPage() {
                       <Image src={item.image} alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-medium text-sm truncate">{item.name}</h3>
-                      <p className="text-emerald-400 text-sm">₹{item.price}</p>
+                      <h3 className="text-white font-medium text-xs truncate">{item.name}</h3>
+                      <p className="text-emerald-400 text-xs">₹{item.price}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-2 py-1">
-                        <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} className="text-white/60 hover:text-white" aria-label={`Decrease quantity of ${item.name}`}>
-                          <Minus className="w-3 h-3" />
+                        <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} className="min-w-[36px] min-h-[36px] flex items-center justify-center text-white/60 hover:text-white touch-manipulation rounded-md hover:bg-white/10 transition-colors" aria-label={`Decrease quantity of ${item.name}`}>
+                          <Minus className="w-4 h-4" />
                         </button>
-                        <span className="text-white text-sm w-4 text-center">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="text-white/60 hover:text-white" aria-label={`Increase quantity of ${item.name}`}>
-                          <Plus className="w-3 h-3" />
+                        <span className="text-white text-sm w-6 text-center font-medium">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="min-w-[36px] min-h-[36px] flex items-center justify-center text-white/60 hover:text-white touch-manipulation rounded-md hover:bg-white/10 transition-colors" aria-label={`Increase quantity of ${item.name}`}>
+                          <Plus className="w-4 h-4" />
                         </button>
                       </div>
-                      <button onClick={() => removeItem(item.id)} className="text-red-400 hover:text-red-300" aria-label={`Remove ${item.name} from cart`}>
+                      <button onClick={() => removeItem(item.id)} className="min-w-[36px] min-h-[36px] flex items-center justify-center text-red-400 hover:text-red-300 touch-manipulation rounded-md hover:bg-red-500/10 transition-colors" aria-label={`Remove ${item.name} from cart`}>
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
@@ -465,7 +1098,7 @@ export default function CheckoutPage() {
                   <span>Shipping</span>
                   <span className={shipping === 0 ? "text-emerald-400" : ""}>
                     {/* Only show shipping cost if address, city, state, and pincode are filled */}
-                    {formData.address && formData.city && formData.state && formData.pincode
+                    {formData.shippingAddress1 && formData.shippingCity && formData.shippingState && formData.shippingPincode
                       ? (subtotal >= 999 ? 'Free' : `₹${shipping || 99}`)
                       : '--'}
                   </span>

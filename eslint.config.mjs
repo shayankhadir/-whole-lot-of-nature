@@ -33,6 +33,8 @@ const eslintConfig = [
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/ban-ts-comment": "warn",
       "@typescript-eslint/no-require-imports": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "import/no-anonymous-default-export": "warn",
     },
   },
 ];

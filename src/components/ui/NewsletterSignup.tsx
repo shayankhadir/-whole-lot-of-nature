@@ -1,6 +1,4 @@
 ﻿'use client';
-
-'use client';
 import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
@@ -15,13 +13,12 @@ export default function NewsletterSignup() {
     setStatus('loading');
 
     try {
-      // Integrate with your newsletter service (e.g., MailChimp, ConvertKit)
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('/api/email/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ type: 'newsletter', email }),
       });
 
       if (!response.ok) {
