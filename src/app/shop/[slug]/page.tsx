@@ -8,15 +8,112 @@ import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
 import { getDisplayPrice, getOriginalPrice } from '@/lib/utils/pricing';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
 import { ShieldCheckIcon, TruckIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Droplets, Leaf, PackageOpen, Recycle, Ruler, ShieldCheck, Sparkles, Sun, Wind } from 'lucide-react';
 import { Lens } from '@/components/ui/lens';
 import { cleanProductDescription } from '@/lib/utils';
 import ProductRecommendations from '@/components/shop/ProductRecommendations';
 import ProductJsonLd from '@/components/seo/ProductJsonLd';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+
+interface CategoryHint {
+  title: string;
+  description: string;
+  icon: ReactNode;
+}
+
+const getAttributeValue = (attributes: Product['attributes'], keys: string[]) => {
+  const match = attributes.find((attr) =>
+    keys.some((key) => attr.name.toLowerCase().includes(key))
+  );
+  return match?.options?.join(', ');
+};
+
+const getCategoryHints = (product: Product): CategoryHint[] => {
+  const categoryText = product.categories
+    .map((cat) => `${cat.name} ${cat.slug}`)
+    .join(' ')
+    .toLowerCase();
+
+  const hints: CategoryHint[] = [];
+
+  if (categoryText.includes('succulent') || categoryText.includes('cacti') || categoryText.includes('cactus')) {
+    hints.push({
+      title: 'Low-water friendly',
+      description: 'Ideal for easy-care corners and minimal watering routines.',
+      icon: <Droplets className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (categoryText.includes('indoor') || categoryText.includes('home') || categoryText.includes('office')) {
+    hints.push({
+      title: 'Indoor-ready',
+      description: 'Balanced for bright, indirect light and indoor air flow.',
+      icon: <Wind className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (categoryText.includes('outdoor') || categoryText.includes('garden') || categoryText.includes('balcony')) {
+    hints.push({
+      title: 'Outdoor friendly',
+      description: 'Prepared for balcony and garden placement with sturdy growth.',
+      icon: <Sun className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (categoryText.includes('soil') || categoryText.includes('fertilizer') || categoryText.includes('manure')) {
+    hints.push({
+      title: 'Usage guidance',
+      description: 'Works best with regular top-ups and light watering cycles.',
+      icon: <PackageOpen className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (categoryText.includes('pot') || categoryText.includes('planter') || categoryText.includes('decor')) {
+    hints.push({
+      title: 'Sizing tips',
+      description: 'Match with plant root size for best drainage and stability.',
+      icon: <Ruler className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  const light = getAttributeValue(product.attributes, ['light']);
+  const water = getAttributeValue(product.attributes, ['water', 'watering']);
+  const size = getAttributeValue(product.attributes, ['size', 'height', 'width']);
+
+  if (light) {
+    hints.unshift({
+      title: 'Light preference',
+      description: light,
+      icon: <Sun className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (water) {
+    hints.unshift({
+      title: 'Watering',
+      description: water,
+      icon: <Droplets className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  if (size) {
+    hints.unshift({
+      title: 'Dimensions',
+      description: size,
+      icon: <Ruler className="h-5 w-5 text-emerald-300" />,
+    });
+  }
+
+  return hints.slice(0, 4);
+};
+
+const FREE_SHIPPING_THRESHOLD = 999;
+
+const formatCurrency = (value: number) => `₹${value.toLocaleString('en-IN')}`;
 
 
 export default function ProductPage() {
@@ -105,6 +202,68 @@ export default function ProductPage() {
   };
   const displayPrice = getDisplayPrice(product);
   const originalPrice = getOriginalPrice(product);
+  const categoryHints = getCategoryHints(product);
+  const lightPref = getAttributeValue(product.attributes, ['light']) || 'Bright, indirect light preferred.';
+  const watering = getAttributeValue(product.attributes, ['water', 'watering']) || 'Water when the top layer feels dry.';
+  const sizing = getAttributeValue(product.attributes, ['size', 'height', 'width']) || 'Refer to specifications for exact dimensions.';
+  const soil = getAttributeValue(product.attributes, ['soil', 'potting', 'mix']) || 'Use airy, well-draining soil with organic nutrients.';
+  const categorySummary = product.categories.map((cat) => cat.name).slice(0, 3).join(', ') || 'Indoor & outdoor friendly.';
+
+  const knowledgeCards = [
+    {
+      title: 'Light Profile',
+      value: lightPref,
+      icon: <Sun className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Water Rhythm',
+      value: watering,
+      icon: <Droplets className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Sizing & Growth',
+      value: sizing,
+      icon: <Ruler className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Soil & Nutrition',
+      value: soil,
+      icon: <Leaf className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Best For',
+      value: categorySummary,
+      icon: <Sparkles className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Eco Promise',
+      value: 'Plastic-free packing and soil-safe inputs where possible.',
+      icon: <Recycle className="h-5 w-5 text-emerald-300" />,
+    },
+  ];
+
+  const careTimeline = [
+    {
+      title: 'Unbox & Inspect',
+      description: 'Open within 24 hours, mist foliage, and let roots breathe.',
+      icon: <PackageOpen className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Place Smartly',
+      description: 'Set in the recommended light zone and avoid harsh midday sun.',
+      icon: <Sun className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Hydrate Gently',
+      description: 'Use room-temperature water and allow excess to drain.',
+      icon: <Droplets className="h-5 w-5 text-emerald-300" />,
+    },
+    {
+      title: 'Protect & Thrive',
+      description: 'Rotate weekly and trim brown leaves to promote fresh growth.',
+      icon: <ShieldCheck className="h-5 w-5 text-emerald-300" />,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#030a06] relative overflow-hidden">
@@ -116,7 +275,7 @@ export default function ProductPage() {
         images={product.images}
         price={parseFloat(product.price) || 0}
         regularPrice={product.regular_price ? parseFloat(product.regular_price) : undefined}
-        availability={product.stock_status === 'instock' ? 'InStock' : 'OutOfStock'}
+        availability={product.in_stock ? 'InStock' : 'OutOfStock'}
         slug={product.slug}
         category={product.categories?.[0]?.name}
         aggregateRating={product.average_rating && parseFloat(String(product.average_rating)) > 0 ? {
@@ -231,12 +390,12 @@ export default function ProductPage() {
                       {cat.name}
                     </span>
                   ))}
-                  {product.stock_status === 'instock' && (
+                  {product.in_stock && (
                     <span className="px-3 py-1.5 rounded-full bg-green-500/15 text-green-300 text-xs font-bold tracking-widest uppercase border border-green-500/30">
                       In Stock
                     </span>
                   )}
-                  {product.stock_status !== 'instock' && (
+                  {!product.in_stock && (
                     <span className="px-3 py-1.5 rounded-full bg-red-500/15 text-red-300 text-xs font-bold tracking-widest uppercase border border-red-500/30 animate-pulse">
                       Out of Stock
                     </span>
@@ -270,6 +429,11 @@ export default function ProductPage() {
                   )}
                 </div>
 
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+                  <TruckIcon className="h-4 w-4" />
+                  Free shipping on orders {formatCurrency(FREE_SHIPPING_THRESHOLD)}+
+                </div>
+
                 {/* Rating */}
                 <div className="flex items-center gap-3 pt-2">
                   <div className="flex gap-1">
@@ -288,6 +452,24 @@ export default function ProductPage() {
                 dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.short_description || product.description) }}
               />
 
+              {/* Quick Facts (category-aware) */}
+              {categoryHints.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {categoryHints.map((hint) => (
+                    <div
+                      key={hint.title}
+                      className="rounded-xl border border-white/10 bg-white/5 p-4 flex items-start gap-3"
+                    >
+                      <div className="mt-0.5">{hint.icon}</div>
+                      <div>
+                        <p className="text-sm font-semibold text-white">{hint.title}</p>
+                        <p className="text-xs text-white/70 leading-relaxed">{hint.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="space-y-6 pt-8 border-t border-white/10">
                 {/* Add to Cart Button */}
                 <AddToCartButton product={product} />
@@ -300,7 +482,7 @@ export default function ProductPage() {
                   </div>
                   <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-center">
                     <TruckIcon className="h-6 w-6 text-emerald-400 mx-auto mb-2" />
-                    <span className="text-xs font-semibold text-white/90 block leading-snug">Free Secure<br/>Shipping</span>
+                    <span className="text-xs font-semibold text-white/90 block leading-snug">Free Shipping<br/>₹{FREE_SHIPPING_THRESHOLD}+</span>
                   </div>
                   <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-center">
                     <ArrowPathIcon className="h-6 w-6 text-emerald-400 mx-auto mb-2" />
@@ -337,6 +519,37 @@ export default function ProductPage() {
                   className="prose prose-invert max-w-none prose-p:text-[#66BB6A] prose-li:text-[#66BB6A]"
                   dangerouslySetInnerHTML={{ __html: cleanProductDescription(product.description) }}
                 />
+              </div>
+
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-md space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2 antialiased">Knowledge Infographics</h3>
+                  <p className="text-sm text-white/70">Fast insights crafted by horticulture notes and category data.</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {knowledgeCards.map((card) => (
+                    <div key={card.title} className="rounded-xl border border-white/10 bg-[#0d1f0f]/60 p-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="h-9 w-9 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                          {card.icon}
+                        </div>
+                        <h4 className="text-sm font-semibold text-white">{card.title}</h4>
+                      </div>
+                      <p className="text-xs text-white/70 leading-relaxed">{card.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  {careTimeline.map((step) => (
+                    <div key={step.title} className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        {step.icon}
+                        <p className="text-xs font-semibold text-white uppercase tracking-wide">{step.title}</p>
+                      </div>
+                      <p className="text-xs text-white/70 leading-relaxed">{step.description}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Reviews Section */}
@@ -399,7 +612,7 @@ export default function ProductPage() {
                     },
                     {
                       question: "What is the delivery time?",
-                      answer: "We deliver within 3-5 business days across India. Express delivery (1-2 days) is available for Bangalore metro area. All plants are carefully packed to ensure they arrive fresh and healthy."
+                      answer: `We deliver within 3-5 business days across India. Express delivery (1-2 days) is available for Bangalore metro area. Free shipping applies on orders above ${formatCurrency(FREE_SHIPPING_THRESHOLD)}.`
                     },
                     {
                       question: "Do you offer a guarantee on plants?",

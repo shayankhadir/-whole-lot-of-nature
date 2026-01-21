@@ -50,17 +50,17 @@ export default function CustomerTestimonialsSlider() {
   });
 
   return (
-    <section className="relative py-24 overflow-hidden bg-[#0d3512]">
+    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-[#0b130d] via-[#0f1a12] to-[#0b130d]">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/backgrounds/bgleaf1.webp"
           alt="Leaf backdrop"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-12"
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010904]/88 via-[#0d3512]/88 to-[#010904]/90" />
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.05] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0b]/90 via-[#0f1a12]/85 to-[#0a0f0b]/90" />
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.04] mix-blend-overlay" />
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -71,7 +71,7 @@ export default function CustomerTestimonialsSlider() {
           className="text-center mb-12 space-y-3"
         >
           <h2 className="text-3xl md:text-4xl font-semibold text-[#e7f5e4] tracking-tight">What customers say</h2>
-          <p className="text-base md:text-lg text-emerald-100/80 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-emerald-100/70 max-w-2xl mx-auto">
             Orders and plant parents from Delhi to Mumbai to Chennai—quick delivery, careful packing, and easy care help.
           </p>
         </motion.div>
@@ -86,19 +86,19 @@ export default function CustomerTestimonialsSlider() {
               transition={{ duration: 0.6, delay: index * 0.08 }}
               viewport={{ once: true }}
             >
-              <div className="h-full rounded-2xl bg-gradient-to-br from-[#0f1e11] via-[#0c1b12] to-[#0f1e11] border border-emerald-900/35 p-6 md:p-7 shadow-[0_12px_50px_rgba(0,0,0,0.28)] flex flex-col gap-4">
+              <div className="h-full rounded-2xl bg-white/[0.04] border border-white/10 p-6 md:p-7 shadow-[0_12px_36px_rgba(0,0,0,0.24)] flex flex-col gap-4">
                 <div className="flex items-center gap-1 text-emerald-300">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
 
-                <p className="text-emerald-50/90 text-sm md:text-base leading-relaxed">
+                <p className="text-emerald-50/85 text-sm md:text-base leading-relaxed">
                   “{testimonial.text}”
                 </p>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-emerald-500/30">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/15">
                     <Image 
                       src={testimonial.image} 
                       alt={testimonial.name}
@@ -110,7 +110,7 @@ export default function CustomerTestimonialsSlider() {
                     <h4 className="font-semibold text-white text-sm md:text-base tracking-tight">
                       {testimonial.name}
                     </h4>
-                    <p className="text-emerald-300/80 text-xs uppercase tracking-[0.18em]">
+                    <p className="text-emerald-200/70 text-xs uppercase tracking-[0.18em]">
                       {testimonial.location}
                     </p>
                   </div>

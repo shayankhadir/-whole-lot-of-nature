@@ -179,7 +179,7 @@ export default function RootLayout({
               `}
             </Script>
             <noscript>
-              <img height="1" width="1" style={{ display: 'none' }} src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_PIXEL_ID}&ev=PageView&noscript=1`}  alt="" />
+              <img height="1" width="1" className="hidden" src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_PIXEL_ID}&ev=PageView&noscript=1`}  alt="Facebook tracking pixel" />
             </noscript>
           </>
         ) : null}

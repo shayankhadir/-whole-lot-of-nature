@@ -40,21 +40,26 @@ export default function EmailDashboard() {
   const [adminKey, setAdminKey] = useState('');
   const [testEmail, setTestEmail] = useState('');
   const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchStats = useCallback(async () => {
     if (!adminKey) return;
     
     try {
+      setError(null);
       const response = await fetch('/api/email/marketing', {
         headers: { 'x-admin-key': adminKey }
       });
       
-      if (response.ok) {
-        const data = await response.json();
-        setStats(data.data);
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to load email stats');
       }
+      setStats(data.data);
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to fetch stats.';
       console.error('Failed to fetch stats:', error);
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -80,6 +85,7 @@ export default function EmailDashboard() {
 
   const handleLogin = () => {
     localStorage.setItem('admin_key', adminKey);
+    setError(null);
     fetchStats();
   };
 
@@ -93,12 +99,16 @@ export default function EmailDashboard() {
         headers: { 'x-admin-key': adminKey }
       });
       
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to run abandoned cart cron');
+      }
       if (data.results) {
         setLastResult(data.results);
       }
     } catch (error) {
       console.error('Failed to run abandoned cart cron:', error);
+      setError(error instanceof Error ? error.message : 'Failed to run abandoned cart cron.');
     } finally {
       setRunning(null);
     }
@@ -151,7 +161,10 @@ export default function EmailDashboard() {
         body: JSON.stringify(testData)
       });
       
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to send email');
+      }
       setTestResult({
         success: data.success,
         message: data.success 
@@ -159,9 +172,10 @@ export default function EmailDashboard() {
           : data.error || 'Failed to send email'
       });
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to send test email.';
       setTestResult({
         success: false,
-        message: 'Failed to send test email'
+        message
       });
     } finally {
       setRunning(null);
@@ -225,6 +239,12 @@ export default function EmailDashboard() {
             Refresh
           </button>
         </div>
+
+        {error && (
+          <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {error}
+          </div>
+        )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">

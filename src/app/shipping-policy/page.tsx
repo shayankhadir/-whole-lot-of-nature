@@ -1,6 +1,7 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   openGraph: {
@@ -14,8 +15,26 @@ export const metadata: Metadata = {
 }
 
 export default function ShippingPolicyPage() {
+  const shippingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Shipping Policy | Whole Lot of Nature',
+    description: 'Shipping information, delivery timelines, and handling care for your plants across India.',
+    url: 'https://wholelotofnature.com/shipping-policy',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Whole Lot of Nature',
+      url: 'https://wholelotofnature.com'
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0D1B0F]">
+      <Script
+        id="ld-shipping-policy"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(shippingSchema) }}
+      />
       {/* Hero */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

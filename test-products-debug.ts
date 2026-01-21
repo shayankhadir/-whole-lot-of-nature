@@ -1,4 +1,4 @@
-import { WooCommerceService } from '@/lib/services/woocommerceService';
+import { WooCommerceService } from './src/lib/services/woocommerceService';
 
 interface Product {
   id: number;
@@ -13,7 +13,7 @@ async function debugProducts(): Promise<void> {
   
   try {
     console.log('Fetching products...');
-    const products = await WooCommerceService.getProducts({ limit: 5 });
+    const products = await WooCommerceService.getProducts(5);
     
     console.log(`✅ Fetched ${products.length} products\n`);
     console.log('Product Stock Status:');
@@ -33,7 +33,7 @@ async function debugProducts(): Promise<void> {
     const outOfStockProducts = products.filter((p: Product) => !p.in_stock);
     if (outOfStockProducts.length > 0) {
       console.log(`\n⚠️  ${outOfStockProducts.length} products are OUT OF STOCK:`);
-      outOfStockProducts.forEach(p => {
+      outOfStockProducts.forEach((p: Product) => {
         console.log(`   - ${p.name} (stock_status: ${p.stock_status})`);
       });
       console.log('\nPossible causes:');

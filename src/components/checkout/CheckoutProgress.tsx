@@ -8,6 +8,26 @@ interface CheckoutProgressProps {
 }
 
 export default function CheckoutProgress({ currentStep, steps }: CheckoutProgressProps) {
+  const widthClassMap: Record<number, string> = {
+    0: 'w-0',
+    10: 'w-[10%]',
+    20: 'w-[20%]',
+    30: 'w-[30%]',
+    40: 'w-[40%]',
+    50: 'w-[50%]',
+    60: 'w-[60%]',
+    70: 'w-[70%]',
+    80: 'w-[80%]',
+    90: 'w-[90%]',
+    100: 'w-full'
+  };
+
+  const progressPercent = steps.length > 1
+    ? ((currentStep - 1) / (steps.length - 1)) * 100
+    : 100;
+  const progressBucket = Math.min(100, Math.max(0, Math.round(progressPercent / 10) * 10));
+  const progressWidthClass = widthClassMap[progressBucket] || 'w-0';
+
   return (
     <div className="mb-8">
       {/* Progress Bar */}
@@ -17,8 +37,7 @@ export default function CheckoutProgress({ currentStep, steps }: CheckoutProgres
         
         {/* Progress line */}
         <div 
-          className="absolute top-5 left-0 h-0.5 bg-emerald-500 transition-all duration-500"
-          style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+          className={`absolute top-5 left-0 h-0.5 bg-emerald-500 transition-all duration-500 ${progressWidthClass}`}
         />
 
         {/* Step indicators */}

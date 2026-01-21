@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Leaf, Waves, GraduationCap, TreePine, Flower2, Bug, Sprout } from 'lucide-react';
-import CountdownTimer from '@/components/ui/CountdownTimer';
+import CountdownTimer from '../../components/ui/CountdownTimer';
 
 export const metadata: Metadata = {
   title: 'Services | Whole Lot of Nature',

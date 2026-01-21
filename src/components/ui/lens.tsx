@@ -65,24 +65,9 @@ export const Lens: React.FC<LensProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 overflow-hidden"
-            style={{
-              maskImage: `radial-gradient(circle ${lensSize / 2}px at ${
-                position.x
-              }px ${position.y}px, black 100%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(circle ${lensSize / 2}px at ${
-                position.x
-              }px ${position.y}px, black 100%, transparent 100%)`,
-              transformOrigin: `${position.x}px ${position.y}px`,
-            }}
+            className="absolute inset-0 overflow-hidden lens-mask-static"
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                transform: `scale(${zoomFactor})`,
-                transformOrigin: `${position.x}px ${position.y}px`,
-              }}
-            >
+            <div className="absolute inset-0 lens-content-static">
               {children}
             </div>
           </motion.div>
@@ -96,27 +81,9 @@ export const Lens: React.FC<LensProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute inset-0 overflow-hidden"
-                style={{
-                  maskImage: `radial-gradient(circle ${lensSize / 2}px at ${
-                    mousePosition.x
-                  }px ${mousePosition.y}px, black 100%, transparent 100%)`,
-                  WebkitMaskImage: `radial-gradient(circle ${
-                    lensSize / 2
-                  }px at ${mousePosition.x}px ${
-                    mousePosition.y
-                  }px, black 100%, transparent 100%)`,
-                  transformOrigin: `${mousePosition.x}px ${mousePosition.y}px`,
-                  zIndex: 50,
-                }}
+                className="absolute inset-0 overflow-hidden lens-mask-hover"
               >
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    transform: `scale(${zoomFactor})`,
-                    transformOrigin: `${mousePosition.x}px ${mousePosition.y}px`,
-                  }}
-                >
+                <div className="absolute inset-0 lens-content-hover">
                   {children}
                 </div>
               </motion.div>
@@ -124,6 +91,47 @@ export const Lens: React.FC<LensProps> = ({
           )}
         </AnimatePresence>
       )}
+      <style jsx>{`
+        .lens-mask-static {
+          mask-image: radial-gradient(
+            circle ${lensSize / 2}px at ${position.x}px ${position.y}px,
+            black 100%,
+            transparent 100%
+          );
+          -webkit-mask-image: radial-gradient(
+            circle ${lensSize / 2}px at ${position.x}px ${position.y}px,
+            black 100%,
+            transparent 100%
+          );
+          transform-origin: ${position.x}px ${position.y}px;
+        }
+        .lens-content-static {
+          transform: scale(${zoomFactor});
+          transform-origin: ${position.x}px ${position.y}px;
+        }
+        .lens-mask-hover {
+          mask-image: radial-gradient(
+            circle ${lensSize / 2}px at ${mousePosition.x}px ${
+        mousePosition.y
+      }px,
+            black 100%,
+            transparent 100%
+          );
+          -webkit-mask-image: radial-gradient(
+            circle ${lensSize / 2}px at ${mousePosition.x}px ${
+        mousePosition.y
+      }px,
+            black 100%,
+            transparent 100%
+          );
+          transform-origin: ${mousePosition.x}px ${mousePosition.y}px;
+          z-index: 50;
+        }
+        .lens-content-hover {
+          transform: scale(${zoomFactor});
+          transform-origin: ${mousePosition.x}px ${mousePosition.y}px;
+        }
+      `}</style>
     </div>
   );
 };

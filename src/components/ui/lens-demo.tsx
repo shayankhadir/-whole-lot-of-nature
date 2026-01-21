@@ -154,7 +154,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         opacity="0.3"
         filter="url(#filter1_f_120_7480)"
       >
@@ -164,7 +164,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         opacity="0.86"
         filter="url(#filter2_f_120_7480)"
       >
@@ -174,7 +174,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         opacity="0.31"
         filter="url(#filter3_f_120_7480)"
       >
@@ -184,7 +184,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         filter="url(#filter4_f_120_7480)"
       >
         <path
@@ -193,7 +193,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         filter="url(#filter5_f_120_7480)"
       >
         <path
@@ -202,7 +202,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         filter="url(#filter6_f_120_7480)"
       >
         <path
@@ -211,7 +211,7 @@ const Rays = ({ className }: { className?: string }) => {
         />
       </g>
       <g
-        style={{ mixBlendMode: "plus-lighter" }}
+        className="mix-blend-plus-lighter"
         filter="url(#filter7_f_120_7480)"
       >
         <path

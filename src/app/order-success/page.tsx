@@ -212,9 +212,9 @@ export default function OrderSuccessPage() {
                           {step.label}
                         </p>
                         {index < steps.length - 1 && (
-                          <div className={`absolute top-5 left-full w-full h-0.5 -ml-4 ${
+                          <div className={`absolute top-5 left-full h-0.5 -ml-4 w-16 ${
                             step.active ? 'bg-emerald-500' : 'bg-white/10'
-                          }`} style={{ width: '60px' }} />
+                          }`} />
                         )}
                       </div>
                     ))}

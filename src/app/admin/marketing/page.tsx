@@ -105,6 +105,7 @@ export default function MarketingDashboard() {
   const [posts, setPosts] = useState<ScheduledPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [adminKey, setAdminKey] = useState('');
+  const [error, setError] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showCreateCampaign, setShowCreateCampaign] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -114,16 +115,20 @@ export default function MarketingDashboard() {
     if (!adminKey) return;
     
     try {
+      setError(null);
       const response = await fetch(`/api/marketing?type=${type}`, {
         headers: { 'x-admin-key': adminKey }
       });
       
-      if (response.ok) {
-        const result = await response.json();
-        return result.data;
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result?.error || `Failed to load ${type}`);
       }
+      return result.data;
     } catch (error) {
+      const message = error instanceof Error ? error.message : `Failed to fetch ${type}`;
       console.error(`Failed to fetch ${type}:`, error);
+      setError(message);
     }
     return null;
   }, [adminKey]);
@@ -170,11 +175,13 @@ export default function MarketingDashboard() {
 
   const handleLogin = () => {
     localStorage.setItem('admin_key', adminKey);
+    setError(null);
     loadData();
   };
 
   const runScheduler = async () => {
     try {
+      setError(null);
       await fetch('/api/marketing', {
         method: 'POST',
         headers: {
@@ -185,12 +192,15 @@ export default function MarketingDashboard() {
       });
       loadData();
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to run scheduler.';
       console.error('Failed to run scheduler:', error);
+      setError(message);
     }
   };
 
   const generateCalendar = async () => {
     try {
+      setError(null);
       const response = await fetch('/api/marketing', {
         method: 'POST',
         headers: {
@@ -203,14 +213,20 @@ export default function MarketingDashboard() {
       if (response.ok) {
         setActiveTab('social');
         loadData();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data?.error || 'Failed to generate calendar');
       }
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to generate calendar.';
       console.error('Failed to generate calendar:', error);
+      setError(message);
     }
   };
 
   const activateCampaign = async (campaignId: string) => {
     try {
+      setError(null);
       await fetch('/api/marketing', {
         method: 'POST',
         headers: {
@@ -221,12 +237,15 @@ export default function MarketingDashboard() {
       });
       loadData();
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to activate campaign.';
       console.error('Failed to activate campaign:', error);
+      setError(message);
     }
   };
 
   const pauseCampaign = async (campaignId: string) => {
     try {
+      setError(null);
       await fetch('/api/marketing', {
         method: 'POST',
         headers: {
@@ -237,7 +256,9 @@ export default function MarketingDashboard() {
       });
       loadData();
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to pause campaign.';
       console.error('Failed to pause campaign:', error);
+      setError(message);
     }
   };
 
@@ -307,6 +328,12 @@ export default function MarketingDashboard() {
             </button>
           </div>
         </div>
+
+        {error && (
+          <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+            {error}
+          </div>
+        )}
 
         {/* Tabs */}
         <div className="flex gap-2 mb-6 bg-white/5 p-1 rounded-xl w-fit">

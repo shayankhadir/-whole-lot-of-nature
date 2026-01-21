@@ -59,43 +59,124 @@ export default function GrowthDashboard() {
   const [data, setData] = useState<GrowthData | null>(null);
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
+  const [adminKey, setAdminKey] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const widthClassMap: Record<number, string> = {
+    0: 'w-0',
+    10: 'w-[10%]',
+    20: 'w-[20%]',
+    30: 'w-[30%]',
+    40: 'w-[40%]',
+    50: 'w-[50%]',
+    60: 'w-[60%]',
+    70: 'w-[70%]',
+    80: 'w-[80%]',
+    90: 'w-[90%]',
+    100: 'w-full'
+  };
 
   const fetchData = async () => {
+    if (!adminKey) {
+      setLoading(false);
+      return;
+    }
     try {
-      const res = await fetch('/api/growth-agent/stats');
+      setError(null);
+      const res = await fetch('/api/growth-agent/stats', {
+        headers: { 'x-admin-key': adminKey }
+      });
       const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json?.error || 'Failed to fetch growth stats');
+      }
       setData(json);
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to load data.';
       console.error(error);
+      setError(message);
     } finally {
       setLoading(false);
     }
   };
 
   const runAgent = async () => {
+    if (!adminKey) {
+      setError('Enter your admin key to run the agent.');
+      return;
+    }
     setRunning(true);
     try {
-      await fetch('/api/growth-agent/stats');
+      setError(null);
+      const response = await fetch('/api/growth-agent/run', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey
+        }
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result?.error || 'Failed to run growth agent');
+      }
       await fetchData();
     } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to run agent.';
       console.error(error);
+      setError(message);
     } finally {
       setRunning(false);
     }
   };
 
   useEffect(() => {
+    const savedKey = localStorage.getItem('admin_key');
+    if (savedKey) {
+      setAdminKey(savedKey);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!adminKey) return;
     fetchData();
     const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [adminKey]);
 
-  if (loading) {
+  const handleLogin = () => {
+    localStorage.setItem('admin_key', adminKey);
+    fetchData();
+  };
+
+  if (!adminKey || loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0D1B0F] to-[#1e3a28] flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-10 h-10 animate-spin text-[#66BB6A] mx-auto" />
-          <p className="mt-4 text-white/70">Loading Agent Data...</p>
+      <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0D1B0F] to-[#1e3a28] flex items-center justify-center p-6">
+        <div className="max-w-md w-full">
+          <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-8">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8 text-emerald-300" />
+              </div>
+              <h1 className="text-2xl font-bold text-white">Business Growth Agent</h1>
+              <p className="text-white/60 mt-2">Enter admin key to access</p>
+            </div>
+            <input
+              type="password"
+              value={adminKey}
+              onChange={(e) => setAdminKey(e.target.value)}
+              placeholder="Admin Key"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-white/40"
+              onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+            />
+            <button
+              onClick={handleLogin}
+              className="w-full mt-4 px-4 py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-colors"
+            >
+              Access Dashboard
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -106,7 +187,7 @@ export default function GrowthDashboard() {
       <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0D1B0F] to-[#1e3a28] flex items-center justify-center">
         <div className="text-center">
           <AlertCircle className="w-10 h-10 text-red-400 mx-auto" />
-          <p className="mt-4 text-red-400">Failed to load data.</p>
+          <p className="mt-4 text-red-400">{error || 'Failed to load data.'}</p>
         </div>
       </div>
     );
@@ -114,6 +195,8 @@ export default function GrowthDashboard() {
 
   const hotLeads = data.leads.filter(l => l.status === 'HOT' || l.status === 'CONTACTED');
   const newLeads = data.leads.filter(l => l.status === 'NEW');
+  const seoBucket = Math.min(100, Math.max(0, Math.round(data.seoScore / 10) * 10));
+  const seoWidthClass = widthClassMap[seoBucket] || 'w-0';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0D1B0F] to-[#1e3a28] p-6 md:p-8">
@@ -154,6 +237,12 @@ export default function GrowthDashboard() {
           </div>
         </div>
 
+        {error && (
+          <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+            {error}
+          </div>
+        )}
+
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           {/* SEO Score Card */}
@@ -168,10 +257,9 @@ export default function GrowthDashboard() {
             </div>
             <div className="w-full bg-white/10 h-2 rounded-full mt-4 overflow-hidden">
               <div 
-                className={`h-full rounded-full transition-all duration-500 ${
+                className={`h-full rounded-full transition-all duration-500 ${seoWidthClass} ${
                   data.seoScore > 80 ? 'bg-[#66BB6A]' : data.seoScore > 50 ? 'bg-yellow-500' : 'bg-red-500'
                 }`}
-                style={{ width: `${data.seoScore}%` }}
               />
             </div>
           </div>

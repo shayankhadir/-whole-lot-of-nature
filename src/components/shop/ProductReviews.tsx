@@ -29,6 +29,19 @@ export default function ProductReviews({
   averageRating = 0,
   reviewCount = 0 
 }: ProductReviewsProps) {
+  const widthClassMap: Record<number, string> = {
+    0: 'w-0',
+    10: 'w-[10%]',
+    20: 'w-[20%]',
+    30: 'w-[30%]',
+    40: 'w-[40%]',
+    50: 'w-[50%]',
+    60: 'w-[60%]',
+    70: 'w-[70%]',
+    80: 'w-[80%]',
+    90: 'w-[90%]',
+    100: 'w-full'
+  };
   const [reviews, setReviews] = useState<Review[]>(initialReviews);
   const [loading, setLoading] = useState(initialReviews.length === 0);
   const [showWriteReview, setShowWriteReview] = useState(false);
@@ -146,8 +159,7 @@ export default function ProductReviews({
                 <span className="text-sm text-white/60 w-12">{rating} star</span>
                 <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-yellow-400 rounded-full transition-all duration-500"
-                    style={{ width: `${percentage}%` }}
+                    className={`h-full bg-yellow-400 rounded-full transition-all duration-500 ${widthClassMap[Math.min(100, Math.max(0, Math.round(percentage / 10) * 10))] || 'w-0'}`}
                   />
                 </div>
                 <span className="text-sm text-white/40 w-8">{count}</span>

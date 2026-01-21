@@ -84,6 +84,7 @@ export interface WooCommerceProduct {
     options: string[];
   }>;
   in_stock: boolean;
+  stock_status?: 'instock' | 'outofstock' | 'onbackorder';
   stock_quantity: number;
   featured: boolean;
   average_rating?: number;
@@ -830,6 +831,7 @@ export class WooCommerceService {
       // Default to in_stock if status is missing or ambiguous to prevent "Out of Stock" errors
       // when inventory management is disabled or not yet set up in WordPress.
       in_stock: product.stock_status === 'instock' || product.stock_status === 'onbackorder' || !product.stock_status,
+      stock_status: product.stock_status,
       stock_quantity: typeof product.stock_quantity === 'number' ? product.stock_quantity : 100,
       featured: product.featured,
       average_rating: product.average_rating ? parseFloat(String(product.average_rating)) : undefined,

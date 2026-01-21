@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import { Leaf, Heart, Users, Sprout, Recycle, Sun } from 'lucide-react';
 import YouTubeShowcase from '@/components/sections/YouTubeShowcase';
 import InstagramFeed from '@/components/sections/InstagramFeed';
@@ -94,8 +95,26 @@ const legacyFaqs = [
 ];
 
 export default function AboutPage() {
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Whole Lot of Nature',
+    description: 'Whole Lot of Nature delivers premium plants, handcrafted soil mixes, and sustainable essentials across India.',
+    url: 'https://wholelotofnature.com/about',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Whole Lot of Nature',
+      url: 'https://wholelotofnature.com'
+    }
+  };
+
   return (
     <div className="relative bg-[#0D1B0F] min-h-screen text-white overflow-hidden">
+      <Script
+        id="ld-about"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       <FAQSchema faqs={legacyFaqs} />
       <div className="absolute inset-0 -z-10">
         <Image

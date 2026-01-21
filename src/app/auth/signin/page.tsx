@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, EyeOff, Leaf, CheckCircle2, Mail } from 'lucide-react';
+import { Eye, EyeOff, Leaf, CheckCircle2, Mail, Facebook } from 'lucide-react';
 
 import type { Metadata } from 'next';
 
@@ -84,6 +84,10 @@ export default function SignInPage() {
     signIn('google', { callbackUrl: '/' });
   };
 
+  const handleFacebookSignIn = () => {
+    signIn('facebook', { callbackUrl: '/' });
+  };
+
   const handleMagicLinkSignIn = async () => {
     if (!email) {
       setError('Please enter your email address to sign in with a magic link');
@@ -155,7 +159,7 @@ export default function SignInPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-montserrat text-7xl md:text-8xl lg:text-9xl font-bold text-white uppercase leading-[0.9] text-center antialiased"
+            className="font-montserrat text-6xl md:text-7xl lg:text-8xl font-bold text-white uppercase leading-[0.9] text-center antialiased"
           >
             SIGN
             <br />
@@ -185,8 +189,8 @@ export default function SignInPage() {
       </div>
 
       {/* Right Side - Sign In Form */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-[#0D1B0F] to-[#0a1f0d]">
-        <h1 className="text-4xl font-bold mb-6 text-white lg:hidden">Auth</h1>
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 lg:p-10 bg-gradient-to-br from-[#0D1B0F] to-[#0a1f0d]">
+        <h1 className="text-3xl font-bold mb-4 text-white lg:hidden">Sign In</h1>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -194,7 +198,7 @@ export default function SignInPage() {
           className="w-full max-w-md"
         >
           {/* Glassmorphism Card */}
-          <div className="backdrop-blur-xl bg-white/5 p-10 rounded-2xl shadow-2xl border border-[#2E7D32]/20 relative overflow-hidden">
+          <div className="backdrop-blur-xl bg-white/5 p-8 rounded-2xl shadow-2xl border border-[#2E7D32]/20 relative overflow-hidden">
             {/* Decorative Corner Leaf */}
             <div className="absolute -top-10 -right-10 w-32 h-32 text-[#2E7D32]/10 pointer-events-none">
               <Leaf className="w-full h-full rotate-45" strokeWidth={1} />
@@ -205,7 +209,7 @@ export default function SignInPage() {
               <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-2 antialiased">
                 Welcome Back
               </h2>
-              <p className="font-inter text-white/85 mb-8">
+              <p className="font-inter text-white/85 mb-6">
                 Sign in to continue your green journey
               </p>
 
@@ -248,7 +252,7 @@ export default function SignInPage() {
               </AnimatePresence>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Email Input */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
@@ -332,7 +336,7 @@ export default function SignInPage() {
                 </motion.button>
 
                 {/* Divider */}
-                <div className="relative my-6">
+                <div className="relative my-5">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-white/10"></div>
                   </div>
@@ -356,6 +360,18 @@ export default function SignInPage() {
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
                   Sign in with Google
+                </motion.button>
+
+                {/* Facebook Sign In */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="button"
+                  onClick={handleFacebookSignIn}
+                  className="w-full mt-3 bg-white/10 text-white font-medium py-3 rounded-lg border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm flex items-center justify-center gap-3"
+                >
+                  <Facebook className="w-5 h-5" />
+                  Sign in with Facebook
                 </motion.button>
 
                 {/* Magic Link Sign In */}

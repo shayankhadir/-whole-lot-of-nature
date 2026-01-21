@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Script from 'next/script';
 
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -46,6 +47,7 @@ function ShopContent() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('name'); // 'name', 'price-asc', 'price-desc', 'newest'
+  const siteUrl = 'https://wholelotofnature.com';
 
   // Sync state with URL params
   useEffect(() => {
@@ -159,8 +161,30 @@ function ShopContent() {
     }
   });
 
+  const shopSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Shop Plants & Gardening Essentials',
+    description: 'Shop premium indoor and outdoor plants, soil mixes, planters, and gardening essentials delivered across India.',
+    url: `${siteUrl}/shop`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: products.slice(0, 12).map((product, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: product.name,
+        url: `${siteUrl}/shop/${product.slug}`
+      }))
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[var(--brand-bg1)] text-white">
+      <Script
+        id="ld-shop"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(shopSchema) }}
+      />
       {/* Header Section */}
       <div className="relative border-b border-white/5 py-12 sm:py-16 px-4 sm:px-6 overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.0))]">
         <div className="absolute inset-0 opacity-20 pointer-events-none">

@@ -156,8 +156,46 @@ export const useCartStore = create<CartStore>()(
           const wcCart = await cartService.addItem(productId, newItem.quantity || 1);
           set({ ...mapWCCartToState(wcCart), isOpen: true, isLoading: false });
         } catch (error) {
-          console.error('Failed to add item:', error);
-          set({ isLoading: false });
+          console.error('Failed to add item to WooCommerce, using local fallback:', error);
+          // Fallback to local cart when WooCommerce API fails
+          const { items } = get();
+          const existingIndex = items.findIndex(i => i.id === newItem.id);
+          
+          const cartItem: CartItem = {
+            id: newItem.id,
+            name: newItem.name,
+            price: newItem.price,
+            originalPrice: newItem.originalPrice,
+            image: newItem.image,
+            quantity: newItem.quantity || 1,
+            type: newItem.type || 'product',
+            category: newItem.category,
+            inStock: newItem.inStock ?? true,
+            maxQuantity: newItem.maxQuantity,
+          };
+          
+          let newItems: CartItem[];
+          if (existingIndex >= 0) {
+            newItems = items.map((item, index) => 
+              index === existingIndex 
+                ? { ...item, quantity: item.quantity + (newItem.quantity || 1) }
+                : item
+            );
+          } else {
+            newItems = [...items, cartItem];
+          }
+          
+          const totalItems = newItems.reduce((sum, item) => sum + item.quantity, 0);
+          const totalPrice = newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+          
+          set({ 
+            items: newItems, 
+            totalItems, 
+            totalPrice, 
+            subtotal: totalPrice,
+            isOpen: true, 
+            isLoading: false 
+          });
         }
       },
 
@@ -167,15 +205,24 @@ export const useCartStore = create<CartStore>()(
           const { items } = get();
           const item = items.find(i => i.id === id);
           if (!item?.key) {
-             await get().fetchCart();
-             return;
+            // No WooCommerce key, use local removal
+            const newItems = items.filter(i => i.id !== id);
+            const totalItems = newItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            set({ items: newItems, totalItems, totalPrice, subtotal: totalPrice, isLoading: false });
+            return;
           }
           
           const wcCart = await cartService.removeItem(item.key);
           set({ ...mapWCCartToState(wcCart), isLoading: false });
         } catch (error) {
-          console.error('Failed to remove item:', error);
-          set({ isLoading: false });
+          console.error('Failed to remove item from WooCommerce, using local fallback:', error);
+          // Fallback to local removal
+          const { items } = get();
+          const newItems = items.filter(i => i.id !== id);
+          const totalItems = newItems.reduce((sum, item) => sum + item.quantity, 0);
+          const totalPrice = newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+          set({ items: newItems, totalItems, totalPrice, subtotal: totalPrice, isLoading: false });
         }
       },
 
@@ -188,7 +235,15 @@ export const useCartStore = create<CartStore>()(
           const { items } = get();
           const item = items.find(i => i.id === id);
           if (!item?.key) {
-            set({ isLoading: false });
+            // No WooCommerce key, use local update
+            const maxQty = item?.maxQuantity || 99;
+            const finalQuantity = Math.min(validQuantity, maxQty);
+            const newItems = items.map(i => 
+              i.id === id ? { ...i, quantity: finalQuantity } : i
+            );
+            const totalItems = newItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            set({ items: newItems, totalItems, totalPrice, subtotal: totalPrice, isLoading: false });
             return;
           }
 
@@ -199,8 +254,18 @@ export const useCartStore = create<CartStore>()(
           const wcCart = await cartService.updateItem(item.key, finalQuantity);
           set({ ...mapWCCartToState(wcCart), isLoading: false });
         } catch (error) {
-          console.error('Failed to update quantity:', error);
-          set({ isLoading: false });
+          console.error('Failed to update quantity in WooCommerce, using local fallback:', error);
+          // Fallback to local update
+          const { items } = get();
+          const item = items.find(i => i.id === id);
+          const maxQty = item?.maxQuantity || 99;
+          const finalQuantity = Math.min(validQuantity, maxQty);
+          const newItems = items.map(i => 
+            i.id === id ? { ...i, quantity: finalQuantity } : i
+          );
+          const totalItems = newItems.reduce((sum, item) => sum + item.quantity, 0);
+          const totalPrice = newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+          set({ items: newItems, totalItems, totalPrice, subtotal: totalPrice, isLoading: false });
         }
       },
 

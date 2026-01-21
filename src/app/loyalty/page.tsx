@@ -97,6 +97,43 @@ const typeLabels: Record<string, string> = {
   TIER_BONUS: 'Tier Upgrade'
 };
 
+const widthClassMap: Record<number, string> = {
+  0: 'w-0',
+  10: 'w-[10%]',
+  20: 'w-[20%]',
+  30: 'w-[30%]',
+  40: 'w-[40%]',
+  50: 'w-[50%]',
+  60: 'w-[60%]',
+  70: 'w-[70%]',
+  80: 'w-[80%]',
+  90: 'w-[90%]',
+  100: 'w-full'
+};
+
+const getTierTheme = (tier?: Tier | null) => {
+  const key = `${tier?.slug || ''} ${tier?.name || ''}`.toLowerCase();
+  if (key.includes('platinum')) {
+    return { border: 'border-purple-400', bg: 'bg-purple-500/15', text: 'text-purple-600', ring: 'ring-purple-400', header: 'bg-gradient-to-br from-purple-700 to-purple-900' };
+  }
+  if (key.includes('gold')) {
+    return { border: 'border-amber-400', bg: 'bg-amber-500/15', text: 'text-amber-600', ring: 'ring-amber-400', header: 'bg-gradient-to-br from-amber-600 to-amber-800' };
+  }
+  if (key.includes('silver')) {
+    return { border: 'border-slate-300', bg: 'bg-slate-200/40', text: 'text-slate-600', ring: 'ring-slate-300', header: 'bg-gradient-to-br from-slate-600 to-slate-800' };
+  }
+  if (key.includes('bronze')) {
+    return { border: 'border-orange-400', bg: 'bg-orange-500/15', text: 'text-orange-600', ring: 'ring-orange-400', header: 'bg-gradient-to-br from-orange-600 to-orange-800' };
+  }
+  if (key.includes('bloom') || key.includes('amber')) {
+    return { border: 'border-amber-400', bg: 'bg-amber-500/15', text: 'text-amber-600', ring: 'ring-amber-400', header: 'bg-gradient-to-br from-amber-600 to-amber-800' };
+  }
+  if (key.includes('canopy') || key.includes('purple')) {
+    return { border: 'border-purple-400', bg: 'bg-purple-500/15', text: 'text-purple-600', ring: 'ring-purple-400', header: 'bg-gradient-to-br from-purple-700 to-purple-900' };
+  }
+  return { border: 'border-emerald-400', bg: 'bg-emerald-500/15', text: 'text-emerald-600', ring: 'ring-emerald-400', header: 'bg-gradient-to-br from-emerald-700 to-emerald-900' };
+};
+
 export default function LoyaltyPage() {
   const [email, setEmail] = useState('');
   const [account, setAccount] = useState<Account | null>(null);
@@ -344,17 +381,17 @@ export default function LoyaltyPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Membership Tiers</h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {tiers.map((tier) => (
+                {tiers.map((tier) => {
+                  const theme = getTierTheme(tier);
+                  return (
                   <div 
                     key={tier.id}
-                    className="bg-white rounded-2xl p-6 shadow-sm border-2 hover:shadow-md transition-shadow"
-                    style={{ borderColor: tier.color }}
+                    className={`bg-white rounded-2xl p-6 shadow-sm border-2 hover:shadow-md transition-shadow ${theme.border}`}
                   >
                     <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ backgroundColor: tier.color + '20' }}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${theme.bg}`}
                     >
-                      <Trophy className="w-6 h-6" style={{ color: tier.color }} />
+                      <Trophy className={`w-6 h-6 ${theme.text}`} />
                     </div>
                     <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
                     <p className="text-sm text-gray-500 mb-4">{tier.minPoints.toLocaleString()}+ points</p>
@@ -391,7 +428,7 @@ export default function LoyaltyPage() {
                       )}
                     </ul>
                   </div>
-                ))}
+                )})}
               </div>
             </div>
           </div>
@@ -403,14 +440,16 @@ export default function LoyaltyPage() {
   // Logged in - show dashboard
   const nextTier = getNextTier();
   const progress = getProgressToNextTier();
+  const currentTierTheme = getTierTheme(account.tier);
+  const progressBucket = Math.min(100, Math.max(0, Math.round(progress / 10) * 10));
+  const progressWidthClass = widthClassMap[progressBucket] || 'w-0';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F5F5DC] via-white to-[#E8F5E9] py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header Card */}
         <div 
-          className="rounded-3xl p-8 text-white mb-8 relative overflow-hidden"
-          style={{ backgroundColor: account.tier?.color || '#2E7D32' }}
+          className={`rounded-3xl p-8 text-white mb-8 relative overflow-hidden ${currentTierTheme.header}`}
         >
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -445,8 +484,7 @@ export default function LoyaltyPage() {
                 </div>
                 <div className="h-3 bg-white/20 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-white rounded-full transition-all duration-500"
-                    style={{ width: `${progress}%` }}
+                    className={`h-full bg-white rounded-full transition-all duration-500 ${progressWidthClass}`}
                   />
                 </div>
                 <p className="text-sm text-white/80 mt-2">
@@ -673,22 +711,19 @@ export default function LoyaltyPage() {
         {activeTab === 'tiers' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tiers.map((tier) => {
+              const theme = getTierTheme(tier);
               const isCurrentTier = tier.id === account.tier?.id;
               const isReached = account.lifetimePoints >= tier.minPoints;
               return (
                 <div 
                   key={tier.id}
-                  className={`rounded-2xl p-6 border-2 transition-all ${
+                  className={`rounded-2xl p-6 border-2 transition-all ${theme.border} ${
                     isCurrentTier 
-                      ? 'ring-2 ring-offset-2' 
+                      ? `ring-2 ring-offset-2 ${theme.ring}` 
                       : isReached 
                         ? 'bg-white' 
                         : 'bg-gray-50 opacity-70'
                   }`}
-                  style={{ 
-                    borderColor: tier.color,
-                    ...(isCurrentTier && { ringColor: tier.color })
-                  }}
                 >
                   {isCurrentTier && (
                     <span className="inline-block px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded-full mb-4">
@@ -696,10 +731,9 @@ export default function LoyaltyPage() {
                     </span>
                   )}
                   <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                    style={{ backgroundColor: tier.color + '20' }}
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${theme.bg}`}
                   >
-                    <Trophy className="w-6 h-6" style={{ color: tier.color }} />
+                    <Trophy className={`w-6 h-6 ${theme.text}`} />
                   </div>
                   <h3 className="text-xl font-bold mb-1">{tier.name}</h3>
                   <p className="text-sm text-gray-500 mb-4">{tier.minPoints.toLocaleString()}+ lifetime points</p>

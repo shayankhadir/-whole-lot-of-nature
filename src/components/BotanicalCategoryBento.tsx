@@ -48,7 +48,6 @@ interface ParticleCardProps {
   children: React.ReactNode;
   className?: string;
   disableAnimations?: boolean;
-  style?: React.CSSProperties;
   particleCount?: number;
   glowColor?: string;
   enableTilt?: boolean;
@@ -60,7 +59,6 @@ const ParticleCard = ({
   children,
   className = '',
   disableAnimations = false,
-  style,
   particleCount = DEFAULT_PARTICLE_COUNT,
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
@@ -286,7 +284,6 @@ const ParticleCard = ({
     <div
       ref={cardRef}
       className={`${className} relative overflow-hidden`}
-      style={{ ...style, position: 'relative', overflow: 'hidden' }}
     >
       {children}
     </div>
@@ -532,6 +529,12 @@ const BotanicalCategoryBento = ({
           .category-card {
             transition: all 0.3s ease;
             border: 1px solid rgba(46, 125, 50, 0.3);
+            background-color: rgba(13, 27, 15, 0.6);
+            color: var(--white);
+            --glow-x: 50%;
+            --glow-y: 50%;
+            --glow-intensity: 0;
+            --glow-radius: 150px;
           }
           
           .category-card:hover {
@@ -585,22 +588,11 @@ const BotanicalCategoryBento = ({
               enableBorderGlow ? 'category-card--border-glow' : ''
             }`;
 
-            const cardStyle = {
-              backgroundColor: category.backgroundColor || 'rgba(13, 27, 15, 0.6)',
-              borderColor: 'var(--border-color)',
-              color: 'var(--white)',
-              '--glow-x': '50%',
-              '--glow-y': '50%',
-              '--glow-intensity': '0',
-              '--glow-radius': '150px'
-            };
-
             if (enableStars) {
               return (
                 <ParticleCard
                   key={index}
                   className={baseClassName}
-                  style={cardStyle}
                   disableAnimations={shouldDisableAnimations}
                   particleCount={particleCount}
                   glowColor={glowColor}
@@ -631,7 +623,6 @@ const BotanicalCategoryBento = ({
               <div
                 key={index}
                 className={baseClassName}
-                style={cardStyle}
               >
                 <div className="flex flex-col gap-2">
                   {category.icon && (

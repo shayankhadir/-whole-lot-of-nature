@@ -46,6 +46,19 @@ export default function CheckoutStep2({
   cartTotal,
   errors = {} 
 }: CheckoutStep2Props) {
+  const widthClassMap: Record<number, string> = {
+    0: 'w-0',
+    10: 'w-[10%]',
+    20: 'w-[20%]',
+    30: 'w-[30%]',
+    40: 'w-[40%]',
+    50: 'w-[50%]',
+    60: 'w-[60%]',
+    70: 'w-[70%]',
+    80: 'w-[80%]',
+    90: 'w-[90%]',
+    100: 'w-full'
+  };
   const [localErrors, setLocalErrors] = useState<Partial<ShippingInfo>>({});
   const [touched, setTouched] = useState<Set<string>>(new Set());
 
@@ -53,6 +66,9 @@ export default function CheckoutStep2({
   const freeShippingThreshold = 999;
   const qualifiesForFreeShipping = cartTotal >= freeShippingThreshold;
   const amountToFreeShipping = freeShippingThreshold - cartTotal;
+  const progressPercent = Math.min((cartTotal / freeShippingThreshold) * 100, 100);
+  const progressBucket = Math.min(100, Math.max(0, Math.round(progressPercent / 10) * 10));
+  const progressWidthClass = widthClassMap[progressBucket] || 'w-0';
 
   const shippingOptions: ShippingOption[] = [
     {
@@ -316,8 +332,7 @@ export default function CheckoutStep2({
             </p>
             <div className="w-full bg-black/40 rounded-full h-2">
               <div 
-                className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
-                style={{ width: `${Math.min((cartTotal / freeShippingThreshold) * 100, 100)}%` }}
+                className={`bg-emerald-500 h-2 rounded-full transition-all duration-500 ${progressWidthClass}`}
               />
             </div>
           </div>

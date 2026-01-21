@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     images: ['https://wholelotofnature.com/images/og-image.jpg'],
     url: 'https://wholelotofnature.com/terms',
   },
-  title: 'Terms & Conditions | Whole Lot of Nature',
-  description: 'Read our terms and conditions for using Whole Lot of Nature services.',
+  title: 'Terms & Conditions for Plant Orders | Whole Lot of Nature',
+  description: 'Read the terms and conditions for Whole Lot of Nature orders, services, and site usage.',
 }
 
 export default function TermsPage() {

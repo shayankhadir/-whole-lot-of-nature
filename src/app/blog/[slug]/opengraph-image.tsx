@@ -1,7 +1,6 @@
+/* eslint-disable */
 // This file uses inline styles for Next.js OG image generation on the edge runtime
-// Linter warnings for inline styles in edge functions are acceptable
 // @ts-nocheck
-/* no-inline-styles */
 import { ImageResponse } from 'next/og';
 import { getPostBySlug } from '@/lib/api/wordpress';
 
@@ -27,20 +26,9 @@ export default async function Image({ params }: { params: { slug: string } }) {
     // Fallback OG image
     return new ImageResponse(
       (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#0d3512',
-            color: '#daf2d0',
-          }}
-        >
-          <div style={{ fontSize: 60, fontWeight: 'bold' }}>Whole Lot of Nature</div>
-          <div style={{ fontSize: 30, marginTop: 20 }}>Blog • Plant Care Tips & Guides</div>
+        <div tw="h-full w-full flex flex-col items-center justify-center bg-[#0d3512] text-[#daf2d0]">
+          <div tw="text-[60px] font-bold">Whole Lot of Nature</div>
+          <div tw="text-[30px] mt-5">Blog • Plant Care Tips & Guides</div>
         </div>
       ),
       { ...size }
@@ -58,141 +46,46 @@ export default async function Image({ params }: { params: { slug: string } }) {
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          backgroundColor: '#0d3512',
-        }}
-      >
+      <div tw="h-full w-full flex bg-[#0d3512]">
         {/* Background Image with Overlay */}
         {featuredImage && (
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              display: 'flex',
-            }}
-          >
+          <div tw="absolute inset-0 flex">
             <img
               src={featuredImage}
               alt=""
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.3,
-              }}
+              tw="w-full h-full object-cover opacity-30"
             />
           </div>
         )}
 
         {/* Content */}
-        <div
-          style={{
-            position: 'relative',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: 60,
-          }}
-        >
+        <div tw="relative w-full h-full flex flex-col justify-between p-[60px]">
           {/* Top: Brand & Category */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <div
-              style={{
-                fontSize: 24,
-                color: '#86efbe',
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-                letterSpacing: 3,
-              }}
-            >
+          <div tw="flex items-center justify-between">
+            <div tw="text-[24px] text-[#86efbe] font-bold uppercase tracking-[3px]">
               Whole Lot of Nature
             </div>
-            <div
-              style={{
-                padding: '10px 24px',
-                backgroundColor: '#22c55e',
-                color: 'white',
-                borderRadius: 50,
-                fontSize: 18,
-                fontWeight: 'bold',
-              }}
-            >
+            <div tw="px-6 py-2.5 bg-[#22c55e] text-white rounded-full text-[18px] font-bold">
               Blog
             </div>
           </div>
 
           {/* Center: Title */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              flex: 1,
-              paddingTop: 40,
-              paddingBottom: 40,
-            }}
-          >
-            <div
-              style={{
-                fontSize: 56,
-                fontWeight: 'bold',
-                color: '#daf2d0',
-                lineHeight: 1.2,
-                maxWidth: '100%',
-                overflow: 'hidden',
-                display: '-webkit-box',
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: 'vertical',
-              }}
-            >
+          <div tw="flex flex-col justify-center flex-1 py-10">
+            <div tw="text-[56px] font-bold text-[#daf2d0] leading-tight">
               {title}
             </div>
           </div>
 
           {/* Bottom: Author & Date */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 20,
-              color: '#daf2d0',
-            }}
-          >
+          <div tw="flex items-center gap-5 text-[#daf2d0]">
             {/* Author Avatar Placeholder */}
-            <div
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: '50%',
-                backgroundColor: '#22c55e',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 24,
-                fontWeight: 'bold',
-                color: 'white',
-              }}
-            >
+            <div tw="w-[50px] h-[50px] rounded-full bg-[#22c55e] flex items-center justify-center text-[24px] font-bold text-white">
               {authorName.charAt(0).toUpperCase()}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: 20, fontWeight: 'bold' }}>{authorName}</div>
-              <div style={{ fontSize: 16, color: '#86efbe' }}>{date}</div>
+            <div tw="flex flex-col">
+              <div tw="text-[20px] font-bold">{authorName}</div>
+              <div tw="text-[16px] text-[#86efbe]">{date}</div>
             </div>
           </div>
         </div>

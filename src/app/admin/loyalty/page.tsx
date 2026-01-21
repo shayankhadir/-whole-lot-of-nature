@@ -89,6 +89,48 @@ interface ProgramSettings {
 
 const ADMIN_KEY = process.env.NEXT_PUBLIC_ADMIN_KEY || 'admin-secret';
 
+const widthClassMap: Record<number, string> = {
+  0: 'w-0',
+  10: 'w-[10%]',
+  20: 'w-[20%]',
+  30: 'w-[30%]',
+  40: 'w-[40%]',
+  50: 'w-[50%]',
+  60: 'w-[60%]',
+  70: 'w-[70%]',
+  80: 'w-[80%]',
+  90: 'w-[90%]',
+  100: 'w-full'
+};
+
+const getWidthClass = (percentage: number) => {
+  const bucket = Math.min(100, Math.max(0, Math.round(percentage / 10) * 10));
+  return widthClassMap[bucket] || 'w-0';
+};
+
+const getTierTheme = (tier?: Tier | null) => {
+  const key = `${tier?.slug || ''} ${tier?.name || ''}`.toLowerCase();
+  if (key.includes('platinum')) {
+    return { border: 'border-purple-500', bg: 'bg-purple-500/20', text: 'text-purple-400', dot: 'bg-purple-400', bar: 'bg-purple-400', badgeBg: 'bg-purple-500/20', badgeText: 'text-purple-300' };
+  }
+  if (key.includes('gold')) {
+    return { border: 'border-amber-500', bg: 'bg-amber-500/20', text: 'text-amber-400', dot: 'bg-amber-400', bar: 'bg-amber-400', badgeBg: 'bg-amber-500/20', badgeText: 'text-amber-300' };
+  }
+  if (key.includes('silver')) {
+    return { border: 'border-slate-300', bg: 'bg-slate-200/30', text: 'text-slate-300', dot: 'bg-slate-300', bar: 'bg-slate-300', badgeBg: 'bg-slate-200/20', badgeText: 'text-slate-300' };
+  }
+  if (key.includes('bronze')) {
+    return { border: 'border-orange-500', bg: 'bg-orange-500/20', text: 'text-orange-400', dot: 'bg-orange-400', bar: 'bg-orange-400', badgeBg: 'bg-orange-500/20', badgeText: 'text-orange-300' };
+  }
+  if (key.includes('bloom') || key.includes('amber')) {
+    return { border: 'border-amber-500', bg: 'bg-amber-500/20', text: 'text-amber-400', dot: 'bg-amber-400', bar: 'bg-amber-400', badgeBg: 'bg-amber-500/20', badgeText: 'text-amber-300' };
+  }
+  if (key.includes('canopy') || key.includes('purple')) {
+    return { border: 'border-purple-500', bg: 'bg-purple-500/20', text: 'text-purple-400', dot: 'bg-purple-400', bar: 'bg-purple-400', badgeBg: 'bg-purple-500/20', badgeText: 'text-purple-300' };
+  }
+  return { border: 'border-green-500', bg: 'bg-green-500/20', text: 'text-green-400', dot: 'bg-green-400', bar: 'bg-green-400', badgeBg: 'bg-green-500/20', badgeText: 'text-green-300' };
+};
+
 export default function AdminLoyaltyPage() {
   const [activeTab, setActiveTab] = useState<'overview' | 'accounts' | 'rewards' | 'tiers' | 'settings'>('overview');
   const [loading, setLoading] = useState(true);
@@ -413,18 +455,18 @@ export default function AdminLoyaltyPage() {
                 {tiers.map((tier) => {
                   const count = tier._count?.accounts || 0;
                   const percentage = stats.totalAccounts > 0 ? (count / stats.totalAccounts) * 100 : 0;
+                  const theme = getTierTheme(tier);
+                  const widthClass = getWidthClass(percentage);
                   return (
                     <div key={tier.id} className="flex items-center gap-4">
                       <div 
-                        className={styles.tierDot}
-                        style={{ backgroundColor: tier.color }}
+                        className={`${styles.tierDot} ${theme.dot}`}
                         aria-hidden="true"
                       />
                       <span className="text-gray-300 w-32">{tier.name}</span>
                       <div className="flex-1 bg-gray-700 rounded-full h-2 overflow-hidden">
                         <div 
-                          className={styles.tierBar}
-                          style={{ width: `${percentage}%`, backgroundColor: tier.color }}
+                          className={`${styles.tierBar} ${theme.bar} ${widthClass}`}
                         />
                       </div>
                       <span className="text-gray-400 text-sm w-20 text-right">
@@ -509,12 +551,16 @@ export default function AdminLoyaltyPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span 
-                          className="px-3 py-1 rounded-full text-sm font-medium"
-                          style={{ backgroundColor: (account.tier?.color || '#666') + '20', color: account.tier?.color || '#666' }}
-                          >
-                            {account.tier?.name || 'Seedling'}
-                        </span>
+                        {(() => {
+                          const theme = getTierTheme(account.tier);
+                          return (
+                            <span 
+                              className={`px-3 py-1 rounded-full text-sm font-medium ${theme.badgeBg} ${theme.badgeText}`}
+                            >
+                              {account.tier?.name || 'Seedling'}
+                            </span>
+                          );
+                        })()}
                       </td>
                       <td className="px-6 py-4 text-right text-green-400 font-semibold">
                         {account.pointsBalance.toLocaleString()}
@@ -675,18 +721,18 @@ export default function AdminLoyaltyPage() {
 
             {/* Tiers Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {tiers.map((tier) => (
+              {tiers.map((tier) => {
+                const theme = getTierTheme(tier);
+                return (
                 <div 
                   key={tier.id} 
-                  className={`bg-gray-800/50 rounded-xl p-6 border-2 ${styles.tierColor}`}
-                  style={{ borderColor: tier.color }}
+                  className={`bg-gray-800/50 rounded-xl p-6 border-2 ${styles.tierColor} ${theme.border}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div 
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${styles.tierBg}`}
-                      style={{ backgroundColor: tier.color + '30' }}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${styles.tierBg} ${theme.bg}`}
                     >
-                        <Trophy className={`w-6 h-6 ${styles.tierIcon}`} style={{ color: tier.color }} />
+                        <Trophy className={`w-6 h-6 ${styles.tierIcon} ${theme.text}`} />
                     </div>
                     <div className="flex items-center gap-2">
                       <button
@@ -722,7 +768,7 @@ export default function AdminLoyaltyPage() {
                     {tier._count?.accounts || 0} members
                   </p>
                 </div>
-              ))}
+              )})}
             </div>
 
             {/* New/Edit Tier Modal */}

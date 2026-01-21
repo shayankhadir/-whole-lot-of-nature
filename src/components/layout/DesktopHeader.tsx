@@ -87,27 +87,23 @@ export default function DesktopHeader() {
     }, 200);
   };
 
-  const headerGradient = scrolled
-    ? 'linear-gradient(135deg, rgba(27,64,36,0.96), rgba(21,50,28,0.98))'
-    : 'linear-gradient(135deg, rgba(27,64,36,0.85), rgba(21,50,28,0.92))';
+  const headerGradientClass = scrolled
+    ? 'bg-[linear-gradient(135deg,rgba(27,64,36,0.96),rgba(21,50,28,0.98))]'
+    : 'bg-[linear-gradient(135deg,rgba(27,64,36,0.85),rgba(21,50,28,0.92))]';
 
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      style={{ background: headerGradient }}
-      className={`sticky top-0 left-0 w-full z-40 border-b transition-all duration-300 ${
+      className={`sticky top-0 left-0 w-full z-40 border-b transition-all duration-300 ${headerGradientClass} ${
         scrolled
           ? 'border-white/10 backdrop-blur-xl shadow-[0_25px_70px_rgba(2,8,5,0.65)]'
           : 'border-transparent backdrop-blur-md shadow-none'
       }`}
     >
       <div className="pointer-events-none absolute inset-0 opacity-70" aria-hidden>
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(circle at top, rgba(102,187,106,0.15), transparent 55%)' }}
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(102,187,106,0.15),transparent_55%)]" />
         <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <defs>
             <pattern id="header-leaf-grid" width="160" height="160" patternUnits="userSpaceOnUse">

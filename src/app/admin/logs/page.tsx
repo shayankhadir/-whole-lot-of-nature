@@ -54,6 +54,25 @@ const agentColors: Record<string, string> = {
   marketing: 'bg-violet-500'
 };
 
+const widthClassMap: Record<number, string> = {
+  0: 'w-0',
+  10: 'w-[10%]',
+  20: 'w-[20%]',
+  30: 'w-[30%]',
+  40: 'w-[40%]',
+  50: 'w-[50%]',
+  60: 'w-[60%]',
+  70: 'w-[70%]',
+  80: 'w-[80%]',
+  90: 'w-[90%]',
+  100: 'w-full'
+};
+
+const getWidthClass = (percentage: number) => {
+  const bucket = Math.min(100, Math.max(0, Math.round(percentage / 10) * 10));
+  return widthClassMap[bucket] || 'w-0';
+};
+
 const formatDuration = (ms: number | null): string => {
   if (!ms) return '-';
   if (ms < 1000) return `${ms}ms`;
@@ -288,8 +307,7 @@ export default function LogsDashboard() {
                     </div>
                     <div className="mt-1 h-1 bg-white/10 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-green-500 rounded-full"
-                        style={{ width: `${successRate}%` }}
+                        className={`h-full bg-green-500 rounded-full ${getWidthClass(successRate)}`}
                       />
                     </div>
                   </div>

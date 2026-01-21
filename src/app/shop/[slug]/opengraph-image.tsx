@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
@@ -9,117 +10,6 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-// Color constants
-const COLORS = {
-  primary: '#0d3512',
-  secondary: '#1a4a1f',
-  accent: '#86efbe',
-  light: '#daf2d0',
-  success: '#4ade80',
-  error: '#f87171',
-  cta: '#22c55e',
-  muted: '#888',
-};
-
-// Common style objects
-const styles = {
-  container: {
-    height: '100%',
-    width: '100%',
-    display: 'flex' as const,
-    flexDirection: 'column' as const,
-    alignItems: 'center' as const,
-    justifyContent: 'center' as const,
-    backgroundColor: COLORS.primary,
-    color: COLORS.light,
-  },
-  fullContainer: {
-    height: '100%',
-    width: '100%',
-    display: 'flex' as const,
-    backgroundColor: COLORS.primary,
-    padding: 40,
-  },
-  imageContainer: {
-    width: '50%',
-    height: '100%',
-    display: 'flex' as const,
-    alignItems: 'center' as const,
-    justifyContent: 'center' as const,
-    borderRadius: 20,
-    overflow: 'hidden' as const,
-    backgroundColor: COLORS.secondary,
-  },
-  infoContainer: {
-    width: '50%',
-    height: '100%',
-    display: 'flex' as const,
-    flexDirection: 'column' as const,
-    justifyContent: 'center' as const,
-    padding: '0 40px',
-    color: COLORS.light,
-  },
-  emoji: {
-    fontSize: 80,
-    color: COLORS.accent,
-  },
-  brand: {
-    fontSize: 20,
-    color: COLORS.accent,
-    marginBottom: 16,
-    textTransform: 'uppercase' as const,
-    letterSpacing: 2,
-  },
-  title: {
-    fontSize: 48,
-    fontWeight: 'bold' as const,
-    lineHeight: 1.2,
-    marginBottom: 24,
-    maxWidth: '100%',
-    overflow: 'hidden' as const,
-    display: '-webkit-box' as const,
-    WebkitLineClamp: 3,
-    WebkitBoxOrient: 'vertical' as const,
-  },
-  priceContainer: {
-    display: 'flex' as const,
-    alignItems: 'baseline' as const,
-    gap: 16,
-  },
-  price: {
-    fontSize: 40,
-    fontWeight: 'bold' as const,
-    color: COLORS.accent,
-  },
-  originalPrice: {
-    fontSize: 24,
-    color: COLORS.muted,
-    textDecoration: 'line-through' as const,
-  },
-  stockContainer: {
-    marginTop: 20,
-    fontSize: 18,
-    display: 'flex' as const,
-    alignItems: 'center' as const,
-    gap: 8,
-  },
-  stockDot: {
-    width: 12,
-    height: 12,
-    borderRadius: '50%',
-  },
-  cta: {
-    marginTop: 30,
-    padding: '16px 32px',
-    backgroundColor: COLORS.cta,
-    color: 'white',
-    borderRadius: 50,
-    fontSize: 20,
-    fontWeight: 'bold' as const,
-    display: 'inline-flex' as const,
-    alignSelf: 'flex-start' as const,
-  },
-};
 
 async function getProduct(slug: string) {
   try {
@@ -159,9 +49,9 @@ export default async function Image({ params }: { params: { slug: string } }) {
     // Fallback OG image
     return new ImageResponse(
       (
-        <div style={styles.container}>
-          <div style={{ fontSize: 60, fontWeight: 'bold' }}>Whole Lot of Nature</div>
-          <div style={{ fontSize: 30, marginTop: 20 }}>Premium Plants & Gardening</div>
+        <div tw="h-full w-full flex flex-col items-center justify-center bg-[#0d3512] text-[#daf2d0]">
+          <div tw="text-[60px] font-bold">Whole Lot of Nature</div>
+          <div tw="text-[30px] mt-5">Premium Plants & Gardening</div>
         </div>
       ),
       { ...size }
@@ -175,66 +65,54 @@ export default async function Image({ params }: { params: { slug: string } }) {
 
   return new ImageResponse(
     (
-      <div style={styles.fullContainer}>
+      <div tw="h-full w-full flex bg-[#0d3512] p-10">
         {/* Left: Product Image */}
-        <div style={styles.imageContainer}>
+        <div tw="w-1/2 h-full flex items-center justify-center rounded-[20px] overflow-hidden bg-[#1a4a1f]">
           {productImage ? (
             <img
               src={productImage}
               alt={product.name}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
+              tw="w-full h-full object-cover"
             />
           ) : (
-            <div style={styles.emoji}>🌿</div>
+            <div tw="text-[80px] text-[#86efbe]">🌿</div>
           )}
         </div>
 
         {/* Right: Product Info */}
-        <div style={styles.infoContainer}>
+        <div tw="w-1/2 h-full flex flex-col justify-center px-10 text-[#daf2d0]">
           {/* Brand */}
-          <div style={styles.brand}>
+          <div tw="text-[20px] text-[#86efbe] mb-4 uppercase tracking-[2px] font-semibold">
             Whole Lot of Nature
           </div>
 
           {/* Product Name */}
-          <div style={styles.title}>
+          <div tw="text-[48px] font-bold leading-tight mb-6">
             {product.name}
           </div>
 
           {/* Price */}
-          <div style={styles.priceContainer}>
-            <div style={styles.price}>
+          <div tw="flex items-baseline gap-4">
+            <div tw="text-[40px] font-bold text-[#86efbe]">
               ₹{price.toLocaleString('en-IN')}
             </div>
             {hasDiscount && (
-              <div style={styles.originalPrice}>
+              <div tw="text-[24px] text-[#888] line-through">
                 ₹{regularPrice.toLocaleString('en-IN')}
               </div>
             )}
           </div>
 
           {/* Stock Status */}
-          <div
-            style={{
-              ...styles.stockContainer,
-              color: product.stock_status === 'instock' ? COLORS.success : COLORS.error,
-            }}
-          >
+          <div tw="mt-5 text-[18px] flex items-center gap-2">
             <div
-              style={{
-                ...styles.stockDot,
-                backgroundColor: product.stock_status === 'instock' ? COLORS.success : COLORS.error,
-              }}
+              tw={product.stock_status === 'instock' ? 'w-3 h-3 rounded-full bg-[#4ade80]' : 'w-3 h-3 rounded-full bg-[#f87171]'}
             />
             {product.stock_status === 'instock' ? 'In Stock' : 'Out of Stock'}
           </div>
 
           {/* CTA */}
-          <div style={styles.cta}>
+          <div tw="mt-8 px-8 py-4 bg-[#22c55e] text-white rounded-full text-[20px] font-bold inline-flex self-start">
             Shop Now →
           </div>
         </div>
