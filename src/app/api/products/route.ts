@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { WooCommerceService } from '@/lib/services/woocommerceService';
 
-export const dynamic = 'force-dynamic';
+// Use ISR with 60-second revalidation for better performance
+export const revalidate = 60;
 export const runtime = 'nodejs';
+
+// Helper to add cache headers to response
+function withCacheHeaders(response: NextResponse, maxAge: number = 60): NextResponse {
+  response.headers.set('Cache-Control', `public, s-maxage=${maxAge}, stale-while-revalidate=${maxAge * 2}`);
+  return response;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -69,11 +76,14 @@ export async function GET(request: NextRequest) {
       products = products.filter(p => p.id !== excludeId);
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       data: products,
       count: products.length,
     });
+
+    // Add cache headers - products cache for 60s, search for 30s
+    return withCacheHeaders(response, search ? 30 : 60);
 
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

@@ -1,4 +1,5 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
+import { memoryCache, cacheKey, CACHE_TTL, withCache } from '@/lib/cache/memoryCache';
 
 // Check if WooCommerce credentials are properly set
 const WORDPRESS_URL = process.env.WORDPRESS_URL || process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://admin.wholelotofnature.com';
@@ -285,16 +286,19 @@ interface WCRawCustomer {
 
 export class WooCommerceService {
   /**
-   * Get single product by ID
+   * Get single product by ID (cached)
    */
   static async getProductById(id: number): Promise<WooCommerceProduct | null> {
-    try {
-      const response = await WooCommerce.get(`products/${id}`);
-      return this.transformWooCommerceProduct(response.data);
-    } catch (error) {
-      console.error(`Error fetching product by id ${id}:`, error);
-      return null;
-    }
+    const key = cacheKey.productById(id);
+    return withCache(key, CACHE_TTL.PRODUCT_SINGLE, async () => {
+      try {
+        const response = await WooCommerce.get(`products/${id}`);
+        return this.transformWooCommerceProduct(response.data);
+      } catch (error) {
+        console.error(`Error fetching product by id ${id}:`, error);
+        return null;
+      }
+    });
   }
 
   /**
@@ -337,199 +341,208 @@ export class WooCommerceService {
     }
   }
   /**
-   * Get all products from WooCommerce
+   * Get all products from WooCommerce (cached)
    */
   static async getProducts(limit?: number): Promise<WooCommerceProduct[]> {
-    try {
-      // Check credentials first - THIS IS CRITICAL
-      if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
-        const errorMsg = '[CRITICAL] WooCommerce credentials missing!';
-        console.error(errorMsg, {
-          hasKey: !!WC_CONSUMER_KEY,
-          hasSecret: !!WC_CONSUMER_SECRET,
-          url: WORDPRESS_URL,
-          env: process.env.NODE_ENV
+    const key = cacheKey.products(limit);
+    return withCache(key, CACHE_TTL.PRODUCTS_LIST, async () => {
+      try {
+        // Check credentials first - THIS IS CRITICAL
+        if (!WC_CONSUMER_KEY || !WC_CONSUMER_SECRET) {
+          const errorMsg = '[CRITICAL] WooCommerce credentials missing!';
+          console.error(errorMsg, {
+            hasKey: !!WC_CONSUMER_KEY,
+            hasSecret: !!WC_CONSUMER_SECRET,
+            url: WORDPRESS_URL,
+            env: process.env.NODE_ENV
+          });
+          throw new Error(errorMsg);
+        }
+
+        console.log('[WooCommerce] Fetching products...', { per_page: limit || 100 });
+        
+        const response = await WooCommerce.get('products', {
+          per_page: limit || 100,
+          status: 'publish'
         });
-        throw new Error(errorMsg);
+
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+        console.log(`[WooCommerce SUCCESS] Fetched ${list.length} products`);
+        
+        return list.map(this.transformWooCommerceProduct);
+      } catch (error: unknown) {
+        const e = error as { response?: { status?: number; data?: unknown }; request?: unknown; message?: string };
+        
+        console.error('[WooCommerce ERROR] Product fetch failed:', {
+          message: e.message,
+          status: e.response?.status,
+        });
+
+        if (e.response?.status === 401) {
+          console.error('[WooCommerce AUTH ERROR] 401 - Invalid credentials');
+        }
+        
+        throw error;
       }
-
-      console.log('[WooCommerce] Attempting to fetch products...', {
-        url: WORDPRESS_URL,
-        hasKey: !!WC_CONSUMER_KEY,
-        hasSecret: !!WC_CONSUMER_SECRET,
-        per_page: limit || 100
-      });
-      
-      const response = await WooCommerce.get('products', {
-        per_page: limit || 100,
-        status: 'publish'
-        // Removed stock_status filter - we want all published products regardless of stock status
-      });
-
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      console.log(`[WooCommerce SUCCESS] Fetched ${list.length} products`);
-      
-      return list.map(this.transformWooCommerceProduct);
-    } catch (error: unknown) {
-      const e = error as { response?: { status?: number; data?: unknown }; request?: unknown; message?: string };
-      
-      console.error('[WooCommerce ERROR] Product fetch failed:', {
-        message: e.message,
-        status: e.response?.status,
-        hasRequest: !!e.request,
-        credentialsSet: !!(WC_CONSUMER_KEY && WC_CONSUMER_SECRET),
-        url: WORDPRESS_URL
-      });
-
-      if (e.response?.status === 401) {
-        console.error('[WooCommerce AUTH ERROR] 401 - Invalid credentials. Check WC_CONSUMER_KEY and WC_CONSUMER_SECRET in Vercel environment variables');
-      }
-      
-      throw error;
-    }
+    });
   }
 
   /**
    * Get single product by slug
    */
   static async getProductBySlug(slug: string): Promise<WooCommerceProduct | null> {
-    try {
-      // Check credentials first
-      if (!hasValidCredentials()) {
-        console.warn(`[WooCommerce] Missing credentials - cannot fetch product by slug: ${slug}`);
+    const key = cacheKey.productBySlug(slug);
+    return withCache(key, CACHE_TTL.PRODUCT_SINGLE, async () => {
+      try {
+        // Check credentials first
+        if (!hasValidCredentials()) {
+          console.warn(`[WooCommerce] Missing credentials - cannot fetch product by slug: ${slug}`);
+          return null;
+        }
+
+        const response = await WooCommerce.get('products', {
+          slug: slug,
+          per_page: 1
+        });
+        
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+        if (list.length > 0) {
+          return this.transformWooCommerceProduct(list[0]);
+        }
+        return null;
+      } catch (error) {
+        console.error(`Error fetching product by slug ${slug}:`, error);
+        const e = error as { response?: { status?: number }; message?: string };
+        if (e.response?.status === 401) {
+          console.error('[WooCommerce] Authentication failed - check WC_CONSUMER_KEY and WC_CONSUMER_SECRET');
+        }
         return null;
       }
-
-      const response = await WooCommerce.get('products', {
-        slug: slug,
-        per_page: 1
-      });
-      
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      if (list.length > 0) {
-        return this.transformWooCommerceProduct(list[0]);
-      }
-      return null;
-    } catch (error) {
-      console.error(`Error fetching product by slug ${slug}:`, error);
-      const e = error as { response?: { status?: number }; message?: string };
-      if (e.response?.status === 401) {
-        console.error('[WooCommerce] Authentication failed - check WC_CONSUMER_KEY and WC_CONSUMER_SECRET');
-      }
-      return null;
-    }
+    });
   }
 
   /**
    * Get products by category
    */
   static async getProductsByCategory(categorySlug: string, limit?: number): Promise<WooCommerceProduct[]> {
-    try {
-      // First get category ID by slug
-      const categoryResponse = await WooCommerce.get('products/categories', {
-        slug: categorySlug
-      });
-      
-      const catRaw: unknown = categoryResponse.data;
-      const catList = Array.isArray(catRaw) ? (catRaw as WCRawCategory[]) : [];
-      if (catList.length === 0) {
+    const key = cacheKey.productsByCategory(categorySlug, limit);
+    return withCache(key, CACHE_TTL.PRODUCTS_LIST, async () => {
+      try {
+        // First get category ID by slug
+        const categoryResponse = await WooCommerce.get('products/categories', {
+          slug: categorySlug
+        });
+        
+        const catRaw: unknown = categoryResponse.data;
+        const catList = Array.isArray(catRaw) ? (catRaw as WCRawCategory[]) : [];
+        if (catList.length === 0) {
+          return [];
+        }
+        const categoryId = catList[0].id;
+        
+        const response = await WooCommerce.get('products', {
+          category: categoryId,
+          per_page: limit || 20,
+          status: 'publish'
+        });
+
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+        return list.map(this.transformWooCommerceProduct);
+      } catch (error) {
+        console.error(`Error fetching products for category ${categorySlug}:`, error);
         return [];
       }
-      const categoryId = catList[0].id;
-      
-      const response = await WooCommerce.get('products', {
-        category: categoryId,
-        per_page: limit || 20,
-        status: 'publish'
-      });
-
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      return list.map(this.transformWooCommerceProduct);
-    } catch (error) {
-      console.error(`Error fetching products for category ${categorySlug}:`, error);
-      return [];
-    }
+    });
   }
 
   /**
    * Get products by tag
    */
   static async getProductsByTag(tagSlug: string, limit?: number): Promise<WooCommerceProduct[]> {
-    try {
-      // First get tag ID by slug
-      const tagResponse = await WooCommerce.get('products/tags', {
-        slug: tagSlug
-      });
-      
-      const tagRaw: unknown = tagResponse.data;
-      const tagList = Array.isArray(tagRaw) ? (tagRaw as WCRawTag[]) : [];
-      if (tagList.length === 0) {
+    const key = cacheKey.productsByTag(tagSlug, limit);
+    return withCache(key, CACHE_TTL.PRODUCTS_LIST, async () => {
+      try {
+        // First get tag ID by slug
+        const tagResponse = await WooCommerce.get('products/tags', {
+          slug: tagSlug
+        });
+        
+        const tagRaw: unknown = tagResponse.data;
+        const tagList = Array.isArray(tagRaw) ? (tagRaw as WCRawTag[]) : [];
+        if (tagList.length === 0) {
+          return [];
+        }
+        const tagId = tagList[0].id;
+        
+        const response = await WooCommerce.get('products', {
+          tag: tagId,
+          per_page: limit || 20,
+          status: 'publish'
+        });
+
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+        return list.map(this.transformWooCommerceProduct);
+      } catch (error) {
+        console.error(`Error fetching products for tag ${tagSlug}:`, error);
         return [];
       }
-      const tagId = tagList[0].id;
-      
-      const response = await WooCommerce.get('products', {
-        tag: tagId,
-        per_page: limit || 20,
-        status: 'publish'
-      });
-
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      return list.map(this.transformWooCommerceProduct);
-    } catch (error) {
-      console.error(`Error fetching products for tag ${tagSlug}:`, error);
-      return [];
-    }
+    });
   }
 
   /**
    * Search products
    */
   static async searchProducts(searchTerm: string, limit?: number): Promise<WooCommerceProduct[]> {
-    try {
-      const response = await WooCommerce.get('products', {
-        search: searchTerm,
-        per_page: limit || 20,
-        status: 'publish'
-      });
+    const key = cacheKey.search(searchTerm, limit);
+    return withCache(key, CACHE_TTL.SEARCH, async () => {
+      try {
+        const response = await WooCommerce.get('products', {
+          search: searchTerm,
+          per_page: limit || 20,
+          status: 'publish'
+        });
 
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
-      return list.map(this.transformWooCommerceProduct);
-    } catch (error) {
-      console.error(`Error searching products for "${searchTerm}":`, error);
-      return [];
-    }
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawProduct[]) : [];
+        return list.map(this.transformWooCommerceProduct);
+      } catch (error) {
+        console.error(`Error searching products for "${searchTerm}":`, error);
+        return [];
+      }
+    });
   }
 
   /**
    * Get product categories
    */
   static async getCategories(): Promise<WooCommerceCategory[]> {
-    try {
-      const response = await WooCommerce.get('products/categories', {
-        per_page: 50,
-        hide_empty: true
-      });
+    const key = cacheKey.categories();
+    return withCache(key, CACHE_TTL.CATEGORIES, async () => {
+      try {
+        const response = await WooCommerce.get('products/categories', {
+          per_page: 50,
+          hide_empty: true
+        });
 
-      const raw: unknown = response.data;
-      const list = Array.isArray(raw) ? (raw as WCRawCategory[]) : [];
-      return list.map((category) => ({
-        id: category.id,
-        name: category.name,
-        slug: category.slug,
-        parent: typeof category.parent === 'number' ? category.parent : 0,
-        description: category.description,
-        image: category.image?.src,
-      }));
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-      return [];
-    }
+        const raw: unknown = response.data;
+        const list = Array.isArray(raw) ? (raw as WCRawCategory[]) : [];
+        return list.map((category) => ({
+          id: category.id,
+          name: category.name,
+          slug: category.slug,
+          parent: typeof category.parent === 'number' ? category.parent : 0,
+          description: category.description,
+          image: category.image?.src,
+        }));
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        return [];
+      }
+    });
   }
 
   /**
