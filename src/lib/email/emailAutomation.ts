@@ -16,11 +16,23 @@ import { getOutreachTemplate, type OutreachLeadType } from './outreachTemplates'
 
 // Lazy initialization of Resend client
 let resendClient: Resend | null = null;
+
+/**
+ * Check if email service is configured
+ */
+export function isEmailConfigured(): boolean {
+  const apiKey = process.env.RESEND_API_KEY;
+  return !!(apiKey && apiKey !== 're_your_resend_api_key' && apiKey.startsWith('re_'));
+}
+
 function getResend(): Resend {
   if (!resendClient) {
     const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      throw new Error('RESEND_API_KEY environment variable is not set');
+    if (!apiKey || apiKey === 're_your_resend_api_key') {
+      throw new Error('RESEND_API_KEY not configured. Add a valid API key from resend.com to your environment variables.');
+    }
+    if (!apiKey.startsWith('re_')) {
+      throw new Error('Invalid RESEND_API_KEY format. API key should start with "re_"');
     }
     resendClient = new Resend(apiKey);
   }

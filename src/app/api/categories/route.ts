@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { woocommerceClient as woocommerce } from '@/lib/services/woocommerceService';
-import { memoryCache, cacheKey, CACHE_TTL, withCache } from '@/lib/cache/memoryCache';
+import { cacheKey, CACHE_TTL, withCache } from '@/lib/cache/memoryCache';
 
 // Enable ISR with 10-minute revalidation (categories change less frequently)
 export const revalidate = 600;

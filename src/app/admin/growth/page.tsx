@@ -58,6 +58,8 @@ interface GrowthData {
   leads: Lead[];
   activities: Activity[];
   nicheSummary?: string;
+  emailConfigured?: boolean;
+  emailWarning?: string;
 }
 
 const getContactLink = (contact?: string) => {
@@ -338,7 +340,8 @@ export default function GrowthDashboard() {
             </button>
             <button
               onClick={processFollowups}
-              disabled={processingFollowups}
+              disabled={processingFollowups || !data.emailConfigured}
+              title={!data.emailConfigured ? 'Email not configured' : 'Send follow-up emails'}
               className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 disabled:opacity-50 text-white/80 font-medium rounded-lg transition"
             >
               {processingFollowups ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />}
@@ -346,6 +349,23 @@ export default function GrowthDashboard() {
             </button>
           </div>
         </div>
+
+        {/* Email Configuration Warning */}
+        {data.emailWarning && (
+          <div className="mb-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-amber-200 font-medium">Email Service Not Configured</p>
+              <p className="text-amber-200/70 text-sm mt-1">
+                {data.emailWarning} Go to{' '}
+                <a href="https://resend.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-100">
+                  resend.com
+                </a>
+                {' '}to get an API key, then add it to your Vercel environment variables as RESEND_API_KEY.
+              </p>
+            </div>
+          </div>
+        )}
 
         {error && (
           <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">

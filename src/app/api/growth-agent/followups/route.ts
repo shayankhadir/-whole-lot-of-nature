@@ -3,7 +3,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { sendOutreachEmail } from '@/lib/email/emailAutomation';
+import { sendOutreachEmail, isEmailConfigured } from '@/lib/email/emailAutomation';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -51,19 +51,38 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    // Check if email is configured
+    if (!isEmailConfigured()) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Email service not configured. Add RESEND_API_KEY to environment variables.',
+        sentCount: 0,
+        emailConfigured: false
+      });
+    }
+
     const data = loadGrowthData();
     if (!data || !data.followups) {
-      return NextResponse.json({ success: true, message: 'No follow-ups scheduled.' });
+      return NextResponse.json({ success: true, message: 'No follow-ups scheduled.', sentCount: 0 });
     }
 
     const now = Date.now();
     const updates: Array<{ id: string; status: string }> = [];
     let sentCount = 0;
+    const pendingFollowups = data.followups.filter(f => 
+      f.status !== 'completed' && new Date(f.nextSendAt).getTime() <= now
+    );
 
-    for (const followup of data.followups) {
-      if (followup.status === 'completed') continue;
-      if (new Date(followup.nextSendAt).getTime() > now) continue;
+    if (pendingFollowups.length === 0) {
+      return NextResponse.json({ 
+        success: true, 
+        message: 'No follow-ups ready to send yet.',
+        sentCount: 0,
+        totalFollowups: data.followups.length
+      });
+    }
 
+    for (const followup of pendingFollowups) {
       const lead = data.leads.find((item) => item.id === followup.leadId);
       const leadType = mapLeadType(lead?.source || followup.leadType);
 
@@ -88,6 +107,7 @@ export async function POST(request: NextRequest) {
       success: true,
       sentCount,
       updates,
+      message: sentCount > 0 ? `Sent ${sentCount} follow-up emails.` : 'No emails sent.',
     });
   } catch (error) {
     console.error('[Followup] Error:', error);
