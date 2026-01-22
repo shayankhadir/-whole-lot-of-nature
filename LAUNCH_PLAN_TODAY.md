@@ -8,9 +8,9 @@
 ## ❌ CRITICAL BLOCKERS (Must Fix First!)
 
 ### 1. 🔴 Hosting Plan Expired
-**Status:** BLOCKING - All WooCommerce APIs down
+**Status:** BLOCKING - All WooCommerce API calls failing
 
-**Problem:** Your Hostinger hosting plan has expired, causing `admin.wholelotofnature.com` to be unavailable.
+**Problem:** Your Hostinger hosting plan for `admin.wholelotofnature.com` has expired, preventing all WooCommerce API calls from working.
 
 **Impact:**
 - ❌ Shop page shows "No products found"
@@ -21,8 +21,10 @@
 **HOW TO FIX:**
 1. Log into Hostinger: https://hpanel.hostinger.com
 2. Renew your hosting plan
-3. Wait 5-15 minutes for services to restore
+3. Wait for services to restore (usually instant)
 4. Test: https://admin.wholelotofnature.com/wp-json/wc/v3/products (should show JSON data)
+
+**Note:** Once hosting is renewed, the site should work immediately since all code is ready and deployed on Vercel.
 
 ---
 
@@ -62,50 +64,13 @@
 
 ---
 
-## 📋 AFTER FIXING HOSTING - Action Checklist
+## 📋 AFTER RENEWING HOSTING - Action Checklist
 
 ### Immediate (Today)
-- [ ] Renew hosting plan on Hostinger
+- [ ] Renew Hostinger hosting plan
 - [ ] Verify shop page shows products
 - [ ] Test checkout flow with real order
 - [ ] Set up Resend for email
-
----
-
-## 📊 Google Search Console Setup (Do This NOW - No API Required!)
-
-### Step 1: Go to Google Search Console
-Visit: https://search.google.com/search-console
-
-### Step 2: Add Your Property
-1. Click **"Add Property"** button
-2. Select **"URL prefix"** option
-3. Enter: `https://wholelotofnature.com`
-4. Click **"Continue"**
-
-### Step 3: Verify Ownership
-**Recommended: HTML tag method**
-1. Copy the meta tag Google gives you
-2. Add it to your site's `<head>` (already done in Next.js)
-3. Or use **Domain verification** via Hostinger DNS
-
-### Step 4: Submit Your Sitemap 🎯
-1. In Search Console sidebar, click **"Sitemaps"**
-2. Enter: `sitemap.xml`
-3. Click **"Submit"**
-4. You should see status: "Success"
-
-**Your sitemap URL:** `https://wholelotofnature.com/sitemap.xml`
-
-### Step 5: Request Indexing for Key Pages
-Click "URL Inspection" and submit these URLs for indexing:
-- `https://wholelotofnature.com/` (homepage)
-- `https://wholelotofnature.com/shop` (shop)
-- `https://wholelotofnature.com/about` (about)
-- `https://wholelotofnature.com/blog` (blog)
-- `https://wholelotofnature.com/contact` (contact)
-
----
 
 ### Launch Marketing
 - [ ] Submit sitemap to Google Search Console
@@ -158,7 +123,7 @@ Click "URL Inspection" and submit these URLs for indexing:
 ## Priority Order
 
 ```
-1. FIX SSL CERTIFICATE (blocks everything)
+1. RENEW HOSTING PLAN (blocks everything)
    ↓
 2. Verify shop loads products
    ↓
@@ -170,7 +135,7 @@ Click "URL Inspection" and submit these URLs for indexing:
    ↓
 6. Run Growth Agent
    ↓
-7. Social media launch posts
+7. Social media launch posts (see SOCIAL_MEDIA_LAUNCH_CONTENT.md)
 ```
 
 ---
