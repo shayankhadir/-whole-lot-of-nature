@@ -15,16 +15,23 @@ function verifyCron(request: NextRequest): boolean {
   return cronSecret === process.env.CRON_SECRET || adminKey === process.env.ADMIN_SECRET_KEY;
 }
 
-function buildReport(data: any) {
-  const leads = Array.isArray(data?.leads) ? data.leads : [];
-  const sources = leads.reduce<Record<string, number>>((acc, lead) => {
+interface LeadItem {
+  name: string;
+  source: string;
+  score?: number;
+  status: string;
+}
+
+function buildReport(data: { leads?: LeadItem[] }) {
+  const leads: LeadItem[] = Array.isArray(data?.leads) ? data.leads : [];
+  const sources = leads.reduce((acc: Record<string, number>, lead) => {
     acc[lead.source] = (acc[lead.source] || 0) + 1;
     return acc;
   }, {});
 
-  const hotLeads = leads.filter((lead: any) => lead.status === 'HOT');
-  const newLeads = leads.filter((lead: any) => lead.status === 'NEW');
-  const contacted = leads.filter((lead: any) => lead.status === 'CONTACTED');
+  const hotLeads = leads.filter((lead) => lead.status === 'HOT');
+  const newLeads = leads.filter((lead) => lead.status === 'NEW');
+  const contacted = leads.filter((lead) => lead.status === 'CONTACTED');
 
   return {
     date: new Date().toLocaleDateString('en-IN'),
@@ -33,7 +40,7 @@ function buildReport(data: any) {
     newLeads: newLeads.length,
     contacted: contacted.length,
     sources,
-    topLeads: leads.slice(0, 8).map((lead: any) => ({
+    topLeads: leads.slice(0, 8).map((lead) => ({
       name: lead.name,
       source: lead.source,
       score: lead.score,
