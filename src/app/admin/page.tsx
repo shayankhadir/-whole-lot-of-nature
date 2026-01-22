@@ -28,7 +28,8 @@ import {
   Sparkles,
   Clock,
   LayoutDashboard,
-  Leaf
+  Leaf,
+  Link as LinkIcon
 } from 'lucide-react';
 
 // ============================================================================
@@ -115,6 +116,22 @@ const AGENT_CONFIGS: AgentConfig[] = [
     dashboardLabel: 'SEO Dashboard',
     runLabel: 'Run SEO Scan',
     capabilities: ['Meta tag optimization', 'Schema markup', 'Sitemap generation', 'Content analysis']
+  },
+  {
+    id: 'backlink-agent',
+    name: 'Backlink Agent',
+    description: 'Discover backlink opportunities & strengthen internal links',
+    category: 'content',
+    icon: <LinkIcon className="w-6 h-6" />,
+    color: 'text-yellow-400',
+    borderColor: 'border-yellow-500/30 hover:border-yellow-500/60',
+    bgColor: 'bg-yellow-500/20',
+    endpoint: '/api/backlinks/run?action=analyze',
+    method: 'POST',
+    dashboardLink: '/admin/content',
+    dashboardLabel: 'Content Hub',
+    runLabel: 'Find Backlinks',
+    capabilities: ['Analyze competitor backlinks', 'Generate outreach targets', 'Insert internal links']
   },
 
   // === MARKETING & SALES ===

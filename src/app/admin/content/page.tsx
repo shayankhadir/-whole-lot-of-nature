@@ -32,6 +32,31 @@ interface GenerationResult {
   error?: string;
 }
 
+interface TrendPublishResult {
+  trend: string;
+  published: boolean;
+  url?: string;
+  error?: string;
+}
+
+interface TrendsRunResult {
+  success: boolean;
+  results?: TrendPublishResult[];
+  error?: string;
+}
+
+interface FixImageResult {
+  id: number;
+  updated: boolean;
+  reason?: string;
+}
+
+interface FixImagesRunResult {
+  success: boolean;
+  results?: FixImageResult[];
+  error?: string;
+}
+
 export default function AdminContentPage() {
   const [adminKey, setAdminKey] = useState('');
   const [topic, setTopic] = useState('');
@@ -39,6 +64,12 @@ export default function AdminContentPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [result, setResult] = useState<GenerationResult | null>(null);
   const [recentPosts, setRecentPosts] = useState<GeneratedPost[]>([]);
+  const [trendsCount, setTrendsCount] = useState(3);
+  const [fixImagesLimit, setFixImagesLimit] = useState(10);
+  const [isRunningTrends, setIsRunningTrends] = useState(false);
+  const [trendsResult, setTrendsResult] = useState<TrendsRunResult | null>(null);
+  const [isFixingImages, setIsFixingImages] = useState(false);
+  const [fixImagesResult, setFixImagesResult] = useState<FixImagesRunResult | null>(null);
   
   // Load admin key from localStorage
   useEffect(() => {
@@ -96,6 +127,74 @@ export default function AdminContentPage() {
       setIsGenerating(false);
     }
   }, [topic, keyword, adminKey]);
+
+  const runTrendsGeneration = useCallback(async () => {
+    if (!adminKey) {
+      setTrendsResult({ success: false, error: 'Please login with admin key first' });
+      return;
+    }
+
+    setIsRunningTrends(true);
+    setTrendsResult(null);
+
+    try {
+      const response = await fetch('/api/trends/generate-posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey,
+        },
+        body: JSON.stringify({ count: trendsCount }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to generate trend posts');
+      }
+
+      setTrendsResult({ success: true, results: data.results || [] });
+    } catch (error) {
+      const err = error as Error;
+      setTrendsResult({ success: false, error: err.message });
+    } finally {
+      setIsRunningTrends(false);
+    }
+  }, [adminKey, trendsCount]);
+
+  const runFixImages = useCallback(async () => {
+    if (!adminKey) {
+      setFixImagesResult({ success: false, error: 'Please login with admin key first' });
+      return;
+    }
+
+    setIsFixingImages(true);
+    setFixImagesResult(null);
+
+    try {
+      const response = await fetch('/api/blog/fix-images', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey,
+        },
+        body: JSON.stringify({ limit: fixImagesLimit }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to fix blog images');
+      }
+
+      setFixImagesResult({ success: true, results: data.results || [] });
+    } catch (error) {
+      const err = error as Error;
+      setFixImagesResult({ success: false, error: err.message });
+    } finally {
+      setIsFixingImages(false);
+    }
+  }, [adminKey, fixImagesLimit]);
 
   const quickTopics = [
     { topic: 'Indoor Plant Care Tips', keyword: 'indoor plants care' },
@@ -235,6 +334,118 @@ export default function AdminContentPage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Automations */}
+            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-5">
+              <h3 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">Automations</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label htmlFor="trendsCount" className="block text-xs text-white/50">Trend posts to publish</label>
+                  <input
+                    id="trendsCount"
+                    type="number"
+                    min={1}
+                    max={5}
+                    value={trendsCount}
+                    onChange={(e) => setTrendsCount(Math.min(5, Math.max(1, Number(e.target.value))))}
+                    placeholder="3"
+                    aria-label="Trend posts to publish"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-pink-500/50 transition-all"
+                  />
+                  <button
+                    onClick={runTrendsGeneration}
+                    disabled={isRunningTrends}
+                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-white/80 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isRunningTrends ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Publishing trends...
+                      </>
+                    ) : (
+                      <>
+                        <RefreshCw className="w-4 h-4" />
+                        Publish from Google Trends
+                      </>
+                    )}
+                  </button>
+                  {trendsResult && (
+                    <div className={`mt-2 rounded-lg p-3 text-xs ${
+                      trendsResult.success ? 'bg-green-500/10 text-green-200' : 'bg-red-500/10 text-red-200'
+                    }`}>
+                      {trendsResult.success ? (
+                        <div className="space-y-1">
+                          <div className="font-medium">Published {trendsResult.results?.length ?? 0} posts</div>
+                          {trendsResult.results?.slice(0, 3).map((item, idx) => (
+                            <div key={`${item.trend}-${idx}`} className="flex items-center justify-between gap-2">
+                              <span className="truncate">{item.trend}</span>
+                              <span className={item.published ? 'text-green-300' : 'text-red-300'}>
+                                {item.published ? 'OK' : 'Fail'}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div>{trendsResult.error}</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="fixImagesLimit" className="block text-xs text-white/50">Fix images for last posts</label>
+                  <input
+                    id="fixImagesLimit"
+                    type="number"
+                    min={1}
+                    max={30}
+                    value={fixImagesLimit}
+                    onChange={(e) => setFixImagesLimit(Math.min(30, Math.max(1, Number(e.target.value))))}
+                    placeholder="10"
+                    aria-label="Fix images for last posts"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-pink-500/50 transition-all"
+                  />
+                  <button
+                    onClick={runFixImages}
+                    disabled={isFixingImages}
+                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-white/80 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isFixingImages ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Fixing images...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Fix Blog Images
+                      </>
+                    )}
+                  </button>
+                  {fixImagesResult && (
+                    <div className={`mt-2 rounded-lg p-3 text-xs ${
+                      fixImagesResult.success ? 'bg-green-500/10 text-green-200' : 'bg-red-500/10 text-red-200'
+                    }`}>
+                      {fixImagesResult.success ? (
+                        <div className="space-y-1">
+                          <div className="font-medium">Updated {fixImagesResult.results?.filter(r => r.updated).length ?? 0} posts</div>
+                          {fixImagesResult.results?.slice(0, 3).map((item, idx) => (
+                            <div key={`${item.id}-${idx}`} className="flex items-center justify-between gap-2">
+                              <span>Post #{item.id}</span>
+                              <span className={item.updated ? 'text-green-300' : 'text-yellow-300'}>
+                                {item.updated ? 'Updated' : item.reason || 'Skipped'}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div>{fixImagesResult.error}</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Quick Links */}
             <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-5">
               <h3 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">Quick Links</h3>

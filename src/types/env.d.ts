@@ -51,6 +51,8 @@ declare namespace NodeJS {
     // Email & Notifications
     RESEND_API_KEY?: string;
     ADMIN_EMAIL?: string;
+    REPORT_EMAIL_TO?: string;
+    SLACK_WEBHOOK_URL?: string;
     
     // Instagram
     INSTAGRAM_ACCESS_TOKEN?: string;

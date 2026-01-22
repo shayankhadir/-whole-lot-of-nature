@@ -12,6 +12,7 @@ import {
   reviewRequestEmail,
   reEngagementEmail,
 } from './templates';
+import { getOutreachTemplate, type OutreachLeadType } from './outreachTemplates';
 
 // Lazy initialization of Resend client
 let resendClient: Resend | null = null;
@@ -63,6 +64,24 @@ export interface OrderData {
   }>;
   total: number;
   trackingUrl?: string;
+}
+
+export interface OutreachLead {
+  name: string;
+  company?: string;
+  niche?: string;
+  contact?: string;
+  source?: string;
+}
+
+export interface LeadDropReport {
+  date: string;
+  totalLeads: number;
+  hotLeads: number;
+  newLeads: number;
+  contacted: number;
+  sources: Record<string, number>;
+  topLeads: Array<{ name: string; source: string; score?: number }>;
 }
 
 /**
@@ -313,6 +332,93 @@ export async function sendReEngagementEmail(
 }
 
 /**
+ * Send outreach email to lead
+ */
+export async function sendOutreachEmail(
+  email: string,
+  leadType: OutreachLeadType,
+  lead: OutreachLead
+): Promise<EmailResult> {
+  try {
+    const template = getOutreachTemplate(leadType, lead);
+
+    const { data, error } = await getResend().emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      subject: template.subject,
+      html: template.html,
+    });
+
+    if (error) {
+      console.error('[Email] Outreach email failed:', error);
+      return { success: false, error: error.message };
+    }
+
+    await logEmailEvent('outreach', email, data?.id, {
+      leadType,
+      leadName: lead.name,
+      leadCompany: lead.company,
+      leadSource: lead.source,
+    });
+
+    return { success: true, id: data?.id };
+  } catch (error) {
+    console.error('[Email] Outreach error:', error);
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
+ * Send daily lead drop report email
+ */
+export async function sendLeadDropReport(
+  email: string,
+  report: LeadDropReport
+): Promise<EmailResult> {
+  try {
+    const summaryRows = Object.entries(report.sources)
+      .map(([source, count]) => `<li>${source}: <strong>${count}</strong></li>`)
+      .join('');
+
+    const leadRows = report.topLeads
+      .map((lead) => `<li>${lead.name} (${lead.source}) — score ${lead.score ?? 'N/A'}</li>`)
+      .join('');
+
+    const html = `
+      <div style="font-family: Inter, Arial, sans-serif; color: #0f1f14;">
+        <h2>Daily Lead Drop — ${report.date}</h2>
+        <p>Total leads: <strong>${report.totalLeads}</strong></p>
+        <p>Hot: <strong>${report.hotLeads}</strong> · New: <strong>${report.newLeads}</strong> · Contacted: <strong>${report.contacted}</strong></p>
+        <h3>Sources</h3>
+        <ul>${summaryRows}</ul>
+        <h3>Top Leads</h3>
+        <ul>${leadRows}</ul>
+        <p>Run the Growth Agent for deeper insights and outreach.</p>
+      </div>
+    `;
+
+    const { data, error } = await getResend().emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      subject: `Daily Lead Drop — ${report.date}`,
+      html,
+    });
+
+    if (error) {
+      console.error('[Email] Lead drop report failed:', error);
+      return { success: false, error: error.message };
+    }
+
+    await logEmailEvent('lead_report', email, data?.id, report);
+
+    return { success: true, id: data?.id };
+  } catch (error) {
+    console.error('[Email] Lead drop report error:', error);
+    return { success: false, error: String(error) };
+  }
+}
+
+/**
  * Log email event to database
  * Uses the EmailContact model if the contact exists
  */
@@ -349,7 +455,9 @@ async function logEmailEvent(
       'order_confirmation': 'PURCHASED',
       'shipping': 'CAMPAIGN_SENT',
       'review_request': 'CAMPAIGN_SENT',
-      'reengagement': 'CAMPAIGN_SENT'
+      'reengagement': 'CAMPAIGN_SENT',
+      'outreach': 'CAMPAIGN_SENT',
+      'lead_report': 'CAMPAIGN_SENT'
     };
     
     const eventType = eventTypeMap[type] || 'CAMPAIGN_SENT';
