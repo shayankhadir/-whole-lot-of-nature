@@ -409,7 +409,7 @@ export async function sendLeadDropReport(
       return { success: false, error: error.message };
     }
 
-    await logEmailEvent('lead_report', email, data?.id, report);
+    await logEmailEvent('lead_report', email, data?.id, report as unknown as Record<string, unknown>);
 
     return { success: true, id: data?.id };
   } catch (error) {
