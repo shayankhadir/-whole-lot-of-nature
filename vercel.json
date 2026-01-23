@@ -3,6 +3,24 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "regions": ["bom1"],
+  "crons": [
+    {
+      "path": "/api/cron/agents",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/marketing",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/lead-drop",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/abandoned-cart",
+      "schedule": "0 */4 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
