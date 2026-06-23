@@ -15,6 +15,7 @@ import { RouteTransitionProvider } from "@/components/loading/RouteTransitionPro
 import { Suspense } from "react";
 import PlantsyChatWidget from "@/components/agents/PlantsyChatWidget";
 import WebVitalsReporter from "@/components/analytics/WebVitalsReporter";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Viewport configuration for better mobile UX
 export const viewport: Viewport = {
@@ -281,6 +282,7 @@ export default function RootLayout({
           </QueryProvider>
         </NextAuthProvider>
         <WebVitalsReporter />
+        <SpeedInsights />
       </body>
     </html>
   );
